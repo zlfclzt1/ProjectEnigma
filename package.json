@@ -1,0 +1,11 @@
+{
+  "name": "mystery-guild-master",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "python3 -m http.server 4173",
+    "test": "node --test",
+    "simulate:rfc": "node scripts/simulate_ragefire_chasm.mjs 100000"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "shadowfang_keep",
+  "name": "影牙城堡",
+  "minimumLevel": 14,
+  "recommendedLevel": 22,
+  "defaultUnlocked": false,
+  "unlock": { "requiredAnyDungeonIds": ["deadmines", "wailing_caverns"] },
+  "members": { "minimum": 1, "maximum": 5, "recommended": 5 },
+  "duration": { "baseSeconds": 840, "minimumRatio": 0.5, "maximumRatio": 1.8 },
+  "probability": {
+    "minimum": 0.05,
+    "maximum": 0.99,
+    "base": 0.05,
+    "readinessMultiplier": 0.93,
+    "surplusEffect": 0.5,
+    "geometricWeight": 0.7,
+    "bottleneckWeight": 0.3,
+    "overpowerThreshold": 1.5
+  },
+  "bosses": [
+    { "id": "sfk_rethilgore", "name": "雷希戈尔", "stageSeconds": 90, "requirements": { "tank": 20, "healing": 20, "damage": 71 }, "weights": { "tank": 0.4, "healing": 0.25, "damage": 0.35 }, "experienceShare": 0.11, "funds": 16, "firstKillBonus": 32, "lootPool": "sfk_rethilgore" },
+    { "id": "sfk_razorclaw", "name": "屠夫拉佐克劳", "stageSeconds": 90, "requirements": { "tank": 21, "healing": 20.5, "damage": 73 }, "weights": { "tank": 0.4, "healing": 0.3, "damage": 0.3 }, "experienceShare": 0.12, "funds": 18, "firstKillBonus": 36, "lootPool": "sfk_razorclaw" },
+    { "id": "sfk_baron_silverlaine", "name": "席瓦莱恩男爵", "stageSeconds": 90, "requirements": { "tank": 21, "healing": 21, "damage": 75 }, "weights": { "tank": 0.3, "healing": 0.35, "damage": 0.35 }, "experienceShare": 0.12, "funds": 18, "firstKillBonus": 36, "lootPool": "sfk_baron_silverlaine" },
+    { "id": "sfk_commander_springvale", "name": "指挥官斯普林瓦尔", "stageSeconds": 90, "requirements": { "tank": 21.5, "healing": 21.5, "damage": 76 }, "weights": { "tank": 0.4, "healing": 0.35, "damage": 0.25 }, "experienceShare": 0.12, "funds": 19, "firstKillBonus": 38, "lootPool": "sfk_commander_springvale" },
+    { "id": "sfk_odo", "name": "盲眼守卫奥杜", "stageSeconds": 90, "requirements": { "tank": 21.5, "healing": 21, "damage": 77 }, "weights": { "tank": 0.3, "healing": 0.3, "damage": 0.4 }, "experienceShare": 0.12, "funds": 19, "firstKillBonus": 38, "lootPool": "sfk_odo" },
+    { "id": "sfk_fenrus", "name": "吞噬者芬鲁斯", "stageSeconds": 120, "requirements": { "tank": 22, "healing": 22, "damage": 78 }, "weights": { "tank": 0.35, "healing": 0.35, "damage": 0.3 }, "experienceShare": 0.13, "funds": 20, "firstKillBonus": 40, "lootPool": "sfk_fenrus" },
+    { "id": "sfk_wolf_master_nandos", "name": "狼王南杜斯", "stageSeconds": 120, "requirements": { "tank": 22.5, "healing": 22, "damage": 80 }, "weights": { "tank": 0.35, "healing": 0.3, "damage": 0.35 }, "experienceShare": 0.13, "funds": 21, "firstKillBonus": 42, "lootPool": "sfk_wolf_master_nandos" },
+    { "id": "sfk_archmage_arugal", "name": "大法师阿鲁高", "stageSeconds": 150, "requirements": { "tank": 23, "healing": 23, "damage": 82 }, "weights": { "tank": 0.3, "healing": 0.4, "damage": 0.3 }, "experienceShare": 0.15, "funds": 25, "firstKillBonus": 50, "lootPool": "sfk_archmage_arugal" }
+  ]
+}

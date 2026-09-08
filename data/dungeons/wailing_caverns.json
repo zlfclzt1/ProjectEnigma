@@ -1,0 +1,30 @@
+{
+  "id": "wailing_caverns",
+  "name": "哀嚎洞穴",
+  "minimumLevel": 10,
+  "recommendedLevel": 17,
+  "defaultUnlocked": false,
+  "unlock": { "requiredDungeonIds": ["ragefire_chasm"] },
+  "members": { "minimum": 1, "maximum": 5, "recommended": 5 },
+  "duration": { "baseSeconds": 1680, "minimumRatio": 0.5, "maximumRatio": 1.8 },
+  "probability": {
+    "minimum": 0.05,
+    "maximum": 0.99,
+    "base": 0.05,
+    "readinessMultiplier": 0.93,
+    "surplusEffect": 0.5,
+    "geometricWeight": 0.7,
+    "bottleneckWeight": 0.3,
+    "overpowerThreshold": 1.5
+  },
+  "bosses": [
+    { "id": "wc_lady_anacondra", "name": "安娜科德拉", "stageSeconds": 180, "requirements": { "tank": 16, "healing": 16, "damage": 56 }, "weights": { "tank": 0.3, "healing": 0.35, "damage": 0.35 }, "experienceShare": 0.12, "funds": 12, "firstKillBonus": 24, "lootPool": "wc_lady_anacondra" },
+    { "id": "wc_lord_cobrahn", "name": "考布莱恩领主", "stageSeconds": 180, "requirements": { "tank": 16.5, "healing": 16, "damage": 57 }, "weights": { "tank": 0.35, "healing": 0.3, "damage": 0.35 }, "experienceShare": 0.12, "funds": 12, "firstKillBonus": 24, "lootPool": "wc_lord_cobrahn" },
+    { "id": "wc_kresh", "name": "克雷什", "stageSeconds": 120, "requirements": { "tank": 16.5, "healing": 15.5, "damage": 58 }, "weights": { "tank": 0.4, "healing": 0.25, "damage": 0.35 }, "experienceShare": 0.1, "funds": 10, "firstKillBonus": 20, "lootPool": "wc_kresh" },
+    { "id": "wc_lord_pythas", "name": "皮萨斯领主", "stageSeconds": 180, "requirements": { "tank": 17, "healing": 16.5, "damage": 59 }, "weights": { "tank": 0.35, "healing": 0.3, "damage": 0.35 }, "experienceShare": 0.12, "funds": 12, "firstKillBonus": 24, "lootPool": "wc_lord_pythas" },
+    { "id": "wc_skum", "name": "斯卡姆", "stageSeconds": 180, "requirements": { "tank": 17, "healing": 17, "damage": 60 }, "weights": { "tank": 0.3, "healing": 0.35, "damage": 0.35 }, "experienceShare": 0.12, "funds": 12, "firstKillBonus": 24, "lootPool": "wc_skum" },
+    { "id": "wc_lord_serpentis", "name": "瑟芬迪斯领主", "stageSeconds": 240, "requirements": { "tank": 17.5, "healing": 17, "damage": 61 }, "weights": { "tank": 0.3, "healing": 0.35, "damage": 0.35 }, "experienceShare": 0.14, "funds": 15, "firstKillBonus": 30, "lootPool": "wc_lord_serpentis" },
+    { "id": "wc_verdan", "name": "永生者沃尔丹", "stageSeconds": 240, "requirements": { "tank": 18, "healing": 17.5, "damage": 62 }, "weights": { "tank": 0.45, "healing": 0.3, "damage": 0.25 }, "experienceShare": 0.14, "funds": 15, "firstKillBonus": 30, "lootPool": "wc_verdan" },
+    { "id": "wc_mutanus", "name": "吞噬者穆坦努斯", "stageSeconds": 360, "requirements": { "tank": 18, "healing": 18, "damage": 64 }, "weights": { "tank": 0.35, "healing": 0.35, "damage": 0.3 }, "experienceShare": 0.14, "funds": 18, "firstKillBonus": 36, "lootPool": "wc_mutanus" }
+  ]
+}
