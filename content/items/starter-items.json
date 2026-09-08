@@ -31,7 +31,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 2,
+          "intellectPoints": 2
+        },
+        "defense": {
+          "armorPoints": 18
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_leather_head",
@@ -53,7 +72,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 2,
+          "agilityPoints": 2
+        },
+        "defense": {
+          "armorPoints": 36
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_mail_head",
@@ -75,7 +113,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 2,
+          "strengthPoints": 2
+        },
+        "defense": {
+          "armorPoints": 63
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_plate_head",
@@ -97,7 +154,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 2,
+          "strengthPoints": 2
+        },
+        "defense": {
+          "armorPoints": 81
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_neck",
@@ -118,7 +194,22 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_cloth_shoulder",
@@ -140,7 +231,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1,
+          "intellectPoints": 1
+        },
+        "defense": {
+          "armorPoints": 14
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_leather_shoulder",
@@ -162,7 +272,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1,
+          "agilityPoints": 1
+        },
+        "defense": {
+          "armorPoints": 28
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_mail_shoulder",
@@ -184,7 +313,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1,
+          "strengthPoints": 1
+        },
+        "defense": {
+          "armorPoints": 49
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_plate_shoulder",
@@ -206,7 +354,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1,
+          "strengthPoints": 1
+        },
+        "defense": {
+          "armorPoints": 63
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_back",
@@ -227,7 +394,25 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1
+        },
+        "defense": {
+          "armorPoints": 4
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_cloth_chest",
@@ -249,7 +434,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 2,
+          "intellectPoints": 2
+        },
+        "defense": {
+          "armorPoints": 28
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_leather_chest",
@@ -271,7 +475,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 2,
+          "agilityPoints": 2
+        },
+        "defense": {
+          "armorPoints": 56
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_mail_chest",
@@ -293,7 +516,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 2,
+          "strengthPoints": 2
+        },
+        "defense": {
+          "armorPoints": 98
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_plate_chest",
@@ -315,7 +557,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 2,
+          "strengthPoints": 2
+        },
+        "defense": {
+          "armorPoints": 126
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_cloth_wrist",
@@ -337,7 +598,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1,
+          "intellectPoints": 1
+        },
+        "defense": {
+          "armorPoints": 8
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_leather_wrist",
@@ -359,7 +639,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1,
+          "agilityPoints": 1
+        },
+        "defense": {
+          "armorPoints": 16
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_mail_wrist",
@@ -381,7 +680,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1,
+          "strengthPoints": 1
+        },
+        "defense": {
+          "armorPoints": 28
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_plate_wrist",
@@ -403,7 +721,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1,
+          "strengthPoints": 1
+        },
+        "defense": {
+          "armorPoints": 36
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_cloth_hands",
@@ -425,7 +762,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1,
+          "intellectPoints": 1
+        },
+        "defense": {
+          "armorPoints": 12
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_leather_hands",
@@ -447,7 +803,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1,
+          "agilityPoints": 1
+        },
+        "defense": {
+          "armorPoints": 24
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_mail_hands",
@@ -469,7 +844,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1,
+          "strengthPoints": 1
+        },
+        "defense": {
+          "armorPoints": 42
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_plate_hands",
@@ -491,7 +885,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1,
+          "strengthPoints": 1
+        },
+        "defense": {
+          "armorPoints": 54
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_cloth_waist",
@@ -513,7 +926,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1,
+          "intellectPoints": 1
+        },
+        "defense": {
+          "armorPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_leather_waist",
@@ -535,7 +967,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1,
+          "agilityPoints": 1
+        },
+        "defense": {
+          "armorPoints": 20
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_mail_waist",
@@ -557,7 +1008,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1,
+          "strengthPoints": 1
+        },
+        "defense": {
+          "armorPoints": 35
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_plate_waist",
@@ -579,7 +1049,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1,
+          "strengthPoints": 1
+        },
+        "defense": {
+          "armorPoints": 45
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_cloth_legs",
@@ -601,7 +1090,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 2,
+          "intellectPoints": 2
+        },
+        "defense": {
+          "armorPoints": 24
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_leather_legs",
@@ -623,7 +1131,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 2,
+          "agilityPoints": 2
+        },
+        "defense": {
+          "armorPoints": 48
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_mail_legs",
@@ -645,7 +1172,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 2,
+          "strengthPoints": 2
+        },
+        "defense": {
+          "armorPoints": 84
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_plate_legs",
@@ -667,7 +1213,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 2,
+          "strengthPoints": 2
+        },
+        "defense": {
+          "armorPoints": 108
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_cloth_feet",
@@ -689,7 +1254,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1,
+          "intellectPoints": 1
+        },
+        "defense": {
+          "armorPoints": 12
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_leather_feet",
@@ -711,7 +1295,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1,
+          "agilityPoints": 1
+        },
+        "defense": {
+          "armorPoints": 24
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_mail_feet",
@@ -733,7 +1336,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1,
+          "strengthPoints": 1
+        },
+        "defense": {
+          "armorPoints": 42
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_plate_feet",
@@ -755,7 +1377,26 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1,
+          "strengthPoints": 1
+        },
+        "defense": {
+          "armorPoints": 54
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_ring1",
@@ -776,7 +1417,22 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_ring2",
@@ -797,7 +1453,22 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 1
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_trinket1",
@@ -818,7 +1489,27 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "physical": {
+          "attackPowerPoints": 2,
+          "rangedAttackPowerPoints": 2
+        },
+        "spell": {
+          "spellPowerPoints": 2,
+          "healingPowerPoints": 2
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_trinket2",
@@ -839,7 +1530,27 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "physical": {
+          "attackPowerPoints": 2,
+          "rangedAttackPowerPoints": 2
+        },
+        "spell": {
+          "spellPowerPoints": 2,
+          "healingPowerPoints": 2
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_main_hand",
@@ -860,7 +1571,33 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "physical": {
+          "attackPowerPoints": 2
+        },
+        "spell": {
+          "spellPowerPoints": 2,
+          "healingPowerPoints": 2
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 6,
+            "maximumPoints": 10
+          },
+          "speedSeconds": 2.4
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_off_hand",
@@ -881,7 +1618,27 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "defense": {
+          "armorPoints": 12,
+          "blockValuePoints": 1
+        },
+        "spell": {
+          "spellPowerPoints": 1,
+          "healingPowerPoints": 1
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     },
     {
       "id": "starter_ranged",
@@ -902,7 +1659,32 @@
         "zhCN": "公会为新人准备的基础装备。"
       },
       "isStarter": true,
-      "stats": {}
+      "stats": {
+        "physical": {
+          "rangedAttackPowerPoints": 2
+        },
+        "spell": {
+          "spellPowerPoints": 2
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 3,
+            "maximumPoints": 5
+          },
+          "speedSeconds": 2
+        }
+      },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "本游戏为 10 级新成员设计的入门平衡属性，不对应同名数据库物品。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "为新成员提供可参与最低级副本的统一入门属性，并为真实属性战斗公式建立基线。",
+        "decidedAt": "2026-09-08"
+      }
     }
   ]
 }

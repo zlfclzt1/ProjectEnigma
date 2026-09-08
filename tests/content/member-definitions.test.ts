@@ -59,7 +59,9 @@ describe("migrated member content", () => {
     expect(classFile.classes).toHaveLength(9);
     expect(raceFile.races).toHaveLength(8);
     expect(specFile.specs).toHaveLength(28);
-    expect(specFile.specs.every((spec) => spec.combatProfileId.startsWith("legacy_"))).toBe(true);
+    expect(specFile.specs.every((spec) => String(spec.combatProfileId) === String(spec.id))).toBe(
+      true,
+    );
   });
 
   it("preserves legacy personalities and their display copy", () => {

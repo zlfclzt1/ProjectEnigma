@@ -68,6 +68,18 @@ export const dungeonDefinitionSchema = z
       })
       .strict()
       .refine(({ minimum, maximum }) => minimum <= maximum, "概率上下限无效"),
+    combatTuning: z
+      .object({
+        bossProbabilityMaximum: probabilitySchema,
+        requirementMultipliers: z
+          .object({
+            tank: z.number().finite().positive(),
+            healing: z.number().finite().positive(),
+            damage: z.number().finite().positive(),
+          })
+          .strict(),
+      })
+      .strict(),
     route: z.array(encounterIdSchema).min(1),
   })
   .strict();

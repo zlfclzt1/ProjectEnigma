@@ -58,6 +58,7 @@ export function createExpeditionActivityFixture(
     activeRunIndex: 0,
     activeEncounterIndex: 0,
     partySnapshot: {
+      formulaVersion: asBrandedId<"FormulaVersion">("legacy-item-level-v1"),
       members: [],
       contribution: { tank: 10, healing: 10, damage: 30 },
       clearProbability: 0.5,

@@ -1,0 +1,3616 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "经典旧世轻量战斗公式首版。配置强调合理属性升级、专精定位差异和后续可独立调参，不模拟完整技能循环。"
+      }
+    ]
+  },
+  "combatProfiles": [
+    {
+      "id": "warrior_protection",
+      "specId": "warrior_protection",
+      "formulaVersion": "classic-light-v1",
+      "role": "tank",
+      "baseCapabilityPerLevel": {
+        "survivability": 1.0710000000000002,
+        "threat": 0.78,
+        "healing": 0.04,
+        "damage": 0.28
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "strengthPoints": {
+          "base": 18,
+          "perLevel": 1.9
+        },
+        "agilityPoints": {
+          "base": 10,
+          "perLevel": 1.15
+        },
+        "staminaPoints": {
+          "base": 20,
+          "perLevel": 2
+        },
+        "armorPoints": {
+          "base": 80,
+          "perLevel": 22
+        }
+      },
+      "expectedStatsAtLevel": {
+        "strengthPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "agilityPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 3.2
+        },
+        "armorPoints": {
+          "base": 20,
+          "perLevel": 45
+        },
+        "defenseSkillPoints": {
+          "base": 0,
+          "perLevel": 0.4
+        },
+        "blockValuePoints": {
+          "base": 1,
+          "perLevel": 0.8
+        },
+        "dodgePercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "parryPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "blockPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "attackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "rangedAttackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "physicalHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "physicalCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        },
+        "rangedWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        }
+      },
+      "derivedStatRules": [
+        {
+          "sourceStatId": "strengthPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 2
+        }
+      ],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.3,
+          "armorPoints": 0.24,
+          "defenseSkillPoints": 0.14,
+          "dodgePercent": 0.07,
+          "parryPercent": 0.07,
+          "blockPercent": 0.05
+        },
+        "threat": {
+          "attackPowerPoints": 0.18,
+          "physicalHitPercent": 0.08
+        },
+        "healing": {},
+        "damage": {
+          "attackPowerPoints": 0.1,
+          "physicalCriticalStrikePercent": 0.05
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "shield-tank",
+          "armorExpected": 1000,
+          "blockValueExpected": 25,
+          "survivabilityBonus": 0.24,
+          "threatBonus": 0.12
+        },
+        {
+          "strategyId": "weapon-damage",
+          "capability": "threat",
+          "weaponType": "melee",
+          "expectedDamagePerSecond": 35,
+          "bonusWeight": 0.16
+        },
+        {
+          "strategyId": "hit-threshold",
+          "capability": "threat",
+          "statId": "physicalHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.1
+        }
+      ]
+    },
+    {
+      "id": "warrior_arms",
+      "specId": "warrior_arms",
+      "formulaVersion": "classic-light-v1",
+      "role": "dps",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.42,
+        "threat": 0.3,
+        "healing": 0.04,
+        "damage": 0.9384
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "strengthPoints": {
+          "base": 18,
+          "perLevel": 1.9
+        },
+        "agilityPoints": {
+          "base": 10,
+          "perLevel": 1.15
+        },
+        "staminaPoints": {
+          "base": 20,
+          "perLevel": 2
+        },
+        "armorPoints": {
+          "base": 80,
+          "perLevel": 22
+        }
+      },
+      "expectedStatsAtLevel": {
+        "strengthPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "agilityPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 3.2
+        },
+        "armorPoints": {
+          "base": 20,
+          "perLevel": 45
+        },
+        "defenseSkillPoints": {
+          "base": 0,
+          "perLevel": 0.4
+        },
+        "blockValuePoints": {
+          "base": 1,
+          "perLevel": 0.8
+        },
+        "dodgePercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "parryPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "blockPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "attackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "rangedAttackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "physicalHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "physicalCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        },
+        "rangedWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        }
+      },
+      "derivedStatRules": [
+        {
+          "sourceStatId": "strengthPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 2
+        }
+      ],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.08,
+          "armorPoints": 0.05
+        },
+        "threat": {
+          "attackPowerPoints": 0.08
+        },
+        "healing": {},
+        "damage": {
+          "attackPowerPoints": 0.28,
+          "agilityPoints": 0.12,
+          "physicalHitPercent": 0.14,
+          "physicalCriticalStrikePercent": 0.12
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "weapon-damage",
+          "capability": "damage",
+          "weaponType": "melee",
+          "expectedDamagePerSecond": 40,
+          "bonusWeight": 0.3
+        },
+        {
+          "strategyId": "hit-threshold",
+          "capability": "damage",
+          "statId": "physicalHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.14
+        }
+      ]
+    },
+    {
+      "id": "warrior_fury",
+      "specId": "warrior_fury",
+      "formulaVersion": "classic-light-v1",
+      "role": "dps",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.42,
+        "threat": 0.3,
+        "healing": 0.04,
+        "damage": 0.9568000000000001
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "strengthPoints": {
+          "base": 18,
+          "perLevel": 1.9
+        },
+        "agilityPoints": {
+          "base": 10,
+          "perLevel": 1.15
+        },
+        "staminaPoints": {
+          "base": 20,
+          "perLevel": 2
+        },
+        "armorPoints": {
+          "base": 80,
+          "perLevel": 22
+        }
+      },
+      "expectedStatsAtLevel": {
+        "strengthPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "agilityPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 3.2
+        },
+        "armorPoints": {
+          "base": 20,
+          "perLevel": 45
+        },
+        "defenseSkillPoints": {
+          "base": 0,
+          "perLevel": 0.4
+        },
+        "blockValuePoints": {
+          "base": 1,
+          "perLevel": 0.8
+        },
+        "dodgePercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "parryPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "blockPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "attackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "rangedAttackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "physicalHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "physicalCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        },
+        "rangedWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        }
+      },
+      "derivedStatRules": [
+        {
+          "sourceStatId": "strengthPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 2
+        }
+      ],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.08,
+          "armorPoints": 0.05
+        },
+        "threat": {
+          "attackPowerPoints": 0.08
+        },
+        "healing": {},
+        "damage": {
+          "attackPowerPoints": 0.28,
+          "agilityPoints": 0.12,
+          "physicalHitPercent": 0.14,
+          "physicalCriticalStrikePercent": 0.12
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "weapon-damage",
+          "capability": "damage",
+          "weaponType": "melee",
+          "expectedDamagePerSecond": 40,
+          "bonusWeight": 0.3
+        },
+        {
+          "strategyId": "hit-threshold",
+          "capability": "damage",
+          "statId": "physicalHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.14
+        }
+      ]
+    },
+    {
+      "id": "paladin_protection",
+      "specId": "paladin_protection",
+      "formulaVersion": "classic-light-v1",
+      "role": "tank",
+      "baseCapabilityPerLevel": {
+        "survivability": 1.029,
+        "threat": 0.78,
+        "healing": 0.04,
+        "damage": 0.28
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "strengthPoints": {
+          "base": 16,
+          "perLevel": 1.65
+        },
+        "staminaPoints": {
+          "base": 19,
+          "perLevel": 1.85
+        },
+        "intellectPoints": {
+          "base": 14,
+          "perLevel": 1.35
+        },
+        "spiritPoints": {
+          "base": 13,
+          "perLevel": 1.2
+        },
+        "armorPoints": {
+          "base": 75,
+          "perLevel": 21
+        }
+      },
+      "expectedStatsAtLevel": {
+        "strengthPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "agilityPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 3.2
+        },
+        "armorPoints": {
+          "base": 20,
+          "perLevel": 45
+        },
+        "defenseSkillPoints": {
+          "base": 0,
+          "perLevel": 0.4
+        },
+        "blockValuePoints": {
+          "base": 1,
+          "perLevel": 0.8
+        },
+        "dodgePercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "parryPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "blockPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "attackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "rangedAttackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "physicalHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "physicalCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        },
+        "rangedWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        }
+      },
+      "derivedStatRules": [
+        {
+          "sourceStatId": "strengthPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 2
+        }
+      ],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.3,
+          "armorPoints": 0.24,
+          "defenseSkillPoints": 0.14,
+          "dodgePercent": 0.07,
+          "parryPercent": 0.07,
+          "blockPercent": 0.05
+        },
+        "threat": {
+          "attackPowerPoints": 0.18,
+          "physicalHitPercent": 0.08
+        },
+        "healing": {},
+        "damage": {
+          "attackPowerPoints": 0.1,
+          "physicalCriticalStrikePercent": 0.05
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "shield-tank",
+          "armorExpected": 1000,
+          "blockValueExpected": 25,
+          "survivabilityBonus": 0.24,
+          "threatBonus": 0.12
+        },
+        {
+          "strategyId": "weapon-damage",
+          "capability": "threat",
+          "weaponType": "melee",
+          "expectedDamagePerSecond": 35,
+          "bonusWeight": 0.16
+        },
+        {
+          "strategyId": "hit-threshold",
+          "capability": "threat",
+          "statId": "physicalHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.1
+        }
+      ]
+    },
+    {
+      "id": "paladin_holy",
+      "specId": "paladin_holy",
+      "formulaVersion": "classic-light-v1",
+      "role": "healer",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.36,
+        "threat": 0.12,
+        "healing": 0.9408,
+        "damage": 0.16
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "strengthPoints": {
+          "base": 16,
+          "perLevel": 1.65
+        },
+        "staminaPoints": {
+          "base": 19,
+          "perLevel": 1.85
+        },
+        "intellectPoints": {
+          "base": 14,
+          "perLevel": 1.35
+        },
+        "spiritPoints": {
+          "base": 13,
+          "perLevel": 1.2
+        },
+        "armorPoints": {
+          "base": 75,
+          "perLevel": 21
+        }
+      },
+      "expectedStatsAtLevel": {
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 2.6
+        },
+        "intellectPoints": {
+          "base": 5,
+          "perLevel": 3
+        },
+        "spiritPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "armorPoints": {
+          "base": 15,
+          "perLevel": 25
+        },
+        "spellPowerPoints": {
+          "base": 2,
+          "perLevel": 2.2
+        },
+        "healingPowerPoints": {
+          "base": 2,
+          "perLevel": 2.5
+        },
+        "spellHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "spellCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.2
+        }
+      },
+      "derivedStatRules": [
+        {
+          "sourceStatId": "strengthPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 2
+        }
+      ],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.09,
+          "armorPoints": 0.04
+        },
+        "threat": {
+          "healingPowerPoints": 0.02
+        },
+        "healing": {
+          "healingPowerPoints": 0.34,
+          "intellectPoints": 0.18,
+          "spiritPoints": 0.16,
+          "spellCriticalStrikePercent": 0.1
+        },
+        "damage": {
+          "spellPowerPoints": 0.08,
+          "intellectPoints": 0.03
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "mana-sustain",
+          "capability": "healing",
+          "intellectExpected": 100,
+          "spiritExpected": 90,
+          "bonusWeight": 0.22
+        }
+      ]
+    },
+    {
+      "id": "paladin_retribution",
+      "specId": "paladin_retribution",
+      "formulaVersion": "classic-light-v1",
+      "role": "dps",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.42,
+        "threat": 0.3,
+        "healing": 0.04,
+        "damage": 0.8648
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "strengthPoints": {
+          "base": 16,
+          "perLevel": 1.65
+        },
+        "staminaPoints": {
+          "base": 19,
+          "perLevel": 1.85
+        },
+        "intellectPoints": {
+          "base": 14,
+          "perLevel": 1.35
+        },
+        "spiritPoints": {
+          "base": 13,
+          "perLevel": 1.2
+        },
+        "armorPoints": {
+          "base": 75,
+          "perLevel": 21
+        }
+      },
+      "expectedStatsAtLevel": {
+        "strengthPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "agilityPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 3.2
+        },
+        "armorPoints": {
+          "base": 20,
+          "perLevel": 45
+        },
+        "defenseSkillPoints": {
+          "base": 0,
+          "perLevel": 0.4
+        },
+        "blockValuePoints": {
+          "base": 1,
+          "perLevel": 0.8
+        },
+        "dodgePercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "parryPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "blockPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "attackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "rangedAttackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "physicalHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "physicalCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        },
+        "rangedWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        }
+      },
+      "derivedStatRules": [
+        {
+          "sourceStatId": "strengthPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 2
+        }
+      ],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.08,
+          "armorPoints": 0.05
+        },
+        "threat": {
+          "attackPowerPoints": 0.08
+        },
+        "healing": {},
+        "damage": {
+          "attackPowerPoints": 0.28,
+          "agilityPoints": 0.12,
+          "physicalHitPercent": 0.14,
+          "physicalCriticalStrikePercent": 0.12
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "weapon-damage",
+          "capability": "damage",
+          "weaponType": "melee",
+          "expectedDamagePerSecond": 40,
+          "bonusWeight": 0.3
+        },
+        {
+          "strategyId": "hit-threshold",
+          "capability": "damage",
+          "statId": "physicalHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.14
+        }
+      ]
+    },
+    {
+      "id": "hunter_beast_mastery",
+      "specId": "hunter_beast_mastery",
+      "formulaVersion": "classic-light-v1",
+      "role": "dps",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.4,
+        "threat": 0.28,
+        "healing": 0.03,
+        "damage": 0.9211999999999999
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "strengthPoints": {
+          "base": 12,
+          "perLevel": 1
+        },
+        "agilityPoints": {
+          "base": 18,
+          "perLevel": 1.9
+        },
+        "staminaPoints": {
+          "base": 18,
+          "perLevel": 1.65
+        },
+        "intellectPoints": {
+          "base": 13,
+          "perLevel": 1.15
+        },
+        "spiritPoints": {
+          "base": 12,
+          "perLevel": 1
+        },
+        "armorPoints": {
+          "base": 55,
+          "perLevel": 18
+        }
+      },
+      "expectedStatsAtLevel": {
+        "strengthPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "agilityPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 3.2
+        },
+        "armorPoints": {
+          "base": 20,
+          "perLevel": 45
+        },
+        "defenseSkillPoints": {
+          "base": 0,
+          "perLevel": 0.4
+        },
+        "blockValuePoints": {
+          "base": 1,
+          "perLevel": 0.8
+        },
+        "dodgePercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "parryPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "blockPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "attackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "rangedAttackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "physicalHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "physicalCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        },
+        "rangedWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        }
+      },
+      "derivedStatRules": [
+        {
+          "sourceStatId": "agilityPoints",
+          "targetStatId": "rangedAttackPowerPoints",
+          "multiplier": 2
+        }
+      ],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.08,
+          "armorPoints": 0.04
+        },
+        "threat": {
+          "rangedAttackPowerPoints": 0.07
+        },
+        "healing": {},
+        "damage": {
+          "rangedAttackPowerPoints": 0.3,
+          "agilityPoints": 0.14,
+          "physicalHitPercent": 0.14,
+          "physicalCriticalStrikePercent": 0.12
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "weapon-damage",
+          "capability": "damage",
+          "weaponType": "ranged",
+          "expectedDamagePerSecond": 40,
+          "bonusWeight": 0.32
+        },
+        {
+          "strategyId": "hit-threshold",
+          "capability": "damage",
+          "statId": "physicalHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.14
+        }
+      ]
+    },
+    {
+      "id": "hunter_marksmanship",
+      "specId": "hunter_marksmanship",
+      "formulaVersion": "classic-light-v1",
+      "role": "dps",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.4,
+        "threat": 0.28,
+        "healing": 0.03,
+        "damage": 0.9776
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "strengthPoints": {
+          "base": 12,
+          "perLevel": 1
+        },
+        "agilityPoints": {
+          "base": 18,
+          "perLevel": 1.9
+        },
+        "staminaPoints": {
+          "base": 18,
+          "perLevel": 1.65
+        },
+        "intellectPoints": {
+          "base": 13,
+          "perLevel": 1.15
+        },
+        "spiritPoints": {
+          "base": 12,
+          "perLevel": 1
+        },
+        "armorPoints": {
+          "base": 55,
+          "perLevel": 18
+        }
+      },
+      "expectedStatsAtLevel": {
+        "strengthPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "agilityPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 3.2
+        },
+        "armorPoints": {
+          "base": 20,
+          "perLevel": 45
+        },
+        "defenseSkillPoints": {
+          "base": 0,
+          "perLevel": 0.4
+        },
+        "blockValuePoints": {
+          "base": 1,
+          "perLevel": 0.8
+        },
+        "dodgePercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "parryPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "blockPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "attackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "rangedAttackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "physicalHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "physicalCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        },
+        "rangedWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        }
+      },
+      "derivedStatRules": [
+        {
+          "sourceStatId": "agilityPoints",
+          "targetStatId": "rangedAttackPowerPoints",
+          "multiplier": 2
+        }
+      ],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.08,
+          "armorPoints": 0.04
+        },
+        "threat": {
+          "rangedAttackPowerPoints": 0.07
+        },
+        "healing": {},
+        "damage": {
+          "rangedAttackPowerPoints": 0.3,
+          "agilityPoints": 0.14,
+          "physicalHitPercent": 0.14,
+          "physicalCriticalStrikePercent": 0.12
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "weapon-damage",
+          "capability": "damage",
+          "weaponType": "ranged",
+          "expectedDamagePerSecond": 40,
+          "bonusWeight": 0.32
+        },
+        {
+          "strategyId": "hit-threshold",
+          "capability": "damage",
+          "statId": "physicalHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.14
+        }
+      ]
+    },
+    {
+      "id": "hunter_survival",
+      "specId": "hunter_survival",
+      "formulaVersion": "classic-light-v1",
+      "role": "dps",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.4,
+        "threat": 0.28,
+        "healing": 0.03,
+        "damage": 0.9023999999999999
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "strengthPoints": {
+          "base": 12,
+          "perLevel": 1
+        },
+        "agilityPoints": {
+          "base": 18,
+          "perLevel": 1.9
+        },
+        "staminaPoints": {
+          "base": 18,
+          "perLevel": 1.65
+        },
+        "intellectPoints": {
+          "base": 13,
+          "perLevel": 1.15
+        },
+        "spiritPoints": {
+          "base": 12,
+          "perLevel": 1
+        },
+        "armorPoints": {
+          "base": 55,
+          "perLevel": 18
+        }
+      },
+      "expectedStatsAtLevel": {
+        "strengthPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "agilityPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 3.2
+        },
+        "armorPoints": {
+          "base": 20,
+          "perLevel": 45
+        },
+        "defenseSkillPoints": {
+          "base": 0,
+          "perLevel": 0.4
+        },
+        "blockValuePoints": {
+          "base": 1,
+          "perLevel": 0.8
+        },
+        "dodgePercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "parryPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "blockPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "attackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "rangedAttackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "physicalHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "physicalCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        },
+        "rangedWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        }
+      },
+      "derivedStatRules": [
+        {
+          "sourceStatId": "agilityPoints",
+          "targetStatId": "rangedAttackPowerPoints",
+          "multiplier": 2
+        }
+      ],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.08,
+          "armorPoints": 0.04
+        },
+        "threat": {
+          "rangedAttackPowerPoints": 0.07
+        },
+        "healing": {},
+        "damage": {
+          "rangedAttackPowerPoints": 0.3,
+          "agilityPoints": 0.14,
+          "physicalHitPercent": 0.14,
+          "physicalCriticalStrikePercent": 0.12
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "weapon-damage",
+          "capability": "damage",
+          "weaponType": "ranged",
+          "expectedDamagePerSecond": 40,
+          "bonusWeight": 0.32
+        },
+        {
+          "strategyId": "hit-threshold",
+          "capability": "damage",
+          "statId": "physicalHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.14
+        }
+      ]
+    },
+    {
+      "id": "rogue_assassination",
+      "specId": "rogue_assassination",
+      "formulaVersion": "classic-light-v1",
+      "role": "dps",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.42,
+        "threat": 0.3,
+        "healing": 0.04,
+        "damage": 0.9292
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "strengthPoints": {
+          "base": 14,
+          "perLevel": 1.25
+        },
+        "agilityPoints": {
+          "base": 20,
+          "perLevel": 2.05
+        },
+        "staminaPoints": {
+          "base": 17,
+          "perLevel": 1.55
+        },
+        "armorPoints": {
+          "base": 45,
+          "perLevel": 16
+        }
+      },
+      "expectedStatsAtLevel": {
+        "strengthPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "agilityPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 3.2
+        },
+        "armorPoints": {
+          "base": 20,
+          "perLevel": 45
+        },
+        "defenseSkillPoints": {
+          "base": 0,
+          "perLevel": 0.4
+        },
+        "blockValuePoints": {
+          "base": 1,
+          "perLevel": 0.8
+        },
+        "dodgePercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "parryPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "blockPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "attackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "rangedAttackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "physicalHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "physicalCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        },
+        "rangedWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        }
+      },
+      "derivedStatRules": [
+        {
+          "sourceStatId": "strengthPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 1
+        },
+        {
+          "sourceStatId": "agilityPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 1
+        }
+      ],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.08,
+          "armorPoints": 0.05
+        },
+        "threat": {
+          "attackPowerPoints": 0.08
+        },
+        "healing": {},
+        "damage": {
+          "attackPowerPoints": 0.28,
+          "agilityPoints": 0.12,
+          "physicalHitPercent": 0.14,
+          "physicalCriticalStrikePercent": 0.12
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "weapon-damage",
+          "capability": "damage",
+          "weaponType": "melee",
+          "expectedDamagePerSecond": 40,
+          "bonusWeight": 0.3
+        },
+        {
+          "strategyId": "hit-threshold",
+          "capability": "damage",
+          "statId": "physicalHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.14
+        }
+      ]
+    },
+    {
+      "id": "rogue_combat",
+      "specId": "rogue_combat",
+      "formulaVersion": "classic-light-v1",
+      "role": "dps",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.42,
+        "threat": 0.3,
+        "healing": 0.04,
+        "damage": 0.9568000000000001
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "strengthPoints": {
+          "base": 14,
+          "perLevel": 1.25
+        },
+        "agilityPoints": {
+          "base": 20,
+          "perLevel": 2.05
+        },
+        "staminaPoints": {
+          "base": 17,
+          "perLevel": 1.55
+        },
+        "armorPoints": {
+          "base": 45,
+          "perLevel": 16
+        }
+      },
+      "expectedStatsAtLevel": {
+        "strengthPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "agilityPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 3.2
+        },
+        "armorPoints": {
+          "base": 20,
+          "perLevel": 45
+        },
+        "defenseSkillPoints": {
+          "base": 0,
+          "perLevel": 0.4
+        },
+        "blockValuePoints": {
+          "base": 1,
+          "perLevel": 0.8
+        },
+        "dodgePercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "parryPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "blockPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "attackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "rangedAttackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "physicalHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "physicalCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        },
+        "rangedWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        }
+      },
+      "derivedStatRules": [
+        {
+          "sourceStatId": "strengthPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 1
+        },
+        {
+          "sourceStatId": "agilityPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 1
+        }
+      ],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.08,
+          "armorPoints": 0.05
+        },
+        "threat": {
+          "attackPowerPoints": 0.08
+        },
+        "healing": {},
+        "damage": {
+          "attackPowerPoints": 0.28,
+          "agilityPoints": 0.12,
+          "physicalHitPercent": 0.14,
+          "physicalCriticalStrikePercent": 0.12
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "weapon-damage",
+          "capability": "damage",
+          "weaponType": "melee",
+          "expectedDamagePerSecond": 40,
+          "bonusWeight": 0.3
+        },
+        {
+          "strategyId": "hit-threshold",
+          "capability": "damage",
+          "statId": "physicalHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.14
+        }
+      ]
+    },
+    {
+      "id": "rogue_subtlety",
+      "specId": "rogue_subtlety",
+      "formulaVersion": "classic-light-v1",
+      "role": "dps",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.42,
+        "threat": 0.3,
+        "healing": 0.04,
+        "damage": 0.9016000000000001
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "strengthPoints": {
+          "base": 14,
+          "perLevel": 1.25
+        },
+        "agilityPoints": {
+          "base": 20,
+          "perLevel": 2.05
+        },
+        "staminaPoints": {
+          "base": 17,
+          "perLevel": 1.55
+        },
+        "armorPoints": {
+          "base": 45,
+          "perLevel": 16
+        }
+      },
+      "expectedStatsAtLevel": {
+        "strengthPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "agilityPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 3.2
+        },
+        "armorPoints": {
+          "base": 20,
+          "perLevel": 45
+        },
+        "defenseSkillPoints": {
+          "base": 0,
+          "perLevel": 0.4
+        },
+        "blockValuePoints": {
+          "base": 1,
+          "perLevel": 0.8
+        },
+        "dodgePercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "parryPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "blockPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "attackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "rangedAttackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "physicalHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "physicalCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        },
+        "rangedWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        }
+      },
+      "derivedStatRules": [
+        {
+          "sourceStatId": "strengthPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 1
+        },
+        {
+          "sourceStatId": "agilityPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 1
+        }
+      ],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.08,
+          "armorPoints": 0.05
+        },
+        "threat": {
+          "attackPowerPoints": 0.08
+        },
+        "healing": {},
+        "damage": {
+          "attackPowerPoints": 0.28,
+          "agilityPoints": 0.12,
+          "physicalHitPercent": 0.14,
+          "physicalCriticalStrikePercent": 0.12
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "weapon-damage",
+          "capability": "damage",
+          "weaponType": "melee",
+          "expectedDamagePerSecond": 40,
+          "bonusWeight": 0.3
+        },
+        {
+          "strategyId": "hit-threshold",
+          "capability": "damage",
+          "statId": "physicalHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.14
+        }
+      ]
+    },
+    {
+      "id": "priest_discipline",
+      "specId": "priest_discipline",
+      "formulaVersion": "classic-light-v1",
+      "role": "healer",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.36,
+        "threat": 0.12,
+        "healing": 0.9408,
+        "damage": 0.16
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "staminaPoints": {
+          "base": 14,
+          "perLevel": 1.35
+        },
+        "intellectPoints": {
+          "base": 20,
+          "perLevel": 1.95
+        },
+        "spiritPoints": {
+          "base": 22,
+          "perLevel": 2.05
+        },
+        "armorPoints": {
+          "base": 25,
+          "perLevel": 9
+        }
+      },
+      "expectedStatsAtLevel": {
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 2.6
+        },
+        "intellectPoints": {
+          "base": 5,
+          "perLevel": 3
+        },
+        "spiritPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "armorPoints": {
+          "base": 15,
+          "perLevel": 25
+        },
+        "spellPowerPoints": {
+          "base": 2,
+          "perLevel": 2.2
+        },
+        "healingPowerPoints": {
+          "base": 2,
+          "perLevel": 2.5
+        },
+        "spellHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "spellCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.2
+        }
+      },
+      "derivedStatRules": [],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.09,
+          "armorPoints": 0.04
+        },
+        "threat": {
+          "healingPowerPoints": 0.02
+        },
+        "healing": {
+          "healingPowerPoints": 0.34,
+          "intellectPoints": 0.18,
+          "spiritPoints": 0.16,
+          "spellCriticalStrikePercent": 0.1
+        },
+        "damage": {
+          "spellPowerPoints": 0.08,
+          "intellectPoints": 0.03
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "mana-sustain",
+          "capability": "healing",
+          "intellectExpected": 100,
+          "spiritExpected": 90,
+          "bonusWeight": 0.22
+        }
+      ]
+    },
+    {
+      "id": "priest_holy",
+      "specId": "priest_holy",
+      "formulaVersion": "classic-light-v1",
+      "role": "healer",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.36,
+        "threat": 0.12,
+        "healing": 0.9984,
+        "damage": 0.16
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "staminaPoints": {
+          "base": 14,
+          "perLevel": 1.35
+        },
+        "intellectPoints": {
+          "base": 20,
+          "perLevel": 1.95
+        },
+        "spiritPoints": {
+          "base": 22,
+          "perLevel": 2.05
+        },
+        "armorPoints": {
+          "base": 25,
+          "perLevel": 9
+        }
+      },
+      "expectedStatsAtLevel": {
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 2.6
+        },
+        "intellectPoints": {
+          "base": 5,
+          "perLevel": 3
+        },
+        "spiritPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "armorPoints": {
+          "base": 15,
+          "perLevel": 25
+        },
+        "spellPowerPoints": {
+          "base": 2,
+          "perLevel": 2.2
+        },
+        "healingPowerPoints": {
+          "base": 2,
+          "perLevel": 2.5
+        },
+        "spellHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "spellCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.2
+        }
+      },
+      "derivedStatRules": [],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.09,
+          "armorPoints": 0.04
+        },
+        "threat": {
+          "healingPowerPoints": 0.02
+        },
+        "healing": {
+          "healingPowerPoints": 0.34,
+          "intellectPoints": 0.18,
+          "spiritPoints": 0.16,
+          "spellCriticalStrikePercent": 0.1
+        },
+        "damage": {
+          "spellPowerPoints": 0.08,
+          "intellectPoints": 0.03
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "mana-sustain",
+          "capability": "healing",
+          "intellectExpected": 100,
+          "spiritExpected": 90,
+          "bonusWeight": 0.22
+        }
+      ]
+    },
+    {
+      "id": "priest_shadow",
+      "specId": "priest_shadow",
+      "formulaVersion": "classic-light-v1",
+      "role": "dps",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.34,
+        "threat": 0.25,
+        "healing": 0.07,
+        "damage": 0.9114
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "staminaPoints": {
+          "base": 14,
+          "perLevel": 1.35
+        },
+        "intellectPoints": {
+          "base": 20,
+          "perLevel": 1.95
+        },
+        "spiritPoints": {
+          "base": 22,
+          "perLevel": 2.05
+        },
+        "armorPoints": {
+          "base": 25,
+          "perLevel": 9
+        }
+      },
+      "expectedStatsAtLevel": {
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 2.6
+        },
+        "intellectPoints": {
+          "base": 5,
+          "perLevel": 3
+        },
+        "spiritPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "armorPoints": {
+          "base": 15,
+          "perLevel": 25
+        },
+        "spellPowerPoints": {
+          "base": 2,
+          "perLevel": 2.2
+        },
+        "healingPowerPoints": {
+          "base": 2,
+          "perLevel": 2.5
+        },
+        "spellHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "spellCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.2
+        }
+      },
+      "derivedStatRules": [],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.08,
+          "armorPoints": 0.03
+        },
+        "threat": {
+          "spellPowerPoints": 0.06
+        },
+        "healing": {
+          "intellectPoints": 0.02
+        },
+        "damage": {
+          "spellPowerPoints": 0.32,
+          "intellectPoints": 0.13,
+          "spiritPoints": 0.04,
+          "spellHitPercent": 0.15,
+          "spellCriticalStrikePercent": 0.12
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "hit-threshold",
+          "capability": "damage",
+          "statId": "spellHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.15
+        },
+        {
+          "strategyId": "mana-sustain",
+          "capability": "damage",
+          "intellectExpected": 100,
+          "spiritExpected": 90,
+          "bonusWeight": 0.12
+        }
+      ]
+    },
+    {
+      "id": "shaman_restoration",
+      "specId": "shaman_restoration",
+      "formulaVersion": "classic-light-v1",
+      "role": "healer",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.36,
+        "threat": 0.12,
+        "healing": 0.96,
+        "damage": 0.16
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "strengthPoints": {
+          "base": 15,
+          "perLevel": 1.35
+        },
+        "agilityPoints": {
+          "base": 12,
+          "perLevel": 1.05
+        },
+        "staminaPoints": {
+          "base": 18,
+          "perLevel": 1.6
+        },
+        "intellectPoints": {
+          "base": 17,
+          "perLevel": 1.55
+        },
+        "spiritPoints": {
+          "base": 18,
+          "perLevel": 1.55
+        },
+        "armorPoints": {
+          "base": 50,
+          "perLevel": 17
+        }
+      },
+      "expectedStatsAtLevel": {
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 2.6
+        },
+        "intellectPoints": {
+          "base": 5,
+          "perLevel": 3
+        },
+        "spiritPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "armorPoints": {
+          "base": 15,
+          "perLevel": 25
+        },
+        "spellPowerPoints": {
+          "base": 2,
+          "perLevel": 2.2
+        },
+        "healingPowerPoints": {
+          "base": 2,
+          "perLevel": 2.5
+        },
+        "spellHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "spellCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.2
+        }
+      },
+      "derivedStatRules": [
+        {
+          "sourceStatId": "strengthPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 2
+        }
+      ],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.09,
+          "armorPoints": 0.04
+        },
+        "threat": {
+          "healingPowerPoints": 0.02
+        },
+        "healing": {
+          "healingPowerPoints": 0.34,
+          "intellectPoints": 0.18,
+          "spiritPoints": 0.16,
+          "spellCriticalStrikePercent": 0.1
+        },
+        "damage": {
+          "spellPowerPoints": 0.08,
+          "intellectPoints": 0.03
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "mana-sustain",
+          "capability": "healing",
+          "intellectExpected": 100,
+          "spiritExpected": 90,
+          "bonusWeight": 0.22
+        }
+      ]
+    },
+    {
+      "id": "shaman_elemental",
+      "specId": "shaman_elemental",
+      "formulaVersion": "classic-light-v1",
+      "role": "dps",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.34,
+        "threat": 0.25,
+        "healing": 0.07,
+        "damage": 0.93
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "strengthPoints": {
+          "base": 15,
+          "perLevel": 1.35
+        },
+        "agilityPoints": {
+          "base": 12,
+          "perLevel": 1.05
+        },
+        "staminaPoints": {
+          "base": 18,
+          "perLevel": 1.6
+        },
+        "intellectPoints": {
+          "base": 17,
+          "perLevel": 1.55
+        },
+        "spiritPoints": {
+          "base": 18,
+          "perLevel": 1.55
+        },
+        "armorPoints": {
+          "base": 50,
+          "perLevel": 17
+        }
+      },
+      "expectedStatsAtLevel": {
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 2.6
+        },
+        "intellectPoints": {
+          "base": 5,
+          "perLevel": 3
+        },
+        "spiritPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "armorPoints": {
+          "base": 15,
+          "perLevel": 25
+        },
+        "spellPowerPoints": {
+          "base": 2,
+          "perLevel": 2.2
+        },
+        "healingPowerPoints": {
+          "base": 2,
+          "perLevel": 2.5
+        },
+        "spellHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "spellCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.2
+        }
+      },
+      "derivedStatRules": [
+        {
+          "sourceStatId": "strengthPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 2
+        }
+      ],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.08,
+          "armorPoints": 0.03
+        },
+        "threat": {
+          "spellPowerPoints": 0.06
+        },
+        "healing": {
+          "intellectPoints": 0.02
+        },
+        "damage": {
+          "spellPowerPoints": 0.32,
+          "intellectPoints": 0.13,
+          "spiritPoints": 0.04,
+          "spellHitPercent": 0.15,
+          "spellCriticalStrikePercent": 0.12
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "hit-threshold",
+          "capability": "damage",
+          "statId": "spellHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.15
+        },
+        {
+          "strategyId": "mana-sustain",
+          "capability": "damage",
+          "intellectExpected": 100,
+          "spiritExpected": 90,
+          "bonusWeight": 0.12
+        }
+      ]
+    },
+    {
+      "id": "shaman_enhancement",
+      "specId": "shaman_enhancement",
+      "formulaVersion": "classic-light-v1",
+      "role": "dps",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.42,
+        "threat": 0.3,
+        "healing": 0.04,
+        "damage": 0.9016000000000001
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "strengthPoints": {
+          "base": 15,
+          "perLevel": 1.35
+        },
+        "agilityPoints": {
+          "base": 12,
+          "perLevel": 1.05
+        },
+        "staminaPoints": {
+          "base": 18,
+          "perLevel": 1.6
+        },
+        "intellectPoints": {
+          "base": 17,
+          "perLevel": 1.55
+        },
+        "spiritPoints": {
+          "base": 18,
+          "perLevel": 1.55
+        },
+        "armorPoints": {
+          "base": 50,
+          "perLevel": 17
+        }
+      },
+      "expectedStatsAtLevel": {
+        "strengthPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "agilityPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 3.2
+        },
+        "armorPoints": {
+          "base": 20,
+          "perLevel": 45
+        },
+        "defenseSkillPoints": {
+          "base": 0,
+          "perLevel": 0.4
+        },
+        "blockValuePoints": {
+          "base": 1,
+          "perLevel": 0.8
+        },
+        "dodgePercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "parryPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "blockPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "attackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "rangedAttackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "physicalHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "physicalCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        },
+        "rangedWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        }
+      },
+      "derivedStatRules": [
+        {
+          "sourceStatId": "strengthPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 2
+        }
+      ],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.08,
+          "armorPoints": 0.05
+        },
+        "threat": {
+          "attackPowerPoints": 0.08
+        },
+        "healing": {},
+        "damage": {
+          "attackPowerPoints": 0.28,
+          "agilityPoints": 0.12,
+          "physicalHitPercent": 0.14,
+          "physicalCriticalStrikePercent": 0.12
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "weapon-damage",
+          "capability": "damage",
+          "weaponType": "melee",
+          "expectedDamagePerSecond": 40,
+          "bonusWeight": 0.3
+        },
+        {
+          "strategyId": "hit-threshold",
+          "capability": "damage",
+          "statId": "physicalHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.14
+        }
+      ]
+    },
+    {
+      "id": "mage_arcane",
+      "specId": "mage_arcane",
+      "formulaVersion": "classic-light-v1",
+      "role": "dps",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.34,
+        "threat": 0.25,
+        "healing": 0.07,
+        "damage": 0.9207000000000001
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "staminaPoints": {
+          "base": 13,
+          "perLevel": 1.25
+        },
+        "intellectPoints": {
+          "base": 23,
+          "perLevel": 2.15
+        },
+        "spiritPoints": {
+          "base": 19,
+          "perLevel": 1.65
+        },
+        "armorPoints": {
+          "base": 22,
+          "perLevel": 8
+        }
+      },
+      "expectedStatsAtLevel": {
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 2.6
+        },
+        "intellectPoints": {
+          "base": 5,
+          "perLevel": 3
+        },
+        "spiritPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "armorPoints": {
+          "base": 15,
+          "perLevel": 25
+        },
+        "spellPowerPoints": {
+          "base": 2,
+          "perLevel": 2.2
+        },
+        "healingPowerPoints": {
+          "base": 2,
+          "perLevel": 2.5
+        },
+        "spellHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "spellCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.2
+        }
+      },
+      "derivedStatRules": [],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.08,
+          "armorPoints": 0.03
+        },
+        "threat": {
+          "spellPowerPoints": 0.06
+        },
+        "healing": {
+          "intellectPoints": 0.02
+        },
+        "damage": {
+          "spellPowerPoints": 0.32,
+          "intellectPoints": 0.13,
+          "spiritPoints": 0.04,
+          "spellHitPercent": 0.15,
+          "spellCriticalStrikePercent": 0.12
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "hit-threshold",
+          "capability": "damage",
+          "statId": "spellHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.15
+        },
+        {
+          "strategyId": "mana-sustain",
+          "capability": "damage",
+          "intellectExpected": 100,
+          "spiritExpected": 90,
+          "bonusWeight": 0.12
+        }
+      ]
+    },
+    {
+      "id": "mage_fire",
+      "specId": "mage_fire",
+      "formulaVersion": "classic-light-v1",
+      "role": "dps",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.34,
+        "threat": 0.25,
+        "healing": 0.07,
+        "damage": 0.9672000000000001
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "staminaPoints": {
+          "base": 13,
+          "perLevel": 1.25
+        },
+        "intellectPoints": {
+          "base": 23,
+          "perLevel": 2.15
+        },
+        "spiritPoints": {
+          "base": 19,
+          "perLevel": 1.65
+        },
+        "armorPoints": {
+          "base": 22,
+          "perLevel": 8
+        }
+      },
+      "expectedStatsAtLevel": {
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 2.6
+        },
+        "intellectPoints": {
+          "base": 5,
+          "perLevel": 3
+        },
+        "spiritPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "armorPoints": {
+          "base": 15,
+          "perLevel": 25
+        },
+        "spellPowerPoints": {
+          "base": 2,
+          "perLevel": 2.2
+        },
+        "healingPowerPoints": {
+          "base": 2,
+          "perLevel": 2.5
+        },
+        "spellHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "spellCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.2
+        }
+      },
+      "derivedStatRules": [],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.08,
+          "armorPoints": 0.03
+        },
+        "threat": {
+          "spellPowerPoints": 0.06
+        },
+        "healing": {
+          "intellectPoints": 0.02
+        },
+        "damage": {
+          "spellPowerPoints": 0.32,
+          "intellectPoints": 0.13,
+          "spiritPoints": 0.04,
+          "spellHitPercent": 0.15,
+          "spellCriticalStrikePercent": 0.12
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "hit-threshold",
+          "capability": "damage",
+          "statId": "spellHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.15
+        },
+        {
+          "strategyId": "mana-sustain",
+          "capability": "damage",
+          "intellectExpected": 100,
+          "spiritExpected": 90,
+          "bonusWeight": 0.12
+        }
+      ]
+    },
+    {
+      "id": "mage_frost",
+      "specId": "mage_frost",
+      "formulaVersion": "classic-light-v1",
+      "role": "dps",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.34,
+        "threat": 0.25,
+        "healing": 0.07,
+        "damage": 0.9114
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "staminaPoints": {
+          "base": 13,
+          "perLevel": 1.25
+        },
+        "intellectPoints": {
+          "base": 23,
+          "perLevel": 2.15
+        },
+        "spiritPoints": {
+          "base": 19,
+          "perLevel": 1.65
+        },
+        "armorPoints": {
+          "base": 22,
+          "perLevel": 8
+        }
+      },
+      "expectedStatsAtLevel": {
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 2.6
+        },
+        "intellectPoints": {
+          "base": 5,
+          "perLevel": 3
+        },
+        "spiritPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "armorPoints": {
+          "base": 15,
+          "perLevel": 25
+        },
+        "spellPowerPoints": {
+          "base": 2,
+          "perLevel": 2.2
+        },
+        "healingPowerPoints": {
+          "base": 2,
+          "perLevel": 2.5
+        },
+        "spellHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "spellCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.2
+        }
+      },
+      "derivedStatRules": [],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.08,
+          "armorPoints": 0.03
+        },
+        "threat": {
+          "spellPowerPoints": 0.06
+        },
+        "healing": {
+          "intellectPoints": 0.02
+        },
+        "damage": {
+          "spellPowerPoints": 0.32,
+          "intellectPoints": 0.13,
+          "spiritPoints": 0.04,
+          "spellHitPercent": 0.15,
+          "spellCriticalStrikePercent": 0.12
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "hit-threshold",
+          "capability": "damage",
+          "statId": "spellHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.15
+        },
+        {
+          "strategyId": "mana-sustain",
+          "capability": "damage",
+          "intellectExpected": 100,
+          "spiritExpected": 90,
+          "bonusWeight": 0.12
+        }
+      ]
+    },
+    {
+      "id": "warlock_affliction",
+      "specId": "warlock_affliction",
+      "formulaVersion": "classic-light-v1",
+      "role": "dps",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.34,
+        "threat": 0.25,
+        "healing": 0.07,
+        "damage": 0.93
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "staminaPoints": {
+          "base": 17,
+          "perLevel": 1.55
+        },
+        "intellectPoints": {
+          "base": 21,
+          "perLevel": 1.95
+        },
+        "spiritPoints": {
+          "base": 17,
+          "perLevel": 1.4
+        },
+        "armorPoints": {
+          "base": 23,
+          "perLevel": 8.5
+        }
+      },
+      "expectedStatsAtLevel": {
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 2.6
+        },
+        "intellectPoints": {
+          "base": 5,
+          "perLevel": 3
+        },
+        "spiritPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "armorPoints": {
+          "base": 15,
+          "perLevel": 25
+        },
+        "spellPowerPoints": {
+          "base": 2,
+          "perLevel": 2.2
+        },
+        "healingPowerPoints": {
+          "base": 2,
+          "perLevel": 2.5
+        },
+        "spellHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "spellCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.2
+        }
+      },
+      "derivedStatRules": [],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.08,
+          "armorPoints": 0.03
+        },
+        "threat": {
+          "spellPowerPoints": 0.06
+        },
+        "healing": {
+          "intellectPoints": 0.02
+        },
+        "damage": {
+          "spellPowerPoints": 0.32,
+          "intellectPoints": 0.13,
+          "spiritPoints": 0.04,
+          "spellHitPercent": 0.15,
+          "spellCriticalStrikePercent": 0.12
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "hit-threshold",
+          "capability": "damage",
+          "statId": "spellHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.15
+        },
+        {
+          "strategyId": "mana-sustain",
+          "capability": "damage",
+          "intellectExpected": 100,
+          "spiritExpected": 90,
+          "bonusWeight": 0.12
+        }
+      ]
+    },
+    {
+      "id": "warlock_demonology",
+      "specId": "warlock_demonology",
+      "formulaVersion": "classic-light-v1",
+      "role": "dps",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.34,
+        "threat": 0.25,
+        "healing": 0.07,
+        "damage": 0.9114
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "staminaPoints": {
+          "base": 17,
+          "perLevel": 1.55
+        },
+        "intellectPoints": {
+          "base": 21,
+          "perLevel": 1.95
+        },
+        "spiritPoints": {
+          "base": 17,
+          "perLevel": 1.4
+        },
+        "armorPoints": {
+          "base": 23,
+          "perLevel": 8.5
+        }
+      },
+      "expectedStatsAtLevel": {
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 2.6
+        },
+        "intellectPoints": {
+          "base": 5,
+          "perLevel": 3
+        },
+        "spiritPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "armorPoints": {
+          "base": 15,
+          "perLevel": 25
+        },
+        "spellPowerPoints": {
+          "base": 2,
+          "perLevel": 2.2
+        },
+        "healingPowerPoints": {
+          "base": 2,
+          "perLevel": 2.5
+        },
+        "spellHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "spellCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.2
+        }
+      },
+      "derivedStatRules": [],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.08,
+          "armorPoints": 0.03
+        },
+        "threat": {
+          "spellPowerPoints": 0.06
+        },
+        "healing": {
+          "intellectPoints": 0.02
+        },
+        "damage": {
+          "spellPowerPoints": 0.32,
+          "intellectPoints": 0.13,
+          "spiritPoints": 0.04,
+          "spellHitPercent": 0.15,
+          "spellCriticalStrikePercent": 0.12
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "hit-threshold",
+          "capability": "damage",
+          "statId": "spellHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.15
+        },
+        {
+          "strategyId": "mana-sustain",
+          "capability": "damage",
+          "intellectExpected": 100,
+          "spiritExpected": 90,
+          "bonusWeight": 0.12
+        }
+      ]
+    },
+    {
+      "id": "warlock_destruction",
+      "specId": "warlock_destruction",
+      "formulaVersion": "classic-light-v1",
+      "role": "dps",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.34,
+        "threat": 0.25,
+        "healing": 0.07,
+        "damage": 0.9672000000000001
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "staminaPoints": {
+          "base": 17,
+          "perLevel": 1.55
+        },
+        "intellectPoints": {
+          "base": 21,
+          "perLevel": 1.95
+        },
+        "spiritPoints": {
+          "base": 17,
+          "perLevel": 1.4
+        },
+        "armorPoints": {
+          "base": 23,
+          "perLevel": 8.5
+        }
+      },
+      "expectedStatsAtLevel": {
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 2.6
+        },
+        "intellectPoints": {
+          "base": 5,
+          "perLevel": 3
+        },
+        "spiritPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "armorPoints": {
+          "base": 15,
+          "perLevel": 25
+        },
+        "spellPowerPoints": {
+          "base": 2,
+          "perLevel": 2.2
+        },
+        "healingPowerPoints": {
+          "base": 2,
+          "perLevel": 2.5
+        },
+        "spellHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "spellCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.2
+        }
+      },
+      "derivedStatRules": [],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.08,
+          "armorPoints": 0.03
+        },
+        "threat": {
+          "spellPowerPoints": 0.06
+        },
+        "healing": {
+          "intellectPoints": 0.02
+        },
+        "damage": {
+          "spellPowerPoints": 0.32,
+          "intellectPoints": 0.13,
+          "spiritPoints": 0.04,
+          "spellHitPercent": 0.15,
+          "spellCriticalStrikePercent": 0.12
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "hit-threshold",
+          "capability": "damage",
+          "statId": "spellHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.15
+        },
+        {
+          "strategyId": "mana-sustain",
+          "capability": "damage",
+          "intellectExpected": 100,
+          "spiritExpected": 90,
+          "bonusWeight": 0.12
+        }
+      ]
+    },
+    {
+      "id": "druid_feral_tank",
+      "specId": "druid_feral_tank",
+      "formulaVersion": "classic-light-v1",
+      "role": "tank",
+      "baseCapabilityPerLevel": {
+        "survivability": 1.08,
+        "threat": 0.76,
+        "healing": 0.03,
+        "damage": 0.3
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "strengthPoints": {
+          "base": 14,
+          "perLevel": 1.2
+        },
+        "agilityPoints": {
+          "base": 15,
+          "perLevel": 1.3
+        },
+        "staminaPoints": {
+          "base": 18,
+          "perLevel": 1.65
+        },
+        "intellectPoints": {
+          "base": 18,
+          "perLevel": 1.65
+        },
+        "spiritPoints": {
+          "base": 19,
+          "perLevel": 1.7
+        },
+        "armorPoints": {
+          "base": 42,
+          "perLevel": 14
+        }
+      },
+      "expectedStatsAtLevel": {
+        "strengthPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "agilityPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 3.2
+        },
+        "armorPoints": {
+          "base": 20,
+          "perLevel": 45
+        },
+        "defenseSkillPoints": {
+          "base": 0,
+          "perLevel": 0.4
+        },
+        "blockValuePoints": {
+          "base": 1,
+          "perLevel": 0.8
+        },
+        "dodgePercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "parryPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "blockPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "attackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "rangedAttackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "physicalHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "physicalCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        },
+        "rangedWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        }
+      },
+      "derivedStatRules": [
+        {
+          "sourceStatId": "strengthPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 2
+        },
+        {
+          "sourceStatId": "agilityPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 1
+        }
+      ],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.32,
+          "armorPoints": 0.28,
+          "agilityPoints": 0.12,
+          "dodgePercent": 0.08
+        },
+        "threat": {
+          "attackPowerPoints": 0.2,
+          "physicalHitPercent": 0.08
+        },
+        "healing": {},
+        "damage": {
+          "attackPowerPoints": 0.11,
+          "physicalCriticalStrikePercent": 0.05
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "weapon-damage",
+          "capability": "threat",
+          "weaponType": "melee",
+          "expectedDamagePerSecond": 35,
+          "bonusWeight": 0.12
+        },
+        {
+          "strategyId": "hit-threshold",
+          "capability": "threat",
+          "statId": "physicalHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.1
+        }
+      ]
+    },
+    {
+      "id": "druid_restoration",
+      "specId": "druid_restoration",
+      "formulaVersion": "classic-light-v1",
+      "role": "healer",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.36,
+        "threat": 0.12,
+        "healing": 0.96,
+        "damage": 0.16
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "strengthPoints": {
+          "base": 14,
+          "perLevel": 1.2
+        },
+        "agilityPoints": {
+          "base": 15,
+          "perLevel": 1.3
+        },
+        "staminaPoints": {
+          "base": 18,
+          "perLevel": 1.65
+        },
+        "intellectPoints": {
+          "base": 18,
+          "perLevel": 1.65
+        },
+        "spiritPoints": {
+          "base": 19,
+          "perLevel": 1.7
+        },
+        "armorPoints": {
+          "base": 42,
+          "perLevel": 14
+        }
+      },
+      "expectedStatsAtLevel": {
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 2.6
+        },
+        "intellectPoints": {
+          "base": 5,
+          "perLevel": 3
+        },
+        "spiritPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "armorPoints": {
+          "base": 15,
+          "perLevel": 25
+        },
+        "spellPowerPoints": {
+          "base": 2,
+          "perLevel": 2.2
+        },
+        "healingPowerPoints": {
+          "base": 2,
+          "perLevel": 2.5
+        },
+        "spellHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "spellCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.2
+        }
+      },
+      "derivedStatRules": [
+        {
+          "sourceStatId": "strengthPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 2
+        },
+        {
+          "sourceStatId": "agilityPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 1
+        }
+      ],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.09,
+          "armorPoints": 0.04
+        },
+        "threat": {
+          "healingPowerPoints": 0.02
+        },
+        "healing": {
+          "healingPowerPoints": 0.34,
+          "intellectPoints": 0.18,
+          "spiritPoints": 0.16,
+          "spellCriticalStrikePercent": 0.1
+        },
+        "damage": {
+          "spellPowerPoints": 0.08,
+          "intellectPoints": 0.03
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "mana-sustain",
+          "capability": "healing",
+          "intellectExpected": 100,
+          "spiritExpected": 90,
+          "bonusWeight": 0.22
+        }
+      ]
+    },
+    {
+      "id": "druid_balance",
+      "specId": "druid_balance",
+      "formulaVersion": "classic-light-v1",
+      "role": "dps",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.34,
+        "threat": 0.25,
+        "healing": 0.07,
+        "damage": 0.9114
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "strengthPoints": {
+          "base": 14,
+          "perLevel": 1.2
+        },
+        "agilityPoints": {
+          "base": 15,
+          "perLevel": 1.3
+        },
+        "staminaPoints": {
+          "base": 18,
+          "perLevel": 1.65
+        },
+        "intellectPoints": {
+          "base": 18,
+          "perLevel": 1.65
+        },
+        "spiritPoints": {
+          "base": 19,
+          "perLevel": 1.7
+        },
+        "armorPoints": {
+          "base": 42,
+          "perLevel": 14
+        }
+      },
+      "expectedStatsAtLevel": {
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 2.6
+        },
+        "intellectPoints": {
+          "base": 5,
+          "perLevel": 3
+        },
+        "spiritPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "armorPoints": {
+          "base": 15,
+          "perLevel": 25
+        },
+        "spellPowerPoints": {
+          "base": 2,
+          "perLevel": 2.2
+        },
+        "healingPowerPoints": {
+          "base": 2,
+          "perLevel": 2.5
+        },
+        "spellHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "spellCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.2
+        }
+      },
+      "derivedStatRules": [
+        {
+          "sourceStatId": "strengthPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 2
+        },
+        {
+          "sourceStatId": "agilityPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 1
+        }
+      ],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.08,
+          "armorPoints": 0.03
+        },
+        "threat": {
+          "spellPowerPoints": 0.06
+        },
+        "healing": {
+          "intellectPoints": 0.02
+        },
+        "damage": {
+          "spellPowerPoints": 0.32,
+          "intellectPoints": 0.13,
+          "spiritPoints": 0.04,
+          "spellHitPercent": 0.15,
+          "spellCriticalStrikePercent": 0.12
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "hit-threshold",
+          "capability": "damage",
+          "statId": "spellHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.15
+        },
+        {
+          "strategyId": "mana-sustain",
+          "capability": "damage",
+          "intellectExpected": 100,
+          "spiritExpected": 90,
+          "bonusWeight": 0.12
+        }
+      ]
+    },
+    {
+      "id": "druid_feral_dps",
+      "specId": "druid_feral_dps",
+      "formulaVersion": "classic-light-v1",
+      "role": "dps",
+      "baseCapabilityPerLevel": {
+        "survivability": 0.42,
+        "threat": 0.3,
+        "healing": 0.04,
+        "damage": 0.92
+      },
+      "minimumFactors": {
+        "survivability": 0.2,
+        "threat": 0.2,
+        "healing": 0.1,
+        "damage": 0.2
+      },
+      "classBaseStats": {
+        "strengthPoints": {
+          "base": 14,
+          "perLevel": 1.2
+        },
+        "agilityPoints": {
+          "base": 15,
+          "perLevel": 1.3
+        },
+        "staminaPoints": {
+          "base": 18,
+          "perLevel": 1.65
+        },
+        "intellectPoints": {
+          "base": 18,
+          "perLevel": 1.65
+        },
+        "spiritPoints": {
+          "base": 19,
+          "perLevel": 1.7
+        },
+        "armorPoints": {
+          "base": 42,
+          "perLevel": 14
+        }
+      },
+      "expectedStatsAtLevel": {
+        "strengthPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "agilityPoints": {
+          "base": 5,
+          "perLevel": 2.8
+        },
+        "staminaPoints": {
+          "base": 5,
+          "perLevel": 3.2
+        },
+        "armorPoints": {
+          "base": 20,
+          "perLevel": 45
+        },
+        "defenseSkillPoints": {
+          "base": 0,
+          "perLevel": 0.4
+        },
+        "blockValuePoints": {
+          "base": 1,
+          "perLevel": 0.8
+        },
+        "dodgePercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "parryPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "blockPercent": {
+          "base": 1,
+          "perLevel": 0.08
+        },
+        "attackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "rangedAttackPowerPoints": {
+          "base": 10,
+          "perLevel": 6
+        },
+        "physicalHitPercent": {
+          "base": 1,
+          "perLevel": 0.12
+        },
+        "physicalCriticalStrikePercent": {
+          "base": 1,
+          "perLevel": 0.14
+        },
+        "meleeWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        },
+        "rangedWeaponDamagePerSecond": {
+          "base": 1,
+          "perLevel": 1.5
+        }
+      },
+      "derivedStatRules": [
+        {
+          "sourceStatId": "strengthPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 2
+        },
+        {
+          "sourceStatId": "agilityPoints",
+          "targetStatId": "attackPowerPoints",
+          "multiplier": 1
+        }
+      ],
+      "linearWeights": {
+        "survivability": {
+          "staminaPoints": 0.08,
+          "armorPoints": 0.05
+        },
+        "threat": {
+          "attackPowerPoints": 0.08
+        },
+        "healing": {},
+        "damage": {
+          "attackPowerPoints": 0.28,
+          "agilityPoints": 0.12,
+          "physicalHitPercent": 0.14,
+          "physicalCriticalStrikePercent": 0.12
+        }
+      },
+      "strategies": [
+        {
+          "strategyId": "weapon-damage",
+          "capability": "damage",
+          "weaponType": "melee",
+          "expectedDamagePerSecond": 40,
+          "bonusWeight": 0.3
+        },
+        {
+          "strategyId": "hit-threshold",
+          "capability": "damage",
+          "statId": "physicalHitPercent",
+          "capPercent": 6,
+          "bonusAtCap": 0.14
+        }
+      ]
+    }
+  ]
+}

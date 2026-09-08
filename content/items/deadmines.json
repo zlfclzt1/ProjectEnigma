@@ -32,7 +32,23 @@
       "description": {
         "zhCN": "拉克佐的双手锤。双手武器统一占用主手栏位。"
       },
-      "stats": {}
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 30,
+            "maximumPoints": 46
+          },
+          "speedSeconds": 3.2
+        }
+      },
+      "requiredLevel": 15,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "5187",
+        "url": "https://www.wowhead.com/classic/cn/item=5187&xml",
+        "verifiedAt": "2026-09-08"
+      }
     },
     {
       "id": "5194",
@@ -55,7 +71,27 @@
       "description": {
         "zhCN": "斯尼德的双手斧。双手武器统一占用主手栏位。"
       },
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 8,
+          "spiritPoints": 8
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 42,
+            "maximumPoints": 64
+          },
+          "speedSeconds": 2.7
+        }
+      },
+      "requiredLevel": 18,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "5194",
+        "url": "https://www.wowhead.com/classic/cn/item=5194&xml",
+        "verifiedAt": "2026-09-08"
+      }
     },
     {
       "id": "5199",
@@ -78,7 +114,23 @@
       "description": {
         "zhCN": "基尔尼格的掉落。原始属性仅展示，战斗效果只使用物品等级。"
       },
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 5,
+          "spiritPoints": 4
+        },
+        "defense": {
+          "armorPoints": 69
+        }
+      },
+      "requiredLevel": 16,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "5199",
+        "url": "https://www.wowhead.com/classic/cn/item=5199&xml",
+        "verifiedAt": "2026-09-08"
+      }
     },
     {
       "id": "7230",
@@ -101,7 +153,27 @@
       "description": {
         "zhCN": "重拳先生的双手锤。双手武器统一占用主手栏位。"
       },
-      "stats": {}
+      "stats": {
+        "primary": {
+          "strengthPoints": 11,
+          "agilityPoints": 4
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 55,
+            "maximumPoints": 83
+          },
+          "speedSeconds": 3.5
+        }
+      },
+      "requiredLevel": 18,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "7230",
+        "url": "https://www.wowhead.com/classic/cn/item=7230&xml",
+        "verifiedAt": "2026-09-08"
+      }
     },
     {
       "id": "5201",
@@ -124,7 +196,28 @@
       "description": {
         "zhCN": "绿皮队长的法杖。双手武器统一占用主手栏位。"
       },
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 5,
+          "intellectPoints": 8,
+          "spiritPoints": 5
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 47,
+            "maximumPoints": 71
+          },
+          "speedSeconds": 3
+        }
+      },
+      "requiredLevel": 18,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "5201",
+        "url": "https://www.wowhead.com/classic/cn/item=5201&xml",
+        "verifiedAt": "2026-09-08"
+      }
     },
     {
       "id": "5191",
@@ -146,7 +239,27 @@
       "description": {
         "zhCN": "艾德温·范克里夫的单手剑。战斗效果只使用物品等级。"
       },
-      "stats": {}
+      "stats": {
+        "physical": {
+          "attackPowerPoints": 12,
+          "rangedAttackPowerPoints": 12
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 30,
+            "maximumPoints": 57
+          },
+          "speedSeconds": 2.8
+        }
+      },
+      "requiredLevel": 19,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "5191",
+        "url": "https://www.wowhead.com/classic/cn/item=5191&xml",
+        "verifiedAt": "2026-09-08"
+      }
     },
     {
       "id": "5198",
@@ -168,7 +281,23 @@
       "description": {
         "zhCN": "曲奇的魔杖。原始属性仅展示，战斗效果只使用物品等级。"
       },
-      "stats": {}
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 20,
+            "maximumPoints": 38
+          },
+          "speedSeconds": 1.3
+        }
+      },
+      "requiredLevel": 17,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "5198",
+        "url": "https://www.wowhead.com/classic/cn/item=5198&xml",
+        "verifiedAt": "2026-09-08"
+      }
     }
   ]
 }

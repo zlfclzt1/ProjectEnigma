@@ -32,7 +32,24 @@
       "description": {
         "zhCN": "安娜科德拉的掉落。原始属性仅展示，战斗效果只使用物品等级。"
       },
-      "stats": {}
+      "stats": {
+        "primary": {
+          "agilityPoints": 2,
+          "staminaPoints": 3
+        },
+        "defense": {
+          "armorPoints": 45
+        }
+      },
+      "requiredLevel": 16,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "10412",
+        "url": "https://www.wowhead.com/classic/cn/item=10412&xml",
+        "verifiedAt": "2026-09-08",
+        "notes": "套装奖励不是单件常驻属性，未写入 stats。"
+      }
     },
     {
       "id": "6460",
@@ -55,7 +72,23 @@
       "description": {
         "zhCN": "考布莱恩领主的掉落。原始属性仅展示，战斗效果只使用物品等级。"
       },
-      "stats": {}
+      "stats": {
+        "primary": {
+          "strengthPoints": 8,
+          "agilityPoints": 3
+        },
+        "defense": {
+          "armorPoints": 111
+        }
+      },
+      "requiredLevel": 19,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "6460",
+        "url": "https://www.wowhead.com/classic/cn/item=6460&xml",
+        "verifiedAt": "2026-09-08"
+      }
     },
     {
       "id": "13245",
@@ -77,7 +110,21 @@
       "description": {
         "zhCN": "克雷什的盾牌。原始属性仅展示，战斗效果只使用物品等级。"
       },
-      "stats": {}
+      "stats": {
+        "defense": {
+          "armorPoints": 471,
+          "defenseSkillPoints": 4,
+          "blockValuePoints": 9
+        }
+      },
+      "requiredLevel": 15,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "13245",
+        "url": "https://www.wowhead.com/classic/cn/item=13245&xml",
+        "verifiedAt": "2026-09-08"
+      }
     },
     {
       "id": "6472",
@@ -99,7 +146,24 @@
       "description": {
         "zhCN": "皮萨斯领主的单手锤。原始属性仅展示，战斗效果只使用物品等级。"
       },
-      "stats": {}
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 30,
+            "maximumPoints": 57
+          },
+          "speedSeconds": 2.8
+        }
+      },
+      "requiredLevel": 19,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "6472",
+        "url": "https://www.wowhead.com/classic/cn/item=6472&xml",
+        "verifiedAt": "2026-09-08",
+        "notes": "命中触发的自然伤害效果不属于常驻面板属性，未写入 stats。"
+      }
     },
     {
       "id": "6449",
@@ -121,7 +185,23 @@
       "description": {
         "zhCN": "斯卡姆的掉落。通用披风，战斗效果只使用物品等级。"
       },
-      "stats": {}
+      "stats": {
+        "primary": {
+          "agilityPoints": 6,
+          "spiritPoints": 2
+        },
+        "defense": {
+          "armorPoints": 20
+        }
+      },
+      "requiredLevel": 17,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "6449",
+        "url": "https://www.wowhead.com/classic/cn/item=6449&xml",
+        "verifiedAt": "2026-09-08"
+      }
     },
     {
       "id": "6469",
@@ -143,7 +223,24 @@
       "description": {
         "zhCN": "瑟芬迪斯领主的弓。原始属性仅展示，战斗效果只使用物品等级。"
       },
-      "stats": {}
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 16,
+            "maximumPoints": 30
+          },
+          "speedSeconds": 2.4
+        }
+      },
+      "requiredLevel": 19,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "6469",
+        "url": "https://www.wowhead.com/classic/cn/item=6469&xml",
+        "verifiedAt": "2026-09-08",
+        "notes": "触发的自然伤害效果不属于常驻面板属性，未写入 stats。"
+      }
     },
     {
       "id": "6631",
@@ -166,7 +263,30 @@
       "description": {
         "zhCN": "永生者沃尔丹的法杖。双手武器统一占用主手栏位。"
       },
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 2,
+          "spiritPoints": 12
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 49,
+            "maximumPoints": 74
+          },
+          "speedSeconds": 2.9
+        },
+        "resistances": {
+          "naturePoints": 5
+        }
+      },
+      "requiredLevel": 20,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "6631",
+        "url": "https://www.wowhead.com/classic/cn/item=6631&xml",
+        "verifiedAt": "2026-09-08"
+      }
     },
     {
       "id": "6627",
@@ -189,7 +309,23 @@
       "description": {
         "zhCN": "吞噬者穆坦努斯的掉落。战斗效果只使用物品等级。"
       },
-      "stats": {}
+      "stats": {
+        "primary": {
+          "strengthPoints": 13,
+          "staminaPoints": 5
+        },
+        "defense": {
+          "armorPoints": 211
+        }
+      },
+      "requiredLevel": 23,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "6627",
+        "url": "https://www.wowhead.com/classic/cn/item=6627&xml",
+        "verifiedAt": "2026-09-08"
+      }
     }
   ]
 }

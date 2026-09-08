@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "结构化战报的展示模板；只读取已经结算的统计，不参与战斗计算。"
+      }
+    ]
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "report_top_damage",
+      "eventType": "report-top-damage",
+      "scope": { "type": "global" },
+      "availableParameters": ["top-damage"],
+      "templates": [
+        "{top-damage} 打出了全队最高伤害，并立刻开始研究统计插件的截图角度。",
+        "伤害榜第一名是 {top-damage}。本人表示这主要归功于站位大胆。"
+      ]
+    },
+    {
+      "id": "report_top_healing",
+      "eventType": "report-top-healing",
+      "scope": { "type": "global" },
+      "availableParameters": ["top-healer"],
+      "templates": [
+        "{top-healer} 承包了大部分治疗量，也承包了大部分叹气声。",
+        "{top-healer} 把血线从事故现场抬回了可讨论范围。"
+      ]
+    },
+    {
+      "id": "report_tank_danger",
+      "eventType": "report-tank-danger",
+      "scope": { "type": "global" },
+      "availableParameters": ["tank", "healer"],
+      "templates": [
+        "{tank} 的承伤数字很有气势，{healer} 的键盘声也一样。",
+        "{tank} 坚称血条还剩一点就是安全，{healer} 暂未认可这一定义。"
+      ]
+    },
+    {
+      "id": "report_slacker",
+      "eventType": "report-slacker",
+      "scope": { "type": "global" },
+      "availableParameters": ["slacker"],
+      "templates": [
+        "{slacker} 的贡献比较轻盈，胜在没有给统计表增加太多负担。",
+        "{slacker} 表示自己负责的是团队气氛，这项数据暂时无法量化。"
+      ]
+    },
+    {
+      "id": "report_member_defeated",
+      "eventType": "report-member-defeated",
+      "scope": { "type": "global" },
+      "availableParameters": ["defeated"],
+      "templates": [
+        "{defeated} 提前躺下，以更低的视角观察了后续战术。",
+        "{defeated} 的战斗结束得稍早，于是开始远程指导还站着的人。"
+      ]
+    }
+  ]
+}

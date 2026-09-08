@@ -3,10 +3,24 @@
   "attribution": {
     "sources": [
       {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "url": "https://raw.githubusercontent.com/Hoizame/AtlasLootClassic/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-08",
+        "notes": "核对饥饿者塔拉加曼与祈求者耶戈什的经典旧世装备掉落关系。"
+      },
+      {
         "kind": "design-decision",
         "provider": "manual",
         "verifiedAt": "2026-09-07",
         "notes": "从 V1 怒焰裂谷掉落池原样迁移，移除重复的英文物品名称。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["lootTables[].guaranteedEquipmentDrops", "ragefire_chasm_common_equipment"],
+        "reason": "放置玩法保证每个成功 Boss 至少掉落一件装备；没有专属池的路线节点使用任务奖励公共池。",
+        "decidedAt": "2026-09-08"
       }
     ]
   },

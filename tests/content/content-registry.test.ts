@@ -23,6 +23,7 @@ describe("validated automatic content registry", () => {
     expect(discoveredPaths.every((path) => path.endsWith(".json"))).toBe(true);
     expect(discoveredPaths.some((path) => path.endsWith("/content/logs/common.json"))).toBe(true);
     expect(registry.itemById.size).toBe(registry.items.length);
+    expect(registry.combatProfileById.size).toBe(28);
     expect(registry.dungeonById.size).toBe(registry.dungeons.length);
     expect(registry.encounterById.size).toBe(registry.encounters.length);
     expect(
@@ -34,6 +35,36 @@ describe("validated automatic content registry", () => {
     ).toHaveLength(3);
     expect("set" in registry.itemById).toBe(false);
     expect(Object.isFrozen(registry.items)).toBe(true);
+  });
+
+  it("rejects missing, mismatched, and malformed combat profile configuration", () => {
+    const missingModules = clonedModules();
+    const specFile = moduleAt(missingModules, "/content/specs/classic.json");
+    const specs = specFile.specs as Array<{ combatProfileId: string }>;
+    specs[0].combatProfileId = "missing_profile";
+    expect(() => loadContentRegistry(missingModules)).toThrowError(/不存在的战斗配置/);
+
+    const mismatchModules = clonedModules();
+    const profileFile = moduleAt(mismatchModules, "/content/combat-profiles/classic-light-v1.json");
+    const profiles = profileFile.combatProfiles as Array<{
+      specId: string;
+      linearWeights: { damage: Record<string, number> };
+    }>;
+    profiles[0].specId = "warrior_arms";
+    expect(() => loadContentRegistry(mismatchModules)).toThrowError(/战斗配置属于专精/);
+
+    const malformedModules = clonedModules();
+    const malformedFile = moduleAt(
+      malformedModules,
+      "/content/combat-profiles/classic-light-v1.json",
+    );
+    const malformedProfiles = malformedFile.combatProfiles as Array<{
+      linearWeights: { damage: Record<string, number> };
+    }>;
+    malformedProfiles[0].linearWeights.damage.fireResistancePoints = 0.1;
+    expect(() => loadContentModules(malformedModules)).toThrowError(
+      /非零属性权重必须配置对应的等级期望值/,
+    );
   });
 
   it("reports schema failures with the content file and precise field path", () => {

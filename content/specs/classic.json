@@ -16,196 +16,196 @@
       "classId": "warrior",
       "name": { "zhCN": "防护" },
       "role": "tank",
-      "combatProfileId": "legacy_warrior_protection"
+      "combatProfileId": "warrior_protection"
     },
     {
       "id": "warrior_arms",
       "classId": "warrior",
       "name": { "zhCN": "武器" },
       "role": "dps",
-      "combatProfileId": "legacy_warrior_arms"
+      "combatProfileId": "warrior_arms"
     },
     {
       "id": "warrior_fury",
       "classId": "warrior",
       "name": { "zhCN": "狂怒" },
       "role": "dps",
-      "combatProfileId": "legacy_warrior_fury"
+      "combatProfileId": "warrior_fury"
     },
     {
       "id": "paladin_protection",
       "classId": "paladin",
       "name": { "zhCN": "防护" },
       "role": "tank",
-      "combatProfileId": "legacy_paladin_protection"
+      "combatProfileId": "paladin_protection"
     },
     {
       "id": "paladin_holy",
       "classId": "paladin",
       "name": { "zhCN": "神圣" },
       "role": "healer",
-      "combatProfileId": "legacy_paladin_holy"
+      "combatProfileId": "paladin_holy"
     },
     {
       "id": "paladin_retribution",
       "classId": "paladin",
       "name": { "zhCN": "惩戒" },
       "role": "dps",
-      "combatProfileId": "legacy_paladin_retribution"
+      "combatProfileId": "paladin_retribution"
     },
     {
       "id": "hunter_beast_mastery",
       "classId": "hunter",
       "name": { "zhCN": "野兽控制" },
       "role": "dps",
-      "combatProfileId": "legacy_hunter_beast_mastery"
+      "combatProfileId": "hunter_beast_mastery"
     },
     {
       "id": "hunter_marksmanship",
       "classId": "hunter",
       "name": { "zhCN": "射击" },
       "role": "dps",
-      "combatProfileId": "legacy_hunter_marksmanship"
+      "combatProfileId": "hunter_marksmanship"
     },
     {
       "id": "hunter_survival",
       "classId": "hunter",
       "name": { "zhCN": "生存" },
       "role": "dps",
-      "combatProfileId": "legacy_hunter_survival"
+      "combatProfileId": "hunter_survival"
     },
     {
       "id": "rogue_assassination",
       "classId": "rogue",
       "name": { "zhCN": "刺杀" },
       "role": "dps",
-      "combatProfileId": "legacy_rogue_assassination"
+      "combatProfileId": "rogue_assassination"
     },
     {
       "id": "rogue_combat",
       "classId": "rogue",
       "name": { "zhCN": "战斗" },
       "role": "dps",
-      "combatProfileId": "legacy_rogue_combat"
+      "combatProfileId": "rogue_combat"
     },
     {
       "id": "rogue_subtlety",
       "classId": "rogue",
       "name": { "zhCN": "敏锐" },
       "role": "dps",
-      "combatProfileId": "legacy_rogue_subtlety"
+      "combatProfileId": "rogue_subtlety"
     },
     {
       "id": "priest_discipline",
       "classId": "priest",
       "name": { "zhCN": "戒律" },
       "role": "healer",
-      "combatProfileId": "legacy_priest_discipline"
+      "combatProfileId": "priest_discipline"
     },
     {
       "id": "priest_holy",
       "classId": "priest",
       "name": { "zhCN": "神圣" },
       "role": "healer",
-      "combatProfileId": "legacy_priest_holy"
+      "combatProfileId": "priest_holy"
     },
     {
       "id": "priest_shadow",
       "classId": "priest",
       "name": { "zhCN": "暗影" },
       "role": "dps",
-      "combatProfileId": "legacy_priest_shadow"
+      "combatProfileId": "priest_shadow"
     },
     {
       "id": "shaman_restoration",
       "classId": "shaman",
       "name": { "zhCN": "恢复" },
       "role": "healer",
-      "combatProfileId": "legacy_shaman_restoration"
+      "combatProfileId": "shaman_restoration"
     },
     {
       "id": "shaman_elemental",
       "classId": "shaman",
       "name": { "zhCN": "元素" },
       "role": "dps",
-      "combatProfileId": "legacy_shaman_elemental"
+      "combatProfileId": "shaman_elemental"
     },
     {
       "id": "shaman_enhancement",
       "classId": "shaman",
       "name": { "zhCN": "增强" },
       "role": "dps",
-      "combatProfileId": "legacy_shaman_enhancement"
+      "combatProfileId": "shaman_enhancement"
     },
     {
       "id": "mage_arcane",
       "classId": "mage",
       "name": { "zhCN": "奥术" },
       "role": "dps",
-      "combatProfileId": "legacy_mage_arcane"
+      "combatProfileId": "mage_arcane"
     },
     {
       "id": "mage_fire",
       "classId": "mage",
       "name": { "zhCN": "火焰" },
       "role": "dps",
-      "combatProfileId": "legacy_mage_fire"
+      "combatProfileId": "mage_fire"
     },
     {
       "id": "mage_frost",
       "classId": "mage",
       "name": { "zhCN": "冰霜" },
       "role": "dps",
-      "combatProfileId": "legacy_mage_frost"
+      "combatProfileId": "mage_frost"
     },
     {
       "id": "warlock_affliction",
       "classId": "warlock",
       "name": { "zhCN": "痛苦" },
       "role": "dps",
-      "combatProfileId": "legacy_warlock_affliction"
+      "combatProfileId": "warlock_affliction"
     },
     {
       "id": "warlock_demonology",
       "classId": "warlock",
       "name": { "zhCN": "恶魔学识" },
       "role": "dps",
-      "combatProfileId": "legacy_warlock_demonology"
+      "combatProfileId": "warlock_demonology"
     },
     {
       "id": "warlock_destruction",
       "classId": "warlock",
       "name": { "zhCN": "毁灭" },
       "role": "dps",
-      "combatProfileId": "legacy_warlock_destruction"
+      "combatProfileId": "warlock_destruction"
     },
     {
       "id": "druid_feral_tank",
       "classId": "druid",
       "name": { "zhCN": "野性（守护）" },
       "role": "tank",
-      "combatProfileId": "legacy_druid_feral_tank"
+      "combatProfileId": "druid_feral_tank"
     },
     {
       "id": "druid_restoration",
       "classId": "druid",
       "name": { "zhCN": "恢复" },
       "role": "healer",
-      "combatProfileId": "legacy_druid_restoration"
+      "combatProfileId": "druid_restoration"
     },
     {
       "id": "druid_balance",
       "classId": "druid",
       "name": { "zhCN": "平衡" },
       "role": "dps",
-      "combatProfileId": "legacy_druid_balance"
+      "combatProfileId": "druid_balance"
     },
     {
       "id": "druid_feral_dps",
       "classId": "druid",
       "name": { "zhCN": "野性（猛攻）" },
       "role": "dps",
-      "combatProfileId": "legacy_druid_feral_dps"
+      "combatProfileId": "druid_feral_dps"
     }
   ]
 }

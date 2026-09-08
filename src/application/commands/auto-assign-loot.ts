@@ -1,9 +1,6 @@
 import type { GameCommand } from "../services/game-session";
 import type { ContentRegistry } from "../../content/registry";
-import {
-  averageEquippedItemLevel,
-  evaluateItemLevelUpgrade,
-} from "../../domain/equipment/item-level";
+import { evaluateUpgrade } from "../../domain/equipment/upgrade-evaluation";
 import type { GameStateV2 } from "../../domain/game-state";
 import { assignLoot, assertLootUnlocked } from "./assign-loot";
 import { sellLoot } from "./sell-loot";
@@ -44,18 +41,32 @@ export function autoAssignLoot(state: GameStateV2, content: ContentRegistry): Au
       .filter((member) => member !== undefined)
       .map((member) => ({
         member,
-        currentItemLevel: averageEquippedItemLevel(member, state.itemInstances, content),
-        upgrade: evaluateItemLevelUpgrade(member, instance, state.itemInstances, content),
+        upgrade: evaluateUpgrade(member, instance, state, content),
       }))
-      .filter((entry) => entry.upgrade !== null && entry.upgrade.gain > 0)
+      .filter(
+        (
+          entry,
+        ): entry is typeof entry & {
+          upgrade: Extract<typeof entry.upgrade, { equippable: true }>;
+        } =>
+          entry.upgrade.equippable &&
+          entry.upgrade.primaryResponsibilityDelta > 1e-9 &&
+          entry.upgrade.recommendationScore > 1e-9,
+      )
       .sort(
         (left, right) =>
-          right.upgrade!.gain - left.upgrade!.gain ||
-          left.currentItemLevel - right.currentItemLevel ||
+          right.upgrade.recommendationScore - left.upgrade.recommendationScore ||
+          left.upgrade.primaryResponsibilityBefore - right.upgrade.primaryResponsibilityBefore ||
           left.member.id.localeCompare(right.member.id),
       );
     if (eligible.length > 0) {
-      assignLoot(state, content, pending.id, eligible[0]!.member.id);
+      assignLoot(
+        state,
+        content,
+        pending.id,
+        eligible[0]!.member.id,
+        eligible[0]!.upgrade.replacementSlot,
+      );
       assigned += 1;
     } else {
       sellLoot(state, content, pending.id);

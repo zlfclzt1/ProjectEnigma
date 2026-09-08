@@ -6,7 +6,6 @@ import type { ItemInstance } from "./item-instance";
 export type EquipFailureCode =
   | "definition-mismatch"
   | "member-busy"
-  | "level-too-low"
   | "class-restricted"
   | "role-restricted"
   | "armor-type-mismatch"
@@ -51,12 +50,6 @@ export function evaluateEquipEligibility(
   }
   if (member.activeActivityId) {
     failures.push({ code: "member-busy", message: "参加活动中的成员不能更换装备。" });
-  }
-  if (definition.requiredLevel && member.progression.level < definition.requiredLevel) {
-    failures.push({
-      code: "level-too-low",
-      message: `需要等级 ${definition.requiredLevel}。`,
-    });
   }
   if (
     definition.restrictions.allowedClassIds.length > 0 &&

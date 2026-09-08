@@ -1,5 +1,9 @@
 import type { ZodType } from "zod";
 import {
+  combatProfileDefinitionFileSchema,
+  type CombatProfileDefinition,
+} from "./schemas/combat-profile";
+import {
   dungeonDefinitionFileSchema,
   encounterDefinitionFileSchema,
   lootTableFileSchema,
@@ -71,6 +75,7 @@ export interface LoadedContent {
   readonly classes: readonly LocatedContent<ClassDefinition>[];
   readonly races: readonly LocatedContent<RaceDefinition>[];
   readonly specs: readonly LocatedContent<SpecDefinition>[];
+  readonly combatProfiles: readonly LocatedContent<CombatProfileDefinition>[];
   readonly personalities: readonly LocatedContent<PersonalityDefinition>[];
   readonly nameParts: readonly LocatedContent<NamePartsFile>[];
   readonly hiddenCharacters: readonly LocatedContent<HiddenCharacterDefinition>[];
@@ -92,6 +97,11 @@ interface FileDescriptor {
 }
 
 const DIRECTORY_DESCRIPTORS: Readonly<Record<string, FileDescriptor>> = {
+  "combat-profiles": {
+    schema: combatProfileDefinitionFileSchema,
+    collection: "combatProfiles",
+    property: "combatProfiles",
+  },
   specs: { schema: specDefinitionFileSchema, collection: "specs", property: "specs" },
   races: { schema: raceDefinitionFileSchema, collection: "races", property: "races" },
   personalities: {
@@ -130,6 +140,7 @@ function emptyLoadedContent(): MutableLoadedContent {
     classes: [],
     races: [],
     specs: [],
+    combatProfiles: [],
     personalities: [],
     nameParts: [],
     hiddenCharacters: [],

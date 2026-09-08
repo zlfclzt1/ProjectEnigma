@@ -31,7 +31,24 @@
       "description": {
         "zhCN": "原始属性将在完整物品库阶段导入；战斗效果只使用物品等级。"
       },
-      "stats": {}
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 16,
+            "maximumPoints": 31
+          },
+          "speedSeconds": 2.6
+        }
+      },
+      "requiredLevel": 13,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "14145",
+        "url": "https://www.wowhead.com/classic/cn/item=14145&xml",
+        "verifiedAt": "2026-09-08",
+        "notes": "命中触发的攻击强度削弱效果不属于常驻面板属性，未写入 stats。"
+      }
     },
     {
       "id": "14148",
@@ -54,7 +71,23 @@
       "description": {
         "zhCN": "原始属性将在完整物品库阶段导入；战斗效果只使用物品等级。"
       },
-      "stats": {}
+      "stats": {
+        "primary": {
+          "intellectPoints": 1,
+          "spiritPoints": 2
+        },
+        "defense": {
+          "armorPoints": 14
+        }
+      },
+      "requiredLevel": 13,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "14148",
+        "url": "https://www.wowhead.com/classic/cn/item=14148&xml",
+        "verifiedAt": "2026-09-08"
+      }
     },
     {
       "id": "14149",
@@ -76,7 +109,23 @@
       "description": {
         "zhCN": "通用披风。原始属性仅展示，不进入战斗公式。"
       },
-      "stats": {}
+      "stats": {
+        "primary": {
+          "strengthPoints": 2,
+          "agilityPoints": 2
+        },
+        "defense": {
+          "armorPoints": 16
+        }
+      },
+      "requiredLevel": 13,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "14149",
+        "url": "https://www.wowhead.com/classic/cn/item=14149&xml",
+        "verifiedAt": "2026-09-08"
+      }
     },
     {
       "id": "14151",
@@ -98,7 +147,28 @@
       "description": {
         "zhCN": "原始属性将在完整物品库阶段导入；战斗效果只使用物品等级。"
       },
-      "stats": {}
+      "stats": {
+        "primary": {
+          "agilityPoints": 1,
+          "staminaPoints": 1
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 9,
+            "maximumPoints": 18
+          },
+          "speedSeconds": 1.5
+        }
+      },
+      "requiredLevel": 13,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "14151",
+        "url": "https://www.wowhead.com/classic/cn/item=14151&xml",
+        "verifiedAt": "2026-09-08",
+        "notes": "Wowhead 当前中文名为“圣歌之刃”；项目保留既有展示译名“咏唱之刃”。"
+      }
     },
     {
       "id": "14150",
@@ -121,7 +191,24 @@
       "description": {
         "zhCN": "原始属性将在完整物品库阶段导入；战斗效果只使用物品等级。"
       },
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 3,
+          "intellectPoints": 4
+        },
+        "defense": {
+          "armorPoints": 32
+        }
+      },
+      "requiredLevel": 13,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "14150",
+        "url": "https://www.wowhead.com/classic/cn/item=14150&xml",
+        "verifiedAt": "2026-09-08",
+        "notes": "Wowhead 当前中文名为“招魂法袍”；项目保留既有展示译名“唤魔者长袍”。"
+      }
     },
     {
       "id": "14147",
@@ -144,7 +231,23 @@
       "description": {
         "zhCN": "原始属性将在完整物品库阶段导入；战斗效果只使用物品等级。"
       },
-      "stats": {}
+      "stats": {
+        "primary": {
+          "strengthPoints": 1,
+          "staminaPoints": 2
+        },
+        "defense": {
+          "armorPoints": 71
+        }
+      },
+      "requiredLevel": 13,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "14147",
+        "url": "https://www.wowhead.com/classic/cn/item=14147&xml",
+        "verifiedAt": "2026-09-08"
+      }
     },
     {
       "id": "15452",
@@ -167,7 +270,21 @@
       "description": {
         "zhCN": "怒焰裂谷任务奖励。原始属性仅展示，战斗效果只使用物品等级。"
       },
-      "stats": {}
+      "stats": {
+        "primary": {
+          "intellectPoints": 3
+        },
+        "defense": {
+          "armorPoints": 14
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "15452",
+        "url": "https://www.wowhead.com/classic/cn/item=15452&xml",
+        "verifiedAt": "2026-09-08"
+      }
     },
     {
       "id": "15453",
@@ -190,7 +307,21 @@
       "description": {
         "zhCN": "怒焰裂谷任务奖励。原始属性仅展示，战斗效果只使用物品等级。"
       },
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 3
+        },
+        "defense": {
+          "armorPoints": 33
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "15453",
+        "url": "https://www.wowhead.com/classic/cn/item=15453&xml",
+        "verifiedAt": "2026-09-08"
+      }
     },
     {
       "id": "15449",
@@ -213,7 +344,22 @@
       "description": {
         "zhCN": "怒焰裂谷任务奖励。原始属性仅展示，战斗效果只使用物品等级。"
       },
-      "stats": {}
+      "stats": {
+        "primary": {
+          "staminaPoints": 2,
+          "intellectPoints": 4
+        },
+        "defense": {
+          "armorPoints": 28
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "15449",
+        "url": "https://www.wowhead.com/classic/cn/item=15449&xml",
+        "verifiedAt": "2026-09-08"
+      }
     },
     {
       "id": "15450",
@@ -236,7 +382,23 @@
       "description": {
         "zhCN": "怒焰裂谷任务奖励。原始属性仅展示，战斗效果只使用物品等级。"
       },
-      "stats": {}
+      "stats": {
+        "primary": {
+          "agilityPoints": 2,
+          "staminaPoints": 2,
+          "spiritPoints": 2
+        },
+        "defense": {
+          "armorPoints": 65
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "15450",
+        "url": "https://www.wowhead.com/classic/cn/item=15450&xml",
+        "verifiedAt": "2026-09-08"
+      }
     },
     {
       "id": "15451",
@@ -259,7 +421,23 @@
       "description": {
         "zhCN": "怒焰裂谷任务奖励。原始属性仅展示，战斗效果只使用物品等级。"
       },
-      "stats": {}
+      "stats": {
+        "primary": {
+          "strengthPoints": 2,
+          "agilityPoints": 2,
+          "staminaPoints": 2
+        },
+        "defense": {
+          "armorPoints": 141
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "externalId": "15451",
+        "url": "https://www.wowhead.com/classic/cn/item=15451&xml",
+        "verifiedAt": "2026-09-08"
+      }
     }
   ]
 }

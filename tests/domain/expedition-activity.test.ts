@@ -3,6 +3,8 @@ import { startExpeditionCommand } from "../../src/application/commands/start-exp
 import { getPartyPreview } from "../../src/application/queries/get-party-preview";
 import { GameSession } from "../../src/application/services/game-session";
 import { loadBrowserContentRegistry } from "../../src/content/manifest";
+import type { ContentRegistry } from "../../src/content/registry";
+import type { ItemDefinition } from "../../src/content/schemas/item";
 import { createNewGame } from "../../src/domain/guild/new-game";
 import { asBrandedId } from "../../src/domain/shared/ids";
 import { LocalIdGenerator } from "../../src/infrastructure/ids/local-id-generator";
@@ -12,6 +14,13 @@ import { FakeClock } from "../helpers/runtime-fakes";
 
 const content = loadBrowserContentRegistry();
 const dungeonId = asBrandedId<"DungeonId">("ragefire_chasm");
+
+function contentWithItem(definition: ItemDefinition): ContentRegistry {
+  return {
+    ...content,
+    itemById: new Map([...content.itemById, [definition.id, definition]]),
+  } as unknown as ContentRegistry;
+}
 
 function newState(seed = "expedition-test") {
   return createNewGame({
@@ -50,6 +59,7 @@ describe("V2 expedition creation", () => {
     if (result.status !== "committed") throw new Error("Expected committed expedition");
     const activity = result.result;
     expect(activity.partySnapshot.contribution).toEqual(preview.preview.contribution);
+    expect(activity.partySnapshot.formulaVersion).toBe("classic-light-v1");
     expect(activity.partySnapshot.clearProbability).toBe(preview.preview.clearProbability);
     expect(activity.partySnapshot.durationSeconds).toBe(preview.preview.durationSeconds);
     expect(activity.runPlans).toHaveLength(3);
@@ -84,6 +94,11 @@ describe("V2 expedition creation", () => {
     const memberIds = Object.values(state.members).map((member) => member.id);
     const original = state.members[memberIds[0]!]!;
     const originalHead = original.equipment.head!;
+    const preview = getPartyPreview(state, content, dungeonId, memberIds);
+    if (!preview.ok) throw new Error("Expected preview");
+    const previewProfile = preview.preview.memberProfiles.find(
+      (profile) => profile.memberId === original.id,
+    )!;
     const { session } = await sessionFor(state);
     const result = await session.execute(
       startExpeditionCommand(
@@ -105,11 +120,118 @@ describe("V2 expedition creation", () => {
       itemInstanceId: originalHead,
       itemDefinitionId: state.itemInstances[originalHead]!.definitionId,
     });
+    expect(snapshot.combat).toEqual({
+      formulaVersion: previewProfile.formulaVersion,
+      role: previewProfile.role,
+      capabilities: previewProfile.capabilities,
+      utility: previewProfile.utility,
+    });
 
     original.progression.level = 45;
     delete original.equipment.head;
     expect(snapshot.level).toBe(10);
     expect(snapshot.equipment.head?.itemInstanceId).toBe(originalHead);
+  });
+
+  it("keeps a level-10 starter party near the intended first-dungeon curve", () => {
+    const state = newState("cal2");
+    const memberIds = Object.values(state.members).map((member) => member.id);
+    const preview = getPartyPreview(state, content, dungeonId, memberIds);
+    expect(preview.ok).toBe(true);
+    if (!preview.ok) throw new Error("Expected preview");
+
+    expect(preview.preview.formulaVersion).toBe("classic-light-v1");
+    expect(preview.preview.memberProfiles).toHaveLength(5);
+    expect(preview.preview.clearProbability).toBeGreaterThanOrEqual(0.75);
+    expect(preview.preview.clearProbability).toBeLessThanOrEqual(0.9);
+    expect(preview.preview.durationSeconds).toBeGreaterThanOrEqual(570);
+    expect(preview.preview.durationSeconds).toBeLessThanOrEqual(630);
+  });
+
+  it("lets levels and real attributes reach overpower and minimum-duration territory", () => {
+    const state = newState("cal2");
+    for (const member of Object.values(state.members)) member.progression.level = 45;
+    const memberIds = Object.values(state.members).map((member) => member.id);
+    const preview = getPartyPreview(state, content, dungeonId, memberIds);
+    expect(preview.ok).toBe(true);
+    if (!preview.ok) throw new Error("Expected preview");
+
+    expect(preview.preview.clearProbability).toBe(1);
+    expect(preview.preview.durationSeconds).toBeGreaterThanOrEqual(300);
+    expect(preview.preview.durationSeconds).toBeLessThanOrEqual(330);
+  });
+
+  it("allows nonstandard parties but preserves the missing-role bottleneck", () => {
+    const state = newState("cal2");
+    const tank = Object.values(state.members).find(
+      (member) => content.specById.get(member.progression.specId)?.role === "tank",
+    )!;
+    tank.progression.specId = asBrandedId<"SpecId">("warrior_arms");
+    tank.identity.classId = asBrandedId<"ClassId">("warrior");
+    const memberIds = Object.values(state.members).map((member) => member.id);
+    const preview = getPartyPreview(state, content, dungeonId, memberIds);
+    expect(preview.ok).toBe(true);
+    if (!preview.ok) throw new Error("Expected preview");
+
+    expect(preview.preview.contribution.tank).toBe(0);
+    expect(preview.preview.clearProbability).toBeLessThan(0.001);
+  });
+
+  it("drives previews from real attributes instead of item level", () => {
+    const state = newState("cal2");
+    const memberIds = Object.values(state.members).map((member) => member.id);
+    const mainHand = content.itemById.get(
+      state.itemInstances[state.members[memberIds[0]!]!.equipment.mainHand!]!.definitionId,
+    )!;
+    const baseline = getPartyPreview(state, content, dungeonId, memberIds);
+    const itemLevelOnly = getPartyPreview(
+      state,
+      contentWithItem({ ...mainHand, itemLevel: 60 }),
+      dungeonId,
+      memberIds,
+    );
+    const realStatUpgrade = getPartyPreview(
+      state,
+      contentWithItem({
+        ...mainHand,
+        stats: {
+          primary: {
+            strengthPoints: 40,
+            agilityPoints: 40,
+            intellectPoints: 40,
+            spiritPoints: 40,
+          },
+          physical: {
+            attackPowerPoints: 40,
+            rangedAttackPowerPoints: 40,
+            hitPercent: 4,
+            criticalStrikePercent: 4,
+          },
+          spell: {
+            spellPowerPoints: 40,
+            healingPowerPoints: 40,
+            hitPercent: 4,
+            criticalStrikePercent: 4,
+          },
+          weapon: { damage: { minimumPoints: 35, maximumPoints: 45 }, speedSeconds: 2 },
+        },
+      }),
+      dungeonId,
+      memberIds,
+    );
+    expect(baseline.ok && itemLevelOnly.ok && realStatUpgrade.ok).toBe(true);
+    if (!baseline.ok || !itemLevelOnly.ok || !realStatUpgrade.ok) {
+      throw new Error("Expected previews");
+    }
+
+    expect(itemLevelOnly.preview.contribution).toEqual(baseline.preview.contribution);
+    expect(itemLevelOnly.preview.clearProbability).toBe(baseline.preview.clearProbability);
+    expect(realStatUpgrade.preview.contribution.damage).toBeGreaterThan(
+      baseline.preview.contribution.damage,
+    );
+    expect(realStatUpgrade.preview.clearProbability).toBeGreaterThan(
+      baseline.preview.clearProbability,
+    );
   });
 
   it("uses dungeon-configured party sizes instead of a hard-coded five-member rule", async () => {

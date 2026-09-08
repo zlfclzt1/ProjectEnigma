@@ -42,6 +42,10 @@
         "bottleneckWeight": 0.3,
         "overpowerThreshold": 1.5
       },
+      "combatTuning": {
+        "bossProbabilityMaximum": 0.99,
+        "requirementMultipliers": { "tank": 0.88, "healing": 0.88, "damage": 0.88 }
+      },
       "route": [
         "sfk_rethilgore",
         "sfk_razorclaw",

@@ -54,6 +54,7 @@ export function adaptLegacyContent(registry: ContentRegistry) {
 
   const logTemplates: Record<string, readonly string[]> = {};
   for (const group of registry.logTemplates) {
+    if (group.eventType.startsWith("report-")) continue;
     const key = legacyLogKey(group);
     if (logTemplates[key]) throw new Error(`旧版日志键重复：${key}`);
     logTemplates[key] = [...group.templates];

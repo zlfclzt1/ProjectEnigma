@@ -1,11 +1,15 @@
 import type { ContentRegistry } from "../../content/registry";
 import type { DungeonDefinition, EncounterDefinition } from "../../content/schemas/dungeon";
-import { averageEquippedItemLevel } from "../equipment/item-level";
+import { buildCombatProfile } from "../combat/formula-pipeline";
+import {
+  buildPartyCombatProfile,
+  type PartyCombatContribution,
+} from "../combat/party-combat-profile";
+import type { CombatProfile } from "../combat/combat-profile";
+import type { FormulaModifier } from "../combat/formula-context";
 import type { GameStateV2 } from "../game-state";
 import type { Member } from "../member/member";
-import type { DungeonId, EncounterId, MemberId } from "../shared/ids";
-
-type Role = "tank" | "healer" | "dps";
+import type { DungeonId, EncounterId, FormulaVersion, MemberId } from "../shared/ids";
 
 export interface PartyEvaluationIssue {
   readonly code: string;
@@ -13,11 +17,7 @@ export interface PartyEvaluationIssue {
   readonly memberId?: MemberId;
 }
 
-export interface PartyContribution {
-  readonly tank: number;
-  readonly healing: number;
-  readonly damage: number;
-}
+export type PartyContribution = PartyCombatContribution;
 
 export interface EncounterPreview {
   readonly encounterId: EncounterId;
@@ -29,7 +29,9 @@ export interface EncounterPreview {
 
 export interface PartyPreview {
   readonly dungeonId: DungeonId;
+  readonly formulaVersion: FormulaVersion;
   readonly memberIds: readonly MemberId[];
+  readonly memberProfiles: readonly CombatProfile[];
   readonly contribution: PartyContribution;
   readonly encounters: readonly EncounterPreview[];
   readonly clearProbability: number;
@@ -77,7 +79,23 @@ export function evaluateExpeditionParty(
   }
   if (issues.length > 0) return { ok: false, issues };
 
-  const contribution = partyContribution(state, content, dungeon, members);
+  let partyCombatProfile;
+  try {
+    partyCombatProfile = buildPartyCombatProfile(
+      members.map((member) => memberCombatProfile(state, content, member, dungeon, members)),
+    );
+  } catch (error) {
+    return {
+      ok: false,
+      issues: [
+        {
+          code: "party.combat-profile-invalid",
+          message: error instanceof Error ? error.message : "无法生成队伍战斗配置。",
+        },
+      ],
+    };
+  }
+  const contribution = partyCombatProfile.contribution;
   const encounters = dungeon.route.map((encounterId) => {
     const encounter = content.encounterById.get(encounterId)!;
     const probability = bossProbability(contribution, encounter, dungeon);
@@ -91,7 +109,9 @@ export function evaluateExpeditionParty(
     ok: true,
     preview: {
       dungeonId,
+      formulaVersion: partyCombatProfile.formulaVersion,
       memberIds: [...memberIds],
+      memberProfiles: partyCombatProfile.members,
       contribution,
       encounters,
       clearProbability: encounters.reduce((product, result) => product * result.probability, 1),
@@ -133,43 +153,39 @@ function personalityPowerMultiplier(
   }
 }
 
-function memberPower(
+function personalityModifiers(
+  member: Member,
+  dungeon: DungeonDefinition,
+  party: readonly Member[],
+): readonly FormulaModifier[] {
+  const multiplier = personalityPowerMultiplier(member, dungeon, party);
+  if (multiplier === 1) return [];
+  return (["survivability", "threat", "healing", "damage"] as const).map((capability) => ({
+    id: `personality:${member.identity.personalityId}:${capability}`,
+    capability,
+    multiplier,
+    description: `${member.identity.personalityId} 性格对副本能力的修正`,
+  }));
+}
+
+function memberCombatProfile(
   state: GameStateV2,
   content: ContentRegistry,
   member: Member,
   dungeon: DungeonDefinition,
   party: readonly Member[],
-): number {
-  const itemLevel = averageEquippedItemLevel(member, state.itemInstances, content);
-  const equipmentFactor = clamp(
-    0.5,
-    1.75,
-    0.5 + itemLevel / (2 * Math.max(1, member.progression.level)),
-  );
-  return (
-    member.progression.level * equipmentFactor * personalityPowerMultiplier(member, dungeon, party)
-  );
-}
-
-function partyContribution(
-  state: GameStateV2,
-  content: ContentRegistry,
-  dungeon: DungeonDefinition,
-  party: readonly Member[],
-): PartyContribution {
-  return party.reduce<PartyContribution>(
-    (total, member) => {
-      const power = memberPower(state, content, member, dungeon, party);
-      const role = content.specById.get(member.progression.specId)!.role as Role;
-      if (role === "tank") {
-        return { ...total, tank: total.tank + power, damage: total.damage + power * 0.35 };
-      }
-      if (role === "healer") {
-        return { ...total, healing: total.healing + power, damage: total.damage + power * 0.2 };
-      }
-      return { ...total, damage: total.damage + power };
+): CombatProfile {
+  const spec = content.specById.get(member.progression.specId)!;
+  const formula = content.combatProfileById.get(spec.combatProfileId);
+  if (!formula) throw new Error(`专精 ${spec.id} 缺少战斗配置。`);
+  return buildCombatProfile(
+    {
+      member,
+      content,
+      itemInstances: state.itemInstances,
+      modifiers: personalityModifiers(member, dungeon, party),
     },
-    { tank: 0, healing: 0, damage: 0 },
+    formula,
   );
 }
 
@@ -184,9 +200,15 @@ function bossProbability(
   dungeon: DungeonDefinition,
 ): { probability: number; rawRatios: PartyContribution; readiness: number } {
   const rawRatios = {
-    tank: contribution.tank / encounter.requirements.tank,
-    healing: contribution.healing / encounter.requirements.healing,
-    damage: contribution.damage / encounter.requirements.damage,
+    tank:
+      contribution.tank /
+      (encounter.requirements.tank * dungeon.combatTuning.requirementMultipliers.tank),
+    healing:
+      contribution.healing /
+      (encounter.requirements.healing * dungeon.combatTuning.requirementMultipliers.healing),
+    damage:
+      contribution.damage /
+      (encounter.requirements.damage * dungeon.combatTuning.requirementMultipliers.damage),
   };
   const settings = dungeon.probability;
   if (Object.values(rawRatios).every((ratio) => ratio >= settings.overpowerThreshold)) {
@@ -203,7 +225,7 @@ function bossProbability(
   return {
     probability: clamp(
       settings.minimum,
-      settings.maximum,
+      Math.min(settings.maximum, dungeon.combatTuning.bossProbabilityMaximum),
       settings.base + settings.readinessMultiplier * readiness,
     ),
     rawRatios,
@@ -229,10 +251,16 @@ function stageDurationSeconds(
   dungeon: DungeonDefinition,
   party: readonly Member[],
 ): number {
-  const damageRatio = encounter.requirements.damage / Math.max(0.01, contribution.damage);
+  const damageRatio =
+    (encounter.requirements.damage * dungeon.combatTuning.requirementMultipliers.damage) /
+    Math.max(0.01, contribution.damage);
   const outputFactor = clamp(0.5, 1.5, damageRatio ** 0.6);
-  const tankRatio = contribution.tank / encounter.requirements.tank;
-  const healingRatio = contribution.healing / encounter.requirements.healing;
+  const tankRatio =
+    contribution.tank /
+    (encounter.requirements.tank * dungeon.combatTuning.requirementMultipliers.tank);
+  const healingRatio =
+    contribution.healing /
+    (encounter.requirements.healing * dungeon.combatTuning.requirementMultipliers.healing);
   const survivalFactor =
     1 + Math.max(0, 1 - tankRatio) * 0.25 + Math.max(0, 1 - healingRatio) * 0.25;
   const ratio = clamp(

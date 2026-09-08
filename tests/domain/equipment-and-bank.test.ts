@@ -37,13 +37,13 @@ function instance(id: string, definitionId: string): ItemInstance {
 }
 
 describe("V2 equipment rules", () => {
-  it("checks level, class, role, armor, ownership and active-activity restrictions", () => {
+  it("checks class, role, armor, ownership and active-activity restrictions", () => {
     const member = createMemberFixture({
       activeActivityId: asBrandedId<"ActivityId">("activity_1"),
     });
     const item = instance("item_candidate", "14148");
-    const highLevelCloth = { ...definition("14148"), requiredLevel: 20 };
-    const result = evaluateEquipEligibility(member, item, highLevelCloth, {
+    const displayLevelCloth = { ...definition("14148"), requiredLevel: 20 };
+    const result = evaluateEquipEligibility(member, item, displayLevelCloth, {
       content,
       itemInstances: {},
     });
@@ -51,11 +51,11 @@ describe("V2 equipment rules", () => {
     expect(result.allowed).toBe(false);
     expect(result.failures.map((failure) => failure.code)).toEqual([
       "member-busy",
-      "level-too-low",
       "class-restricted",
       "role-restricted",
       "armor-type-mismatch",
     ]);
+    expect(result.failures.map((failure) => failure.code)).not.toContain("level-too-low");
 
     const owned = { ...item, ownerMemberId: asBrandedId<"MemberId">("member_2"), bound: true };
     expect(

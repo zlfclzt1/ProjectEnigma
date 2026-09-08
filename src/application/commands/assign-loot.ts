@@ -3,6 +3,7 @@ import type { ContentRegistry } from "../../content/registry";
 import { equipItem } from "../../domain/equipment/equipment";
 import { equipmentSellValue } from "../../domain/equipment/item-value";
 import type { ItemInstance } from "../../domain/equipment/item-instance";
+import type { EquipmentSlot } from "../../domain/equipment/equipment-slot";
 import type { GameStateV2 } from "../../domain/game-state";
 import type { ActivityId, ItemInstanceId, MemberId, PendingLootId } from "../../domain/shared/ids";
 
@@ -32,6 +33,7 @@ export function assignLoot(
   content: ContentRegistry,
   pendingLootId: PendingLootId,
   memberId: MemberId,
+  preferredSlot?: EquipmentSlot,
 ): AssignLootResult {
   const pending = state.pendingLoot[pendingLootId];
   if (!pending) throw new Error("该战利品已经被处理。");
@@ -45,7 +47,12 @@ export function assignLoot(
 
   let equipped;
   try {
-    equipped = equipItem(member, instance, { content, itemInstances: state.itemInstances });
+    equipped = equipItem(
+      member,
+      instance,
+      { content, itemInstances: state.itemInstances },
+      preferredSlot,
+    );
   } catch {
     throw new Error("该成员没有资格装备这件物品。");
   }

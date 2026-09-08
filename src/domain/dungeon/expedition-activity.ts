@@ -6,6 +6,7 @@ import type {
   ExpeditionMemberSnapshot,
   ExpeditionRunPlan,
 } from "../activity/activity";
+import type { CombatProfile } from "../combat/combat-profile";
 import type { GameStateV2 } from "../game-state";
 import { asBrandedId, type DungeonId } from "../shared/ids";
 import { SeededRandomSource } from "../../infrastructure/random/seeded-random-source";
@@ -113,8 +114,15 @@ export function createExpeditionActivityHandler(
         activeRunIndex: 0,
         activeEncounterIndex: 0,
         partySnapshot: {
+          formulaVersion: previewResult.preview.formulaVersion,
           members: request.participantIds.map((memberId) =>
-            snapshotMember(context.state, memberId),
+            snapshotMember(
+              context.state,
+              memberId,
+              previewResult.preview.memberProfiles.find(
+                (profile) => profile.memberId === memberId,
+              )!,
+            ),
           ),
           contribution: { ...previewResult.preview.contribution },
           clearProbability: previewResult.preview.clearProbability,
@@ -156,6 +164,7 @@ export function experienceFractions(
 function snapshotMember(
   state: GameStateV2,
   memberId: ExpeditionMemberSnapshot["memberId"],
+  profile: CombatProfile,
 ): ExpeditionMemberSnapshot {
   const member = state.members[memberId]!;
   const equipment: ExpeditionMemberSnapshot["equipment"] = {};
@@ -173,5 +182,11 @@ function snapshotMember(
     personalityId: member.identity.personalityId,
     level: member.progression.level,
     equipment,
+    combat: {
+      formulaVersion: profile.formulaVersion,
+      role: profile.role,
+      capabilities: { ...profile.capabilities },
+      utility: { ...profile.utility },
+    },
   };
 }

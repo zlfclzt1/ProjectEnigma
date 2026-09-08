@@ -9,7 +9,12 @@ import {
   localizedTextSchema,
   roleSchema,
 } from "./common";
-import { contentAttributionSchema } from "./content-source";
+import {
+  balanceOverrideSchema,
+  contentAttributionSchema,
+  contentSourceSchema,
+} from "./content-source";
+import { classicItemStatsSchema } from "./item-stats";
 
 export const equipmentSlotSchema = z.enum(EQUIPMENT_SLOTS);
 
@@ -39,7 +44,9 @@ export const itemDefinitionSchema = z
     icon: itemIconSchema,
     description: localizedTextSchema,
     isStarter: z.boolean().default(false),
-    stats: z.object({}).strict(),
+    stats: classicItemStatsSchema,
+    statsSource: contentSourceSchema,
+    statsBalanceOverride: balanceOverrideSchema.optional(),
   })
   .strict()
   .superRefine((item, context) => {
@@ -48,6 +55,39 @@ export const itemDefinitionSchema = z
         code: "custom",
         path: ["twoHanded"],
         message: "双手武器必须使用主手栏位",
+      });
+    }
+    if (item.stats.weapon && !["mainHand", "offHand", "ranged"].includes(item.slot)) {
+      context.addIssue({
+        code: "custom",
+        path: ["stats", "weapon"],
+        message: "武器伤害与速度只能配置在武器栏位",
+      });
+    }
+    if (item.isStarter) {
+      if (item.statsSource.kind !== "design-decision" || item.statsSource.provider !== "manual") {
+        context.addIssue({
+          code: "custom",
+          path: ["statsSource"],
+          message: "初始装备属性必须明确标记为 manual 游戏设计数据",
+        });
+      }
+      if (!item.statsBalanceOverride?.fields.includes("stats")) {
+        context.addIssue({
+          code: "custom",
+          path: ["statsBalanceOverride"],
+          message: "初始装备必须为 stats 提供平衡覆盖说明",
+        });
+      }
+    } else if (
+      item.statsSource.kind !== "source-fact" ||
+      item.statsSource.provider !== "wowhead-classic" ||
+      item.statsSource.externalId !== item.id
+    ) {
+      context.addIssue({
+        code: "custom",
+        path: ["statsSource"],
+        message: "真实装备属性必须引用同 ID 的 Wowhead Classic 资料",
       });
     }
   });

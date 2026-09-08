@@ -18,6 +18,7 @@ import type {
   RoleDefinition,
   SpecDefinition,
 } from "./schemas/member-definitions";
+import type { CombatProfileDefinition } from "./schemas/combat-profile";
 
 class ReadonlyMapView<Key, Value> implements ReadonlyMap<Key, Value> {
   readonly #source: Map<Key, Value>;
@@ -187,6 +188,7 @@ export class ContentRegistry {
   readonly classes: readonly ClassDefinition[];
   readonly races: readonly RaceDefinition[];
   readonly specs: readonly SpecDefinition[];
+  readonly combatProfiles: readonly CombatProfileDefinition[];
   readonly personalities: readonly PersonalityDefinition[];
   readonly nameParts: readonly NamePartsFile[];
   readonly hiddenCharacters: readonly HiddenCharacterDefinition[];
@@ -200,6 +202,7 @@ export class ContentRegistry {
   readonly classById: ReadonlyMap<ClassDefinition["id"], ClassDefinition>;
   readonly raceById: ReadonlyMap<RaceDefinition["id"], RaceDefinition>;
   readonly specById: ReadonlyMap<SpecDefinition["id"], SpecDefinition>;
+  readonly combatProfileById: ReadonlyMap<CombatProfileDefinition["id"], CombatProfileDefinition>;
   readonly personalityById: ReadonlyMap<PersonalityDefinition["id"], PersonalityDefinition>;
   readonly hiddenCharacterById: ReadonlyMap<
     HiddenCharacterDefinition["id"],
@@ -218,6 +221,7 @@ export class ContentRegistry {
     const classById = buildIndex(loaded.classes, issues, "职业");
     const raceById = buildIndex(loaded.races, issues, "种族");
     const specById = buildIndex(loaded.specs, issues, "专精");
+    const combatProfileById = buildIndex(loaded.combatProfiles, issues, "战斗配置");
     const personalityById = buildIndex(loaded.personalities, issues, "性格");
     const hiddenCharacterById = buildIndex(loaded.hiddenCharacters, issues, "隐藏角色");
     const itemById = buildIndex(loaded.items, issues, "物品");
@@ -243,6 +247,7 @@ export class ContentRegistry {
       classById,
       raceById,
       specById,
+      combatProfileById,
       personalityById,
       issues,
     );
@@ -264,6 +269,7 @@ export class ContentRegistry {
     this.classes = Object.freeze(loaded.classes.map(({ value }) => value));
     this.races = Object.freeze(loaded.races.map(({ value }) => value));
     this.specs = Object.freeze(loaded.specs.map(({ value }) => value));
+    this.combatProfiles = Object.freeze(loaded.combatProfiles.map(({ value }) => value));
     this.personalities = Object.freeze(loaded.personalities.map(({ value }) => value));
     this.nameParts = Object.freeze(loaded.nameParts.map(({ value }) => value));
     this.hiddenCharacters = Object.freeze(loaded.hiddenCharacters.map(({ value }) => value));
@@ -276,6 +282,7 @@ export class ContentRegistry {
     this.classById = readonlyMap(classById);
     this.raceById = readonlyMap(raceById);
     this.specById = readonlyMap(specById);
+    this.combatProfileById = readonlyMap(combatProfileById);
     this.personalityById = readonlyMap(personalityById);
     this.hiddenCharacterById = readonlyMap(hiddenCharacterById);
     this.itemById = readonlyMap(itemById);
@@ -293,6 +300,7 @@ export class ContentRegistry {
     classById: ReadonlyMap<ClassDefinition["id"], ClassDefinition>,
     raceById: ReadonlyMap<RaceDefinition["id"], RaceDefinition>,
     specById: ReadonlyMap<SpecDefinition["id"], SpecDefinition>,
+    combatProfileById: ReadonlyMap<CombatProfileDefinition["id"], CombatProfileDefinition>,
     personalityById: ReadonlyMap<PersonalityDefinition["id"], PersonalityDefinition>,
     issues: ContentValidationIssue[],
   ): void {
@@ -304,6 +312,49 @@ export class ContentRegistry {
     for (const owner of loaded.specs) {
       requireReference(classById, owner.value.classId, owner, "classId", "职业", issues);
       requireReference(roleById, owner.value.role, owner, "role", "定位", issues);
+      const profileExists = requireReference(
+        combatProfileById,
+        owner.value.combatProfileId,
+        owner,
+        "combatProfileId",
+        "战斗配置",
+        issues,
+      );
+      const profile = combatProfileById.get(owner.value.combatProfileId);
+      if (profileExists && profile?.specId !== owner.value.id) {
+        issues.push({
+          filePath: owner.filePath,
+          fieldPath: `${owner.fieldPath}.combatProfileId`,
+          message: `战斗配置属于专精 ${profile?.specId}`,
+          invalidReferenceId: owner.value.combatProfileId,
+        });
+      }
+      if (profileExists && profile?.role !== owner.value.role) {
+        issues.push({
+          filePath: owner.filePath,
+          fieldPath: `${owner.fieldPath}.combatProfileId`,
+          message: `战斗配置定位 ${profile?.role} 与专精定位 ${owner.value.role} 不一致`,
+          invalidReferenceId: owner.value.combatProfileId,
+        });
+      }
+    }
+    for (const owner of loaded.combatProfiles) {
+      const specExists = requireReference(
+        specById,
+        owner.value.specId,
+        owner,
+        "specId",
+        "专精",
+        issues,
+      );
+      if (specExists && specById.get(owner.value.specId)?.combatProfileId !== owner.value.id) {
+        issues.push({
+          filePath: owner.filePath,
+          fieldPath: `${owner.fieldPath}.id`,
+          message: `专精 ${owner.value.specId} 未反向引用此战斗配置`,
+          invalidReferenceId: owner.value.id,
+        });
+      }
     }
     for (const owner of loaded.hiddenCharacters) {
       requireReference(classById, owner.value.classId, owner, "classId", "职业", issues);

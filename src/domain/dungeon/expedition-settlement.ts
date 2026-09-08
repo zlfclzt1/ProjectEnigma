@@ -4,7 +4,8 @@ import type { ActivityScheduler } from "../activity/activity-scheduler";
 import type { ExpeditionActivity, ExpeditionEncounterPlan } from "../activity/activity";
 import type { ItemInstance } from "../equipment/item-instance";
 import type { GameStateV2 } from "../game-state";
-import type { MemberId } from "../shared/ids";
+import type { CombatReportId, MemberId } from "../shared/ids";
+import { generateCombatReport } from "../combat/report-generator";
 import { experienceFractions } from "./expedition-activity";
 import { generateGuaranteedLoot } from "./loot-generation";
 
@@ -16,6 +17,7 @@ export type ExpeditionSettlementResult =
       readonly outcome: "victory" | "defeat";
       readonly settledAt: number;
       readonly itemInstanceIds: readonly ItemInstance["id"][];
+      readonly reportId: CombatReportId;
     }
   | {
       readonly status: "not-due" | "not-active" | "invalid-stage";
@@ -47,6 +49,20 @@ export function settleNextExpeditionStage(
   if (stage.successRoll >= stage.probability) {
     stage.status = "defeat";
     stage.settledAt = settledAt;
+    stage.report = generateCombatReport({
+      activity,
+      stage,
+      encounter,
+      runNumber: run.runNumber,
+      outcome: "defeat",
+      settledAt,
+      rewards: {
+        experienceFractionByMember: {},
+        funds: 0,
+        firstKillBonus: 0,
+        itemInstanceIds: [],
+      },
+    });
     scheduler.finish(state, activity.id, "failed", settledAt);
     return {
       status: "settled",
@@ -55,6 +71,7 @@ export function settleNextExpeditionStage(
       outcome: "defeat",
       settledAt,
       itemInstanceIds: [],
+      reportId: stage.report.id,
     };
   }
 
@@ -64,9 +81,14 @@ export function settleNextExpeditionStage(
 
   stage.status = "victory";
   stage.settledAt = settledAt;
-  applyEncounterExperience(state, activity, encounter.experienceShare);
+  const experienceFractionByMember = applyEncounterExperience(
+    state,
+    activity,
+    encounter.experienceShare,
+  );
   const firstKill = !state.guild.firstKillEncounterIds.includes(encounter.id);
-  state.guild.funds += encounter.funds + (firstKill ? encounter.firstKillBonus : 0);
+  const firstKillBonus = firstKill ? encounter.firstKillBonus : 0;
+  state.guild.funds += encounter.funds + firstKillBonus;
   if (firstKill) state.guild.firstKillEncounterIds.push(encounter.id);
   state.history.encounterVictoryCounts[encounter.id] =
     (state.history.encounterVictoryCounts[encounter.id] ?? 0) + 1;
@@ -74,6 +96,20 @@ export function settleNextExpeditionStage(
     state.itemInstances[instance.id] = instance;
     state.pendingLoot[pending.id] = pending;
   }
+  stage.report = generateCombatReport({
+    activity,
+    stage,
+    encounter,
+    runNumber: run.runNumber,
+    outcome: "victory",
+    settledAt,
+    rewards: {
+      experienceFractionByMember,
+      funds: encounter.funds,
+      firstKillBonus,
+      itemInstanceIds: generatedLoot.map(({ instance }) => instance.id),
+    },
+  });
   unlockEligibleDungeons(state, content);
 
   advanceAfterVictory(state, content, scheduler, activity, settledAt);
@@ -84,6 +120,7 @@ export function settleNextExpeditionStage(
     outcome: "victory",
     settledAt,
     itemInstanceIds: generatedLoot.map(({ instance }) => instance.id),
+    reportId: stage.report.id,
   };
 }
 
@@ -91,23 +128,31 @@ function applyEncounterExperience(
   state: GameStateV2,
   activity: ExpeditionActivity,
   experienceShare: number,
-): void {
+): Partial<Record<MemberId, number>> {
   const run = activity.runPlans[activity.activeRunIndex]!;
+  const awarded: Partial<Record<MemberId, number>> = {};
   for (const memberId of activity.participantIds) {
     const member = state.members[memberId];
     if (!member) continue;
-    applyExperience(member, (run.experienceFractionByMember[memberId] ?? 0) * experienceShare);
+    const gained = applyExperience(
+      member,
+      (run.experienceFractionByMember[memberId] ?? 0) * experienceShare,
+    );
+    if (gained > 0) awarded[memberId] = gained;
   }
+  return awarded;
 }
 
-function applyExperience(member: GameStateV2["members"][MemberId], fraction: number): void {
-  if (member.progression.level >= 45 || fraction <= 0) return;
+function applyExperience(member: GameStateV2["members"][MemberId], fraction: number): number {
+  if (member.progression.level >= 45 || fraction <= 0) return 0;
+  const before = member.progression.level + member.progression.experience;
   let experience = member.progression.experience + fraction;
   while (experience >= 1 && member.progression.level < 45) {
     member.progression.level += 1;
     experience -= 1;
   }
   member.progression.experience = member.progression.level >= 45 ? 0 : experience;
+  return member.progression.level + member.progression.experience - before;
 }
 
 function advanceAfterVictory(

@@ -2,7 +2,15 @@ import { z } from "zod";
 import { brandedContentIdSchema } from "./common";
 import { contentAttributionSchema } from "./content-source";
 
-const parameterSchema = z.enum(["tank", "healer", "member"]);
+const parameterSchema = z.enum([
+  "tank",
+  "healer",
+  "member",
+  "top-damage",
+  "top-healer",
+  "slacker",
+  "defeated",
+]);
 const templateVariablePattern = /\{([a-z][a-z0-9_-]*)\}/g;
 
 const logScopeSchema = z.discriminatedUnion("type", [
@@ -23,6 +31,11 @@ export const logTemplateGroupSchema = z
       "encounter-victory",
       "encounter-failure",
       "dungeon-flavor",
+      "report-top-damage",
+      "report-top-healing",
+      "report-tank-danger",
+      "report-slacker",
+      "report-member-defeated",
     ]),
     scope: logScopeSchema,
     availableParameters: z.array(parameterSchema),

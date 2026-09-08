@@ -1,0 +1,300 @@
+{
+  "schemaVersion": 1,
+  "formulaVersion": "classic-light-v1",
+  "samplesPerScenario": 100000,
+  "partyVariants": 100,
+  "dungeons": [
+    {
+      "id": "deadmines",
+      "recommendedStandard": {
+        "level": 18,
+        "equipment": "best-compatible-real-drops-at-level",
+        "simulatedRuns": 100000,
+        "simulatedClearRate": 0.80895,
+        "previewClearProbability": {
+          "mean": 0.8094818001173482,
+          "p10": 0.6455525705561485,
+          "p50": 0.8231077633683254,
+          "p90": 0.9201136252233124
+        },
+        "durationSeconds": {
+          "mean": 1437.49,
+          "p10": 1384,
+          "p50": 1444,
+          "p90": 1490
+        },
+        "wipeCounts": {
+          "dm_captain_greenskin": 3167,
+          "dm_gilnid": 2017,
+          "dm_cookie": 3343,
+          "dm_mr_smite": 2600,
+          "dm_edwin_vancleef": 5196,
+          "dm_sneed": 1500,
+          "dm_rhahkzor": 1282
+        }
+      },
+      "recommendedNoTank": {
+        "level": 18,
+        "equipment": "best-compatible-real-drops-at-level",
+        "simulatedRuns": 100000,
+        "simulatedClearRate": 0,
+        "previewClearProbability": {
+          "mean": 7.81250000000001e-10,
+          "p10": 7.812500000000004e-10,
+          "p50": 7.812500000000004e-10,
+          "p90": 7.812500000000004e-10
+        },
+        "durationSeconds": {
+          "mean": 1595.35,
+          "p10": 1548,
+          "p50": 1591,
+          "p90": 1645
+        },
+        "wipeCounts": {
+          "dm_rhahkzor": 94988,
+          "dm_sneed": 4774,
+          "dm_gilnid": 223,
+          "dm_mr_smite": 13,
+          "dm_captain_greenskin": 2
+        }
+      },
+      "maxLevelStandard": {
+        "level": 45,
+        "equipment": "best-compatible-real-drops-at-level",
+        "simulatedRuns": 100000,
+        "simulatedClearRate": 1,
+        "previewClearProbability": {
+          "mean": 1,
+          "p10": 1,
+          "p50": 1,
+          "p90": 1
+        },
+        "durationSeconds": {
+          "mean": 839.29,
+          "p10": 816,
+          "p50": 837,
+          "p90": 865
+        },
+        "wipeCounts": {}
+      }
+    },
+    {
+      "id": "ragefire_chasm",
+      "recommendedStandard": {
+        "level": 13,
+        "equipment": "best-compatible-real-drops-at-level",
+        "simulatedRuns": 100000,
+        "simulatedClearRate": 0.8135,
+        "previewClearProbability": {
+          "mean": 0.814506249999999,
+          "p10": 0.8145062499999999,
+          "p50": 0.8145062499999999,
+          "p90": 0.8145062499999999
+        },
+        "durationSeconds": {
+          "mean": 524.19,
+          "p10": 507,
+          "p50": 525,
+          "p90": 538
+        },
+        "wipeCounts": {
+          "taragaman_the_hungerer": 4722,
+          "oggleflint": 5121,
+          "bazzalan": 4362,
+          "jergosh_the_invoker": 4445
+        }
+      },
+      "recommendedNoTank": {
+        "level": 13,
+        "equipment": "best-compatible-real-drops-at-level",
+        "simulatedRuns": 100000,
+        "simulatedClearRate": 0.00001,
+        "previewClearProbability": {
+          "mean": 0.000006249999999999997,
+          "p10": 0.000006250000000000002,
+          "p50": 0.000006250000000000002,
+          "p90": 0.000006250000000000002
+        },
+        "durationSeconds": {
+          "mean": 587.22,
+          "p10": 567,
+          "p50": 586,
+          "p90": 608
+        },
+        "wipeCounts": {
+          "oggleflint": 94920,
+          "taragaman_the_hungerer": 4830,
+          "jergosh_the_invoker": 235,
+          "bazzalan": 14
+        }
+      },
+      "maxLevelStandard": {
+        "level": 45,
+        "equipment": "best-compatible-real-drops-at-level",
+        "simulatedRuns": 100000,
+        "simulatedClearRate": 1,
+        "previewClearProbability": {
+          "mean": 1,
+          "p10": 1,
+          "p50": 1,
+          "p90": 1
+        },
+        "durationSeconds": {
+          "mean": 304.06,
+          "p10": 300,
+          "p50": 304,
+          "p90": 309
+        },
+        "wipeCounts": {}
+      }
+    },
+    {
+      "id": "shadowfang_keep",
+      "recommendedStandard": {
+        "level": 22,
+        "equipment": "best-compatible-real-drops-at-level",
+        "simulatedRuns": 100000,
+        "simulatedClearRate": 0.81785,
+        "previewClearProbability": {
+          "mean": 0.8175629520089793,
+          "p10": 0.6495821675710886,
+          "p50": 0.8426090361382975,
+          "p90": 0.9180107068482297
+        },
+        "durationSeconds": {
+          "mean": 822.93,
+          "p10": 789,
+          "p50": 821,
+          "p90": 857
+        },
+        "wipeCounts": {
+          "sfk_archmage_arugal": 4520,
+          "sfk_baron_silverlaine": 1407,
+          "sfk_wolf_master_nandos": 3502,
+          "sfk_commander_springvale": 2009,
+          "sfk_odo": 1709,
+          "sfk_razorclaw": 1418,
+          "sfk_fenrus": 2665,
+          "sfk_rethilgore": 985
+        }
+      },
+      "recommendedNoTank": {
+        "level": 22,
+        "equipment": "best-compatible-real-drops-at-level",
+        "simulatedRuns": 100000,
+        "simulatedClearRate": 0,
+        "previewClearProbability": {
+          "mean": 3.9062500000000014e-11,
+          "p10": 3.906250000000002e-11,
+          "p50": 3.906250000000002e-11,
+          "p90": 3.906250000000002e-11
+        },
+        "durationSeconds": {
+          "mean": 913.32,
+          "p10": 881,
+          "p50": 914,
+          "p90": 950
+        },
+        "wipeCounts": {
+          "sfk_rethilgore": 94995,
+          "sfk_razorclaw": 4750,
+          "sfk_baron_silverlaine": 241,
+          "sfk_commander_springvale": 14
+        }
+      },
+      "maxLevelStandard": {
+        "level": 45,
+        "equipment": "best-compatible-real-drops-at-level",
+        "simulatedRuns": 100000,
+        "simulatedClearRate": 1,
+        "previewClearProbability": {
+          "mean": 1,
+          "p10": 1,
+          "p50": 1,
+          "p90": 1
+        },
+        "durationSeconds": {
+          "mean": 540.24,
+          "p10": 522,
+          "p50": 540,
+          "p90": 557
+        },
+        "wipeCounts": {}
+      }
+    },
+    {
+      "id": "wailing_caverns",
+      "recommendedStandard": {
+        "level": 17,
+        "equipment": "best-compatible-real-drops-at-level",
+        "simulatedRuns": 100000,
+        "simulatedClearRate": 0.7968,
+        "previewClearProbability": {
+          "mean": 0.7985182763460789,
+          "p10": 0.6539155813672549,
+          "p50": 0.8150438588251702,
+          "p90": 0.8984871230560779
+        },
+        "durationSeconds": {
+          "mean": 1663.49,
+          "p10": 1593,
+          "p50": 1660,
+          "p90": 1732
+        },
+        "wipeCounts": {
+          "wc_lord_cobrahn": 1301,
+          "wc_lord_pythas": 1949,
+          "wc_mutanus": 5086,
+          "wc_lord_serpentis": 2817,
+          "wc_verdan": 4523,
+          "wc_kresh": 1195,
+          "wc_skum": 2297,
+          "wc_lady_anacondra": 1152
+        }
+      },
+      "recommendedNoTank": {
+        "level": 17,
+        "equipment": "best-compatible-real-drops-at-level",
+        "simulatedRuns": 100000,
+        "simulatedClearRate": 0,
+        "previewClearProbability": {
+          "mean": 3.9062500000000014e-11,
+          "p10": 3.906250000000002e-11,
+          "p50": 3.906250000000002e-11,
+          "p90": 3.906250000000002e-11
+        },
+        "durationSeconds": {
+          "mean": 1842.15,
+          "p10": 1778,
+          "p50": 1843,
+          "p90": 1900
+        },
+        "wipeCounts": {
+          "wc_lord_cobrahn": 4719,
+          "wc_lady_anacondra": 95019,
+          "wc_kresh": 246,
+          "wc_lord_pythas": 16
+        }
+      },
+      "maxLevelStandard": {
+        "level": 45,
+        "equipment": "best-compatible-real-drops-at-level",
+        "simulatedRuns": 100000,
+        "simulatedClearRate": 1,
+        "previewClearProbability": {
+          "mean": 1,
+          "p10": 1,
+          "p50": 1,
+          "p90": 1
+        },
+        "durationSeconds": {
+          "mean": 942.12,
+          "p10": 917,
+          "p50": 941,
+          "p90": 967
+        },
+        "wipeCounts": {}
+      }
+    }
+  ]
+}

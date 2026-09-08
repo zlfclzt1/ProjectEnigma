@@ -23,7 +23,12 @@
     "content:audit": "node scripts/audit-legacy-content.mjs --check",
     "content:audit:write": "node scripts/audit-legacy-content.mjs --write",
     "validate:content": "node --import tsx scripts/validate-content.ts",
-    "simulate:rfc": "node scripts/simulate_ragefire_chasm.mjs 100000"
+    "item-stats:audit": "node --import tsx scripts/audit-item-stats.ts --check",
+    "item-stats:audit:write": "node --import tsx scripts/audit-item-stats.ts --write",
+    "simulate:rfc": "node scripts/simulate_ragefire_chasm.mjs 100000",
+    "simulate:dungeons": "node --import tsx scripts/simulate-dungeons.ts 100000",
+    "v2-baseline:check": "node --import tsx scripts/simulate-dungeons.ts 100000 --check",
+    "v2-baseline:write": "node --import tsx scripts/simulate-dungeons.ts 100000 --write"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

@@ -107,10 +107,29 @@ describe("migrated item definitions", () => {
     }
   });
 
-  it("keeps IDs unique and reserves an empty version-zero stat payload", () => {
+  it("keeps IDs unique and attributes every imported stat payload", () => {
     const ids = migratedItems.map((item) => item.id);
     expect(new Set(ids).size).toBe(ids.length);
-    expect(migratedItems.every((item) => Object.keys(item.stats).length === 0)).toBe(true);
+    expect(migratedItems.every((item) => Object.keys(item.stats).length > 0)).toBe(true);
+    expect(
+      migratedItems
+        .filter((item) => !item.isStarter)
+        .every(
+          (item) =>
+            item.statsSource.provider === "wowhead-classic" &&
+            item.statsSource.externalId === item.id &&
+            item.statsSource.verifiedAt === "2026-09-08",
+        ),
+    ).toBe(true);
+    expect(
+      migratedItems
+        .filter((item) => item.isStarter)
+        .every(
+          (item) =>
+            item.statsSource.provider === "manual" &&
+            item.statsBalanceOverride?.fields.includes("stats"),
+        ),
+    ).toBe(true);
   });
 
   it("requires two-handed weapons to occupy the main-hand slot", () => {

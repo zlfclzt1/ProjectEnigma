@@ -39,6 +39,10 @@
         "bottleneckWeight": 0.3,
         "overpowerThreshold": 1.5
       },
+      "combatTuning": {
+        "bossProbabilityMaximum": 0.95,
+        "requirementMultipliers": { "tank": 1, "healing": 1, "damage": 1 }
+      },
       "route": ["oggleflint", "taragaman_the_hungerer", "jergosh_the_invoker", "bazzalan"]
     }
   ]

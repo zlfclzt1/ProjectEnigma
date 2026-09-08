@@ -42,6 +42,10 @@
         "bottleneckWeight": 0.3,
         "overpowerThreshold": 1.5
       },
+      "combatTuning": {
+        "bossProbabilityMaximum": 0.99,
+        "requirementMultipliers": { "tank": 0.9, "healing": 0.9, "damage": 0.9 }
+      },
       "route": [
         "wc_lady_anacondra",
         "wc_lord_cobrahn",

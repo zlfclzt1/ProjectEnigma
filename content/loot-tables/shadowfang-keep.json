@@ -3,10 +3,24 @@
   "attribution": {
     "sources": [
       {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "url": "https://raw.githubusercontent.com/Hoizame/AtlasLootClassic/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-08",
+        "notes": "核对影牙城堡路线 Boss 与所选经典旧世装备掉落关系。"
+      },
+      {
         "kind": "design-decision",
         "provider": "manual",
         "verifiedAt": "2026-09-07",
         "notes": "从 V1 影牙城堡掉落池原样迁移，移除重复的英文物品名称。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["lootTables[].guaranteedEquipmentDrops"],
+        "reason": "放置玩法保证每个成功 Boss 至少掉落一件装备。",
+        "decidedAt": "2026-09-08"
       }
     ]
   },

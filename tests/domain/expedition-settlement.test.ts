@@ -68,6 +68,12 @@ describe("expedition settlement", () => {
       outcome: "victory",
     });
     expect(activity.runPlans[0]!.stages[0]!.status).toBe("victory");
+    const firstReport = activity.runPlans[0]!.stages[0]!.report!;
+    expect(first.settled[0]!.reportId).toBe(firstReport.id);
+    expect(firstReport.outcome).toBe("victory");
+    expect(firstReport.rewards.funds).toBe(10);
+    expect(firstReport.rewards.firstKillBonus).toBe(20);
+    expect(firstReport.rewards.itemInstanceIds).toEqual(first.settled[0]!.itemInstanceIds);
     expect(activity.activeEncounterIndex).toBe(1);
     expect(state.guild.funds).toBe(fundsBefore + 10 + 20);
     expect(Object.values(state.pendingLoot)).toHaveLength(1);
@@ -83,12 +89,14 @@ describe("expedition settlement", () => {
       loot: structuredClone(state.pendingLoot),
       items: structuredClone(state.itemInstances),
       victories: structuredClone(state.history.encounterVictoryCounts),
+      report: structuredClone(firstReport),
     };
     expect(service.settleDueActivities(state, first.settled[0]!.settledAt).settled).toEqual([]);
     expect(state.guild.funds).toBe(rewardSnapshot.funds);
     expect(state.pendingLoot).toEqual(rewardSnapshot.loot);
     expect(state.itemInstances).toEqual(rewardSnapshot.items);
     expect(state.history.encounterVictoryCounts).toEqual(rewardSnapshot.victories);
+    expect(activity.runPlans[0]!.stages[0]!.report).toEqual(rewardSnapshot.report);
   });
 
   it("keeps earlier boss experience, funds, and loot when the party wipes later", async () => {
@@ -111,6 +119,15 @@ describe("expedition settlement", () => {
 
     expect(wipe.settled).toHaveLength(1);
     expect(wipe.settled[0]!.outcome).toBe("defeat");
+    const wipeReport = activity.runPlans[0]!.stages[1]!.report!;
+    expect(wipe.settled[0]!.reportId).toBe(wipeReport.id);
+    expect(wipeReport.rewards).toEqual({
+      experienceFractionByMember: {},
+      funds: 0,
+      firstKillBonus: 0,
+      itemInstanceIds: [],
+    });
+    expect(wipeReport.members.some((member) => member.defeated)).toBe(true);
     expect(activity.status).toBe("failed");
     expect(state.guild.funds).toBe(afterFirstBoss.funds);
     expect(Object.values(state.pendingLoot)).toHaveLength(afterFirstBoss.pendingLootCount);
@@ -146,6 +163,11 @@ describe("expedition settlement", () => {
     expect(settledActivity.completedRuns).toBe(2);
     expect(Object.values(settledState.pendingLoot)).toHaveLength(8);
     expect(result.result.settled.every((event) => event.itemInstanceIds.length >= 1)).toBe(true);
+    expect(
+      settledActivity.runPlans
+        .flatMap((run) => run.stages)
+        .every((stage) => stage.report?.outcome === "victory"),
+    ).toBe(true);
     expect(settledState.guild.funds).toBe(340);
     expect(Object.values(settledState.members).every((member) => !member.activeActivityId)).toBe(
       true,

@@ -152,6 +152,52 @@ describe("automatic loot assignment", () => {
     expect(assigned.guild.funds).toBe(fundsBefore + 9);
   });
 
+  it("breaks equal upgrade ties in favor of the weaker member", async () => {
+    const state = idleFixture();
+    const stronger = Object.values(state.members)[0]!;
+    const strongerBackId = asBrandedId<"ItemInstanceId">("stronger_back");
+    const weakerBackId = asBrandedId<"ItemInstanceId">("weaker_back");
+    const strongerRingId = asBrandedId<"ItemInstanceId">("stronger_ring");
+    stronger.progression.specId = asBrandedId<"SpecId">("warrior_arms");
+    stronger.equipment = {
+      back: strongerBackId,
+      ring1: strongerRingId,
+    };
+    const weaker = createMemberFixture({
+      id: asBrandedId<"MemberId">("member_2"),
+      progression: {
+        level: stronger.progression.level,
+        experience: 0,
+        specId: asBrandedId<"SpecId">("warrior_arms"),
+      },
+      equipment: { back: weakerBackId },
+    });
+    state.members[weaker.id] = weaker;
+    state.itemInstances[strongerBackId] = createItemInstanceFixture({
+      id: strongerBackId,
+      definitionId: asBrandedId<"ItemDefinitionId">("starter_back"),
+      ownerMemberId: stronger.id,
+    });
+    state.itemInstances[weakerBackId] = createItemInstanceFixture({
+      id: weakerBackId,
+      definitionId: asBrandedId<"ItemDefinitionId">("starter_back"),
+      ownerMemberId: weaker.id,
+    });
+    state.itemInstances[strongerRingId] = createItemInstanceFixture({
+      id: strongerRingId,
+      definitionId: asBrandedId<"ItemDefinitionId">("6321"),
+      ownerMemberId: stronger.id,
+    });
+    const loot = addPendingLoot(state, 1, "14149", [stronger.id, weaker.id]);
+    const session = await createSession(state);
+
+    const result = await session.execute(autoAssignLootCommand(content));
+
+    if (result.status !== "committed") throw new Error("Expected automatic assignment");
+    expect(session.snapshot().members[weaker.id]!.equipment.back).toBe(loot.item.id);
+    expect(session.snapshot().members[stronger.id]!.equipment.back).toBe(strongerBackId);
+  });
+
   it("leaves every item from an active continuous expedition untouched", async () => {
     const state = idleFixture();
     const member = Object.values(state.members)[0]!;

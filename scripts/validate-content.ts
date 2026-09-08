@@ -48,6 +48,7 @@ try {
     `职业 ${registry.classes.length}`,
     `种族 ${registry.races.length}`,
     `专精 ${registry.specs.length}`,
+    `战斗配置 ${registry.combatProfiles.length}`,
     `性格 ${registry.personalities.length}`,
     `隐藏角色 ${registry.hiddenCharacters.length}`,
     `物品 ${registry.items.length}`,

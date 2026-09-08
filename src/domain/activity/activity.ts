@@ -4,6 +4,7 @@ import type {
   ContentVersion,
   DungeonId,
   EncounterId,
+  FormulaVersion,
   GatheringSiteId,
   ItemDefinitionId,
   ItemInstanceId,
@@ -15,6 +16,8 @@ import type {
   TrainingDefinitionId,
 } from "../shared/ids";
 import type { EquipmentSlot } from "../equipment/equipment-slot";
+import type { CombatCapabilityValues, CombatUtilityProfile } from "../combat/combat-profile";
+import type { CombatReport } from "../combat/combat-report";
 
 export type ActivityType = "expedition" | "gathering" | "crafting" | "training";
 export type ActivityStatus = "scheduled" | "active" | "completed" | "failed" | "cancelled";
@@ -54,9 +57,16 @@ export interface ExpeditionMemberSnapshot {
   personalityId: PersonalityId;
   level: number;
   equipment: Partial<Record<EquipmentSlot, ExpeditionEquipmentSnapshot>>;
+  combat: {
+    formulaVersion: FormulaVersion;
+    role: "tank" | "healer" | "dps";
+    capabilities: CombatCapabilityValues;
+    utility: CombatUtilityProfile;
+  };
 }
 
 export interface ExpeditionPartySnapshot {
+  formulaVersion: FormulaVersion;
   members: ExpeditionMemberSnapshot[];
   contribution: { tank: number; healing: number; damage: number };
   clearProbability: number;
@@ -72,6 +82,7 @@ export interface ExpeditionEncounterPlan {
   lootSeed: string;
   status: "pending" | "victory" | "defeat";
   settledAt?: number;
+  report?: CombatReport;
 }
 
 export interface ExpeditionRunPlan {
