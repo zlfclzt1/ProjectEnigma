@@ -1,6 +1,5 @@
 import fs from "node:fs";
 import { describe, expect, it } from "vitest";
-import { CLASS_DEFINITIONS, NAME_PARTS, PERSONALITIES, ROLE_LABELS } from "../../src/content.js";
 import {
   classDefinitionFileSchema,
   hiddenCharacterDefinitionFileSchema,
@@ -27,56 +26,52 @@ const hiddenFile = hiddenCharacterDefinitionFileSchema.parse(
   readJson("content/hidden-characters/classic.json"),
 );
 
-describe("migrated member content", () => {
-  it("preserves all legacy role labels", () => {
-    expect(Object.fromEntries(roleFile.roles.map((role) => [role.id, role.name.zhCN]))).toEqual(
-      ROLE_LABELS,
-    );
+describe("member content", () => {
+  it("defines all supported role labels", () => {
+    expect(Object.fromEntries(roleFile.roles.map((role) => [role.id, role.name.zhCN]))).toEqual({
+      tank: "坦克",
+      healer: "治疗",
+      dps: "输出",
+    });
   });
 
-  it("preserves all legacy classes and specs", () => {
-    type ParsedSpec = (typeof specFile.specs)[number];
-    const specsByClass = new Map<string, ParsedSpec[]>();
-    const raceById = new Map(raceFile.races.map((race) => [race.id, race]));
-    for (const spec of specFile.specs) {
-      const specs = specsByClass.get(spec.classId) ?? [];
-      specs.push(spec);
-      specsByClass.set(spec.classId, specs);
-    }
-    const migrated = classFile.classes.map((classDefinition) => ({
-      id: classDefinition.id,
-      name: classDefinition.name.zhCN,
-      armorType: classDefinition.armorType,
-      races: classDefinition.raceIds.map((raceId) => raceById.get(raceId)!.name.zhCN),
-      specs: (specsByClass.get(classDefinition.id) ?? []).map((spec) => ({
-        id: spec.id,
-        name: spec.name.zhCN,
-        role: spec.role,
-      })),
-    }));
-
-    expect(migrated).toEqual(CLASS_DEFINITIONS);
+  it("defines all classic classes, races, and fixed specs", () => {
     expect(classFile.classes).toHaveLength(9);
     expect(raceFile.races).toHaveLength(8);
     expect(specFile.specs).toHaveLength(28);
+    expect(classFile.classes.map((entry) => entry.id)).toEqual(
+      expect.arrayContaining([
+        "warrior",
+        "paladin",
+        "hunter",
+        "rogue",
+        "priest",
+        "shaman",
+        "mage",
+        "warlock",
+        "druid",
+      ]),
+    );
     expect(specFile.specs.every((spec) => String(spec.combatProfileId) === String(spec.id))).toBe(
       true,
     );
   });
 
-  it("preserves legacy personalities and their display copy", () => {
+  it("defines six personalities with visible benefits and drawbacks", () => {
+    expect(personalityFile.personalities).toHaveLength(6);
     expect(
-      personalityFile.personalities.map((personality) => ({
-        id: personality.id,
-        name: personality.name.zhCN,
-        benefit: personality.benefit.zhCN,
-        drawback: personality.drawback.zhCN,
-      })),
-    ).toEqual(PERSONALITIES);
+      personalityFile.personalities.every(
+        (personality) =>
+          personality.benefit.zhCN.length > 0 && personality.drawback.zhCN.length > 0,
+      ),
+    ).toBe(true);
   });
 
-  it("preserves the current Chinese random name fragments", () => {
-    expect({ first: nameFile.first, second: nameFile.second }).toEqual(NAME_PARTS);
+  it("provides independent Chinese random name fragments", () => {
+    expect(nameFile.first.length).toBeGreaterThan(5);
+    expect(nameFile.second.length).toBeGreaterThan(5);
+    expect(new Set(nameFile.first).size).toBe(nameFile.first.length);
+    expect(new Set(nameFile.second).size).toBe(nameFile.second.length);
   });
 
   it("moves the hidden recruit rule into an independent content definition", () => {

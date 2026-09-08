@@ -2,7 +2,6 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
-import { LOG_TEMPLATES } from "../../src/content.js";
 import {
   logTemplateFileSchema,
   logTemplateGroupSchema,
@@ -26,12 +25,23 @@ function legacyKey(group: (typeof groups)[number]): string {
   return group.eventType === "expedition-start" ? "start" : "failure";
 }
 
-describe("migrated log templates", () => {
-  it("preserves every V1 template under an explicit event scope", () => {
-    expect(Object.fromEntries(groups.map((group) => [legacyKey(group), group.templates]))).toEqual(
-      LOG_TEMPLATES,
-    );
+describe("log templates", () => {
+  it("defines every current route flavor group under an explicit event scope", () => {
     expect(groups).toHaveLength(9);
+    expect(groups.map(legacyKey)).toEqual(
+      expect.arrayContaining([
+        "start",
+        "failure",
+        "deadmines",
+        "wailing_caverns",
+        "shadowfang_keep",
+        "oggleflint",
+        "taragaman_the_hungerer",
+        "jergosh_the_invoker",
+        "bazzalan",
+      ]),
+    );
+    expect(groups.every((group) => group.templates.length > 0)).toBe(true);
   });
 
   it("rejects template variables that are not declared by the group", () => {

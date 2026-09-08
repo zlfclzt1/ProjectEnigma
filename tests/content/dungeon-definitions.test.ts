@@ -6,9 +6,6 @@ import {
   dungeonDefinitionFileSchema,
   encounterDefinitionFileSchema,
   lootTableFileSchema,
-  type DungeonDefinition,
-  type EncounterDefinition,
-  type LootTable,
 } from "../../src/content/schemas/dungeon";
 import { itemDefinitionFileSchema } from "../../src/content/schemas/item";
 
@@ -44,81 +41,32 @@ const itemIds = new Set(
     ),
 );
 
-function toLegacyDungeon(
-  dungeon: DungeonDefinition,
-  encounterById: Map<string, EncounterDefinition>,
-) {
-  return {
-    id: dungeon.id,
-    name: dungeon.name.zhCN,
-    minimumLevel: dungeon.minimumLevel,
-    recommendedLevel: dungeon.recommendedLevel,
-    defaultUnlocked: dungeon.defaultUnlocked,
-    ...(dungeon.unlock ? { unlock: dungeon.unlock } : {}),
-    members: dungeon.members,
-    duration: dungeon.duration,
-    probability: dungeon.probability,
-    bosses: dungeon.route.map((id) => {
-      const encounter = encounterById.get(id);
-      if (!encounter) throw new Error(`Missing encounter ${id}`);
-      return {
-        id: encounter.id,
-        name: encounter.name.zhCN,
-        stageSeconds: encounter.stageSeconds,
-        requirements: encounter.requirements,
-        weights: encounter.weights,
-        experienceShare: encounter.experienceShare,
-        funds: encounter.funds,
-        firstKillBonus: encounter.firstKillBonus,
-        lootPool: encounter.lootTableId,
-      };
-    }),
-  };
-}
-
-function normalizedLootTable(table: LootTable) {
-  return {
-    id: table.id,
-    guaranteedEquipmentDrops: table.guaranteedEquipmentDrops,
-    ...(table.sourceType ? { sourceType: table.sourceType } : {}),
-    items: table.items.map((item) => ({ itemId: Number(item.itemId), weight: item.weight })),
-  };
-}
-
-describe("split dungeon content", () => {
-  it("preserves all four legacy dungeon and encounter definitions", () => {
-    const encounterById = new Map(encounters.map((encounter) => [encounter.id, encounter]));
-    const actual = dungeons.map((dungeon) => toLegacyDungeon(dungeon, encounterById));
-    const expected = fileNames.map((name) =>
-      readJson(`data/dungeons/${name.replaceAll("-", "_")}`),
-    );
-
-    expect(actual).toEqual(expected);
+describe("dungeon content", () => {
+  it("defines the current four dungeons and all route encounters", () => {
     expect(dungeons).toHaveLength(4);
     expect(encounters).toHaveLength(27);
+    expect(dungeons.map((dungeon) => dungeon.id)).toEqual(
+      expect.arrayContaining(["ragefire_chasm", "deadmines", "wailing_caverns", "shadowfang_keep"]),
+    );
+    expect(dungeons.find((dungeon) => dungeon.id === "ragefire_chasm")).toMatchObject({
+      minimumLevel: 8,
+      recommendedLevel: 13,
+      defaultUnlocked: true,
+      members: { minimum: 1, maximum: 5, recommended: 5 },
+      duration: { baseSeconds: 600, minimumRatio: 0.5 },
+    });
   });
 
-  it("preserves the semantic legacy loot table data without duplicate item names", () => {
-    const actual = lootTables.map(normalizedLootTable);
-    const expected = fileNames.flatMap((name) => {
-      const legacy = readJson(`data/loot/${name.replaceAll("-", "_")}`) as {
-        pools: Array<{
-          id: string;
-          guaranteedEquipmentDrops?: number;
-          sourceType?: string;
-          items: Array<{ itemId: number; weight: number }>;
-        }>;
-      };
-      return legacy.pools.map((pool) => ({
-        id: pool.id,
-        guaranteedEquipmentDrops: pool.guaranteedEquipmentDrops ?? 1,
-        ...(pool.sourceType ? { sourceType: pool.sourceType } : {}),
-        items: pool.items.map(({ itemId, weight }) => ({ itemId, weight })),
-      }));
-    });
-
-    expect(actual).toEqual(expected);
+  it("defines complete weighted loot tables with stable item references", () => {
     expect(lootTables).toHaveLength(26);
+    expect(lootTables.every((table) => table.guaranteedEquipmentDrops >= 1)).toBe(true);
+    expect(
+      lootTables.every(
+        (table) =>
+          table.items.length > 0 &&
+          table.items.every((item) => item.weight > 0 && itemIds.has(item.itemId)),
+      ),
+    ).toBe(true);
   });
 
   it("keeps all routes, loot references, item references and stage budgets valid", () => {

@@ -518,15 +518,17 @@ Milestone
 可执行配置与模拟脚本：
 
 ```text
-data/dungeons/ragefire_chasm.json
-data/loot/ragefire_chasm.json
-scripts/simulate_ragefire_chasm.mjs
+content/dungeons/ragefire-chasm.json
+content/encounters/ragefire-chasm.json
+content/items/ragefire-chasm.json
+content/loot-tables/ragefire-chasm.json
+scripts/simulate-dungeons.ts
 ```
 
 运行方式：
 
 ```bash
-node scripts/simulate_ragefire_chasm.mjs 100000
+npm run simulate:dungeons
 ```
 
 2026-09-07 首轮模拟结果：

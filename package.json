@@ -14,28 +14,26 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "serve": "python3 -m http.server 4173",
-    "test": "npm run test:legacy && npm run test:unit",
-    "test:legacy": "node --test tests/*.test.mjs",
+    "test": "npm run test:unit",
     "test:unit": "vitest run",
-    "baseline:check": "node scripts/capture-v1-baselines.mjs --check",
-    "baseline:write": "node scripts/capture-v1-baselines.mjs --write",
-    "content:audit": "node scripts/audit-legacy-content.mjs --check",
-    "content:audit:write": "node scripts/audit-legacy-content.mjs --write",
+    "test:e2e": "playwright test",
+    "baseline:check": "node --import tsx scripts/simulate-dungeons.ts 100000 --check",
+    "baseline:write": "node --import tsx scripts/simulate-dungeons.ts 100000 --write",
     "validate:content": "node --import tsx scripts/validate-content.ts",
     "item-stats:audit": "node --import tsx scripts/audit-item-stats.ts --check",
     "item-stats:audit:write": "node --import tsx scripts/audit-item-stats.ts --write",
-    "simulate:rfc": "node scripts/simulate_ragefire_chasm.mjs 100000",
-    "simulate:dungeons": "node --import tsx scripts/simulate-dungeons.ts 100000",
-    "v2-baseline:check": "node --import tsx scripts/simulate-dungeons.ts 100000 --check",
-    "v2-baseline:write": "node --import tsx scripts/simulate-dungeons.ts 100000 --write"
+    "simulate:dungeons": "node --import tsx scripts/simulate-dungeons.ts 100000"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.63.0",
     "@types/node": "^26.5.0",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "@vue/test-utils": "^2.5.0",
     "eslint": "^10.10.0",
     "eslint-config-prettier": "^10.1.8",
     "fake-indexeddb": "^6.2.5",
+    "jsdom": "^30.0.1",
     "prettier": "^3.9.6",
     "tsx": "^4.23.13",
     "typescript": "^6.0.3",
@@ -45,6 +43,9 @@
   },
   "dependencies": {
     "dexie": "^4.4.5",
+    "pinia": "^4.0.3",
+    "vue": "^3.5.42",
+    "vue-router": "^5.3.1",
     "zod": "^4.5.4"
   }
 }

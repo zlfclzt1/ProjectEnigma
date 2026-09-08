@@ -2,13 +2,11 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
-import { loadContent } from "../../src/content.js";
 import {
   equipmentSlotSchema,
   itemDefinitionSchema,
   itemDefinitionFileSchema,
   type EquipmentSlot,
-  type ItemDefinition,
 } from "../../src/content/schemas/item";
 
 const projectRoot = fileURLToPath(new URL("../../", import.meta.url));
@@ -25,59 +23,16 @@ const itemFiles = fs
   }));
 const migratedItems = itemFiles.flatMap((file) => file.content.items);
 
-async function loadLegacyContent() {
-  const fixtures = new Map<string, unknown>();
-  for (const directory of ["data/dungeons", "data/loot"]) {
-    const directoryPath = path.join(projectRoot, directory);
-    for (const name of fs.readdirSync(directoryPath).filter((entry) => entry.endsWith(".json"))) {
-      fixtures.set(
-        `./${directory}/${name}`,
-        JSON.parse(fs.readFileSync(path.join(directoryPath, name), "utf8")),
-      );
-    }
-  }
-  const originalFetch = globalThis.fetch;
-  globalThis.fetch = async (url) => {
-    const fixture = fixtures.get(String(url));
-    if (!fixture) throw new Error(`Missing legacy fixture: ${String(url)}`);
-    return { json: async () => structuredClone(fixture) } as Response;
-  };
-  try {
-    return await loadContent();
-  } finally {
-    globalThis.fetch = originalFetch;
-  }
-}
+describe("item definitions", () => {
+  it("loads all 34 current dungeon and quest items with stable IDs and database icons", () => {
+    const dungeonItems = migratedItems.filter((item) => !item.isStarter);
 
-function toLegacyShape(item: ItemDefinition) {
-  return {
-    id: Number(item.id),
-    name: item.name.zhCN,
-    ...(item.name.enUS ? { englishName: item.name.enUS } : {}),
-    iconName: item.icon.kind === "database" ? item.icon.name : undefined,
-    quality: item.quality,
-    itemLevel: item.itemLevel,
-    slot: item.slot,
-    armorType: item.armorType ?? null,
-    allowedClasses: item.restrictions.allowedClassIds,
-    allowedRoles: item.restrictions.allowedRoles,
-    description: item.description.zhCN,
-    ...(item.twoHanded ? { twoHanded: true } : {}),
-  };
-}
-
-describe("migrated item definitions", () => {
-  it("preserves all 34 legacy dungeon and quest items", async () => {
-    const legacy = await loadLegacyContent();
-    const actual = migratedItems
-      .filter((item) => !item.isStarter)
-      .map(toLegacyShape)
-      .sort((left, right) => left.id - right.id);
-    const expected = [...legacy.items].sort((left, right) => Number(left.id) - Number(right.id));
-
-    expect(actual).toEqual(expected);
-    expect(actual).toHaveLength(34);
-    expect(actual.every((item) => item.iconName)).toBe(true);
+    expect(dungeonItems).toHaveLength(34);
+    expect(dungeonItems.map((item) => item.id)).toEqual(
+      expect.arrayContaining(["14149", "15451", "15452", "6324"]),
+    );
+    expect(dungeonItems.every((item) => item.icon.kind === "database")).toBe(true);
+    expect(dungeonItems.every((item) => item.name.zhCN.length > 0)).toBe(true);
   });
 
   it("replaces dynamic starter definitions with stable IDs for every slot and armor type", () => {

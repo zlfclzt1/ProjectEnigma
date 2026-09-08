@@ -1,5 +1,5 @@
 import { IDBKeyRange, indexedDB } from "fake-indexeddb";
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { MemorySaveRepository } from "../../src/infrastructure/persistence/memory-save-repository";
 import { IndexedDbSaveRepository } from "../../src/infrastructure/persistence/indexeddb-save-repository";
 import {
@@ -29,6 +29,23 @@ describe("IndexedDbSaveRepository", () => {
         await repository.deleteDatabase();
       },
     };
+  });
+
+  afterEach(() => vi.unstubAllGlobals());
+
+  it("uses browser IndexedDB globals when dependencies are not explicitly injected", async () => {
+    vi.stubGlobal("indexedDB", indexedDB);
+    vi.stubGlobal("IDBKeyRange", IDBKeyRange);
+    const repository = new IndexedDbSaveRepository({
+      databaseName: `save-repository-default-dependencies-${sequence++}`,
+    });
+    try {
+      const state = (await import("../helpers/game-state-v2-factory")).createGameStateV2Fixture();
+      await repository.create(state);
+      await expect(repository.load(state.slotId)).resolves.toEqual(state);
+    } finally {
+      await repository.deleteDatabase();
+    }
   });
 });
 

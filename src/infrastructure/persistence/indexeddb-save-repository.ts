@@ -19,8 +19,8 @@ class GameSaveDatabase extends Dexie {
 
   constructor(options: IndexedDbSaveRepositoryOptions) {
     super(options.databaseName ?? "mystery-guild-master-v2", {
-      indexedDB: options.indexedDB,
-      IDBKeyRange: options.IDBKeyRange,
+      indexedDB: options.indexedDB ?? globalThis.indexedDB,
+      IDBKeyRange: options.IDBKeyRange ?? globalThis.IDBKeyRange,
     });
     this.version(1).stores({ saves: "&slotId" });
   }

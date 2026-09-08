@@ -1,0 +1,101 @@
+<script setup lang="ts">
+import type { ExpeditionActivityView } from "../../application/queries/get-activities-view";
+import BossRoute from "./BossRoute.vue";
+
+defineProps<{ activity: ExpeditionActivityView }>();
+
+function remainingLabel(milliseconds: number | undefined): string {
+  if (milliseconds === undefined) return "已结算";
+  const seconds = Math.ceil(milliseconds / 1_000);
+  return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
+}
+</script>
+
+<template>
+  <article class="expedition-card" :data-status="activity.status">
+    <header>
+      <div>
+        <span>{{ activity.statusLabel }}</span>
+        <h3>{{ activity.dungeonName }}</h3>
+        <p>
+          第 {{ activity.currentRunNumber }} / {{ activity.requestedRuns }} 次 ·
+          {{ activity.participantCount }} 人
+        </p>
+      </div>
+      <time>{{ remainingLabel(activity.remainingMilliseconds) }}</time>
+    </header>
+    <div class="progress" :aria-label="`路线进度 ${activity.progressPercent.toFixed(1)}%`">
+      <i :style="{ width: `${activity.progressPercent}%` }" />
+    </div>
+    <p class="members">{{ activity.memberNames.join(" · ") }}</p>
+    <BossRoute :stages="activity.route" />
+    <footer>
+      <span>全通率 {{ (activity.clearProbability * 100).toFixed(2) }}%</span>
+      <span>公式 {{ activity.formulaVersion }}</span>
+    </footer>
+  </article>
+</template>
+
+<style scoped>
+.expedition-card {
+  padding: 16px;
+  border: 1px solid #403a30;
+  border-radius: 8px;
+  background: #111416;
+}
+header,
+footer {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+}
+header span {
+  color: #d19f48;
+  font-size: 0.62rem;
+  font-weight: 850;
+}
+h3 {
+  margin: 3px 0;
+  color: #e5d2af;
+  font-family: Georgia, serif;
+}
+header p,
+.members {
+  margin: 0;
+  color: #8d8475;
+  font-size: 0.68rem;
+}
+time {
+  color: #edc25f;
+  font-size: 1.35rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 850;
+}
+.progress {
+  height: 5px;
+  margin: 12px 0;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #292722;
+}
+.progress i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #805d29, #d2a348);
+}
+.members {
+  margin-bottom: 10px;
+}
+footer {
+  margin-top: 10px;
+  color: #777064;
+  font-size: 0.62rem;
+}
+.expedition-card[data-status="completed"] header span {
+  color: #69a86f;
+}
+.expedition-card[data-status="failed"] header span {
+  color: #c76c62;
+}
+</style>
