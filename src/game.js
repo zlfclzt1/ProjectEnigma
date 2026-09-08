@@ -14,13 +14,11 @@ import {
   weightedPick,
 } from "./core.js";
 import {
-  CLASS_DEFINITIONS,
+  CLASS_DEFINITIONS as LEGACY_CLASS_DEFINITIONS,
   EQUIPMENT_SLOT_IDS,
-  LOG_TEMPLATES,
-  NAME_PARTS,
-  PERSONALITIES,
-  getClassDefinition,
-  getSpecDefinition,
+  LOG_TEMPLATES as LEGACY_LOG_TEMPLATES,
+  NAME_PARTS as LEGACY_NAME_PARTS,
+  PERSONALITIES as LEGACY_PERSONALITIES,
 } from "./content.js";
 
 export const SAVE_KEY = "mystery-guild-master-save-v1";
@@ -38,6 +36,49 @@ const LEGACY_ITEM_ICON_NAMES = {
   prototype_rfc_leather_hands: "inv_gauntlets_05",
   prototype_rfc_back: "inv_misc_cape_10",
 };
+const LEGACY_HIDDEN_CHARACTERS = [
+  {
+    id: "fairbanks",
+    legacyId: "费厄泼赖",
+    name: "费厄泼赖",
+    classId: "warlock",
+    specId: "warlock_affliction",
+    personalityId: "clever",
+    appearance: { chance: 0.01, uniquePerSave: true },
+  },
+];
+
+function contentClasses(content) {
+  return content.classes ?? LEGACY_CLASS_DEFINITIONS;
+}
+
+function contentPersonalities(content) {
+  return content.personalities ?? LEGACY_PERSONALITIES;
+}
+
+function contentNameParts(content) {
+  return content.nameParts ?? LEGACY_NAME_PARTS;
+}
+
+function contentLogTemplates(content) {
+  return content.logTemplates ?? LEGACY_LOG_TEMPLATES;
+}
+
+function contentHiddenCharacters(content) {
+  return content.hiddenCharacters ?? LEGACY_HIDDEN_CHARACTERS;
+}
+
+function getClassDefinition(content, classId) {
+  return contentClasses(content).find((entry) => entry.id === classId);
+}
+
+function getSpecDefinition(content, specId) {
+  for (const classDefinition of contentClasses(content)) {
+    const spec = classDefinition.specs.find((entry) => entry.id === specId);
+    if (spec) return { ...spec, classId: classDefinition.id };
+  }
+  return undefined;
+}
 
 function nextId(state, prefix) {
   state.nextId += 1;
@@ -92,11 +133,12 @@ function allKnownNames(state) {
   ]);
 }
 
-function createNormalName(state) {
+function createNormalName(state, content) {
+  const nameParts = contentNameParts(content);
   const known = allKnownNames(state);
-  const base = `${randomEntry(state, NAME_PARTS.first, "name-first")}·${randomEntry(
+  const base = `${randomEntry(state, nameParts.first, "name-first")}·${randomEntry(
     state,
-    NAME_PARTS.second,
+    nameParts.second,
     "name-second",
   )}`;
   if (!known.has(base)) return base;
@@ -105,20 +147,34 @@ function createNormalName(state) {
   return `${base}${suffix}`;
 }
 
-function roleSpecs(role) {
-  return CLASS_DEFINITIONS.flatMap((classDefinition) =>
+function roleSpecs(content, role) {
+  return contentClasses(content).flatMap((classDefinition) =>
     classDefinition.specs
       .filter((spec) => !role || spec.role === role)
       .map((spec) => ({ classDefinition, spec })),
   );
 }
 
-function hiddenAlreadyExists(state) {
-  return [...state.members, ...state.candidates].some((member) => member.hiddenId === "费厄泼赖");
+function hiddenAlreadyExists(state, hiddenCharacter) {
+  const knownIds = new Set([
+    hiddenCharacter.id,
+    hiddenCharacter.legacyId,
+    hiddenCharacter.name,
+  ]);
+  return [...state.members, ...state.candidates].some((member) => knownIds.has(member.hiddenId));
 }
 
-function createMember(state, { forcedRole, allowHidden = true } = {}) {
-  const hidden = allowHidden && !forcedRole && !hiddenAlreadyExists(state) && nextRandom(state, "hidden") < 0.01;
+function selectHiddenCharacter(state, content, forcedRole, allowHidden) {
+  if (!allowHidden || forcedRole) return undefined;
+  for (const character of contentHiddenCharacters(content)) {
+    if (character.appearance.uniquePerSave && hiddenAlreadyExists(state, character)) continue;
+    if (nextRandom(state, "hidden") < character.appearance.chance) return character;
+  }
+  return undefined;
+}
+
+function createMember(state, content, { forcedRole, allowHidden = true } = {}) {
+  const hidden = selectHiddenCharacter(state, content, forcedRole, allowHidden);
   let classDefinition;
   let spec;
   let name;
@@ -126,17 +182,23 @@ function createMember(state, { forcedRole, allowHidden = true } = {}) {
   let hiddenId = null;
 
   if (hidden) {
-    classDefinition = getClassDefinition("warlock");
-    spec = classDefinition.specs.find((entry) => entry.id === "warlock_affliction");
-    name = "费厄泼赖";
-    personality = PERSONALITIES.find((entry) => entry.id === "clever");
-    hiddenId = "费厄泼赖";
+    classDefinition = getClassDefinition(content, hidden.classId);
+    spec = classDefinition.specs.find((entry) => entry.id === hidden.specId);
+    name = hidden.name;
+    personality = contentPersonalities(content).find(
+      (entry) => entry.id === hidden.personalityId,
+    );
+    hiddenId = hidden.legacyId ?? hidden.id;
   } else {
-    const choice = randomEntry(state, roleSpecs(forcedRole), `spec-${forcedRole ?? "any"}`);
+    const choice = randomEntry(
+      state,
+      roleSpecs(content, forcedRole),
+      `spec-${forcedRole ?? "any"}`,
+    );
     classDefinition = choice.classDefinition;
     spec = choice.spec;
-    name = createNormalName(state);
-    personality = randomEntry(state, PERSONALITIES, "personality");
+    name = createNormalName(state, content);
+    personality = randomEntry(state, contentPersonalities(content), "personality");
   }
 
   const member = {
@@ -187,27 +249,28 @@ function createInitialState(now, content) {
     lastSavedAt: now,
   };
 
-  state.members.push(createMember(state, { forcedRole: "tank", allowHidden: false }));
-  state.members.push(createMember(state, { forcedRole: "healer", allowHidden: false }));
-  state.members.push(createMember(state, { forcedRole: "dps", allowHidden: false }));
-  state.members.push(createMember(state, { forcedRole: "dps", allowHidden: false }));
-  state.members.push(createMember(state, { forcedRole: "dps", allowHidden: false }));
-  state.candidates.push(createMember(state));
-  state.candidates.push(createMember(state));
-  state.candidates.push(createMember(state));
+  state.members.push(createMember(state, content, { forcedRole: "tank", allowHidden: false }));
+  state.members.push(createMember(state, content, { forcedRole: "healer", allowHidden: false }));
+  state.members.push(createMember(state, content, { forcedRole: "dps", allowHidden: false }));
+  state.members.push(createMember(state, content, { forcedRole: "dps", allowHidden: false }));
+  state.members.push(createMember(state, content, { forcedRole: "dps", allowHidden: false }));
+  state.candidates.push(createMember(state, content));
+  state.candidates.push(createMember(state, content));
+  state.candidates.push(createMember(state, content));
   return state;
 }
 
-function createLog(state, expedition, type, bossId, success, timestamp) {
+function createLog(state, content, expedition, type, bossId, success, timestamp) {
   const members = expedition.memberIds
     .map((id) => state.members.find((member) => member.id === id))
     .filter(Boolean);
   const tank = members.find((member) => member.role === "tank")?.name ?? "临时坦克";
   const healer = members.find((member) => member.role === "healer")?.name ?? "不存在的治疗";
   const member = pickSeeded(members, `${expedition.currentRun.seed}:${bossId}:log-member`)?.name ?? "某位成员";
+  const logTemplates = contentLogTemplates(content);
   const templates = success
-    ? LOG_TEMPLATES[bossId] ?? LOG_TEMPLATES[expedition.dungeonId] ?? LOG_TEMPLATES.start
-    : LOG_TEMPLATES.failure;
+    ? logTemplates[bossId] ?? logTemplates[expedition.dungeonId] ?? logTemplates.start
+    : logTemplates.failure;
   const template = pickSeeded(templates, `${expedition.currentRun.seed}:${bossId}:log-template:${success}`);
   return {
     id: nextId(state, "log"),
@@ -217,13 +280,16 @@ function createLog(state, expedition, type, bossId, success, timestamp) {
   };
 }
 
-function createStartLog(state, expedition, timestamp) {
+function createStartLog(state, content, expedition, timestamp) {
   const members = expedition.memberIds
     .map((id) => state.members.find((member) => member.id === id))
     .filter(Boolean);
   const tank = members.find((member) => member.role === "tank")?.name ?? "临时坦克";
   const healer = members.find((member) => member.role === "healer")?.name ?? "不存在的治疗";
-  const template = pickSeeded(LOG_TEMPLATES.start, `${expedition.currentRun.seed}:start-log`);
+  const template = pickSeeded(
+    contentLogTemplates(content).start,
+    `${expedition.currentRun.seed}:start-log`,
+  );
   expedition.logs.push({
     id: nextId(state, "log"),
     type: "start",
@@ -268,7 +334,7 @@ function beginRun(state, content, expedition, startAt) {
   expedition.stageIndex = 0;
   expedition.stageStartedAt = startAt;
   expedition.stageEndAt = startAt + expedition.currentRun.stages[0].durationSeconds * 1000;
-  createStartLog(state, expedition, startAt);
+  createStartLog(state, content, expedition, startAt);
 }
 
 function finishExpedition(state, expedition, status, timestamp) {
@@ -312,7 +378,9 @@ function settleStage(state, content, expedition) {
   stage.resolvedAt = timestamp;
 
   if (!success) {
-    expedition.logs.push(createLog(state, expedition, "failure", boss.id, false, timestamp));
+    expedition.logs.push(
+      createLog(state, content, expedition, "failure", boss.id, false, timestamp),
+    );
     expedition.failedBossName = boss.name;
     finishExpedition(state, expedition, "failed", timestamp);
     return;
@@ -330,7 +398,9 @@ function settleStage(state, content, expedition) {
   }
 
   createPendingLoot(state, content, expedition, stage, boss);
-  expedition.logs.push(createLog(state, expedition, "boss-success", boss.id, true, timestamp));
+  expedition.logs.push(
+    createLog(state, content, expedition, "boss-success", boss.id, true, timestamp),
+  );
 
   const lastStage = expedition.stageIndex === expedition.currentRun.stages.length - 1;
   if (!lastStage) {
@@ -350,14 +420,14 @@ function settleStage(state, content, expedition) {
   finishExpedition(state, expedition, "completed", timestamp);
 }
 
-function settleRecruitment(state, now) {
+function settleRecruitment(state, content, now) {
   if (state.candidates.length >= MAX_CANDIDATES) {
     state.nextRecruitAt = null;
     return;
   }
   if (state.nextRecruitAt == null) state.nextRecruitAt = now + RECRUIT_INTERVAL_MS;
   while (state.candidates.length < MAX_CANDIDATES && state.nextRecruitAt <= now) {
-    state.candidates.push(createMember(state));
+    state.candidates.push(createMember(state, content));
     state.nextRecruitAt += RECRUIT_INTERVAL_MS;
   }
   if (state.candidates.length >= MAX_CANDIDATES) state.nextRecruitAt = null;
@@ -488,7 +558,7 @@ export class GuildGame {
   }
 
   settle(now = Date.now()) {
-    settleRecruitment(this.state, now);
+    settleRecruitment(this.state, this.content, now);
     settleExpeditions(this.state, this.content, now);
     refreshDungeonUnlocks(this.state, this.content);
     this.state.expeditions = this.state.expeditions.slice(-20);
@@ -529,7 +599,7 @@ export class GuildGame {
     if (this.state.candidates.length >= MAX_CANDIDATES) throw new Error("候选区已经满员。");
     if (this.state.guild.funds < 100) throw new Error("公会资金不足，需要 100。");
     this.state.guild.funds -= 100;
-    const candidate = createMember(this.state);
+    const candidate = createMember(this.state, this.content);
     this.state.candidates.push(candidate);
     if (this.state.candidates.length >= MAX_CANDIDATES) this.state.nextRecruitAt = null;
     this.save(now);
@@ -549,7 +619,7 @@ export class GuildGame {
     if (!member) throw new Error("找不到该成员。");
     if (member.status !== "idle") throw new Error("副本中的成员不能更改专精。");
     if (this.state.guild.funds < 300) throw new Error("公会资金不足，需要 300。");
-    const spec = getSpecDefinition(specId);
+    const spec = getSpecDefinition(this.content, specId);
     if (!spec || spec.classId !== member.classId) throw new Error("该职业不能选择这个专精。");
     if (spec.id === member.specId) return;
 

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-07",
+        "notes": "从 V1 原型的 PERSONALITIES 原样迁移。"
+      }
+    ]
+  },
+  "personalities": [
+    {
+      "id": "steady",
+      "name": { "zhCN": "稳重" },
+      "benefit": { "zhCN": "成功率贡献 +8%" },
+      "drawback": { "zhCN": "副本耗时贡献 +8%" },
+      "legacyBehaviorId": "steady"
+    },
+    {
+      "id": "impatient",
+      "name": { "zhCN": "急躁" },
+      "benefit": { "zhCN": "副本耗时贡献 -8%" },
+      "drawback": { "zhCN": "成功率贡献 -8%" },
+      "legacyBehaviorId": "impatient"
+    },
+    {
+      "id": "diligent",
+      "name": { "zhCN": "勤奋" },
+      "benefit": { "zhCN": "个人经验 +15%" },
+      "drawback": { "zhCN": "副本耗时贡献 +5%" },
+      "legacyBehaviorId": "diligent"
+    },
+    {
+      "id": "competitive",
+      "name": { "zhCN": "好胜" },
+      "benefit": { "zhCN": "越级副本战力 +10%" },
+      "drawback": { "zhCN": "碾压低级副本战力 -5%" },
+      "legacyBehaviorId": "competitive"
+    },
+    {
+      "id": "sociable",
+      "name": { "zhCN": "合群" },
+      "benefit": { "zhCN": "职业丰富时战力最高 +8%" },
+      "drawback": { "zhCN": "重复职业过多时战力 -5%" },
+      "legacyBehaviorId": "sociable"
+    },
+    {
+      "id": "clever",
+      "name": { "zhCN": "机智" },
+      "benefit": { "zhCN": "降低越级战力惩罚" },
+      "drawback": { "zhCN": "个人经验 -10%" },
+      "legacyBehaviorId": "clever"
+    }
+  ]
+}

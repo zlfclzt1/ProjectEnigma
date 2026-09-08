@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-07",
+        "notes": "从 V1 原型的通用战斗日志模板原样迁移。"
+      }
+    ]
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "common_expedition_start",
+      "eventType": "expedition-start",
+      "scope": { "type": "global" },
+      "availableParameters": ["tank", "healer"],
+      "templates": [
+        "{tank} 说路线很熟，然后坚定地走向了另一个方向。",
+        "{healer} 要求大家慢一点。大家一致同意，然后继续往前冲。",
+        "队伍检查了补给，并决定把缺少的部分归类为临场发挥。"
+      ]
+    },
+    {
+      "id": "common_encounter_failure",
+      "eventType": "encounter-failure",
+      "scope": { "type": "global" },
+      "availableParameters": ["tank", "healer"],
+      "templates": [
+        "队伍一致认定这是一次战术性灭团，主要用于收集情报。",
+        "大家讨论了失败原因，最后决定把锅交给不在场的人。",
+        "{tank} 问治疗在哪里，{healer} 问坦克去了哪里。",
+        "本次行动没有失败，只是提前结束并附带了一些经验教训。"
+      ]
+    }
+  ]
+}

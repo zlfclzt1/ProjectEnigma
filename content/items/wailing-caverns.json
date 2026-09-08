@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-07",
+        "notes": "从 V1 wailing_caverns 装备定义原样迁移；真实属性将在阶段 5 导入。"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "10412",
+      "name": {
+        "zhCN": "尖牙腰带",
+        "enUS": "Belt of the Fang"
+      },
+      "itemLevel": 21,
+      "quality": "uncommon",
+      "slot": "waist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_30"
+      },
+      "description": {
+        "zhCN": "安娜科德拉的掉落。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "6460",
+      "name": {
+        "zhCN": "考布莱恩的腰带",
+        "enUS": "Cobrahn's Grasp"
+      },
+      "itemLevel": 24,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_03"
+      },
+      "description": {
+        "zhCN": "考布莱恩领主的掉落。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "13245",
+      "name": {
+        "zhCN": "克雷什之背",
+        "enUS": "Kresh's Back"
+      },
+      "itemLevel": 20,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shield_18"
+      },
+      "description": {
+        "zhCN": "克雷什的盾牌。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "6472",
+      "name": {
+        "zhCN": "毒蛇之刺",
+        "enUS": "Stinging Viper"
+      },
+      "itemLevel": 24,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "priest", "shaman", "druid"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_wand_10"
+      },
+      "description": {
+        "zhCN": "皮萨斯领主的单手锤。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "6449",
+      "name": {
+        "zhCN": "发光的蜥蜴披风",
+        "enUS": "Glowing Lizardscale Cloak"
+      },
+      "itemLevel": 22,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_15"
+      },
+      "description": {
+        "zhCN": "斯卡姆的掉落。通用披风，战斗效果只使用物品等级。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "6469",
+      "name": {
+        "zhCN": "毒蛇",
+        "enUS": "Venomstrike"
+      },
+      "itemLevel": 24,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_bow_10"
+      },
+      "description": {
+        "zhCN": "瑟芬迪斯领主的弓。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "6631",
+      "name": {
+        "zhCN": "生命之根",
+        "enUS": "Living Root"
+      },
+      "itemLevel": 25,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["hunter", "priest", "shaman", "mage", "warlock", "druid"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_staff_25"
+      },
+      "description": {
+        "zhCN": "永生者沃尔丹的法杖。双手武器统一占用主手栏位。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "6627",
+      "name": {
+        "zhCN": "穆坦努斯的胸甲",
+        "enUS": "Mutant Scale Breastplate"
+      },
+      "itemLevel": 28,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_plate08"
+      },
+      "description": {
+        "zhCN": "吞噬者穆坦努斯的掉落。战斗效果只使用物品等级。"
+      },
+      "stats": {}
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-07",
+        "notes": "从 V1 原型的 CLASS_DEFINITIONS 原样迁移，尚未重新核对外部资料。"
+      }
+    ]
+  },
+  "classes": [
+    {
+      "id": "warrior",
+      "name": { "zhCN": "战士" },
+      "armorType": "mail",
+      "races": ["人类", "矮人", "暗夜精灵", "侏儒", "兽人", "牛头人", "巨魔", "亡灵"]
+    },
+    {
+      "id": "paladin",
+      "name": { "zhCN": "圣骑士" },
+      "armorType": "mail",
+      "races": ["人类", "矮人"]
+    },
+    {
+      "id": "hunter",
+      "name": { "zhCN": "猎人" },
+      "armorType": "leather",
+      "races": ["矮人", "暗夜精灵", "兽人", "牛头人", "巨魔"]
+    },
+    {
+      "id": "rogue",
+      "name": { "zhCN": "盗贼" },
+      "armorType": "leather",
+      "races": ["人类", "矮人", "暗夜精灵", "侏儒", "兽人", "巨魔", "亡灵"]
+    },
+    {
+      "id": "priest",
+      "name": { "zhCN": "牧师" },
+      "armorType": "cloth",
+      "races": ["人类", "矮人", "暗夜精灵", "巨魔", "亡灵"]
+    },
+    {
+      "id": "shaman",
+      "name": { "zhCN": "萨满祭司" },
+      "armorType": "leather",
+      "races": ["兽人", "牛头人", "巨魔"]
+    },
+    {
+      "id": "mage",
+      "name": { "zhCN": "法师" },
+      "armorType": "cloth",
+      "races": ["人类", "侏儒", "巨魔", "亡灵"]
+    },
+    {
+      "id": "warlock",
+      "name": { "zhCN": "术士" },
+      "armorType": "cloth",
+      "races": ["人类", "侏儒", "兽人", "亡灵"]
+    },
+    {
+      "id": "druid",
+      "name": { "zhCN": "德鲁伊" },
+      "armorType": "leather",
+      "races": ["暗夜精灵", "牛头人"]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-07",
+        "notes": "从 V1 哀嚎洞穴掉落池原样迁移，移除重复的英文物品名称。"
+      }
+    ]
+  },
+  "lootTables": [
+    {
+      "id": "wc_lady_anacondra",
+      "guaranteedEquipmentDrops": 1,
+      "items": [
+        {
+          "itemId": "10412",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "wc_lord_cobrahn",
+      "guaranteedEquipmentDrops": 1,
+      "items": [
+        {
+          "itemId": "6460",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "wc_kresh",
+      "guaranteedEquipmentDrops": 1,
+      "items": [
+        {
+          "itemId": "13245",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "wc_lord_pythas",
+      "guaranteedEquipmentDrops": 1,
+      "items": [
+        {
+          "itemId": "6472",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "wc_skum",
+      "guaranteedEquipmentDrops": 1,
+      "items": [
+        {
+          "itemId": "6449",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "wc_lord_serpentis",
+      "guaranteedEquipmentDrops": 1,
+      "items": [
+        {
+          "itemId": "6469",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "wc_verdan",
+      "guaranteedEquipmentDrops": 1,
+      "items": [
+        {
+          "itemId": "6631",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "wc_mutanus",
+      "guaranteedEquipmentDrops": 1,
+      "items": [
+        {
+          "itemId": "6627",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

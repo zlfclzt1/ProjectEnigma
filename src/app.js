@@ -7,13 +7,7 @@ import {
   itemLevelGain,
   sellValue,
 } from "./core.js";
-import {
-  CLASS_DEFINITIONS,
-  ROLE_LABELS,
-  getClassDefinition,
-  getPersonality,
-  loadContent,
-} from "./content.js";
+import { loadBrowserLegacyContent } from "./content/legacy-content-adapter.ts";
 import { GuildGame } from "./game.js";
 
 const app = document.querySelector("#app");
@@ -110,8 +104,16 @@ function showToast(message) {
   render();
 }
 
+function getClassDefinition(classId) {
+  return content.classes.find((entry) => entry.id === classId);
+}
+
+function getPersonality(personalityId) {
+  return content.personalities.find((entry) => entry.id === personalityId);
+}
+
 function roleBadge(role) {
-  return `<span class="role-badge role-${role}">${ROLE_LABELS[role]}</span>`;
+  return `<span class="role-badge role-${role}">${content.roleLabels[role]}</span>`;
 }
 
 function memberStatus(member) {
@@ -126,7 +128,7 @@ function timeUntil(timestamp) {
 function classFilterOptions(selectedValue) {
   return [
     `<option value="all" ${selectedValue === "all" ? "selected" : ""}>全部职业</option>`,
-    ...CLASS_DEFINITIONS.map(
+    ...content.classes.map(
       (entry) =>
         `<option value="${entry.id}" ${selectedValue === entry.id ? "selected" : ""}>${escapeHtml(entry.name)}</option>`,
     ),
@@ -248,7 +250,7 @@ function characterSheet(member, personality, specs) {
             </div>
             <div class="paperdoll-nameplate">
               <strong>${escapeHtml(member.specName)} ${escapeHtml(member.className)}</strong>
-              <span><b>${roleSymbol}</b> ${ROLE_LABELS[member.role]} · ${memberStatus(member)}</span>
+              <span><b>${roleSymbol}</b> ${content.roleLabels[member.role]} · ${memberStatus(member)}</span>
             </div>
             <div class="paperdoll-stats">
               <div><span>平均物品等级</span><strong>${itemLevel}</strong></div>
@@ -342,7 +344,7 @@ function rosterPage() {
       const specs = classDefinition.specs
         .map(
           (spec) =>
-            `<option value="${spec.id}" ${spec.id === member.specId ? "selected" : ""}>${escapeHtml(spec.name)} · ${ROLE_LABELS[spec.role]}</option>`,
+            `<option value="${spec.id}" ${spec.id === member.specId ? "selected" : ""}>${escapeHtml(spec.name)} · ${content.roleLabels[spec.role]}</option>`,
         )
         .join("");
       return `
@@ -801,7 +803,7 @@ document.addEventListener("keydown", (event) => {
 });
 
 try {
-  content = await loadContent();
+  content = loadBrowserLegacyContent();
   game = new GuildGame(content);
   render();
   setInterval(tick, 1000);

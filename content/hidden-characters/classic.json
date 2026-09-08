@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-07",
+        "notes": "从 V1 原型当前实现迁移；后续隐藏角色由内容注册表驱动。"
+      }
+    ]
+  },
+  "hiddenCharacters": [
+    {
+      "id": "fairbanks",
+      "name": { "zhCN": "费厄泼赖" },
+      "classId": "warlock",
+      "specId": "warlock_affliction",
+      "personalityId": "clever",
+      "appearance": {
+        "chance": 0.01,
+        "uniquePerSave": true
+      }
+    }
+  ]
+}

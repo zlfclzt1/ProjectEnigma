@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-07",
+        "notes": "从 V1 ragefire_chasm 装备定义原样迁移；真实属性将在阶段 5 导入。"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "14145",
+      "name": {
+        "zhCN": "被诅咒的魔刃",
+        "enUS": "Cursed Felblade"
+      },
+      "itemLevel": 18,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_shortblade_12"
+      },
+      "description": {
+        "zhCN": "原始属性将在完整物品库阶段导入；战斗效果只使用物品等级。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "14148",
+      "name": {
+        "zhCN": "水晶腕轮",
+        "enUS": "Crystalline Cuffs"
+      },
+      "itemLevel": 18,
+      "quality": "uncommon",
+      "slot": "wrist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["mage", "priest", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_13"
+      },
+      "description": {
+        "zhCN": "原始属性将在完整物品库阶段导入；战斗效果只使用物品等级。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "14149",
+      "name": {
+        "zhCN": "地下斗篷",
+        "enUS": "Subterranean Cape"
+      },
+      "itemLevel": 18,
+      "quality": "uncommon",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_18"
+      },
+      "description": {
+        "zhCN": "通用披风。原始属性仅展示，不进入战斗公式。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "14151",
+      "name": {
+        "zhCN": "咏唱之刃",
+        "enUS": "Chanting Blade"
+      },
+      "itemLevel": 18,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["paladin", "priest", "shaman", "druid"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_shortblade_25"
+      },
+      "description": {
+        "zhCN": "原始属性将在完整物品库阶段导入；战斗效果只使用物品等级。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "14150",
+      "name": {
+        "zhCN": "唤魔者长袍",
+        "enUS": "Robe of Evocation"
+      },
+      "itemLevel": 18,
+      "quality": "uncommon",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["mage", "priest", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_24"
+      },
+      "description": {
+        "zhCN": "原始属性将在完整物品库阶段导入；战斗效果只使用物品等级。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "14147",
+      "name": {
+        "zhCN": "洞穴护腕",
+        "enUS": "Cavedweller Bracers"
+      },
+      "itemLevel": 18,
+      "quality": "uncommon",
+      "slot": "wrist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_07"
+      },
+      "description": {
+        "zhCN": "原始属性将在完整物品库阶段导入；战斗效果只使用物品等级。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "15452",
+      "name": {
+        "zhCN": "羽珠护腕",
+        "enUS": "Featherbead Bracers"
+      },
+      "itemLevel": 18,
+      "quality": "uncommon",
+      "slot": "wrist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["mage", "priest", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_08"
+      },
+      "description": {
+        "zhCN": "怒焰裂谷任务奖励。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "15453",
+      "name": {
+        "zhCN": "草原狮护腕",
+        "enUS": "Savannah Bracers"
+      },
+      "itemLevel": 18,
+      "quality": "uncommon",
+      "slot": "wrist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_07"
+      },
+      "description": {
+        "zhCN": "怒焰裂谷任务奖励。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "15449",
+      "name": {
+        "zhCN": "苍白长裤",
+        "enUS": "Ghastly Trousers"
+      },
+      "itemLevel": 18,
+      "quality": "uncommon",
+      "slot": "legs",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["mage", "priest", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_14"
+      },
+      "description": {
+        "zhCN": "怒焰裂谷任务奖励。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "15450",
+      "name": {
+        "zhCN": "泥泞护腿",
+        "enUS": "Dredgemire Leggings"
+      },
+      "itemLevel": 18,
+      "quality": "uncommon",
+      "slot": "legs",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_07"
+      },
+      "description": {
+        "zhCN": "怒焰裂谷任务奖励。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "15451",
+      "name": {
+        "zhCN": "石像鬼护腿",
+        "enUS": "Gargoyle Leggings"
+      },
+      "itemLevel": 18,
+      "quality": "uncommon",
+      "slot": "legs",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_03"
+      },
+      "description": {
+        "zhCN": "怒焰裂谷任务奖励。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {}
+    }
+  ]
+}

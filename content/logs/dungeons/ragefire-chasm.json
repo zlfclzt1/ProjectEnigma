@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-07",
+        "notes": "从 V1 原型的怒焰裂谷 Boss 日志原样迁移。"
+      }
+    ]
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "oggleflint_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "oggleflint" },
+      "availableParameters": ["tank", "member"],
+      "templates": [
+        "奥格弗林特试图展示气势，但队伍正在讨论晚饭吃什么。",
+        "{member} 率先冲了上去，战术说明随后才赶到。",
+        "小怪数量比预期多。{tank} 坚称这属于额外收益。"
+      ]
+    },
+    {
+      "id": "taragaman_the_hungerer_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "taragaman_the_hungerer" },
+      "availableParameters": ["tank", "healer"],
+      "templates": [
+        "塔拉加曼确实很饿，但看起来对法师面包并不满意。",
+        "{healer} 的蓝量见底，{tank} 的血量也见底。双方都说问题不大。",
+        "Boss 还剩 1%，所有输出同时开始研究伤害统计。"
+      ]
+    },
+    {
+      "id": "jergosh_the_invoker_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "jergosh_the_invoker" },
+      "availableParameters": ["member"],
+      "templates": [
+        "耶戈什开始施法。队伍开始讨论刚才是谁负责打断。",
+        "{member} 用一种没人看懂的方法避开了危险，并声称这都是计划的一部分。",
+        "治疗压力突然增加，队伍决定用更大的嗓门弥补。"
+      ]
+    },
+    {
+      "id": "bazzalan_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "bazzalan" },
+      "availableParameters": [],
+      "templates": [
+        "最终 Boss 就在眼前。刚才沉默的成员纷纷开始发表战术意见。",
+        "巴扎兰倒下了，队伍迅速从战斗团队转型为装备委员会。",
+        "装备出现的一瞬间，所有人的网络状况都奇迹般地恢复了。"
+      ]
+    }
+  ]
+}

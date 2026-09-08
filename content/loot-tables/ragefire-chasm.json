@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-07",
+        "notes": "从 V1 怒焰裂谷掉落池原样迁移，移除重复的英文物品名称。"
+      }
+    ]
+  },
+  "lootTables": [
+    {
+      "id": "taragaman_the_hungerer",
+      "guaranteedEquipmentDrops": 1,
+      "items": [
+        {
+          "itemId": "14145",
+          "weight": 0.1948
+        },
+        {
+          "itemId": "14148",
+          "weight": 0.3913
+        },
+        {
+          "itemId": "14149",
+          "weight": 0.4139
+        }
+      ]
+    },
+    {
+      "id": "jergosh_the_invoker",
+      "guaranteedEquipmentDrops": 1,
+      "items": [
+        {
+          "itemId": "14151",
+          "weight": 0.1938
+        },
+        {
+          "itemId": "14150",
+          "weight": 0.3977
+        },
+        {
+          "itemId": "14147",
+          "weight": 0.4085
+        }
+      ]
+    },
+    {
+      "id": "ragefire_chasm_common_equipment",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "dungeon_quest_rewards",
+      "items": [
+        {
+          "itemId": "15452",
+          "weight": 1
+        },
+        {
+          "itemId": "15453",
+          "weight": 1
+        },
+        {
+          "itemId": "15449",
+          "weight": 1
+        },
+        {
+          "itemId": "15450",
+          "weight": 1
+        },
+        {
+          "itemId": "15451",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

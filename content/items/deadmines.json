@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-07",
+        "notes": "从 V1 deadmines 装备定义原样迁移；真实属性将在阶段 5 导入。"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "5187",
+      "name": {
+        "zhCN": "拉克佐之锤",
+        "enUS": "Rhahk'Zor's Hammer"
+      },
+      "itemLevel": 20,
+      "quality": "common",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman", "druid"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_hammer_09"
+      },
+      "description": {
+        "zhCN": "拉克佐的双手锤。双手武器统一占用主手栏位。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "5194",
+      "name": {
+        "zhCN": "工头战斧",
+        "enUS": "Taskmaster Axe"
+      },
+      "itemLevel": 23,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_throwingaxe_06"
+      },
+      "description": {
+        "zhCN": "斯尼德的双手斧。双手武器统一占用主手栏位。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "5199",
+      "name": {
+        "zhCN": "铁匠短裤",
+        "enUS": "Smelting Pants"
+      },
+      "itemLevel": 21,
+      "quality": "uncommon",
+      "slot": "legs",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_02"
+      },
+      "description": {
+        "zhCN": "基尔尼格的掉落。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "7230",
+      "name": {
+        "zhCN": "重拳先生的大锤",
+        "enUS": "Smite's Mighty Hammer"
+      },
+      "itemLevel": 23,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman", "druid"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_hammer_09"
+      },
+      "description": {
+        "zhCN": "重拳先生的双手锤。双手武器统一占用主手栏位。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "5201",
+      "name": {
+        "zhCN": "火石法杖",
+        "enUS": "Emberstone Staff"
+      },
+      "itemLevel": 23,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["hunter", "priest", "shaman", "mage", "warlock", "druid"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_staff_13"
+      },
+      "description": {
+        "zhCN": "绿皮队长的法杖。双手武器统一占用主手栏位。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "5191",
+      "name": {
+        "zhCN": "残酷倒钩",
+        "enUS": "Cruel Barb"
+      },
+      "itemLevel": 24,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "mage", "warlock"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_24"
+      },
+      "description": {
+        "zhCN": "艾德温·范克里夫的单手剑。战斗效果只使用物品等级。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "5198",
+      "name": {
+        "zhCN": "曲奇的搅汤棒",
+        "enUS": "Cookie's Stirring Rod"
+      },
+      "itemLevel": 22,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_staff_02"
+      },
+      "description": {
+        "zhCN": "曲奇的魔杖。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {}
+    }
+  ]
+}

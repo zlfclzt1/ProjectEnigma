@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-07",
+        "notes": "从 V1 原型的三座早期副本趣味日志原样迁移。"
+      }
+    ]
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "wailing_caverns_flavor",
+      "eventType": "dungeon-flavor",
+      "scope": { "type": "dungeon", "dungeonId": "wailing_caverns" },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "{member} 表示自己认识路。十分钟后，队伍再次经过了同一棵蘑菇。",
+        "{healer} 提醒大家别踩水。{tank} 已经带着三群迅猛龙游到了对岸。",
+        "洞穴里传来一声哀嚎。队伍认真听了一会儿，确认是迷路的输出。"
+      ]
+    },
+    {
+      "id": "deadmines_flavor",
+      "eventType": "dungeon-flavor",
+      "scope": { "type": "dungeon", "dungeonId": "deadmines" },
+      "availableParameters": ["tank", "member"],
+      "templates": [
+        "{tank} 问矿井里为什么有这么多海盗。{member} 回答这是西部荒野的产业升级。",
+        "伐木机开始冒烟，队伍一致决定把它登记为正常工作状态。",
+        "大门缓缓打开。所有人都假装刚才没有人忘记带火药。"
+      ]
+    },
+    {
+      "id": "shadowfang_keep_flavor",
+      "eventType": "dungeon-flavor",
+      "scope": { "type": "dungeon", "dungeonId": "shadowfang_keep" },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "城堡的门自己关上了。{member} 说这是为了提升副本沉浸感。",
+        "狼人从黑暗里扑出，{healer} 熟练地把尖叫声归类为团队预警。",
+        "{tank} 说楼梯很安全，然后从唯一一个没有护栏的位置掉了下去。"
+      ]
+    }
+  ]
+}

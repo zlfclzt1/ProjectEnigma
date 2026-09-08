@@ -1,0 +1,908 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-07",
+        "notes": "将 V1 动态初始装备迁移为稳定定义 ID；数值属于游戏设计。"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "starter_cloth_head",
+      "name": {
+        "zhCN": "入门头部"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "head",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_leather_head",
+      "name": {
+        "zhCN": "入门头部"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "head",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_mail_head",
+      "name": {
+        "zhCN": "入门头部"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "head",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_plate_head",
+      "name": {
+        "zhCN": "入门头部"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "head",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_neck",
+      "name": {
+        "zhCN": "入门颈部"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_cloth_shoulder",
+      "name": {
+        "zhCN": "入门肩部"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "shoulder",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_leather_shoulder",
+      "name": {
+        "zhCN": "入门肩部"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "shoulder",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_mail_shoulder",
+      "name": {
+        "zhCN": "入门肩部"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "shoulder",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_plate_shoulder",
+      "name": {
+        "zhCN": "入门肩部"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "shoulder",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_back",
+      "name": {
+        "zhCN": "入门披风"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_cloth_chest",
+      "name": {
+        "zhCN": "入门胸甲"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_leather_chest",
+      "name": {
+        "zhCN": "入门胸甲"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "chest",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_mail_chest",
+      "name": {
+        "zhCN": "入门胸甲"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "chest",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_plate_chest",
+      "name": {
+        "zhCN": "入门胸甲"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "chest",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_cloth_wrist",
+      "name": {
+        "zhCN": "入门护腕"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "wrist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_leather_wrist",
+      "name": {
+        "zhCN": "入门护腕"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "wrist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_mail_wrist",
+      "name": {
+        "zhCN": "入门护腕"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "wrist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_plate_wrist",
+      "name": {
+        "zhCN": "入门护腕"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "wrist",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_cloth_hands",
+      "name": {
+        "zhCN": "入门手套"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "hands",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_leather_hands",
+      "name": {
+        "zhCN": "入门手套"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "hands",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_mail_hands",
+      "name": {
+        "zhCN": "入门手套"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "hands",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_plate_hands",
+      "name": {
+        "zhCN": "入门手套"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "hands",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_cloth_waist",
+      "name": {
+        "zhCN": "入门腰带"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "waist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_leather_waist",
+      "name": {
+        "zhCN": "入门腰带"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "waist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_mail_waist",
+      "name": {
+        "zhCN": "入门腰带"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "waist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_plate_waist",
+      "name": {
+        "zhCN": "入门腰带"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "waist",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_cloth_legs",
+      "name": {
+        "zhCN": "入门腿部"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "legs",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_leather_legs",
+      "name": {
+        "zhCN": "入门腿部"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "legs",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_mail_legs",
+      "name": {
+        "zhCN": "入门腿部"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "legs",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_plate_legs",
+      "name": {
+        "zhCN": "入门腿部"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "legs",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_cloth_feet",
+      "name": {
+        "zhCN": "入门鞋子"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "feet",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_leather_feet",
+      "name": {
+        "zhCN": "入门鞋子"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "feet",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_mail_feet",
+      "name": {
+        "zhCN": "入门鞋子"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "feet",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_plate_feet",
+      "name": {
+        "zhCN": "入门鞋子"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "feet",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_ring1",
+      "name": {
+        "zhCN": "入门戒指一"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_ring2",
+      "name": {
+        "zhCN": "入门戒指二"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "ring2",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_trinket1",
+      "name": {
+        "zhCN": "入门饰品一"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_trinket2",
+      "name": {
+        "zhCN": "入门饰品二"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "trinket2",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_main_hand",
+      "name": {
+        "zhCN": "入门主手"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_off_hand",
+      "name": {
+        "zhCN": "入门副手"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    },
+    {
+      "id": "starter_ranged",
+      "name": {
+        "zhCN": "入门远程/圣物"
+      },
+      "itemLevel": 10,
+      "quality": "common",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "generic-slot"
+      },
+      "description": {
+        "zhCN": "公会为新人准备的基础装备。"
+      },
+      "isStarter": true,
+      "stats": {}
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-07",
+        "notes": "从 V1 死亡矿井掉落池原样迁移，移除重复的英文物品名称。"
+      }
+    ]
+  },
+  "lootTables": [
+    {
+      "id": "dm_rhahkzor",
+      "guaranteedEquipmentDrops": 1,
+      "items": [
+        {
+          "itemId": "5187",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "dm_sneed",
+      "guaranteedEquipmentDrops": 1,
+      "items": [
+        {
+          "itemId": "5194",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "dm_gilnid",
+      "guaranteedEquipmentDrops": 1,
+      "items": [
+        {
+          "itemId": "5199",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "dm_mr_smite",
+      "guaranteedEquipmentDrops": 1,
+      "items": [
+        {
+          "itemId": "7230",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "dm_captain_greenskin",
+      "guaranteedEquipmentDrops": 1,
+      "items": [
+        {
+          "itemId": "5201",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "dm_edwin_vancleef",
+      "guaranteedEquipmentDrops": 1,
+      "items": [
+        {
+          "itemId": "5191",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "dm_cookie",
+      "guaranteedEquipmentDrops": 1,
+      "items": [
+        {
+          "itemId": "5198",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

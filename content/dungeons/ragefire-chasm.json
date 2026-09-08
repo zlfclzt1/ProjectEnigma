@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-07",
+        "notes": "从 V1 怒焰裂谷副本定义原样迁移。"
+      }
+    ]
+  },
+  "dungeons": [
+    {
+      "id": "ragefire_chasm",
+      "name": {
+        "zhCN": "怒焰裂谷"
+      },
+      "minimumLevel": 8,
+      "recommendedLevel": 13,
+      "defaultUnlocked": true,
+      "members": {
+        "minimum": 1,
+        "maximum": 5,
+        "recommended": 5
+      },
+      "duration": {
+        "baseSeconds": 600,
+        "minimumRatio": 0.5,
+        "maximumRatio": 1.8
+      },
+      "probability": {
+        "minimum": 0.05,
+        "maximum": 0.99,
+        "base": 0.05,
+        "readinessMultiplier": 0.9,
+        "surplusEffect": 0.5,
+        "geometricWeight": 0.7,
+        "bottleneckWeight": 0.3,
+        "overpowerThreshold": 1.5
+      },
+      "route": ["oggleflint", "taragaman_the_hungerer", "jergosh_the_invoker", "bazzalan"]
+    }
+  ]
+}

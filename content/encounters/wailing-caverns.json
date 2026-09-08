@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-07",
+        "notes": "从 V1 哀嚎洞穴 Boss 定义原样迁移。"
+      }
+    ]
+  },
+  "encounters": [
+    {
+      "id": "wc_lady_anacondra",
+      "dungeonId": "wailing_caverns",
+      "name": {
+        "zhCN": "安娜科德拉"
+      },
+      "stageSeconds": 180,
+      "requirements": {
+        "tank": 16,
+        "healing": 16,
+        "damage": 56
+      },
+      "weights": {
+        "tank": 0.3,
+        "healing": 0.35,
+        "damage": 0.35
+      },
+      "experienceShare": 0.12,
+      "funds": 12,
+      "firstKillBonus": 24,
+      "lootTableId": "wc_lady_anacondra",
+      "mechanicIds": []
+    },
+    {
+      "id": "wc_lord_cobrahn",
+      "dungeonId": "wailing_caverns",
+      "name": {
+        "zhCN": "考布莱恩领主"
+      },
+      "stageSeconds": 180,
+      "requirements": {
+        "tank": 16.5,
+        "healing": 16,
+        "damage": 57
+      },
+      "weights": {
+        "tank": 0.35,
+        "healing": 0.3,
+        "damage": 0.35
+      },
+      "experienceShare": 0.12,
+      "funds": 12,
+      "firstKillBonus": 24,
+      "lootTableId": "wc_lord_cobrahn",
+      "mechanicIds": []
+    },
+    {
+      "id": "wc_kresh",
+      "dungeonId": "wailing_caverns",
+      "name": {
+        "zhCN": "克雷什"
+      },
+      "stageSeconds": 120,
+      "requirements": {
+        "tank": 16.5,
+        "healing": 15.5,
+        "damage": 58
+      },
+      "weights": {
+        "tank": 0.4,
+        "healing": 0.25,
+        "damage": 0.35
+      },
+      "experienceShare": 0.1,
+      "funds": 10,
+      "firstKillBonus": 20,
+      "lootTableId": "wc_kresh",
+      "mechanicIds": []
+    },
+    {
+      "id": "wc_lord_pythas",
+      "dungeonId": "wailing_caverns",
+      "name": {
+        "zhCN": "皮萨斯领主"
+      },
+      "stageSeconds": 180,
+      "requirements": {
+        "tank": 17,
+        "healing": 16.5,
+        "damage": 59
+      },
+      "weights": {
+        "tank": 0.35,
+        "healing": 0.3,
+        "damage": 0.35
+      },
+      "experienceShare": 0.12,
+      "funds": 12,
+      "firstKillBonus": 24,
+      "lootTableId": "wc_lord_pythas",
+      "mechanicIds": []
+    },
+    {
+      "id": "wc_skum",
+      "dungeonId": "wailing_caverns",
+      "name": {
+        "zhCN": "斯卡姆"
+      },
+      "stageSeconds": 180,
+      "requirements": {
+        "tank": 17,
+        "healing": 17,
+        "damage": 60
+      },
+      "weights": {
+        "tank": 0.3,
+        "healing": 0.35,
+        "damage": 0.35
+      },
+      "experienceShare": 0.12,
+      "funds": 12,
+      "firstKillBonus": 24,
+      "lootTableId": "wc_skum",
+      "mechanicIds": []
+    },
+    {
+      "id": "wc_lord_serpentis",
+      "dungeonId": "wailing_caverns",
+      "name": {
+        "zhCN": "瑟芬迪斯领主"
+      },
+      "stageSeconds": 240,
+      "requirements": {
+        "tank": 17.5,
+        "healing": 17,
+        "damage": 61
+      },
+      "weights": {
+        "tank": 0.3,
+        "healing": 0.35,
+        "damage": 0.35
+      },
+      "experienceShare": 0.14,
+      "funds": 15,
+      "firstKillBonus": 30,
+      "lootTableId": "wc_lord_serpentis",
+      "mechanicIds": []
+    },
+    {
+      "id": "wc_verdan",
+      "dungeonId": "wailing_caverns",
+      "name": {
+        "zhCN": "永生者沃尔丹"
+      },
+      "stageSeconds": 240,
+      "requirements": {
+        "tank": 18,
+        "healing": 17.5,
+        "damage": 62
+      },
+      "weights": {
+        "tank": 0.45,
+        "healing": 0.3,
+        "damage": 0.25
+      },
+      "experienceShare": 0.14,
+      "funds": 15,
+      "firstKillBonus": 30,
+      "lootTableId": "wc_verdan",
+      "mechanicIds": []
+    },
+    {
+      "id": "wc_mutanus",
+      "dungeonId": "wailing_caverns",
+      "name": {
+        "zhCN": "吞噬者穆坦努斯"
+      },
+      "stageSeconds": 360,
+      "requirements": {
+        "tank": 18,
+        "healing": 18,
+        "damage": 64
+      },
+      "weights": {
+        "tank": 0.35,
+        "healing": 0.35,
+        "damage": 0.3
+      },
+      "experienceShare": 0.14,
+      "funds": 18,
+      "firstKillBonus": 36,
+      "lootTableId": "wc_mutanus",
+      "mechanicIds": []
+    }
+  ]
+}

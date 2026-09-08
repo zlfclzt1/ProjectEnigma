@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-07",
+        "notes": "从 V1 原型的 ROLE_LABELS 原样迁移。"
+      }
+    ]
+  },
+  "roles": [
+    { "id": "tank", "name": { "zhCN": "坦克" } },
+    { "id": "healer", "name": { "zhCN": "治疗" } },
+    { "id": "dps", "name": { "zhCN": "输出" } }
+  ]
+}
