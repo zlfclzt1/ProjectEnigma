@@ -5,6 +5,7 @@ import { describe, expect, it } from "vitest";
 import { loadContent } from "../../src/content.js";
 import {
   equipmentSlotSchema,
+  itemDefinitionSchema,
   itemDefinitionFileSchema,
   type EquipmentSlot,
   type ItemDefinition,
@@ -110,5 +111,12 @@ describe("migrated item definitions", () => {
     const ids = migratedItems.map((item) => item.id);
     expect(new Set(ids).size).toBe(ids.length);
     expect(migratedItems.every((item) => Object.keys(item.stats).length === 0)).toBe(true);
+  });
+
+  it("requires two-handed weapons to occupy the main-hand slot", () => {
+    const starterOffHand = migratedItems.find((item) => item.id === "starter_off_hand")!;
+    expect(() => itemDefinitionSchema.parse({ ...starterOffHand, twoHanded: true })).toThrow(
+      /双手武器必须使用主手栏位/,
+    );
   });
 });

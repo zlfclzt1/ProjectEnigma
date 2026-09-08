@@ -15,55 +15,55 @@
       "id": "warrior",
       "name": { "zhCN": "战士" },
       "armorType": "mail",
-      "races": ["人类", "矮人", "暗夜精灵", "侏儒", "兽人", "牛头人", "巨魔", "亡灵"]
+      "raceIds": ["human", "dwarf", "night_elf", "gnome", "orc", "tauren", "troll", "undead"]
     },
     {
       "id": "paladin",
       "name": { "zhCN": "圣骑士" },
       "armorType": "mail",
-      "races": ["人类", "矮人"]
+      "raceIds": ["human", "dwarf"]
     },
     {
       "id": "hunter",
       "name": { "zhCN": "猎人" },
       "armorType": "leather",
-      "races": ["矮人", "暗夜精灵", "兽人", "牛头人", "巨魔"]
+      "raceIds": ["dwarf", "night_elf", "orc", "tauren", "troll"]
     },
     {
       "id": "rogue",
       "name": { "zhCN": "盗贼" },
       "armorType": "leather",
-      "races": ["人类", "矮人", "暗夜精灵", "侏儒", "兽人", "巨魔", "亡灵"]
+      "raceIds": ["human", "dwarf", "night_elf", "gnome", "orc", "troll", "undead"]
     },
     {
       "id": "priest",
       "name": { "zhCN": "牧师" },
       "armorType": "cloth",
-      "races": ["人类", "矮人", "暗夜精灵", "巨魔", "亡灵"]
+      "raceIds": ["human", "dwarf", "night_elf", "troll", "undead"]
     },
     {
       "id": "shaman",
       "name": { "zhCN": "萨满祭司" },
       "armorType": "leather",
-      "races": ["兽人", "牛头人", "巨魔"]
+      "raceIds": ["orc", "tauren", "troll"]
     },
     {
       "id": "mage",
       "name": { "zhCN": "法师" },
       "armorType": "cloth",
-      "races": ["人类", "侏儒", "巨魔", "亡灵"]
+      "raceIds": ["human", "gnome", "troll", "undead"]
     },
     {
       "id": "warlock",
       "name": { "zhCN": "术士" },
       "armorType": "cloth",
-      "races": ["人类", "侏儒", "兽人", "亡灵"]
+      "raceIds": ["human", "gnome", "orc", "undead"]
     },
     {
       "id": "druid",
       "name": { "zhCN": "德鲁伊" },
       "armorType": "leather",
-      "races": ["暗夜精灵", "牛头人"]
+      "raceIds": ["night_elf", "tauren"]
     }
   ]
 }

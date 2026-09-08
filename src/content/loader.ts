@@ -14,12 +14,14 @@ import {
   hiddenCharacterDefinitionFileSchema,
   namePartsFileSchema,
   personalityDefinitionFileSchema,
+  raceDefinitionFileSchema,
   roleDefinitionFileSchema,
   specDefinitionFileSchema,
   type ClassDefinition,
   type HiddenCharacterDefinition,
   type NamePartsFile,
   type PersonalityDefinition,
+  type RaceDefinition,
   type RoleDefinition,
   type SpecDefinition,
 } from "./schemas/member-definitions";
@@ -67,6 +69,7 @@ export interface LocatedContent<T> {
 export interface LoadedContent {
   readonly roles: readonly LocatedContent<RoleDefinition>[];
   readonly classes: readonly LocatedContent<ClassDefinition>[];
+  readonly races: readonly LocatedContent<RaceDefinition>[];
   readonly specs: readonly LocatedContent<SpecDefinition>[];
   readonly personalities: readonly LocatedContent<PersonalityDefinition>[];
   readonly nameParts: readonly LocatedContent<NamePartsFile>[];
@@ -90,6 +93,7 @@ interface FileDescriptor {
 
 const DIRECTORY_DESCRIPTORS: Readonly<Record<string, FileDescriptor>> = {
   specs: { schema: specDefinitionFileSchema, collection: "specs", property: "specs" },
+  races: { schema: raceDefinitionFileSchema, collection: "races", property: "races" },
   personalities: {
     schema: personalityDefinitionFileSchema,
     collection: "personalities",
@@ -124,6 +128,7 @@ function emptyLoadedContent(): MutableLoadedContent {
   return {
     roles: [],
     classes: [],
+    races: [],
     specs: [],
     personalities: [],
     nameParts: [],

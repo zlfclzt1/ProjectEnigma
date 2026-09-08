@@ -1,4 +1,6 @@
 import { z } from "zod";
+import { EQUIPMENT_SLOTS } from "../../domain/equipment/equipment-slot";
+import type { EquipmentSlot as DomainEquipmentSlot } from "../../domain/equipment/equipment-slot";
 import {
   armorTypeSchema,
   brandedContentIdSchema,
@@ -9,25 +11,7 @@ import {
 } from "./common";
 import { contentAttributionSchema } from "./content-source";
 
-export const equipmentSlotSchema = z.enum([
-  "head",
-  "neck",
-  "shoulder",
-  "back",
-  "chest",
-  "wrist",
-  "hands",
-  "waist",
-  "legs",
-  "feet",
-  "ring1",
-  "ring2",
-  "trinket1",
-  "trinket2",
-  "mainHand",
-  "offHand",
-  "ranged",
-]);
+export const equipmentSlotSchema = z.enum(EQUIPMENT_SLOTS);
 
 export const itemIconSchema = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("database"), name: z.string().trim().min(1) }).strict(),
@@ -57,7 +41,16 @@ export const itemDefinitionSchema = z
     isStarter: z.boolean().default(false),
     stats: z.object({}).strict(),
   })
-  .strict();
+  .strict()
+  .superRefine((item, context) => {
+    if (item.twoHanded && item.slot !== "mainHand") {
+      context.addIssue({
+        code: "custom",
+        path: ["twoHanded"],
+        message: "双手武器必须使用主手栏位",
+      });
+    }
+  });
 
 export const itemDefinitionFileSchema = z
   .object({
@@ -67,5 +60,5 @@ export const itemDefinitionFileSchema = z
   })
   .strict();
 
-export type EquipmentSlot = z.infer<typeof equipmentSlotSchema>;
+export type EquipmentSlot = DomainEquipmentSlot;
 export type ItemDefinition = z.infer<typeof itemDefinitionSchema>;

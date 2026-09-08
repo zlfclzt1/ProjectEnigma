@@ -1,7 +1,6 @@
-export interface RandomState {
-  readonly seed: string;
-  readonly counter: number;
-}
+import type { RandomState } from "../../domain/shared/runtime-state";
+
+export type { RandomState } from "../../domain/shared/runtime-state";
 
 /**
  * Produces deterministic unit values in the range [0, 1).

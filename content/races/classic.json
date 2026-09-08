@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-07",
+        "notes": "从 V1 职业可选种族列表拆分为稳定种族 ID；中文显示保持不变。"
+      }
+    ]
+  },
+  "races": [
+    { "id": "human", "name": { "zhCN": "人类" } },
+    { "id": "dwarf", "name": { "zhCN": "矮人" } },
+    { "id": "night_elf", "name": { "zhCN": "暗夜精灵" } },
+    { "id": "gnome", "name": { "zhCN": "侏儒" } },
+    { "id": "orc", "name": { "zhCN": "兽人" } },
+    { "id": "tauren", "name": { "zhCN": "牛头人" } },
+    { "id": "troll", "name": { "zhCN": "巨魔" } },
+    { "id": "undead", "name": { "zhCN": "亡灵" } }
+  ]
+}

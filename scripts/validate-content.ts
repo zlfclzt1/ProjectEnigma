@@ -46,6 +46,7 @@ try {
   const registry = loadContentRegistry(modules);
   const counts = [
     `职业 ${registry.classes.length}`,
+    `种族 ${registry.races.length}`,
     `专精 ${registry.specs.length}`,
     `性格 ${registry.personalities.length}`,
     `隐藏角色 ${registry.hiddenCharacters.length}`,

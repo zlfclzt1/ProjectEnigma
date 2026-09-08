@@ -14,6 +14,7 @@ import type {
   HiddenCharacterDefinition,
   NamePartsFile,
   PersonalityDefinition,
+  RaceDefinition,
   RoleDefinition,
   SpecDefinition,
 } from "./schemas/member-definitions";
@@ -162,6 +163,7 @@ function validateDisplayNames(loaded: LoadedContent, issues: ContentValidationIs
   const named: readonly LocatedContent<{ readonly name: { readonly zhCN: string } }>[] = [
     ...loaded.roles,
     ...loaded.classes,
+    ...loaded.races,
     ...loaded.specs,
     ...loaded.personalities,
     ...loaded.hiddenCharacters,
@@ -183,6 +185,7 @@ function validateDisplayNames(loaded: LoadedContent, issues: ContentValidationIs
 export class ContentRegistry {
   readonly roles: readonly RoleDefinition[];
   readonly classes: readonly ClassDefinition[];
+  readonly races: readonly RaceDefinition[];
   readonly specs: readonly SpecDefinition[];
   readonly personalities: readonly PersonalityDefinition[];
   readonly nameParts: readonly NamePartsFile[];
@@ -195,6 +198,7 @@ export class ContentRegistry {
 
   readonly roleById: ReadonlyMap<RoleDefinition["id"], RoleDefinition>;
   readonly classById: ReadonlyMap<ClassDefinition["id"], ClassDefinition>;
+  readonly raceById: ReadonlyMap<RaceDefinition["id"], RaceDefinition>;
   readonly specById: ReadonlyMap<SpecDefinition["id"], SpecDefinition>;
   readonly personalityById: ReadonlyMap<PersonalityDefinition["id"], PersonalityDefinition>;
   readonly hiddenCharacterById: ReadonlyMap<
@@ -212,6 +216,7 @@ export class ContentRegistry {
     const issues: ContentValidationIssue[] = [];
     const roleById = buildIndex(loaded.roles, issues, "定位");
     const classById = buildIndex(loaded.classes, issues, "职业");
+    const raceById = buildIndex(loaded.races, issues, "种族");
     const specById = buildIndex(loaded.specs, issues, "专精");
     const personalityById = buildIndex(loaded.personalities, issues, "性格");
     const hiddenCharacterById = buildIndex(loaded.hiddenCharacters, issues, "隐藏角色");
@@ -232,7 +237,15 @@ export class ContentRegistry {
       } else namePartsByLocale.set(entry.value.locale, entry.value);
     }
 
-    this.validateMemberReferences(loaded, roleById, classById, specById, personalityById, issues);
+    this.validateMemberReferences(
+      loaded,
+      roleById,
+      classById,
+      raceById,
+      specById,
+      personalityById,
+      issues,
+    );
     this.validateItemReferences(loaded, roleById, classById, issues);
     this.validateDungeonReferences(
       loaded,
@@ -249,6 +262,7 @@ export class ContentRegistry {
 
     this.roles = Object.freeze(loaded.roles.map(({ value }) => value));
     this.classes = Object.freeze(loaded.classes.map(({ value }) => value));
+    this.races = Object.freeze(loaded.races.map(({ value }) => value));
     this.specs = Object.freeze(loaded.specs.map(({ value }) => value));
     this.personalities = Object.freeze(loaded.personalities.map(({ value }) => value));
     this.nameParts = Object.freeze(loaded.nameParts.map(({ value }) => value));
@@ -260,6 +274,7 @@ export class ContentRegistry {
     this.logTemplates = Object.freeze(loaded.logTemplates.map(({ value }) => value));
     this.roleById = readonlyMap(roleById);
     this.classById = readonlyMap(classById);
+    this.raceById = readonlyMap(raceById);
     this.specById = readonlyMap(specById);
     this.personalityById = readonlyMap(personalityById);
     this.hiddenCharacterById = readonlyMap(hiddenCharacterById);
@@ -276,10 +291,16 @@ export class ContentRegistry {
     loaded: LoadedContent,
     roleById: ReadonlyMap<RoleDefinition["id"], RoleDefinition>,
     classById: ReadonlyMap<ClassDefinition["id"], ClassDefinition>,
+    raceById: ReadonlyMap<RaceDefinition["id"], RaceDefinition>,
     specById: ReadonlyMap<SpecDefinition["id"], SpecDefinition>,
     personalityById: ReadonlyMap<PersonalityDefinition["id"], PersonalityDefinition>,
     issues: ContentValidationIssue[],
   ): void {
+    for (const owner of loaded.classes) {
+      owner.value.raceIds.forEach((id, index) =>
+        requireReference(raceById, id, owner, `raceIds[${index}]`, "种族", issues),
+      );
+    }
     for (const owner of loaded.specs) {
       requireReference(classById, owner.value.classId, owner, "classId", "职业", issues);
       requireReference(roleById, owner.value.role, owner, "role", "定位", issues);

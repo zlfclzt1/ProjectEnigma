@@ -6,6 +6,7 @@ import {
   hiddenCharacterDefinitionFileSchema,
   namePartsFileSchema,
   personalityDefinitionFileSchema,
+  raceDefinitionFileSchema,
   roleDefinitionFileSchema,
   specDefinitionFileSchema,
 } from "../../src/content/schemas/member-definitions";
@@ -16,6 +17,7 @@ function readJson(relativePath: string): unknown {
 
 const roleFile = roleDefinitionFileSchema.parse(readJson("content/classes/roles.json"));
 const classFile = classDefinitionFileSchema.parse(readJson("content/classes/classic.json"));
+const raceFile = raceDefinitionFileSchema.parse(readJson("content/races/classic.json"));
 const specFile = specDefinitionFileSchema.parse(readJson("content/specs/classic.json"));
 const personalityFile = personalityDefinitionFileSchema.parse(
   readJson("content/personalities/classic.json"),
@@ -35,6 +37,7 @@ describe("migrated member content", () => {
   it("preserves all legacy classes and specs", () => {
     type ParsedSpec = (typeof specFile.specs)[number];
     const specsByClass = new Map<string, ParsedSpec[]>();
+    const raceById = new Map(raceFile.races.map((race) => [race.id, race]));
     for (const spec of specFile.specs) {
       const specs = specsByClass.get(spec.classId) ?? [];
       specs.push(spec);
@@ -44,7 +47,7 @@ describe("migrated member content", () => {
       id: classDefinition.id,
       name: classDefinition.name.zhCN,
       armorType: classDefinition.armorType,
-      races: classDefinition.races,
+      races: classDefinition.raceIds.map((raceId) => raceById.get(raceId)!.name.zhCN),
       specs: (specsByClass.get(classDefinition.id) ?? []).map((spec) => ({
         id: spec.id,
         name: spec.name.zhCN,
@@ -54,6 +57,7 @@ describe("migrated member content", () => {
 
     expect(migrated).toEqual(CLASS_DEFINITIONS);
     expect(classFile.classes).toHaveLength(9);
+    expect(raceFile.races).toHaveLength(8);
     expect(specFile.specs).toHaveLength(28);
     expect(specFile.specs.every((spec) => spec.combatProfileId.startsWith("legacy_"))).toBe(true);
   });
@@ -88,12 +92,16 @@ describe("migrated member content", () => {
 
   it("keeps member content references valid and IDs unique", () => {
     const classIds = new Set(classFile.classes.map((entry) => entry.id));
+    const raceIds = new Set(raceFile.races.map((entry) => entry.id));
     const specIds = new Set(specFile.specs.map((entry) => entry.id));
     const personalityIds = new Set(personalityFile.personalities.map((entry) => entry.id));
 
     expect(classIds.size).toBe(classFile.classes.length);
     expect(specIds.size).toBe(specFile.specs.length);
     expect(personalityIds.size).toBe(personalityFile.personalities.length);
+    for (const classDefinition of classFile.classes) {
+      expect(classDefinition.raceIds.every((raceId) => raceIds.has(raceId))).toBe(true);
+    }
     for (const spec of specFile.specs) expect(classIds.has(spec.classId)).toBe(true);
     for (const hidden of hiddenFile.hiddenCharacters) {
       expect(classIds.has(hidden.classId)).toBe(true);

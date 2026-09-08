@@ -43,7 +43,7 @@ export function adaptLegacyContent(registry: ContentRegistry) {
     id: classDefinition.id,
     name: classDefinition.name.zhCN,
     armorType: classDefinition.armorType,
-    races: [...classDefinition.races],
+    races: classDefinition.raceIds.map((raceId) => registry.raceById.get(raceId)!.name.zhCN),
     specs: registry.specs
       .filter((spec) => spec.classId === classDefinition.id)
       .map((spec) => ({ id: spec.id, name: spec.name.zhCN, role: spec.role })),

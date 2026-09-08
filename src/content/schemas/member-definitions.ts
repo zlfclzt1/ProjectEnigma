@@ -9,6 +9,7 @@ import {
 import { contentAttributionSchema } from "./content-source";
 
 const classIdSchema = brandedContentIdSchema<"ClassId">();
+const raceIdSchema = brandedContentIdSchema<"RaceId">();
 const specIdSchema = brandedContentIdSchema<"SpecId">();
 const personalityIdSchema = brandedContentIdSchema<"PersonalityId">();
 const hiddenCharacterIdSchema = brandedContentIdSchema<"HiddenCharacterId">();
@@ -37,12 +38,23 @@ export const classDefinitionSchema = z
     id: classIdSchema,
     name: localizedTextSchema,
     armorType: armorTypeSchema,
-    races: z.array(z.string().trim().min(1)).min(1),
+    raceIds: z.array(raceIdSchema).min(1),
   })
   .strict();
 
 export const classDefinitionFileSchema = contentFileBaseSchema.safeExtend({
   classes: z.array(classDefinitionSchema).min(1),
+});
+
+export const raceDefinitionSchema = z
+  .object({
+    id: raceIdSchema,
+    name: localizedTextSchema,
+  })
+  .strict();
+
+export const raceDefinitionFileSchema = contentFileBaseSchema.safeExtend({
+  races: z.array(raceDefinitionSchema).min(1),
 });
 
 export const specDefinitionSchema = z
@@ -101,6 +113,7 @@ export const hiddenCharacterDefinitionFileSchema = contentFileBaseSchema.safeExt
 
 export type RoleDefinition = z.infer<typeof roleDefinitionSchema>;
 export type ClassDefinition = z.infer<typeof classDefinitionSchema>;
+export type RaceDefinition = z.infer<typeof raceDefinitionSchema>;
 export type SpecDefinition = z.infer<typeof specDefinitionSchema>;
 export type PersonalityDefinition = z.infer<typeof personalityDefinitionSchema>;
 export type HiddenCharacterDefinition = z.infer<typeof hiddenCharacterDefinitionSchema>;

@@ -10,7 +10,9 @@ export type ClassId = BrandedId<"ClassId">;
 export type CombatProfileId = BrandedId<"CombatProfileId">;
 export type ContentVersion = BrandedId<"ContentVersion">;
 export type DungeonId = BrandedId<"DungeonId">;
+export type EnchantmentId = BrandedId<"EnchantmentId">;
 export type EncounterId = BrandedId<"EncounterId">;
+export type GatheringSiteId = BrandedId<"GatheringSiteId">;
 export type HiddenCharacterId = BrandedId<"HiddenCharacterId">;
 export type ItemDefinitionId = BrandedId<"ItemDefinitionId">;
 export type ItemInstanceId = BrandedId<"ItemInstanceId">;
@@ -18,12 +20,16 @@ export type LogTemplateId = BrandedId<"LogTemplateId">;
 export type LootTableId = BrandedId<"LootTableId">;
 export type MechanicId = BrandedId<"MechanicId">;
 export type MemberId = BrandedId<"MemberId">;
+export type MemberProfessionId = BrandedId<"MemberProfessionId">;
 export type MountId = BrandedId<"MountId">;
+export type PendingLootId = BrandedId<"PendingLootId">;
 export type PersonalityId = BrandedId<"PersonalityId">;
 export type ProfessionDefinitionId = BrandedId<"ProfessionDefinitionId">;
+export type RaceId = BrandedId<"RaceId">;
 export type RecipeId = BrandedId<"RecipeId">;
 export type SaveSlotId = BrandedId<"SaveSlotId">;
 export type SpecId = BrandedId<"SpecId">;
+export type TrainingDefinitionId = BrandedId<"TrainingDefinitionId">;
 
 export function asBrandedId<Name extends string>(value: string): BrandedId<Name> {
   return value as BrandedId<Name>;
