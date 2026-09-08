@@ -77,3 +77,5 @@ tests/      核心规则与离线结算测试
 - [游戏设计文档](./docs/game-design-v0.1.md)
 - [怒焰裂谷垂直切片](./docs/ragefire-chasm-vertical-slice.md)
 - [新增经典旧世副本工作流](./docs/adding-dungeon-workflow.md)
+- [长期可扩展架构重构方案](./docs/architecture-refactor-plan-v2.md)
+- [V2 架构重构可执行计划](./docs/refactor-execution-plan-v2.md)
