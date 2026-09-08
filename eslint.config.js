@@ -1,0 +1,23 @@
+import eslint from "@eslint/js";
+import prettier from "eslint-config-prettier";
+import tseslint from "typescript-eslint";
+
+export default tseslint.config(
+  {
+    ignores: [
+      "dist/",
+      "node_modules/",
+      "data/",
+      "docs/",
+      "src/*.js",
+      "scripts/*.mjs",
+      "tests/*.mjs",
+      "tests/fixtures/",
+    ],
+  },
+  {
+    files: ["**/*.ts"],
+    extends: [eslint.configs.recommended, ...tseslint.configs.recommended],
+  },
+  prettier,
+);

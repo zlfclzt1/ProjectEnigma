@@ -1,0 +1,12 @@
+dist/
+node_modules/
+data/
+docs/
+scripts/*.mjs
+src/*.js
+src/styles.css
+tests/*.mjs
+tests/fixtures/
+index.html
+README.md
+favicon.svg

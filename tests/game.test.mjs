@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
+import { getClassDefinition } from "../src/content.js";
+import { sellValue } from "../src/core.js";
 import { GuildGame, SAVE_KEY } from "../src/game.js";
 
 const baseDungeon = JSON.parse(
@@ -58,6 +60,82 @@ test("新公会拥有完整五人队和三名候选人", () => {
   );
 });
 
+test("候选区满时停止自然招募并在出现空位后恢复计时", () => {
+  const start = 1_100_000;
+  const game = new GuildGame(guaranteedContent(), new MemoryStorage(), start);
+  game.state.guild.funds = 1_000;
+
+  while (game.state.candidates.length < 10) {
+    game.generateCandidate(start + game.state.candidates.length);
+  }
+  assert.equal(game.state.candidates.length, 10);
+  assert.equal(game.state.nextRecruitAt, null);
+  assert.throws(() => game.generateCandidate(start + 20), /候选区已经满员/);
+
+  const rejectedId = game.state.candidates[0].id;
+  const rejectedAt = start + 30;
+  game.rejectCandidate(rejectedId, rejectedAt);
+  assert.equal(game.state.candidates.length, 9);
+  assert.equal(game.state.nextRecruitAt, rejectedAt + 30 * 60 * 1000);
+
+  game.settle(game.state.nextRecruitAt);
+  assert.equal(game.state.candidates.length, 10);
+  assert.equal(game.state.nextRecruitAt, null);
+});
+
+test("付费刷新扣除资金并生成一名新候选人", () => {
+  const start = 1_200_000;
+  const game = new GuildGame(guaranteedContent(), new MemoryStorage(), start);
+  game.state.guild.funds = 100;
+  const beforeIds = new Set(game.state.candidates.map((candidate) => candidate.id));
+
+  const candidate = game.generateCandidate(start + 1);
+  assert.equal(game.state.guild.funds, 0);
+  assert.equal(game.state.candidates.length, 4);
+  assert.equal(beforeIds.has(candidate.id), false);
+  assert.equal(candidate.level, 10);
+});
+
+test("转专精扣除费用并替换不再适配的装备", () => {
+  const start = 1_300_000;
+  const game = new GuildGame(guaranteedContent(), new MemoryStorage(), start);
+  const member = game.state.members.find((entry) => entry.role === "tank");
+  const nextSpec = getClassDefinition(member.classId).specs.find((entry) => entry.role === "dps");
+  const incompatibleItem = {
+    id: "tank_only_cloak",
+    name: "守备者披风",
+    quality: "uncommon",
+    itemLevel: 18,
+    slot: "back",
+    armorType: null,
+    allowedClasses: [],
+    allowedRoles: ["tank"],
+  };
+  member.equipment.back = incompatibleItem;
+  game.state.guild.funds = 300;
+
+  game.respecMember(member.id, nextSpec.id, start + 1);
+
+  assert.equal(member.specId, nextSpec.id);
+  assert.equal(member.role, "dps");
+  assert.equal(member.equipment.back.isStarter, true);
+  assert.equal(game.state.guild.funds, sellValue(incompatibleItem));
+});
+
+test("活动中的成员不能转专精或被移出公会", () => {
+  const start = 1_400_000;
+  const game = new GuildGame(guaranteedContent(), new MemoryStorage(), start);
+  const member = game.state.members[0];
+  const nextSpec = getClassDefinition(member.classId).specs.find(
+    (entry) => entry.id !== member.specId,
+  );
+  game.state.guild.funds = 300;
+  game.startExpedition([member.id], 1, start);
+
+  assert.throws(() => game.respecMember(member.id, nextSpec.id, start + 1), /副本中的成员/);
+  assert.throws(() => game.dismissMember(member.id, start + 1), /副本中的成员/);
+});
+
 test("离线结算完整副本并生成四件待分配装备", () => {
   const start = 1_000_000;
   const game = new GuildGame(guaranteedContent(), new MemoryStorage(), start);
@@ -89,6 +167,36 @@ test("连续副本结束前锁定战利品，结束后可以分配", () => {
   const recipient = game.eligibleMembers(loot)[0];
   game.assignLoot(loot.id, recipient.id, start + 2 * 60 * 60 * 1000 + 1);
   assert.equal(game.state.pendingLoot.some((entry) => entry.id === loot.id), false);
+});
+
+test("灭团保留此前击败 Boss 获得的经验资金和装备", () => {
+  const start = 2_500_000;
+  const game = new GuildGame(guaranteedContent(), new MemoryStorage(), start);
+  const memberIds = game.state.members.map((member) => member.id);
+  const initialFunds = game.state.guild.funds;
+  const initialExperience = game.state.members.map((member) => member.experience);
+  const expedition = game.startExpedition(memberIds, 1, start);
+  expedition.currentRun.stages[0].successRoll = 0;
+  expedition.currentRun.stages[1].successRoll = 1;
+
+  game.forceCompleteNextStage(expedition.id, start + 1);
+  const fundsAfterFirstBoss = game.state.guild.funds;
+  const experienceAfterFirstBoss = game.state.members.map((member) => member.experience);
+  assert.equal(game.state.pendingLoot.length, 1);
+  assert.ok(fundsAfterFirstBoss > initialFunds);
+  assert.ok(
+    experienceAfterFirstBoss.some((value, index) => value > initialExperience[index]),
+  );
+
+  game.forceCompleteNextStage(expedition.id, start + 2);
+  assert.equal(expedition.status, "failed");
+  assert.equal(game.state.pendingLoot.length, 1);
+  assert.equal(game.state.guild.funds, fundsAfterFirstBoss);
+  assert.deepEqual(
+    game.state.members.map((member) => member.experience),
+    experienceAfterFirstBoss,
+  );
+  assert.ok(game.state.members.every((member) => member.status === "idle"));
 });
 
 test("同一成员不能同时参加两支队伍", () => {
@@ -158,6 +266,93 @@ test("装备双手武器时会清空副手栏位", () => {
   game.assignLoot("two_handed_loot", member.id, start + 1);
   assert.equal(member.equipment.mainHand.id, twoHandedItem.id);
   assert.equal(member.equipment.offHand, null);
+});
+
+test("战利品只能分给记录中的本次参战成员", () => {
+  const start = 3_800_000;
+  const game = new GuildGame(guaranteedContent(), new MemoryStorage(), start);
+  const eligible = game.state.members[0];
+  const outsider = game.state.members[1];
+  const item = {
+    id: "participant_cloak",
+    name: "远征者披风",
+    quality: "uncommon",
+    itemLevel: 18,
+    slot: "back",
+    armorType: null,
+    allowedClasses: [],
+    allowedRoles: [],
+  };
+  game.state.pendingLoot.push({
+    id: "participant_loot",
+    itemId: item.id,
+    item,
+    sourceBossName: "测试首领",
+    expeditionId: "finished_expedition",
+    eligibleMemberIds: [eligible.id],
+  });
+
+  assert.deepEqual(game.eligibleMembers(game.state.pendingLoot[0]).map((member) => member.id), [
+    eligible.id,
+  ]);
+  assert.throws(() => game.assignLoot("participant_loot", outsider.id, start + 1), /没有资格/);
+  game.assignLoot("participant_loot", eligible.id, start + 2);
+  assert.equal(eligible.equipment.back.id, item.id);
+});
+
+test("自动分配装备提升并出售无人可用的掉落", () => {
+  const start = 3_900_000;
+  const game = new GuildGame(guaranteedContent(), new MemoryStorage(), start);
+  const eligibleMemberIds = game.state.members.map((member) => member.id);
+  const upgrade = {
+    id: "automatic_upgrade",
+    name: "远征嘉奖披风",
+    quality: "uncommon",
+    itemLevel: 18,
+    slot: "back",
+    armorType: null,
+    allowedClasses: [],
+    allowedRoles: [],
+  };
+  const unusable = {
+    id: "automatic_sale",
+    name: "无人认领的披风",
+    quality: "rare",
+    itemLevel: 20,
+    slot: "back",
+    armorType: null,
+    allowedClasses: ["unavailable_class"],
+    allowedRoles: [],
+  };
+  game.state.pendingLoot.push(
+    {
+      id: "automatic_upgrade_loot",
+      itemId: upgrade.id,
+      item: upgrade,
+      sourceBossName: "测试首领",
+      expeditionId: "finished_expedition",
+      eligibleMemberIds,
+    },
+    {
+      id: "automatic_sale_loot",
+      itemId: unusable.id,
+      item: unusable,
+      sourceBossName: "测试首领",
+      expeditionId: "finished_expedition",
+      eligibleMemberIds,
+    },
+  );
+  const fundsBefore = game.state.guild.funds;
+
+  const result = game.autoAssignAll(start + 1);
+
+  assert.deepEqual(result, { assigned: 1, sold: 1 });
+  assert.equal(game.state.pendingLoot.length, 0);
+  assert.equal(
+    game.state.members.some((member) => member.equipment.back.id === upgrade.id),
+    true,
+  );
+  assert.ok(game.state.guild.funds >= fundsBefore + sellValue(unusable));
 });
 
 test("旧存档中的测试装备名称和待分配物品会被迁移", () => {
