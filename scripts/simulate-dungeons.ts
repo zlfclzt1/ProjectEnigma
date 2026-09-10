@@ -177,6 +177,6 @@ if (process.argv.includes("--write")) {
   console.log(`已写入 ${path.relative(projectRoot, fixturePath)}。`);
 } else if (process.argv.includes("--check")) {
   const existing = fs.readFileSync(fixturePath, "utf8");
-  if (existing !== serialized) throw new Error("V2 四副本平衡基线已漂移，请核对后执行 --write。");
-  console.log(`V2 四副本 ${samples.toLocaleString()} 样本基线一致。`);
+  if (existing !== serialized) throw new Error("V2 全副本平衡基线已漂移，请核对后执行 --write。");
+  console.log(`V2 全副本 ${samples.toLocaleString()} 样本基线一致。`);
 } else console.log(serialized);

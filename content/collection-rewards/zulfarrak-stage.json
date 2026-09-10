@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "祖尔法拉克最终 Boss 首胜自动记录 45 级阶段毕业，并发放一次性公会资金；首通后不终止任何玩法。"
+      }
+    ]
+  },
+  "collectionRewards": [
+    {
+      "id": "zulfarrak_level_45_graduation",
+      "name": { "zhCN": "45 级时代毕业" },
+      "description": { "zhCN": "首次击败乌克兹·沙顶与卢兹鲁，完成祖尔法拉克阶段主线。" },
+      "condition": {
+        "type": "encounter-victory",
+        "encounterId": "zulfarrak_chief_ukorz"
+      },
+      "effects": [
+        { "type": "guild-funds", "amount": 1000 },
+        { "type": "display-record", "recordId": "level_45_era_graduate" }
+      ],
+      "source": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "一次性阶段里程碑奖励；不发放毕业装备，不关闭副本、招募、任务或收藏。"
+      }
+    }
+  ]
+}

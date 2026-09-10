@@ -1,18 +1,134 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "contentScope": "classic-2019-phase-6",
-  "targetLevel": 45,
+  "target": {
+    "type": "dungeon-first-clear",
+    "dungeonId": "zulfarrak"
+  },
   "maxDays": 30,
-  "requestedRuns": 3,
+  "requestedRuns": "3-to-5",
   "sampleCount": 32,
-  "seedPrefix": "zulfarrak-stage-baseline-v1",
+  "seedPrefix": "zulfarrak-stage-baseline-v2",
   "policy": {
     "startingCoreMembers": 5,
+    "normalRecruitment": "one-random-newcomer-boosted-once",
     "dungeonSelection": "highest-recommended-at-55-percent-clear-otherwise-safest",
-    "lootHandling": "auto-assign-after-player-scheduled-activity",
+    "routeSelection": "accepted-quest-options-plus-seeded-rares",
+    "lootHandling": "alternating-manual-ranked-and-auto-assign",
+    "queueUpgrade": "purchase-five-run-capacity-after-shadowfang",
     "offlineIncome": "none-outside-player-scheduled-activities"
   },
   "scenarios": [
+    {
+      "managementActionsPerDay": 3,
+      "outcomes": {
+        "target-reached": 32,
+        "content-cap": 0,
+        "day-limit": 0
+      },
+      "daysToTarget": {
+        "mean": 10,
+        "p10": 8,
+        "p50": 10,
+        "p90": 11
+      },
+      "daysElapsed": {
+        "mean": 10,
+        "p10": 8,
+        "p50": 10,
+        "p90": 11
+      },
+      "attemptedDungeonRuns": {
+        "mean": 90.469,
+        "p10": 78,
+        "p50": 95,
+        "p90": 103
+      },
+      "completedDungeonRuns": {
+        "mean": 73.969,
+        "p10": 59,
+        "p50": 74,
+        "p90": 84
+      },
+      "failedDungeonRuns": {
+        "mean": 16.5,
+        "p10": 12,
+        "p50": 15,
+        "p90": 22
+      },
+      "funds": {
+        "mean": 32098,
+        "p10": 27772,
+        "p50": 32193,
+        "p90": 35321
+      },
+      "averageItemLevel": {
+        "mean": 29.301,
+        "p10": 27.326,
+        "p50": 29.039,
+        "p90": 31.071
+      },
+      "minimumCoreLevel": {
+        "mean": 45,
+        "p10": 45,
+        "p50": 45,
+        "p90": 45
+      },
+      "minimumRosterLevel": {
+        "mean": 13.438,
+        "p10": 10,
+        "p50": 14,
+        "p90": 15
+      },
+      "maximumRunsUsed": {
+        "mean": 5,
+        "p10": 5,
+        "p50": 5,
+        "p90": 5
+      },
+      "recruitedMemberCount": {
+        "mean": 1,
+        "p10": 1,
+        "p50": 1,
+        "p90": 1
+      },
+      "boostedRunCount": {
+        "mean": 1,
+        "p10": 1,
+        "p50": 1,
+        "p90": 1
+      },
+      "questClaims": {
+        "mean": 45.906,
+        "p10": 43,
+        "p50": 46,
+        "p90": 50
+      },
+      "optionalRouteActivities": {
+        "mean": 3.344,
+        "p10": 3,
+        "p50": 3,
+        "p90": 3
+      },
+      "rareEncounterRuns": {
+        "mean": 33.969,
+        "p10": 16,
+        "p50": 37,
+        "p90": 51
+      },
+      "autoLootActions": {
+        "mean": 9.594,
+        "p10": 8,
+        "p50": 10,
+        "p90": 11
+      },
+      "manualLootActions": {
+        "mean": 19.281,
+        "p10": 15,
+        "p50": 19,
+        "p90": 21
+      }
+    },
     {
       "managementActionsPerDay": 4,
       "outcomes": {
@@ -21,52 +137,106 @@
         "day-limit": 0
       },
       "daysToTarget": {
-        "mean": 7.844,
+        "mean": 7.469,
         "p10": 6,
-        "p50": 8,
+        "p50": 7,
         "p90": 9
       },
       "daysElapsed": {
-        "mean": 7.844,
+        "mean": 7.469,
         "p10": 6,
-        "p50": 8,
+        "p50": 7,
         "p90": 9
       },
       "attemptedDungeonRuns": {
-        "mean": 73.344,
-        "p10": 66,
-        "p50": 74,
-        "p90": 79
+        "mean": 89.438,
+        "p10": 72,
+        "p50": 90,
+        "p90": 102
       },
       "completedDungeonRuns": {
-        "mean": 58.375,
-        "p10": 54,
-        "p50": 58,
-        "p90": 62
+        "mean": 73.688,
+        "p10": 57,
+        "p50": 74,
+        "p90": 86
       },
       "failedDungeonRuns": {
-        "mean": 14.969,
-        "p10": 8,
+        "mean": 15.75,
+        "p10": 11,
         "p50": 15,
         "p90": 20
       },
       "funds": {
-        "mean": 18468.531,
-        "p10": 15746,
-        "p50": 17923,
-        "p90": 21200
+        "mean": 32024.563,
+        "p10": 27055,
+        "p50": 32287,
+        "p90": 35765
       },
       "averageItemLevel": {
-        "mean": 22.273,
-        "p10": 18.978,
-        "p50": 22.508,
-        "p90": 25.131
+        "mean": 28.773,
+        "p10": 26.226,
+        "p50": 29.077,
+        "p90": 30.303
       },
       "minimumCoreLevel": {
         "mean": 45,
         "p10": 45,
         "p50": 45,
         "p90": 45
+      },
+      "minimumRosterLevel": {
+        "mean": 13.188,
+        "p10": 10,
+        "p50": 14,
+        "p90": 15
+      },
+      "maximumRunsUsed": {
+        "mean": 5,
+        "p10": 5,
+        "p50": 5,
+        "p90": 5
+      },
+      "recruitedMemberCount": {
+        "mean": 1,
+        "p10": 1,
+        "p50": 1,
+        "p90": 1
+      },
+      "boostedRunCount": {
+        "mean": 1,
+        "p10": 1,
+        "p50": 1,
+        "p90": 1
+      },
+      "questClaims": {
+        "mean": 46.219,
+        "p10": 43,
+        "p50": 46,
+        "p90": 50
+      },
+      "optionalRouteActivities": {
+        "mean": 3.281,
+        "p10": 3,
+        "p50": 3,
+        "p90": 4
+      },
+      "rareEncounterRuns": {
+        "mean": 30.75,
+        "p10": 15,
+        "p50": 27,
+        "p90": 47
+      },
+      "autoLootActions": {
+        "mean": 14.219,
+        "p10": 12,
+        "p50": 14,
+        "p90": 16
+      },
+      "manualLootActions": {
+        "mean": 14.125,
+        "p10": 11,
+        "p50": 14,
+        "p90": 17
       }
     },
     {
@@ -77,52 +247,106 @@
         "day-limit": 0
       },
       "daysToTarget": {
-        "mean": 6.5,
+        "mean": 6.094,
         "p10": 5,
-        "p50": 7,
-        "p90": 7
+        "p50": 6,
+        "p90": 8
       },
       "daysElapsed": {
-        "mean": 6.5,
+        "mean": 6.094,
         "p10": 5,
-        "p50": 7,
-        "p90": 7
+        "p50": 6,
+        "p90": 8
       },
       "attemptedDungeonRuns": {
-        "mean": 73.906,
-        "p10": 66,
-        "p50": 74,
-        "p90": 81
+        "mean": 91,
+        "p10": 76,
+        "p50": 88,
+        "p90": 106
       },
       "completedDungeonRuns": {
-        "mean": 59.25,
-        "p10": 53,
-        "p50": 59,
-        "p90": 64
+        "mean": 74.938,
+        "p10": 61,
+        "p50": 76,
+        "p90": 86
       },
       "failedDungeonRuns": {
-        "mean": 14.656,
-        "p10": 8,
+        "mean": 16.063,
+        "p10": 11,
         "p50": 14,
-        "p90": 20
+        "p90": 24
       },
       "funds": {
-        "mean": 18945.344,
-        "p10": 16711,
-        "p50": 18771,
-        "p90": 21599
+        "mean": 32097.594,
+        "p10": 28696,
+        "p50": 32043,
+        "p90": 35805
       },
       "averageItemLevel": {
-        "mean": 22.638,
-        "p10": 19.412,
-        "p50": 22.377,
-        "p90": 25.982
+        "mean": 29.215,
+        "p10": 27.462,
+        "p50": 29.357,
+        "p90": 30.553
       },
       "minimumCoreLevel": {
         "mean": 45,
         "p10": 45,
         "p50": 45,
         "p90": 45
+      },
+      "minimumRosterLevel": {
+        "mean": 13.125,
+        "p10": 10,
+        "p50": 13,
+        "p90": 16
+      },
+      "maximumRunsUsed": {
+        "mean": 5,
+        "p10": 5,
+        "p50": 5,
+        "p90": 5
+      },
+      "recruitedMemberCount": {
+        "mean": 1,
+        "p10": 1,
+        "p50": 1,
+        "p90": 1
+      },
+      "boostedRunCount": {
+        "mean": 1,
+        "p10": 1,
+        "p50": 1,
+        "p90": 1
+      },
+      "questClaims": {
+        "mean": 46.594,
+        "p10": 44,
+        "p50": 46,
+        "p90": 50
+      },
+      "optionalRouteActivities": {
+        "mean": 3.25,
+        "p10": 3,
+        "p50": 3,
+        "p90": 4
+      },
+      "rareEncounterRuns": {
+        "mean": 35.25,
+        "p10": 14,
+        "p50": 29,
+        "p90": 62
+      },
+      "autoLootActions": {
+        "mean": 11.813,
+        "p10": 10,
+        "p50": 11,
+        "p90": 14
+      },
+      "manualLootActions": {
+        "mean": 17.281,
+        "p10": 14,
+        "p50": 17,
+        "p90": 22
       }
     },
     {
@@ -133,52 +357,106 @@
         "day-limit": 0
       },
       "daysToTarget": {
-        "mean": 5.625,
-        "p10": 5,
-        "p50": 6,
+        "mean": 5.344,
+        "p10": 4,
+        "p50": 5,
         "p90": 6
       },
       "daysElapsed": {
-        "mean": 5.625,
-        "p10": 5,
-        "p50": 6,
+        "mean": 5.344,
+        "p10": 4,
+        "p50": 5,
         "p90": 6
       },
       "attemptedDungeonRuns": {
-        "mean": 74.406,
-        "p10": 67,
-        "p50": 74,
-        "p90": 82
+        "mean": 91.063,
+        "p10": 79,
+        "p50": 91,
+        "p90": 103
       },
       "completedDungeonRuns": {
-        "mean": 59.219,
-        "p10": 53,
-        "p50": 59,
-        "p90": 65
+        "mean": 74.938,
+        "p10": 61,
+        "p50": 75,
+        "p90": 86
       },
       "failedDungeonRuns": {
-        "mean": 15.188,
-        "p10": 7,
-        "p50": 15,
-        "p90": 21
+        "mean": 16.125,
+        "p10": 10,
+        "p50": 16,
+        "p90": 22
       },
       "funds": {
-        "mean": 18076.438,
-        "p10": 16326,
-        "p50": 17441,
-        "p90": 20199
+        "mean": 31749.531,
+        "p10": 28718,
+        "p50": 32012,
+        "p90": 34313
       },
       "averageItemLevel": {
-        "mean": 21.893,
-        "p10": 18.399,
-        "p50": 21.731,
-        "p90": 24.7
+        "mean": 28.693,
+        "p10": 26.039,
+        "p50": 28.676,
+        "p90": 30.774
       },
       "minimumCoreLevel": {
         "mean": 45,
         "p10": 45,
         "p50": 45,
         "p90": 45
+      },
+      "minimumRosterLevel": {
+        "mean": 13.188,
+        "p10": 10,
+        "p50": 13,
+        "p90": 15
+      },
+      "maximumRunsUsed": {
+        "mean": 5,
+        "p10": 5,
+        "p50": 5,
+        "p90": 5
+      },
+      "recruitedMemberCount": {
+        "mean": 1,
+        "p10": 1,
+        "p50": 1,
+        "p90": 1
+      },
+      "boostedRunCount": {
+        "mean": 1,
+        "p10": 1,
+        "p50": 1,
+        "p90": 1
+      },
+      "questClaims": {
+        "mean": 45.844,
+        "p10": 43,
+        "p50": 45,
+        "p90": 50
+      },
+      "optionalRouteActivities": {
+        "mean": 3.375,
+        "p10": 3,
+        "p50": 3,
+        "p90": 4
+      },
+      "rareEncounterRuns": {
+        "mean": 34.594,
+        "p10": 18,
+        "p50": 33,
+        "p90": 52
+      },
+      "autoLootActions": {
+        "mean": 14.625,
+        "p10": 11,
+        "p50": 15,
+        "p90": 17
+      },
+      "manualLootActions": {
+        "mean": 14.594,
+        "p10": 11,
+        "p50": 15,
+        "p90": 16
       }
     }
   ]

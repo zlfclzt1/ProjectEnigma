@@ -26,6 +26,13 @@ export interface ClaimedCollectionBenefits {
   readonly displayRecordIds: readonly DisplayRecordId[];
 }
 
+export interface AppliedCollectionReward {
+  readonly rewardId: CollectionRewardId;
+  readonly awardedFunds: number;
+  readonly unlockedManagementFeatureIds: readonly ManagementFeatureId[];
+  readonly unlockedDisplayRecordIds: readonly DisplayRecordId[];
+}
+
 export function evaluateCollectionReward(
   state: GameState,
   content: ContentRegistry,
@@ -33,6 +40,20 @@ export function evaluateCollectionReward(
 ): CollectionRewardEligibility {
   const reward = content.collectionRewardById.get(rewardId);
   if (!reward) throw new Error("收藏奖励不存在。");
+
+  if (reward.condition.type === "encounter-victory") {
+    const victoryCount = state.history.encounterVictoryCounts[reward.condition.encounterId] ?? 0;
+    const claimed = state.collection.claimedRewardIds.includes(reward.id);
+    return {
+      reward,
+      acquiredItemCount: victoryCount > 0 ? 1 : 0,
+      totalItemCount: 1,
+      completionPercent: victoryCount > 0 ? 100 : 0,
+      conditionMet: victoryCount > 0,
+      claimed,
+      claimable: victoryCount > 0 && !claimed,
+    };
+  }
 
   const itemIds = getCollectionRewardItemIds(content, reward.condition);
   const acquiredItemCount = [...itemIds].filter(
@@ -51,6 +72,39 @@ export function evaluateCollectionReward(
     conditionMet,
     claimed,
     claimable: conditionMet && !claimed,
+  };
+}
+
+export function applyCollectionReward(
+  state: GameState,
+  content: ContentRegistry,
+  rewardId: CollectionRewardId,
+): AppliedCollectionReward {
+  const eligibility = evaluateCollectionReward(state, content, rewardId);
+  if (eligibility.claimed) throw new Error("这项收藏奖励已经领取。");
+  if (!eligibility.conditionMet) throw new Error("尚未满足这项收藏奖励的领取条件。");
+
+  let awardedFunds = 0;
+  const unlockedManagementFeatureIds: ManagementFeatureId[] = [];
+  const unlockedDisplayRecordIds: DisplayRecordId[] = [];
+  for (const effect of eligibility.reward.effects) {
+    if (effect.type === "guild-funds") {
+      state.guild.funds += effect.amount;
+      awardedFunds += effect.amount;
+    } else if (effect.type === "management-unlock") {
+      unlockedManagementFeatureIds.push(effect.featureId);
+    } else {
+      unlockedDisplayRecordIds.push(effect.recordId);
+    }
+  }
+
+  state.collection.claimedRewardIds.push(eligibility.reward.id);
+  state.collection.claimedRewardIds.sort();
+  return {
+    rewardId: eligibility.reward.id,
+    awardedFunds,
+    unlockedManagementFeatureIds,
+    unlockedDisplayRecordIds,
   };
 }
 
@@ -88,6 +142,7 @@ export function getCollectionRewardItemIds(
   content: ContentRegistry,
   condition: CollectionRewardCondition,
 ): ReadonlySet<ItemDefinitionId> {
+  if (condition.type === "encounter-victory") return new Set();
   if (condition.type === "item-set-completion") {
     return new Set(content.itemSetById.get(condition.itemSetId)?.itemIds ?? []);
   }

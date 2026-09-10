@@ -7,6 +7,12 @@ const completionPercentSchema = z.number().int().min(1).max(100);
 export const collectionRewardConditionSchema = z.discriminatedUnion("type", [
   z
     .object({
+      type: z.literal("encounter-victory"),
+      encounterId: brandedContentIdSchema<"EncounterId">(),
+    })
+    .strict(),
+  z
+    .object({
       type: z.literal("dungeon-completion"),
       dungeonId: brandedContentIdSchema<"DungeonId">(),
       minimumPercent: completionPercentSchema,

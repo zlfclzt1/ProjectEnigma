@@ -96,4 +96,25 @@ describe("collection reward rules", () => {
       ),
     ).toBe(true);
   });
+
+  it("derives the stage milestone from permanent final-boss victory history", () => {
+    const state = createGameStateFixture();
+    const rewardId = asBrandedId<"CollectionRewardId">("zulfarrak_level_45_graduation");
+
+    expect(evaluateCollectionReward(state, content, rewardId)).toMatchObject({
+      totalItemCount: 1,
+      completionPercent: 0,
+      conditionMet: false,
+      claimable: false,
+    });
+
+    state.history.encounterVictoryCounts[asBrandedId<"EncounterId">("zulfarrak_chief_ukorz")] = 1;
+    expect(evaluateCollectionReward(state, content, rewardId)).toMatchObject({
+      acquiredItemCount: 1,
+      totalItemCount: 1,
+      completionPercent: 100,
+      conditionMet: true,
+      claimable: true,
+    });
+  });
 });

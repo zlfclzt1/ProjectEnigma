@@ -4,6 +4,10 @@ import type { DungeonDefinition } from "../../content/schemas/dungeon";
 import type { ActivityScheduler } from "../activity/activity-scheduler";
 import type { ExpeditionActivity, ExpeditionEncounterPlan } from "../activity/activity";
 import { recordAcquiredItem } from "../collection/item-collection";
+import {
+  applyCollectionReward,
+  evaluateCollectionReward,
+} from "../collection/collection-reward-rules";
 import type { ItemInstance } from "../equipment/item-instance";
 import type { GameState } from "../game-state";
 import type { CombatReportId, MemberId } from "../shared/ids";
@@ -98,11 +102,12 @@ export function settleNextExpeditionStage(
     encounter.experienceShare,
   );
   const firstKill = !state.guild.firstKillEncounterIds.includes(encounter.id);
-  const firstKillBonus = firstKill ? encounter.firstKillBonus : 0;
+  let firstKillBonus = firstKill ? encounter.firstKillBonus : 0;
   state.guild.funds += encounter.funds + firstKillBonus;
   if (firstKill) state.guild.firstKillEncounterIds.push(encounter.id);
   state.history.encounterVictoryCounts[encounter.id] =
     (state.history.encounterVictoryCounts[encounter.id] ?? 0) + 1;
+  firstKillBonus += applyEncounterVictoryCollectionRewards(state, content, encounter.id);
   progressExpeditionQuestsAfterEncounterVictory(state, activity, encounter.id, settledAt);
   for (const { instance, pending } of generatedLoot) {
     state.itemInstances[instance.id] = instance;
@@ -141,6 +146,26 @@ export function settleNextExpeditionStage(
     itemInstanceIds: generatedLoot.map(({ instance }) => instance.id),
     reportId: stage.report.id,
   };
+}
+
+function applyEncounterVictoryCollectionRewards(
+  state: GameState,
+  content: ContentRegistry,
+  encounterId: ExpeditionEncounterPlan["encounterId"],
+): number {
+  let awardedFunds = 0;
+  for (const reward of content.collectionRewards) {
+    if (
+      reward.condition.type !== "encounter-victory" ||
+      reward.condition.encounterId !== encounterId
+    ) {
+      continue;
+    }
+    const eligibility = evaluateCollectionReward(state, content, reward.id);
+    if (!eligibility.claimable) continue;
+    awardedFunds += applyCollectionReward(state, content, reward.id).awardedFunds;
+  }
+  return awardedFunds;
 }
 
 function requiredStagesCleared(

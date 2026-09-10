@@ -296,7 +296,14 @@ export class ContentRegistry {
       issues,
     );
     this.validateItemReferences(loaded, roleById, classById, itemSuffixById, issues);
-    this.validateCollectionReferences(loaded, itemById, itemSetById, dungeonById, issues);
+    this.validateCollectionReferences(
+      loaded,
+      itemById,
+      itemSetById,
+      dungeonById,
+      encounterById,
+      issues,
+    );
     this.validateDungeonReferences(
       loaded,
       dungeonById,
@@ -646,6 +653,7 @@ export class ContentRegistry {
     itemById: ReadonlyMap<ItemDefinition["id"], ItemDefinition>,
     itemSetById: ReadonlyMap<ItemSetDefinition["id"], ItemSetDefinition>,
     dungeonById: ReadonlyMap<DungeonDefinition["id"], DungeonDefinition>,
+    encounterById: ReadonlyMap<EncounterDefinition["id"], EncounterDefinition>,
     issues: ContentValidationIssue[],
   ): void {
     for (const owner of loaded.itemSets) {
@@ -655,7 +663,16 @@ export class ContentRegistry {
     }
     for (const owner of loaded.collectionRewards) {
       const condition = owner.value.condition;
-      if (condition.type === "dungeon-completion") {
+      if (condition.type === "encounter-victory") {
+        requireReference(
+          encounterById,
+          condition.encounterId,
+          owner,
+          "condition.encounterId",
+          "首领战",
+          issues,
+        );
+      } else if (condition.type === "dungeon-completion") {
         requireReference(
           dungeonById,
           condition.dungeonId,

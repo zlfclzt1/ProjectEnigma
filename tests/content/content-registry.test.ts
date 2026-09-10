@@ -28,7 +28,7 @@ describe("validated automatic content registry", () => {
     expect(registry.collectionRewardById.size).toBe(registry.collectionRewards.length);
     expect(registry.itemSetById.size).toBe(1);
     expect(registry.itemSuffixById.size).toBe(91);
-    expect(registry.collectionRewardById.size).toBe(3);
+    expect(registry.collectionRewardById.size).toBe(4);
     expect(registry.combatProfileById.size).toBe(28);
     expect(registry.dungeonById.size).toBe(registry.dungeons.length);
     expect(registry.encounterById.size).toBe(registry.encounters.length);

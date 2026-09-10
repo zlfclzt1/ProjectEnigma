@@ -1,5 +1,5 @@
 import type { ContentRegistry } from "../../content/registry";
-import { evaluateCollectionReward } from "../../domain/collection/collection-reward-rules";
+import { applyCollectionReward } from "../../domain/collection/collection-reward-rules";
 import type {
   CollectionRewardId,
   DisplayRecordId,
@@ -22,32 +22,10 @@ export function claimCollectionRewardCommand(
   return {
     type: "claim-collection-reward",
     execute(draft) {
-      const eligibility = evaluateCollectionReward(draft, content, rewardId);
-      if (eligibility.claimed) throw new Error("这项收藏奖励已经领取。");
-      if (!eligibility.conditionMet) throw new Error("尚未满足这项收藏奖励的领取条件。");
-
-      let awardedFunds = 0;
-      const unlockedManagementFeatureIds: ManagementFeatureId[] = [];
-      const unlockedDisplayRecordIds: DisplayRecordId[] = [];
-      for (const effect of eligibility.reward.effects) {
-        if (effect.type === "guild-funds") {
-          draft.guild.funds += effect.amount;
-          awardedFunds += effect.amount;
-        } else if (effect.type === "management-unlock") {
-          unlockedManagementFeatureIds.push(effect.featureId);
-        } else {
-          unlockedDisplayRecordIds.push(effect.recordId);
-        }
-      }
-
-      draft.collection.claimedRewardIds.push(eligibility.reward.id);
-      draft.collection.claimedRewardIds.sort();
+      const applied = applyCollectionReward(draft, content, rewardId);
       return {
-        rewardId: eligibility.reward.id,
-        awardedFunds,
+        ...applied,
         remainingFunds: draft.guild.funds,
-        unlockedManagementFeatureIds,
-        unlockedDisplayRecordIds,
       };
     },
   };

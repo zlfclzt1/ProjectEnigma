@@ -16,6 +16,9 @@
 - 每个必打 Boss 都明确记录为有装备掉落或无装备掉落；不能用空数组伪装成未调查。
 - 真实装备包含原版属性、需求、适配规则、图标和来源归属。
 - 推荐等级标准阵容符合当前平衡曲线，非标准阵容有明确代价。
+- 普通可选 Boss 由玩家主动勾选，随机稀有 Boss 由活动种子锁定并在路线推进时揭晓。
+- 有培养价值的成员任务、随机词缀、套装或收藏奖励已经按该副本实际内容接入。
+- 新装备自动进入装备图鉴，战利品同时支持手动分配和按愿望单预览的自动处理。
 - 内容校验、装备审计、数值模拟、单元测试和生产构建全部通过。
 
 ## 2. 资料调查
@@ -133,7 +136,7 @@ content/logs/dungeons/<dungeon-id>.json
 参考 `content/loot-tables/ragefire-chasm.json`：
 
 - 每个 Encounter 引用的 `lootTableId` 必须存在。
-- `guaranteedEquipmentDrops` 支持 `0`、`1`、`2`，是本游戏规则，不等于原版绝对掉率。
+- `guaranteedEquipmentDrops` 是非负整数，是本游戏规则，不等于原版绝对掉率；普通 Boss 通常为 `0` 或 `1`，合并多 Boss 遭遇可以高于 `1`。
 - `items[].weight` 是池内相对权重。
 - `sourceType` 必须显式填写 `boss_drop`、`dungeon_quest_rewards`、`world_drop` 或 `design_placeholder`。
 - Boss 掉落表只放 Boss 专属装备；任务奖励必须在 `content/quests/*.json` 中声明，不能复制进 Boss 池。
@@ -144,7 +147,7 @@ content/logs/dungeons/<dungeon-id>.json
 ### 4.5 随机词缀、套装与收藏
 
 - 需要随机词缀的装备在 `randomSuffixIds` 中引用已存在的词缀池；词缀生成由活动种子驱动，禁止调用全局随机数。
-- 套装必须在 `content/item-sets/*.json` 中声明完整部件和套装效果，不能仅通过名称约定。
+- 套装必须在 `content/item-sets/*.json` 中声明完整部件、说明和来源，不能仅通过名称约定。
 - 新装备必须自动进入装备图鉴；若有收藏奖励，引用 `content/collection-rewards/*.json` 并补充进度测试。
 - 装备图标、属性和来源审计必须覆盖任务奖励、Boss 掉落和套装部件三类来源。
 
@@ -231,6 +234,9 @@ npm test
 npm run test:e2e
 npm run validate:content
 npm run item-stats:audit
+npm run loot-sources:audit
+npm run dungeon-content:audit
+npm run progression:baseline:check
 npm run baseline:check
 npm run build
 npm run format:check
@@ -250,6 +256,8 @@ git diff --check
 9. 战报显示成员事实统计、奖励和趣味日志。
 10. 刷新后活动、装备、解锁和战报仍存在。
 
+阶段终点或跨系统版本还应增加一条完整产品语义 E2E，使用真实 UI 完成招募、扩建、接任务、路线选择、离线结算、手动分装、自动处理、图鉴更新和刷新续玩。测试可以通过固定存档边界缩短真实等待时间，但不应绕过最终需要验收的页面命令。
+
 ## 8. 常见错误
 
 - 使用零售版 Boss 或属性：回到 Classic 页面并与 AtlasLootClassic 交叉核对。
@@ -263,7 +271,7 @@ git diff --check
 ## 9. 提交前检查表
 
 - [ ] 五类内容文件已创建，ID 稳定且引用一致。
-- [ ] 每个路线 Boss 有 Encounter，并明确是 0、1 或 2 件保证掉落；有掉落时引用合法来源表。
+- [ ] 每个路线 Boss 有 Encounter，并明确保证掉落数量；有掉落时引用合法来源表。
 - [ ] 所有装备图标、需求、适配、属性与来源完整。
 - [ ] 任务奖励已录入任务文件，未重复进入 Boss 掉落池。
 - [ ] 随机词缀、套装、图鉴和收藏奖励引用均已通过校验。

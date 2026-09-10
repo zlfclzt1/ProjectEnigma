@@ -71,7 +71,20 @@ describe("item sets and collection reward content", () => {
     const registry = loadContentRegistry(browserContentModules);
 
     expect(registry.itemSetById.size).toBe(1);
-    expect(registry.collectionRewardById.size).toBe(3);
+    expect(registry.collectionRewardById.size).toBe(4);
+    expect(
+      registry.collectionRewardById.get("zulfarrak_level_45_graduation" as CollectionRewardId),
+    ).toMatchObject({
+      name: { zhCN: "45 级时代毕业" },
+      condition: {
+        type: "encounter-victory",
+        encounterId: "zulfarrak_chief_ukorz",
+      },
+      effects: [
+        { type: "guild-funds", amount: 1000 },
+        { type: "display-record", recordId: "level_45_era_graduate" },
+      ],
+    });
     expect(registry.itemSetById.get(itemSetFile.itemSets[0]!.id)?.itemIds).toEqual([
       "10412",
       "6460",
@@ -145,6 +158,19 @@ describe("item sets and collection reward content", () => {
     missingSetRewards[1]!.condition.itemSetId = "missing_set";
     expect(() => loadContentRegistry(missingSetModules)).toThrowError(
       /condition\.itemSetId.*不存在的套装.*missing_set/s,
+    );
+
+    const missingEncounterModules = clonedModules();
+    const missingEncounterFile = moduleAt(
+      missingEncounterModules,
+      "/content/collection-rewards/zulfarrak-stage.json",
+    );
+    const missingEncounterRewards = missingEncounterFile.collectionRewards as Array<{
+      condition: { encounterId?: string };
+    }>;
+    missingEncounterRewards[0]!.condition.encounterId = "missing_encounter";
+    expect(() => loadContentRegistry(missingEncounterModules)).toThrowError(
+      /condition\.encounterId.*不存在的首领战.*missing_encounter/s,
     );
   });
 });

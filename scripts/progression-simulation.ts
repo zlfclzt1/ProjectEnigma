@@ -1,9 +1,16 @@
 import { autoAssignLoot } from "../src/application/commands/auto-assign-loot";
+import { acceptMemberDungeonQuestCommand } from "../src/application/commands/accept-member-dungeon-quest";
+import { assignLoot } from "../src/application/commands/assign-loot";
+import { claimMemberDungeonQuestCommand } from "../src/application/commands/claim-member-dungeon-quest";
+import { purchaseGuildUpgradeCommand } from "../src/application/commands/purchase-guild-upgrade";
+import { recruitMemberCommand } from "../src/application/commands/recruit-member";
+import { sellLoot } from "../src/application/commands/sell-loot";
 import type { ContentRegistry } from "../src/content/registry";
 import { ActivityRegistry } from "../src/domain/activity/activity-registry";
 import { ActivityScheduler } from "../src/domain/activity/activity-scheduler";
 import type { ExpeditionActivity } from "../src/domain/activity/activity";
 import { averageEquippedItemLevel } from "../src/domain/equipment/item-level";
+import { rankLootAssignment } from "../src/domain/equipment/loot-assignment-ranking";
 import type { GameState } from "../src/domain/game-state";
 import { createNewGame } from "../src/domain/guild/new-game";
 import {
@@ -18,16 +25,27 @@ import { asBrandedId } from "../src/domain/shared/ids";
 import { SettlementService } from "../src/application/services/settlement-service";
 import { LocalIdGenerator } from "../src/infrastructure/ids/local-id-generator";
 import { SeededRandomSource } from "../src/infrastructure/random/seeded-random-source";
+import {
+  EXPEDITION_RUN_CAPACITY_TRACK_ID,
+  evaluateGuildUpgrade,
+  getExpeditionRunCapacity,
+  getNextGuildUpgrade,
+} from "../src/domain/guild/guild-upgrade-rules";
 
 const DAY_MS = 24 * 60 * 60 * 1_000;
 const REASONABLE_CLEAR_PROBABILITY = 0.55;
+const BOOST_CLEAR_PROBABILITY = 0.8;
+const TARGET_DUNGEON_ID = asBrandedId<"DungeonId">("zulfarrak");
 
 export interface ProgressionSimulationConfig {
   readonly seed: string;
   readonly managementActionsPerDay: number;
   readonly requestedRuns?: number;
-  readonly targetLevel?: number;
   readonly maxDays?: number;
+  readonly enableQueueUpgrade?: boolean;
+  readonly enableRecruitmentAndBoost?: boolean;
+  readonly enableQuests?: boolean;
+  readonly lootHandling?: "auto" | "manual" | "alternating";
 }
 
 export interface ProgressionSimulationResult {
@@ -35,18 +53,28 @@ export interface ProgressionSimulationResult {
   readonly status: "target-reached" | "content-cap" | "day-limit";
   readonly managementActionsPerDay: number;
   readonly requestedRuns: number;
-  readonly targetLevel: number;
+  readonly maximumRunsUsed: number;
+  readonly targetDungeonId: DungeonId;
   readonly daysElapsed: number;
   readonly daysToTarget: number | null;
   readonly activitiesStarted: number;
   readonly attemptedDungeonRuns: number;
   readonly completedDungeonRuns: number;
   readonly failedDungeonRuns: number;
+  readonly queueUpgradePurchased: boolean;
+  readonly recruitedMemberCount: number;
+  readonly boostedRunCount: number;
+  readonly questClaims: number;
+  readonly optionalRouteActivities: number;
+  readonly rareEncounterRuns: number;
+  readonly autoLootActions: number;
+  readonly manualLootActions: number;
   readonly funds: number;
   readonly averageItemLevel: number;
   readonly minimumCoreLevel: number;
   readonly averageCoreLevel: number;
   readonly maximumCoreLevel: number;
+  readonly minimumRosterLevel: number;
   readonly dungeonAttempts: Readonly<Record<string, number>>;
 }
 
@@ -60,9 +88,12 @@ export function simulateProgression(
   config: ProgressionSimulationConfig,
 ): ProgressionSimulationResult {
   const requestedRuns = config.requestedRuns ?? 3;
-  const targetLevel = config.targetLevel ?? 45;
   const maxDays = config.maxDays ?? 30;
-  validateConfig(config, requestedRuns, targetLevel, maxDays);
+  const enableQueueUpgrade = config.enableQueueUpgrade ?? true;
+  const enableRecruitmentAndBoost = config.enableRecruitmentAndBoost ?? true;
+  const enableQuests = config.enableQuests ?? true;
+  const lootHandling = config.lootHandling ?? "alternating";
+  validateConfig(config, requestedRuns, maxDays);
 
   const ids = new LocalIdGenerator();
   const random = new SeededRandomSource(config.seed);
@@ -84,10 +115,18 @@ export function simulateProgression(
   let attemptedDungeonRuns = 0;
   let completedDungeonRuns = 0;
   let failedDungeonRuns = 0;
+  let maximumRunsUsed = requestedRuns;
+  let recruitedMemberId: MemberId | undefined;
+  let boostedRunCount = 0;
+  let questClaims = 0;
+  let optionalRouteActivities = 0;
+  let rareEncounterRuns = 0;
+  let autoLootActions = 0;
+  let manualLootActions = 0;
   let status: ProgressionSimulationResult["status"] = "day-limit";
 
   outer: for (let day = 1; day <= maxDays; day += 1) {
-    if (minimumLevel(state, coreMemberIds) >= targetLevel) {
+    if (targetCleared(state)) {
       status = "target-reached";
       break;
     }
@@ -95,22 +134,52 @@ export function simulateProgression(
     daysElapsed = day;
 
     for (let action = 0; action < config.managementActionsPerDay; action += 1) {
-      const dungeon = chooseDungeon(state, content, coreMemberIds);
+      if (enableQueueUpgrade) purchaseQueueUpgradeIfEligible(state, content);
+      if (
+        enableRecruitmentAndBoost &&
+        !recruitedMemberId &&
+        minimumLevel(state, coreMemberIds) >= 30
+      ) {
+        recruitedMemberId = recruitNewcomer(state, content, currentTime);
+      }
+
+      let participantIds = coreMemberIds;
+      let dungeon: DungeonDefinition | null = null;
+      if (recruitedMemberId && boostedRunCount === 0) {
+        participantIds = boostParty(state, content, coreMemberIds, recruitedMemberId);
+        dungeon = chooseBoostDungeon(state, content, participantIds, recruitedMemberId);
+        if (dungeon) boostedRunCount += 1;
+        else participantIds = coreMemberIds;
+      }
+      dungeon ??= chooseDungeon(state, content, coreMemberIds);
       if (!dungeon) {
         status = "content-cap";
         break outer;
       }
+
+      if (enableQuests) {
+        acceptEligibleQuests(state, content, participantIds, dungeon.id, currentTime);
+      }
+      const selectedOptionalNodeIds = enableQuests
+        ? questOptionalNodeIds(state, content, participantIds, dungeon)
+        : [];
+      const runCount = enableQueueUpgrade
+        ? getExpeditionRunCapacity(state, content)
+        : requestedRuns;
+      maximumRunsUsed = Math.max(maximumRunsUsed, runCount);
 
       const activity = startExpedition(
         state,
         content,
         scheduler,
         dungeon.id,
-        coreMemberIds,
-        requestedRuns,
+        participantIds,
+        runCount,
         currentTime,
+        selectedOptionalNodeIds,
       );
       activitiesStarted += 1;
+      if (selectedOptionalNodeIds.length > 0) optionalRouteActivities += 1;
       const summary = settlement.settleDueActivities(state, Number.MAX_SAFE_INTEGER);
       if (summary.settled.length === 0 || !activity.completedAt) {
         throw new Error(`进度模拟中的副本活动 ${activity.id} 未完成结算。`);
@@ -121,12 +190,27 @@ export function simulateProgression(
         run.stages.some((stage) => stage.status !== "pending"),
       ).length;
       attemptedDungeonRuns += attemptedRuns;
+      rareEncounterRuns += activity.runPlans.filter((run) =>
+        run.stages.some((stage) => stage.routeNodeType === "rare"),
+      ).length;
       completedDungeonRuns += activity.completedRuns;
       if (activity.status === "failed") failedDungeonRuns += 1;
       dungeonAttempts[dungeon.id] = (dungeonAttempts[dungeon.id] ?? 0) + attemptedRuns;
-      autoAssignLoot(state, content);
+      if (enableQuests) {
+        questClaims += claimCompletedQuests(state, content, participantIds, currentTime);
+      }
+      const useManualLoot =
+        lootHandling === "manual" ||
+        (lootHandling === "alternating" && (activitiesStarted + day) % 2 === 0);
+      if (useManualLoot) {
+        manuallyAssignLoot(state, content);
+        manualLootActions += 1;
+      } else {
+        autoAssignLoot(state, content);
+        autoLootActions += 1;
+      }
 
-      if (minimumLevel(state, coreMemberIds) >= targetLevel) {
+      if (targetCleared(state)) {
         status = "target-reached";
         break outer;
       }
@@ -139,13 +223,22 @@ export function simulateProgression(
     status,
     managementActionsPerDay: config.managementActionsPerDay,
     requestedRuns,
-    targetLevel,
+    maximumRunsUsed,
+    targetDungeonId: TARGET_DUNGEON_ID,
     daysElapsed,
     daysToTarget: status === "target-reached" ? daysElapsed : null,
     activitiesStarted,
     attemptedDungeonRuns,
     completedDungeonRuns,
     failedDungeonRuns,
+    queueUpgradePurchased: getExpeditionRunCapacity(state, content) > requestedRuns,
+    recruitedMemberCount: recruitedMemberId ? 1 : 0,
+    boostedRunCount,
+    questClaims,
+    optionalRouteActivities,
+    rareEncounterRuns,
+    autoLootActions,
+    manualLootActions,
     funds: state.guild.funds,
     averageItemLevel: round(
       mean(
@@ -157,6 +250,9 @@ export function simulateProgression(
     minimumCoreLevel: Math.min(...levels),
     averageCoreLevel: round(mean(levels)),
     maximumCoreLevel: Math.max(...levels),
+    minimumRosterLevel: Math.min(
+      ...Object.values(state.members).map((member) => member.progression.level),
+    ),
     dungeonAttempts: Object.fromEntries(
       Object.entries(dungeonAttempts).sort(([left], [right]) => left.localeCompare(right)),
     ),
@@ -166,14 +262,12 @@ export function simulateProgression(
 function validateConfig(
   config: ProgressionSimulationConfig,
   requestedRuns: number,
-  targetLevel: number,
   maxDays: number,
 ): void {
   if (!config.seed) throw new Error("进度模拟种子不能为空。");
   for (const [label, value] of [
     ["每日管理次数", config.managementActionsPerDay],
     ["连续挑战次数", requestedRuns],
-    ["目标等级", targetLevel],
     ["最大天数", maxDays],
   ] as const) {
     if (!Number.isInteger(value) || value <= 0) throw new Error(`${label}必须是正整数。`);
@@ -195,12 +289,19 @@ function startExpedition(
   participantIds: readonly MemberId[],
   requestedRuns: number,
   now: number,
+  selectedOptionalNodeIds: readonly import("../src/domain/shared/ids").DungeonRouteNodeId[] = [],
 ): ExpeditionActivity {
   const ids = new LocalIdGenerator(state.ids);
   const random = new SeededRandomSource(state.random);
   const result = scheduler.start<StartExpeditionRequest, ExpeditionActivity>(
     state,
-    { type: "expedition", dungeonId, participantIds, requestedRuns },
+    {
+      type: "expedition",
+      dungeonId,
+      participantIds,
+      requestedRuns,
+      selectedOptionalNodeIds,
+    },
     now,
     { ids, random },
   );
@@ -228,7 +329,7 @@ function chooseDungeon(
     )) {
       totalExperience += fraction ?? 0;
     }
-    if (totalExperience <= 0) continue;
+    if (totalExperience <= 0 && (state.history.dungeonClearCounts[dungeon.id] ?? 0) > 0) continue;
     const preview = evaluateExpeditionParty(state, content, dungeon.id, coreMemberIds);
     if (!preview.ok) continue;
     candidates.push({ dungeon, clearProbability: preview.preview.clearProbability });
@@ -247,6 +348,182 @@ function chooseDungeon(
       right.clearProbability - left.clearProbability ||
       left.dungeon.id.localeCompare(right.dungeon.id),
   )[0]!.dungeon;
+}
+
+function targetCleared(state: GameState): boolean {
+  return (state.history.dungeonClearCounts[TARGET_DUNGEON_ID] ?? 0) > 0;
+}
+
+function purchaseQueueUpgradeIfEligible(state: GameState, content: ContentRegistry): void {
+  const upgrade = getNextGuildUpgrade(state, content, EXPEDITION_RUN_CAPACITY_TRACK_ID);
+  if (!upgrade || !evaluateGuildUpgrade(state, upgrade).canPurchase) return;
+  purchaseGuildUpgradeCommand(content, upgrade.id).execute(state);
+}
+
+function recruitNewcomer(
+  state: GameState,
+  content: ContentRegistry,
+  now: number,
+): MemberId | undefined {
+  const candidate = Object.values(state.candidates)
+    .map((entry) => ({ entry, role: content.specById.get(entry.progression.specId)?.role }))
+    .sort(
+      (left, right) =>
+        Number(left.role !== "dps") - Number(right.role !== "dps") ||
+        left.entry.id.localeCompare(right.entry.id),
+    )[0]?.entry;
+  if (!candidate) return undefined;
+  const generated = recruitMemberCommand(
+    { content, clock: { now: () => now } },
+    candidate.id,
+  ).execute(state);
+  if (generated instanceof Promise) throw new Error("进度模拟不支持异步招募命令。");
+  return generated.member.id;
+}
+
+function boostParty(
+  state: GameState,
+  content: ContentRegistry,
+  coreMemberIds: readonly MemberId[],
+  newcomerId: MemberId,
+): MemberId[] {
+  const byRole = (role: "tank" | "healer" | "dps") =>
+    coreMemberIds.filter(
+      (memberId) =>
+        content.specById.get(state.members[memberId]!.progression.specId)?.role === role,
+    );
+  return [
+    newcomerId,
+    ...byRole("tank").slice(0, 1),
+    ...byRole("healer").slice(0, 1),
+    ...byRole("dps").slice(0, 2),
+  ];
+}
+
+function chooseBoostDungeon(
+  state: GameState,
+  content: ContentRegistry,
+  participantIds: readonly MemberId[],
+  newcomerId: MemberId,
+): DungeonDefinition | null {
+  const candidates = state.guild.unlockedDungeonIds.flatMap((dungeonId) => {
+    const dungeon = content.dungeonById.get(dungeonId);
+    if (!dungeon) return [];
+    const newcomerExperience =
+      experienceFractions(state, content, dungeon.id, participantIds)[newcomerId] ?? 0;
+    if (newcomerExperience <= 0) return [];
+    const preview = evaluateExpeditionParty(state, content, dungeon.id, participantIds);
+    if (!preview.ok || preview.preview.clearProbability < BOOST_CLEAR_PROBABILITY) return [];
+    return [{ dungeon, clearProbability: preview.preview.clearProbability }];
+  });
+  return (
+    candidates.sort(
+      (left, right) =>
+        right.dungeon.recommendedLevel - left.dungeon.recommendedLevel ||
+        right.clearProbability - left.clearProbability ||
+        left.dungeon.id.localeCompare(right.dungeon.id),
+    )[0]?.dungeon ?? null
+  );
+}
+
+function acceptEligibleQuests(
+  state: GameState,
+  content: ContentRegistry,
+  participantIds: readonly MemberId[],
+  dungeonId: DungeonId,
+  now: number,
+): void {
+  for (const memberId of participantIds) {
+    const member = state.members[memberId]!;
+    const alreadyHandledDungeonQuest = content.quests.some(
+      (quest) => quest.dungeonId === dungeonId && member.quests.entries[quest.id] !== undefined,
+    );
+    if (alreadyHandledDungeonQuest) continue;
+    for (const quest of content.quests) {
+      if (quest.dungeonId !== dungeonId || member.quests.entries[quest.id]) continue;
+      if (member.progression.level < quest.eligibility.minimumLevel) continue;
+      if (
+        quest.eligibility.allowedClassIds.length > 0 &&
+        !quest.eligibility.allowedClassIds.includes(member.identity.classId)
+      ) {
+        continue;
+      }
+      acceptMemberDungeonQuestCommand(
+        { content, clock: { now: () => now } },
+        memberId,
+        quest.id,
+      ).execute(state);
+      break;
+    }
+  }
+}
+
+function questOptionalNodeIds(
+  state: GameState,
+  content: ContentRegistry,
+  participantIds: readonly MemberId[],
+  dungeon: DungeonDefinition,
+): import("../src/domain/shared/ids").DungeonRouteNodeId[] {
+  const encounterIds = new Set(
+    participantIds.flatMap((memberId) =>
+      Object.values(state.members[memberId]!.quests.entries).flatMap((progress) => {
+        if (!progress || progress.status !== "accepted") return [];
+        const quest = content.questById.get(progress.questId);
+        return quest?.completion.type === "encounter-victories"
+          ? quest.completion.encounterIds
+          : [];
+      }),
+    ),
+  );
+  return dungeon.route.flatMap((node) =>
+    node.type === "optional" && encounterIds.has(node.encounterId) ? [node.id] : [],
+  );
+}
+
+function claimCompletedQuests(
+  state: GameState,
+  content: ContentRegistry,
+  participantIds: readonly MemberId[],
+  now: number,
+): number {
+  let claimed = 0;
+  for (const memberId of participantIds) {
+    const member = state.members[memberId]!;
+    for (const progress of Object.values(member.quests.entries)) {
+      if (!progress || progress.status !== "completed") continue;
+      const quest = content.questById.get(progress.questId)!;
+      const choice = [...quest.rewards.itemChoiceIds]
+        .map((itemId) => content.itemById.get(itemId)!)
+        .sort(
+          (left, right) => right.itemLevel - left.itemLevel || left.id.localeCompare(right.id),
+        )[0]?.id;
+      claimMemberDungeonQuestCommand(
+        { content, clock: { now: () => now } },
+        memberId,
+        quest.id,
+        choice,
+      ).execute(state);
+      claimed += 1;
+    }
+  }
+  return claimed;
+}
+
+function manuallyAssignLoot(state: GameState, content: ContentRegistry): void {
+  for (const pending of Object.values(state.pendingLoot).sort(
+    (left, right) => left.acquiredAt - right.acquiredAt || left.id.localeCompare(right.id),
+  )) {
+    const decision = rankLootAssignment(state, content, pending);
+    if (decision.type === "assign") {
+      assignLoot(
+        state,
+        content,
+        pending.id,
+        decision.candidate.memberId,
+        decision.candidate.replacementSlot,
+      );
+    } else sellLoot(state, content, pending.id);
+  }
 }
 
 function minimumLevel(state: GameState, memberIds: readonly MemberId[]): number {
@@ -279,20 +556,32 @@ export interface ProgressionScenarioSummary {
   readonly funds: NumericSummary;
   readonly averageItemLevel: NumericSummary;
   readonly minimumCoreLevel: NumericSummary;
+  readonly minimumRosterLevel: NumericSummary;
+  readonly maximumRunsUsed: NumericSummary;
+  readonly recruitedMemberCount: NumericSummary;
+  readonly boostedRunCount: NumericSummary;
+  readonly questClaims: NumericSummary;
+  readonly optionalRouteActivities: NumericSummary;
+  readonly rareEncounterRuns: NumericSummary;
+  readonly autoLootActions: NumericSummary;
+  readonly manualLootActions: NumericSummary;
 }
 
 export interface ProgressionBaseline {
-  readonly schemaVersion: 1;
+  readonly schemaVersion: 2;
   readonly contentScope: "classic-2019-phase-6";
-  readonly targetLevel: 45;
+  readonly target: { readonly type: "dungeon-first-clear"; readonly dungeonId: "zulfarrak" };
   readonly maxDays: number;
-  readonly requestedRuns: 3;
+  readonly requestedRuns: "3-to-5";
   readonly sampleCount: number;
   readonly seedPrefix: string;
   readonly policy: {
     readonly startingCoreMembers: 5;
+    readonly normalRecruitment: "one-random-newcomer-boosted-once";
     readonly dungeonSelection: "highest-recommended-at-55-percent-clear-otherwise-safest";
-    readonly lootHandling: "auto-assign-after-player-scheduled-activity";
+    readonly routeSelection: "accepted-quest-options-plus-seeded-rares";
+    readonly lootHandling: "alternating-manual-ranked-and-auto-assign";
+    readonly queueUpgrade: "purchase-five-run-capacity-after-shadowfang";
     readonly offlineIncome: "none-outside-player-scheduled-activities";
   };
   readonly scenarios: readonly ProgressionScenarioSummary[];
@@ -309,24 +598,27 @@ export function buildProgressionBaseline(
 ): ProgressionBaseline {
   const sampleCount = options.sampleCount ?? 32;
   const maxDays = options.maxDays ?? 30;
-  const seedPrefix = options.seedPrefix ?? "zulfarrak-stage-baseline-v1";
-  const schedules = options.managementActionsPerDay ?? [4, 5, 6];
+  const seedPrefix = options.seedPrefix ?? "zulfarrak-stage-baseline-v2";
+  const schedules = options.managementActionsPerDay ?? [3, 4, 5, 6];
   if (!Number.isInteger(sampleCount) || sampleCount <= 0) {
     throw new Error("进度基线样本数必须是正整数。");
   }
 
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     contentScope: "classic-2019-phase-6",
-    targetLevel: 45,
+    target: { type: "dungeon-first-clear", dungeonId: "zulfarrak" },
     maxDays,
-    requestedRuns: 3,
+    requestedRuns: "3-to-5",
     sampleCount,
     seedPrefix,
     policy: {
       startingCoreMembers: 5,
+      normalRecruitment: "one-random-newcomer-boosted-once",
       dungeonSelection: "highest-recommended-at-55-percent-clear-otherwise-safest",
-      lootHandling: "auto-assign-after-player-scheduled-activity",
+      routeSelection: "accepted-quest-options-plus-seeded-rares",
+      lootHandling: "alternating-manual-ranked-and-auto-assign",
+      queueUpgrade: "purchase-five-run-capacity-after-shadowfang",
       offlineIncome: "none-outside-player-scheduled-activities",
     },
     scenarios: schedules.map((managementActionsPerDay) => {
@@ -335,7 +627,6 @@ export function buildProgressionBaseline(
           seed: `${seedPrefix}:${managementActionsPerDay}:${index}`,
           managementActionsPerDay,
           requestedRuns: 3,
-          targetLevel: 45,
           maxDays,
         }),
       );
@@ -357,6 +648,15 @@ export function buildProgressionBaseline(
         funds: summarize(samples.map((sample) => sample.funds)),
         averageItemLevel: summarize(samples.map((sample) => sample.averageItemLevel)),
         minimumCoreLevel: summarize(samples.map((sample) => sample.minimumCoreLevel)),
+        minimumRosterLevel: summarize(samples.map((sample) => sample.minimumRosterLevel)),
+        maximumRunsUsed: summarize(samples.map((sample) => sample.maximumRunsUsed)),
+        recruitedMemberCount: summarize(samples.map((sample) => sample.recruitedMemberCount)),
+        boostedRunCount: summarize(samples.map((sample) => sample.boostedRunCount)),
+        questClaims: summarize(samples.map((sample) => sample.questClaims)),
+        optionalRouteActivities: summarize(samples.map((sample) => sample.optionalRouteActivities)),
+        rareEncounterRuns: summarize(samples.map((sample) => sample.rareEncounterRuns)),
+        autoLootActions: summarize(samples.map((sample) => sample.autoLootActions)),
+        manualLootActions: summarize(samples.map((sample) => sample.manualLootActions)),
       };
     }),
   };
