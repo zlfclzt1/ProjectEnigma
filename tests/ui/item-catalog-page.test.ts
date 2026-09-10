@@ -15,7 +15,10 @@ import { MemorySaveRepository } from "../../src/infrastructure/persistence/memor
 import { SeededRandomSource } from "../../src/infrastructure/random/seeded-random-source";
 import { useGameStore } from "../../src/stores/game-store";
 import ItemCatalogPage from "../../src/ui/pages/ItemCatalogPage.vue";
-import { createItemInstanceFixture } from "../helpers/game-state-v2-factory";
+import {
+  createExpeditionActivityFixture,
+  createItemInstanceFixture,
+} from "../helpers/game-state-v2-factory";
 import { FakeClock } from "../helpers/runtime-fakes";
 
 const content = loadBrowserContentRegistry();
@@ -129,5 +132,93 @@ describe("item catalog page", () => {
 
     expect(item.get(".sources").text()).toContain("怒焰裂谷 · 饥饿者塔拉加曼");
     expect(item.get(".sources").text()).toContain("死亡矿井 · 拉克佐");
+  });
+
+  it("shows development benefits, hidden equipment, live chances, and first rewards", async () => {
+    const clock = new FakeClock(2_000);
+    const state = createNewGame({
+      slotId: asBrandedId<"SaveSlotId">("development-catalog-page"),
+      content,
+      contentVersion: asBrandedId<"ContentVersion">("classic-v1"),
+      clock,
+      ids: new LocalIdGenerator(),
+      random: new SeededRandomSource("development-catalog-page"),
+    });
+    const questId = asBrandedId<"QuestId">("rfc_returning_lost_satchel");
+    const encounterId = asBrandedId<"EncounterId">("oggleflint");
+    state.dungeonDevelopment.entries[questId] = {
+      questId,
+      status: "completed",
+      discoveredAt: 1_000,
+      encounterVictoryIds: [encounterId],
+      completedAt: 2_000,
+      completionEncounterId: encounterId,
+    };
+    const reward = createItemInstanceFixture({
+      id: asBrandedId<"ItemInstanceId">("catalog_first_development_reward"),
+      definitionId: asBrandedId<"ItemDefinitionId">("15452"),
+      ownerMemberId: undefined,
+      bound: false,
+      source: {
+        type: "encounter",
+        activityId: asBrandedId<"ActivityId">("catalog_development_activity"),
+        dungeonId: asBrandedId<"DungeonId">("ragefire_chasm"),
+        encounterId,
+      },
+    });
+    state.itemInstances[reward.id] = reward;
+    recordAcquiredItem(state.collection, reward, content);
+    const activity = createExpeditionActivityFixture({
+      id: asBrandedId<"ActivityId">("catalog_development_activity"),
+      status: "completed",
+      completedAt: 2_000,
+      developmentEvents: [
+        {
+          id: "catalog_development_activity:completed",
+          type: "completed",
+          questId,
+          occurredAt: 2_000,
+          runNumber: 1,
+          encounterId,
+          text: "开发完成",
+          itemInstanceIds: [reward.id],
+        },
+      ],
+    });
+    state.activities[activity.id] = activity;
+
+    const game = useGameStore();
+    await game.initialize(() =>
+      loadOrCreateV2Client({
+        saves: new MemorySaveRepository([state]),
+        content,
+        clock,
+        slotId: state.slotId,
+      }),
+    );
+    const wrapper = mount(ItemCatalogPage);
+    await flushPromises();
+
+    const ragefire = wrapper
+      .findAll(".dungeon-catalog")
+      .find((entry) => entry.text().includes("怒焰裂谷"))!;
+    expect(ragefire.text()).toContain("副本开发 Lv.3");
+    expect(ragefire.text()).toContain("经验 +12% · 额外装备 9% / Boss");
+    expect(ragefire.text()).toContain("已纳入掉落池 2 件开发装备");
+    expect(ragefire.text()).toContain("未查明的开发装备 ×3");
+    const rewardCard = ragefire
+      .findAll(".catalog-item")
+      .find((entry) => entry.text().includes("羽珠护腕"))!;
+    expect(rewardCard.text()).toContain("调查解锁");
+    expect(rewardCard.text()).toContain("首次开发战利品");
+    expect(rewardCard.text()).toContain("当前单次 50.0% · 本场 52.3%");
+    await rewardCard.get(".item-summary").trigger("click");
+    expect(rewardCard.text()).toContain("调查解锁：归还背包");
+    expect(rewardCard.text()).toContain("曾作为首次开发战利品带回公会");
+    const baseCard = ragefire
+      .findAll(".catalog-item")
+      .find((entry) => entry.text().includes("水晶腕轮"))!;
+    expect(baseCard.text()).toContain("基础本场");
+    expect(baseCard.text()).toContain("当前");
   });
 });

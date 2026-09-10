@@ -9,6 +9,10 @@ const expanded = ref(false);
 function percent(value: number): string {
   return `${(value * 100).toFixed(1)}%`;
 }
+
+function chanceChanged(item: CatalogItemView): boolean {
+  return Math.abs(item.source.encounterDropChance - item.source.baseEncounterDropChance) > 0.0001;
+}
 </script>
 
 <template>
@@ -25,10 +29,26 @@ function percent(value: number): string {
         <span v-else>{{ item.name.slice(0, 1) }}</span>
       </span>
       <span class="item-copy">
+        <span class="source-badges">
+          <em :data-kind="item.source.kind">
+            {{ item.source.kind === "development" ? "调查解锁" : "基础掉落" }}
+          </em>
+          <em v-if="item.source.firstDevelopmentReward" data-kind="first-clear">
+            首次开发战利品
+          </em>
+        </span>
         <strong :class="`quality-${item.quality}`">{{ item.name }}</strong>
         <small>{{ item.slotName }} · 物品等级 {{ item.itemLevel }}</small>
-        <small>
-          单件 {{ percent(item.source.perDropChance) }} · 本场
+        <small v-if="item.source.kind === 'development'">
+          当前单次 {{ percent(item.source.perDropChance) }} · 本场
+          {{ percent(item.source.encounterDropChance) }}
+        </small>
+        <small v-else-if="chanceChanged(item)">
+          基础本场 {{ percent(item.source.baseEncounterDropChance) }} · 当前
+          {{ percent(item.source.encounterDropChance) }}
+        </small>
+        <small v-else>
+          单次 {{ percent(item.source.perDropChance) }} · 本场
           {{ percent(item.source.encounterDropChance) }}
         </small>
       </span>
@@ -55,6 +75,11 @@ function percent(value: number): string {
         <span v-for="requirement in item.requirements" :key="requirement">{{ requirement }}</span>
       </div>
       <p class="description">{{ item.description }}</p>
+      <section v-if="item.source.developmentQuestNames.length" class="development-source">
+        <strong>副本开发收益</strong>
+        <span>调查解锁：{{ item.source.developmentQuestNames.join("、") }}</span>
+        <span v-if="item.source.firstDevelopmentReward">曾作为首次开发战利品带回公会</span>
+      </section>
       <section v-if="item.possibleRandomSuffixes.length" class="suffixes">
         <strong>可能随机词缀</strong>
         <span
@@ -69,13 +94,14 @@ function percent(value: number): string {
       <section v-if="item.sources.length > 1" class="sources">
         <strong>全部已公开来源</strong>
         <span v-for="source in item.sources" :key="`${source.dungeonId}:${source.encounterId}`">
-          {{ source.dungeonName }} · {{ source.encounterName }} · 本场
+          {{ source.dungeonName }} · {{ source.encounterName }} ·
+          {{ source.kind === "development" ? "调查解锁" : "基础掉落" }} · 本场
           {{ percent(source.encounterDropChance) }}
         </span>
       </section>
       <footer>
         <span>
-          权重 {{ item.source.relativeWeight }} · 每场保证
+          当前权重 {{ item.source.relativeWeight }} · 每场基础保证
           {{ item.source.guaranteedEquipmentDrops }} 件装备
         </span>
         <span>属性：{{ item.statsSource }}</span>
@@ -146,6 +172,31 @@ function percent(value: number): string {
   min-width: 0;
   gap: 2px;
 }
+.source-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.source-badges em {
+  width: max-content;
+  padding: 1px 5px;
+  border: 1px solid #4b463c;
+  border-radius: 999px;
+  color: #918776;
+  font-size: 0.54rem;
+  font-style: normal;
+  line-height: 1.35;
+}
+.source-badges em[data-kind="development"] {
+  border-color: #775e2f;
+  color: #d2ac5a;
+  background: #261e10;
+}
+.source-badges em[data-kind="first-clear"] {
+  border-color: #4f7255;
+  color: #86c18d;
+  background: #122017;
+}
 .item-copy strong {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -187,6 +238,7 @@ function percent(value: number): string {
 }
 .catalog-tooltip header,
 .catalog-tooltip footer,
+.development-source,
 .suffixes,
 .sources,
 .requirements {
@@ -221,6 +273,7 @@ function percent(value: number): string {
   line-height: 1.45;
 }
 .suffixes,
+.development-source,
 .sources {
   padding: 8px;
   border-left: 2px solid #806c48;
@@ -229,8 +282,14 @@ function percent(value: number): string {
 }
 .suffixes strong,
 .suffixes .seen,
+.development-source strong,
 .sources strong {
   color: #cbb786;
+}
+.development-source {
+  border-left-color: #4f7255;
+  color: #9cb69e;
+  background: #111a14;
 }
 .catalog-tooltip footer {
   padding-top: 8px;

@@ -6,6 +6,7 @@ import { recordAcquiredItem } from "../../src/domain/collection/item-collection"
 import type { GameState } from "../../src/domain/game-state";
 import { asBrandedId } from "../../src/domain/shared/ids";
 import {
+  createExpeditionActivityFixture,
   createGameStateFixture,
   createItemInstanceFixture,
 } from "../helpers/game-state-v2-factory";
@@ -102,6 +103,96 @@ describe("item collection catalog query", () => {
     });
     expect(JSON.stringify(view)).not.toContain("尖牙腰带");
     expect(JSON.stringify(view)).not.toContain("prototype_wailing_caverns_collection");
+  });
+
+  it("projects dungeon development loot, live chances, hidden clues, and first rewards", () => {
+    const game = state();
+    const questId = asBrandedId<"QuestId">("rfc_returning_lost_satchel");
+    const encounterId = asBrandedId<"EncounterId">("oggleflint");
+    const reward = createItemInstanceFixture({
+      id: asBrandedId<"ItemInstanceId">("first_development_reward"),
+      definitionId: asBrandedId<"ItemDefinitionId">("15452"),
+      ownerMemberId: undefined,
+      bound: false,
+      source: {
+        type: "encounter",
+        activityId: asBrandedId<"ActivityId">("development_activity"),
+        dungeonId: asBrandedId<"DungeonId">("ragefire_chasm"),
+        encounterId,
+      },
+    });
+    game.itemInstances[reward.id] = reward;
+    recordAcquiredItem(game.collection, reward, content);
+    game.dungeonDevelopment.entries[questId] = {
+      questId,
+      status: "completed",
+      discoveredAt: 1_000,
+      encounterVictoryIds: [encounterId],
+      completedAt: 2_000,
+      completionEncounterId: encounterId,
+    };
+    const activity = createExpeditionActivityFixture({
+      id: asBrandedId<"ActivityId">("development_activity"),
+      status: "completed",
+      completedAt: 2_000,
+      developmentEvents: [
+        {
+          id: "development_activity:completed",
+          type: "completed",
+          questId,
+          occurredAt: 2_000,
+          runNumber: 1,
+          encounterId,
+          text: "开发完成",
+          itemInstanceIds: [reward.id],
+        },
+      ],
+    });
+    game.activities[activity.id] = activity;
+
+    const view = getItemCatalogView(game, content);
+    const ragefire = view.dungeons.find((dungeon) => dungeon.id === "ragefire_chasm")!;
+    if (!ragefire.unlocked) throw new Error("Expected unlocked Ragefire Chasm");
+    expect(ragefire).toMatchObject({
+      totalItemCount: 6,
+      acquiredItemCount: 0,
+      development: {
+        level: 3,
+        experienceBonusPercent: 12,
+        extraLootPercent: 9,
+        completedCommissionCount: 1,
+        totalCommissionCount: 2,
+        unlockedItemCount: 2,
+        hiddenItemCount: 3,
+      },
+    });
+    const oggleflint = ragefire.encounters.find((encounter) => encounter.id === encounterId)!;
+    expect(oggleflint).toMatchObject({
+      guaranteedEquipmentDrops: 1,
+      extraLootPercent: 9,
+      expectedEquipmentDrops: 1.09,
+    });
+    expect(oggleflint.items.map((item) => item.id)).toEqual(["15452", "15453"]);
+    expect(oggleflint.items[0]!.source).toMatchObject({
+      kind: "development",
+      basePerDropChance: 0,
+      perDropChance: 0.5,
+      baseEncounterDropChance: 0,
+      developmentQuestNames: ["归还背包"],
+      firstDevelopmentReward: true,
+    });
+    expect(oggleflint.items[0]!.source.encounterDropChance).toBeCloseTo(0.5225);
+    expect(oggleflint.items[1]!.source.firstDevelopmentReward).toBe(false);
+    const taragaman = ragefire.encounters.find(
+      (encounter) => encounter.id === "taragaman_the_hungerer",
+    )!;
+    const baseItem = taragaman.items[0]!;
+    expect(baseItem.source.kind).toBe("base");
+    expect(baseItem.source.basePerDropChance).toBe(baseItem.source.perDropChance);
+    expect(baseItem.source.encounterDropChance).toBeGreaterThan(
+      baseItem.source.baseEncounterDropChance,
+    );
+    expect(view.globalProgress.totalItemCount).toBe(404);
   });
 
   it("projects base-item discovery counts and possible and seen suffixes consistently", () => {

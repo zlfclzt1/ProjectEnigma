@@ -192,25 +192,57 @@ async function claimReward(rewardId: CollectionRewardId): Promise<void> {
             <span>{{ dungeon.unlocked ? "已解锁副本" : "尚未解锁" }}</span>
             <h3>{{ dungeon.name }}</h3>
           </div>
-          <strong v-if="dungeon.unlocked">
-            {{
-              progressLabel(
-                dungeon.acquiredItemCount,
-                dungeon.totalItemCount,
-                dungeon.completionPercent,
-              )
-            }}
-          </strong>
+          <div v-if="dungeon.unlocked" class="dungeon-progress">
+            <strong>
+              {{
+                progressLabel(
+                  dungeon.acquiredItemCount,
+                  dungeon.totalItemCount,
+                  dungeon.completionPercent,
+                )
+              }}
+            </strong>
+            <template v-if="dungeon.development.totalCommissionCount">
+              <span>副本开发 Lv.{{ dungeon.development.level }}</span>
+              <small>
+                经验 +{{ dungeon.development.experienceBonusPercent }}% · 额外装备
+                {{ dungeon.development.extraLootPercent }}% / Boss
+              </small>
+              <small v-if="dungeon.development.unlockedItemCount">
+                已纳入掉落池 {{ dungeon.development.unlockedItemCount }} 件开发装备
+              </small>
+            </template>
+          </div>
           <strong v-else>装备资料封存中</strong>
         </header>
 
         <template v-if="dungeon.unlocked">
+          <aside
+            v-if="dungeon.development.hiddenItemCount"
+            class="unresolved-development"
+            aria-label="未查明的开发装备"
+          >
+            <span>?</span>
+            <div>
+              <strong>未查明的开发装备 ×{{ dungeon.development.hiddenItemCount }}</strong>
+              <small>完成远征调查后，相关装备才会公开并纳入 Boss 掉落池。</small>
+            </div>
+          </aside>
           <section
             v-for="encounter in dungeon.encounters"
             :key="encounter.id"
             class="encounter-section"
           >
-            <h4>{{ encounter.name }}</h4>
+            <header class="encounter-heading">
+              <h4>{{ encounter.name }}</h4>
+              <span v-if="encounter.guaranteedEquipmentDrops">
+                基础 {{ encounter.guaranteedEquipmentDrops }} 件
+                <template v-if="encounter.extraLootPercent">
+                  · {{ encounter.extraLootPercent }}% 额外一件 · 当前期望
+                  {{ encounter.expectedEquipmentDrops.toFixed(2) }} 件
+                </template>
+              </span>
+            </header>
             <div v-if="encounter.items.length" class="item-grid">
               <CatalogItemCard
                 v-for="item in encounter.items"
@@ -369,9 +401,60 @@ async function claimReward(rewardId: CollectionRewardId): Promise<void> {
   color: #c8aa63;
   font-size: 0.74rem;
 }
+.dungeon-progress {
+  display: grid;
+  justify-items: end;
+  gap: 3px;
+  text-align: right;
+}
+.dungeon-progress span {
+  color: #d2ac5a;
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+.dungeon-progress small {
+  color: #918777;
+  font-size: 0.62rem;
+}
 .dungeon-catalog.locked {
   border-style: dashed;
   opacity: 0.68;
+}
+.unresolved-development {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  margin-top: 12px;
+  border: 1px dashed #5b4b30;
+  border-radius: 7px;
+  color: #9f927d;
+  background: #15130f;
+}
+.unresolved-development > span {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid #6d5933;
+  border-radius: 5px;
+  color: #c5a55f;
+  background: #211a0e;
+  font-family: Georgia, serif;
+  font-size: 1.1rem;
+}
+.unresolved-development div {
+  display: grid;
+  gap: 2px;
+}
+.unresolved-development strong {
+  color: #c9b58e;
+  font-size: 0.7rem;
+}
+.unresolved-development small {
+  color: #81796c;
+  font-size: 0.62rem;
 }
 .locked-copy,
 .empty {
@@ -382,10 +465,21 @@ async function claimReward(rewardId: CollectionRewardId): Promise<void> {
 .encounter-section {
   margin-top: 13px;
 }
-.encounter-section h4 {
+.encounter-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
   margin-bottom: 8px;
+}
+.encounter-section h4 {
   color: #c9b58e;
   font-size: 0.9rem;
+}
+.encounter-heading span {
+  color: #81796c;
+  font-size: 0.62rem;
+  text-align: right;
 }
 .item-grid,
 .set-grid,
@@ -499,6 +593,18 @@ async function claimReward(rewardId: CollectionRewardId): Promise<void> {
     flex-direction: column;
   }
   .global-progress {
+    text-align: left;
+  }
+  .dungeon-progress {
+    justify-items: start;
+    text-align: left;
+  }
+  .encounter-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .encounter-heading span {
     text-align: left;
   }
   .dungeon-catalog {

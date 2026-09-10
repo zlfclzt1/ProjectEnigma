@@ -7,6 +7,11 @@ import {
   evaluateCollectionReward,
   getClaimedCollectionBenefits,
 } from "../../domain/collection/collection-reward-rules";
+import {
+  getDungeonDevelopmentSummary,
+  rewardEncounterAssignments,
+  unlockedDevelopmentItemsByEncounter,
+} from "../../domain/dungeon/dungeon-development";
 import type { ItemStatLineView } from "./get-members-view";
 import { EQUIPMENT_SLOT_NAMES, getItemStatLines } from "./get-members-view";
 import type {
@@ -37,11 +42,16 @@ export interface CatalogItemSourceView {
   readonly dungeonName: string;
   readonly encounterId: EncounterId;
   readonly encounterName: string;
-  readonly lootTableId: LootTableId;
+  readonly lootTableId?: LootTableId;
+  readonly kind: "base" | "development";
   readonly guaranteedEquipmentDrops: number;
   readonly relativeWeight: number;
+  readonly basePerDropChance: number;
   readonly perDropChance: number;
+  readonly baseEncounterDropChance: number;
   readonly encounterDropChance: number;
+  readonly developmentQuestNames: readonly string[];
+  readonly firstDevelopmentReward: boolean;
 }
 
 export interface CatalogItemView {
@@ -72,7 +82,22 @@ export interface CatalogItemView {
 export interface EncounterCatalogView {
   readonly id: EncounterId;
   readonly name: string;
+  readonly guaranteedEquipmentDrops: number;
+  readonly extraLootPercent: number;
+  readonly expectedEquipmentDrops: number;
   readonly items: readonly CatalogItemView[];
+}
+
+export interface DungeonCatalogDevelopmentView {
+  readonly level: number;
+  readonly points: number;
+  readonly totalPoints: number;
+  readonly experienceBonusPercent: number;
+  readonly extraLootPercent: number;
+  readonly completedCommissionCount: number;
+  readonly totalCommissionCount: number;
+  readonly unlockedItemCount: number;
+  readonly hiddenItemCount: number;
 }
 
 export interface LockedDungeonCatalogView {
@@ -85,6 +110,7 @@ export interface UnlockedDungeonCatalogView extends CollectionProgressView {
   readonly id: DungeonId;
   readonly name: string;
   readonly unlocked: true;
+  readonly development: DungeonCatalogDevelopmentView;
   readonly encounters: readonly EncounterCatalogView[];
 }
 
@@ -133,22 +159,28 @@ export interface ItemCatalogView {
 interface CatalogSource {
   readonly dungeonId: DungeonId;
   readonly encounterId: EncounterId;
-  readonly lootTableId: LootTableId;
+  readonly lootTableId?: LootTableId;
+  readonly kind: "base" | "development";
   readonly guaranteedEquipmentDrops: number;
   readonly relativeWeight: number;
+  readonly basePerDropChance: number;
   readonly perDropChance: number;
+  readonly baseEncounterDropChance: number;
   readonly encounterDropChance: number;
+  readonly developmentQuestNames: readonly string[];
+  readonly firstDevelopmentReward: boolean;
 }
 
 interface CatalogIndex {
   readonly sourcesByItemId: ReadonlyMap<ItemDefinitionId, readonly CatalogSource[]>;
   readonly itemIdsByDungeonId: ReadonlyMap<DungeonId, ReadonlySet<ItemDefinitionId>>;
+  readonly baseItemIdsByDungeonId: ReadonlyMap<DungeonId, ReadonlySet<ItemDefinitionId>>;
   readonly allItemIds: ReadonlySet<ItemDefinitionId>;
   readonly itemSetIdsByItemId: ReadonlyMap<ItemDefinitionId, readonly ItemSetId[]>;
 }
 
 export function getItemCatalogView(state: GameState, content: ContentRegistry): ItemCatalogView {
-  const index = buildCatalogIndex(content);
+  const index = buildCatalogIndex(state, content);
   const unlockedDungeonIds = new Set(state.guild.unlockedDungeonIds);
   const visibleItemIds = new Set<ItemDefinitionId>();
   for (const dungeonId of unlockedDungeonIds) {
@@ -165,22 +197,62 @@ export function getItemCatalogView(state: GameState, content: ContentRegistry): 
       if (!unlockedDungeonIds.has(dungeon.id)) {
         return { id: dungeon.id, name: dungeon.name.zhCN, unlocked: false };
       }
-      const dungeonItemIds = index.itemIdsByDungeonId.get(dungeon.id) ?? new Set();
+      const dungeonItemIds = index.baseItemIdsByDungeonId.get(dungeon.id) ?? new Set();
       const progress = progressFor(dungeonItemIds, state);
+      const developmentSummary = getDungeonDevelopmentSummary(state, content, dungeon.id);
+      const developmentItems = unlockedDevelopmentItemsByEncounter(state, content, dungeon.id);
+      const quests = content.quests.filter((quest) => quest.dungeonId === dungeon.id);
+      const unlockedDevelopmentItemIds = new Set(
+        Object.values(developmentItems).flatMap((itemIds) => itemIds ?? []),
+      );
+      const hiddenDevelopmentItemIds = new Set(
+        quests.flatMap((quest) =>
+          state.dungeonDevelopment.entries[quest.id]?.status === "completed"
+            ? []
+            : [...quest.rewards.fixedItemIds, ...quest.rewards.itemChoiceIds],
+        ),
+      );
       return {
         id: dungeon.id,
         name: dungeon.name.zhCN,
         unlocked: true,
         ...progress,
+        development: {
+          level: developmentSummary.level,
+          points: developmentSummary.points,
+          totalPoints: developmentSummary.totalPoints,
+          experienceBonusPercent: Math.round((developmentSummary.experienceMultiplier - 1) * 100),
+          extraLootPercent: Math.round(developmentSummary.extraLootChance * 100),
+          completedCommissionCount: quests.filter(
+            (quest) => state.dungeonDevelopment.entries[quest.id]?.status === "completed",
+          ).length,
+          totalCommissionCount: quests.length,
+          unlockedItemCount: unlockedDevelopmentItemIds.size,
+          hiddenItemCount: hiddenDevelopmentItemIds.size,
+        },
         encounters: dungeon.route.map(({ encounterId }) => {
           const encounter = content.encounterById.get(encounterId)!;
           const lootTable = content.getLootTableForEncounter(encounter.id);
+          const itemIds = [
+            ...(lootTable?.items.map((entry) => entry.itemId) ?? []),
+            ...(developmentItems[encounter.id] ?? []).filter(
+              (itemId) => !lootTable?.items.some((entry) => entry.itemId === itemId),
+            ),
+          ];
+          const guaranteedEquipmentDrops =
+            itemIds.length === 0 ? 0 : (lootTable?.guaranteedEquipmentDrops ?? 1);
           return {
             id: encounter.id,
             name: encounter.name.zhCN,
-            items: (lootTable?.items ?? []).map((entry) => {
-              const definition = content.itemById.get(entry.itemId)!;
-              const source = (index.sourcesByItemId.get(entry.itemId) ?? []).find(
+            guaranteedEquipmentDrops,
+            extraLootPercent:
+              itemIds.length === 0 ? 0 : Math.round(developmentSummary.extraLootChance * 100),
+            expectedEquipmentDrops:
+              guaranteedEquipmentDrops +
+              (itemIds.length === 0 ? 0 : developmentSummary.extraLootChance),
+            items: itemIds.map((itemId) => {
+              const definition = content.itemById.get(itemId)!;
+              const source = (index.sourcesByItemId.get(itemId) ?? []).find(
                 (candidate) => candidate.encounterId === encounter.id,
               )!;
               return projectItem(
@@ -265,35 +337,68 @@ export function getItemCatalogView(state: GameState, content: ContentRegistry): 
   };
 }
 
-function buildCatalogIndex(content: ContentRegistry): CatalogIndex {
+function buildCatalogIndex(state: GameState, content: ContentRegistry): CatalogIndex {
   const sourcesByItemId = new Map<ItemDefinitionId, CatalogSource[]>();
   const itemIdsByDungeonId = new Map<DungeonId, Set<ItemDefinitionId>>();
+  const baseItemIdsByDungeonId = new Map<DungeonId, Set<ItemDefinitionId>>();
   const allItemIds = new Set<ItemDefinitionId>();
+  const firstDevelopmentRewardKeys = getFirstDevelopmentRewardKeys(state);
   for (const dungeon of content.dungeons) {
     const dungeonItemIds = new Set<ItemDefinitionId>();
+    const baseDungeonItemIds = new Set<ItemDefinitionId>();
+    const developmentSummary = getDungeonDevelopmentSummary(state, content, dungeon.id);
+    const developmentItems = unlockedDevelopmentItemsByEncounter(state, content, dungeon.id);
+    const developmentQuestNames = getDevelopmentQuestNames(state, content, dungeon.id);
     for (const { encounterId } of dungeon.route) {
       const encounter = content.encounterById.get(encounterId)!;
       const lootTable = content.getLootTableForEncounter(encounter.id);
-      if (!lootTable) continue;
-      const totalWeight = lootTable.items.reduce((sum, entry) => sum + entry.weight, 0);
-      for (const entry of lootTable.items) {
-        const perDropChance = entry.weight / totalWeight;
+      const baseItems = lootTable?.items ?? [];
+      const baseTotalWeight = baseItems.reduce((sum, entry) => sum + entry.weight, 0);
+      const unlockedWeight = baseItems.length > 0 ? baseTotalWeight / baseItems.length : 1;
+      const unlockedItems = (developmentItems[encounter.id] ?? [])
+        .filter((itemId) => !baseItems.some((entry) => entry.itemId === itemId))
+        .map((itemId) => ({ itemId, weight: unlockedWeight }));
+      const currentItems = [...baseItems, ...unlockedItems];
+      const currentTotalWeight = currentItems.reduce((sum, entry) => sum + entry.weight, 0);
+      const guaranteedEquipmentDrops = lootTable?.guaranteedEquipmentDrops ?? 1;
+      for (const entry of currentItems) {
+        const baseEntry = baseItems.find((candidate) => candidate.itemId === entry.itemId);
+        const basePerDropChance = baseEntry ? baseEntry.weight / baseTotalWeight : 0;
+        const perDropChance = entry.weight / currentTotalWeight;
         const sources = sourcesByItemId.get(entry.itemId) ?? [];
+        const questNames = developmentQuestNames.get(
+          developmentItemKey(encounter.id, entry.itemId),
+        );
         sources.push({
           dungeonId: dungeon.id,
           encounterId: encounter.id,
-          lootTableId: lootTable.id,
-          guaranteedEquipmentDrops: lootTable.guaranteedEquipmentDrops,
+          ...(lootTable ? { lootTableId: lootTable.id } : {}),
+          kind: baseEntry ? "base" : "development",
+          guaranteedEquipmentDrops,
           relativeWeight: entry.weight,
+          basePerDropChance,
           perDropChance,
-          encounterDropChance: 1 - (1 - perDropChance) ** lootTable.guaranteedEquipmentDrops,
+          baseEncounterDropChance:
+            basePerDropChance === 0 ? 0 : 1 - (1 - basePerDropChance) ** guaranteedEquipmentDrops,
+          encounterDropChance:
+            1 -
+            (1 - perDropChance) ** guaranteedEquipmentDrops *
+              (1 - developmentSummary.extraLootChance * perDropChance),
+          developmentQuestNames: questNames ?? [],
+          firstDevelopmentReward: firstDevelopmentRewardKeys.has(
+            developmentItemKey(encounter.id, entry.itemId),
+          ),
         });
         sourcesByItemId.set(entry.itemId, sources);
         dungeonItemIds.add(entry.itemId);
-        allItemIds.add(entry.itemId);
+        if (baseEntry) {
+          baseDungeonItemIds.add(entry.itemId);
+          allItemIds.add(entry.itemId);
+        }
       }
     }
     itemIdsByDungeonId.set(dungeon.id, dungeonItemIds);
+    baseItemIdsByDungeonId.set(dungeon.id, baseDungeonItemIds);
   }
 
   const itemSetIdsByItemId = new Map<ItemDefinitionId, ItemSetId[]>();
@@ -304,7 +409,56 @@ function buildCatalogIndex(content: ContentRegistry): CatalogIndex {
       itemSetIdsByItemId.set(itemId, setIds);
     }
   }
-  return { sourcesByItemId, itemIdsByDungeonId, allItemIds, itemSetIdsByItemId };
+  return {
+    sourcesByItemId,
+    itemIdsByDungeonId,
+    baseItemIdsByDungeonId,
+    allItemIds,
+    itemSetIdsByItemId,
+  };
+}
+
+function getDevelopmentQuestNames(
+  state: GameState,
+  content: ContentRegistry,
+  dungeonId: DungeonId,
+): ReadonlyMap<string, readonly string[]> {
+  const namesByItem = new Map<string, string[]>();
+  for (const quest of content.quests) {
+    const progress = state.dungeonDevelopment.entries[quest.id];
+    if (progress?.status !== "completed") continue;
+    for (const [encounterId, itemIds] of rewardEncounterAssignments(
+      quest,
+      content,
+      progress.completionEncounterId,
+    )) {
+      if (content.encounterById.get(encounterId)?.dungeonId !== dungeonId) continue;
+      for (const itemId of itemIds) {
+        const key = developmentItemKey(encounterId, itemId);
+        namesByItem.set(key, [...new Set([...(namesByItem.get(key) ?? []), quest.name.zhCN])]);
+      }
+    }
+  }
+  return namesByItem;
+}
+
+function getFirstDevelopmentRewardKeys(state: GameState): ReadonlySet<string> {
+  const keys = new Set<string>();
+  for (const activity of Object.values(state.activities)) {
+    if (activity.type !== "expedition") continue;
+    for (const event of activity.developmentEvents) {
+      if (event.type !== "completed") continue;
+      for (const itemInstanceId of event.itemInstanceIds) {
+        const item = state.itemInstances[itemInstanceId];
+        if (item) keys.add(developmentItemKey(event.encounterId, item.definitionId));
+      }
+    }
+  }
+  return keys;
+}
+
+function developmentItemKey(encounterId: EncounterId, itemId: ItemDefinitionId): string {
+  return `${encounterId}:${itemId}`;
 }
 
 function projectItem(
@@ -384,11 +538,16 @@ function projectCatalogSource(
     dungeonName: dungeon.name.zhCN,
     encounterId: encounter.id,
     encounterName: encounter.name.zhCN,
-    lootTableId: source.lootTableId,
+    ...(source.lootTableId ? { lootTableId: source.lootTableId } : {}),
+    kind: source.kind,
     guaranteedEquipmentDrops: source.guaranteedEquipmentDrops,
     relativeWeight: source.relativeWeight,
+    basePerDropChance: source.basePerDropChance,
     perDropChance: source.perDropChance,
+    baseEncounterDropChance: source.baseEncounterDropChance,
     encounterDropChance: source.encounterDropChance,
+    developmentQuestNames: [...source.developmentQuestNames],
+    firstDevelopmentReward: source.firstDevelopmentReward,
   };
 }
 
