@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "血色修道院墓地副本日志；只描述结算事实与机制反馈。"
+      }
+    ]
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "scarlet_gy_vishas_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "scarlet_gy_interrogator_vishas" },
+      "availableParameters": ["tank", "member"],
+      "templates": [
+        "维萨斯倒下，{tank} 确认这次审讯终于结束。",
+        "{member} 开始寻找沃瑞尔留下的装备选择。"
+      ]
+    },
+    {
+      "id": "scarlet_gy_thalnos_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "scarlet_gy_bloodmage_thalnos" },
+      "availableParameters": ["healer", "member"],
+      "templates": [
+        "萨尔诺斯的暗影消散，{healer} 终于不用躲下一轮范围法术。",
+        "墓地重新安静下来，{member} 只听见装备需求按钮被连续按下。"
+      ]
+    }
+  ]
+}

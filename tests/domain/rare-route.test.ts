@@ -38,6 +38,27 @@ describe("rare route spawn locks", () => {
     expect(new Set(outcomes).size).toBeGreaterThan(1);
   });
 
+  it("allows at most one rare boss from the same spawn group", () => {
+    const groupedRoute: DungeonRouteNode[] = [
+      route[0]!,
+      ...["azshir", "fallen_champion", "ironspine"].map((id, index) => ({
+        id: asBrandedId<"DungeonRouteNodeId">(id),
+        type: "rare" as const,
+        encounterId: asBrandedId<"EncounterId">(id),
+        spawnProbability: index === 2 ? 0.34 : 0.33,
+        spawnGroup: "graveyard_rare",
+      })),
+    ];
+
+    for (let index = 0; index < 100; index += 1) {
+      const locks = lockRareRouteSpawns(
+        groupedRoute,
+        new SeededRandomSource(`graveyard:run:${index}`),
+      );
+      expect(Object.values(locks).filter(Boolean)).toHaveLength(1);
+    }
+  });
+
   it("reveals a locked outcome only when progress reaches the rare node", () => {
     const run = {
       rareNodeSpawns: { [rareNodeId]: true },

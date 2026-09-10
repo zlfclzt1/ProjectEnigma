@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/classic-wow-scarlet-monastery-dungeon-quests",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对 Vorrel's Revenge 的三件可选奖励。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].restrictions", "items[].description"],
+        "reason": "保留真实任务奖励物品，按当前职业与定位规则补齐可装备性。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "7751",
+      "name": { "zhCN": "沃瑞尔的靴子", "enUS": "Vorrel's Boots" },
+      "itemLevel": 33,
+      "requiredLevel": 28,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "leather",
+      "restrictions": { "allowedClassIds": ["rogue", "druid"], "allowedRoles": ["dps", "healer"] },
+      "icon": { "kind": "database", "name": "inv_boots_05" },
+      "description": { "zhCN": "血色修道院任务奖励：Vorrel's Revenge。" },
+      "stats": {
+        "primary": { "agilityPoints": 7, "staminaPoints": 5 },
+        "defense": { "armorPoints": 76 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7751",
+        "url": "https://www.wowhead.com/classic/cn/item=7751&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7750",
+      "name": { "zhCN": "哀伤披风", "enUS": "Mantle of Woe" },
+      "itemLevel": 33,
+      "requiredLevel": 28,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "database", "name": "inv_misc_cape_08" },
+      "description": { "zhCN": "血色修道院任务奖励：Vorrel's Revenge。" },
+      "stats": { "primary": { "staminaPoints": 6, "spiritPoints": 6 } },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7750",
+        "url": "https://www.wowhead.com/classic/cn/item=7750&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "4643",
+      "name": { "zhCN": "灰钢披风", "enUS": "Grimsteel Cape" },
+      "itemLevel": 33,
+      "requiredLevel": 28,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "database", "name": "inv_misc_cape_05" },
+      "description": { "zhCN": "血色修道院任务奖励：Vorrel's Revenge。" },
+      "stats": { "primary": { "strengthPoints": 4, "staminaPoints": 5 } },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "4643",
+        "url": "https://www.wowhead.com/classic/cn/item=4643&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    }
+  ]
+}

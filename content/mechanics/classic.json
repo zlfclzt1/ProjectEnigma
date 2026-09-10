@@ -278,6 +278,86 @@
         "enUS": "Controlling totems and elemental adds reduces Halmgar's platform pressure."
       },
       "reportTag": "razorfen_kraul_totems"
+    },
+    {
+      "id": "scarlet_gy_shadow_pain",
+      "name": { "zhCN": "暗影痛苦", "enUS": "Shadow Pain" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "magic_dispel", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.12,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.05
+      },
+      "description": {
+        "zhCN": "驱散可以降低维萨斯的持续暗影伤害压力。",
+        "enUS": "Dispel coverage reduces Vishas's shadow damage pressure."
+      },
+      "reportTag": "scarlet_gy_shadow_pain"
+    },
+    {
+      "id": "scarlet_gy_soul_siphon",
+      "name": { "zhCN": "灵魂虹吸", "enUS": "Soul Siphon" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "interrupt", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.1,
+        "probabilityModifier": -0.03,
+        "durationMultiplier": 1.05
+      },
+      "description": {
+        "zhCN": "打断可以降低阿齐尔的吸取生命压力。",
+        "enUS": "Interrupts reduce Azshir's soul siphon pressure."
+      },
+      "reportTag": "scarlet_gy_soul_siphon"
+    },
+    {
+      "id": "scarlet_gy_cleave",
+      "name": { "zhCN": "堕落顺劈", "enUS": "Fallen Cleave" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "crowd_control", "minimumValue": 1 }],
+      "missingEffects": {
+        "tankMultiplier": 1.1,
+        "probabilityModifier": -0.03,
+        "durationMultiplier": 1.04
+      },
+      "description": {
+        "zhCN": "控制随从可降低堕落勇士的近战顺劈压力。",
+        "enUS": "Controlling adds reduces Fallen Champion's cleave pressure."
+      },
+      "reportTag": "scarlet_gy_cleave"
+    },
+    {
+      "id": "scarlet_gy_poison_cloud",
+      "name": { "zhCN": "毒云诅咒", "enUS": "Poison Cloud" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "magic_dispel", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.13,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.05
+      },
+      "description": {
+        "zhCN": "驱散可以降低铁脊毒云与诅咒造成的治疗压力。",
+        "enUS": "Dispel coverage reduces Ironspine's poison cloud pressure."
+      },
+      "reportTag": "scarlet_gy_poison_cloud"
+    },
+    {
+      "id": "scarlet_gy_shadow_nova",
+      "name": { "zhCN": "暗影新星", "enUS": "Shadow Nova" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "interrupt", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.14,
+        "probabilityModifier": -0.05,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "打断可以降低萨尔诺斯范围暗影法术的爆发压力。",
+        "enUS": "Interrupts reduce Thalnos's area shadow burst pressure."
+      },
+      "reportTag": "scarlet_gy_shadow_nova"
     }
   ]
 }

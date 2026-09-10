@@ -6,12 +6,12 @@
 
 ## 汇总
 
-- 路线 Encounter：56。
-- 掉落表：46。
-- 掉落表分类：Boss 专属掉落 46，任务奖励 0，世界掉落 0，设计占位 0。
-- Encounter 引用分类：Boss 专属掉落 46，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 10。
-- 不同装备分类：Boss 专属掉落 114，任务奖励 0，世界掉落 0，设计占位 0。
-- 成员副本任务：13，不同任务奖励装备：28。
+- 路线 Encounter：61。
+- 掉落表：51。
+- 掉落表分类：Boss 专属掉落 51，任务奖励 0，世界掉落 0，设计占位 0。
+- Encounter 引用分类：Boss 专属掉落 51，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 10。
+- 不同装备分类：Boss 专属掉落 127，任务奖励 0，世界掉落 0，设计占位 0。
+- 成员副本任务：14，不同任务奖励装备：31。
 - Boss 掉落与任务奖励重复：0。
 - 未显式填写 `sourceType` 的 Boss 掉落表：0。
 - 未被路线 Encounter 引用的掉落表：0。
@@ -81,6 +81,16 @@
 | 卡尔加·刺肋（razorfen_kraul_charlga_razorflank） | razorfen_kraul_charlga_razorflank | Boss 专属掉落 | 1 | 6693 阿迦玛甘之握、6692 阿迦玛甘之心、6694 尖刺收割者 |
 | 召地者哈穆加（razorfen_kraul_earthcaller_halmgar） | razorfen_kraul_earthcaller_halmgar | Boss 专属掉落 | 1 | 6688 低语风帽、6689 风灵法杖 |
 
+### 血色修道院：墓地（scarlet_monastery_graveyard）
+
+| Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
+|---|---|---|---:|---|
+| 审讯官维萨斯（scarlet_gy_interrogator_vishas） | scarlet_gy_interrogator_vishas | Boss 专属掉落 | 1 | 7683 血腥黄铜指虎、7682 折磨之刺 |
+| 不眠的阿齐尔（scarlet_gy_azshir_the_sleepless） | scarlet_gy_azshir_the_sleepless | Boss 专属掉落 | 1 | 7708 死灵魔杖、7731 鬼骨护符、7709 凋零护腿 |
+| 堕落的勇士（scarlet_gy_fallen_champion） | scarlet_gy_fallen_champion | Boss 专属掉落 | 1 | 7690 乌木护腕、7691 防腐外衣、7689 阴森黎明 |
+| 铁脊（scarlet_gy_ironspine） | scarlet_gy_ironspine | Boss 专属掉落 | 1 | 7686 铁脊之眼、7688 铁脊胸甲、7687 铁脊之拳 |
+| 血法师萨尔诺斯（scarlet_gy_bloodmage_thalnos） | scarlet_gy_bloodmage_thalnos | Boss 专属掉落 | 1 | 7684 血法师肩饰、7685 被遗忘先知宝珠 |
+
 ### 影牙城堡（shadowfang_keep）
 
 | Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
@@ -132,6 +142,7 @@
 | 怒焰裂谷（ragefire_chasm） | 毁灭之力（rfc_power_to_destroy） | 15449 苍白长裤、15450 泥泞护腿、15451 石像鬼护腿 |
 | 剃刀沼泽（razorfen_kraul） | 剃刀沼泽的巫婆（razorfen_kraul_crone_of_the_kraul） | 6684 苍白肩垫 |
 | 剃刀沼泽（razorfen_kraul） | 生命渐逝（razorfen_kraul_mortality_wanes） | 6750 蛇环、6751 哀悼披肩、6752 枪骑兵长靴 |
+| 血色修道院：墓地（scarlet_monastery_graveyard） | 沃瑞尔的复仇（scarlet_gy_vorrels_revenge） | 7751 沃瑞尔的靴子、7750 哀伤披风、4643 灰钢披风 |
 | 暴风城监狱（the_stockade） | 伸张正义（stockade_what_comes_around） | 3400 磷铝长剑、1317 硬根法杖 |
 | 暴风城监狱（the_stockade） | 卡姆·深怒（stockade_fury_runs_deep） | 3562 辩护腰带、1264 碎头者 |
 | 暴风城监狱（the_stockade） | 罪与罚（stockade_crime_and_punishment） | 2033 大使之靴、2906 夜色郡锁甲护腿 |

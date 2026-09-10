@@ -16,15 +16,29 @@ export function lockRareRouteSpawns(
   route: readonly DungeonRouteNode[],
   random: RandomSource,
 ): RareRouteSpawnLocks {
-  return Object.freeze(
-    Object.fromEntries(
-      route.flatMap((node) =>
-        node.type === "rare"
-          ? [[node.id, random.next(`rare:${node.id}`) < node.spawnProbability]]
-          : [],
-      ),
-    ) as Partial<Record<DungeonRouteNodeId, boolean>>,
-  );
+  const locks: Partial<Record<DungeonRouteNodeId, boolean>> = {};
+  const groups = new Map<string, Extract<DungeonRouteNode, { type: "rare" }>[]>();
+  for (const node of route) {
+    if (node.type !== "rare") continue;
+    if (!node.spawnGroup) {
+      locks[node.id] = random.next(`rare:${node.id}`) < node.spawnProbability;
+      continue;
+    }
+    const nodes = groups.get(node.spawnGroup) ?? [];
+    nodes.push(node);
+    groups.set(node.spawnGroup, nodes);
+  }
+  for (const [group, nodes] of groups) {
+    const roll = random.next(`rare-group:${group}`);
+    let cumulative = 0;
+    let selected: DungeonRouteNodeId | undefined;
+    for (const node of nodes) {
+      cumulative += node.spawnProbability;
+      if (!selected && roll < cumulative) selected = node.id;
+    }
+    for (const node of nodes) locks[node.id] = node.id === selected;
+  }
+  return Object.freeze(locks);
 }
 
 export function revealRareRouteNodes(

@@ -43,6 +43,7 @@ const rareRouteNodeSchema = z
     type: z.literal("rare"),
     encounterId: encounterIdSchema,
     spawnProbability: probabilitySchema,
+    spawnGroup: z.string().trim().min(1).optional(),
   })
   .strict();
 
@@ -119,6 +120,24 @@ export const dungeonDefinitionSchema = z
   .refine((dungeon) => dungeon.route.some((node) => node.type === "required"), {
     path: ["route"],
     message: "副本路线至少需要一个必打节点",
+  })
+  .superRefine((dungeon, context) => {
+    const groupTotals = new Map<string, number>();
+    for (const node of dungeon.route) {
+      if (node.type !== "rare" || !node.spawnGroup) continue;
+      groupTotals.set(
+        node.spawnGroup,
+        (groupTotals.get(node.spawnGroup) ?? 0) + node.spawnProbability,
+      );
+    }
+    for (const [group, total] of groupTotals) {
+      if (total <= 1 + 1e-9) continue;
+      context.addIssue({
+        code: "custom",
+        path: ["route"],
+        message: `稀有刷新组 ${group} 的概率之和不能超过 1`,
+      });
+    }
   });
 
 export const dungeonDefinitionFileSchema = contentFileBaseSchema.safeExtend({

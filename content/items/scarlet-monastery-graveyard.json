@@ -1,0 +1,364 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/scarlet-monastery-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对血色修道院墓地 Boss 专属装备 ID、图标与常驻属性。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-09",
+        "notes": "交叉核对墓地 Boss 与装备归属。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].restrictions", "items[].description"],
+        "reason": "按当前职业与定位装备规则补齐可装备性，并标记墓地 Boss 来源。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "7683",
+      "name": { "zhCN": "血腥黄铜指虎", "enUS": "Bloody Brass Knuckles" },
+      "itemLevel": 30,
+      "requiredLevel": 25,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["rogue", "warrior", "shaman"],
+        "allowedRoles": ["dps", "tank"]
+      },
+      "icon": { "kind": "database", "name": "inv_weapon_hand_01" },
+      "description": { "zhCN": "血色修道院：审讯官维萨斯的专属掉落。" },
+      "stats": {
+        "primary": { "agilityPoints": 5, "staminaPoints": 3 },
+        "weapon": { "damage": { "minimumPoints": 25, "maximumPoints": 47 }, "speedSeconds": 1.7 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7683",
+        "url": "https://www.wowhead.com/classic/cn/item=7683&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7682",
+      "name": { "zhCN": "折磨之刺", "enUS": "Torturing Poker" },
+      "itemLevel": 30,
+      "requiredLevel": 25,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["rogue", "warrior", "hunter", "shaman"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_weapon_shortblade_05" },
+      "description": { "zhCN": "血色修道院：审讯官维萨斯的专属掉落。" },
+      "stats": {
+        "primary": { "agilityPoints": 6 },
+        "weapon": { "damage": { "minimumPoints": 28, "maximumPoints": 52 }, "speedSeconds": 1.9 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7682",
+        "url": "https://www.wowhead.com/classic/cn/item=7682&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7684",
+      "name": { "zhCN": "血法师肩饰", "enUS": "Bloodmage Mantle" },
+      "itemLevel": 31,
+      "requiredLevel": 26,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["mage", "priest", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_shoulder_02" },
+      "description": { "zhCN": "血色修道院：血法师萨尔诺斯的专属掉落。" },
+      "stats": {
+        "primary": { "intellectPoints": 10, "spiritPoints": 7 },
+        "defense": { "armorPoints": 39 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7684",
+        "url": "https://www.wowhead.com/classic/cn/item=7684&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7685",
+      "name": { "zhCN": "被遗忘先知宝珠", "enUS": "Orb of the Forgotten Seer" },
+      "itemLevel": 31,
+      "requiredLevel": 26,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["mage", "priest", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_misc_orb_02" },
+      "description": { "zhCN": "血色修道院：血法师萨尔诺斯的专属掉落。" },
+      "stats": {
+        "primary": { "intellectPoints": 7, "spiritPoints": 6 },
+        "spell": { "spellPowerPoints": 4 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7685",
+        "url": "https://www.wowhead.com/classic/cn/item=7685&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7708",
+      "name": { "zhCN": "死灵魔杖", "enUS": "Necrotic Wand" },
+      "itemLevel": 32,
+      "requiredLevel": 27,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["mage", "priest", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_wand_04" },
+      "description": { "zhCN": "血色修道院：不眠的阿齐尔的专属掉落。" },
+      "stats": {
+        "primary": { "intellectPoints": 8, "spiritPoints": 5 },
+        "weapon": { "damage": { "minimumPoints": 28, "maximumPoints": 52 }, "speedSeconds": 1.8 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7708",
+        "url": "https://www.wowhead.com/classic/cn/item=7708&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7731",
+      "name": { "zhCN": "鬼骨护符", "enUS": "Ghostshard Talisman" },
+      "itemLevel": 32,
+      "requiredLevel": 27,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "database", "name": "inv_jewelry_amulet_04" },
+      "description": { "zhCN": "血色修道院：不眠的阿齐尔的专属掉落。" },
+      "stats": { "primary": { "staminaPoints": 7, "spiritPoints": 5 } },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7731",
+        "url": "https://www.wowhead.com/classic/cn/item=7731&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7709",
+      "name": { "zhCN": "凋零护腿", "enUS": "Blighted Leggings" },
+      "itemLevel": 32,
+      "requiredLevel": 27,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["mage", "priest", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_pants_08" },
+      "description": { "zhCN": "血色修道院：不眠的阿齐尔的专属掉落。" },
+      "stats": {
+        "primary": { "intellectPoints": 9, "spiritPoints": 8 },
+        "defense": { "armorPoints": 43 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7709",
+        "url": "https://www.wowhead.com/classic/cn/item=7709&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7690",
+      "name": { "zhCN": "乌木护腕", "enUS": "Ebon Vise" },
+      "itemLevel": 32,
+      "requiredLevel": 27,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_bracer_07" },
+      "description": { "zhCN": "血色修道院：堕落的勇士的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 5, "staminaPoints": 4 },
+        "defense": { "armorPoints": 72 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7690",
+        "url": "https://www.wowhead.com/classic/cn/item=7690&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7691",
+      "name": { "zhCN": "防腐外衣", "enUS": "Embalmed Shroud" },
+      "itemLevel": 32,
+      "requiredLevel": 27,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["mage", "priest", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_chest_cloth_08" },
+      "description": { "zhCN": "血色修道院：堕落的勇士的专属掉落。" },
+      "stats": {
+        "primary": { "intellectPoints": 11, "spiritPoints": 8 },
+        "defense": { "armorPoints": 54 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7691",
+        "url": "https://www.wowhead.com/classic/cn/item=7691&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7689",
+      "name": { "zhCN": "阴森黎明", "enUS": "Morbid Dawn" },
+      "itemLevel": 32,
+      "requiredLevel": 27,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_sword_07" },
+      "description": { "zhCN": "血色修道院：堕落的勇士的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 8, "staminaPoints": 4 },
+        "weapon": { "damage": { "minimumPoints": 35, "maximumPoints": 66 }, "speedSeconds": 2.5 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7689",
+        "url": "https://www.wowhead.com/classic/cn/item=7689&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7686",
+      "name": { "zhCN": "铁脊之眼", "enUS": "Ironspine's Eye" },
+      "itemLevel": 33,
+      "requiredLevel": 28,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "database", "name": "inv_jewelry_amulet_01" },
+      "description": { "zhCN": "血色修道院：铁脊的专属掉落。" },
+      "stats": { "primary": { "staminaPoints": 8, "spiritPoints": 6 } },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7686",
+        "url": "https://www.wowhead.com/classic/cn/item=7686&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7688",
+      "name": { "zhCN": "铁脊胸甲", "enUS": "Ironspine's Ribcage" },
+      "itemLevel": 33,
+      "requiredLevel": 28,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_chest_plate06" },
+      "description": { "zhCN": "血色修道院：铁脊的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 8, "staminaPoints": 7 },
+        "defense": { "armorPoints": 310 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7688",
+        "url": "https://www.wowhead.com/classic/cn/item=7688&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7687",
+      "name": { "zhCN": "铁脊之拳", "enUS": "Ironspine's Fist" },
+      "itemLevel": 33,
+      "requiredLevel": 28,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_gauntlets_09" },
+      "description": { "zhCN": "血色修道院：铁脊的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 6, "staminaPoints": 5 },
+        "defense": { "armorPoints": 129 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7687",
+        "url": "https://www.wowhead.com/classic/cn/item=7687&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    }
+  ]
+}

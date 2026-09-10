@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对血色修道院墓地 Boss 与装备池。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["lootTables[].guaranteedEquipmentDrops", "lootTables[].items[].weight"],
+        "reason": "拥有专属装备池的 Boss 保证掉落一件；首轮使用池内等权基线。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "lootTables": [
+    {
+      "id": "scarlet_gy_interrogator_vishas",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "7683", "weight": 0.5 },
+        { "itemId": "7682", "weight": 0.5 }
+      ]
+    },
+    {
+      "id": "scarlet_gy_bloodmage_thalnos",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "7684", "weight": 0.5 },
+        { "itemId": "7685", "weight": 0.5 }
+      ]
+    },
+    {
+      "id": "scarlet_gy_azshir_the_sleepless",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "7708", "weight": 0.3333333333 },
+        { "itemId": "7731", "weight": 0.3333333333 },
+        { "itemId": "7709", "weight": 0.3333333334 }
+      ]
+    },
+    {
+      "id": "scarlet_gy_fallen_champion",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "7690", "weight": 0.3333333333 },
+        { "itemId": "7691", "weight": 0.3333333333 },
+        { "itemId": "7689", "weight": 0.3333333334 }
+      ]
+    },
+    {
+      "id": "scarlet_gy_ironspine",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "7686", "weight": 0.3333333333 },
+        { "itemId": "7688", "weight": 0.3333333333 },
+        { "itemId": "7687", "weight": 0.3333333334 }
+      ]
+    }
+  ]
+}

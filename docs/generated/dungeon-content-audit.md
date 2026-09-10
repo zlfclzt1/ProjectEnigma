@@ -42,6 +42,11 @@
 | 剃刀沼泽（razorfen_kraul） | razorfen_kraul_blind_hunter | rare（0.16） | 盲眼猎手（razorfen_kraul_blind_hunter） | boss_drop:razorfen_kraul_blind_hunter | 1 | 6695 冥骨护符、6696 暗夜追猎者之弓、6697 蝠翼披风 |
 | 剃刀沼泽（razorfen_kraul） | razorfen_kraul_charlga_razorflank | required | 卡尔加·刺肋（razorfen_kraul_charlga_razorflank） | boss_drop:razorfen_kraul_charlga_razorflank | 1 | 6693 阿迦玛甘之握、6692 阿迦玛甘之心、6694 尖刺收割者 |
 | 剃刀沼泽（razorfen_kraul） | razorfen_kraul_earthcaller_halmgar | rare（0.12） | 召地者哈穆加（razorfen_kraul_earthcaller_halmgar） | boss_drop:razorfen_kraul_earthcaller_halmgar | 1 | 6688 低语风帽、6689 风灵法杖 |
+| 血色修道院：墓地（scarlet_monastery_graveyard） | scarlet_gy_interrogator_vishas | required | 审讯官维萨斯（scarlet_gy_interrogator_vishas） | boss_drop:scarlet_gy_interrogator_vishas | 1 | 7683 血腥黄铜指虎、7682 折磨之刺 |
+| 血色修道院：墓地（scarlet_monastery_graveyard） | scarlet_gy_azshir_the_sleepless | rare（0.33） | 不眠的阿齐尔（scarlet_gy_azshir_the_sleepless） | boss_drop:scarlet_gy_azshir_the_sleepless | 1 | 7708 死灵魔杖、7731 鬼骨护符、7709 凋零护腿 |
+| 血色修道院：墓地（scarlet_monastery_graveyard） | scarlet_gy_fallen_champion | rare（0.33） | 堕落的勇士（scarlet_gy_fallen_champion） | boss_drop:scarlet_gy_fallen_champion | 1 | 7690 乌木护腕、7691 防腐外衣、7689 阴森黎明 |
+| 血色修道院：墓地（scarlet_monastery_graveyard） | scarlet_gy_ironspine | rare（0.34） | 铁脊（scarlet_gy_ironspine） | boss_drop:scarlet_gy_ironspine | 1 | 7686 铁脊之眼、7688 铁脊胸甲、7687 铁脊之拳 |
+| 血色修道院：墓地（scarlet_monastery_graveyard） | scarlet_gy_bloodmage_thalnos | required | 血法师萨尔诺斯（scarlet_gy_bloodmage_thalnos） | boss_drop:scarlet_gy_bloodmage_thalnos | 1 | 7684 血法师肩饰、7685 被遗忘先知宝珠 |
 | 影牙城堡（shadowfang_keep） | sfk_rethilgore | required | 雷希戈尔（sfk_rethilgore） | boss_drop:sfk_rethilgore | 1 | 5254 皱褶肩甲 |
 | 影牙城堡（shadowfang_keep） | sfk_razorclaw | required | 屠夫拉佐克劳（sfk_razorclaw） | boss_drop:sfk_razorclaw | 1 | 1292 屠夫的切肉刀、6226 鲜血围裙、6633 屠夫的剔骨刀 |
 | 影牙城堡（shadowfang_keep） | sfk_baron_silverlaine | required | 席瓦莱恩男爵（sfk_baron_silverlaine） | boss_drop:sfk_baron_silverlaine | 1 | 6321 席瓦莱恩家族徽记、6323 巴隆的节杖 |
@@ -67,8 +72,8 @@
 
 ## 引用完整度
 
-- 副本路线节点：56。
-- 副本任务：13。
+- 副本路线节点：61。
+- 副本任务：14。
 - 套装：1。
 - 未被路线引用的掉落表：0。
 - 未被掉落、任务或套装引用的非初始装备：0。

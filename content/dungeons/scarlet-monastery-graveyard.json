@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/scarlet-monastery-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对墓地 Boss 顺序、稀有节点与分区入口。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "将墓地作为四分区第二批的独立解锁起点，采用短路线和随机稀有节点。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["minimumLevel", "recommendedLevel", "duration", "probability", "route"],
+        "reason": "墓地目标为 10 分钟左右的中等级分区副本。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "dungeons": [
+    {
+      "id": "scarlet_monastery_graveyard",
+      "name": { "zhCN": "血色修道院：墓地", "enUS": "Scarlet Monastery: Graveyard" },
+      "minimumLevel": 30,
+      "recommendedLevel": 40,
+      "defaultUnlocked": false,
+      "unlock": { "requiredDungeonIds": ["razorfen_kraul"] },
+      "members": { "minimum": 1, "maximum": 5, "recommended": 5 },
+      "duration": { "baseSeconds": 600, "minimumRatio": 0.5, "maximumRatio": 1.8 },
+      "probability": {
+        "minimum": 0.05,
+        "maximum": 0.99,
+        "base": 0.05,
+        "readinessMultiplier": 0.88,
+        "surplusEffect": 0.5,
+        "geometricWeight": 0.7,
+        "bottleneckWeight": 0.3,
+        "overpowerThreshold": 1.5
+      },
+      "combatTuning": {
+        "bossProbabilityMaximum": 0.98,
+        "requirementMultipliers": { "tank": 0.94, "healing": 0.94, "damage": 0.94 }
+      },
+      "route": [
+        {
+          "id": "scarlet_gy_interrogator_vishas",
+          "type": "required",
+          "encounterId": "scarlet_gy_interrogator_vishas"
+        },
+        {
+          "id": "scarlet_gy_azshir_the_sleepless",
+          "type": "rare",
+          "encounterId": "scarlet_gy_azshir_the_sleepless",
+          "spawnProbability": 0.33,
+          "spawnGroup": "scarlet_gy_random_rare"
+        },
+        {
+          "id": "scarlet_gy_fallen_champion",
+          "type": "rare",
+          "encounterId": "scarlet_gy_fallen_champion",
+          "spawnProbability": 0.33,
+          "spawnGroup": "scarlet_gy_random_rare"
+        },
+        {
+          "id": "scarlet_gy_ironspine",
+          "type": "rare",
+          "encounterId": "scarlet_gy_ironspine",
+          "spawnProbability": 0.34,
+          "spawnGroup": "scarlet_gy_random_rare"
+        },
+        {
+          "id": "scarlet_gy_bloodmage_thalnos",
+          "type": "required",
+          "encounterId": "scarlet_gy_bloodmage_thalnos"
+        }
+      ]
+    }
+  ]
+}

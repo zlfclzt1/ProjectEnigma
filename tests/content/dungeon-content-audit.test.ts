@@ -8,9 +8,9 @@ import {
 describe("dungeon content audit", () => {
   it("lists every route node and preserves optional/rare semantics", () => {
     const audit = auditDungeonContent(loadBrowserContentRegistry());
-    expect(audit.routes).toHaveLength(56);
+    expect(audit.routes).toHaveLength(61);
     expect(audit.routes.filter((row) => row.nodeType === "optional")).toHaveLength(3);
-    expect(audit.routes.filter((row) => row.nodeType === "rare")).toHaveLength(4);
+    expect(audit.routes.filter((row) => row.nodeType === "rare")).toHaveLength(7);
     expect(
       audit.routes.some(
         (row) => row.encounterId === "oggleflint" && row.guaranteedEquipmentDrops === 0,

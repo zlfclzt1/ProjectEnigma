@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/classic-wow-scarlet-monastery-dungeon-quests",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对 Vorrel's Revenge 的 Boss 目标与奖励。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "将跨地图接取与交付压缩为成员参与击杀维萨斯即可完成。跨四分区任务延后至 D12。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["completion", "rewards.experienceFraction", "rewards.funds"],
+        "reason": "保持墓地任务独立结算，避免提前发放跨分区奖励。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "scarlet_gy_vorrels_revenge",
+      "name": { "zhCN": "沃瑞尔的复仇" },
+      "description": { "zhCN": "击败审讯官维萨斯，为沃瑞尔完成复仇。" },
+      "dungeonId": "scarlet_monastery_graveyard",
+      "eligibility": { "minimumLevel": 28, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["scarlet_gy_interrogator_vishas"]
+      },
+      "rewards": {
+        "experienceFraction": 0.8,
+        "funds": 0,
+        "itemChoiceIds": ["7751", "7750", "4643"]
+      }
+    }
+  ]
+}

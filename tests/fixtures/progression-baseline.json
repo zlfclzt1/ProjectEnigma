@@ -16,154 +16,169 @@
     {
       "managementActionsPerDay": 4,
       "outcomes": {
-        "target-reached": 0,
-        "content-cap": 32,
+        "target-reached": 32,
+        "content-cap": 0,
         "day-limit": 0
       },
-      "daysToTarget": null,
+      "daysToTarget": {
+        "mean": 8.156,
+        "p10": 7,
+        "p50": 8,
+        "p90": 9
+      },
       "daysElapsed": {
-        "mean": 6.688,
-        "p10": 6,
-        "p50": 7,
-        "p90": 7
+        "mean": 8.156,
+        "p10": 7,
+        "p50": 8,
+        "p90": 9
       },
       "attemptedDungeonRuns": {
-        "mean": 61.563,
-        "p10": 57,
-        "p50": 61,
-        "p90": 65
+        "mean": 75.656,
+        "p10": 68,
+        "p50": 75,
+        "p90": 82
       },
       "completedDungeonRuns": {
-        "mean": 51.125,
-        "p10": 47,
-        "p50": 51,
-        "p90": 55
+        "mean": 60.625,
+        "p10": 56,
+        "p50": 61,
+        "p90": 64
       },
       "failedDungeonRuns": {
-        "mean": 10.438,
-        "p10": 7,
-        "p50": 11,
-        "p90": 13
+        "mean": 15.031,
+        "p10": 8,
+        "p50": 15,
+        "p90": 21
       },
       "funds": {
-        "mean": 13987.281,
-        "p10": 12867,
-        "p50": 14191,
-        "p90": 14694
+        "mean": 16814,
+        "p10": 15578,
+        "p50": 17137,
+        "p90": 17702
       },
       "averageItemLevel": {
-        "mean": 15.846,
-        "p10": 14.932,
-        "p50": 15.999,
-        "p90": 16.649
+        "mean": 18.735,
+        "p10": 16.548,
+        "p50": 18.872,
+        "p90": 20.353
       },
       "minimumCoreLevel": {
-        "mean": 33,
-        "p10": 33,
-        "p50": 33,
-        "p90": 33
+        "mean": 45,
+        "p10": 45,
+        "p50": 45,
+        "p90": 45
       }
     },
     {
       "managementActionsPerDay": 5,
       "outcomes": {
-        "target-reached": 0,
-        "content-cap": 32,
+        "target-reached": 32,
+        "content-cap": 0,
         "day-limit": 0
       },
-      "daysToTarget": null,
+      "daysToTarget": {
+        "mean": 6.781,
+        "p10": 6,
+        "p50": 7,
+        "p90": 8
+      },
       "daysElapsed": {
-        "mean": 5.5,
-        "p10": 5,
-        "p50": 5,
-        "p90": 6
+        "mean": 6.781,
+        "p10": 6,
+        "p50": 7,
+        "p90": 8
       },
       "attemptedDungeonRuns": {
-        "mean": 61.469,
-        "p10": 56,
-        "p50": 61,
-        "p90": 66
+        "mean": 76.906,
+        "p10": 70,
+        "p50": 75,
+        "p90": 84
       },
       "completedDungeonRuns": {
-        "mean": 50.813,
-        "p10": 47,
-        "p50": 51,
-        "p90": 54
+        "mean": 61.188,
+        "p10": 56,
+        "p50": 61,
+        "p90": 65
       },
       "failedDungeonRuns": {
-        "mean": 10.656,
-        "p10": 7,
-        "p50": 10,
-        "p90": 14
+        "mean": 15.719,
+        "p10": 9,
+        "p50": 16,
+        "p90": 20
       },
       "funds": {
-        "mean": 13740.844,
-        "p10": 12707,
-        "p50": 13900,
-        "p90": 14692
+        "mean": 16848.688,
+        "p10": 15880,
+        "p50": 16818,
+        "p90": 17664
       },
       "averageItemLevel": {
-        "mean": 15.98,
-        "p10": 15.001,
-        "p50": 15.746,
-        "p90": 17.025
+        "mean": 19.056,
+        "p10": 16.724,
+        "p50": 18.874,
+        "p90": 21.388
       },
       "minimumCoreLevel": {
-        "mean": 33,
-        "p10": 33,
-        "p50": 33,
-        "p90": 33
+        "mean": 45,
+        "p10": 45,
+        "p50": 45,
+        "p90": 45
       }
     },
     {
       "managementActionsPerDay": 6,
       "outcomes": {
-        "target-reached": 0,
-        "content-cap": 32,
+        "target-reached": 32,
+        "content-cap": 0,
         "day-limit": 0
       },
-      "daysToTarget": null,
+      "daysToTarget": {
+        "mean": 5.875,
+        "p10": 5,
+        "p50": 6,
+        "p90": 7
+      },
       "daysElapsed": {
-        "mean": 4.625,
-        "p10": 4,
-        "p50": 5,
-        "p90": 5
+        "mean": 5.875,
+        "p10": 5,
+        "p50": 6,
+        "p90": 7
       },
       "attemptedDungeonRuns": {
-        "mean": 61.625,
-        "p10": 57,
-        "p50": 61,
-        "p90": 68
+        "mean": 76.75,
+        "p10": 67,
+        "p50": 75,
+        "p90": 86
       },
       "completedDungeonRuns": {
-        "mean": 51.594,
-        "p10": 48,
-        "p50": 52,
-        "p90": 55
+        "mean": 60.625,
+        "p10": 56,
+        "p50": 60,
+        "p90": 64
       },
       "failedDungeonRuns": {
-        "mean": 10.031,
-        "p10": 6,
-        "p50": 10,
-        "p90": 13
+        "mean": 16.125,
+        "p10": 7,
+        "p50": 16,
+        "p90": 23
       },
       "funds": {
-        "mean": 13925.719,
-        "p10": 12890,
-        "p50": 14054,
-        "p90": 14754
+        "mean": 16861.625,
+        "p10": 15527,
+        "p50": 17017,
+        "p90": 17809
       },
       "averageItemLevel": {
-        "mean": 15.955,
-        "p10": 14.854,
-        "p50": 16.02,
-        "p90": 16.866
+        "mean": 18.685,
+        "p10": 16.135,
+        "p50": 18.806,
+        "p90": 20.348
       },
       "minimumCoreLevel": {
-        "mean": 33,
-        "p10": 33,
-        "p50": 33,
-        "p90": 33
+        "mean": 45,
+        "p10": 45,
+        "p50": 45,
+        "p90": 45
       }
     }
   ]
