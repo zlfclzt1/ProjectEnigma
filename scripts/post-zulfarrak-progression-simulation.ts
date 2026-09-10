@@ -427,11 +427,11 @@ export interface PostZulfarrakProgressionBaseline {
   readonly policy: {
     readonly levelCap: 60;
     readonly dungeonSelection: "highest-recommended-with-experience-at-55-percent-clear-otherwise-safest";
-    readonly oldContent: "all-fifteen-dungeons-remain-repeatable";
+    readonly oldContent: "all-sixteen-previous-dungeons-remain-repeatable";
     readonly normalRecruitment: "one-random-newcomer-boosted-once";
     readonly lootHandling: "auto-assign-after-each-player-scheduled-activity";
     readonly offlineIncome: "none-outside-player-scheduled-activities";
-    readonly expectedStop: "content-cap-after-maraudon-until-level-50-plus-content-exists";
+    readonly expectedStop: "content-cap-after-sunken-temple-until-blackrock-depths-exists";
   };
   readonly highestAvailableRecommendedLevel: number;
   readonly scenarios: readonly PostZulfarrakScenarioSummary[];
@@ -492,11 +492,11 @@ export function buildPostZulfarrakProgressionBaseline(
     policy: {
       levelCap: 60,
       dungeonSelection: "highest-recommended-with-experience-at-55-percent-clear-otherwise-safest",
-      oldContent: "all-fifteen-dungeons-remain-repeatable",
+      oldContent: "all-sixteen-previous-dungeons-remain-repeatable",
       normalRecruitment: "one-random-newcomer-boosted-once",
       lootHandling: "auto-assign-after-each-player-scheduled-activity",
       offlineIncome: "none-outside-player-scheduled-activities",
-      expectedStop: "content-cap-after-maraudon-until-level-50-plus-content-exists",
+      expectedStop: "content-cap-after-sunken-temple-until-blackrock-depths-exists",
     },
     highestAvailableRecommendedLevel: Math.max(
       ...content.dungeons.map((dungeon) => dungeon.recommendedLevel),

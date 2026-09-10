@@ -1,0 +1,1621 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/sunken-temple-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对阿塔哈卡神庙 39 件 Boss 装备，并通过逐件中文 XML 核对属性、图标、品质与需求等级。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-10",
+        "notes": "交叉核对阿塔哈卡神庙首领、装备 ID 与掉落归属。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].restrictions", "items[].description"],
+        "reason": "按经典职业、护甲熟练度和当前装备栏位规则补齐可装备性和来源说明。",
+        "decidedAt": "2026-09-10"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "10783",
+      "name": {
+        "zhCN": "阿塔莱肩甲",
+        "enUS": "Atal'ai Spaulders"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 47,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_18"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：环廊六首领的共享专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 273
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10783",
+        "url": "https://www.wowhead.com/classic/cn/item=10783&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10784",
+      "name": {
+        "zhCN": "阿塔莱胸甲",
+        "enUS": "Atal'ai Breastplate"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 47,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_chain_05"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：环廊六首领的共享专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 311
+        },
+        "physical": {
+          "attackPowerPoints": 22,
+          "rangedAttackPowerPoints": 22
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10784",
+        "url": "https://www.wowhead.com/classic/cn/item=10784&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "10787",
+      "name": {
+        "zhCN": "阿塔莱手套",
+        "enUS": "Atal'ai Gloves"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 47,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_18"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：环廊六首领的共享专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 47
+        },
+        "spell": {
+          "spellPowerPoints": 9,
+          "healingPowerPoints": 9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10787",
+        "url": "https://www.wowhead.com/classic/cn/item=10787&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "10788",
+      "name": {
+        "zhCN": "阿塔莱束带",
+        "enUS": "Atal'ai Girdle"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 47,
+      "quality": "uncommon",
+      "slot": "waist",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_15"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：环廊六首领的共享专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 280
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10788",
+        "url": "https://www.wowhead.com/classic/cn/item=10788&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10785",
+      "name": {
+        "zhCN": "阿塔莱护腿",
+        "enUS": "Atal'ai Leggings"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 47,
+      "quality": "uncommon",
+      "slot": "legs",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_07"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：环廊六首领的共享专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 120
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10785",
+        "url": "https://www.wowhead.com/classic/cn/item=10785&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10786",
+      "name": {
+        "zhCN": "阿塔莱长靴",
+        "enUS": "Atal'ai Boots"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 47,
+      "quality": "uncommon",
+      "slot": "feet",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_01"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：环廊六首领的共享专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 195
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10786",
+        "url": "https://www.wowhead.com/classic/cn/item=10786&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10800",
+      "name": {
+        "zhCN": "暗水护腕",
+        "enUS": "Darkwater Bracers"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 47,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_08"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：阿塔拉利恩的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 66
+        },
+        "resistances": {
+          "shadowPoints": 7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10800",
+        "url": "https://www.wowhead.com/classic/cn/item=10800&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10798",
+      "name": {
+        "zhCN": "阿塔拉利恩的牙环",
+        "enUS": "Atal'alarion's Tusk Ring"
+      },
+      "itemLevel": 51,
+      "requiredLevel": 46,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_15"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：阿塔拉利恩的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 18,
+          "staminaPoints": 8
+        },
+        "defense": {
+          "armorPoints": 302
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10798",
+        "url": "https://www.wowhead.com/classic/cn/item=10798&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10799",
+      "name": {
+        "zhCN": "刺头之矛",
+        "enUS": "Headspike"
+      },
+      "itemLevel": 51,
+      "requiredLevel": 46,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_spear_06"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：阿塔拉利恩的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 15,
+          "staminaPoints": 18
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 106,
+            "maximumPoints": 159
+          },
+          "speedSeconds": 3
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10799",
+        "url": "https://www.wowhead.com/classic/cn/item=10799&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10801",
+      "name": {
+        "zhCN": "滑鳞长靴",
+        "enUS": "Slitherscale Boots"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 47,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_07"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：哈卡的后代的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 5,
+          "staminaPoints": 12,
+          "spiritPoints": 15
+        },
+        "defense": {
+          "armorPoints": 104
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10801",
+        "url": "https://www.wowhead.com/classic/cn/item=10801&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10802",
+      "name": {
+        "zhCN": "翼膜披风",
+        "enUS": "Wingveil Cloak"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 47,
+      "quality": "uncommon",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_02"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：哈卡的后代的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "spiritPoints": 12
+        },
+        "defense": {
+          "armorPoints": 34
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10802",
+        "url": "https://www.wowhead.com/classic/cn/item=10802&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "12462",
+      "name": {
+        "zhCN": "风蛇的拥抱",
+        "enUS": "Embrace of the Wind Serpent"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "epic",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_42"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：哈卡的化身的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 9,
+          "intellectPoints": 17,
+          "spiritPoints": 30
+        },
+        "defense": {
+          "armorPoints": 86
+        },
+        "resistances": {
+          "naturePoints": 12
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12462",
+        "url": "https://www.wowhead.com/classic/cn/item=12462&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10843",
+      "name": {
+        "zhCN": "羽毛斗篷",
+        "enUS": "Featherskin Cape"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_05"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：哈卡的化身的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 4,
+          "intellectPoints": 4,
+          "spiritPoints": 15
+        },
+        "defense": {
+          "armorPoints": 39
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10843",
+        "url": "https://www.wowhead.com/classic/cn/item=10843&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10845",
+      "name": {
+        "zhCN": "战士的拥抱",
+        "enUS": "Warrior's Embrace"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_plate08"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：哈卡的化身的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 4,
+          "staminaPoints": 11
+        },
+        "defense": {
+          "armorPoints": 567,
+          "dodgePercent": 2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10845",
+        "url": "https://www.wowhead.com/classic/cn/item=10845&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "10842",
+      "name": {
+        "zhCN": "风鳞布裙",
+        "enUS": "Windscale Sarong"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_14"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：哈卡的化身的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 7,
+          "staminaPoints": 10,
+          "intellectPoints": 10,
+          "spiritPoints": 20
+        },
+        "defense": {
+          "armorPoints": 136
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10842",
+        "url": "https://www.wowhead.com/classic/cn/item=10842&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10846",
+      "name": {
+        "zhCN": "溅血胫甲",
+        "enUS": "Bloodshot Greaves"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_01"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：哈卡的化身的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 5,
+          "agilityPoints": 6,
+          "staminaPoints": 20
+        },
+        "defense": {
+          "armorPoints": 221
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10846",
+        "url": "https://www.wowhead.com/classic/cn/item=10846&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10838",
+      "name": {
+        "zhCN": "哈卡之力",
+        "enUS": "Might of Hakkar"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "rogue", "priest", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_mace_11"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：哈卡的化身的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 11,
+          "spiritPoints": 5
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 60,
+            "maximumPoints": 112
+          },
+          "speedSeconds": 2.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10838",
+        "url": "https://www.wowhead.com/classic/cn/item=10838&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10844",
+      "name": {
+        "zhCN": "哈卡之塔",
+        "enUS": "Spire of Hakkar"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "priest", "shaman", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_staff_32"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：哈卡的化身的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 16,
+          "spiritPoints": 16
+        },
+        "spell": {
+          "spellPowerPoints": 18,
+          "healingPowerPoints": 18
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 126,
+            "maximumPoints": 190
+          },
+          "speedSeconds": 3.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10844",
+        "url": "https://www.wowhead.com/classic/cn/item=10844&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "10806",
+      "name": {
+        "zhCN": "阿塔莱预言者法衣",
+        "enUS": "Vestments of the Atal'ai Prophet"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_38"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：预言者迦玛兰的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 11,
+          "spiritPoints": 27
+        },
+        "defense": {
+          "armorPoints": 78
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10806",
+        "url": "https://www.wowhead.com/classic/cn/item=10806&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10808",
+      "name": {
+        "zhCN": "阿塔莱预言者手套",
+        "enUS": "Gloves of the Atal'ai Prophet"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_17"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：预言者迦玛兰的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 5,
+          "staminaPoints": 6,
+          "spiritPoints": 20
+        },
+        "defense": {
+          "armorPoints": 49
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10808",
+        "url": "https://www.wowhead.com/classic/cn/item=10808&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10807",
+      "name": {
+        "zhCN": "阿塔莱预言者褶裙",
+        "enUS": "Kilt of the Atal'ai Prophet"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_11"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：预言者迦玛兰的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 4,
+          "staminaPoints": 9,
+          "intellectPoints": 18,
+          "spiritPoints": 18
+        },
+        "defense": {
+          "armorPoints": 69
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10807",
+        "url": "https://www.wowhead.com/classic/cn/item=10807&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10805",
+      "name": {
+        "zhCN": "食尸者",
+        "enUS": "Eater of the Dead"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_axe_12"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：可悲的奥戈姆的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 49,
+            "maximumPoints": 92
+          },
+          "speedSeconds": 2.2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10805",
+        "url": "https://www.wowhead.com/classic/cn/item=10805&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "10803",
+      "name": {
+        "zhCN": "奥戈姆之刃",
+        "enUS": "Blade of the Wretched"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_38"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：可悲的奥戈姆的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 47,
+            "maximumPoints": 88
+          },
+          "speedSeconds": 2.1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10803",
+        "url": "https://www.wowhead.com/classic/cn/item=10803&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "10804",
+      "name": {
+        "zhCN": "诅咒之拳",
+        "enUS": "Fist of the Damned"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "rogue", "priest", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_hammer_11"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：可悲的奥戈姆的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 42,
+            "maximumPoints": 80
+          },
+          "speedSeconds": 1.9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10804",
+        "url": "https://www.wowhead.com/classic/cn/item=10804&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12465",
+      "name": {
+        "zhCN": "夜幕披风",
+        "enUS": "Nightfall Drape"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_05"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：德姆塞卡尔、德拉维沃尔、摩弗拉斯与哈扎斯的共享专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 14,
+          "spiritPoints": 8
+        },
+        "defense": {
+          "armorPoints": 38
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12465",
+        "url": "https://www.wowhead.com/classic/cn/item=12465&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "12466",
+      "name": {
+        "zhCN": "黎明尖塔束带",
+        "enUS": "Dawnspire Cord"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_11"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：德姆塞卡尔、德拉维沃尔、摩弗拉斯与哈扎斯的共享专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 19,
+          "spiritPoints": 8
+        },
+        "defense": {
+          "armorPoints": 43
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12466",
+        "url": "https://www.wowhead.com/classic/cn/item=12466&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "12464",
+      "name": {
+        "zhCN": "血火之爪",
+        "enUS": "Bloodfire Talons"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_19"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：德姆塞卡尔、德拉维沃尔、摩弗拉斯与哈扎斯的共享专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 5,
+          "spiritPoints": 9
+        },
+        "defense": {
+          "armorPoints": 96
+        },
+        "spell": {
+          "spellPowerPoints": 18,
+          "healingPowerPoints": 18
+        },
+        "resistances": {
+          "firePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12464",
+        "url": "https://www.wowhead.com/classic/cn/item=12464&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "10797",
+      "name": {
+        "zhCN": "喷火者",
+        "enUS": "Firebreather"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_09"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：德姆塞卡尔、德拉维沃尔、摩弗拉斯与哈扎斯的共享专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 54,
+            "maximumPoints": 101
+          },
+          "speedSeconds": 2.2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10797",
+        "url": "https://www.wowhead.com/classic/cn/item=10797&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12463",
+      "name": {
+        "zhCN": "龙牙之剑",
+        "enUS": "Drakefang Butcher"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_19"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：德姆塞卡尔、德拉维沃尔、摩弗拉斯与哈扎斯的共享专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 15
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 99,
+            "maximumPoints": 149
+          },
+          "speedSeconds": 2.7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12463",
+        "url": "https://www.wowhead.com/classic/cn/item=12463&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12243",
+      "name": {
+        "zhCN": "烟熏之爪",
+        "enUS": "Smoldering Claw"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_halberd_04"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：德姆塞卡尔、德拉维沃尔、摩弗拉斯与哈扎斯的共享专属掉落。"
+      },
+      "stats": {
+        "resistances": {
+          "firePoints": 10
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 108,
+            "maximumPoints": 162
+          },
+          "speedSeconds": 2.9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12243",
+        "url": "https://www.wowhead.com/classic/cn/item=12243&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "10795",
+      "name": {
+        "zhCN": "龙爪指环",
+        "enUS": "Drakeclaw Band"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_04"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：德姆塞卡尔、德拉维沃尔、摩弗拉斯与哈扎斯的共享专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "defenseSkillPoints": 4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10795",
+        "url": "https://www.wowhead.com/classic/cn/item=10795&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "10796",
+      "name": {
+        "zhCN": "火石",
+        "enUS": "Drakestone"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_orb_03"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：德姆塞卡尔、德拉维沃尔、摩弗拉斯与哈扎斯的共享专属掉落。"
+      },
+      "stats": {
+        "spell": {
+          "spellPowerPoints": 7,
+          "healingPowerPoints": 7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10796",
+        "url": "https://www.wowhead.com/classic/cn/item=10796&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "10847",
+      "name": {
+        "zhCN": "龙之召唤",
+        "enUS": "Dragon's Call"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "epic",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_38"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：伊兰尼库斯的阴影的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 72,
+            "maximumPoints": 135
+          },
+          "speedSeconds": 2.5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10847",
+        "url": "https://www.wowhead.com/classic/cn/item=10847&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "10833",
+      "name": {
+        "zhCN": "伊兰尼库斯之角",
+        "enUS": "Horns of Eranikus"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 51,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_25"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：伊兰尼库斯的阴影的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 27,
+          "spiritPoints": 11
+        },
+        "defense": {
+          "armorPoints": 271
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10833",
+        "url": "https://www.wowhead.com/classic/cn/item=10833&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10829",
+      "name": {
+        "zhCN": "巨龙之眼",
+        "enUS": "Dragon's Eye"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 51,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_amulet_04"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：伊兰尼库斯的阴影的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 6,
+          "spiritPoints": 15
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10829",
+        "url": "https://www.wowhead.com/classic/cn/item=10829&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10836",
+      "name": {
+        "zhCN": "侵蚀魔棒",
+        "enUS": "Rod of Corrosion"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 51,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_wand_04"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：伊兰尼库斯的阴影的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 50,
+            "maximumPoints": 93
+          },
+          "speedSeconds": 1.3
+        },
+        "resistances": {
+          "naturePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10836",
+        "url": "https://www.wowhead.com/classic/cn/item=10836&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10835",
+      "name": {
+        "zhCN": "至高徽记之盾",
+        "enUS": "Crest of Supremacy"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 51,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shield_04"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：伊兰尼库斯的阴影的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 6,
+          "agilityPoints": 6,
+          "staminaPoints": 7,
+          "intellectPoints": 7,
+          "spiritPoints": 7
+        },
+        "defense": {
+          "armorPoints": 1930,
+          "blockValuePoints": 35
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10835",
+        "url": "https://www.wowhead.com/classic/cn/item=10835&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10837",
+      "name": {
+        "zhCN": "伊兰尼库斯之牙",
+        "enUS": "Tooth of Eranikus"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 51,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_axe_07"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：伊兰尼库斯的阴影的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 6
+        },
+        "physical": {
+          "hitPercent": 1
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 62,
+            "maximumPoints": 116
+          },
+          "speedSeconds": 2.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10837",
+        "url": "https://www.wowhead.com/classic/cn/item=10837&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "10828",
+      "name": {
+        "zhCN": "恐惧龙指",
+        "enUS": "Dire Nail"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 51,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_shortblade_16"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙：伊兰尼库斯的阴影的专属掉落。"
+      },
+      "stats": {
+        "resistances": {
+          "shadowPoints": 5
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 38,
+            "maximumPoints": 72
+          },
+          "speedSeconds": 1.5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10828",
+        "url": "https://www.wowhead.com/classic/cn/item=10828&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    }
+  ]
+}

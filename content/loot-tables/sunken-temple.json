@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对阿塔哈卡神庙十六名首领的 39 件非世界装备及共享装备池。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/sunken-temple-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对首领与装备归属。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["lootTables[].guaranteedEquipmentDrops", "lootTables[].items[].weight"],
+        "reason": "每名拥有专属装备池的真实首领保证一件装备；合并环廊与双龙事件保留对应首领数量，池内先使用等权基线。",
+        "decidedAt": "2026-09-10"
+      }
+    ]
+  },
+  "lootTables": [
+    {
+      "id": "sunken_temple_atalalarion",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "10800", "weight": 0.3333333333333333 },
+        { "itemId": "10798", "weight": 0.3333333333333333 },
+        { "itemId": "10799", "weight": 0.33333333333333337 }
+      ]
+    },
+    {
+      "id": "sunken_temple_balcony_minibosses",
+      "guaranteedEquipmentDrops": 6,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "10783", "weight": 0.16666666666666666 },
+        { "itemId": "10784", "weight": 0.16666666666666666 },
+        { "itemId": "10787", "weight": 0.16666666666666666 },
+        { "itemId": "10788", "weight": 0.16666666666666666 },
+        { "itemId": "10785", "weight": 0.16666666666666666 },
+        { "itemId": "10786", "weight": 0.1666666666666667 }
+      ]
+    },
+    {
+      "id": "sunken_temple_spawn_of_hakkar",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "10801", "weight": 0.5 },
+        { "itemId": "10802", "weight": 0.5 }
+      ]
+    },
+    {
+      "id": "sunken_temple_avatar_of_hakkar",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "12462", "weight": 0.14285714285714285 },
+        { "itemId": "10843", "weight": 0.14285714285714285 },
+        { "itemId": "10845", "weight": 0.14285714285714285 },
+        { "itemId": "10842", "weight": 0.14285714285714285 },
+        { "itemId": "10846", "weight": 0.14285714285714285 },
+        { "itemId": "10838", "weight": 0.14285714285714285 },
+        { "itemId": "10844", "weight": 0.142857142857143 }
+      ]
+    },
+    {
+      "id": "sunken_temple_jammalan_the_prophet",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "10806", "weight": 0.3333333333333333 },
+        { "itemId": "10808", "weight": 0.3333333333333333 },
+        { "itemId": "10807", "weight": 0.33333333333333337 }
+      ]
+    },
+    {
+      "id": "sunken_temple_ogom_the_wretched",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "10805", "weight": 0.3333333333333333 },
+        { "itemId": "10803", "weight": 0.3333333333333333 },
+        { "itemId": "10804", "weight": 0.33333333333333337 }
+      ]
+    },
+    {
+      "id": "sunken_temple_dreamscythe_and_weaver",
+      "guaranteedEquipmentDrops": 2,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "12465", "weight": 0.125 },
+        { "itemId": "12466", "weight": 0.125 },
+        { "itemId": "12464", "weight": 0.125 },
+        { "itemId": "10797", "weight": 0.125 },
+        { "itemId": "12463", "weight": 0.125 },
+        { "itemId": "12243", "weight": 0.125 },
+        { "itemId": "10795", "weight": 0.125 },
+        { "itemId": "10796", "weight": 0.125 }
+      ]
+    },
+    {
+      "id": "sunken_temple_morphaz_and_hazzas",
+      "guaranteedEquipmentDrops": 2,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "12465", "weight": 0.125 },
+        { "itemId": "12466", "weight": 0.125 },
+        { "itemId": "12464", "weight": 0.125 },
+        { "itemId": "10797", "weight": 0.125 },
+        { "itemId": "12463", "weight": 0.125 },
+        { "itemId": "12243", "weight": 0.125 },
+        { "itemId": "10795", "weight": 0.125 },
+        { "itemId": "10796", "weight": 0.125 }
+      ]
+    },
+    {
+      "id": "sunken_temple_shade_of_eranikus",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "10847", "weight": 0.14285714285714285 },
+        { "itemId": "10833", "weight": 0.14285714285714285 },
+        { "itemId": "10829", "weight": 0.14285714285714285 },
+        { "itemId": "10836", "weight": 0.14285714285714285 },
+        { "itemId": "10835", "weight": 0.14285714285714285 },
+        { "itemId": "10837", "weight": 0.14285714285714285 },
+        { "itemId": "10828", "weight": 0.142857142857143 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/sunken-temple-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对雕像、连续环廊战、召唤波次、精神控制、诅咒、沉睡、吐息与绿龙双首领机制。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-10",
+        "notes": "阶段时长、战斗需求、经验、资金和首杀奖励作为后续 45–60 级模拟前的保守初始基线。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "encounters": [
+    {
+      "id": "sunken_temple_atalalarion",
+      "dungeonId": "sunken_temple",
+      "name": { "zhCN": "阿塔拉利恩" },
+      "stageSeconds": 120,
+      "requirements": { "tank": 52, "healing": 56, "damage": 230 },
+      "weights": { "tank": 0.38, "healing": 0.34, "damage": 0.28 },
+      "experienceShare": 0.09,
+      "funds": 104,
+      "firstKillBonus": 208,
+      "lootTableId": "sunken_temple_atalalarion",
+      "mechanicIds": ["sunken_temple_atalalarion_stomp"]
+    },
+    {
+      "id": "sunken_temple_balcony_minibosses",
+      "dungeonId": "sunken_temple",
+      "name": { "zhCN": "环廊六首领" },
+      "stageSeconds": 300,
+      "requirements": { "tank": 55, "healing": 59, "damage": 238 },
+      "weights": { "tank": 0.31, "healing": 0.36, "damage": 0.33 },
+      "experienceShare": 0.24,
+      "funds": 246,
+      "firstKillBonus": 492,
+      "lootTableId": "sunken_temple_balcony_minibosses",
+      "mechanicIds": ["sunken_temple_balcony_gauntlet", "sunken_temple_balcony_hexes"]
+    },
+    {
+      "id": "sunken_temple_spawn_of_hakkar",
+      "dungeonId": "sunken_temple",
+      "name": { "zhCN": "哈卡的后代" },
+      "stageSeconds": 70,
+      "requirements": { "tank": 53, "healing": 57, "damage": 232 },
+      "weights": { "tank": 0.3, "healing": 0.39, "damage": 0.31 },
+      "experienceShare": 0.06,
+      "funds": 76,
+      "firstKillBonus": 152,
+      "lootTableId": "sunken_temple_spawn_of_hakkar",
+      "mechanicIds": ["sunken_temple_spawn_poison"]
+    },
+    {
+      "id": "sunken_temple_avatar_of_hakkar",
+      "dungeonId": "sunken_temple",
+      "name": { "zhCN": "哈卡的化身" },
+      "stageSeconds": 180,
+      "requirements": { "tank": 56, "healing": 60, "damage": 240 },
+      "weights": { "tank": 0.29, "healing": 0.39, "damage": 0.32 },
+      "experienceShare": 0.15,
+      "funds": 146,
+      "firstKillBonus": 292,
+      "lootTableId": "sunken_temple_avatar_of_hakkar",
+      "mechanicIds": ["sunken_temple_avatar_ritual", "sunken_temple_avatar_blood"]
+    },
+    {
+      "id": "sunken_temple_jammalan_the_prophet",
+      "dungeonId": "sunken_temple",
+      "name": { "zhCN": "预言者迦玛兰" },
+      "stageSeconds": 180,
+      "requirements": { "tank": 57, "healing": 61, "damage": 244 },
+      "weights": { "tank": 0.28, "healing": 0.39, "damage": 0.33 },
+      "experienceShare": 0.16,
+      "funds": 136,
+      "firstKillBonus": 272,
+      "lootTableId": "sunken_temple_jammalan_the_prophet",
+      "mechanicIds": ["sunken_temple_jammalan_control", "sunken_temple_jammalan_healing"]
+    },
+    {
+      "id": "sunken_temple_ogom_the_wretched",
+      "dungeonId": "sunken_temple",
+      "name": { "zhCN": "可悲的奥戈姆" },
+      "stageSeconds": 120,
+      "requirements": { "tank": 58, "healing": 62, "damage": 246 },
+      "weights": { "tank": 0.35, "healing": 0.38, "damage": 0.27 },
+      "experienceShare": 0.11,
+      "funds": 112,
+      "firstKillBonus": 224,
+      "lootTableId": "sunken_temple_ogom_the_wretched",
+      "mechanicIds": ["sunken_temple_ogom_curses"]
+    },
+    {
+      "id": "sunken_temple_dreamscythe_and_weaver",
+      "dungeonId": "sunken_temple",
+      "name": { "zhCN": "德姆塞卡尔与德拉维沃尔" },
+      "stageSeconds": 200,
+      "requirements": { "tank": 59, "healing": 63, "damage": 250 },
+      "weights": { "tank": 0.36, "healing": 0.37, "damage": 0.27 },
+      "experienceShare": 0.18,
+      "funds": 166,
+      "firstKillBonus": 332,
+      "lootTableId": "sunken_temple_dreamscythe_and_weaver",
+      "mechanicIds": ["sunken_temple_first_dragon_pair"]
+    },
+    {
+      "id": "sunken_temple_morphaz_and_hazzas",
+      "dungeonId": "sunken_temple",
+      "name": { "zhCN": "摩弗拉斯与哈扎斯" },
+      "stageSeconds": 220,
+      "requirements": { "tank": 61, "healing": 65, "damage": 254 },
+      "weights": { "tank": 0.33, "healing": 0.4, "damage": 0.27 },
+      "experienceShare": 0.2,
+      "funds": 178,
+      "firstKillBonus": 356,
+      "lootTableId": "sunken_temple_morphaz_and_hazzas",
+      "mechanicIds": ["sunken_temple_second_dragon_pair"]
+    },
+    {
+      "id": "sunken_temple_shade_of_eranikus",
+      "dungeonId": "sunken_temple",
+      "name": { "zhCN": "伊兰尼库斯的阴影" },
+      "stageSeconds": 420,
+      "requirements": { "tank": 64, "healing": 68, "damage": 264 },
+      "weights": { "tank": 0.36, "healing": 0.39, "damage": 0.25 },
+      "experienceShare": 0.32,
+      "funds": 216,
+      "firstKillBonus": 432,
+      "lootTableId": "sunken_temple_shade_of_eranikus",
+      "mechanicIds": ["sunken_temple_eranikus_sleep", "sunken_temple_eranikus_breath"]
+    }
+  ]
+}

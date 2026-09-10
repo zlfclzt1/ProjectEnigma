@@ -12,13 +12,13 @@
   "policy": {
     "levelCap": 60,
     "dungeonSelection": "highest-recommended-with-experience-at-55-percent-clear-otherwise-safest",
-    "oldContent": "all-fifteen-dungeons-remain-repeatable",
+    "oldContent": "all-sixteen-previous-dungeons-remain-repeatable",
     "normalRecruitment": "one-random-newcomer-boosted-once",
     "lootHandling": "auto-assign-after-each-player-scheduled-activity",
     "offlineIncome": "none-outside-player-scheduled-activities",
-    "expectedStop": "content-cap-after-maraudon-until-level-50-plus-content-exists"
+    "expectedStop": "content-cap-after-sunken-temple-until-blackrock-depths-exists"
   },
-  "highestAvailableRecommendedLevel": 49,
+  "highestAvailableRecommendedLevel": 52,
   "scenarios": [
     {
       "managementActionsPerDay": 3,
@@ -28,52 +28,52 @@
         "day-limit": 0
       },
       "daysElapsed": {
-        "mean": 4.281,
+        "mean": 4.344,
         "p10": 4,
         "p50": 4,
         "p90": 5
       },
       "minimumCoreLevel": {
-        "mean": 57,
-        "p10": 57,
-        "p50": 57,
-        "p90": 57
+        "mean": 60,
+        "p10": 60,
+        "p50": 60,
+        "p90": 60
       },
       "maximumCoreLevel": {
-        "mean": 57,
-        "p10": 57,
-        "p50": 57,
-        "p90": 57
+        "mean": 60,
+        "p10": 60,
+        "p50": 60,
+        "p90": 60
       },
       "activitiesStarted": {
-        "mean": 10.688,
+        "mean": 11.156,
         "p10": 9,
-        "p50": 10,
-        "p90": 12
+        "p50": 11,
+        "p90": 13
       },
       "attemptedDungeonRuns": {
-        "mean": 40.656,
+        "mean": 40.531,
         "p10": 37,
-        "p50": 40,
+        "p50": 41,
         "p90": 44
       },
       "completedDungeonRuns": {
-        "mean": 35.219,
-        "p10": 32,
-        "p50": 36,
-        "p90": 38
+        "mean": 34.406,
+        "p10": 31,
+        "p50": 35,
+        "p90": 37
       },
       "averageItemLevel": {
-        "mean": 25.766,
-        "p10": 23.506,
-        "p50": 25.961,
-        "p90": 27.806
+        "mean": 29.261,
+        "p10": 25.626,
+        "p50": 29.191,
+        "p90": 32.197
       },
       "endingFunds": {
-        "mean": 33856.719,
-        "p10": 30658,
-        "p50": 33765,
-        "p90": 36394
+        "mean": 53992.375,
+        "p10": 49324,
+        "p50": 54220,
+        "p90": 56922
       },
       "boostedRunCount": {
         "mean": 1,
@@ -82,16 +82,16 @@
         "p90": 1
       },
       "lootAssignments": {
-        "mean": 35.469,
-        "p10": 28,
-        "p50": 36,
-        "p90": 43
+        "mean": 44.969,
+        "p10": 34,
+        "p50": 44,
+        "p90": 54
       },
       "lootSales": {
-        "mean": 143.969,
-        "p10": 126,
-        "p50": 142,
-        "p90": 158
+        "mean": 350.719,
+        "p10": 315,
+        "p50": 349,
+        "p90": 377
       }
     },
     {
@@ -102,52 +102,52 @@
         "day-limit": 0
       },
       "daysElapsed": {
-        "mean": 3.313,
+        "mean": 3.406,
         "p10": 3,
         "p50": 3,
         "p90": 4
       },
       "minimumCoreLevel": {
-        "mean": 57,
-        "p10": 57,
-        "p50": 57,
-        "p90": 57
+        "mean": 60,
+        "p10": 60,
+        "p50": 60,
+        "p90": 60
       },
       "maximumCoreLevel": {
-        "mean": 57,
-        "p10": 57,
-        "p50": 57,
-        "p90": 57
+        "mean": 60,
+        "p10": 60,
+        "p50": 60,
+        "p90": 60
       },
       "activitiesStarted": {
-        "mean": 10.656,
+        "mean": 10.938,
         "p10": 9,
         "p50": 11,
         "p90": 13
       },
       "attemptedDungeonRuns": {
-        "mean": 40.344,
+        "mean": 41.031,
         "p10": 38,
         "p50": 41,
-        "p90": 43
+        "p90": 44
       },
       "completedDungeonRuns": {
-        "mean": 35.281,
-        "p10": 31,
+        "mean": 35.188,
+        "p10": 32,
         "p50": 35,
-        "p90": 39
+        "p90": 38
       },
       "averageItemLevel": {
-        "mean": 26.244,
-        "p10": 24.815,
-        "p50": 26.17,
-        "p90": 27.522
+        "mean": 29.126,
+        "p10": 25.734,
+        "p50": 29.361,
+        "p90": 31.711
       },
       "endingFunds": {
-        "mean": 34094.281,
-        "p10": 31048,
-        "p50": 34351,
-        "p90": 36143
+        "mean": 54759.125,
+        "p10": 50878,
+        "p50": 54336,
+        "p90": 56914
       },
       "boostedRunCount": {
         "mean": 1,
@@ -156,16 +156,16 @@
         "p90": 1
       },
       "lootAssignments": {
-        "mean": 36.25,
-        "p10": 31,
-        "p50": 36,
-        "p90": 41
+        "mean": 45.594,
+        "p10": 37,
+        "p50": 46,
+        "p90": 52
       },
       "lootSales": {
-        "mean": 145.438,
-        "p10": 131,
-        "p50": 147,
-        "p90": 156
+        "mean": 355.969,
+        "p10": 327,
+        "p50": 353,
+        "p90": 378
       }
     },
     {
@@ -176,52 +176,52 @@
         "day-limit": 0
       },
       "daysElapsed": {
-        "mean": 2.594,
+        "mean": 2.75,
         "p10": 2,
         "p50": 3,
         "p90": 3
       },
       "minimumCoreLevel": {
-        "mean": 57,
-        "p10": 57,
-        "p50": 57,
-        "p90": 57
+        "mean": 60,
+        "p10": 60,
+        "p50": 60,
+        "p90": 60
       },
       "maximumCoreLevel": {
-        "mean": 57,
-        "p10": 57,
-        "p50": 57,
-        "p90": 57
+        "mean": 60,
+        "p10": 60,
+        "p50": 60,
+        "p90": 60
       },
       "activitiesStarted": {
-        "mean": 9.906,
+        "mean": 10.594,
         "p10": 8,
         "p50": 10,
-        "p90": 11
+        "p90": 12
       },
       "attemptedDungeonRuns": {
-        "mean": 39.156,
-        "p10": 37,
-        "p50": 38,
-        "p90": 42
+        "mean": 40.438,
+        "p10": 36,
+        "p50": 41,
+        "p90": 43
       },
       "completedDungeonRuns": {
-        "mean": 34.563,
+        "mean": 34.875,
         "p10": 31,
-        "p50": 34,
+        "p50": 35,
         "p90": 38
       },
       "averageItemLevel": {
-        "mean": 25.775,
-        "p10": 23.195,
-        "p50": 25.428,
-        "p90": 28.033
+        "mean": 28.817,
+        "p10": 25.962,
+        "p50": 29.012,
+        "p90": 30.876
       },
       "endingFunds": {
-        "mean": 32934.406,
-        "p10": 29995,
-        "p50": 32548,
-        "p90": 35545
+        "mean": 54192.875,
+        "p10": 48975,
+        "p50": 54781,
+        "p90": 58126
       },
       "boostedRunCount": {
         "mean": 1,
@@ -230,16 +230,16 @@
         "p90": 1
       },
       "lootAssignments": {
-        "mean": 35.531,
-        "p10": 29,
-        "p50": 34,
-        "p90": 42
+        "mean": 44.688,
+        "p10": 39,
+        "p50": 44,
+        "p90": 51
       },
       "lootSales": {
-        "mean": 139.563,
-        "p10": 123,
-        "p50": 138,
-        "p90": 152
+        "mean": 354.438,
+        "p10": 312,
+        "p50": 356,
+        "p90": 387
       }
     },
     {
@@ -250,52 +250,52 @@
         "day-limit": 0
       },
       "daysElapsed": {
-        "mean": 2.188,
+        "mean": 2.375,
         "p10": 2,
         "p50": 2,
         "p90": 3
       },
       "minimumCoreLevel": {
-        "mean": 57,
-        "p10": 57,
-        "p50": 57,
-        "p90": 57
+        "mean": 60,
+        "p10": 60,
+        "p50": 60,
+        "p90": 60
       },
       "maximumCoreLevel": {
-        "mean": 57,
-        "p10": 57,
-        "p50": 57,
-        "p90": 57
+        "mean": 60,
+        "p10": 60,
+        "p50": 60,
+        "p90": 60
       },
       "activitiesStarted": {
-        "mean": 10.438,
+        "mean": 11.063,
         "p10": 9,
-        "p50": 10,
-        "p90": 12
+        "p50": 11,
+        "p90": 13
       },
       "attemptedDungeonRuns": {
-        "mean": 39.281,
+        "mean": 39.781,
         "p10": 36,
-        "p50": 39,
-        "p90": 43
+        "p50": 40,
+        "p90": 44
       },
       "completedDungeonRuns": {
-        "mean": 33.75,
-        "p10": 30,
-        "p50": 33,
-        "p90": 38
+        "mean": 33.781,
+        "p10": 29,
+        "p50": 34,
+        "p90": 36
       },
       "averageItemLevel": {
-        "mean": 26.344,
-        "p10": 24.548,
-        "p50": 26.199,
-        "p90": 27.843
+        "mean": 29.026,
+        "p10": 26.922,
+        "p50": 28.808,
+        "p90": 30.79
       },
       "endingFunds": {
-        "mean": 33665.719,
-        "p10": 30432,
-        "p50": 33512,
-        "p90": 36605
+        "mean": 54325.438,
+        "p10": 49979,
+        "p50": 54469,
+        "p90": 57651
       },
       "boostedRunCount": {
         "mean": 1,
@@ -304,16 +304,16 @@
         "p90": 1
       },
       "lootAssignments": {
-        "mean": 36.313,
-        "p10": 31,
-        "p50": 35,
-        "p90": 42
+        "mean": 44.875,
+        "p10": 41,
+        "p50": 44,
+        "p90": 49
       },
       "lootSales": {
-        "mean": 141.844,
-        "p10": 126,
-        "p50": 141,
-        "p90": 157
+        "mean": 352.156,
+        "p10": 317,
+        "p50": 354,
+        "p90": 382
       }
     }
   ]

@@ -97,7 +97,7 @@ describe("item collection catalog query", () => {
     ]);
     expect(view.globalProgress).toEqual({
       acquiredItemCount: 0,
-      totalItemCount: 244,
+      totalItemCount: 283,
       completionPercent: 0,
     });
     expect(JSON.stringify(view)).not.toContain("尖牙腰带");
@@ -179,7 +179,7 @@ describe("item collection catalog query", () => {
       ]),
     );
     expect(item.acquisitionCount).toBe(1);
-    expect(view.globalProgress).toMatchObject({ acquiredItemCount: 1, totalItemCount: 244 });
+    expect(view.globalProgress).toMatchObject({ acquiredItemCount: 1, totalItemCount: 283 });
   });
 
   it("reveals all four Herod drops after Armory is unlocked", () => {
@@ -200,6 +200,29 @@ describe("item collection catalog query", () => {
           expect.objectContaining({ id: "10330" }),
           expect.objectContaining({ id: "7717" }),
         ]),
+      }),
+    ]);
+  });
+
+  it("lists both grouped encounters for every shared Sunken Temple dragon item", () => {
+    const game = state();
+    game.guild.unlockedDungeonIds.push(asBrandedId<"DungeonId">("sunken_temple"));
+
+    const view = getItemCatalogView(game, content);
+    const temple = view.dungeons.find((dungeon) => dungeon.id === "sunken_temple")!;
+    if (!temple.unlocked) throw new Error("Expected unlocked Sunken Temple");
+    const nightfallDrape = temple.encounters
+      .flatMap((encounter) => encounter.items)
+      .find((item) => item.id === "12465")!;
+
+    expect(nightfallDrape.sources).toEqual([
+      expect.objectContaining({
+        encounterId: "sunken_temple_dreamscythe_and_weaver",
+        encounterName: "德姆塞卡尔与德拉维沃尔",
+      }),
+      expect.objectContaining({
+        encounterId: "sunken_temple_morphaz_and_hazzas",
+        encounterName: "摩弗拉斯与哈扎斯",
       }),
     ]);
   });
@@ -233,6 +256,10 @@ describe("item collection catalog query", () => {
       "17744",
       "17745",
       "17749",
+      "17748",
+      "17750",
+      "17751",
+      "17755",
     ].forEach((itemId, index) => acquire(game, content, itemId, index + 1));
 
     const view = getItemCatalogView(game, content);
@@ -244,8 +271,8 @@ describe("item collection catalog query", () => {
       completionPercent: (11 / 21) * 100,
     });
     expect(view.itemSets).toEqual([]);
-    expect(view.globalProgress).toMatchObject({ acquiredItemCount: 25, totalItemCount: 244 });
-    expect(view.globalProgress.completionPercent).toBeCloseTo((25 / 244) * 100);
+    expect(view.globalProgress).toMatchObject({ acquiredItemCount: 29, totalItemCount: 283 });
+    expect(view.globalProgress.completionPercent).toBeCloseTo((29 / 283) * 100);
     expect(view.rewards).toHaveLength(2);
     expect(view.rewards.every((reward) => reward.claimable)).toBe(true);
     expect(view.rewards.every((reward) => !reward.claimed)).toBe(true);

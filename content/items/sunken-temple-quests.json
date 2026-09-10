@@ -1,0 +1,1400 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/temple-of-atalhakkar-sunken-temple-class-quests-wow-classic",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对阿塔哈卡神庙 13 条成员任务的 34 件装备奖励，并通过逐件中文 XML 核对属性与图标。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-10",
+        "notes": "交叉核对阿塔哈卡神庙首领、装备 ID 与掉落归属。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].requiredLevel", "items[].restrictions", "items[].description"],
+        "reason": "无原生需求等级的任务奖励使用任务最低等级防止提前进入平衡模拟，并按经典职业、护甲熟练度和当前装备栏位规则补齐可装备性和来源说明。",
+        "decidedAt": "2026-09-10"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "11123",
+      "name": {
+        "zhCN": "雨行护腿",
+        "enUS": "Rainstrider Leggings"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 38,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_08"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙成员任务“预言者迦玛兰”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 8,
+          "staminaPoints": 7,
+          "spiritPoints": 27
+        },
+        "defense": {
+          "armorPoints": 69
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11123",
+        "url": "https://www.wowhead.com/classic/cn/item=11123&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11124",
+      "name": {
+        "zhCN": "流放者头盔",
+        "enUS": "Helm of Exile"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 38,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_21"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙成员任务“预言者迦玛兰”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 11,
+          "intellectPoints": 18,
+          "spiritPoints": 18
+        },
+        "defense": {
+          "armorPoints": 266
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11124",
+        "url": "https://www.wowhead.com/classic/cn/item=11124&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10455",
+      "name": {
+        "zhCN": "被禁锢的伊兰尼库斯精华",
+        "enUS": "Chained Essence of Eranikus"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 44,
+      "quality": "uncommon",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_stone_03"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙成员任务“伊兰尼库斯精华”固定奖励。"
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10455",
+        "url": "https://www.wowhead.com/classic/cn/item=10455&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "10749",
+      "name": {
+        "zhCN": "灰岩头盔",
+        "enUS": "Avenguard Helm"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 40,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_22"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙成员任务“哈卡之神”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 5,
+          "staminaPoints": 25,
+          "spiritPoints": 10
+        },
+        "defense": {
+          "armorPoints": 461
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10749",
+        "url": "https://www.wowhead.com/classic/cn/item=10749&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10750",
+      "name": {
+        "zhCN": "生命之力短剑",
+        "enUS": "Lifeforce Dirk"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 40,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_21"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙成员任务“哈卡之神”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 11
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 40,
+            "maximumPoints": 75
+          },
+          "speedSeconds": 1.6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10750",
+        "url": "https://www.wowhead.com/classic/cn/item=10750&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "10751",
+      "name": {
+        "zhCN": "珠光头饰",
+        "enUS": "Gemburst Circlet"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 40,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_crown_01"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙成员任务“哈卡之神”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 5,
+          "staminaPoints": 9,
+          "intellectPoints": 17,
+          "spiritPoints": 18
+        },
+        "defense": {
+          "armorPoints": 63
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10751",
+        "url": "https://www.wowhead.com/classic/cn/item=10751&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "1490",
+      "name": {
+        "zhCN": "守护之符",
+        "enUS": "Guardian Talisman"
+      },
+      "itemLevel": 50,
+      "requiredLevel": 38,
+      "quality": "uncommon",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_talisman_05"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙成员任务“阿塔哈卡神庙”固定奖励。"
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "1490",
+        "url": "https://www.wowhead.com/classic/cn/item=1490&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22272",
+      "name": {
+        "zhCN": "森林的拥抱",
+        "enUS": "Forest's Embrace"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_leather_08"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙德鲁伊职业任务“更好的材料”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 8,
+          "spiritPoints": 7
+        },
+        "defense": {
+          "armorPoints": 151
+        },
+        "spell": {
+          "healingPowerPoints": 55
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22272",
+        "url": "https://www.wowhead.com/classic/cn/item=22272&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22274",
+      "name": {
+        "zhCN": "斑白毛皮",
+        "enUS": "Grizzled Pelt"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_leather_08"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙德鲁伊职业任务“更好的材料”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 17,
+          "agilityPoints": 16,
+          "staminaPoints": 11
+        },
+        "defense": {
+          "armorPoints": 151
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22274",
+        "url": "https://www.wowhead.com/classic/cn/item=22274&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "22458",
+      "name": {
+        "zhCN": "月影手杖",
+        "enUS": "Moonshadow Stave"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_staff_28"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙德鲁伊职业任务“更好的材料”可选奖励。"
+      },
+      "stats": {
+        "spell": {
+          "spellPowerPoints": 18,
+          "healingPowerPoints": 18,
+          "manaRegenPer5Seconds": 7,
+          "criticalStrikePercent": 1
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 133,
+            "maximumPoints": 200
+          },
+          "speedSeconds": 3.7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22458",
+        "url": "https://www.wowhead.com/classic/cn/item=22458&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "19991",
+      "name": {
+        "zhCN": "魔暴龙眼",
+        "enUS": "Devilsaur Eye"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": ["hunter"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_eye_01"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙猎人职业任务“绿龙”可选奖励。"
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "19991",
+        "url": "https://www.wowhead.com/classic/cn/item=19991&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "19992",
+      "name": {
+        "zhCN": "魔暴龙牙",
+        "enUS": "Devilsaur Tooth"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": ["hunter"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_bone_07"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙猎人职业任务“绿龙”可选奖励。"
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "19992",
+        "url": "https://www.wowhead.com/classic/cn/item=19992&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "20083",
+      "name": {
+        "zhCN": "狩猎长矛",
+        "enUS": "Hunting Spear"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["hunter"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_spear_02"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙猎人职业任务“绿龙”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 17
+        },
+        "physical": {
+          "criticalStrikePercent": 1
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 5
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 111,
+            "maximumPoints": 168
+          },
+          "speedSeconds": 3.1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "20083",
+        "url": "https://www.wowhead.com/classic/cn/item=20083&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "20035",
+      "name": {
+        "zhCN": "冰川之矛",
+        "enUS": "Glacial Spike"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["mage"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_shortblade_06"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙法师职业任务“毁灭摩弗拉斯”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 4
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 31,
+            "maximumPoints": 59
+          },
+          "speedSeconds": 1.3
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "20035",
+        "url": "https://www.wowhead.com/classic/cn/item=20035&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "20036",
+      "name": {
+        "zhCN": "火焰宝石",
+        "enUS": "Fire Ruby"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": ["mage"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_gem_bloodstone_02"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙法师职业任务“毁灭摩弗拉斯”可选奖励。"
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "20036",
+        "url": "https://www.wowhead.com/classic/cn/item=20036&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "20037",
+      "name": {
+        "zhCN": "奥术水晶坠饰",
+        "enUS": "Arcane Crystal Pendant"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": ["mage"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_gem_topaz_01"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙法师职业任务“毁灭摩弗拉斯”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 6
+        },
+        "spell": {
+          "spellPowerPoints": 16,
+          "healingPowerPoints": 16
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "20037",
+        "url": "https://www.wowhead.com/classic/cn/item=20037&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "20504",
+      "name": {
+        "zhCN": "光铸利刃",
+        "enUS": "Lightforged Blade"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 47,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_39"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙圣骑士职业任务“铸造力量之石”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 9,
+          "staminaPoints": 9
+        },
+        "resistances": {
+          "firePoints": 10,
+          "frostPoints": 10,
+          "shadowPoints": 10
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 118,
+            "maximumPoints": 178
+          },
+          "speedSeconds": 3.3
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "20504",
+        "url": "https://www.wowhead.com/classic/cn/item=20504&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "20505",
+      "name": {
+        "zhCN": "礼节徽记",
+        "enUS": "Chivalrous Signet"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": ["paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_43"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙圣骑士职业任务“铸造力量之石”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 7,
+          "staminaPoints": 7,
+          "intellectPoints": 7
+        },
+        "spell": {
+          "healingPowerPoints": 15
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "20505",
+        "url": "https://www.wowhead.com/classic/cn/item=20505&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "20512",
+      "name": {
+        "zhCN": "神圣宝珠",
+        "enUS": "Sanctified Orb"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": ["paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_gem_pearl_04"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙圣骑士职业任务“铸造力量之石”可选奖励。"
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "20512",
+        "url": "https://www.wowhead.com/classic/cn/item=20512&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "19990",
+      "name": {
+        "zhCN": "祝福珠串",
+        "enUS": "Blessed Prayer Beads"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": ["priest"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_necklace_11"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙牧师职业任务“摩弗拉斯之血”可选奖励。"
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "19990",
+        "url": "https://www.wowhead.com/classic/cn/item=19990&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "20006",
+      "name": {
+        "zhCN": "希望之环",
+        "enUS": "Circle of Hope"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": ["priest"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_32"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙牧师职业任务“摩弗拉斯之血”可选奖励。"
+      },
+      "stats": {
+        "resistances": {
+          "shadowPoints": 6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "20006",
+        "url": "https://www.wowhead.com/classic/cn/item=20006&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "20082",
+      "name": {
+        "zhCN": "悲哀之杖",
+        "enUS": "Woestave"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["priest"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_wand_09"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙牧师职业任务“摩弗拉斯之血”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 3
+        },
+        "spell": {
+          "shadowSpellPowerPoints": 11
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 68,
+            "maximumPoints": 127
+          },
+          "speedSeconds": 1.9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "20082",
+        "url": "https://www.wowhead.com/classic/cn/item=20082&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "19982",
+      "name": {
+        "zhCN": "暗色蝠斗篷",
+        "enUS": "Duskbat Drape"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": ["rogue"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_20"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙盗贼职业任务“碧蓝钥匙”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 14
+        },
+        "defense": {
+          "armorPoints": 37
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "19982",
+        "url": "https://www.wowhead.com/classic/cn/item=19982&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "19984",
+      "name": {
+        "zhCN": "乌黑面具",
+        "enUS": "Ebon Mask"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["rogue"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_30"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙盗贼职业任务“碧蓝钥匙”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 11
+        },
+        "defense": {
+          "armorPoints": 122
+        },
+        "physical": {
+          "attackPowerPoints": 36,
+          "rangedAttackPowerPoints": 36,
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "19984",
+        "url": "https://www.wowhead.com/classic/cn/item=19984&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "20255",
+      "name": {
+        "zhCN": "耳语长靴",
+        "enUS": "Whisperwalk Boots"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["rogue"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_cloth_05"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙盗贼职业任务“碧蓝钥匙”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 18,
+          "staminaPoints": 4
+        },
+        "defense": {
+          "armorPoints": 104
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "20255",
+        "url": "https://www.wowhead.com/classic/cn/item=20255&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "20369",
+      "name": {
+        "zhCN": "蓝铜之拳",
+        "enUS": "Azurite Fists"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_30"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙萨满祭司职业任务“收集材料”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 6,
+          "staminaPoints": 7,
+          "intellectPoints": 7,
+          "spiritPoints": 6
+        },
+        "defense": {
+          "armorPoints": 195
+        },
+        "spell": {
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "20369",
+        "url": "https://www.wowhead.com/classic/cn/item=20369&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "20503",
+      "name": {
+        "zhCN": "被迷惑的水之魂",
+        "enUS": "Enamored Water Spirit"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": ["shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_wand_01"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙萨满祭司职业任务“收集材料”可选奖励。"
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "20503",
+        "url": "https://www.wowhead.com/classic/cn/item=20503&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "20556",
+      "name": {
+        "zhCN": "荒野之杖",
+        "enUS": "Wildstaff"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_staff_goldfeathered_01"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙萨满祭司职业任务“收集材料”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 10,
+          "staminaPoints": 10,
+          "intellectPoints": 9
+        },
+        "physical": {
+          "hitPercent": 1,
+          "criticalStrikePercent": 1
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 90,
+            "maximumPoints": 135
+          },
+          "speedSeconds": 2.5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "20556",
+        "url": "https://www.wowhead.com/classic/cn/item=20556&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "20530",
+      "name": {
+        "zhCN": "束缚长袍",
+        "enUS": "Robes of Servitude"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_10"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙术士职业任务“巫毒羽毛”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 15,
+          "intellectPoints": 10
+        },
+        "defense": {
+          "armorPoints": 75
+        },
+        "spell": {
+          "fireSpellPowerPoints": 23,
+          "shadowSpellPowerPoints": 23
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "20530",
+        "url": "https://www.wowhead.com/classic/cn/item=20530&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "20534",
+      "name": {
+        "zhCN": "深渊碎片",
+        "enUS": "Abyss Shard"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": ["warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_gem_02"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙术士职业任务“巫毒羽毛”可选奖励。"
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "20534",
+        "url": "https://www.wowhead.com/classic/cn/item=20534&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "20536",
+      "name": {
+        "zhCN": "灵魂收割者",
+        "enUS": "Soul Harvester"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_48"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙术士职业任务“巫毒羽毛”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 16
+        },
+        "spell": {
+          "shadowSpellPowerPoints": 24,
+          "hitPercent": 1
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 118,
+            "maximumPoints": 178
+          },
+          "speedSeconds": 3.3
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "20536",
+        "url": "https://www.wowhead.com/classic/cn/item=20536&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "20130",
+      "name": {
+        "zhCN": "钻石水瓶",
+        "enUS": "Diamond Flask"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": ["warrior"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_drink_01"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙战士职业任务“巫毒羽毛”可选奖励。"
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "20130",
+        "url": "https://www.wowhead.com/classic/cn/item=20130&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "20517",
+      "name": {
+        "zhCN": "刺钢护肩",
+        "enUS": "Razorsteel Shoulders"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_16"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙战士职业任务“巫毒羽毛”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 10,
+          "agilityPoints": 10,
+          "staminaPoints": 9
+        },
+        "defense": {
+          "armorPoints": 410
+        },
+        "physical": {
+          "hitPercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "20517",
+        "url": "https://www.wowhead.com/classic/cn/item=20517&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "20521",
+      "name": {
+        "zhCN": "怒火面甲",
+        "enUS": "Fury Visor"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_01"
+      },
+      "description": {
+        "zhCN": "阿塔哈卡神庙战士职业任务“巫毒羽毛”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 18
+        },
+        "defense": {
+          "armorPoints": 445
+        },
+        "physical": {
+          "hitPercent": 1,
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "20521",
+        "url": "https://www.wowhead.com/classic/cn/item=20521&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    }
+  ]
+}

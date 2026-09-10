@@ -24,10 +24,10 @@ const itemFiles = fs
 const migratedItems = itemFiles.flatMap((file) => file.content.items);
 
 describe("item definitions", () => {
-  it("loads all 268 current dungeon and quest items with stable IDs and database icons", () => {
+  it("loads all current dungeon and quest items with stable IDs and database icons", () => {
     const dungeonItems = migratedItems.filter((item) => !item.isStarter);
 
-    expect(dungeonItems).toHaveLength(313);
+    expect(dungeonItems).toHaveLength(386);
     expect(dungeonItems.map((item) => item.id)).toEqual(
       expect.arrayContaining(["14149", "15451", "15452", "6324"]),
     );
@@ -75,7 +75,7 @@ describe("item definitions", () => {
       migratedItems.every(
         (item) =>
           Object.keys(item.stats).length > 0 ||
-          (item.id === "17774" && item.statsSource.notes?.includes("触发效果暂不进入")),
+          item.statsSource.notes?.includes("暂不进入常驻属性模型"),
       ),
     ).toBe(true);
     expect(

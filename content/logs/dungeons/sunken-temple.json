@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-10",
+        "notes": "阿塔哈卡神庙副本日志；只描述已经结算的主动路线与战斗事实。"
+      }
+    ]
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "sunken_temple_atalalarion_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "sunken_temple_atalalarion" },
+      "availableParameters": ["tank", "member"],
+      "templates": [
+        "六座雕像按正确顺序亮起，{member}唤醒了池底的阿塔拉利恩。",
+        "石像践踏震过下层大厅，{tank}仍把阿塔拉利恩牢牢留在原地。"
+      ]
+    },
+    {
+      "id": "sunken_temple_balcony_minibosses_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "sunken_temple_balcony_minibosses" },
+      "availableParameters": ["member", "healer", "tank"],
+      "templates": [
+        "祖罗、加什尔、洛若、胡库、祖罗尔和米杉先后倒下，{member}收齐了三色羽毛。",
+        "环廊最后一战结束时，{healer}终于放下了连续驱散的压力。",
+        "{tank}确认六座平台已经清空，预言者大厅的大门随之开启。"
+      ]
+    },
+    {
+      "id": "sunken_temple_spawn_of_hakkar_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "sunken_temple_spawn_of_hakkar" },
+      "availableParameters": ["member", "healer"],
+      "templates": [
+        "哈卡的后代带着蛇群扑来，{member}迅速清空了这条主动支路。",
+        "最后一层毒液被解除后，{healer}确认队伍可以继续深入神庙。"
+      ]
+    },
+    {
+      "id": "sunken_temple_avatar_of_hakkar_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "sunken_temple_avatar_of_hakkar" },
+      "availableParameters": ["member", "healer", "tank"],
+      "templates": [
+        "最后一波守卫倒下，{member}用哈卡之血完成了召唤仪式。",
+        "哈卡的化身试图汲取鲜血，{tank}和{healer}把这场主动召唤战撑到了最后。"
+      ]
+    },
+    {
+      "id": "sunken_temple_jammalan_the_prophet_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "sunken_temple_jammalan_the_prophet" },
+      "availableParameters": ["member", "healer"],
+      "templates": [
+        "迦玛兰的治疗刚开始吟唱，{member}已经让预言者的法术中断。",
+        "精神控制被驱散后，{healer}带着队伍拿下了预言者大厅。"
+      ]
+    },
+    {
+      "id": "sunken_temple_ogom_the_wretched_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "sunken_temple_ogom_the_wretched" },
+      "availableParameters": ["tank", "healer"],
+      "templates": [
+        "奥戈姆的诅咒落在{tank}身上，{healer}及时清除了暗影侵蚀。",
+        "可悲的奥戈姆倒在预言者身旁，两份独立战利品都得到了结算。"
+      ]
+    },
+    {
+      "id": "sunken_temple_dreamscythe_and_weaver_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "sunken_temple_dreamscythe_and_weaver" },
+      "availableParameters": ["member", "healer", "tank"],
+      "templates": [
+        "德姆塞卡尔与德拉维沃尔交替吐息，{tank}始终没有让双龙同时压向队伍。",
+        "沉睡被解除后，{member}和{healer}完成了第一组绿龙战。"
+      ]
+    },
+    {
+      "id": "sunken_temple_morphaz_and_hazzas_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "sunken_temple_morphaz_and_hazzas" },
+      "availableParameters": ["member", "healer", "tank"],
+      "templates": [
+        "摩弗拉斯喷出酸液时，{healer}已经准备好覆盖哈扎斯的下一次深呼吸。",
+        "第二组双龙倒下，{member}收好了职业任务需要的最后一件任务物品。",
+        "{tank}顶住双龙夹击，通往伊兰尼库斯大厅的道路终于打开。"
+      ]
+    },
+    {
+      "id": "sunken_temple_shade_of_eranikus_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "sunken_temple_shade_of_eranikus" },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "伊兰尼库斯的深呼吸席卷大厅，{tank}在践踏后重新接住了巨龙。",
+        "深度睡眠被驱散，{healer}撑过最后一轮范围伤害，{member}完成了阿塔哈卡神庙首通。"
+      ]
+    }
+  ]
+}

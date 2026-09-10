@@ -1,0 +1,292 @@
+{
+  "dungeonId": "sunken_temple",
+  "samplesPerScenario": 100000,
+  "scenarios": {
+    "standard": {
+      "required": {
+        "level": 52,
+        "simulatedRuns": 100000,
+        "clearRate": 0.81139,
+        "previewClearProbability": 0.8122928975629856,
+        "durationSeconds": 1503,
+        "wipeCounts": {
+          "sunken_temple_ogom_the_wretched": 1933,
+          "sunken_temple_shade_of_eranikus": 7653,
+          "sunken_temple_jammalan_the_prophet": 2023,
+          "sunken_temple_balcony_minibosses": 2020,
+          "sunken_temple_morphaz_and_hazzas": 3306,
+          "sunken_temple_dreamscythe_and_weaver": 1926
+        }
+      },
+      "with-optional": {
+        "level": 52,
+        "simulatedRuns": 100000,
+        "clearRate": 0.69267,
+        "previewClearProbability": 0.6924327663320335,
+        "durationSeconds": 1936.4,
+        "wipeCounts": {
+          "sunken_temple_atalalarion": 2056,
+          "sunken_temple_shade_of_eranikus": 13886,
+          "sunken_temple_spawn_of_hakkar": 1906,
+          "sunken_temple_balcony_minibosses": 3498,
+          "sunken_temple_avatar_of_hakkar": 1913,
+          "sunken_temple_morphaz_and_hazzas": 2239,
+          "sunken_temple_ogom_the_wretched": 1743,
+          "sunken_temple_jammalan_the_prophet": 1793,
+          "sunken_temple_dreamscythe_and_weaver": 1699
+        }
+      },
+      "with-rare": {
+        "level": 52,
+        "simulatedRuns": 100000,
+        "clearRate": 0.7871,
+        "previewClearProbability": 0.7871808819424917,
+        "durationSeconds": 1525.2,
+        "wipeCounts": {
+          "sunken_temple_shade_of_eranikus": 10684,
+          "sunken_temple_dreamscythe_and_weaver": 1890,
+          "sunken_temple_morphaz_and_hazzas": 2526,
+          "sunken_temple_balcony_minibosses": 2385,
+          "sunken_temple_jammalan_the_prophet": 1937,
+          "sunken_temple_ogom_the_wretched": 1868
+        }
+      }
+    },
+    "no-tank": {
+      "required": {
+        "level": 52,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.5625000000000006e-8,
+        "durationSeconds": 1717.2,
+        "wipeCounts": {
+          "sunken_temple_balcony_minibosses": 94998,
+          "sunken_temple_jammalan_the_prophet": 4741,
+          "sunken_temple_ogom_the_wretched": 250,
+          "sunken_temple_dreamscythe_and_weaver": 11
+        }
+      },
+      "with-optional": {
+        "level": 52,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.953125000000001e-12,
+        "durationSeconds": 2149.8,
+        "wipeCounts": {
+          "sunken_temple_atalalarion": 94926,
+          "sunken_temple_balcony_minibosses": 4833,
+          "sunken_temple_spawn_of_hakkar": 234,
+          "sunken_temple_jammalan_the_prophet": 1,
+          "sunken_temple_avatar_of_hakkar": 6
+        }
+      },
+      "with-rare": {
+        "level": 52,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.5625000000000006e-8,
+        "durationSeconds": 1634,
+        "wipeCounts": {
+          "sunken_temple_jammalan_the_prophet": 4809,
+          "sunken_temple_balcony_minibosses": 94935,
+          "sunken_temple_ogom_the_wretched": 245,
+          "sunken_temple_morphaz_and_hazzas": 1,
+          "sunken_temple_dreamscythe_and_weaver": 10
+        }
+      }
+    },
+    "no-healing": {
+      "required": {
+        "level": 52,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.5625000000000006e-8,
+        "durationSeconds": 1662,
+        "wipeCounts": {
+          "sunken_temple_balcony_minibosses": 94927,
+          "sunken_temple_jammalan_the_prophet": 4820,
+          "sunken_temple_ogom_the_wretched": 234,
+          "sunken_temple_dreamscythe_and_weaver": 18,
+          "sunken_temple_morphaz_and_hazzas": 1
+        }
+      },
+      "with-optional": {
+        "level": 52,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.953125000000001e-12,
+        "durationSeconds": 2128.2,
+        "wipeCounts": {
+          "sunken_temple_atalalarion": 94923,
+          "sunken_temple_balcony_minibosses": 4812,
+          "sunken_temple_spawn_of_hakkar": 254,
+          "sunken_temple_avatar_of_hakkar": 10,
+          "sunken_temple_jammalan_the_prophet": 1
+        }
+      },
+      "with-rare": {
+        "level": 52,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.5625000000000006e-8,
+        "durationSeconds": 1659.4,
+        "wipeCounts": {
+          "sunken_temple_balcony_minibosses": 95046,
+          "sunken_temple_jammalan_the_prophet": 4706,
+          "sunken_temple_ogom_the_wretched": 237,
+          "sunken_temple_dreamscythe_and_weaver": 11
+        }
+      }
+    },
+    "overlevel": {
+      "required": {
+        "level": 49,
+        "simulatedRuns": 100000,
+        "clearRate": 0.70918,
+        "previewClearProbability": 0.7081384757455349,
+        "durationSeconds": 1597,
+        "wipeCounts": {
+          "sunken_temple_shade_of_eranikus": 14151,
+          "sunken_temple_balcony_minibosses": 4613,
+          "sunken_temple_dreamscythe_and_weaver": 1837,
+          "sunken_temple_morphaz_and_hazzas": 4337,
+          "sunken_temple_jammalan_the_prophet": 1892,
+          "sunken_temple_ogom_the_wretched": 2252
+        }
+      },
+      "with-optional": {
+        "level": 49,
+        "simulatedRuns": 100000,
+        "clearRate": 0.59938,
+        "previewClearProbability": 0.601993339999533,
+        "durationSeconds": 2031.2,
+        "wipeCounts": {
+          "sunken_temple_balcony_minibosses": 5875,
+          "sunken_temple_shade_of_eranikus": 13191,
+          "sunken_temple_jammalan_the_prophet": 2265,
+          "sunken_temple_avatar_of_hakkar": 4854,
+          "sunken_temple_dreamscythe_and_weaver": 2872,
+          "sunken_temple_morphaz_and_hazzas": 5440,
+          "sunken_temple_atalalarion": 2019,
+          "sunken_temple_spawn_of_hakkar": 1863,
+          "sunken_temple_ogom_the_wretched": 1683
+        }
+      },
+      "with-rare": {
+        "level": 49,
+        "simulatedRuns": 100000,
+        "clearRate": 0.77202,
+        "previewClearProbability": 0.7709828290899465,
+        "durationSeconds": 1524.4,
+        "wipeCounts": {
+          "sunken_temple_shade_of_eranikus": 10437,
+          "sunken_temple_balcony_minibosses": 3784,
+          "sunken_temple_ogom_the_wretched": 1821,
+          "sunken_temple_jammalan_the_prophet": 1868,
+          "sunken_temple_morphaz_and_hazzas": 3030,
+          "sunken_temple_dreamscythe_and_weaver": 1858
+        }
+      }
+    },
+    "max-level": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.85501,
+        "previewClearProbability": 0.8563547954346543,
+        "durationSeconds": 1067,
+        "wipeCounts": {
+          "sunken_temple_dreamscythe_and_weaver": 1899,
+          "sunken_temple_shade_of_eranikus": 4804,
+          "sunken_temple_ogom_the_wretched": 1914,
+          "sunken_temple_balcony_minibosses": 2024,
+          "sunken_temple_morphaz_and_hazzas": 1870,
+          "sunken_temple_jammalan_the_prophet": 1988
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.83138,
+        "previewClearProbability": 0.8337477621301497,
+        "durationSeconds": 1316.8,
+        "wipeCounts": {
+          "sunken_temple_jammalan_the_prophet": 1802,
+          "sunken_temple_atalalarion": 2112,
+          "sunken_temple_dreamscythe_and_weaver": 1881,
+          "sunken_temple_balcony_minibosses": 2039,
+          "sunken_temple_spawn_of_hakkar": 1896,
+          "sunken_temple_avatar_of_hakkar": 1853,
+          "sunken_temple_ogom_the_wretched": 1862,
+          "sunken_temple_morphaz_and_hazzas": 1643,
+          "sunken_temple_shade_of_eranikus": 1774
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.86585,
+        "previewClearProbability": 0.8664167302896033,
+        "durationSeconds": 1065.2,
+        "wipeCounts": {
+          "sunken_temple_balcony_minibosses": 2040,
+          "sunken_temple_morphaz_and_hazzas": 1878,
+          "sunken_temple_ogom_the_wretched": 1983,
+          "sunken_temple_shade_of_eranikus": 3737,
+          "sunken_temple_jammalan_the_prophet": 1955,
+          "sunken_temple_dreamscythe_and_weaver": 1822
+        }
+      }
+    },
+    "speed-run": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.86977,
+        "previewClearProbability": 0.8694052733577193,
+        "durationSeconds": 1072.4,
+        "wipeCounts": {
+          "sunken_temple_shade_of_eranikus": 3394,
+          "sunken_temple_morphaz_and_hazzas": 1822,
+          "sunken_temple_dreamscythe_and_weaver": 1917,
+          "sunken_temple_jammalan_the_prophet": 1951,
+          "sunken_temple_balcony_minibosses": 2040,
+          "sunken_temple_ogom_the_wretched": 1899
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.83324,
+        "previewClearProbability": 0.833188322136731,
+        "durationSeconds": 1319,
+        "wipeCounts": {
+          "sunken_temple_shade_of_eranikus": 1792,
+          "sunken_temple_avatar_of_hakkar": 1896,
+          "sunken_temple_ogom_the_wretched": 1880,
+          "sunken_temple_atalalarion": 2010,
+          "sunken_temple_spawn_of_hakkar": 1910,
+          "sunken_temple_dreamscythe_and_weaver": 1746,
+          "sunken_temple_balcony_minibosses": 1863,
+          "sunken_temple_jammalan_the_prophet": 1875,
+          "sunken_temple_morphaz_and_hazzas": 1704
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.83506,
+        "previewClearProbability": 0.8347780049907755,
+        "durationSeconds": 1093.4,
+        "wipeCounts": {
+          "sunken_temple_shade_of_eranikus": 6962,
+          "sunken_temple_ogom_the_wretched": 1899,
+          "sunken_temple_morphaz_and_hazzas": 1801,
+          "sunken_temple_dreamscythe_and_weaver": 1905,
+          "sunken_temple_balcony_minibosses": 1981,
+          "sunken_temple_jammalan_the_prophet": 1946
+        }
+      }
+    }
+  }
+}

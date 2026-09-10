@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/sunken-temple-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对阿塔哈卡神庙楼层路线、主要首领、雕像谜题、哈卡召唤与绿龙区顺序。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对十六名首领及八组共享或独立装备池。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-10",
+        "notes": "使用九个稳定节点压缩楼层寻路；雕像、哈卡的后代和哈卡化身为主动可选节点，不设置虚构稀有首领。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["minimumLevel", "recommendedLevel", "duration", "probability", "route"],
+        "reason": "按玛拉顿后的 48–52 级升级入口、约 24 分钟主线与约 30 分钟完整路线设置初始参数。",
+        "decidedAt": "2026-09-10"
+      }
+    ]
+  },
+  "dungeons": [
+    {
+      "id": "sunken_temple",
+      "name": {
+        "zhCN": "阿塔哈卡神庙",
+        "enUS": "The Temple of Atal'Hakkar"
+      },
+      "minimumLevel": 48,
+      "recommendedLevel": 52,
+      "defaultUnlocked": false,
+      "unlock": {
+        "requiredDungeonIds": ["maraudon"]
+      },
+      "members": {
+        "minimum": 1,
+        "maximum": 5,
+        "recommended": 5
+      },
+      "duration": {
+        "baseSeconds": 1810,
+        "minimumRatio": 0.48,
+        "maximumRatio": 1.8
+      },
+      "probability": {
+        "minimum": 0.05,
+        "maximum": 0.99,
+        "base": 0.05,
+        "readinessMultiplier": 0.97,
+        "surplusEffect": 0.5,
+        "geometricWeight": 0.7,
+        "bottleneckWeight": 0.3,
+        "overpowerThreshold": 1.5
+      },
+      "combatTuning": {
+        "bossProbabilityMaximum": 0.98,
+        "requirementMultipliers": {
+          "tank": 0.62,
+          "healing": 0.62,
+          "damage": 0.62
+        }
+      },
+      "route": [
+        {
+          "id": "sunken_temple_atalalarion",
+          "type": "optional",
+          "encounterId": "sunken_temple_atalalarion",
+          "description": {
+            "zhCN": "主动完成下层六座雕像谜题，唤醒并挑战阿塔拉利恩。"
+          }
+        },
+        {
+          "id": "sunken_temple_balcony_minibosses",
+          "type": "required",
+          "encounterId": "sunken_temple_balcony_minibosses"
+        },
+        {
+          "id": "sunken_temple_spawn_of_hakkar",
+          "type": "optional",
+          "encounterId": "sunken_temple_spawn_of_hakkar",
+          "description": {
+            "zhCN": "绕入支路，主动挑战在神庙内游荡的哈卡的后代。"
+          }
+        },
+        {
+          "id": "sunken_temple_avatar_of_hakkar",
+          "type": "optional",
+          "encounterId": "sunken_temple_avatar_of_hakkar",
+          "description": {
+            "zhCN": "带上任务准备并启动哈卡之卵仪式，抵御守卫后击败哈卡的化身。"
+          }
+        },
+        {
+          "id": "sunken_temple_jammalan_the_prophet",
+          "type": "required",
+          "encounterId": "sunken_temple_jammalan_the_prophet"
+        },
+        {
+          "id": "sunken_temple_ogom_the_wretched",
+          "type": "required",
+          "encounterId": "sunken_temple_ogom_the_wretched"
+        },
+        {
+          "id": "sunken_temple_dreamscythe_and_weaver",
+          "type": "required",
+          "encounterId": "sunken_temple_dreamscythe_and_weaver"
+        },
+        {
+          "id": "sunken_temple_morphaz_and_hazzas",
+          "type": "required",
+          "encounterId": "sunken_temple_morphaz_and_hazzas"
+        },
+        {
+          "id": "sunken_temple_shade_of_eranikus",
+          "type": "required",
+          "encounterId": "sunken_temple_shade_of_eranikus"
+        }
+      ]
+    }
+  ]
+}

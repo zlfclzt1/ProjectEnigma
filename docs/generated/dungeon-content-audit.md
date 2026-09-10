@@ -78,6 +78,15 @@
 | 影牙城堡（shadowfang_keep） | sfk_fenrus | required | 吞噬者芬鲁斯（sfk_fenrus） | boss_drop:sfk_fenrus | 1 | 6340 芬鲁斯的外皮、3230 黑狼护腕 |
 | 影牙城堡（shadowfang_keep） | sfk_wolf_master_nandos | required | 狼王南杜斯（sfk_wolf_master_nandos） | boss_drop:sfk_wolf_master_nandos | 1 | 3748 猎豹衬肩、6314 狼王斗篷 |
 | 影牙城堡（shadowfang_keep） | sfk_archmage_arugal | required | 大法师阿鲁高（sfk_archmage_arugal） | boss_drop:sfk_archmage_arugal | 1 | 6324 阿鲁高法袍、6392 阿鲁高的腰带、6220 流星碎片 |
+| 阿塔哈卡神庙（sunken_temple） | sunken_temple_atalalarion | optional | 阿塔拉利恩（sunken_temple_atalalarion） | boss_drop:sunken_temple_atalalarion | 1 | 10800 暗水护腕、10798 阿塔拉利恩的牙环、10799 刺头之矛 |
+| 阿塔哈卡神庙（sunken_temple） | sunken_temple_balcony_minibosses | required | 环廊六首领（sunken_temple_balcony_minibosses） | boss_drop:sunken_temple_balcony_minibosses | 6 | 10783 阿塔莱肩甲、10784 阿塔莱胸甲、10787 阿塔莱手套、10788 阿塔莱束带、10785 阿塔莱护腿、10786 阿塔莱长靴 |
+| 阿塔哈卡神庙（sunken_temple） | sunken_temple_spawn_of_hakkar | optional | 哈卡的后代（sunken_temple_spawn_of_hakkar） | boss_drop:sunken_temple_spawn_of_hakkar | 1 | 10801 滑鳞长靴、10802 翼膜披风 |
+| 阿塔哈卡神庙（sunken_temple） | sunken_temple_avatar_of_hakkar | optional | 哈卡的化身（sunken_temple_avatar_of_hakkar） | boss_drop:sunken_temple_avatar_of_hakkar | 1 | 12462 风蛇的拥抱、10843 羽毛斗篷、10845 战士的拥抱、10842 风鳞布裙、10846 溅血胫甲、10838 哈卡之力、10844 哈卡之塔 |
+| 阿塔哈卡神庙（sunken_temple） | sunken_temple_jammalan_the_prophet | required | 预言者迦玛兰（sunken_temple_jammalan_the_prophet） | boss_drop:sunken_temple_jammalan_the_prophet | 1 | 10806 阿塔莱预言者法衣、10808 阿塔莱预言者手套、10807 阿塔莱预言者褶裙 |
+| 阿塔哈卡神庙（sunken_temple） | sunken_temple_ogom_the_wretched | required | 可悲的奥戈姆（sunken_temple_ogom_the_wretched） | boss_drop:sunken_temple_ogom_the_wretched | 1 | 10805 食尸者、10803 奥戈姆之刃、10804 诅咒之拳 |
+| 阿塔哈卡神庙（sunken_temple） | sunken_temple_dreamscythe_and_weaver | required | 德姆塞卡尔与德拉维沃尔（sunken_temple_dreamscythe_and_weaver） | boss_drop:sunken_temple_dreamscythe_and_weaver | 2 | 12465 夜幕披风、12466 黎明尖塔束带、12464 血火之爪、10797 喷火者、12463 龙牙之剑、12243 烟熏之爪、10795 龙爪指环、10796 火石 |
+| 阿塔哈卡神庙（sunken_temple） | sunken_temple_morphaz_and_hazzas | required | 摩弗拉斯与哈扎斯（sunken_temple_morphaz_and_hazzas） | boss_drop:sunken_temple_morphaz_and_hazzas | 2 | 12465 夜幕披风、12466 黎明尖塔束带、12464 血火之爪、10797 喷火者、12463 龙牙之剑、12243 烟熏之爪、10795 龙爪指环、10796 火石 |
+| 阿塔哈卡神庙（sunken_temple） | sunken_temple_shade_of_eranikus | required | 伊兰尼库斯的阴影（sunken_temple_shade_of_eranikus） | boss_drop:sunken_temple_shade_of_eranikus | 1 | 10847 龙之召唤、10833 伊兰尼库斯之角、10829 巨龙之眼、10836 侵蚀魔棒、10835 至高徽记之盾、10837 伊兰尼库斯之牙、10828 恐惧龙指 |
 | 暴风城监狱（the_stockade） | stockade_targorr_the_dread | required | 可怕的塔格尔（stockade_targorr_the_dread） | 无装备掉落 | 0 | — |
 | 暴风城监狱（the_stockade） | stockade_kam_deepfury | required | 卡姆·深怒（stockade_kam_deepfury） | 无装备掉落 | 0 | — |
 | 暴风城监狱（the_stockade） | stockade_hamhock | required | 哈姆霍克（stockade_hamhock） | 无装备掉落 | 0 | — |
@@ -115,8 +124,8 @@
 
 ## 引用完整度
 
-- 副本路线节点：104。
-- 副本任务：30。
+- 副本路线节点：113。
+- 副本任务：43。
 - 套装：9。
 - 未被路线引用的掉落表：0。
 - 未被掉落、任务或套装引用的非初始装备：0。

@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/classic-wow-temple-of-atalhakkar-sunken-temple-dungeon-quests",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对四条普通装备任务的目标与奖励。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/temple-of-atalhakkar-sunken-temple-class-quests-wow-classic",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对九职业 50 级任务的最终神庙目标与三选一装备奖励。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-10",
+        "notes": "副本外前置链不产生后台进度；只以玩家主动安排的神庙路线节点胜利表达最终步骤。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": [
+          "quests[].dungeonId",
+          "quests[].completion",
+          "quests[].rewards.experienceFraction"
+        ],
+        "reason": "用可确定结算的 Encounter 胜利或主线全通表达任务物品、火盆、羽毛和普通怪收集，并保持原版装备奖励方式。",
+        "decidedAt": "2026-09-10"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "sunken_temple_jammalan_the_prophet",
+      "name": { "zhCN": "预言者迦玛兰" },
+      "description": { "zhCN": "深入预言者大厅，击败迦玛兰并带回他的头颅。" },
+      "dungeonId": "sunken_temple",
+      "eligibility": { "minimumLevel": 38, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["sunken_temple_jammalan_the_prophet"]
+      },
+      "rewards": {
+        "experienceFraction": 1,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["11123", "11124"]
+      }
+    },
+    {
+      "id": "sunken_temple_essence_of_eranikus",
+      "name": { "zhCN": "伊兰尼库斯精华" },
+      "description": { "zhCN": "击败伊兰尼库斯的阴影，并在房间火盆前禁锢它的精华。" },
+      "dungeonId": "sunken_temple",
+      "eligibility": { "minimumLevel": 44, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["sunken_temple_shade_of_eranikus"]
+      },
+      "rewards": {
+        "experienceFraction": 0.7,
+        "funds": 0,
+        "fixedItemIds": ["10455"],
+        "itemChoiceIds": []
+      }
+    },
+    {
+      "id": "sunken_temple_the_god_hakkar",
+      "name": { "zhCN": "哈卡之神" },
+      "description": { "zhCN": "启动哈卡之卵仪式，抵御守卫并击败哈卡的化身。" },
+      "dungeonId": "sunken_temple",
+      "eligibility": { "minimumLevel": 40, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["sunken_temple_avatar_of_hakkar"]
+      },
+      "rewards": {
+        "experienceFraction": 1.2,
+        "funds": 240,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["10749", "10750", "10751"]
+      }
+    },
+    {
+      "id": "sunken_temple_temple_of_atalhakkar",
+      "name": { "zhCN": "阿塔哈卡神庙" },
+      "description": { "zhCN": "完成神庙主线并收集足够的哈卡莱神像。" },
+      "dungeonId": "sunken_temple",
+      "eligibility": { "minimumLevel": 38, "allowedClassIds": [] },
+      "completion": { "type": "dungeon-clear" },
+      "rewards": {
+        "experienceFraction": 1,
+        "funds": 0,
+        "fixedItemIds": ["1490"],
+        "itemChoiceIds": []
+      }
+    },
+    {
+      "id": "sunken_temple_druid_better_ingredient",
+      "name": { "zhCN": "更好的材料" },
+      "description": { "zhCN": "完成雕像谜题并击败阿塔拉利恩，取得腐烂藤蔓。" },
+      "dungeonId": "sunken_temple",
+      "eligibility": { "minimumLevel": 50, "allowedClassIds": ["druid"] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["sunken_temple_atalalarion"]
+      },
+      "rewards": {
+        "experienceFraction": 1.1,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["22272", "22274", "22458"]
+      }
+    },
+    {
+      "id": "sunken_temple_hunter_green_drake",
+      "name": { "zhCN": "绿龙" },
+      "description": { "zhCN": "击败摩弗拉斯与哈扎斯，取得摩弗拉斯之牙。" },
+      "dungeonId": "sunken_temple",
+      "eligibility": { "minimumLevel": 50, "allowedClassIds": ["hunter"] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["sunken_temple_morphaz_and_hazzas"]
+      },
+      "rewards": {
+        "experienceFraction": 1.1,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["19991", "19992", "20083"]
+      }
+    },
+    {
+      "id": "sunken_temple_mage_destroy_morphaz",
+      "name": { "zhCN": "毁灭摩弗拉斯" },
+      "description": { "zhCN": "击败摩弗拉斯与哈扎斯，取回奥术碎片。" },
+      "dungeonId": "sunken_temple",
+      "eligibility": { "minimumLevel": 50, "allowedClassIds": ["mage"] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["sunken_temple_morphaz_and_hazzas"]
+      },
+      "rewards": {
+        "experienceFraction": 1.1,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["20035", "20036", "20037"]
+      }
+    },
+    {
+      "id": "sunken_temple_paladin_forging_the_mightstone",
+      "name": { "zhCN": "铸造力量之石" },
+      "description": { "zhCN": "击败环廊六首领并收齐三色巫毒羽毛。" },
+      "dungeonId": "sunken_temple",
+      "eligibility": { "minimumLevel": 50, "allowedClassIds": ["paladin"] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["sunken_temple_balcony_minibosses"]
+      },
+      "rewards": {
+        "experienceFraction": 1.1,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["20504", "20505", "20512"]
+      }
+    },
+    {
+      "id": "sunken_temple_priest_blood_of_morphaz",
+      "name": { "zhCN": "摩弗拉斯之血" },
+      "description": { "zhCN": "击败摩弗拉斯与哈扎斯，取得摩弗拉斯之血。" },
+      "dungeonId": "sunken_temple",
+      "eligibility": { "minimumLevel": 50, "allowedClassIds": ["priest"] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["sunken_temple_morphaz_and_hazzas"]
+      },
+      "rewards": {
+        "experienceFraction": 1.1,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["19990", "20006", "20082"]
+      }
+    },
+    {
+      "id": "sunken_temple_rogue_azure_key",
+      "name": { "zhCN": "碧蓝钥匙" },
+      "description": { "zhCN": "击败摩弗拉斯与哈扎斯，取回碧蓝钥匙。" },
+      "dungeonId": "sunken_temple",
+      "eligibility": { "minimumLevel": 50, "allowedClassIds": ["rogue"] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["sunken_temple_morphaz_and_hazzas"]
+      },
+      "rewards": {
+        "experienceFraction": 1.1,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["19982", "19984", "20255"]
+      }
+    },
+    {
+      "id": "sunken_temple_shaman_material_assistance",
+      "name": { "zhCN": "收集材料" },
+      "description": { "zhCN": "击败环廊六首领并收齐三色巫毒羽毛。" },
+      "dungeonId": "sunken_temple",
+      "eligibility": { "minimumLevel": 50, "allowedClassIds": ["shaman"] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["sunken_temple_balcony_minibosses"]
+      },
+      "rewards": {
+        "experienceFraction": 1.1,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["20369", "20503", "20556"]
+      }
+    },
+    {
+      "id": "sunken_temple_warlock_trolls_of_a_feather",
+      "name": { "zhCN": "巫毒羽毛" },
+      "description": { "zhCN": "击败环廊六首领并收齐三色巫毒羽毛。" },
+      "dungeonId": "sunken_temple",
+      "eligibility": { "minimumLevel": 50, "allowedClassIds": ["warlock"] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["sunken_temple_balcony_minibosses"]
+      },
+      "rewards": {
+        "experienceFraction": 1.1,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["20530", "20534", "20536"]
+      }
+    },
+    {
+      "id": "sunken_temple_warrior_voodoo_feathers",
+      "name": { "zhCN": "巫毒羽毛" },
+      "description": { "zhCN": "击败环廊六首领并收齐三色巫毒羽毛。" },
+      "dungeonId": "sunken_temple",
+      "eligibility": { "minimumLevel": 50, "allowedClassIds": ["warrior"] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["sunken_temple_balcony_minibosses"]
+      },
+      "rewards": {
+        "experienceFraction": 1.1,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["20130", "20517", "20521"]
+      }
+    }
+  ]
+}

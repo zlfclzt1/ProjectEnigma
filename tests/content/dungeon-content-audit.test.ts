@@ -8,8 +8,8 @@ import {
 describe("dungeon content audit", () => {
   it("lists every route node and preserves optional/rare semantics", () => {
     const audit = auditDungeonContent(loadBrowserContentRegistry());
-    expect(audit.routes).toHaveLength(104);
-    expect(audit.routes.filter((row) => row.nodeType === "optional")).toHaveLength(14);
+    expect(audit.routes).toHaveLength(113);
+    expect(audit.routes.filter((row) => row.nodeType === "optional")).toHaveLength(17);
     expect(audit.routes.filter((row) => row.nodeType === "rare")).toHaveLength(13);
     expect(
       audit.routes.some(

@@ -6,12 +6,12 @@
 
 ## 汇总
 
-- 路线 Encounter：104。
-- 掉落表：87。
-- 掉落表分类：Boss 专属掉落 87，任务奖励 0，世界掉落 0，设计占位 0。
-- Encounter 引用分类：Boss 专属掉落 87，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 17。
-- 不同装备分类：Boss 专属掉落 244，任务奖励 0，世界掉落 0，设计占位 0。
-- 成员副本任务：30，不同任务奖励装备：69。
+- 路线 Encounter：113。
+- 掉落表：96。
+- 掉落表分类：Boss 专属掉落 96，任务奖励 0，世界掉落 0，设计占位 0。
+- Encounter 引用分类：Boss 专属掉落 96，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 17。
+- 不同装备分类：Boss 专属掉落 283，任务奖励 0，世界掉落 0，设计占位 0。
+- 成员副本任务：43，不同任务奖励装备：103。
 - Boss 掉落与任务奖励重复：0。
 - 未显式填写 `sourceType` 的 Boss 掉落表：0。
 - 未被路线 Encounter 引用的掉落表：0。
@@ -152,6 +152,20 @@
 | 狼王南杜斯（sfk_wolf_master_nandos） | sfk_wolf_master_nandos | Boss 专属掉落 | 1 | 3748 猎豹衬肩、6314 狼王斗篷 |
 | 大法师阿鲁高（sfk_archmage_arugal） | sfk_archmage_arugal | Boss 专属掉落 | 1 | 6324 阿鲁高法袍、6392 阿鲁高的腰带、6220 流星碎片 |
 
+### 阿塔哈卡神庙（sunken_temple）
+
+| Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
+|---|---|---|---:|---|
+| 阿塔拉利恩（sunken_temple_atalalarion） | sunken_temple_atalalarion | Boss 专属掉落 | 1 | 10800 暗水护腕、10798 阿塔拉利恩的牙环、10799 刺头之矛 |
+| 环廊六首领（sunken_temple_balcony_minibosses） | sunken_temple_balcony_minibosses | Boss 专属掉落 | 6 | 10783 阿塔莱肩甲、10784 阿塔莱胸甲、10787 阿塔莱手套、10788 阿塔莱束带、10785 阿塔莱护腿、10786 阿塔莱长靴 |
+| 哈卡的后代（sunken_temple_spawn_of_hakkar） | sunken_temple_spawn_of_hakkar | Boss 专属掉落 | 1 | 10801 滑鳞长靴、10802 翼膜披风 |
+| 哈卡的化身（sunken_temple_avatar_of_hakkar） | sunken_temple_avatar_of_hakkar | Boss 专属掉落 | 1 | 12462 风蛇的拥抱、10843 羽毛斗篷、10845 战士的拥抱、10842 风鳞布裙、10846 溅血胫甲、10838 哈卡之力、10844 哈卡之塔 |
+| 预言者迦玛兰（sunken_temple_jammalan_the_prophet） | sunken_temple_jammalan_the_prophet | Boss 专属掉落 | 1 | 10806 阿塔莱预言者法衣、10808 阿塔莱预言者手套、10807 阿塔莱预言者褶裙 |
+| 可悲的奥戈姆（sunken_temple_ogom_the_wretched） | sunken_temple_ogom_the_wretched | Boss 专属掉落 | 1 | 10805 食尸者、10803 奥戈姆之刃、10804 诅咒之拳 |
+| 德姆塞卡尔与德拉维沃尔（sunken_temple_dreamscythe_and_weaver） | sunken_temple_dreamscythe_and_weaver | Boss 专属掉落 | 2 | 12465 夜幕披风、12466 黎明尖塔束带、12464 血火之爪、10797 喷火者、12463 龙牙之剑、12243 烟熏之爪、10795 龙爪指环、10796 火石 |
+| 摩弗拉斯与哈扎斯（sunken_temple_morphaz_and_hazzas） | sunken_temple_morphaz_and_hazzas | Boss 专属掉落 | 2 | 12465 夜幕披风、12466 黎明尖塔束带、12464 血火之爪、10797 喷火者、12463 龙牙之剑、12243 烟熏之爪、10795 龙爪指环、10796 火石 |
+| 伊兰尼库斯的阴影（sunken_temple_shade_of_eranikus） | sunken_temple_shade_of_eranikus | Boss 专属掉落 | 1 | 10847 龙之召唤、10833 伊兰尼库斯之角、10829 巨龙之眼、10836 侵蚀魔棒、10835 至高徽记之盾、10837 伊兰尼库斯之牙、10828 恐惧龙指 |
+
 ### 暴风城监狱（the_stockade）
 
 | Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
@@ -232,6 +246,19 @@
 | 血色修道院：墓地（scarlet_monastery_graveyard） | 沃瑞尔的复仇（scarlet_gy_vorrels_revenge） | 7751 沃瑞尔的靴子、7750 悲哀衬肩、4643 十字军斗篷 |
 | 血色修道院：图书馆（scarlet_monastery_library） | 堕落者纲要（scarlet_library_compendium_of_the_fallen） | 7747 邪恶防护者、17508 力石圆盾、7749 终结宝珠 |
 | 血色修道院：图书馆（scarlet_monastery_library） | 泰坦神话（scarlet_library_mythology_of_the_titans） | 7746 探险者协会的奖状 |
+| 阿塔哈卡神庙（sunken_temple） | 预言者迦玛兰（sunken_temple_jammalan_the_prophet） | 11123 雨行护腿、11124 流放者头盔 |
+| 阿塔哈卡神庙（sunken_temple） | 伊兰尼库斯精华（sunken_temple_essence_of_eranikus） | 10455 被禁锢的伊兰尼库斯精华 |
+| 阿塔哈卡神庙（sunken_temple） | 哈卡之神（sunken_temple_the_god_hakkar） | 10749 灰岩头盔、10750 生命之力短剑、10751 珠光头饰 |
+| 阿塔哈卡神庙（sunken_temple） | 阿塔哈卡神庙（sunken_temple_temple_of_atalhakkar） | 1490 守护之符 |
+| 阿塔哈卡神庙（sunken_temple） | 更好的材料（sunken_temple_druid_better_ingredient） | 22272 森林的拥抱、22274 斑白毛皮、22458 月影手杖 |
+| 阿塔哈卡神庙（sunken_temple） | 绿龙（sunken_temple_hunter_green_drake） | 19991 魔暴龙眼、19992 魔暴龙牙、20083 狩猎长矛 |
+| 阿塔哈卡神庙（sunken_temple） | 毁灭摩弗拉斯（sunken_temple_mage_destroy_morphaz） | 20035 冰川之矛、20036 火焰宝石、20037 奥术水晶坠饰 |
+| 阿塔哈卡神庙（sunken_temple） | 铸造力量之石（sunken_temple_paladin_forging_the_mightstone） | 20504 光铸利刃、20505 礼节徽记、20512 神圣宝珠 |
+| 阿塔哈卡神庙（sunken_temple） | 摩弗拉斯之血（sunken_temple_priest_blood_of_morphaz） | 19990 祝福珠串、20006 希望之环、20082 悲哀之杖 |
+| 阿塔哈卡神庙（sunken_temple） | 碧蓝钥匙（sunken_temple_rogue_azure_key） | 19982 暗色蝠斗篷、19984 乌黑面具、20255 耳语长靴 |
+| 阿塔哈卡神庙（sunken_temple） | 收集材料（sunken_temple_shaman_material_assistance） | 20369 蓝铜之拳、20503 被迷惑的水之魂、20556 荒野之杖 |
+| 阿塔哈卡神庙（sunken_temple） | 巫毒羽毛（sunken_temple_warlock_trolls_of_a_feather） | 20530 束缚长袍、20534 深渊碎片、20536 灵魂收割者 |
+| 阿塔哈卡神庙（sunken_temple） | 巫毒羽毛（sunken_temple_warrior_voodoo_feathers） | 20130 钻石水瓶、20517 刺钢护肩、20521 怒火面甲 |
 | 暴风城监狱（the_stockade） | 伸张正义（stockade_what_comes_around） | 3400 磷铝长剑、1317 硬根法杖 |
 | 暴风城监狱（the_stockade） | 卡姆·深怒（stockade_fury_runs_deep） | 3562 辩护腰带、1264 碎头者 |
 | 暴风城监狱（the_stockade） | 罪与罚（stockade_crime_and_punishment） | 2033 大使之靴、2906 夜色郡锁甲护腿 |
