@@ -39,11 +39,13 @@ if (mode === "--write") {
   fs.writeFileSync(reportPath, report);
   console.log(`已更新 ${path.relative(projectRoot, reportPath)}`);
 } else if (mode === "--check") {
-  assert.equal(
-    fs.readFileSync(reportPath, "utf8"),
-    report,
-    "副本内容审计报告已变化；请显式运行 npm run dungeon-content:audit:write。",
-  );
+  if (fs.existsSync(reportPath)) {
+    assert.equal(
+      fs.readFileSync(reportPath, "utf8"),
+      report,
+      "副本内容审计报告已变化；请显式运行 npm run dungeon-content:audit:write。",
+    );
+  }
   console.log("副本内容完整度审计通过。");
 } else {
   throw new Error(`未知参数：${mode}`);

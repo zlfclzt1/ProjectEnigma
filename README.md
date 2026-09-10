@@ -77,7 +77,6 @@ npx playwright install chromium
 
 ```text
 content/                 可校验的职业、副本、Boss、物品、掉落和日志内容
-docs/                    游戏设计、架构方案和内容生产流程
 scripts/                 内容审计与十万样本数值模拟
 src/application/         命令、查询、会话和结算服务
 src/content/             内容 Schema、加载器与只读注册表
@@ -100,14 +99,6 @@ tests/                   领域、应用、Store、组件和 Playwright 测试
 - 本地存档使用 IndexedDB，不包含账号、云同步或跨设备同步。
 - 允许删除 V2 IndexedDB 后重新开档；不保证开发阶段存档向后兼容。
 
-## 文档
+## 本地文档
 
-- [游戏设计文档](./docs/game-design-v0.1.md)
-- [10–45 级祖尔法拉克阶段实施计划](./docs/zulfarrak-stage-implementation-plan.md)
-- [45–60 级黑石塔阶段实施计划](./docs/level-60-dungeon-stage-implementation-plan.md)
-- [经典旧世内容版本与来源政策](./docs/classic-content-source-policy.md)
-- [怒焰裂谷垂直切片](./docs/ragefire-chasm-vertical-slice.md)
-- [黑暗深渊资料清单](./docs/dungeon-research/blackfathom-deeps.md)
-- [新增经典旧世副本工作流](./docs/adding-dungeon-workflow.md)
-- [长期可扩展架构重构方案](./docs/architecture-refactor-plan-v2.md)
-- [V2 架构重构可执行计划](./docs/refactor-execution-plan-v2.md)
+设计、实施计划和生成的审计报告保存在本地 `docs/` 目录中，不随 Git 仓库发布。
