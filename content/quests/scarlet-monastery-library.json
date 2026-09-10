@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/quest=1049/compendium-of-the-fallen",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对堕落者纲要、泰坦神话的图书馆目标与装备奖励。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "将阵营、书籍拾取和跨地图交付压缩为成员实际参加并完成图书馆远征。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["completion", "rewards.experienceFraction", "rewards.funds"],
+        "reason": "只保留可由主动安排的图书馆活动确定结算的成员任务。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "scarlet_library_compendium_of_the_fallen",
+      "name": { "zhCN": "堕落者纲要" },
+      "description": { "zhCN": "完成图书馆远征并带回《堕落者纲要》。" },
+      "dungeonId": "scarlet_monastery_library",
+      "eligibility": { "minimumLevel": 28, "allowedClassIds": [] },
+      "completion": { "type": "dungeon-clear" },
+      "rewards": {
+        "experienceFraction": 0.8,
+        "funds": 0,
+        "itemChoiceIds": ["7747", "17508", "7749"]
+      }
+    },
+    {
+      "id": "scarlet_library_mythology_of_the_titans",
+      "name": { "zhCN": "泰坦神话" },
+      "description": { "zhCN": "完成图书馆远征并带回《泰坦神话》。" },
+      "dungeonId": "scarlet_monastery_library",
+      "eligibility": { "minimumLevel": 28, "allowedClassIds": [] },
+      "completion": { "type": "dungeon-clear" },
+      "rewards": {
+        "experienceFraction": 0.8,
+        "funds": 0,
+        "itemChoiceIds": ["7746"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/quest=1049/compendium-of-the-fallen",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对堕落者纲要与泰坦神话的四件真实装备奖励。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].restrictions", "items[].description"],
+        "reason": "保留真实任务奖励，并按当前职业与定位规则补齐可装备性。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "7747",
+      "name": { "zhCN": "邪恶防护者", "enUS": "Vile Protector" },
+      "itemLevel": 41,
+      "quality": "uncommon",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_shield_02" },
+      "description": { "zhCN": "血色修道院图书馆任务奖励：Compendium of the Fallen。" },
+      "stats": {
+        "primary": { "strengthPoints": 4 },
+        "defense": { "armorPoints": 1051, "blockValuePoints": 17 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7747",
+        "url": "https://www.wowhead.com/classic/cn/item=7747&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "17508",
+      "name": { "zhCN": "力石圆盾", "enUS": "Forcestone Buckler" },
+      "itemLevel": 41,
+      "quality": "uncommon",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_shield_02" },
+      "description": { "zhCN": "血色修道院图书馆任务奖励：Compendium of the Fallen。" },
+      "stats": {
+        "primary": { "staminaPoints": 3, "spiritPoints": 8 },
+        "defense": { "armorPoints": 1051, "blockValuePoints": 17 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17508",
+        "url": "https://www.wowhead.com/classic/cn/item=17508&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7749",
+      "name": { "zhCN": "终结宝珠", "enUS": "Omega Orb" },
+      "itemLevel": 41,
+      "quality": "uncommon",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_misc_orb_03" },
+      "description": { "zhCN": "血色修道院图书馆任务奖励：Compendium of the Fallen。" },
+      "stats": { "spell": { "spellPowerPoints": 11, "healingPowerPoints": 11 } },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7749",
+        "url": "https://www.wowhead.com/classic/cn/item=7749&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7746",
+      "name": { "zhCN": "探险者协会的奖状", "enUS": "Explorers' League Commendation" },
+      "itemLevel": 41,
+      "quality": "uncommon",
+      "slot": "neck",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "database", "name": "inv_jewelry_talisman_01" },
+      "description": { "zhCN": "血色修道院图书馆任务奖励：Mythology of the Titans。" },
+      "stats": { "primary": { "staminaPoints": 6, "spiritPoints": 6 } },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7746",
+        "url": "https://www.wowhead.com/classic/cn/item=7746&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    }
+  ]
+}

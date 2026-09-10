@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/scarlet-monastery-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对图书馆 Boss 顺序、等级区间与血色十字军钥匙来源。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "图书馆在墓地后解锁；洛克希保留为普通可选节点，杜安作为首通目标。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["minimumLevel", "recommendedLevel", "duration", "probability", "route"],
+        "reason": "按 12 分钟完整路线和分区愿望单刷装定位设置初始参数。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "dungeons": [
+    {
+      "id": "scarlet_monastery_library",
+      "name": { "zhCN": "血色修道院：图书馆", "enUS": "Scarlet Monastery: Library" },
+      "minimumLevel": 31,
+      "recommendedLevel": 40,
+      "defaultUnlocked": false,
+      "unlock": { "requiredDungeonIds": ["scarlet_monastery_graveyard"] },
+      "members": { "minimum": 1, "maximum": 5, "recommended": 5 },
+      "duration": { "baseSeconds": 720, "minimumRatio": 0.5, "maximumRatio": 1.8 },
+      "probability": {
+        "minimum": 0.05,
+        "maximum": 0.99,
+        "base": 0.05,
+        "readinessMultiplier": 0.9,
+        "surplusEffect": 0.5,
+        "geometricWeight": 0.7,
+        "bottleneckWeight": 0.3,
+        "overpowerThreshold": 1.5
+      },
+      "combatTuning": {
+        "bossProbabilityMaximum": 0.98,
+        "requirementMultipliers": { "tank": 0.94, "healing": 0.94, "damage": 0.94 }
+      },
+      "route": [
+        {
+          "id": "scarlet_library_houndmaster_loksey",
+          "type": "optional",
+          "encounterId": "scarlet_library_houndmaster_loksey",
+          "description": { "zhCN": "搜索侧室，挑战驯犬者与三只精英猎犬。" }
+        },
+        {
+          "id": "scarlet_library_arcanist_doan",
+          "type": "required",
+          "encounterId": "scarlet_library_arcanist_doan"
+        }
+      ]
+    }
+  ]
+}

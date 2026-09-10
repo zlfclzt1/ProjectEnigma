@@ -109,6 +109,24 @@ describe("member view queries", () => {
     expect(detail.wishlist.itemOptions.some((item) => item.id === "10412")).toBe(false);
   });
 
+  it("offers unlocked Library boss drops as wishlist targets", () => {
+    const game = state();
+    game.guild.unlockedDungeonIds.push(asBrandedId<"DungeonId">("scarlet_monastery_library"));
+    const member = Object.values(game.members)[0]!;
+
+    const detail = getMemberDetailView(game, content, member.id)!;
+    expect(detail.wishlist.itemOptions).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          id: "7713",
+          name: "幻影法杖",
+          dungeonName: "血色修道院：图书馆",
+          encounterName: "奥法师杜安",
+        }),
+      ]),
+    );
+  });
+
   it("previews wishlist targets removed by a role-changing respec", () => {
     const game = state();
     const member = Object.values(game.members)[0]!;

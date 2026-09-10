@@ -1,0 +1,204 @@
+{
+  "dungeonId": "scarlet_monastery_library",
+  "samplesPerScenario": 100000,
+  "scenarios": {
+    "standard": {
+      "required": {
+        "level": 40,
+        "simulatedRuns": 100000,
+        "clearRate": 0.81479,
+        "previewClearProbability": 0.8153286070886085,
+        "durationSeconds": 505,
+        "wipeCounts": {
+          "scarlet_library_arcanist_doan": 18521
+        }
+      },
+      "with-optional": {
+        "level": 40,
+        "simulatedRuns": 100000,
+        "clearRate": 0.74053,
+        "previewClearProbability": 0.7385837637322427,
+        "durationSeconds": 753.4,
+        "wipeCounts": {
+          "scarlet_library_houndmaster_loksey": 10066,
+          "scarlet_library_arcanist_doan": 15881
+        }
+      },
+      "with-rare": {
+        "level": 40,
+        "simulatedRuns": 100000,
+        "clearRate": 0.80186,
+        "previewClearProbability": 0.801776215773424,
+        "durationSeconds": 514,
+        "wipeCounts": {
+          "scarlet_library_arcanist_doan": 19814
+        }
+      }
+    },
+    "no-tank": {
+      "required": {
+        "level": 40,
+        "simulatedRuns": 100000,
+        "clearRate": 0.04973,
+        "previewClearProbability": 0.05,
+        "durationSeconds": 541.4,
+        "wipeCounts": {
+          "scarlet_library_arcanist_doan": 95027
+        }
+      },
+      "with-optional": {
+        "level": 40,
+        "simulatedRuns": 100000,
+        "clearRate": 0.00236,
+        "previewClearProbability": 0.0025000000000000005,
+        "durationSeconds": 804.8,
+        "wipeCounts": {
+          "scarlet_library_houndmaster_loksey": 95060,
+          "scarlet_library_arcanist_doan": 4704
+        }
+      },
+      "with-rare": {
+        "level": 40,
+        "simulatedRuns": 100000,
+        "clearRate": 0.0509,
+        "previewClearProbability": 0.05,
+        "durationSeconds": 534,
+        "wipeCounts": {
+          "scarlet_library_arcanist_doan": 94910
+        }
+      }
+    },
+    "no-healing": {
+      "required": {
+        "level": 40,
+        "simulatedRuns": 100000,
+        "clearRate": 0.04985,
+        "previewClearProbability": 0.05,
+        "durationSeconds": 534.8,
+        "wipeCounts": {
+          "scarlet_library_arcanist_doan": 95015
+        }
+      },
+      "with-optional": {
+        "level": 40,
+        "simulatedRuns": 100000,
+        "clearRate": 0.00245,
+        "previewClearProbability": 0.0025000000000000005,
+        "durationSeconds": 813,
+        "wipeCounts": {
+          "scarlet_library_arcanist_doan": 4856,
+          "scarlet_library_houndmaster_loksey": 94899
+        }
+      },
+      "with-rare": {
+        "level": 40,
+        "simulatedRuns": 100000,
+        "clearRate": 0.04982,
+        "previewClearProbability": 0.05,
+        "durationSeconds": 537.2,
+        "wipeCounts": {
+          "scarlet_library_arcanist_doan": 95018
+        }
+      }
+    },
+    "overlevel": {
+      "required": {
+        "level": 37,
+        "simulatedRuns": 100000,
+        "clearRate": 0.77578,
+        "previewClearProbability": 0.7773433604939992,
+        "durationSeconds": 539.2,
+        "wipeCounts": {
+          "scarlet_library_arcanist_doan": 22422
+        }
+      },
+      "with-optional": {
+        "level": 37,
+        "simulatedRuns": 100000,
+        "clearRate": 0.62942,
+        "previewClearProbability": 0.6255272925883355,
+        "durationSeconds": 828.6,
+        "wipeCounts": {
+          "scarlet_library_arcanist_doan": 22166,
+          "scarlet_library_houndmaster_loksey": 14892
+        }
+      },
+      "with-rare": {
+        "level": 37,
+        "simulatedRuns": 100000,
+        "clearRate": 0.77439,
+        "previewClearProbability": 0.7707483334086556,
+        "durationSeconds": 533.6,
+        "wipeCounts": {
+          "scarlet_library_arcanist_doan": 22561
+        }
+      }
+    },
+    "max-level": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.84876,
+        "previewClearProbability": 0.8502108581236832,
+        "durationSeconds": 477.6,
+        "wipeCounts": {
+          "scarlet_library_arcanist_doan": 15124
+        }
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.86036,
+        "previewClearProbability": 0.8624474585665046,
+        "durationSeconds": 689.4,
+        "wipeCounts": {
+          "scarlet_library_arcanist_doan": 11933,
+          "scarlet_library_houndmaster_loksey": 2031
+        }
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.88337,
+        "previewClearProbability": 0.8842636143073049,
+        "durationSeconds": 457.8,
+        "wipeCounts": {
+          "scarlet_library_arcanist_doan": 11663
+        }
+      }
+    },
+    "speed-run": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.86599,
+        "previewClearProbability": 0.8655724813681935,
+        "durationSeconds": 467.4,
+        "wipeCounts": {
+          "scarlet_library_arcanist_doan": 13401
+        }
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.86345,
+        "previewClearProbability": 0.863215417079687,
+        "durationSeconds": 681.8,
+        "wipeCounts": {
+          "scarlet_library_arcanist_doan": 9509,
+          "scarlet_library_houndmaster_loksey": 4146
+        }
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.84321,
+        "previewClearProbability": 0.8422585443167214,
+        "durationSeconds": 485,
+        "wipeCounts": {
+          "scarlet_library_arcanist_doan": 15679
+        }
+      }
+    }
+  }
+}

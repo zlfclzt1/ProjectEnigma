@@ -47,6 +47,8 @@
 | 血色修道院：墓地（scarlet_monastery_graveyard） | scarlet_gy_fallen_champion | rare（0.33） | 堕落的勇士（scarlet_gy_fallen_champion） | boss_drop:scarlet_gy_fallen_champion | 1 | 7690 乌木钳、7691 裹尸布、7689 恐怖黎明 |
 | 血色修道院：墓地（scarlet_monastery_graveyard） | scarlet_gy_ironspine | rare（0.34） | 铁脊（scarlet_gy_ironspine） | boss_drop:scarlet_gy_ironspine | 1 | 7686 铁脊死灵之眼、7688 铁脊死灵之肋、7687 铁脊死灵之拳 |
 | 血色修道院：墓地（scarlet_monastery_graveyard） | scarlet_gy_bloodmage_thalnos | required | 血法师萨尔诺斯（scarlet_gy_bloodmage_thalnos） | boss_drop:scarlet_gy_bloodmage_thalnos | 1 | 7684 血法师衬肩、7685 遗忘先知宝珠 |
+| 血色修道院：图书馆（scarlet_monastery_library） | scarlet_library_houndmaster_loksey | optional | 驯犬者洛克希（scarlet_library_houndmaster_loksey） | boss_drop:scarlet_library_houndmaster_loksey | 1 | 7710 洛克希的教鞭、7756 驯犬手套 |
+| 血色修道院：图书馆（scarlet_monastery_library） | scarlet_library_arcanist_doan | required | 奥法师杜安（scarlet_library_arcanist_doan） | boss_drop:scarlet_library_arcanist_doan | 1 | 7714 催眠之刃、7713 幻影法杖、7712 杜安的衬肩、7711 杜安法袍 |
 | 影牙城堡（shadowfang_keep） | sfk_rethilgore | required | 雷希戈尔（sfk_rethilgore） | boss_drop:sfk_rethilgore | 1 | 5254 皱褶肩甲 |
 | 影牙城堡（shadowfang_keep） | sfk_razorclaw | required | 屠夫拉佐克劳（sfk_razorclaw） | boss_drop:sfk_razorclaw | 1 | 1292 屠夫的切肉刀、6226 鲜血围裙、6633 屠夫的剔骨刀 |
 | 影牙城堡（shadowfang_keep） | sfk_baron_silverlaine | required | 席瓦莱恩男爵（sfk_baron_silverlaine） | boss_drop:sfk_baron_silverlaine | 1 | 6321 席瓦莱恩家族徽记、6323 巴隆的节杖 |
@@ -72,8 +74,8 @@
 
 ## 引用完整度
 
-- 副本路线节点：61。
-- 副本任务：15。
+- 副本路线节点：63。
+- 副本任务：17。
 - 套装：1。
 - 未被路线引用的掉落表：0。
 - 未被掉落、任务或套装引用的非初始装备：0。

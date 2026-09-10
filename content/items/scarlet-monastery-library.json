@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/scarlet-monastery-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对血色修道院图书馆 Boss 专属装备 ID、图标、栏位与常驻属性。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-09",
+        "notes": "交叉核对驯犬者洛克希、奥法师杜安与装备归属。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].restrictions", "items[].description"],
+        "reason": "按当前职业与定位装备规则补齐可装备性，并标记图书馆 Boss 来源。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "7710",
+      "name": { "zhCN": "洛克希的教鞭", "enUS": "Loksey's Training Stick" },
+      "itemLevel": 36,
+      "requiredLevel": 31,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": [
+          "warrior",
+          "paladin",
+          "hunter",
+          "priest",
+          "shaman",
+          "mage",
+          "warlock",
+          "druid"
+        ],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_staff_18" },
+      "description": { "zhCN": "血色修道院图书馆：驯犬者洛克希的专属掉落。" },
+      "stats": {
+        "weapon": { "damage": { "minimumPoints": 77, "maximumPoints": 117 }, "speedSeconds": 3.1 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7710",
+        "url": "https://www.wowhead.com/classic/cn/item=7710&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7756",
+      "name": { "zhCN": "驯犬手套", "enUS": "Dog Training Gloves" },
+      "itemLevel": 34,
+      "requiredLevel": 29,
+      "quality": "uncommon",
+      "slot": "hands",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["rogue", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_gauntlets_07" },
+      "description": { "zhCN": "血色修道院图书馆：驯犬者洛克希的专属掉落。" },
+      "stats": { "defense": { "armorPoints": 62 } },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7756",
+        "url": "https://www.wowhead.com/classic/cn/item=7756&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7714",
+      "name": { "zhCN": "催眠之刃", "enUS": "Hypnotic Blade" },
+      "itemLevel": 39,
+      "requiredLevel": 34,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": [
+          "warrior",
+          "hunter",
+          "rogue",
+          "priest",
+          "shaman",
+          "mage",
+          "warlock",
+          "druid"
+        ],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_weapon_shortblade_07" },
+      "description": { "zhCN": "血色修道院图书馆：奥法师杜安的专属掉落。" },
+      "stats": {
+        "primary": { "intellectPoints": 8, "spiritPoints": 3 },
+        "spell": { "spellPowerPoints": 9, "healingPowerPoints": 9 },
+        "weapon": { "damage": { "minimumPoints": 26, "maximumPoints": 49 }, "speedSeconds": 1.4 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7714",
+        "url": "https://www.wowhead.com/classic/cn/item=7714&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7713",
+      "name": { "zhCN": "幻影法杖", "enUS": "Illusionary Rod" },
+      "itemLevel": 39,
+      "requiredLevel": 34,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": [
+          "warrior",
+          "paladin",
+          "hunter",
+          "priest",
+          "shaman",
+          "mage",
+          "warlock",
+          "druid"
+        ],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_wand_04" },
+      "description": { "zhCN": "血色修道院图书馆：奥法师杜安的专属掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 7, "intellectPoints": 15, "spiritPoints": 10 },
+        "weapon": { "damage": { "minimumPoints": 94, "maximumPoints": 142 }, "speedSeconds": 3.4 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7713",
+        "url": "https://www.wowhead.com/classic/cn/item=7713&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7712",
+      "name": { "zhCN": "杜安的衬肩", "enUS": "Mantle of Doan" },
+      "itemLevel": 38,
+      "requiredLevel": 33,
+      "quality": "uncommon",
+      "slot": "shoulder",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_shoulder_05" },
+      "description": { "zhCN": "血色修道院图书馆：奥法师杜安的专属掉落。" },
+      "stats": {
+        "primary": { "intellectPoints": 8, "spiritPoints": 7 },
+        "defense": { "armorPoints": 38 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7712",
+        "url": "https://www.wowhead.com/classic/cn/item=7712&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7711",
+      "name": { "zhCN": "杜安法袍", "enUS": "Robe of Doan" },
+      "itemLevel": 38,
+      "requiredLevel": 33,
+      "quality": "uncommon",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_chest_cloth_25" },
+      "description": { "zhCN": "血色修道院图书馆：奥法师杜安的专属掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 4, "spiritPoints": 13 },
+        "defense": { "armorPoints": 50 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7711",
+        "url": "https://www.wowhead.com/classic/cn/item=7711&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    }
+  ]
+}

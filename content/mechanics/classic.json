@@ -358,6 +358,39 @@
         "enUS": "Interrupts reduce Thalnos's area shadow burst pressure."
       },
       "reportTag": "scarlet_gy_shadow_nova"
+    },
+    {
+      "id": "scarlet_library_hound_pack",
+      "name": { "zhCN": "精英猎犬群", "enUS": "Elite Hound Pack" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "crowd_control", "minimumValue": 1 }],
+      "missingEffects": {
+        "tankMultiplier": 1.11,
+        "damageMultiplier": 1.05,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.05
+      },
+      "description": {
+        "zhCN": "控制猎犬可以降低洛克希侧室的多目标承伤压力。",
+        "enUS": "Crowd control reduces the multi-target pressure from Loksey's hounds."
+      },
+      "reportTag": "scarlet_library_hound_pack"
+    },
+    {
+      "id": "scarlet_library_arcane_detonation",
+      "name": { "zhCN": "奥术爆破", "enUS": "Arcane Detonation" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "ranged_damage", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.14,
+        "probabilityModifier": -0.05,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "远程火力与分散站位可以降低杜安奥术爆破造成的治疗压力。",
+        "enUS": "Ranged pressure and spreading reduce the healing burden of Doan's detonation."
+      },
+      "reportTag": "scarlet_library_arcane_detonation"
     }
   ]
 }

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/scarlet-monastery-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对洛克希与杜安的战斗机制主题和装备归属。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "需求值作为 D10.D 固定种子模拟的保守初始基线。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "encounters": [
+    {
+      "id": "scarlet_library_houndmaster_loksey",
+      "dungeonId": "scarlet_monastery_library",
+      "name": { "zhCN": "驯犬者洛克希" },
+      "stageSeconds": 260,
+      "requirements": { "tank": 42, "healing": 40, "damage": 118 },
+      "weights": { "tank": 0.38, "healing": 0.27, "damage": 0.35 },
+      "experienceShare": 0.32,
+      "funds": 52,
+      "firstKillBonus": 104,
+      "lootTableId": "scarlet_library_houndmaster_loksey",
+      "mechanicIds": ["scarlet_library_hound_pack"]
+    },
+    {
+      "id": "scarlet_library_arcanist_doan",
+      "dungeonId": "scarlet_monastery_library",
+      "name": { "zhCN": "奥法师杜安" },
+      "stageSeconds": 460,
+      "requirements": { "tank": 46, "healing": 48, "damage": 139 },
+      "weights": { "tank": 0.28, "healing": 0.37, "damage": 0.35 },
+      "experienceShare": 0.68,
+      "funds": 72,
+      "firstKillBonus": 144,
+      "lootTableId": "scarlet_library_arcanist_doan",
+      "mechanicIds": ["scarlet_library_arcane_detonation"]
+    }
+  ]
+}

@@ -4,7 +4,7 @@
 
 ## 结论
 
-- 真实副本与任务装备：162 / 162 已录入有单位属性并引用 Wowhead Classic XML。
+- 真实副本与任务装备：172 / 172 已录入有单位属性并引用 Wowhead Classic XML。
 - 初始装备：41 / 41 已录入本游戏平衡属性，并标记 manual 与 stats balance override。
 - 未确认而猜测的真实属性：0 项。
 - 触发效果和套装效果不作为单件常驻属性写入；相关排除项记录在物品来源说明中。
@@ -130,9 +130,18 @@
 | 7691 | 裹尸布 | 30 | head | 耐力 7、智力 11、精神 12、护甲 42 | wowhead-classic | 2026-09-09 |
 | 7708 | 腐坏魔杖 | 30 | ranged | 伤害 32–61 / 1.40 秒 | wowhead-classic | 2026-09-09 |
 | 7709 | 荒芜护腿 | 30 | legs | 精神 17、护甲 45 | wowhead-classic | 2026-09-09 |
+| 7710 | 洛克希的教鞭 | 31 | mainHand | 伤害 77–117 / 3.10 秒 | wowhead-classic | 2026-09-09 |
+| 7711 | 杜安法袍 | 33 | chest | 耐力 4、精神 13、护甲 50 | wowhead-classic | 2026-09-09 |
+| 7712 | 杜安的衬肩 | 33 | shoulder | 智力 8、精神 7、护甲 38 | wowhead-classic | 2026-09-09 |
+| 7713 | 幻影法杖 | 34 | mainHand | 耐力 7、智力 15、精神 10、伤害 94–142 / 3.40 秒 | wowhead-classic | 2026-09-09 |
+| 7714 | 催眠之刃 | 34 | mainHand | 智力 8、精神 3、法术强度 9、治疗强度 9、伤害 26–49 / 1.40 秒 | wowhead-classic | 2026-09-09 |
 | 7731 | 鬼魅碎片护符 | 30 | neck | 耐力 9、精神 4 | wowhead-classic | 2026-09-09 |
+| 7746 | 探险者协会的奖状 | — | neck | 耐力 6、精神 6 | wowhead-classic | 2026-09-09 |
+| 7747 | 邪恶防护者 | — | offHand | 力量 4、护甲 1051、格挡值 17 | wowhead-classic | 2026-09-09 |
+| 7749 | 终结宝珠 | — | offHand | 法术强度 11、治疗强度 11 | wowhead-classic | 2026-09-09 |
 | 7750 | 悲哀衬肩 | — | shoulder | 智力 7、精神 4、护甲 34 | wowhead-classic | 2026-09-09 |
 | 7751 | 沃瑞尔的靴子 | — | feet | 敏捷 8、耐力 2、护甲 64 | wowhead-classic | 2026-09-09 |
+| 7756 | 驯犬手套 | 29 | hands | 护甲 62 | wowhead-classic | 2026-09-09 |
 | 9445 | 格鲁比斯的爪子 | 29 | hands | 力量 6、敏捷 5、精神 9、护甲 144 | wowhead-classic | 2026-09-09 |
 | 9446 | 电刑器的腿 | 29 | mainHand | 伤害 26–49 / 1.70 秒 | wowhead-classic | 2026-09-09 |
 | 9447 | 电刑器腿杆 | 29 | ring1 | 耐力 4、精神 9 | wowhead-classic | 2026-09-09 |
@@ -176,6 +185,7 @@
 | 15453 | 草原狮护腕 | — | wrist | 耐力 3、护甲 33 | wowhead-classic | 2026-09-08 |
 | 16886 | 逃犯弯刀 | 25 | mainHand | 攻击强度 15、伤害 35–67 / 2.70 秒 | wowhead-classic | 2026-09-09 |
 | 16887 | 女巫之指 | 25 | offHand | 耐力 4、智力 7 | wowhead-classic | 2026-09-09 |
+| 17508 | 力石圆盾 | — | offHand | 耐力 3、精神 8、护甲 1051、格挡值 17 | wowhead-classic | 2026-09-09 |
 
 ## 特殊说明
 

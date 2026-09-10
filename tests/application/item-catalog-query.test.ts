@@ -82,7 +82,7 @@ describe("item collection catalog query", () => {
     ]);
     expect(view.globalProgress).toEqual({
       acquiredItemCount: 0,
-      totalItemCount: 127,
+      totalItemCount: 133,
       completionPercent: 0,
     });
     expect(JSON.stringify(view)).not.toContain("尖牙腰带");
@@ -111,6 +111,35 @@ describe("item collection catalog query", () => {
     expect(ragefire.completionPercent).toBeCloseTo(100 / 6);
   });
 
+  it("reveals both Library boss pools after the wing is unlocked", () => {
+    const game = state();
+    game.guild.unlockedDungeonIds.push(asBrandedId<"DungeonId">("scarlet_monastery_library"));
+
+    const view = getItemCatalogView(game, content);
+    const library = view.dungeons.find((dungeon) => dungeon.id === "scarlet_monastery_library")!;
+    if (!library.unlocked) throw new Error("Expected unlocked Scarlet Monastery Library");
+
+    expect(library.totalItemCount).toBe(6);
+    expect(library.encounters).toEqual([
+      expect.objectContaining({
+        id: "scarlet_library_houndmaster_loksey",
+        items: expect.arrayContaining([
+          expect.objectContaining({ id: "7710" }),
+          expect.objectContaining({ id: "7756" }),
+        ]),
+      }),
+      expect.objectContaining({
+        id: "scarlet_library_arcanist_doan",
+        items: expect.arrayContaining([
+          expect.objectContaining({ id: "7714" }),
+          expect.objectContaining({ id: "7713" }),
+          expect.objectContaining({ id: "7712" }),
+          expect.objectContaining({ id: "7711" }),
+        ]),
+      }),
+    ]);
+  });
+
   it("computes dungeon, set, global, claimable, and claimed progress without Vue", () => {
     const game = state();
     game.guild.unlockedDungeonIds.push(asBrandedId<"DungeonId">("wailing_caverns"));
@@ -128,6 +157,7 @@ describe("item collection catalog query", () => {
       "6465",
       "6681",
       "7683",
+      "7710",
     ].forEach((itemId, index) => acquire(game, content, itemId, index + 1));
 
     const view = getItemCatalogView(game, content);
@@ -146,8 +176,8 @@ describe("item collection catalog query", () => {
         completionPercent: 100,
       }),
     ]);
-    expect(view.globalProgress).toMatchObject({ acquiredItemCount: 13, totalItemCount: 127 });
-    expect(view.globalProgress.completionPercent).toBeCloseTo((13 / 127) * 100);
+    expect(view.globalProgress).toMatchObject({ acquiredItemCount: 14, totalItemCount: 133 });
+    expect(view.globalProgress.completionPercent).toBeCloseTo((14 / 133) * 100);
     expect(view.rewards).toHaveLength(3);
     expect(view.rewards.every((reward) => reward.claimable)).toBe(true);
     expect(view.rewards.every((reward) => !reward.claimed)).toBe(true);

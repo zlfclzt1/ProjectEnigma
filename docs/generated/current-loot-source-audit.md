@@ -6,12 +6,12 @@
 
 ## 汇总
 
-- 路线 Encounter：61。
-- 掉落表：51。
-- 掉落表分类：Boss 专属掉落 51，任务奖励 0，世界掉落 0，设计占位 0。
-- Encounter 引用分类：Boss 专属掉落 51，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 10。
-- 不同装备分类：Boss 专属掉落 127，任务奖励 0，世界掉落 0，设计占位 0。
-- 成员副本任务：15，不同任务奖励装备：35。
+- 路线 Encounter：63。
+- 掉落表：53。
+- 掉落表分类：Boss 专属掉落 53，任务奖励 0，世界掉落 0，设计占位 0。
+- Encounter 引用分类：Boss 专属掉落 53，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 10。
+- 不同装备分类：Boss 专属掉落 133，任务奖励 0，世界掉落 0，设计占位 0。
+- 成员副本任务：17，不同任务奖励装备：39。
 - Boss 掉落与任务奖励重复：0。
 - 未显式填写 `sourceType` 的 Boss 掉落表：0。
 - 未被路线 Encounter 引用的掉落表：0。
@@ -91,6 +91,13 @@
 | 铁脊（scarlet_gy_ironspine） | scarlet_gy_ironspine | Boss 专属掉落 | 1 | 7686 铁脊死灵之眼、7688 铁脊死灵之肋、7687 铁脊死灵之拳 |
 | 血法师萨尔诺斯（scarlet_gy_bloodmage_thalnos） | scarlet_gy_bloodmage_thalnos | Boss 专属掉落 | 1 | 7684 血法师衬肩、7685 遗忘先知宝珠 |
 
+### 血色修道院：图书馆（scarlet_monastery_library）
+
+| Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
+|---|---|---|---:|---|
+| 驯犬者洛克希（scarlet_library_houndmaster_loksey） | scarlet_library_houndmaster_loksey | Boss 专属掉落 | 1 | 7710 洛克希的教鞭、7756 驯犬手套 |
+| 奥法师杜安（scarlet_library_arcanist_doan） | scarlet_library_arcanist_doan | Boss 专属掉落 | 1 | 7714 催眠之刃、7713 幻影法杖、7712 杜安的衬肩、7711 杜安法袍 |
+
 ### 影牙城堡（shadowfang_keep）
 
 | Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
@@ -144,6 +151,8 @@
 | 剃刀沼泽（razorfen_kraul） | 进口商威利克斯（razorfen_kraul_willix_the_importer） | 6748 猴子戒指、6749 猛虎指环、6750 蛇环 |
 | 剃刀沼泽（razorfen_kraul） | 生命渐逝（razorfen_kraul_mortality_wanes） | 6751 悲伤披风、6752 枪骑兵战靴 |
 | 血色修道院：墓地（scarlet_monastery_graveyard） | 沃瑞尔的复仇（scarlet_gy_vorrels_revenge） | 7751 沃瑞尔的靴子、7750 悲哀衬肩、4643 十字军斗篷 |
+| 血色修道院：图书馆（scarlet_monastery_library） | 堕落者纲要（scarlet_library_compendium_of_the_fallen） | 7747 邪恶防护者、17508 力石圆盾、7749 终结宝珠 |
+| 血色修道院：图书馆（scarlet_monastery_library） | 泰坦神话（scarlet_library_mythology_of_the_titans） | 7746 探险者协会的奖状 |
 | 暴风城监狱（the_stockade） | 伸张正义（stockade_what_comes_around） | 3400 磷铝长剑、1317 硬根法杖 |
 | 暴风城监狱（the_stockade） | 卡姆·深怒（stockade_fury_runs_deep） | 3562 辩护腰带、1264 碎头者 |
 | 暴风城监狱（the_stockade） | 罪与罚（stockade_crime_and_punishment） | 2033 大使之靴、2906 夜色郡锁甲护腿 |

@@ -96,6 +96,37 @@ describe("member dungeon quests", () => {
     await expect(session.execute(command)).rejects.toThrow(/已经接取或完成过/);
   });
 
+  it("projects both unlocked Library book quests with their authentic rewards", () => {
+    const game = state();
+    game.guild.unlockedDungeonIds.push(asBrandedId<"DungeonId">("scarlet_monastery_library"));
+    const member = Object.values(game.members)[0]!;
+    member.progression.level = 40;
+
+    const view = getMemberDungeonQuestsView(game, content, member.id)!;
+    expect(view.quests).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          id: "scarlet_library_compendium_of_the_fallen",
+          status: "available",
+          rewards: expect.objectContaining({
+            itemChoices: [
+              expect.objectContaining({ id: "7747", name: "邪恶防护者" }),
+              expect.objectContaining({ id: "17508", name: "力石圆盾" }),
+              expect.objectContaining({ id: "7749", name: "终结宝珠" }),
+            ],
+          }),
+        }),
+        expect.objectContaining({
+          id: "scarlet_library_mythology_of_the_titans",
+          status: "available",
+          rewards: expect.objectContaining({
+            itemChoices: [expect.objectContaining({ id: "7746", name: "探险者协会的奖状" })],
+          }),
+        }),
+      ]),
+    );
+  });
+
   it("rejects locked dungeons, insufficient levels, and disallowed classes", () => {
     const locked = state();
     const member = Object.values(locked.members)[0]!;

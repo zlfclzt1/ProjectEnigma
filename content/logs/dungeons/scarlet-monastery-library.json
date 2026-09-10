@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "血色修道院图书馆副本日志；只描述已经结算的战斗事实。"
+      }
+    ]
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "scarlet_library_loksey_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "scarlet_library_houndmaster_loksey" },
+      "availableParameters": ["tank", "member"],
+      "templates": [
+        "三只猎犬终于安静下来，{tank} 开始认真考虑是否该收取宠物管理费。",
+        "洛克希倒下，{member} 第一时间检查教鞭能不能算公会管理工具。"
+      ]
+    },
+    {
+      "id": "scarlet_library_doan_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "scarlet_library_arcanist_doan" },
+      "availableParameters": ["healer", "member"],
+      "templates": [
+        "杜安的奥术护盾碎裂，{healer} 宣布下次爆炸前必须先看战术。",
+        "图书馆恢复安静，{member} 抱走任务书时尽量没有折角。"
+      ]
+    }
+  ]
+}

@@ -8,8 +8,8 @@ import {
 describe("dungeon content audit", () => {
   it("lists every route node and preserves optional/rare semantics", () => {
     const audit = auditDungeonContent(loadBrowserContentRegistry());
-    expect(audit.routes).toHaveLength(61);
-    expect(audit.routes.filter((row) => row.nodeType === "optional")).toHaveLength(3);
+    expect(audit.routes).toHaveLength(63);
+    expect(audit.routes.filter((row) => row.nodeType === "optional")).toHaveLength(4);
     expect(audit.routes.filter((row) => row.nodeType === "rare")).toHaveLength(7);
     expect(
       audit.routes.some(
@@ -18,9 +18,10 @@ describe("dungeon content audit", () => {
     ).toBe(true);
   });
 
-  it("finds no orphan loot tables or quest reward overlap", () => {
+  it("finds no orphan library content or quest reward overlap", () => {
     const audit = auditDungeonContent(loadBrowserContentRegistry());
     expect(audit.unusedLootTableIds).toEqual([]);
+    expect(audit.unreferencedItemIds).toEqual([]);
     expect(audit.questRewardBossOverlap).toEqual([]);
     expect(renderDungeonContentAudit(audit)).toContain("任务奖励与 Boss 掉落重复：0");
   });
