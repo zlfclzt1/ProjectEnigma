@@ -1,14 +1,25 @@
 import type { GameCommand } from "../services/game-session";
 import type { ContentRegistry } from "../../content/registry";
-import { evaluateUpgrade } from "../../domain/equipment/upgrade-evaluation";
+import { rankLootAssignment } from "../../domain/equipment/loot-assignment-ranking";
 import type { GameState } from "../../domain/game-state";
 import { assignLoot, assertLootUnlocked } from "./assign-loot";
 import { sellLoot } from "./sell-loot";
+import type { MemberId, PendingLootId } from "../../domain/shared/ids";
+
+export interface AutoAssignLootEntryResult {
+  readonly pendingLootId: PendingLootId;
+  readonly action: "assign" | "sell";
+  readonly memberId?: MemberId;
+  readonly saleProceeds: number;
+}
 
 export interface AutoAssignLootResult {
   readonly assigned: number;
   readonly sold: number;
   readonly locked: number;
+  readonly saleProceeds: number;
+  readonly remainingFunds: number;
+  readonly entries: readonly AutoAssignLootEntryResult[];
 }
 
 export function autoAssignLootCommand(content: ContentRegistry): GameCommand<AutoAssignLootResult> {
@@ -24,6 +35,8 @@ export function autoAssignLoot(state: GameState, content: ContentRegistry): Auto
   let assigned = 0;
   let sold = 0;
   let locked = 0;
+  let saleProceeds = 0;
+  const entries: AutoAssignLootEntryResult[] = [];
   const pendingLoot = Object.values(state.pendingLoot).sort(
     (left, right) => left.acquiredAt - right.acquiredAt || left.id.localeCompare(right.id),
   );
@@ -34,44 +47,33 @@ export function autoAssignLoot(state: GameState, content: ContentRegistry): Auto
       locked += 1;
       continue;
     }
-    const instance = state.itemInstances[pending.itemInstanceId];
-    if (!instance) throw new Error("战利品装备实例不存在。");
-    const eligible = pending.eligibleMemberIds
-      .map((memberId) => state.members[memberId])
-      .filter((member) => member !== undefined)
-      .map((member) => ({
-        member,
-        upgrade: evaluateUpgrade(member, instance, state, content),
-      }))
-      .filter(
-        (
-          entry,
-        ): entry is typeof entry & {
-          upgrade: Extract<typeof entry.upgrade, { equippable: true }>;
-        } =>
-          entry.upgrade.equippable &&
-          entry.upgrade.primaryResponsibilityDelta > 1e-9 &&
-          entry.upgrade.recommendationScore > 1e-9,
-      )
-      .sort(
-        (left, right) =>
-          right.upgrade.recommendationScore - left.upgrade.recommendationScore ||
-          left.upgrade.primaryResponsibilityBefore - right.upgrade.primaryResponsibilityBefore ||
-          left.member.id.localeCompare(right.member.id),
-      );
-    if (eligible.length > 0) {
-      assignLoot(
+    const decision = rankLootAssignment(state, content, pending);
+    if (decision.type === "assign") {
+      const result = assignLoot(
         state,
         content,
         pending.id,
-        eligible[0]!.member.id,
-        eligible[0]!.upgrade.replacementSlot,
+        decision.candidate.memberId,
+        decision.candidate.replacementSlot,
       );
+      saleProceeds += result.saleProceeds;
+      entries.push({
+        pendingLootId: pending.id,
+        action: "assign",
+        memberId: decision.candidate.memberId,
+        saleProceeds: result.saleProceeds,
+      });
       assigned += 1;
     } else {
-      sellLoot(state, content, pending.id);
+      const proceeds = sellLoot(state, content, pending.id);
+      saleProceeds += proceeds;
+      entries.push({
+        pendingLootId: pending.id,
+        action: "sell",
+        saleProceeds: proceeds,
+      });
       sold += 1;
     }
   }
-  return { assigned, sold, locked };
+  return { assigned, sold, locked, saleProceeds, remainingFunds: state.guild.funds, entries };
 }

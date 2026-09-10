@@ -15,7 +15,7 @@ import type {
 } from "./shared/ids";
 import type { IdGeneratorState, RandomState } from "./shared/runtime-state";
 
-export const GAME_STATE_SAVE_VERSION = 5 as const;
+export const GAME_STATE_SAVE_VERSION = 6 as const;
 
 export interface GameState {
   slotId: SaveSlotId;
@@ -40,7 +40,14 @@ export interface GameState {
 
 export type LegacyItemInstanceV3 = Omit<ItemInstance, "randomSuffixId">;
 
-export interface LegacyGameStateV4 extends Omit<GameState, "saveVersion" | "collection"> {
+export type LegacyMemberV5 = Omit<Member, "wishlist">;
+
+export interface LegacyGameStateV5 extends Omit<GameState, "saveVersion" | "members"> {
+  saveVersion: 5;
+  members: Record<MemberId, LegacyMemberV5>;
+}
+
+export interface LegacyGameStateV4 extends Omit<LegacyGameStateV5, "saveVersion" | "collection"> {
   saveVersion: 4;
 }
 
@@ -68,4 +75,4 @@ export interface LegacyGameStateV2 extends Omit<
 }
 
 export type PersistedGameState =
-  GameState | LegacyGameStateV4 | LegacyGameStateV3 | LegacyGameStateV2;
+  GameState | LegacyGameStateV5 | LegacyGameStateV4 | LegacyGameStateV3 | LegacyGameStateV2;

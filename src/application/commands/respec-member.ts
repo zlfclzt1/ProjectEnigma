@@ -6,6 +6,7 @@ import { evaluateEquipEligibility } from "../../domain/equipment/equip-rules";
 import { EQUIPMENT_SLOTS, type EquipmentSlot } from "../../domain/equipment/equipment-slot";
 import type { ItemInstance } from "../../domain/equipment/item-instance";
 import { equipmentSellValue } from "../../domain/equipment/item-value";
+import { evaluateWishlistTarget } from "../../domain/equipment/wishlist-rules";
 import type { GameState } from "../../domain/game-state";
 import {
   createStarterItemForMember,
@@ -13,7 +14,7 @@ import {
 } from "../../domain/member/member-factory";
 import type { Member } from "../../domain/member/member";
 import { RESPEC_COST } from "../../domain/guild/recruitment";
-import type { ItemInstanceId, MemberId, SpecId } from "../../domain/shared/ids";
+import type { ItemDefinitionId, ItemInstanceId, MemberId, SpecId } from "../../domain/shared/ids";
 import { resolveItemInstance } from "../../domain/equipment/resolve-item-instance";
 import { LocalIdGenerator } from "../../infrastructure/ids/local-id-generator";
 import { SeededRandomSource } from "../../infrastructure/random/seeded-random-source";
@@ -22,6 +23,7 @@ import { memberFactoryContext } from "./member-factory-context";
 export interface RespecMemberResult {
   readonly changed: boolean;
   readonly soldItemInstanceIds: readonly ItemInstanceId[];
+  readonly removedWishlistItemDefinitionIds: readonly ItemDefinitionId[];
   readonly saleProceeds: number;
 }
 
@@ -41,7 +43,12 @@ export function respecMemberCommand(
         throw new Error("该职业不能选择这个专精。");
       }
       if (spec.id === member.progression.specId) {
-        return { changed: false, soldItemInstanceIds: [], saleProceeds: 0 };
+        return {
+          changed: false,
+          soldItemInstanceIds: [],
+          removedWishlistItemDefinitionIds: [],
+          saleProceeds: 0,
+        };
       }
       if (draft.guild.funds < RESPEC_COST) {
         throw new Error(`公会资金不足，需要 ${RESPEC_COST}。`);
@@ -57,6 +64,13 @@ export function respecMemberCommand(
         random,
       );
       member.progression.specId = spec.id;
+      const removedWishlistItemDefinitionIds = member.wishlist.entries
+        .filter((entry) => !evaluateWishlistTarget(member, entry, dependencies.content).allowed)
+        .map((entry) => entry.itemDefinitionId);
+      const removedWishlistItemIdSet = new Set(removedWishlistItemDefinitionIds);
+      member.wishlist.entries = member.wishlist.entries.filter(
+        (entry) => !removedWishlistItemIdSet.has(entry.itemDefinitionId),
+      );
       const soldItemInstanceIds: ItemInstanceId[] = [];
       let saleProceeds = 0;
 
@@ -87,7 +101,12 @@ export function respecMemberCommand(
       );
       draft.guild.funds = draft.guild.funds - RESPEC_COST + saleProceeds;
       draft.ids = ids.snapshot();
-      return { changed: true, soldItemInstanceIds, saleProceeds };
+      return {
+        changed: true,
+        soldItemInstanceIds,
+        removedWishlistItemDefinitionIds,
+        saleProceeds,
+      };
     },
   };
 }

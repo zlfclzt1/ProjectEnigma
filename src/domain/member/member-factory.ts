@@ -158,6 +158,7 @@ function createMemberFromProfile(
       equipment,
       professionIds: [],
       riding: { skillRank: 0, learnedMountIds: [] },
+      wishlist: { entries: [] },
       joinedAt: context.clock.now(),
     },
     itemInstances,

@@ -147,7 +147,16 @@ describe("automatic loot assignment", () => {
 
     expect(result.status).toBe("committed");
     if (result.status !== "committed") throw new Error("Expected automatic assignment");
-    expect(result.result).toEqual({ assigned: 1, sold: 1, locked: 0 });
+    expect(result.result).toMatchObject({
+      assigned: 1,
+      sold: 1,
+      locked: 0,
+      saleProceeds: 9,
+      entries: [
+        { pendingLootId: upgrade.pendingId, action: "assign", memberId: warrior.id },
+        { pendingLootId: incompatible.pendingId, action: "sell", saleProceeds: 9 },
+      ],
+    });
     const assigned = session.snapshot();
     expect(assigned.members[warrior.id]!.equipment.back).toBe(upgrade.item.id);
     expect(assigned.itemInstances[upgrade.item.id]).toMatchObject({
@@ -205,6 +214,37 @@ describe("automatic loot assignment", () => {
     expect(session.snapshot().members[stronger.id]!.equipment.back).toBe(strongerBackId);
   });
 
+  it("prioritizes an exact wishlist target before ordinary upgrade ties", async () => {
+    const state = idleFixture();
+    const first = Object.values(state.members)[0]!;
+    first.progression.specId = asBrandedId<"SpecId">("warrior_arms");
+    first.joinedAt = 1_000;
+    const wished = createMemberFixture({
+      id: asBrandedId<"MemberId">("member_2"),
+      progression: {
+        level: first.progression.level,
+        experience: 0,
+        specId: asBrandedId<"SpecId">("warrior_arms"),
+      },
+      joinedAt: 2_000,
+      wishlist: {
+        entries: [
+          {
+            itemDefinitionId: asBrandedId<"ItemDefinitionId">("14149"),
+            acceptableRandomSuffixIds: [],
+          },
+        ],
+      },
+    });
+    state.members[wished.id] = wished;
+    const loot = addPendingLoot(state, 1, "14149", [first.id, wished.id]);
+    const session = await createSession(state);
+
+    await session.execute(autoAssignLootCommand(content));
+
+    expect(session.snapshot().members[wished.id]!.equipment.back).toBe(loot.item.id);
+  });
+
   it("leaves every item from an active continuous expedition untouched", async () => {
     const state = idleFixture();
     const member = Object.values(state.members)[0]!;
@@ -215,8 +255,30 @@ describe("automatic loot assignment", () => {
     const result = await session.execute(autoAssignLootCommand(content));
 
     if (result.status !== "committed") throw new Error("Expected automatic assignment");
-    expect(result.result).toEqual({ assigned: 0, sold: 0, locked: 1 });
+    expect(result.result).toMatchObject({
+      assigned: 0,
+      sold: 0,
+      locked: 1,
+      saleProceeds: 0,
+      entries: [],
+    });
     expect(session.snapshot().pendingLoot[loot.pendingId]).toBeDefined();
     expect(session.snapshot().itemInstances[loot.item.id]).toBeDefined();
+  });
+
+  it("rolls back the whole batch when a later loot entry is invalid", async () => {
+    const state = idleFixture();
+    const member = Object.values(state.members)[0]!;
+    addPendingLoot(state, 1, "14149", [member.id]);
+    const broken = addPendingLoot(state, 2, "14149", [member.id]);
+    delete state.itemInstances[broken.item.id];
+    const session = await createSession(state);
+    const before = session.snapshot();
+
+    await expect(session.execute(autoAssignLootCommand(content))).rejects.toThrow(
+      "战利品装备实例不存在",
+    );
+
+    expect(session.snapshot()).toEqual(before);
   });
 });

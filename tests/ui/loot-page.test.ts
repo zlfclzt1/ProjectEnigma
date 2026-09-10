@@ -73,8 +73,16 @@ describe("loot page", () => {
     expect(wrapper.text()).toContain("立即穿上");
 
     await wrapper.find(".page-heading button").trigger("click");
+    expect(wrapper.find('[role="dialog"]').text()).toContain("自动处理预览");
+    expect(wrapper.find('[role="dialog"]').text()).toContain("分配给");
+    expect(game.loot?.pending).toHaveLength(1);
+    await wrapper
+      .findAll('[role="dialog"] button')
+      .find((button) => button.text().includes("确认自动处理"))!
+      .trigger("click");
     await flushPromises();
+    expect(wrapper.find('[role="dialog"]').exists()).toBe(false);
     expect(game.loot?.pending).toHaveLength(0);
-    expect(wrapper.text()).toContain("自动分配完成");
+    expect(wrapper.text()).toContain("自动处理完成");
   });
 });

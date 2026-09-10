@@ -6,6 +6,7 @@ import {
   type LegacyGameStateV2,
   type LegacyGameStateV3,
   type LegacyGameStateV4,
+  type LegacyGameStateV5,
 } from "../../src/domain/game-state";
 import type { Member } from "../../src/domain/member/member";
 import { asBrandedId } from "../../src/domain/shared/ids";
@@ -27,8 +28,9 @@ export function createMemberFixture(overrides: Partial<Member> = {}): Member {
     equipment: {},
     professionIds: [],
     riding: { skillRank: 0, learnedMountIds: [] },
-    joinedAt: 1_000,
     ...overrides,
+    wishlist: overrides.wishlist ?? { entries: [] },
+    joinedAt: overrides.joinedAt ?? 1_000,
   };
 }
 
@@ -156,12 +158,31 @@ export function createLegacyGameStateV2Fixture(
 export function createLegacyGameStateV4Fixture(
   overrides: Partial<LegacyGameStateV4> = {},
 ): LegacyGameStateV4 {
-  const current = createGameStateFixture();
+  const current = createLegacyGameStateV5Fixture();
   const { collection: _collection, ...legacy } = current;
   void _collection;
   return {
     ...legacy,
     saveVersion: 4,
+    ...overrides,
+  };
+}
+
+export function createLegacyGameStateV5Fixture(
+  overrides: Partial<LegacyGameStateV5> = {},
+): LegacyGameStateV5 {
+  const current = createGameStateFixture();
+  const members = Object.fromEntries(
+    Object.entries(current.members).map(([id, member]) => {
+      const { wishlist: _wishlist, ...legacyMember } = member;
+      void _wishlist;
+      return [id, legacyMember];
+    }),
+  ) as LegacyGameStateV5["members"];
+  return {
+    ...current,
+    saveVersion: 5,
+    members,
     ...overrides,
   };
 }

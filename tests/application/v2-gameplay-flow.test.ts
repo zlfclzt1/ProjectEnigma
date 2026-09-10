@@ -91,6 +91,8 @@ describe("complete V2 gameplay flow", () => {
     expect(distribution.result.locked).toBe(0);
     expect(distribution.result.assigned).toBeGreaterThan(0);
     expect(distribution.result.assigned + distribution.result.sold).toBe(lootBeforeDistribution);
+    expect(distribution.result.entries).toHaveLength(lootBeforeDistribution);
+    expect(distribution.result.remainingFunds).toBe(session.snapshot().guild.funds);
     expect(Object.keys(session.snapshot().pendingLoot)).toHaveLength(0);
 
     const beforeReload = session.snapshot();

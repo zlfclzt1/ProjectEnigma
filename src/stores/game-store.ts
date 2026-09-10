@@ -12,12 +12,14 @@ import { respecMemberCommand } from "../application/commands/respec-member";
 import type { Clock } from "../application/ports/clock";
 import { getGameSnapshot } from "../application/queries/get-game-snapshot";
 import { getActivitiesView } from "../application/queries/get-activities-view";
+import { getAutoLootPreview } from "../application/queries/get-auto-loot-preview";
 import { getDungeonPlanningView } from "../application/queries/get-dungeons-view";
 import {
   getMemberDetailView,
   getMemberDirectoryView,
 } from "../application/queries/get-members-view";
 import { getOverviewView } from "../application/queries/get-overview-view";
+import { getRespecPreview } from "../application/queries/get-respec-preview";
 import { getRecruitmentView } from "../application/queries/get-recruitment-view";
 import { startExpeditionCommand } from "../application/commands/start-expedition";
 import { settleDueActivitiesCommand } from "../application/services/settlement-service";
@@ -30,6 +32,11 @@ import { getGuildUpgradeView } from "../application/queries/get-guild-upgrade-vi
 import { getItemCatalogView } from "../application/queries/get-item-catalog-view";
 import { purchaseGuildUpgradeCommand } from "../application/commands/purchase-guild-upgrade";
 import { claimCollectionRewardCommand } from "../application/commands/claim-collection-reward";
+import { removeMemberWishlistTargetCommand } from "../application/commands/remove-member-wishlist-target";
+import {
+  setMemberWishlistTargetCommand,
+  type SetMemberWishlistTargetInput,
+} from "../application/commands/set-member-wishlist-target";
 import type { GameCommand, GameSession } from "../application/services/game-session";
 import type { ContentRegistry } from "../content/registry";
 import type { GameState } from "../domain/game-state";
@@ -39,6 +46,7 @@ import type {
   CombatReportId,
   DungeonId,
   GuildUpgradeId,
+  ItemDefinitionId,
   MemberId,
   PendingLootId,
   SpecId,
@@ -138,6 +146,9 @@ export const useGameStore = defineStore("game", () => {
   );
   const itemCatalog = computed(() =>
     stateSnapshot.value && content ? getItemCatalogView(stateSnapshot.value, content) : null,
+  );
+  const autoLootPreview = computed(() =>
+    stateSnapshot.value && content ? getAutoLootPreview(stateSnapshot.value, content) : null,
   );
 
   function refreshSnapshot(): void {
@@ -281,6 +292,12 @@ export const useGameStore = defineStore("game", () => {
       : null;
   }
 
+  function respecPreview(memberId: MemberId, specId: SpecId) {
+    return stateSnapshot.value && content
+      ? getRespecPreview(stateSnapshot.value, content, memberId, specId)
+      : null;
+  }
+
   async function respecMember(
     memberId: MemberId,
     specId: SpecId,
@@ -291,6 +308,21 @@ export const useGameStore = defineStore("game", () => {
 
   async function dismissMember(memberId: MemberId): Promise<GameCommandOutcome<boolean>> {
     return execute(dismissMemberCommand(memberId));
+  }
+
+  async function setMemberWishlistTarget(
+    memberId: MemberId,
+    input: SetMemberWishlistTargetInput,
+  ): Promise<GameCommandOutcome<unknown>> {
+    if (!content) return unavailableOutcome("set-member-wishlist-target");
+    return execute(setMemberWishlistTargetCommand(content, memberId, input));
+  }
+
+  async function removeMemberWishlistTarget(
+    memberId: MemberId,
+    itemDefinitionId: ItemDefinitionId,
+  ): Promise<GameCommandOutcome<boolean>> {
+    return execute(removeMemberWishlistTargetCommand(memberId, itemDefinitionId));
   }
 
   async function purchaseGuildUpgrade(
@@ -378,6 +410,7 @@ export const useGameStore = defineStore("game", () => {
     combatReports,
     guildUpgrades,
     itemCatalog,
+    autoLootPreview,
     initialize,
     execute,
     tick,
@@ -385,8 +418,11 @@ export const useGameStore = defineStore("game", () => {
     recruitCandidate,
     rejectCandidate,
     memberDetail,
+    respecPreview,
     respecMember,
     dismissMember,
+    setMemberWishlistTarget,
+    removeMemberWishlistTarget,
     purchaseGuildUpgrade,
     claimCollectionReward,
     dungeonPlanning,

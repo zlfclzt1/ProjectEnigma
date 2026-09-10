@@ -4,17 +4,16 @@ import {
   recordAcquiredItem,
   type CollectionState,
 } from "../../../domain/collection/item-collection";
-import {
-  GAME_STATE_SAVE_VERSION,
-  type GameState,
-  type LegacyGameStateV4,
-} from "../../../domain/game-state";
+import { type LegacyGameStateV4, type LegacyGameStateV5 } from "../../../domain/game-state";
 
-export function migrateV4ToV5(legacy: LegacyGameStateV4, content: ContentRegistry): GameState {
+export function migrateV4ToV5(
+  legacy: LegacyGameStateV4,
+  content: ContentRegistry,
+): LegacyGameStateV5 {
   const collection = collectionFromExistingItems(legacy, content);
   return {
     ...structuredClone(legacy),
-    saveVersion: GAME_STATE_SAVE_VERSION,
+    saveVersion: 5,
     collection,
   };
 }

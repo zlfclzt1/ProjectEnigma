@@ -45,6 +45,7 @@ describe("V2 new game factory", () => {
     expect(Object.values(first.candidates)).toHaveLength(3);
     expect(roles.sort()).toEqual(["dps", "dps", "dps", "healer", "tank"]);
     expect(members.every((member) => member.progression.level === 10)).toBe(true);
+    expect(members.every((member) => member.wishlist.entries.length === 0)).toBe(true);
     expect(
       Object.values(first.candidates).every((candidate) => candidate.progression.level === 10),
     ).toBe(true);

@@ -4,12 +4,14 @@ import type {
   CandidateId,
   ClassId,
   HiddenCharacterId,
+  ItemDefinitionId,
   ItemInstanceId,
   MemberId,
   MemberProfessionId,
   MountId,
   PersonalityId,
   RaceId,
+  RandomSuffixId,
   SpecId,
 } from "../shared/ids";
 
@@ -33,6 +35,16 @@ export interface MemberRidingState {
   equippedMountId?: MountId;
 }
 
+export interface MemberWishlistEntry {
+  itemDefinitionId: ItemDefinitionId;
+  preferredRandomSuffixId?: RandomSuffixId;
+  acceptableRandomSuffixIds: RandomSuffixId[];
+}
+
+export interface MemberWishlistState {
+  entries: MemberWishlistEntry[];
+}
+
 export interface Member {
   id: MemberId;
   identity: MemberIdentity;
@@ -40,6 +52,7 @@ export interface Member {
   equipment: Partial<Record<EquipmentSlot, ItemInstanceId>>;
   professionIds: MemberProfessionId[];
   riding: MemberRidingState;
+  wishlist: MemberWishlistState;
   activeActivityId?: ActivityId;
   joinedAt: number;
 }
