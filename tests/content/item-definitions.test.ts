@@ -24,10 +24,10 @@ const itemFiles = fs
 const migratedItems = itemFiles.flatMap((file) => file.content.items);
 
 describe("item definitions", () => {
-  it("loads all 90 current dungeon and quest items with stable IDs and database icons", () => {
+  it("loads all 99 current dungeon and quest items with stable IDs and database icons", () => {
     const dungeonItems = migratedItems.filter((item) => !item.isStarter);
 
-    expect(dungeonItems).toHaveLength(90);
+    expect(dungeonItems).toHaveLength(99);
     expect(dungeonItems.map((item) => item.id)).toEqual(
       expect.arrayContaining(["14149", "15451", "15452", "6324"]),
     );

@@ -6,12 +6,12 @@
 
 ## 汇总
 
-- 路线 Encounter：36。
-- 掉落表：32。
-- 掉落表分类：Boss 专属掉落 32，任务奖励 0，世界掉落 0，设计占位 0。
-- Encounter 引用分类：Boss 专属掉落 32，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 4。
-- 不同装备分类：Boss 专属掉落 79，任务奖励 0，世界掉落 0，设计占位 0。
-- 成员副本任务：5，不同任务奖励装备：11。
+- 路线 Encounter：42。
+- 掉落表：33。
+- 掉落表分类：Boss 专属掉落 33，任务奖励 0，世界掉落 0，设计占位 0。
+- Encounter 引用分类：Boss 专属掉落 33，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 9。
+- 不同装备分类：Boss 专属掉落 82，任务奖励 0，世界掉落 0，设计占位 0。
+- 成员副本任务：8，不同任务奖励装备：17。
 - Boss 掉落与任务奖励重复：0。
 - 未显式填写 `sourceType` 的 Boss 掉落表：0。
 - 未被路线 Encounter 引用的掉落表：0。
@@ -70,6 +70,17 @@
 | 狼王南杜斯（sfk_wolf_master_nandos） | sfk_wolf_master_nandos | Boss 专属掉落 | 1 | 3748 猎豹衬肩、6314 狼王斗篷 |
 | 大法师阿鲁高（sfk_archmage_arugal） | sfk_archmage_arugal | Boss 专属掉落 | 1 | 6324 阿鲁高法袍、6392 阿鲁高的腰带、6220 流星碎片 |
 
+### 暴风城监狱（the_stockade）
+
+| Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
+|---|---|---|---:|---|
+| 可怕的塔格尔（stockade_targorr_the_dread） | — | 无装备掉落 | 0 | — |
+| 卡姆·深怒（stockade_kam_deepfury） | — | 无装备掉落 | 0 | — |
+| 哈姆霍克（stockade_hamhock） | — | 无装备掉落 | 0 | — |
+| 巴基尔·斯瑞德（stockade_bazil_thredd） | — | 无装备掉落 | 0 | — |
+| 迪克斯特·瓦德（stockade_dextren_ward） | — | 无装备掉落 | 0 | — |
+| 布鲁高·铁拳（stockade_bruegal_ironknuckle） | stockade_bruegal_ironknuckle | Boss 专属掉落 | 1 | 2941 监狱骨片、2942 铁指虎、3228 弯曲护腕 |
+
 ### 哀嚎洞穴（wailing_caverns）
 
 | Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
@@ -92,6 +103,9 @@
 | 黑暗深渊（blackfathom_deeps） | 阿奎尼斯男爵（bfd_baron_aquanis） | 16886 逃犯弯刀、16887 女巫之指 |
 | 怒焰裂谷（ragefire_chasm） | 归还背包（rfc_returning_lost_satchel） | 15452 羽珠护腕、15453 草原狮护腕 |
 | 怒焰裂谷（ragefire_chasm） | 毁灭之力（rfc_power_to_destroy） | 15449 苍白长裤、15450 泥泞护腿、15451 石像鬼护腿 |
+| 暴风城监狱（the_stockade） | 伸张正义（stockade_what_comes_around） | 3400 磷铝长剑、1317 硬根法杖 |
+| 暴风城监狱（the_stockade） | 卡姆·深怒（stockade_fury_runs_deep） | 3562 辩护腰带、1264 碎头者 |
+| 暴风城监狱（the_stockade） | 罪与罚（stockade_crime_and_punishment） | 2033 大使之靴、2906 夜色郡锁甲护腿 |
 
 ## 审计结论
 

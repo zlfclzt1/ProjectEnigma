@@ -36,6 +36,12 @@
 | 影牙城堡（shadowfang_keep） | sfk_fenrus | required | 吞噬者芬鲁斯（sfk_fenrus） | boss_drop:sfk_fenrus | 1 | 6340 芬鲁斯的外皮、3230 黑狼护腕 |
 | 影牙城堡（shadowfang_keep） | sfk_wolf_master_nandos | required | 狼王南杜斯（sfk_wolf_master_nandos） | boss_drop:sfk_wolf_master_nandos | 1 | 3748 猎豹衬肩、6314 狼王斗篷 |
 | 影牙城堡（shadowfang_keep） | sfk_archmage_arugal | required | 大法师阿鲁高（sfk_archmage_arugal） | boss_drop:sfk_archmage_arugal | 1 | 6324 阿鲁高法袍、6392 阿鲁高的腰带、6220 流星碎片 |
+| 暴风城监狱（the_stockade） | stockade_targorr_the_dread | required | 可怕的塔格尔（stockade_targorr_the_dread） | 无装备掉落 | 0 | — |
+| 暴风城监狱（the_stockade） | stockade_kam_deepfury | required | 卡姆·深怒（stockade_kam_deepfury） | 无装备掉落 | 0 | — |
+| 暴风城监狱（the_stockade） | stockade_hamhock | required | 哈姆霍克（stockade_hamhock） | 无装备掉落 | 0 | — |
+| 暴风城监狱（the_stockade） | stockade_bazil_thredd | required | 巴基尔·斯瑞德（stockade_bazil_thredd） | 无装备掉落 | 0 | — |
+| 暴风城监狱（the_stockade） | stockade_dextren_ward | required | 迪克斯特·瓦德（stockade_dextren_ward） | 无装备掉落 | 0 | — |
+| 暴风城监狱（the_stockade） | stockade_bruegal_ironknuckle | rare（0.22） | 布鲁高·铁拳（stockade_bruegal_ironknuckle） | boss_drop:stockade_bruegal_ironknuckle | 1 | 2941 监狱骨片、2942 铁指虎、3228 弯曲护腕 |
 | 哀嚎洞穴（wailing_caverns） | wc_lady_anacondra | required | 安娜科德拉（wc_lady_anacondra） | boss_drop:wc_lady_anacondra | 1 | 10412 尖牙腰带、5404 坚硬的肩垫 |
 | 哀嚎洞穴（wailing_caverns） | wc_lord_cobrahn | required | 考布莱恩领主（wc_lord_cobrahn） | boss_drop:wc_lord_cobrahn | 1 | 6460 考布莱恩的腰带、10410 尖牙护腿、6465 水蛇法袍 |
 | 哀嚎洞穴（wailing_caverns） | wc_kresh | required | 克雷什（wc_kresh） | boss_drop:wc_kresh | 1 | 6447 破旧的龟壳盾牌、13245 克雷什之背 |
@@ -47,8 +53,8 @@
 
 ## 引用完整度
 
-- 副本路线节点：36。
-- 副本任务：5。
+- 副本路线节点：42。
+- 副本任务：8。
 - 套装：1。
 - 未被路线引用的掉落表：0。
 - 未被掉落、任务或套装引用的非初始装备：0。

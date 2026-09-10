@@ -19,7 +19,7 @@ describe("party capability and encounter mechanic content", () => {
     const registry = loadBrowserContentRegistry();
 
     expect(registry.capabilityById.size).toBe(11);
-    expect(registry.mechanicById.size).toBe(4);
+    expect(registry.mechanicById.size).toBe(6);
     expect(registry.capabilityById.get(asBrandedId<"CapabilityId">("interrupt"))?.category).toBe(
       "interrupt",
     );

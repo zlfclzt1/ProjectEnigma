@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/the-stockade-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对五名常驻 Boss、稀有 Boss 布鲁高·铁拳和短分叉路线。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "忽略联盟进入限制；解锁、路线结算顺序、时间与概率采用放置玩法设计。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["minimumLevel", "recommendedLevel", "duration", "probability", "route"],
+        "reason": "将原版分叉监狱路线压缩为 12 分钟完整路线，并保留随机稀有 Boss。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "dungeons": [
+    {
+      "id": "the_stockade",
+      "name": { "zhCN": "暴风城监狱", "enUS": "The Stockade" },
+      "minimumLevel": 18,
+      "recommendedLevel": 26,
+      "defaultUnlocked": false,
+      "unlock": { "requiredDungeonIds": ["blackfathom_deeps"] },
+      "members": { "minimum": 1, "maximum": 5, "recommended": 5 },
+      "duration": { "baseSeconds": 720, "minimumRatio": 0.5, "maximumRatio": 1.8 },
+      "probability": {
+        "minimum": 0.05,
+        "maximum": 0.99,
+        "base": 0.05,
+        "readinessMultiplier": 0.92,
+        "surplusEffect": 0.5,
+        "geometricWeight": 0.7,
+        "bottleneckWeight": 0.3,
+        "overpowerThreshold": 1.5
+      },
+      "combatTuning": {
+        "bossProbabilityMaximum": 0.98,
+        "requirementMultipliers": { "tank": 0.94, "healing": 0.94, "damage": 0.94 }
+      },
+      "route": [
+        {
+          "id": "stockade_targorr_the_dread",
+          "type": "required",
+          "encounterId": "stockade_targorr_the_dread"
+        },
+        {
+          "id": "stockade_kam_deepfury",
+          "type": "required",
+          "encounterId": "stockade_kam_deepfury"
+        },
+        { "id": "stockade_hamhock", "type": "required", "encounterId": "stockade_hamhock" },
+        {
+          "id": "stockade_bazil_thredd",
+          "type": "required",
+          "encounterId": "stockade_bazil_thredd"
+        },
+        {
+          "id": "stockade_dextren_ward",
+          "type": "required",
+          "encounterId": "stockade_dextren_ward"
+        },
+        {
+          "id": "stockade_bruegal_ironknuckle",
+          "type": "rare",
+          "encounterId": "stockade_bruegal_ironknuckle",
+          "spawnProbability": 0.22
+        }
+      ]
+    }
+  ]
+}

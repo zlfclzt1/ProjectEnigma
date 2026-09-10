@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/the-stockade-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "使用 Classic XML 核对暴风城监狱 Boss 专属掉落与任务奖励的名称、物品等级、需求等级、图标和常驻属性。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/classic-wow-the-stockade-dungeon-quests",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对六件任务奖励装备及其奖励选择关系。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].restrictions", "items[].description"],
+        "reason": "按当前职业/定位装备规则补齐 Classic XML 未直接提供的可装备性与项目内来源说明。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "2941",
+      "name": { "zhCN": "监狱骨片", "enUS": "Prison Shank" },
+      "itemLevel": 26,
+      "requiredLevel": 21,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_weapon_shortblade_18" },
+      "description": { "zhCN": "暴风城监狱：布鲁高·铁拳的专属掉落。" },
+      "stats": {
+        "primary": { "agilityPoints": 5, "staminaPoints": 2 },
+        "weapon": { "damage": { "minimumPoints": 21, "maximumPoints": 39 }, "speedSeconds": 1.8 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "2941",
+        "url": "https://www.wowhead.com/classic/cn/item=2941&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "2942",
+      "name": { "zhCN": "铁指虎", "enUS": "Iron Knuckles" },
+      "itemLevel": 26,
+      "requiredLevel": 21,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_gauntlets_04" },
+      "description": { "zhCN": "暴风城监狱：布鲁高·铁拳的专属掉落。" },
+      "stats": {
+        "weapon": { "damage": { "minimumPoints": 19, "maximumPoints": 37 }, "speedSeconds": 1.7 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "2942",
+        "url": "https://www.wowhead.com/classic/cn/item=2942&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "3228",
+      "name": { "zhCN": "弯曲护腕", "enUS": "Jimmied Handcuffs" },
+      "itemLevel": 26,
+      "requiredLevel": 21,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_bracer_02" },
+      "description": { "zhCN": "暴风城监狱：布鲁高·铁拳的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 3, "staminaPoints": 7 },
+        "defense": { "armorPoints": 89 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "3228",
+        "url": "https://www.wowhead.com/classic/cn/item=3228&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "3400",
+      "name": { "zhCN": "磷铝长剑", "enUS": "Lucine Longsword" },
+      "itemLevel": 25,
+      "requiredLevel": 22,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_sword_20" },
+      "description": { "zhCN": "暴风城监狱任务奖励。" },
+      "stats": {
+        "primary": { "staminaPoints": 4 },
+        "weapon": { "damage": { "minimumPoints": 22, "maximumPoints": 42 }, "speedSeconds": 2.5 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "3400",
+        "url": "https://www.wowhead.com/classic/cn/item=3400&xml",
+        "verifiedAt": "2026-09-09",
+        "notes": "任务奖励，不进入 Boss 掉落池。"
+      }
+    },
+    {
+      "id": "1317",
+      "name": { "zhCN": "硬根法杖", "enUS": "Hardened Root Staff" },
+      "itemLevel": 25,
+      "requiredLevel": 22,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_staff_16" },
+      "description": { "zhCN": "暴风城监狱任务奖励。" },
+      "stats": {
+        "primary": { "strengthPoints": 1, "spiritPoints": 8 },
+        "weapon": { "damage": { "minimumPoints": 44, "maximumPoints": 67 }, "speedSeconds": 3.3 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "1317",
+        "url": "https://www.wowhead.com/classic/cn/item=1317&xml",
+        "verifiedAt": "2026-09-09",
+        "notes": "任务奖励，不进入 Boss 掉落池。"
+      }
+    },
+    {
+      "id": "3562",
+      "name": { "zhCN": "辩护腰带", "enUS": "Belt of Vindication" },
+      "itemLevel": 27,
+      "requiredLevel": 22,
+      "quality": "uncommon",
+      "slot": "waist",
+      "armorType": "leather",
+      "restrictions": { "allowedClassIds": ["rogue", "druid"], "allowedRoles": ["dps", "healer"] },
+      "icon": { "kind": "database", "name": "inv_belt_05" },
+      "description": { "zhCN": "暴风城监狱任务奖励。" },
+      "stats": {
+        "primary": { "agilityPoints": 4, "staminaPoints": 2 },
+        "defense": { "armorPoints": 50 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "3562",
+        "url": "https://www.wowhead.com/classic/cn/item=3562&xml",
+        "verifiedAt": "2026-09-09",
+        "notes": "任务奖励，不进入 Boss 掉落池。"
+      }
+    },
+    {
+      "id": "1264",
+      "name": { "zhCN": "碎头者", "enUS": "Headbasher" },
+      "itemLevel": 26,
+      "requiredLevel": 22,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_mace_07" },
+      "description": { "zhCN": "暴风城监狱任务奖励。" },
+      "stats": {
+        "primary": { "strengthPoints": 8, "staminaPoints": 3 },
+        "weapon": { "damage": { "minimumPoints": 32, "maximumPoints": 49 }, "speedSeconds": 2.3 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "1264",
+        "url": "https://www.wowhead.com/classic/cn/item=1264&xml",
+        "verifiedAt": "2026-09-09",
+        "notes": "任务奖励，不进入 Boss 掉落池。"
+      }
+    },
+    {
+      "id": "2033",
+      "name": { "zhCN": "大使之靴", "enUS": "Ambassador's Boots" },
+      "itemLevel": 25,
+      "requiredLevel": 22,
+      "quality": "uncommon",
+      "slot": "feet",
+      "armorType": "leather",
+      "restrictions": { "allowedClassIds": ["rogue", "druid"], "allowedRoles": ["dps", "healer"] },
+      "icon": { "kind": "database", "name": "inv_boots_08" },
+      "description": { "zhCN": "暴风城监狱任务奖励。" },
+      "stats": {
+        "primary": { "agilityPoints": 4, "staminaPoints": 4 },
+        "defense": { "armorPoints": 59 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "2033",
+        "url": "https://www.wowhead.com/classic/cn/item=2033&xml",
+        "verifiedAt": "2026-09-09",
+        "notes": "任务奖励，不进入 Boss 掉落池。"
+      }
+    },
+    {
+      "id": "2906",
+      "name": { "zhCN": "夜色郡锁甲护腿", "enUS": "Darkshire Mail Leggings" },
+      "itemLevel": 26,
+      "requiredLevel": 22,
+      "quality": "uncommon",
+      "slot": "legs",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_pants_03" },
+      "description": { "zhCN": "暴风城监狱任务奖励。" },
+      "stats": {
+        "primary": { "strengthPoints": 6, "spiritPoints": 6 },
+        "defense": { "armorPoints": 163 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "2906",
+        "url": "https://www.wowhead.com/classic/cn/item=2906&xml",
+        "verifiedAt": "2026-09-09",
+        "notes": "任务奖励，不进入 Boss 掉落池。"
+      }
+    }
+  ]
+}

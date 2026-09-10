@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对暴风城监狱仅稀有 Boss 布鲁高·铁拳拥有专属装备池。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/the-stockade-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "交叉核对 Prison Shank、Iron Knuckles、Jimmied Handcuffs 三件专属装备。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["lootTables[].guaranteedEquipmentDrops", "lootTables[].items[].weight"],
+        "reason": "稀有 Boss 出现并被击败时保证掉落一件专属装备；首轮使用池内等权基线。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "lootTables": [
+    {
+      "id": "stockade_bruegal_ironknuckle",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "2941", "weight": 0.3333333333 },
+        { "itemId": "2942", "weight": 0.3333333333 },
+        { "itemId": "3228", "weight": 0.3333333334 }
+      ]
+    }
+  ]
+}

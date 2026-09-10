@@ -70,6 +70,38 @@
         "enUS": "Without a magic dispel, Aku'mai's corruption lingers longer."
       },
       "reportTag": "bfd_deepwater_corruption"
+    },
+    {
+      "id": "stockade_recommended_crowd_control",
+      "name": { "zhCN": "囚犯暴动", "enUS": "Prisoner Uprising" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "crowd_control", "minimumValue": 1 }],
+      "missingEffects": {
+        "tankMultiplier": 1.12,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.05
+      },
+      "description": {
+        "zhCN": "缺少控制能力会让首领身边的囚犯持续冲击坦克。",
+        "enUS": "Without crowd control, prisoners continue pressuring the tank."
+      },
+      "reportTag": "stockade_prisoner_uprising"
+    },
+    {
+      "id": "stockade_recommended_magic_dispel",
+      "name": { "zhCN": "连锁闪电", "enUS": "Chain Lightning" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "magic_dispel", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.15,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.05
+      },
+      "description": {
+        "zhCN": "缺少魔法驱散会放大哈姆霍克的连锁闪电压力。",
+        "enUS": "Without a magic dispel, Hamhock's chain lightning adds healing pressure."
+      },
+      "reportTag": "stockade_chain_lightning"
     }
   ]
 }

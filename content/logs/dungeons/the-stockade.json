@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "暴风城监狱趣味日志；只描述结算事实。"
+      }
+    ]
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "stockade_hamhock_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "stockade_hamhock" },
+      "availableParameters": ["healer", "member"],
+      "templates": [
+        "哈姆霍克开始释放连锁闪电，{healer} 开始重新评估站位纪律。",
+        "闪电在队伍间弹跳，{member} 坚称自己只是为了测试治疗反应。",
+        "监狱短暂恢复安静，直到有人开始讨论伤害统计。"
+      ]
+    },
+    {
+      "id": "stockade_bruegal_ironknuckle_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "stockade_bruegal_ironknuckle" },
+      "availableParameters": ["member", "tank"],
+      "templates": [
+        "布鲁高·铁拳真的出现了，{member} 立即宣布这趟远征已经回本。",
+        "稀有囚犯撞上了{tank}，然后撞上了全公会的装备需求清单。",
+        "铁拳倒下，所有人同时想起自己正好缺一件监狱装备。"
+      ]
+    }
+  ]
+}

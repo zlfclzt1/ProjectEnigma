@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/classic-wow-the-stockade-dungeon-quests",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对 What Comes Around、The Fury Runs Deep、Crime and Punishment 的 Boss 目标与奖励。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "忽略联盟、前置链和头颅拾取，将目标映射为对应 Boss 胜利。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["completion", "rewards.experienceFraction", "rewards.funds"],
+        "reason": "将原版任务压缩为可确定结算的成员级 Boss 任务，装备选择保持真实。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "stockade_what_comes_around",
+      "name": { "zhCN": "伸张正义" },
+      "description": { "zhCN": "击败可怕的塔格尔，让逃犯为自己的罪行付出代价。" },
+      "dungeonId": "the_stockade",
+      "eligibility": { "minimumLevel": 22, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["stockade_targorr_the_dread"]
+      },
+      "rewards": { "experienceFraction": 0.7, "funds": 0, "itemChoiceIds": ["3400", "1317"] }
+    },
+    {
+      "id": "stockade_fury_runs_deep",
+      "name": { "zhCN": "卡姆·深怒" },
+      "description": { "zhCN": "击败卡姆·深怒，终止监狱中的黑铁矮人暴动。" },
+      "dungeonId": "the_stockade",
+      "eligibility": { "minimumLevel": 22, "allowedClassIds": [] },
+      "completion": { "type": "encounter-victories", "encounterIds": ["stockade_kam_deepfury"] },
+      "rewards": { "experienceFraction": 0.7, "funds": 0, "itemChoiceIds": ["3562", "1264"] }
+    },
+    {
+      "id": "stockade_crime_and_punishment",
+      "name": { "zhCN": "罪与罚" },
+      "description": { "zhCN": "击败迪克斯特·瓦德，完成夜色镇议员的委托。" },
+      "dungeonId": "the_stockade",
+      "eligibility": { "minimumLevel": 22, "allowedClassIds": [] },
+      "completion": { "type": "encounter-victories", "encounterIds": ["stockade_dextren_ward"] },
+      "rewards": { "experienceFraction": 0.7, "funds": 0, "itemChoiceIds": ["2033", "2906"] }
+    }
+  ]
+}
