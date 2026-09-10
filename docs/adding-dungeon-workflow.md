@@ -1,6 +1,6 @@
 # 新增经典旧世副本工作流
 
-最后更新：2026-09-08
+最后更新：2026-09-09
 
 本文档说明如何在当前 V2 架构中加入一座可完整游玩的经典旧世副本。目标是让新增副本主要由内容文件驱动，不修改活动调度器、通用副本页面或存档 Repository。
 
@@ -13,7 +13,7 @@
 - 出发前显示每个 Boss 的精确胜率、全通率和耗时。
 - 路线按 Boss 逐段结算经验、资金、掉落和结构化战报。
 - 灭团保留此前已经获得的奖励。
-- 每个必打 Boss 至少关联一个真实装备掉落。
+- 每个必打 Boss 都明确记录为有装备掉落或无装备掉落；不能用空数组伪装成未调查。
 - 真实装备包含原版属性、需求、适配规则、图标和来源归属。
 - 推荐等级标准阵容符合当前平衡曲线，非标准阵容有明确代价。
 - 内容校验、装备审计、数值模拟、单元测试和生产构建全部通过。
@@ -101,8 +101,14 @@ content/logs/dungeons/<dungeon-id>.json
 - 坦克、治疗、输出三项 `requirements`。
 - 三项和为 1 的 `weights`。
 - `experienceShare`；整条路线的经验份额总和通常为 1。
-- `funds`、`firstKillBonus` 和 `lootTableId`。
+- `funds`、`firstKillBonus` 和可选的 `lootTableId`。没有专属装备的 Boss 应省略 `lootTableId`，只结算经验和资金。
 - 预留的 `mechanicIds`，五人本可暂为空数组。
+
+路线必须把节点分成三类并保持确定性：
+
+- `required`：主线必打，完整通关条件只统计这些节点。
+- `optional`：普通可选，只有玩家在出发前主动勾选才会结算。
+- `rare`：随机揭晓的稀有节点，不得作为成员任务的必做目标；揭晓结果必须由活动种子确定。
 
 ### 4.3 Item
 
@@ -127,12 +133,29 @@ content/logs/dungeons/<dungeon-id>.json
 参考 `content/loot-tables/ragefire-chasm.json`：
 
 - 每个 Encounter 引用的 `lootTableId` 必须存在。
-- `guaranteedEquipmentDrops` 是本游戏规则，不等于原版绝对掉率。
+- `guaranteedEquipmentDrops` 支持 `0`、`1`、`2`，是本游戏规则，不等于原版绝对掉率。
 - `items[].weight` 是池内相对权重。
+- `sourceType` 必须显式填写 `boss_drop`、`dungeon_quest_rewards`、`world_drop` 或 `design_placeholder`。
+- Boss 掉落表只放 Boss 专属装备；任务奖励必须在 `content/quests/*.json` 中声明，不能复制进 Boss 池。
 - 不默认录入钥匙、任务信件、材料、宠物或垃圾物品。
-- 没有专属装备的 Boss 可以使用有据可查的任务奖励或副本公共池，但必须在来源备注中说明。
 
-### 4.5 日志模板
+录入完成后运行掉落来源审计，确认任务奖励与 Boss 池没有重复装备。
+
+### 4.5 随机词缀、套装与收藏
+
+- 需要随机词缀的装备在 `randomSuffixIds` 中引用已存在的词缀池；词缀生成由活动种子驱动，禁止调用全局随机数。
+- 套装必须在 `content/item-sets/*.json` 中声明完整部件和套装效果，不能仅通过名称约定。
+- 新装备必须自动进入装备图鉴；若有收藏奖励，引用 `content/collection-rewards/*.json` 并补充进度测试。
+- 装备图标、属性和来源审计必须覆盖任务奖励、Boss 掉落和套装部件三类来源。
+
+### 4.6 成员副本任务、能力与机制
+
+- 成员任务使用 `content/quests/*.json`，限定副本、等级、职业、Boss 胜利或主线全通条件，并提供一件或多件真实装备奖励。
+- 任务奖励只由成员任务领取命令发放，不进入公共待分配战利品区，也不能与 Boss 掉落重复。
+- `content/capabilities/*.json`、`content/spec-capabilities/*.json` 和 `content/mechanics/*.json` 负责职业/专精能力与 Boss 机制；不要在副本 ID 分支中硬编码。
+- 机制必须能在推荐队、无坦、无治疗和越级队模拟中观察到明确影响，并在战报中保留可解释事实。
+
+### 4.7 日志模板
 
 日志只读取已经结算的事实，不参与概率、伤害或奖励计算。模板变量必须列入 `availableParameters`；内容校验会拒绝未声明变量。
 
@@ -158,6 +181,8 @@ content/logs/dungeons/<dungeon-id>.json
 
 优先调整内容中的 Encounter requirements、weights 和 Dungeon combatTuning。不要在 `party-evaluation.ts` 中为单个副本写分支。
 
+模拟至少要分别输出主路线、已勾选的普通可选路线、未揭晓/已揭晓的稀有路线，以及以下队伍：推荐队、无坦队、无治疗队、越级队、满级碾压队和速带队。速带队可以缩短耗时，但不得突破 Dungeon 的 `minimumRatio`。
+
 运行 100,000 样本：
 
 ```bash
@@ -179,6 +204,10 @@ npm run baseline:check
 - `tests/content/item-definitions.test.ts`：ID、图标、需求、来源与真实属性完整。
 - `tests/domain/v2-dungeon-balance.test.ts`：推荐队、无坦队、满级队和带人场景。
 - Application/Store 测试：解锁、出发、离线结算、掉落资格和战报持久化。
+- `tests/application/member-dungeon-quests.test.ts`：任务接取、成员独立进度、奖励领取和重复领取保护。
+- `tests/content/loot-source-audit.test.ts`：Boss 掉落、任务奖励和世界掉落来源隔离，任务奖励不得出现在 Boss 池。
+- 图鉴/套装测试：新装备可查询、套装部件完整、收藏奖励进度可重复计算。
+- 能力/机制测试：职业能力检查和 Boss 机制在标准与非标准队伍中产生预期差异。
 - 必要时更新 `tests/e2e/expedition.spec.ts`，断言通用页面无需写死新副本。
 
 若加入新副本必须修改以下文件，应先记录架构缺口：
@@ -234,8 +263,11 @@ git diff --check
 ## 9. 提交前检查表
 
 - [ ] 五类内容文件已创建，ID 稳定且引用一致。
-- [ ] 每个路线 Boss 有 Encounter、LootTable 和至少一件真实装备。
+- [ ] 每个路线 Boss 有 Encounter，并明确是 0、1 或 2 件保证掉落；有掉落时引用合法来源表。
 - [ ] 所有装备图标、需求、适配、属性与来源完整。
+- [ ] 任务奖励已录入任务文件，未重复进入 Boss 掉落池。
+- [ ] 随机词缀、套装、图鉴和收藏奖励引用均已通过校验。
+- [ ] 可选/稀有路线、任务目标和 Boss 机制均有确定性测试。
 - [ ] 推荐队、非标准队、满级队和带人曲线已验证。
 - [ ] 页面没有增加副本 ID 特例。
 - [ ] 100,000 样本基线已检查。
