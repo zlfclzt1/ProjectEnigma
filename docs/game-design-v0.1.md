@@ -640,6 +640,8 @@ Boss 开战
 
 详细任务、依赖、测试与建议提交顺序见：[10–45 级祖尔法拉克阶段实施计划](./zulfarrak-stage-implementation-plan.md)。
 
+45–60 级五人本、上层黑石塔 10 人验证和团本前装备阶段见：[45–60 级黑石塔阶段实施计划](./level-60-dungeon-stage-implementation-plan.md)。
+
 ## 19. 已验证数值与后续调优边界
 
 当前发布基线已经固定并自动校验：

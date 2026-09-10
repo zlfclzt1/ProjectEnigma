@@ -103,6 +103,7 @@ tests/                   领域、应用、Store、组件和 Playwright 测试
 
 - [游戏设计文档](./docs/game-design-v0.1.md)
 - [10–45 级祖尔法拉克阶段实施计划](./docs/zulfarrak-stage-implementation-plan.md)
+- [45–60 级黑石塔阶段实施计划](./docs/level-60-dungeon-stage-implementation-plan.md)
 - [经典旧世内容版本与来源政策](./docs/classic-content-source-policy.md)
 - [怒焰裂谷垂直切片](./docs/ragefire-chasm-vertical-slice.md)
 - [黑暗深渊资料清单](./docs/dungeon-research/blackfathom-deeps.md)
