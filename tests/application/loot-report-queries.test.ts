@@ -74,8 +74,8 @@ describe("loot and combat report queries", () => {
     await settleDueActivitiesCommand({ content, clock }).execute(state);
 
     const locked = getLootView(state, content);
-    expect(locked.pending).toHaveLength(1);
-    expect(locked.lockedCount).toBe(1);
+    expect(locked.pending).toHaveLength(2);
+    expect(locked.lockedCount).toBe(2);
     expect(locked.pending[0]?.candidates.map((candidate) => candidate.memberId)).toEqual(
       expect.arrayContaining(memberIds),
     );
@@ -85,7 +85,7 @@ describe("loot and combat report queries", () => {
     await settleDueActivitiesCommand({ content, clock }).execute(state);
     const unlocked = getLootView(state, content);
 
-    expect(unlocked.pending).toHaveLength(4);
+    expect(unlocked.pending).toHaveLength(6);
     expect(unlocked.lockedCount).toBe(0);
     expect(unlocked.pending.every((entry) => entry.candidates.length === memberIds.length)).toBe(
       true,
@@ -128,8 +128,8 @@ describe("loot and combat report queries", () => {
     const loot = getLootView(state, multiDropContent);
     const reports = getCombatReportsView(state, multiDropContent).reports;
 
-    expect(loot.pending).toHaveLength(2);
-    expect(loot.lockedCount).toBe(2);
+    expect(loot.pending).toHaveLength(3);
+    expect(loot.lockedCount).toBe(3);
     expect(reports).toHaveLength(2);
     expect(
       reports.find((report) => report.rewards.itemNames.length > 0)!.rewards.itemNames,
@@ -145,13 +145,13 @@ describe("loot and combat report queries", () => {
     const loot = getLootView(state, suffixContent);
     const reports = getCombatReportsView(state, suffixContent).reports;
 
-    expect(loot.pending).toHaveLength(1);
-    expect(loot.pending[0]!.item.name).toMatch(/^整备之/);
-    expect(loot.pending[0]!.item.randomSuffix?.stats).toEqual([
+    expect(loot.pending).toHaveLength(2);
+    const suffixLoot = loot.pending.find((entry) => /^整备之/.test(entry.item.name))!;
+    expect(suffixLoot.item.randomSuffix?.stats).toEqual([
       expect.objectContaining({ id: "staminaPoints", value: "+1" }),
     ]);
-    expect(
-      reports.find((report) => report.rewards.itemNames.length > 0)!.rewards.itemNames,
-    ).toEqual([loot.pending[0]!.item.name]);
+    expect(reports.some((report) => report.rewards.itemNames.includes(suffixLoot.item.name))).toBe(
+      true,
+    );
   });
 });

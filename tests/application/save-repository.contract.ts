@@ -86,7 +86,7 @@ export function runSaveRepositoryContract(
       const loadedInstance = loaded?.itemInstances[instance.id] as
         { randomSuffixId?: unknown } | undefined;
 
-      expect(loaded?.saveVersion).toBe(12);
+      expect(loaded?.saveVersion).toBe(13);
       expect(loadedInstance?.randomSuffixId).toBe("prototype_of_readiness");
     } finally {
       await harness.dispose();
@@ -139,7 +139,7 @@ export function runSaveRepositoryContract(
       await harness.repository.create(state);
 
       const loaded = await harness.repository.load(state.slotId);
-      if (!loaded || loaded.saveVersion !== 12) throw new Error("Expected current save");
+      if (!loaded || loaded.saveVersion !== 13) throw new Error("Expected current save");
 
       expect(loaded.members[member.id]?.quests.entries[questId]).toEqual(
         member.quests.entries[questId],

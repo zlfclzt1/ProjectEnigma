@@ -201,7 +201,7 @@ describe("game store", () => {
     deps.clock.set(24 * 60 * 60 * 1_000);
     await store.tick();
 
-    expect(store.loot?.pending).toHaveLength(2);
+    expect(store.loot?.pending).toHaveLength(4);
     expect(store.combatReports?.reports).toHaveLength(4);
     const reportId = store.combatReports!.reports[0]!.id;
     expect(store.combatReport(reportId)?.logs.length).toBeGreaterThan(0);
@@ -218,7 +218,7 @@ describe("game store", () => {
     const store = useGameStore();
     await store.initialize(() => loadOrCreateV2Client(deps));
     const persisted = await saves.load(deps.slotId);
-    if (!persisted || persisted.saveVersion !== 12) throw new Error("Expected current save");
+    if (!persisted || persisted.saveVersion !== 13) throw new Error("Expected current save");
     await saves.save(persisted, 0);
 
     const conflict = await store.execute({ type: "stale-command", execute() {} });

@@ -36,14 +36,21 @@ function remainingLabel(milliseconds: number | undefined): string {
         第 {{ event.runNumber }} 次 · {{ event.text }}
       </li>
     </ul>
+    <ul
+      v-if="activity.developmentEvents.length"
+      class="development-events"
+      aria-label="远征调查动态"
+    >
+      <li v-for="event in activity.developmentEvents" :key="event.id" :data-type="event.type">
+        第 {{ event.runNumber }} 次 · {{ event.text }}
+        <strong v-if="event.lootCount">开发战利品 ×{{ event.lootCount }}</strong>
+      </li>
+    </ul>
     <footer>
       <div>
         <span>全通率 {{ (activity.clearProbability * 100).toFixed(2) }}%</span>
         <span>公式 {{ activity.formulaVersion }}</span>
       </div>
-      <a v-if="activity.status === 'completed' && showSettlementLink" href="#/quests?settlement=1">
-        前往任务结算会
-      </a>
     </footer>
   </article>
 </template>
@@ -125,6 +132,28 @@ time {
 .rare-events li[data-outcome="spawned"] {
   border-left-color: #8f6fb2;
   color: #c4a8df;
+}
+.development-events {
+  display: grid;
+  gap: 4px;
+  padding: 0;
+  margin: 10px 0 0;
+  list-style: none;
+}
+.development-events li {
+  padding: 7px 9px;
+  border-left: 2px solid #6a5835;
+  background: #12100c;
+  color: #ae9e82;
+  font-size: 0.64rem;
+}
+.development-events li[data-type="completed"] {
+  border-left-color: #c69745;
+  color: #dfc080;
+}
+.development-events strong {
+  margin-left: 5px;
+  color: #edc968;
 }
 footer {
   margin-top: 10px;

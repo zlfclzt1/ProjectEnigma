@@ -514,7 +514,7 @@ describe("dungeon and activity queries", () => {
     expect(selected.preview!.durationSeconds).toBeGreaterThan(unselected.preview!.durationSeconds);
   });
 
-  it("warns about an accepted quest's unselected optional Boss without selecting it", () => {
+  it("does not surface legacy member-task route warnings in the expedition planner", () => {
     const questContent = contentWithOptionalQuestBoss();
     const game = createNewGame({
       slotId: asBrandedId<"SaveSlotId">("quest-route-warning"),
@@ -541,12 +541,7 @@ describe("dungeon and activity queries", () => {
       1,
     );
     expect(unselected.optionalRoutes[0]!.selected).toBe(false);
-    expect(unselected.questRouteWarnings[0]).toMatchObject({
-      memberId: member.id,
-      questId,
-      optionalNodeIds: ["oggleflint"],
-      bossNames: ["奥格弗林特"],
-    });
+    expect(unselected.questRouteWarnings).toEqual([]);
 
     const selected = getDungeonPlanningView(
       game,

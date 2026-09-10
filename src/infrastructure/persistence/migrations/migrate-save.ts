@@ -1,5 +1,5 @@
 import type { ContentRegistry } from "../../../content/registry";
-import type { GameState, PersistedGameState } from "../../../domain/game-state";
+import type { GameState, LegacyGameStateV12, PersistedGameState } from "../../../domain/game-state";
 import { migrateV2ToV3 } from "./migrate-v2-to-v3";
 import { migrateV3ToV4 } from "./migrate-v3-to-v4";
 import { migrateV4ToV5 } from "./migrate-v4-to-v5";
@@ -10,6 +10,7 @@ import { migrateV8ToV9 } from "./migrate-v8-to-v9";
 import { migrateV9ToV10 } from "./migrate-v9-to-v10";
 import { migrateV10ToV11 } from "./migrate-v10-to-v11";
 import { migrateV11ToV12 } from "./migrate-v11-to-v12";
+import { migrateV12ToV13 } from "./migrate-v12-to-v13";
 
 export interface SaveMigrationResult {
   readonly state: GameState;
@@ -20,113 +21,27 @@ export function migrateSave(
   persisted: PersistedGameState,
   content: ContentRegistry,
 ): SaveMigrationResult {
-  if (persisted.saveVersion === 12) {
+  if (persisted.saveVersion === 13) {
     return { state: structuredClone(persisted), migrated: false };
   }
-  if (persisted.saveVersion === 11) {
-    return { state: migrateV11ToV12(persisted), migrated: true };
-  }
-  if (persisted.saveVersion === 10) {
-    return { state: migrateV11ToV12(migrateV10ToV11(persisted)), migrated: true };
-  }
-  if (persisted.saveVersion === 9) {
-    return {
-      state: migrateV11ToV12(migrateV10ToV11(migrateV9ToV10(persisted))),
-      migrated: true,
-    };
-  }
-  if (persisted.saveVersion === 8) {
-    return {
-      state: migrateV11ToV12(migrateV10ToV11(migrateV9ToV10(migrateV8ToV9(persisted)))),
-      migrated: true,
-    };
-  }
-  if (persisted.saveVersion === 7) {
-    return {
-      state: migrateV11ToV12(
-        migrateV10ToV11(migrateV9ToV10(migrateV8ToV9(migrateV7ToV8(persisted)))),
-      ),
-      migrated: true,
-    };
-  }
-  if (persisted.saveVersion === 6) {
-    return {
-      state: migrateV11ToV12(
-        migrateV10ToV11(
-          migrateV9ToV10(migrateV8ToV9(migrateV7ToV8(migrateV6ToV7(persisted, content)))),
-        ),
-      ),
-      migrated: true,
-    };
-  }
-  if (persisted.saveVersion === 5) {
-    return {
-      state: migrateV11ToV12(
-        migrateV10ToV11(
-          migrateV9ToV10(
-            migrateV8ToV9(migrateV7ToV8(migrateV6ToV7(migrateV5ToV6(persisted), content))),
-          ),
-        ),
-      ),
-      migrated: true,
-    };
-  }
-  if (persisted.saveVersion === 4) {
-    return {
-      state: migrateV11ToV12(
-        migrateV10ToV11(
-          migrateV9ToV10(
-            migrateV8ToV9(
-              migrateV7ToV8(
-                migrateV6ToV7(migrateV5ToV6(migrateV4ToV5(persisted, content)), content),
-              ),
-            ),
-          ),
-        ),
-      ),
-      migrated: true,
-    };
-  }
-  if (persisted.saveVersion === 3) {
-    return {
-      state: migrateV11ToV12(
-        migrateV10ToV11(
-          migrateV9ToV10(
-            migrateV8ToV9(
-              migrateV7ToV8(
-                migrateV6ToV7(
-                  migrateV5ToV6(migrateV4ToV5(migrateV3ToV4(persisted), content)),
-                  content,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-      migrated: true,
-    };
-  }
-  if (persisted.saveVersion === 2) {
-    return {
-      state: migrateV11ToV12(
-        migrateV10ToV11(
-          migrateV9ToV10(
-            migrateV8ToV9(
-              migrateV7ToV8(
-                migrateV6ToV7(
-                  migrateV5ToV6(
-                    migrateV4ToV5(migrateV3ToV4(migrateV2ToV3(persisted, content)), content),
-                  ),
-                  content,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-      migrated: true,
-    };
-  }
+  return { state: migrateV12ToV13(migrateToV12(persisted, content), content), migrated: true };
+}
+
+function migrateToV12(
+  persisted: Exclude<PersistedGameState, GameState>,
+  content: ContentRegistry,
+): LegacyGameStateV12 {
+  if (persisted.saveVersion === 12) return persisted;
+  if (persisted.saveVersion === 11) return migrateV11ToV12(persisted);
+  if (persisted.saveVersion === 10) return migrateToV12(migrateV10ToV11(persisted), content);
+  if (persisted.saveVersion === 9) return migrateToV12(migrateV9ToV10(persisted), content);
+  if (persisted.saveVersion === 8) return migrateToV12(migrateV8ToV9(persisted), content);
+  if (persisted.saveVersion === 7) return migrateToV12(migrateV7ToV8(persisted), content);
+  if (persisted.saveVersion === 6) return migrateToV12(migrateV6ToV7(persisted, content), content);
+  if (persisted.saveVersion === 5) return migrateToV12(migrateV5ToV6(persisted), content);
+  if (persisted.saveVersion === 4) return migrateToV12(migrateV4ToV5(persisted, content), content);
+  if (persisted.saveVersion === 3) return migrateToV12(migrateV3ToV4(persisted), content);
+  if (persisted.saveVersion === 2) return migrateToV12(migrateV2ToV3(persisted, content), content);
   const unsupported: never = persisted;
   throw new Error(
     `不支持的存档版本：${String((unsupported as { saveVersion?: unknown }).saveVersion)}`,

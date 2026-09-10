@@ -83,15 +83,10 @@ describe("dungeons page", () => {
     expect(wrapper.findAll(".boss-route li")).toHaveLength(4);
     const startButton = wrapper.find(".party-preview > button");
     expect(startButton.attributes("disabled")).toBeUndefined();
+    expect(wrapper.get(".quest-summary").text()).toContain("可推进 2 项调查");
+    expect(wrapper.get(".quest-summary").text()).toContain("首次开发战利品");
 
     await startButton.trigger("click");
-    await flushPromises();
-
-    const brief = wrapper.get(".quest-brief");
-    expect(brief.text()).toContain("出征前任务简报");
-    expect(brief.text()).toContain("路线影响确认");
-    expect(game.activities?.active).toHaveLength(0);
-    await brief.findAll("footer button")[1]!.trigger("click");
     await flushPromises();
 
     expect(game.activities?.active).toHaveLength(1);
@@ -99,11 +94,7 @@ describe("dungeons page", () => {
     expect(useUiStore().selectedPartyMemberIds).toEqual([]);
     expect(wrapper.text()).toContain("可以继续组织另一支队伍");
     expect(wrapper.findAll('.member-options input[type="checkbox"][disabled]')).toHaveLength(5);
-    expect(
-      Object.values(game.snapshot!.members).every(
-        (member) => Object.values(member.quests.entries).filter(Boolean).length === 2,
-      ),
-    ).toBe(true);
+    expect(game.activities?.active[0]?.developmentEvents).toEqual([]);
   });
 
   it("renders mechanic readiness, exact requirements, and applied effects", () => {

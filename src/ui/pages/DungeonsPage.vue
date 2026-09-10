@@ -9,13 +9,7 @@ import RosterPresetBar from "../components/RosterPresetBar.vue";
 import RosterPresetManager from "../components/RosterPresetManager.vue";
 import RosterPresetNameDialog from "../components/RosterPresetNameDialog.vue";
 import RosterPresetReductionDialog from "../components/RosterPresetReductionDialog.vue";
-import ExpeditionQuestBrief from "../components/ExpeditionQuestBrief.vue";
-import type {
-  DungeonRouteNodeId,
-  MemberId,
-  QuestId,
-  RosterPresetId,
-} from "../../domain/shared/ids";
+import type { DungeonRouteNodeId, MemberId, RosterPresetId } from "../../domain/shared/ids";
 
 const game = useGameStore();
 const ui = useUiStore();
@@ -24,8 +18,6 @@ const selectedPresetId = ref<RosterPresetId | null>(null);
 const namingOpen = ref(false);
 const managerOpen = ref(false);
 const reductionOpen = ref(false);
-const questBriefOpen = ref(false);
-const selectedBriefQuestIds = ref<QuestId[]>([]);
 const planning = computed(() =>
   game.dungeonPlanning(
     ui.selectedDungeonId,
@@ -40,44 +32,14 @@ const selectedPreset = computed(
 );
 const questBrief = computed(() => {
   const dungeonId = planning.value?.selectedDungeon?.id;
-  return dungeonId ? game.expeditionQuestBrief(dungeonId, ui.selectedPartyMemberIds) : null;
-});
-const plannedBriefOptionalNodeIds = computed<readonly DungeonRouteNodeId[]>(() => {
-  const applicableEntries = (questBrief.value?.entries ?? []).filter(
-    (entry) =>
-      entry.acceptedMemberIds.length > 0 || selectedBriefQuestIds.value.includes(entry.questId),
-  );
-  return [
-    ...new Set([
-      ...ui.selectedOptionalNodeIds,
-      ...applicableEntries.flatMap((entry) => entry.requiredOptionalNodeIds),
-    ]),
-  ];
-});
-const briefRoutePlanning = computed(() =>
-  game.dungeonPlanning(
-    ui.selectedDungeonId,
-    ui.selectedPartyMemberIds,
-    ui.requestedExpeditionRuns,
-    plannedBriefOptionalNodeIds.value,
-    ui.selectedRouteVariantId,
-  ),
-);
-const addedBriefRouteBossNames = computed(() => {
-  const selectedNodeIds = new Set(ui.selectedOptionalNodeIds);
-  const applicableEntries = (questBrief.value?.entries ?? []).filter(
-    (entry) =>
-      entry.acceptedMemberIds.length > 0 || selectedBriefQuestIds.value.includes(entry.questId),
-  );
-  return [
-    ...new Set(
-      applicableEntries.flatMap((entry) =>
-        entry.requiredOptionalNodeIds.flatMap((nodeId, index) =>
-          selectedNodeIds.has(nodeId) ? [] : [entry.requiredOptionalBossNames[index]!],
-        ),
-      ),
-    ),
-  ];
+  return dungeonId
+    ? game.expeditionQuestBrief(
+        dungeonId,
+        ui.selectedPartyMemberIds,
+        ui.selectedOptionalNodeIds,
+        ui.selectedRouteVariantId ?? undefined,
+      )
+    : null;
 });
 
 watchEffect(() => {
@@ -91,19 +53,7 @@ watchEffect(() => {
   }
 });
 
-function openQuestBrief(): void {
-  selectedBriefQuestIds.value =
-    questBrief.value?.entries
-      .filter((entry) => entry.applicantMemberIds.length > 0)
-      .map((entry) => entry.questId) ?? [];
-  questBriefOpen.value = true;
-}
-
 async function start(): Promise<void> {
-  if (questBrief.value?.entries.length) {
-    openQuestBrief();
-    return;
-  }
   await depart(ui.selectedOptionalNodeIds);
 }
 
@@ -121,42 +71,6 @@ async function depart(optionalNodeIds: readonly DungeonRouteNodeId[]): Promise<v
   if (!outcome.ok) return;
   notice.value = `${dungeon.name}队伍已经出发，可以继续组织另一支队伍。`;
   ui.clearParty();
-}
-
-function toggleBriefQuest(questId: QuestId): void {
-  selectedBriefQuestIds.value = selectedBriefQuestIds.value.includes(questId)
-    ? selectedBriefQuestIds.value.filter((id) => id !== questId)
-    : [...selectedBriefQuestIds.value, questId];
-}
-
-async function acceptBriefApplications(): Promise<boolean> {
-  const acceptances = (questBrief.value?.entries ?? []).flatMap((entry) =>
-    selectedBriefQuestIds.value.includes(entry.questId)
-      ? entry.applicantMemberIds.map((memberId) => ({ memberId, questId: entry.questId }))
-      : [],
-  );
-  if (acceptances.length === 0) return true;
-  const outcome = await game.acceptMemberDungeonQuests(acceptances);
-  if (!outcome.ok) {
-    notice.value = outcome.error.message;
-    return false;
-  }
-  return true;
-}
-
-async function approveBrief(includeRoute: boolean): Promise<void> {
-  const optionalNodeIds = includeRoute
-    ? plannedBriefOptionalNodeIds.value
-    : ui.selectedOptionalNodeIds;
-  if (!(await acceptBriefApplications())) return;
-  if (includeRoute) ui.setOptionalNodes(optionalNodeIds);
-  questBriefOpen.value = false;
-  await depart(optionalNodeIds);
-}
-
-async function skipBrief(): Promise<void> {
-  questBriefOpen.value = false;
-  await depart(ui.selectedOptionalNodeIds);
 }
 
 async function purchaseRunCapacity(): Promise<void> {
@@ -275,16 +189,49 @@ async function deletePreset(presetId: RosterPresetId): Promise<void> {
       @select="ui.selectDungeon"
     />
     <p v-if="notice" class="notice">{{ notice }}</p>
-    <aside v-if="questBrief?.entries.length" class="quest-summary">
-      <div>
-        <strong>出征任务待处理</strong>
-        <p>
-          当前队伍有 {{ questBrief.applicationCount }} 项待批准申请、
-          {{ questBrief.acceptedCount }} 项进行中任务可在本次行动推进。
-        </p>
+    <details v-if="questBrief?.entries.length" class="quest-summary">
+      <summary>
+        <span>
+          <strong>可推进 {{ questBrief.advanceCount }} 项调查</strong>
+          <small v-if="questBrief.developmentCacheItemCount">
+            · 首次开发战利品 ×{{ questBrief.developmentCacheItemCount }}
+          </small>
+          <small v-else>· 当前路线不会产生首次开发箱</small>
+        </span>
+        <em>开发 {{ questBrief.currentLevel }} 级</em>
+      </summary>
+      <div class="development-benefits">
+        <span>当前副本经验 +{{ questBrief.currentExperienceBonusPercent }}%</span>
+        <span>额外普通掉落 +{{ questBrief.currentExtraLootPercent }}%</span>
+        <span v-if="questBrief.firstDevelopmentCount">
+          本次全通可完成 {{ questBrief.firstDevelopmentCount }} 项首次开发
+        </span>
       </div>
-      <button type="button" @click="openQuestBrief">查看任务简报</button>
-    </aside>
+      <section class="commission-preview">
+        <article v-for="entry in questBrief.entries" :key="entry.questId">
+          <header>
+            <strong>{{ entry.name }}</strong>
+            <span :class="{ covered: entry.routeCovered }">
+              {{ entry.routeCovered ? (entry.willComplete ? "预计完成" : "可推进") : "路线未覆盖" }}
+            </span>
+          </header>
+          <p>{{ entry.description }}</p>
+          <small>{{ entry.objectiveLabel }} · {{ entry.progressLabel }}</small>
+          <small
+            v-if="!entry.routeCovered && entry.requiredOptionalBossNames.length"
+            class="route-hint"
+          >
+            勾选可选首领 {{ entry.requiredOptionalBossNames.join("、") }} 后可推进
+          </small>
+          <details v-if="entry.rewardItems.length" class="reward-pool">
+            <summary>查看开发装备池</summary>
+            <span v-for="item in entry.rewardItems" :key="item.id">
+              {{ item.name }} · 装等 {{ item.itemLevel }}
+            </span>
+          </details>
+        </article>
+      </section>
+    </details>
     <aside v-if="planning.runCapacityUpgrade" class="run-upgrade">
       <div>
         <strong>{{ planning.runCapacityUpgrade.name }}</strong>
@@ -382,22 +329,6 @@ async function deletePreset(presetId: RosterPresetId): Promise<void> {
       @apply="applyMembers"
       @close="reductionOpen = false"
     />
-    <ExpeditionQuestBrief
-      :open="questBriefOpen"
-      :brief="questBrief"
-      :selected-quest-ids="selectedBriefQuestIds"
-      :current-probability="planning.preview?.clearProbability ?? null"
-      :current-duration-seconds="planning.preview?.durationSeconds ?? null"
-      :planned-probability="briefRoutePlanning?.preview?.clearProbability ?? null"
-      :planned-duration-seconds="briefRoutePlanning?.preview?.durationSeconds ?? null"
-      :added-route-boss-names="addedBriefRouteBossNames"
-      :pending="game.commandPending"
-      @toggle-quest="toggleBriefQuest"
-      @approve-route="approveBrief(true)"
-      @approve-only="approveBrief(false)"
-      @skip="skipBrief"
-      @close="questBriefOpen = false"
-    />
   </section>
 </template>
 
@@ -449,14 +380,28 @@ select {
   font-size: 0.72rem;
 }
 .quest-summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
   padding: 11px 13px;
   border: 1px solid #66502d;
   border-radius: 7px;
   background: #1a170f;
+}
+.quest-summary > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+}
+.quest-summary > summary span {
+  color: #9e907c;
+}
+.quest-summary > summary small {
+  color: #b08d50;
+}
+.quest-summary > summary em {
+  color: #d1aa5b;
+  font-size: 0.68rem;
+  font-style: normal;
 }
 .quest-summary strong {
   color: #d7bd87;
@@ -466,15 +411,61 @@ select {
   color: #958877;
   font-size: 0.7rem;
 }
-.quest-summary button {
-  flex: 0 0 auto;
-  padding: 8px 10px;
-  border: 1px solid #9b793f;
-  border-radius: 6px;
-  color: #1b160f;
-  background: #c99b4d;
-  font-weight: 800;
-  cursor: pointer;
+.development-benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+.development-benefits span {
+  padding: 5px 7px;
+  border: 1px solid #4d432f;
+  color: #bba77f;
+  background: #11100c;
+  font-size: 0.64rem;
+}
+.commission-preview {
+  display: grid;
+  gap: 7px;
+  margin-top: 9px;
+}
+.commission-preview article {
+  padding: 9px 10px;
+  border: 1px solid #3c3529;
+  background: #0c0e0e;
+}
+.commission-preview header {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.commission-preview header span {
+  color: #8f7f65;
+  font-size: 0.62rem;
+}
+.commission-preview header span.covered {
+  color: #8fb17c;
+}
+.commission-preview > article > small {
+  display: block;
+  margin-top: 4px;
+  color: #837969;
+  font-size: 0.62rem;
+}
+.commission-preview .route-hint {
+  color: #c0964c;
+}
+.reward-pool {
+  margin-top: 7px;
+  color: #ae8a4a;
+  font-size: 0.63rem;
+}
+.reward-pool span {
+  display: inline-block;
+  margin: 6px 6px 0 0;
+  padding: 4px 6px;
+  color: #bfb096;
+  background: #17140f;
 }
 .run-upgrade {
   display: flex;

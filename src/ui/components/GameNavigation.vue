@@ -12,7 +12,7 @@ import { RouterLink } from "vue-router";
     <RouterLink to="/loot">装备分配</RouterLink>
     <RouterLink to="/catalog">装备图鉴</RouterLink>
     <RouterLink to="/reports">战斗记录</RouterLink>
-    <RouterLink to="/quests">副本任务</RouterLink>
+    <RouterLink to="/quests">开发档案</RouterLink>
   </nav>
 </template>
 

@@ -148,14 +148,14 @@ describe("member dungeon quests", () => {
     });
   });
 
-  it("builds an expedition brief for available and accepted cross-route tasks", () => {
+  it("builds an automatic expedition investigation brief from guild progress", () => {
     const registry = contentWithOptionalQuestBoss();
     const game = state(registry);
     const [first, second] = Object.values(game.members);
-    first!.quests.entries[questId] = {
+    game.dungeonDevelopment.entries[questId] = {
       questId,
-      status: "accepted",
-      acceptedAt: 1_500,
+      status: "investigating",
+      discoveredAt: 1_500,
       encounterVictoryIds: [],
     };
 
@@ -164,26 +164,25 @@ describe("member dungeon quests", () => {
       registry,
       asBrandedId<"DungeonId">("ragefire_chasm"),
       [first!.id, second!.id],
+      [asBrandedId<"DungeonRouteNodeId">("oggleflint")],
     )!;
     const returningSatchel = brief.entries.find((entry) => entry.questId === questId)!;
     expect(returningSatchel).toMatchObject({
-      applicantMemberIds: [second!.id],
-      acceptedMemberIds: [first!.id],
+      status: "investigating",
+      routeCovered: true,
+      willComplete: true,
       requiredOptionalNodeIds: ["oggleflint"],
       requiredOptionalBossNames: ["奥格弗林特"],
     });
 
-    first!.quests.entries[questId]!.trackingPausedAt = 2_000;
-    const pausedBrief = getExpeditionQuestBriefView(
+    game.dungeonDevelopment.entries[questId]!.status = "completed";
+    const completedBrief = getExpeditionQuestBriefView(
       game,
       registry,
       asBrandedId<"DungeonId">("ragefire_chasm"),
       [first!.id, second!.id],
     )!;
-    expect(pausedBrief.entries.find((entry) => entry.questId === questId)).toMatchObject({
-      applicantMemberIds: [second!.id],
-      acceptedMemberIds: [],
-    });
+    expect(completedBrief.entries.find((entry) => entry.questId === questId)).toBeUndefined();
   });
 
   it("uses the graduation level-cap unlock when claiming quest experience", async () => {

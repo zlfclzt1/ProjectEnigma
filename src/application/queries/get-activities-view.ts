@@ -22,6 +22,14 @@ export interface RareRouteEventView {
   readonly text: string;
 }
 
+export interface DevelopmentEventView {
+  readonly id: string;
+  readonly type: "clue" | "progress" | "completed";
+  readonly runNumber: number;
+  readonly text: string;
+  readonly lootCount: number;
+}
+
 export interface ExpeditionActivityView {
   readonly id: ActivityId;
   readonly dungeonName: string;
@@ -43,6 +51,7 @@ export interface ExpeditionActivityView {
   readonly formulaVersion: string;
   readonly route: readonly ActivityRouteStageView[];
   readonly rareEvents: readonly RareRouteEventView[];
+  readonly developmentEvents: readonly DevelopmentEventView[];
 }
 
 export interface ActivitiesView {
@@ -142,6 +151,13 @@ function projectActivity(
     rareEvents: dungeon
       ? activity.runPlans.flatMap((run) => projectRareEvents(run, dungeon, content))
       : [],
+    developmentEvents: activity.developmentEvents.map((event) => ({
+      id: event.id,
+      type: event.type,
+      runNumber: event.runNumber,
+      text: event.text,
+      lootCount: event.itemInstanceIds.length,
+    })),
   };
 }
 

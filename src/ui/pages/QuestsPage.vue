@@ -1,389 +1,126 @@
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
+import { computed, ref } from "vue";
 import { useGameStore } from "../../stores/game-store";
-import { useUiStore } from "../../stores/ui-store";
-import type { MemberId, QuestId, RosterPresetId } from "../../domain/shared/ids";
-import type { MemberDungeonQuestClaim } from "../../application/commands/claim-member-dungeon-quests";
-import QuestSettlementMeeting from "../components/QuestSettlementMeeting.vue";
-
-type HallSection = "pending" | "active" | "claim" | "catalog";
 
 const game = useGameStore();
-const ui = useUiStore();
-const notice = ref("");
-const section = ref<HallSection>("pending");
-const scope = ref(ui.selectedPartyMemberIds.length > 0 ? "party" : "all");
-const search = ref("");
-const selectedAcceptanceKeys = ref<Set<string>>(new Set());
-const expandedQuestIds = ref<Set<QuestId>>(new Set());
-const settlementOpen = ref(
-  typeof window !== "undefined" && window.location.hash.includes("settlement=1"),
-);
-
-const scopeMemberIds = computed<readonly MemberId[]>(() => {
-  if (scope.value === "party") return ui.selectedPartyMemberIds;
-  if (scope.value.startsWith("preset:")) {
-    const presetId = scope.value.slice("preset:".length) as RosterPresetId;
-    return (
-      game.rosterPresets?.presets.find((preset) => preset.id === presetId)?.currentMemberIds ?? []
-    );
-  }
-  return game.members?.members.map((member) => member.id) ?? [];
+const selectedDungeonId = ref<string>("");
+const archive = computed(() => game.dungeonDevelopment);
+const selectedDungeon = computed(() => {
+  const dungeons = archive.value?.dungeons ?? [];
+  return dungeons.find((entry) => entry.id === selectedDungeonId.value) ?? dungeons[0] ?? null;
 });
-const hall = computed(() => game.dungeonQuestHall(scopeMemberIds.value));
-const settlement = computed(() => game.questSettlement(scopeMemberIds.value));
-const filteredQuests = computed(() => {
-  const keyword = search.value.trim().toLocaleLowerCase();
-  return (hall.value?.quests ?? []).filter((quest) => {
-    const statusMatch =
-      section.value === "catalog" ||
-      (section.value === "pending" && quest.counts.available > 0) ||
-      (section.value === "active" && quest.counts.accepted > 0) ||
-      (section.value === "claim" && quest.counts.completed > 0);
-    const searchMatch =
-      !keyword ||
-      `${quest.name} ${quest.dungeonName} ${quest.description}`
-        .toLocaleLowerCase()
-        .includes(keyword);
-    return statusMatch && searchMatch;
-  });
-});
-const selectedAcceptanceCount = computed(() => selectedAcceptanceKeys.value.size);
 
-watch(
-  () =>
-    hall.value?.quests.flatMap((quest) =>
-      quest.members
-        .filter((member) => member.canAccept)
-        .map((member) => `${member.id}:${quest.id}`),
-    ) ?? [],
-  (availableKeys) => {
-    selectedAcceptanceKeys.value = new Set(availableKeys);
-  },
-  { immediate: true },
-);
-
-function acceptanceKey(memberId: MemberId, questId: QuestId): string {
-  return `${memberId}:${questId}`;
-}
-
-function toggleAcceptance(memberId: MemberId, questId: QuestId): void {
-  const key = acceptanceKey(memberId, questId);
-  const next = new Set(selectedAcceptanceKeys.value);
-  if (next.has(key)) next.delete(key);
-  else next.add(key);
-  selectedAcceptanceKeys.value = next;
-}
-
-function toggleQuestMembers(questId: QuestId, memberIds: readonly MemberId[]): void {
-  const keys = memberIds.map((memberId) => acceptanceKey(memberId, questId));
-  const allSelected = keys.every((key) => selectedAcceptanceKeys.value.has(key));
-  const next = new Set(selectedAcceptanceKeys.value);
-  for (const key of keys) {
-    if (allSelected) next.delete(key);
-    else next.add(key);
-  }
-  selectedAcceptanceKeys.value = next;
-}
-
-function toggleExpanded(questId: QuestId): void {
-  const next = new Set(expandedQuestIds.value);
-  if (next.has(questId)) next.delete(questId);
-  else next.add(questId);
-  expandedQuestIds.value = next;
-}
-
-async function approveSelected(onlyQuestId?: QuestId): Promise<void> {
-  const acceptances = (hall.value?.quests ?? []).flatMap((quest) =>
-    onlyQuestId && quest.id !== onlyQuestId
-      ? []
-      : quest.members.flatMap((member) =>
-          member.canAccept && selectedAcceptanceKeys.value.has(acceptanceKey(member.id, quest.id))
-            ? [{ memberId: member.id, questId: quest.id }]
-            : [],
-        ),
-  );
-  const result = await game.acceptMemberDungeonQuests(acceptances);
-  notice.value = result.ok
-    ? `已批准 ${acceptances.length} 项成员任务，任务已进入进行中。`
-    : result.error.message;
-}
-
-async function claim(memberId: MemberId, questId: QuestId, itemId?: string): Promise<void> {
-  const result = await game.claimMemberDungeonQuest(memberId, questId, itemId as never);
-  notice.value = result.ok ? "任务奖励已装备并记录到装备图鉴。" : result.error.message;
-}
-
-async function settleAll(claims: readonly MemberDungeonQuestClaim[]): Promise<void> {
-  const result = await game.claimMemberDungeonQuests(claims);
-  if (!result.ok) {
-    notice.value = result.error.message;
-    return;
-  }
-  settlementOpen.value = false;
-  notice.value = `结算会完成，已为 ${claims.length} 项任务发放奖励。`;
-}
-
-async function setTracking(memberId: MemberId, questId: QuestId, paused: boolean): Promise<void> {
-  const result = await game.setMemberDungeonQuestTracking(memberId, questId, paused);
-  notice.value = result.ok
-    ? paused
-      ? "任务已暂缓跟踪，出征简报不会再主动推荐。"
-      : "任务已恢复跟踪。"
-    : result.error.message;
-}
-
-async function abandon(
-  memberId: MemberId,
-  memberName: string,
-  questId: QuestId,
-  questName: string,
-): Promise<void> {
-  if (!window.confirm(`确定让${memberName}放弃“${questName}”并清除现有进度吗？`)) return;
-  const result = await game.abandonMemberDungeonQuest(memberId, questId);
-  notice.value = result.ok ? "任务进度已清除，之后可以重新接取。" : result.error.message;
+function progressPercent(points: number, total: number): number {
+  return total > 0 ? Math.min(100, (points / total) * 100) : 0;
 }
 </script>
 
 <template>
-  <section v-if="hall" class="page-stack">
+  <section v-if="archive" class="page-stack">
     <header class="page-heading">
       <div>
-        <p class="kicker">公会任务大厅</p>
-        <h2>副本任务</h2>
-        <p class="subtitle">按委托集中审批，成员不再逐个翻找任务。</p>
+        <p class="kicker">公会远征档案室</p>
+        <h2>副本开发档案</h2>
+        <p class="subtitle">委托会随副本路线自动调查，完成后永久改善对应副本的收益。</p>
       </div>
-      <label class="scope-picker">
-        <span>管理范围</span>
-        <select v-model="scope">
-          <option value="all">全部成员</option>
-          <option value="party">当前阵容（{{ ui.selectedPartyMemberIds.length }} 人）</option>
-          <option
-            v-for="preset in game.rosterPresets?.presets ?? []"
-            :key="preset.id"
-            :value="`preset:${preset.id}`"
-          >
-            固定队伍 · {{ preset.name }}（{{ preset.currentMemberIds.length }} 人）
-          </option>
-        </select>
-      </label>
+      <span
+        >{{ archive.completedCommissionCount }} / {{ archive.totalCommissionCount }} 项已开发</span
+      >
     </header>
 
-    <p v-if="notice" class="notice">{{ notice }}</p>
-    <p v-if="hall.memberCount === 0" class="empty-scope">
-      当前范围内没有成员。请先在作战室选择阵容，或切换到全部成员/固定队伍。
-    </p>
-
-    <nav class="status-board" aria-label="任务状态">
-      <button :class="{ active: section === 'pending' }" @click="section = 'pending'">
-        <span>待批准</span><strong>{{ hall.totals.pendingApproval }}</strong
-        ><small>成员申请</small>
-      </button>
-      <button :class="{ active: section === 'active' }" @click="section = 'active'">
-        <span>进行中</span><strong>{{ hall.totals.inProgress }}</strong
-        ><small>成员任务</small>
-      </button>
-      <button :class="{ active: section === 'claim' }" @click="section = 'claim'">
-        <span>待结算</span><strong>{{ hall.totals.pendingClaim }}</strong
-        ><small>成员奖励</small>
-      </button>
-      <button :class="{ active: section === 'catalog' }" @click="section = 'catalog'">
-        <span>副本目录</span><strong>{{ hall.quests.length }}</strong
-        ><small>全部委托</small>
+    <nav class="dungeon-tabs" aria-label="副本开发档案">
+      <button
+        v-for="dungeon in archive.dungeons"
+        :key="dungeon.id"
+        type="button"
+        :class="{ active: dungeon.id === selectedDungeon?.id }"
+        @click="selectedDungeonId = dungeon.id"
+      >
+        <span>{{ dungeon.name }}</span>
+        <small
+          >开发 {{ dungeon.level }} 级 · {{ dungeon.completedCount }}/{{
+            dungeon.totalCount
+          }}</small
+        >
       </button>
     </nav>
 
-    <div class="toolbar">
-      <label>
-        <span>搜索任务或副本</span>
-        <input v-model="search" type="search" placeholder="例如：血色修道院" />
-      </label>
-      <button
-        v-if="section === 'pending'"
-        class="approve-button"
-        type="button"
-        :disabled="game.commandPending || selectedAcceptanceCount === 0"
-        @click="approveSelected()"
-      >
-        {{ game.commandPending ? "正在登记……" : `批准选中申请（${selectedAcceptanceCount}）` }}
-      </button>
-      <button
-        v-else-if="section === 'claim' && settlement?.entries.length"
-        class="approve-button"
-        type="button"
-        :disabled="game.commandPending"
-        @click="settlementOpen = true"
-      >
-        召开任务结算会（{{ settlement.entries.length }}）
-      </button>
-    </div>
+    <article v-if="selectedDungeon" class="archive-card">
+      <header class="development-heading">
+        <div>
+          <span>{{ selectedDungeon.unlocked ? "已开放调查" : "副本尚未解锁" }}</span>
+          <h3>{{ selectedDungeon.name }} · 开发 {{ selectedDungeon.level }} 级</h3>
+        </div>
+        <strong>{{ selectedDungeon.points }} / {{ selectedDungeon.totalPoints }} 点</strong>
+      </header>
 
-    <div class="quest-list">
-      <article v-for="quest in filteredQuests" :key="quest.id" class="quest-card">
-        <header class="quest-heading">
-          <div>
-            <p class="dungeon-name">{{ quest.dungeonName }}</p>
-            <h3>{{ quest.name }}</h3>
-            <p>{{ quest.description }}</p>
-          </div>
-          <div class="counts">
-            <span v-if="quest.counts.available">待批 {{ quest.counts.available }}</span>
-            <span v-if="quest.counts.accepted">进行中 {{ quest.counts.accepted }}</span>
-            <span v-if="quest.counts.completed">待结算 {{ quest.counts.completed }}</span>
-          </div>
-        </header>
+      <div class="progress" :aria-label="`${selectedDungeon.name}开发进度`">
+        <i
+          :style="{
+            width: `${progressPercent(selectedDungeon.points, selectedDungeon.totalPoints)}%`,
+          }"
+        />
+      </div>
 
-        <aside class="publisher">
-          <span>{{ quest.publisher.name }}</span>
-          <strong>{{ quest.publisher.location }}</strong>
-          <p>{{ quest.publisher.context }}</p>
-        </aside>
+      <dl class="benefits">
+        <div>
+          <dt>副本经验效率</dt>
+          <dd>+{{ selectedDungeon.experienceBonusPercent }}%</dd>
+        </div>
+        <div>
+          <dt>额外普通掉落</dt>
+          <dd>+{{ selectedDungeon.extraLootPercent }}%</dd>
+        </div>
+        <div>
+          <dt>下一开发等级</dt>
+          <dd>
+            {{
+              selectedDungeon.nextLevelPoints === undefined
+                ? "已完成全部开发"
+                : `${selectedDungeon.nextLevelPoints} 点`
+            }}
+          </dd>
+        </div>
+      </dl>
 
-        <dl>
-          <div>
-            <dt>目标</dt>
-            <dd>{{ quest.objective.label }}</dd>
-          </div>
-          <div>
-            <dt>奖励</dt>
-            <dd>
-              <span v-if="quest.rewards.fixedItems.length">
-                固定：{{ quest.rewards.fixedItems.map((item) => item.name).join("、") }}
-              </span>
-              <span v-if="quest.rewards.fixedItems.length && quest.rewards.itemChoices.length"
-                >；</span
-              >
-              <span v-if="quest.rewards.itemChoices.length">
-                选择：{{ quest.rewards.itemChoices.map((item) => item.name).join(" / ") }}
-              </span>
-            </dd>
-          </div>
-        </dl>
-
-        <section v-if="quest.counts.available" class="applications">
+      <section class="commission-list">
+        <article
+          v-for="commission in selectedDungeon.commissions"
+          :key="commission.id"
+          class="commission"
+          :data-status="commission.status"
+        >
           <header>
-            <strong>待批准成员</strong>
-            <button
-              type="button"
-              @click="
-                toggleQuestMembers(
-                  quest.id,
-                  quest.members.filter((member) => member.canAccept).map((member) => member.id),
-                )
-              "
-            >
-              全选 / 取消
-            </button>
+            <div>
+              <span>{{ commission.statusLabel }} · {{ commission.points }} 开发点</span>
+              <h4>{{ commission.name }}</h4>
+            </div>
+            <strong>{{ commission.progressLabel }}</strong>
           </header>
-          <div class="member-chips">
-            <label
-              v-for="member in quest.members.filter((entry) => entry.canAccept)"
-              :key="member.id"
-            >
-              <input
-                type="checkbox"
-                :checked="selectedAcceptanceKeys.has(acceptanceKey(member.id, quest.id))"
-                @change="toggleAcceptance(member.id, quest.id)"
-              />
-              <span
-                >{{ member.name }} <small>Lv{{ member.level }}</small></span
-              >
-            </label>
-          </div>
-          <blockquote v-if="quest.members.find((member) => member.canAccept)">
-            {{ quest.members.find((member) => member.canAccept)?.applicationLine }}
-            <small v-if="quest.counts.available > 1">
-              另有 {{ quest.counts.available - 1 }} 名同行申请者
-            </small>
-          </blockquote>
-          <button
-            class="approve-quest-button"
-            type="button"
-            :disabled="
-              game.commandPending ||
-              !quest.members.some(
-                (member) =>
-                  member.canAccept &&
-                  selectedAcceptanceKeys.has(acceptanceKey(member.id, quest.id)),
-              )
-            "
-            @click="approveSelected(quest.id)"
-          >
-            批准此委托的成员申请
-          </button>
-        </section>
-
-        <button class="details-toggle" type="button" @click="toggleExpanded(quest.id)">
-          {{ expandedQuestIds.has(quest.id) ? "收起成员详情" : "展开成员详情" }}
-        </button>
-        <section v-if="expandedQuestIds.has(quest.id)" class="member-details">
-          <article v-for="member in quest.members" :key="member.id">
-            <span>
-              <strong>{{ member.name }}</strong>
-              <small>
-                Lv{{ member.level }} · {{ member.personalityName }} · {{ member.statusLabel }}
-              </small>
-              <q v-if="member.status === 'available'">{{ member.applicationLine }}</q>
-            </span>
-            <small v-if="member.blockedReasons.length && member.status === 'locked'">
-              {{ member.blockedReasons.join("；") }}
-            </small>
-            <div v-if="member.status === 'completed'" class="claim-actions">
-              <button
-                v-for="item in quest.rewards.itemChoices"
-                :key="item.id"
-                type="button"
-                :disabled="game.commandPending"
-                @click="claim(member.id, quest.id, item.id)"
-              >
-                领取 {{ item.name }}
-              </button>
-              <button
-                v-if="quest.rewards.itemChoices.length === 0"
-                type="button"
-                :disabled="game.commandPending"
-                @click="claim(member.id, quest.id)"
-              >
-                领取奖励
-              </button>
-              <button
-                type="button"
-                class="secondary"
-                :disabled="game.commandPending"
-                @click="abandon(member.id, member.name, quest.id, quest.name)"
-              >
-                放弃并清除进度
-              </button>
+          <p>{{ commission.description }}</p>
+          <dl>
+            <div>
+              <dt>调查方向</dt>
+              <dd>{{ commission.objectiveLabel }}</dd>
             </div>
-            <div v-else-if="member.status === 'accepted'" class="tracking-actions">
-              <button
-                type="button"
-                :disabled="game.commandPending"
-                @click="setTracking(member.id, quest.id, !member.trackingPaused)"
-              >
-                {{ member.trackingPaused ? "恢复跟踪" : "暂缓跟踪" }}
-              </button>
-              <button
-                type="button"
-                class="danger"
-                :disabled="game.commandPending"
-                @click="abandon(member.id, member.name, quest.id, quest.name)"
-              >
-                放弃并清除进度
-              </button>
+            <div v-if="commission.classRequirement">
+              <dt>队伍条件</dt>
+              <dd>{{ commission.classRequirement }}</dd>
             </div>
-          </article>
-        </section>
-      </article>
-      <p v-if="filteredQuests.length === 0" class="empty">当前栏目没有符合条件的任务。</p>
-    </div>
-    <QuestSettlementMeeting
-      :open="settlementOpen"
-      :settlement="settlement"
-      :pending="game.commandPending"
-      @confirm="settleAll"
-      @close="settlementOpen = false"
-    />
+          </dl>
+          <details v-if="commission.rewardItems.length">
+            <summary>已确认装备与永久掉落位置</summary>
+            <ul>
+              <li v-for="item in commission.rewardItems" :key="item.id">
+                <span>{{ item.name }} · 装等 {{ item.itemLevel }}</span>
+                <small>{{ item.bossName }}</small>
+              </li>
+            </ul>
+          </details>
+          <p v-else class="unknown-reward">开发装备尚未确认</p>
+        </article>
+      </section>
+    </article>
   </section>
 </template>
 
@@ -392,17 +129,31 @@ async function abandon(
   display: grid;
   gap: 18px;
 }
-.page-heading {
+.page-heading,
+.development-heading,
+.commission header {
   display: flex;
   align-items: end;
   justify-content: space-between;
   gap: 14px;
 }
-.page-heading h2 {
+.page-heading h2,
+.development-heading h3,
+.commission h4 {
   margin: 3px 0 0;
   color: #f0dfbf;
   font-family: Georgia, serif;
+}
+.page-heading h2 {
   font-size: 2rem;
+}
+.page-heading > span,
+.subtitle {
+  color: #8f8575;
+  font-size: 0.72rem;
+}
+.subtitle {
+  margin: 5px 0 0;
 }
 .kicker {
   margin: 0;
@@ -411,344 +162,152 @@ async function abandon(
   font-weight: 800;
   letter-spacing: 0.16em;
 }
-.subtitle {
-  margin: 5px 0 0;
-  color: #8f8575;
-  font-size: 0.72rem;
+.dungeon-tabs {
+  display: flex;
+  gap: 7px;
+  padding-bottom: 3px;
+  overflow-x: auto;
 }
-.scope-picker,
-.toolbar label {
+.dungeon-tabs button {
   display: grid;
-  gap: 4px;
-  color: #8f8575;
-  font-size: 0.68rem;
-}
-select,
-input[type="search"] {
-  min-width: 220px;
-  padding: 8px;
-  border: 1px solid #514a3d;
-  border-radius: 6px;
-  color: #e2d5bb;
-  background: #0b0e10;
-}
-.notice,
-.empty-scope {
-  margin: 0;
+  flex: 0 0 auto;
+  gap: 3px;
+  min-width: 160px;
   padding: 10px 12px;
-  border: 1px solid #3f7045;
-  border-radius: 6px;
-  color: #91cc96;
-  background: #112016;
-  font-size: 0.72rem;
-}
-.empty-scope {
-  border-color: #6f5b35;
-  color: #d0ae6c;
-  background: #1c1810;
-}
-.status-board {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-}
-.status-board button {
-  display: grid;
-  gap: 2px;
-  padding: 12px;
-  border: 1px solid #37332c;
+  border: 1px solid #3c382f;
   border-radius: 7px;
-  color: #a89b84;
+  color: #b8aa92;
   background: #111416;
   text-align: left;
   cursor: pointer;
 }
-.status-board button.active {
-  border-color: #a27c3c;
+.dungeon-tabs button.active {
+  border-color: #a67d39;
   background: #211d16;
 }
-.status-board strong {
-  color: #e5bd62;
-  font-size: 1.35rem;
+.dungeon-tabs small {
+  color: #776f62;
 }
-.status-board small {
-  color: #756e62;
-}
-.toolbar {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 12px;
-}
-.approve-button,
-.claim-actions button {
-  padding: 9px 12px;
-  border: 1px solid #b08743;
-  border-radius: 6px;
-  color: #18130c;
-  background: #d4a653;
-  font-weight: 800;
-  cursor: pointer;
-}
-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-.quest-list {
+.archive-card {
   display: grid;
-  gap: 12px;
-}
-.quest-card {
-  display: grid;
-  gap: 12px;
-  padding: 16px;
-  border: 1px solid #403a30;
-  border-radius: 8px;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid #51452f;
+  border-radius: 9px;
   background: #111416;
 }
-.quest-heading {
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-  gap: 14px;
-}
-.quest-heading h3,
-.quest-heading p {
-  margin: 0;
-}
-.quest-heading h3 {
-  margin-top: 3px;
-  color: #e5d2af;
-  font-family: Georgia, serif;
-}
-.quest-heading > div > p:last-child {
-  margin-top: 5px;
-  color: #968b7b;
-  font-size: 0.7rem;
-  line-height: 1.45;
-}
-.publisher {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 2px 9px;
-  padding: 9px 10px;
-  border-left: 2px solid #80602e;
-  background: #17140f;
-}
-.publisher span {
-  color: #d0a75c;
-  font-size: 0.66rem;
-  font-weight: 800;
-}
-.publisher strong {
-  color: #9d917d;
-  font-size: 0.63rem;
-  font-weight: 500;
-}
-.publisher p {
-  grid-column: 1 / -1;
-  margin: 2px 0 0;
-  color: #827867;
-  font-size: 0.62rem;
-}
-.dungeon-name {
+.development-heading span,
+.commission header span {
   color: #b48743;
   font-size: 0.63rem;
   font-weight: 800;
 }
-.counts {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: end;
-  gap: 5px;
+.development-heading > strong {
+  color: #e3bd64;
 }
-.counts span {
-  padding: 4px 6px;
-  border: 1px solid #5a4930;
-  border-radius: 999px;
-  color: #d5b26b;
-  font-size: 0.61rem;
-  white-space: nowrap;
+.progress {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #28251f;
 }
-dl {
+.progress i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #80602d, #dab65e);
+}
+.benefits {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 7px;
   margin: 0;
 }
-dl div {
-  padding: 9px 10px;
+.benefits div,
+.commission dl div {
+  padding: 10px;
   background: #0b0e10;
 }
 dt {
   color: #756e62;
-  font-size: 0.6rem;
+  font-size: 0.61rem;
 }
 dd {
   margin: 3px 0 0;
-  color: #cfc0a5;
-  font-size: 0.72rem;
+  color: #d3c2a2;
+  font-size: 0.74rem;
 }
-.applications {
+.commission-list {
   display: grid;
-  gap: 8px;
-  padding: 10px;
-  border: 1px solid #3d3529;
-  background: #0b0e10;
+  gap: 9px;
 }
-.applications > header {
-  display: flex;
-  justify-content: space-between;
-}
-.applications strong {
-  color: #cdb98e;
-  font-size: 0.7rem;
-}
-.applications button,
-.details-toggle {
-  padding: 0;
-  border: 0;
-  color: #c99b4d;
-  background: transparent;
-  font-size: 0.65rem;
-  cursor: pointer;
-}
-.applications .approve-quest-button {
-  justify-self: start;
-  padding: 7px 9px;
-  border: 1px solid #8c6b37;
-  border-radius: 5px;
-  color: #17120c;
-  background: #c99b4d;
-  font-weight: 800;
-}
-.applications blockquote {
+.commission {
   display: grid;
-  gap: 3px;
+  gap: 9px;
+  padding: 13px;
+  border: 1px solid #38342d;
+  background: #0d1012;
+}
+.commission[data-status="completed"] {
+  border-color: #52633f;
+}
+.commission[data-status="clue"] {
+  opacity: 0.76;
+}
+.commission header > strong {
+  color: #bda36e;
+  font-size: 0.67rem;
+}
+.commission p {
   margin: 0;
-  padding: 8px 10px;
-  border-left: 2px solid #6e5935;
-  color: #b6a78d;
-  background: #13120f;
-  font-size: 0.66rem;
+  color: #918777;
+  font-size: 0.7rem;
+  line-height: 1.5;
 }
-.applications blockquote small {
-  color: #766e62;
-}
-.member-chips {
-  display: flex;
-  flex-wrap: wrap;
+.commission dl {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 6px;
+  margin: 0;
 }
-.member-chips label {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 6px 8px;
-  border: 1px solid #37332c;
-  border-radius: 5px;
-  color: #d5c7ad;
+details {
+  color: #b89451;
   font-size: 0.68rem;
+}
+summary {
   cursor: pointer;
 }
-.member-chips input {
-  accent-color: #c89543;
-}
-.member-chips small {
-  color: #7f776b;
-}
-.details-toggle {
-  justify-self: start;
-}
-.member-details {
+details ul {
   display: grid;
   gap: 5px;
+  padding: 0;
+  margin: 8px 0 0;
+  list-style: none;
 }
-.member-details > article {
+details li {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   gap: 10px;
-  padding: 8px 10px;
-  border: 1px solid #302e29;
-  background: #090c0d;
+  padding: 7px 9px;
+  color: #d4c3a4;
+  background: #080b0c;
 }
-.member-details span {
-  display: grid;
+details small {
+  color: #877b69;
 }
-.member-details q {
-  margin-top: 3px;
-  color: #a4947a;
-  font-size: 0.6rem;
-}
-.member-details strong {
-  color: #d6c8ae;
-  font-size: 0.7rem;
-}
-.member-details small {
-  color: #847b6d;
-  font-size: 0.61rem;
-}
-.claim-actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: end;
-  gap: 5px;
-}
-.claim-actions button {
-  padding: 5px 7px;
-  font-size: 0.61rem;
-}
-.tracking-actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: end;
-  gap: 5px;
-}
-.tracking-actions button {
-  padding: 5px 7px;
-  border: 1px solid #685837;
-  border-radius: 5px;
-  color: #c9ad73;
-  background: #211d16;
-  font-size: 0.61rem;
-  cursor: pointer;
-}
-.tracking-actions button.danger,
-.claim-actions button.secondary {
-  border-color: #654039;
-  color: #c9877b;
-  background: #211513;
-}
-.empty {
-  margin: 0;
-  padding: 30px;
-  border: 1px dashed #403a30;
-  color: #8b8273;
-  text-align: center;
+.unknown-reward {
+  color: #70695f !important;
+  font-style: italic;
 }
 @media (max-width: 720px) {
   .page-heading,
-  .toolbar {
+  .development-heading,
+  .commission header {
     align-items: stretch;
     flex-direction: column;
   }
-  .status-board {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  dl {
+  .benefits,
+  .commission dl {
     grid-template-columns: 1fr;
-  }
-  .quest-heading {
-    flex-direction: column;
-  }
-  .counts {
-    justify-content: start;
-  }
-  select,
-  input[type="search"] {
-    width: 100%;
-    min-width: 0;
   }
 }
 </style>

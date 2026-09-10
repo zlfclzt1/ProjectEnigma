@@ -13,6 +13,7 @@ import {
   type LegacyGameStateV9,
   type LegacyGameStateV10,
   type LegacyGameStateV11,
+  type LegacyGameStateV12,
 } from "../../src/domain/game-state";
 import type { Member } from "../../src/domain/member/member";
 import { asBrandedId } from "../../src/domain/shared/ids";
@@ -38,6 +39,33 @@ export function createMemberFixture(overrides: Partial<Member> = {}): Member {
     wishlist: overrides.wishlist ?? { entries: [] },
     quests: overrides.quests ?? { entries: {} },
     joinedAt: overrides.joinedAt ?? 1_000,
+  };
+}
+
+export function createLegacyGameStateV12Fixture(
+  overrides: Partial<LegacyGameStateV12> = {},
+): LegacyGameStateV12 {
+  const current = createGameStateFixture();
+  const { dungeonDevelopment: _dungeonDevelopment, ...withoutDevelopment } = current;
+  void _dungeonDevelopment;
+  const activities = Object.fromEntries(
+    Object.entries(withoutDevelopment.activities).map(([id, activity]) => {
+      if (activity.type !== "expedition") return [id, activity];
+      const {
+        developmentSnapshot: _developmentSnapshot,
+        developmentEvents: _developmentEvents,
+        ...legacyActivity
+      } = activity;
+      void _developmentSnapshot;
+      void _developmentEvents;
+      return [id, legacyActivity];
+    }),
+  ) as LegacyGameStateV12["activities"];
+  return {
+    ...withoutDevelopment,
+    saveVersion: 12,
+    activities,
+    ...overrides,
   };
 }
 
@@ -102,6 +130,14 @@ export function createExpeditionActivityFixture(
       },
     ],
     questSnapshots: [],
+    developmentSnapshot: {
+      level: 0,
+      experienceMultiplier: 1,
+      extraLootChance: 0,
+      unlockedItemIdsByEncounter: {},
+      commissions: [],
+    },
+    developmentEvents: [],
     ...overrides,
   };
 }
@@ -135,6 +171,7 @@ export function createGameStateFixture(overrides: Partial<GameState> = {}): Game
     collection: { items: {}, claimedRewardIds: [] },
     guildBank: { stackCounts: {}, equipmentInstanceIds: [] },
     rosterPresets: { presets: {} },
+    dungeonDevelopment: { entries: {} },
     history: {
       completedActivityCount: 0,
       failedActivityCount: 0,

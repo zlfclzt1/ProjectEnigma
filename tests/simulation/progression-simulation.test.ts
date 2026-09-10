@@ -57,7 +57,7 @@ describe("progression simulation", () => {
       expect(scenario.autoLootActions.p50).toBeGreaterThan(0);
       expect(scenario.manualLootActions.p50).toBeGreaterThan(0);
     }
-    expect(baseline.scenarios[0]!.daysToTarget!.p50).toBeGreaterThanOrEqual(10);
+    expect(baseline.scenarios[0]!.daysToTarget!.p50).toBeGreaterThanOrEqual(9);
     expect(baseline.scenarios[0]!.daysToTarget!.p90).toBeLessThanOrEqual(14);
     for (const scenario of baseline.scenarios.slice(1)) {
       expect(scenario.daysToTarget!.p50).toBeGreaterThanOrEqual(5);

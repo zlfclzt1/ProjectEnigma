@@ -1,14 +1,8 @@
 <script setup lang="ts">
-import { computed } from "vue";
 import { useGameStore } from "../../stores/game-store";
 import ActiveExpeditionCard from "../components/ActiveExpeditionCard.vue";
 
 const game = useGameStore();
-const hasPendingQuestSettlement = computed(
-  () =>
-    (game.questSettlement(game.members?.members.map((member) => member.id) ?? [])?.entries.length ??
-      0) > 0,
-);
 </script>
 
 <template>
@@ -28,7 +22,6 @@ const hasPendingQuestSettlement = computed(
           v-for="activity in game.activities.active"
           :key="activity.id"
           :activity="activity"
-          :show-settlement-link="hasPendingQuestSettlement"
         />
       </div>
       <p v-else class="empty">暂时没有队伍在副本里。会长可以去作战室组织一支。</p>
@@ -41,7 +34,6 @@ const hasPendingQuestSettlement = computed(
           v-for="activity in game.activities.history"
           :key="activity.id"
           :activity="activity"
-          :show-settlement-link="hasPendingQuestSettlement"
         />
       </div>
     </section>

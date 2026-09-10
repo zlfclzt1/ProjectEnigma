@@ -1,7 +1,5 @@
 import { autoAssignLoot } from "../src/application/commands/auto-assign-loot";
-import { acceptMemberDungeonQuestCommand } from "../src/application/commands/accept-member-dungeon-quest";
 import { assignLoot } from "../src/application/commands/assign-loot";
-import { claimMemberDungeonQuestCommand } from "../src/application/commands/claim-member-dungeon-quest";
 import { purchaseGuildUpgradeCommand } from "../src/application/commands/purchase-guild-upgrade";
 import { recruitMemberCommand } from "../src/application/commands/recruit-member";
 import { sellLoot } from "../src/application/commands/sell-loot";
@@ -31,6 +29,10 @@ import {
   getExpeditionRunCapacity,
   getNextGuildUpgrade,
 } from "../src/domain/guild/guild-upgrade-rules";
+import {
+  partyCanInvestigateQuest,
+  requiredOptionalNodeIdsForQuest,
+} from "../src/domain/dungeon/dungeon-development";
 
 const DAY_MS = 24 * 60 * 60 * 1_000;
 const REASONABLE_CLEAR_PROBABILITY = 0.55;
@@ -157,9 +159,6 @@ export function simulateProgression(
         break outer;
       }
 
-      if (enableQuests) {
-        acceptEligibleQuests(state, content, participantIds, dungeon.id, currentTime);
-      }
       const selectedOptionalNodeIds = enableQuests
         ? questOptionalNodeIds(state, content, participantIds, dungeon)
         : [];
@@ -197,7 +196,9 @@ export function simulateProgression(
       if (activity.status === "failed") failedDungeonRuns += 1;
       dungeonAttempts[dungeon.id] = (dungeonAttempts[dungeon.id] ?? 0) + attemptedRuns;
       if (enableQuests) {
-        questClaims += claimCompletedQuests(state, content, participantIds, currentTime);
+        questClaims += activity.developmentEvents.filter(
+          (event) => event.type === "completed",
+        ).length;
       }
       const useManualLoot =
         lootHandling === "manual" ||
@@ -426,87 +427,21 @@ function chooseBoostDungeon(
   );
 }
 
-function acceptEligibleQuests(
-  state: GameState,
-  content: ContentRegistry,
-  participantIds: readonly MemberId[],
-  dungeonId: DungeonId,
-  now: number,
-): void {
-  for (const memberId of participantIds) {
-    const member = state.members[memberId]!;
-    const alreadyHandledDungeonQuest = content.quests.some(
-      (quest) => quest.dungeonId === dungeonId && member.quests.entries[quest.id] !== undefined,
-    );
-    if (alreadyHandledDungeonQuest) continue;
-    for (const quest of content.quests) {
-      if (quest.dungeonId !== dungeonId || member.quests.entries[quest.id]) continue;
-      if (member.progression.level < quest.eligibility.minimumLevel) continue;
-      if (
-        quest.eligibility.allowedClassIds.length > 0 &&
-        !quest.eligibility.allowedClassIds.includes(member.identity.classId)
-      ) {
-        continue;
-      }
-      acceptMemberDungeonQuestCommand(
-        { content, clock: { now: () => now } },
-        memberId,
-        quest.id,
-      ).execute(state);
-      break;
-    }
-  }
-}
-
 function questOptionalNodeIds(
   state: GameState,
   content: ContentRegistry,
   participantIds: readonly MemberId[],
   dungeon: DungeonDefinition,
 ): import("../src/domain/shared/ids").DungeonRouteNodeId[] {
-  const encounterIds = new Set(
-    participantIds.flatMap((memberId) =>
-      Object.values(state.members[memberId]!.quests.entries).flatMap((progress) => {
-        if (!progress || progress.status !== "accepted") return [];
-        const quest = content.questById.get(progress.questId);
-        return quest?.completion.type === "encounter-victories"
-          ? quest.completion.encounterIds
-          : [];
+  return [
+    ...new Set(
+      content.quests.flatMap((quest) => {
+        if (state.dungeonDevelopment.entries[quest.id]?.status === "completed") return [];
+        if (!partyCanInvestigateQuest(state, quest, participantIds)) return [];
+        return requiredOptionalNodeIdsForQuest(quest, dungeon.id, content);
       }),
     ),
-  );
-  return dungeon.route.flatMap((node) =>
-    node.type === "optional" && encounterIds.has(node.encounterId) ? [node.id] : [],
-  );
-}
-
-function claimCompletedQuests(
-  state: GameState,
-  content: ContentRegistry,
-  participantIds: readonly MemberId[],
-  now: number,
-): number {
-  let claimed = 0;
-  for (const memberId of participantIds) {
-    const member = state.members[memberId]!;
-    for (const progress of Object.values(member.quests.entries)) {
-      if (!progress || progress.status !== "completed") continue;
-      const quest = content.questById.get(progress.questId)!;
-      const choice = [...quest.rewards.itemChoiceIds]
-        .map((itemId) => content.itemById.get(itemId)!)
-        .sort(
-          (left, right) => right.itemLevel - left.itemLevel || left.id.localeCompare(right.id),
-        )[0]?.id;
-      claimMemberDungeonQuestCommand(
-        { content, clock: { now: () => now } },
-        memberId,
-        quest.id,
-        choice,
-      ).execute(state);
-      claimed += 1;
-    }
-  }
-  return claimed;
+  ];
 }
 
 function manuallyAssignLoot(state: GameState, content: ContentRegistry): void {

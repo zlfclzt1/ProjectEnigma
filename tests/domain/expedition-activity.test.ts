@@ -466,21 +466,23 @@ describe("V2 expedition creation", () => {
     );
     if (result.status !== "committed") throw new Error("Expected committed expedition");
 
-    expect(result.result.questSnapshots).toEqual([
-      {
-        memberId: participant!.id,
-        questId,
-        completion: { type: "encounter-victories", encounterIds: ["oggleflint"] },
-        requiredOptionalNodeIds: [],
-      },
-    ]);
+    expect(result.result.questSnapshots).toEqual([]);
+    expect(result.result.developmentSnapshot.commissions).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          questId,
+          completion: { type: "encounter-victories", encounterIds: ["oggleflint"] },
+        }),
+        expect.objectContaining({ questId: laterQuestId, completion: { type: "dungeon-clear" } }),
+      ]),
+    );
     participant!.quests.entries[laterQuestId] = {
       questId: laterQuestId,
       status: "accepted",
       acceptedAt: 2_001,
       encounterVictoryIds: [],
     };
-    expect(result.result.questSnapshots).toHaveLength(1);
+    expect(result.result.developmentSnapshot.commissions).toHaveLength(2);
   });
 
   it("freezes an accepted cross-dungeon quest whenever this route contains one of its targets", async () => {
@@ -509,16 +511,15 @@ describe("V2 expedition creation", () => {
       { dungeonId: deadminesId, participantIds: [participant.id], requestedRuns: 1 },
     ).execute(state);
 
-    expect(activity.questSnapshots).toEqual([
-      {
-        memberId: participant.id,
+    expect(activity.questSnapshots).toEqual([]);
+    expect(activity.developmentSnapshot.commissions).toEqual([
+      expect.objectContaining({
         questId,
         completion: {
           type: "encounter-victories",
           encounterIds: ["oggleflint", "dm_rhahkzor"],
         },
-        requiredOptionalNodeIds: [],
-      },
+      }),
     ]);
   });
 
@@ -546,7 +547,9 @@ describe("V2 expedition creation", () => {
       { content, clock: new FakeClock(2_000) },
       { dungeonId: shadowforgeId, participantIds: [rescue.participant.id], requestedRuns: 1 },
     ).execute(rescue.state);
-    expect(rescueActivity.questSnapshots.map((snapshot) => snapshot.questId)).toContain(questId);
+    expect(
+      rescueActivity.developmentSnapshot.commissions.map((snapshot) => snapshot.questId),
+    ).toContain(questId);
 
     const princess = preparedState("shadowforge-princess-route");
     const princessActivity = await startExpeditionCommand(
@@ -558,9 +561,9 @@ describe("V2 expedition creation", () => {
         selectedOptionalNodeIds: [princessNodeId],
       },
     ).execute(princess.state);
-    expect(princessActivity.questSnapshots.map((snapshot) => snapshot.questId)).not.toContain(
-      questId,
-    );
+    expect(
+      princessActivity.developmentSnapshot.commissions.map((snapshot) => snapshot.questId),
+    ).not.toContain(questId);
   });
 
   it("replays activity IDs, rolls, and plans deterministically from saved runtime state", async () => {

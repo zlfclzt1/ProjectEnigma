@@ -33,25 +33,9 @@ import { getItemCatalogView } from "../application/queries/get-item-catalog-view
 import { purchaseGuildUpgradeCommand } from "../application/commands/purchase-guild-upgrade";
 import { claimCollectionRewardCommand } from "../application/commands/claim-collection-reward";
 import { removeMemberWishlistTargetCommand } from "../application/commands/remove-member-wishlist-target";
-import { acceptMemberDungeonQuestCommand } from "../application/commands/accept-member-dungeon-quest";
-import {
-  acceptMemberDungeonQuestsCommand,
-  type MemberDungeonQuestAcceptance,
-} from "../application/commands/accept-member-dungeon-quests";
-import { claimMemberDungeonQuestCommand } from "../application/commands/claim-member-dungeon-quest";
-import {
-  claimMemberDungeonQuestsCommand,
-  type MemberDungeonQuestClaim,
-} from "../application/commands/claim-member-dungeon-quests";
-import {
-  abandonMemberDungeonQuestCommand,
-  setMemberDungeonQuestTrackingCommand,
-} from "../application/commands/manage-member-dungeon-quest";
-import { getMemberDungeonQuestsView } from "../application/queries/get-member-dungeon-quests-view";
-import { getDungeonQuestHallView } from "../application/queries/get-dungeon-quest-hall-view";
 import { getExpeditionQuestBriefView } from "../application/queries/get-expedition-quest-brief-view";
-import { getQuestSettlementView } from "../application/queries/get-quest-settlement-view";
 import { getRosterPresetsView } from "../application/queries/get-roster-presets-view";
+import { getDungeonDevelopmentView } from "../application/queries/get-dungeon-development-view";
 import {
   createRosterPresetCommand,
   deleteRosterPresetCommand,
@@ -75,7 +59,6 @@ import type {
   ItemDefinitionId,
   MemberId,
   PendingLootId,
-  QuestId,
   RosterPresetId,
   SpecId,
 } from "../domain/shared/ids";
@@ -180,6 +163,9 @@ export const useGameStore = defineStore("game", () => {
   );
   const rosterPresets = computed(() =>
     stateSnapshot.value && content ? getRosterPresetsView(stateSnapshot.value, content) : null,
+  );
+  const dungeonDevelopment = computed(() =>
+    stateSnapshot.value && content ? getDungeonDevelopmentView(stateSnapshot.value, content) : null,
   );
 
   function refreshSnapshot(): void {
@@ -390,77 +376,22 @@ export const useGameStore = defineStore("game", () => {
       : null;
   }
 
-  function memberDungeonQuests(memberId: MemberId) {
+  function expeditionQuestBrief(
+    dungeonId: DungeonId,
+    participantIds: readonly MemberId[],
+    selectedOptionalNodeIds: readonly import("../domain/shared/ids").DungeonRouteNodeId[] = [],
+    routeVariantId?: import("../domain/shared/ids").DungeonRouteVariantId,
+  ) {
     return stateSnapshot.value && content
-      ? getMemberDungeonQuestsView(stateSnapshot.value, content, memberId)
+      ? getExpeditionQuestBriefView(
+          stateSnapshot.value,
+          content,
+          dungeonId,
+          participantIds,
+          selectedOptionalNodeIds,
+          routeVariantId,
+        )
       : null;
-  }
-
-  function dungeonQuestHall(memberIds: readonly MemberId[]) {
-    return stateSnapshot.value && content
-      ? getDungeonQuestHallView(stateSnapshot.value, content, memberIds)
-      : null;
-  }
-
-  function expeditionQuestBrief(dungeonId: DungeonId, participantIds: readonly MemberId[]) {
-    return stateSnapshot.value && content
-      ? getExpeditionQuestBriefView(stateSnapshot.value, content, dungeonId, participantIds)
-      : null;
-  }
-
-  function questSettlement(memberIds: readonly MemberId[]) {
-    return stateSnapshot.value && content
-      ? getQuestSettlementView(stateSnapshot.value, content, memberIds)
-      : null;
-  }
-
-  async function acceptMemberDungeonQuest(
-    memberId: MemberId,
-    questId: QuestId,
-  ): Promise<GameCommandOutcome<unknown>> {
-    if (!content || !clock) return unavailableOutcome("accept-member-dungeon-quest");
-    return execute(acceptMemberDungeonQuestCommand({ content, clock }, memberId, questId));
-  }
-
-  async function acceptMemberDungeonQuests(
-    acceptances: readonly MemberDungeonQuestAcceptance[],
-  ): Promise<GameCommandOutcome<unknown>> {
-    if (!content || !clock) return unavailableOutcome("accept-member-dungeon-quests");
-    return execute(acceptMemberDungeonQuestsCommand({ content, clock }, acceptances));
-  }
-
-  async function claimMemberDungeonQuest(
-    memberId: MemberId,
-    questId: QuestId,
-    itemDefinitionId?: ItemDefinitionId,
-  ): Promise<GameCommandOutcome<unknown>> {
-    if (!content || !clock) return unavailableOutcome("claim-member-dungeon-quest");
-    return execute(
-      claimMemberDungeonQuestCommand({ content, clock }, memberId, questId, itemDefinitionId),
-    );
-  }
-
-  async function claimMemberDungeonQuests(
-    claims: readonly MemberDungeonQuestClaim[],
-  ): Promise<GameCommandOutcome<unknown>> {
-    if (!content || !clock) return unavailableOutcome("claim-member-dungeon-quests");
-    return execute(claimMemberDungeonQuestsCommand({ content, clock }, claims));
-  }
-
-  async function setMemberDungeonQuestTracking(
-    memberId: MemberId,
-    questId: QuestId,
-    paused: boolean,
-  ): Promise<GameCommandOutcome<unknown>> {
-    if (!clock) return unavailableOutcome("set-member-dungeon-quest-tracking");
-    return execute(setMemberDungeonQuestTrackingCommand(clock, memberId, questId, paused));
-  }
-
-  async function abandonMemberDungeonQuest(
-    memberId: MemberId,
-    questId: QuestId,
-  ): Promise<GameCommandOutcome<unknown>> {
-    return execute(abandonMemberDungeonQuestCommand(memberId, questId));
   }
 
   async function startExpedition(
@@ -564,6 +495,7 @@ export const useGameStore = defineStore("game", () => {
     itemCatalog,
     autoLootPreview,
     rosterPresets,
+    dungeonDevelopment,
     initialize,
     execute,
     tick,
@@ -578,16 +510,7 @@ export const useGameStore = defineStore("game", () => {
     removeMemberWishlistTarget,
     purchaseGuildUpgrade,
     claimCollectionReward,
-    memberDungeonQuests,
-    dungeonQuestHall,
     expeditionQuestBrief,
-    questSettlement,
-    acceptMemberDungeonQuest,
-    acceptMemberDungeonQuests,
-    claimMemberDungeonQuest,
-    claimMemberDungeonQuests,
-    setMemberDungeonQuestTracking,
-    abandonMemberDungeonQuest,
     dungeonPlanning,
     startExpedition,
     createRosterPreset,

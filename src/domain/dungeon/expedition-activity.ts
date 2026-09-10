@@ -20,6 +20,7 @@ import { lockRareRouteSpawns, revealRareRouteNodes } from "./rare-route";
 import { getExpeditionRunCapacity } from "../guild/guild-upgrade-rules";
 import { applyMemberExperience, getMemberLevelCap } from "../member/member-level-cap";
 import { routeForVariant } from "./dungeon-route";
+import { buildExpeditionDevelopmentSnapshot } from "./dungeon-development";
 
 export interface DungeonExperienceConfig {
   readonly baseFraction: number;
@@ -136,6 +137,19 @@ export function createExpeditionActivityHandler(
       const selectedOptionalNodeIds = activeRoute
         .filter((node) => node.type === "optional" && requestedOptionalIds.has(node.id))
         .map((node) => node.id);
+      const developmentSnapshot = buildExpeditionDevelopmentSnapshot(
+        context.state,
+        content,
+        request.dungeonId,
+        request.participantIds,
+        activeRoute.flatMap((node) =>
+          node.type === "required" ||
+          (node.type === "optional" && selectedOptionalNodeIds.includes(node.id))
+            ? [node.encounterId]
+            : [],
+        ),
+        selectedOptionalNodeIds,
+      );
       const previewResult = evaluateExpeditionParty(
         context.state,
         content,
@@ -176,6 +190,8 @@ export function createExpeditionActivityHandler(
                   content,
                   request.dungeonId,
                   request.participantIds,
+                  DEFAULT_DUNGEON_EXPERIENCE_CONFIG,
+                  developmentSnapshot.experienceMultiplier,
                 )
               : {},
           maximumExperiencePerMember: DEFAULT_DUNGEON_EXPERIENCE_CONFIG.maximumFractionPerRun,
@@ -200,47 +216,6 @@ export function createExpeditionActivityHandler(
         runPlans.push(runPlan);
       }
       const firstStage = runPlans[0]!.stages[0]!;
-      const questSnapshots = request.participantIds.flatMap((memberId) => {
-        const member = context.state.members[memberId]!;
-        return Object.values(member.quests.entries).flatMap((progress) => {
-          if (
-            !progress ||
-            progress.status !== "accepted" ||
-            progress.trackingPausedAt !== undefined
-          )
-            return [];
-          const quest = content.questById.get(progress.questId);
-          if (!quest || !questProgressesInDungeon(quest, request.dungeonId, content)) return [];
-          const encounterIds =
-            quest.completion.type === "encounter-victories" ? quest.completion.encounterIds : [];
-          const excludedEncounterIds =
-            quest.completion.type === "encounter-victories"
-              ? (quest.completion.excludedEncounterIds ?? [])
-              : [];
-          if (
-            activeRoute.some(
-              (node) =>
-                node.type === "optional" &&
-                selectedOptionalNodeIds.includes(node.id) &&
-                excludedEncounterIds.includes(node.encounterId),
-            )
-          ) {
-            return [];
-          }
-          return [
-            {
-              memberId,
-              questId: quest.id,
-              completion: structuredClone(quest.completion),
-              requiredOptionalNodeIds: activeRoute.flatMap((node) =>
-                node.type === "optional" && encounterIds.includes(node.encounterId)
-                  ? [node.id]
-                  : [],
-              ),
-            },
-          ];
-        });
-      });
       return {
         id: activityId,
         type: "expedition",
@@ -275,21 +250,12 @@ export function createExpeditionActivityHandler(
           capabilities: previewResult.preview.capabilities,
         },
         runPlans,
-        questSnapshots,
+        questSnapshots: [],
+        developmentSnapshot,
+        developmentEvents: [],
       };
     },
   };
-}
-
-function questProgressesInDungeon(
-  quest: ContentRegistry["quests"][number],
-  dungeonId: StartExpeditionRequest["dungeonId"],
-  content: ContentRegistry,
-): boolean {
-  if (quest.completion.type === "dungeon-clear") return quest.dungeonId === dungeonId;
-  return quest.completion.encounterIds.some(
-    (encounterId) => content.encounterById.get(encounterId)?.dungeonId === dungeonId,
-  );
 }
 
 export function experienceFractions(
@@ -298,6 +264,7 @@ export function experienceFractions(
   dungeonId: StartExpeditionRequest["dungeonId"],
   memberIds: readonly ExpeditionMemberSnapshot["memberId"][],
   config: DungeonExperienceConfig = DEFAULT_DUNGEON_EXPERIENCE_CONFIG,
+  developmentMultiplier = 1,
 ): Partial<Record<ExpeditionMemberSnapshot["memberId"], number>> {
   const dungeon = content.dungeonById.get(dungeonId)!;
   const levels = memberIds.flatMap((memberId) => {
@@ -329,6 +296,7 @@ export function experienceFractions(
       if (member.identity.personalityId === "diligent") fraction *= 1.15;
       if (member.identity.personalityId === "clever") fraction *= 0.9;
       fraction *= boostMultiplier;
+      fraction *= developmentMultiplier;
       return [memberId, Math.min(config.maximumFractionPerRun, fraction)];
     }),
   );
@@ -342,6 +310,7 @@ export function projectExpeditionExperience(
   routeExperienceShare: number,
   requestedRuns: number,
   config: DungeonExperienceConfig = DEFAULT_DUNGEON_EXPERIENCE_CONFIG,
+  developmentMultiplier = 1,
 ): readonly MemberExperienceProjection[] {
   const projectedState = structuredClone(state);
   const initialLevels = new Map(
@@ -361,7 +330,14 @@ export function projectExpeditionExperience(
   const levelCap = getMemberLevelCap(projectedState, content);
 
   for (let run = 0; run < requestedRuns; run += 1) {
-    const fractions = experienceFractions(projectedState, content, dungeonId, memberIds, config);
+    const fractions = experienceFractions(
+      projectedState,
+      content,
+      dungeonId,
+      memberIds,
+      config,
+      developmentMultiplier,
+    );
     for (const memberId of memberIds) {
       const member = projectedState.members[memberId]!;
       applyMemberExperience(

@@ -86,8 +86,6 @@ describe("ten-player expedition UI", () => {
 
     await wrapper.get(".party-preview > button").trigger("click");
     await flushPromises();
-    await wrapper.findAll(".quest-brief footer button")[1]!.trigger("click");
-    await flushPromises();
     expect(game.activities!.active[0]!.participantCount).toBe(10);
     expect(game.activities!.active[0]!.memberNames).toHaveLength(10);
 

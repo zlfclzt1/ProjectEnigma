@@ -20,33 +20,90 @@ export function generateGuaranteedLoot(
   acquiredAt: number,
   ids: IdGenerator,
 ): GeneratedLoot[] {
+  return generateEncounterLoot(activity, stage, lootTable, content, acquiredAt, ids, [], 0);
+}
+
+export function generateEncounterLoot(
+  activity: ExpeditionActivity,
+  stage: ExpeditionEncounterPlan,
+  lootTable: LootTable | undefined,
+  content: ContentRegistry,
+  acquiredAt: number,
+  ids: IdGenerator,
+  unlockedItemIds: readonly ItemDefinitionId[],
+  extraLootChance: number,
+): GeneratedLoot[] {
   const random = new SeededRandomSource(stage.lootSeed);
-  return Array.from({ length: lootTable.guaranteedEquipmentDrops }, (_, dropIndex) => {
-    const definitionId = weightedItem(lootTable, random.next(`drop:${dropIndex}`));
+  const baseItems = lootTable?.items ?? [];
+  const unlockedWeight =
+    baseItems.length > 0
+      ? baseItems.reduce((sum, entry) => sum + entry.weight, 0) / baseItems.length
+      : 1;
+  const unlocked = unlockedItemIds
+    .filter((itemId) => !baseItems.some((entry) => entry.itemId === itemId))
+    .map((itemId) => ({ itemId, weight: unlockedWeight }));
+  const items = [...baseItems, ...unlocked];
+  if (items.length === 0) return [];
+  const guaranteedDrops = lootTable?.guaranteedEquipmentDrops ?? 1;
+  const extraDrops =
+    extraLootChance > 0 && random.next("development-extra-drop") < extraLootChance ? 1 : 0;
+  return Array.from({ length: guaranteedDrops + extraDrops }, (_, dropIndex) => {
+    const definitionId = weightedItem(items, random.next(`drop:${dropIndex}`));
     const randomSuffixId = rollRandomSuffix(content, definitionId, stage.lootSeed, dropIndex);
-    const instance: ItemInstance = {
-      id: asBrandedId<"ItemInstanceId">(ids.next("item")),
-      definitionId,
-      ...(randomSuffixId ? { randomSuffixId } : {}),
-      bound: false,
-      acquiredAt,
-      source: {
-        type: "encounter",
-        activityId: activity.id,
-        dungeonId: activity.dungeonId,
-        encounterId: stage.encounterId,
-      },
-      enchantmentIds: [],
-    };
-    const pending: PendingLoot = {
-      id: asBrandedId<"PendingLootId">(ids.next("pending-loot")),
-      itemInstanceId: instance.id,
-      sourceActivityId: activity.id,
-      eligibleMemberIds: [...activity.participantIds],
-      acquiredAt,
-    };
-    return { instance, pending };
+    return createEncounterLoot(activity, stage, definitionId, randomSuffixId, acquiredAt, ids);
   });
+}
+
+export function generateSpecificEncounterLoot(
+  activity: ExpeditionActivity,
+  stage: ExpeditionEncounterPlan,
+  content: ContentRegistry,
+  acquiredAt: number,
+  ids: IdGenerator,
+  itemIds: readonly ItemDefinitionId[],
+): GeneratedLoot[] {
+  return itemIds.map((definitionId, index) =>
+    createEncounterLoot(
+      activity,
+      stage,
+      definitionId,
+      rollRandomSuffix(content, definitionId, `${stage.lootSeed}:development-cache`, index),
+      acquiredAt,
+      ids,
+    ),
+  );
+}
+
+function createEncounterLoot(
+  activity: ExpeditionActivity,
+  stage: ExpeditionEncounterPlan,
+  definitionId: ItemDefinitionId,
+  randomSuffixId: ItemSuffixDefinition["id"] | undefined,
+  acquiredAt: number,
+  ids: IdGenerator,
+): GeneratedLoot {
+  const instance: ItemInstance = {
+    id: asBrandedId<"ItemInstanceId">(ids.next("item")),
+    definitionId,
+    ...(randomSuffixId ? { randomSuffixId } : {}),
+    bound: false,
+    acquiredAt,
+    source: {
+      type: "encounter",
+      activityId: activity.id,
+      dungeonId: activity.dungeonId,
+      encounterId: stage.encounterId,
+    },
+    enchantmentIds: [],
+  };
+  const pending: PendingLoot = {
+    id: asBrandedId<"PendingLootId">(ids.next("pending-loot")),
+    itemInstanceId: instance.id,
+    sourceActivityId: activity.id,
+    eligibleMemberIds: [...activity.participantIds],
+    acquiredAt,
+  };
+  return { instance, pending };
 }
 
 function rollRandomSuffix(
@@ -61,14 +118,17 @@ function rollRandomSuffix(
   return weightedSuffix(suffixes, random.next("suffix")).id;
 }
 
-function weightedItem(lootTable: LootTable, roll: number): ItemDefinitionId {
-  const total = lootTable.items.reduce((sum, entry) => sum + entry.weight, 0);
+function weightedItem(
+  items: readonly { readonly itemId: ItemDefinitionId; readonly weight: number }[],
+  roll: number,
+): ItemDefinitionId {
+  const total = items.reduce((sum, entry) => sum + entry.weight, 0);
   let cursor = roll * total;
-  for (const entry of lootTable.items) {
+  for (const entry of items) {
     cursor -= entry.weight;
     if (cursor <= 0) return entry.itemId;
   }
-  return lootTable.items.at(-1)!.itemId;
+  return items.at(-1)!.itemId;
 }
 
 function weightedSuffix(

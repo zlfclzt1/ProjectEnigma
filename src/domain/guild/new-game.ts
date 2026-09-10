@@ -16,6 +16,7 @@ import type {
 } from "../shared/ids";
 import { RECRUIT_INTERVAL_MS } from "./recruitment";
 import { createEmptyRosterPresetState } from "./roster-preset";
+import { createEmptyDungeonDevelopmentState } from "../dungeon/dungeon-development";
 
 export interface NewGameDependencies {
   readonly slotId: SaveSlotId;
@@ -87,6 +88,7 @@ export function createNewGame(
     collection,
     guildBank: { stackCounts: {}, equipmentInstanceIds: [] },
     rosterPresets: createEmptyRosterPresetState(),
+    dungeonDevelopment: createEmptyDungeonDevelopmentState(),
     history: {
       completedActivityCount: 0,
       failedActivityCount: 0,

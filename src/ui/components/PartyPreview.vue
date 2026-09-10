@@ -85,6 +85,42 @@ function durationLabel(seconds: number): string {
           <dd>{{ durationLabel(preview.durationSeconds) }}</dd>
         </div>
       </dl>
+      <section v-if="preview.yields" class="yield-preview">
+        <h4>放置收益预览</h4>
+        <div class="yield-grid">
+          <div>
+            <small>经验效率</small>
+            <strong>{{ preview.yields.experienceLevelsPerHour.toFixed(2) }} 级/小时</strong>
+          </div>
+          <div>
+            <small>预计出售收益</small>
+            <strong>{{ preview.yields.saleValuePerHour.toFixed(1) }} G/小时</strong>
+          </div>
+          <div>
+            <small>获得有效提升</small>
+            <strong>{{ probabilityLabel(preview.yields.upgradeChancePerHour) }}/小时</strong>
+          </div>
+        </div>
+        <article v-if="preview.yields.recommendedItem" class="recommended-loot">
+          <span>
+            <small>当前阵容最值得关注</small>
+            <strong>
+              {{ preview.yields.recommendedItem.name }} · 装等
+              {{ preview.yields.recommendedItem.itemLevel }}
+            </strong>
+          </span>
+          <small>{{ preview.yields.recommendedItem.bossNames.join("、") }}</small>
+        </article>
+        <details v-if="preview.yields.rewardPool.length" class="reward-pool">
+          <summary>展开完整路线装备池（{{ preview.yields.rewardPool.length }} 件）</summary>
+          <ul>
+            <li v-for="item in preview.yields.rewardPool" :key="item.id">
+              <span>{{ item.name }} · 装等 {{ item.itemLevel }}</span>
+              <small>{{ item.bossNames.join("、") }}</small>
+            </li>
+          </ul>
+        </details>
+      </section>
       <BossRoute :stages="preview.encounters" />
       <section v-if="optionalRoutes.length || rareRoutes.length" class="route-options">
         <h4>路线安排</h4>
@@ -276,6 +312,76 @@ header > strong {
   background: #090c0d;
   text-align: center;
 }
+.yield-preview {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 10px;
+  border: 1px solid #4d432f;
+  background: #0d0f0e;
+}
+.yield-preview h4 {
+  margin: 0;
+  color: #cdb98d;
+  font-size: 0.72rem;
+}
+.yield-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+.yield-grid div {
+  display: grid;
+  gap: 2px;
+  padding: 7px;
+  background: #080b0c;
+}
+.yield-grid small,
+.recommended-loot small,
+.reward-pool small {
+  color: #7e7568;
+  font-size: 0.58rem;
+}
+.yield-grid strong,
+.recommended-loot strong {
+  color: #d8c6a5;
+  font-size: 0.68rem;
+}
+.recommended-loot {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px;
+  border-left: 2px solid #bd8e3e;
+  background: #17140f;
+}
+.recommended-loot > span {
+  display: grid;
+  gap: 2px;
+}
+.reward-pool {
+  color: #b08b4a;
+  font-size: 0.63rem;
+}
+.reward-pool summary {
+  cursor: pointer;
+}
+.reward-pool ul {
+  display: grid;
+  gap: 4px;
+  padding: 0;
+  margin: 7px 0 0;
+  list-style: none;
+}
+.reward-pool li {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 7px;
+  color: #b9aa90;
+  background: #080a0b;
+}
 dt {
   color: #7e7669;
   font-size: 0.58rem;
@@ -466,7 +572,8 @@ button:disabled {
   opacity: 0.4;
 }
 @media (max-width: 500px) {
-  .metrics {
+  .metrics,
+  .yield-grid {
     grid-template-columns: 1fr 1fr;
   }
 }

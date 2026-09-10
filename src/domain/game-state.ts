@@ -15,8 +15,9 @@ import type {
   SaveSlotId,
 } from "./shared/ids";
 import type { IdGeneratorState, RandomState } from "./shared/runtime-state";
+import type { DungeonDevelopmentState } from "./dungeon/dungeon-development";
 
-export const GAME_STATE_SAVE_VERSION = 12 as const;
+export const GAME_STATE_SAVE_VERSION = 13 as const;
 
 export interface GameState {
   slotId: SaveSlotId;
@@ -33,6 +34,7 @@ export interface GameState {
   collection: CollectionState;
   guildBank: GuildBank;
   rosterPresets: RosterPresetState;
+  dungeonDevelopment: DungeonDevelopmentState;
   history: HistorySummary;
   random: RandomState;
   ids: IdGeneratorState;
@@ -40,7 +42,25 @@ export interface GameState {
   updatedAt: number;
 }
 
-export interface LegacyGameStateV11 extends Omit<GameState, "saveVersion" | "rosterPresets"> {
+export type LegacyExpeditionActivityV12 = Omit<
+  ExpeditionActivity,
+  "developmentSnapshot" | "developmentEvents"
+>;
+
+export type LegacyActivityV12 = Exclude<Activity, ExpeditionActivity> | LegacyExpeditionActivityV12;
+
+export interface LegacyGameStateV12 extends Omit<
+  GameState,
+  "saveVersion" | "dungeonDevelopment" | "activities"
+> {
+  saveVersion: 12;
+  activities: Record<ActivityId, LegacyActivityV12>;
+}
+
+export interface LegacyGameStateV11 extends Omit<
+  LegacyGameStateV12,
+  "saveVersion" | "rosterPresets"
+> {
   saveVersion: 11;
 }
 
@@ -134,6 +154,7 @@ export interface LegacyGameStateV2 extends Omit<
 
 export type PersistedGameState =
   | GameState
+  | LegacyGameStateV12
   | LegacyGameStateV11
   | LegacyGameStateV10
   | LegacyGameStateV9

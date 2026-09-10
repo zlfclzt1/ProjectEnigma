@@ -13,13 +13,17 @@ import type { GameState } from "../game-state";
 import type { CombatReportId, MemberId } from "../shared/ids";
 import { generateCombatReport } from "../combat/report-generator";
 import { DEFAULT_DUNGEON_EXPERIENCE_CONFIG, experienceFractions } from "./expedition-activity";
-import { generateGuaranteedLoot } from "./loot-generation";
+import { generateEncounterLoot, generateSpecificEncounterLoot } from "./loot-generation";
 import { revealRareRouteNodes } from "./rare-route";
-import {
-  completeExpeditionDungeonClearQuests,
-  progressExpeditionQuestsAfterEncounterVictory,
-} from "./expedition-quest-progress";
 import { applyMemberExperience, getMemberLevelCap } from "../member/member-level-cap";
+import {
+  completeDevelopmentAfterDungeonClear,
+  progressDevelopmentAfterEncounter,
+} from "./dungeon-development";
+import type { ItemDefinitionId, QuestId } from "../shared/ids";
+import { evaluateUpgrade } from "../equipment/upgrade-evaluation";
+import { equipmentSellValue } from "../equipment/item-value";
+import { asBrandedId } from "../shared/ids";
 
 export type ExpeditionSettlementResult =
   | {
@@ -91,10 +95,6 @@ export function settleNextExpeditionStage(
     ? content.lootTableById.get(encounter.lootTableId)
     : undefined;
   if (encounter.lootTableId && !lootTable) throw new Error(`首领 ${encounter.id} 缺少掉落表。`);
-  const generatedLoot = lootTable
-    ? generateGuaranteedLoot(activity, stage, lootTable, content, settledAt, ids)
-    : [];
-
   stage.status = "victory";
   stage.settledAt = settledAt;
   const experienceFractionByMember = applyEncounterExperience(
@@ -110,7 +110,48 @@ export function settleNextExpeditionStage(
   state.history.encounterVictoryCounts[encounter.id] =
     (state.history.encounterVictoryCounts[encounter.id] ?? 0) + 1;
   firstKillBonus += applyEncounterVictoryCollectionRewards(state, content, encounter.id);
-  progressExpeditionQuestsAfterEncounterVictory(state, activity, encounter.id, settledAt);
+  const developmentProgress = [
+    ...progressDevelopmentAfterEncounter(state, activity, encounter.id, settledAt),
+  ];
+  if (!run.mainRouteCompleted && requiredStagesCleared(run, dungeon)) {
+    run.mainRouteCompleted = true;
+    state.history.dungeonClearCounts[activity.dungeonId] =
+      (state.history.dungeonClearCounts[activity.dungeonId] ?? 0) + 1;
+    developmentProgress.push(
+      ...completeDevelopmentAfterDungeonClear(state, activity, encounter.id, settledAt),
+    );
+  }
+  const completedQuestIds = developmentProgress
+    .filter((event) => event.completed)
+    .map((event) => event.questId);
+  const generatedLoot = generateEncounterLoot(
+    activity,
+    stage,
+    lootTable,
+    content,
+    settledAt,
+    ids,
+    activity.developmentSnapshot.unlockedItemIdsByEncounter[encounter.id] ?? [],
+    activity.developmentSnapshot.extraLootChance,
+  );
+  const developmentCache = generateSpecificEncounterLoot(
+    activity,
+    stage,
+    content,
+    settledAt,
+    ids,
+    selectDevelopmentCacheItems(state, content, activity, stage, completedQuestIds),
+  );
+  generatedLoot.push(...developmentCache);
+  recordDevelopmentEvents(
+    activity,
+    content,
+    encounter.id,
+    settledAt,
+    run.runNumber,
+    developmentProgress,
+    developmentCache.map((entry) => entry.instance.id),
+  );
   for (const { instance, pending } of generatedLoot) {
     state.itemInstances[instance.id] = instance;
     state.pendingLoot[pending.id] = pending;
@@ -130,12 +171,6 @@ export function settleNextExpeditionStage(
       itemInstanceIds: generatedLoot.map(({ instance }) => instance.id),
     },
   });
-  if (!run.mainRouteCompleted && requiredStagesCleared(run, dungeon)) {
-    run.mainRouteCompleted = true;
-    state.history.dungeonClearCounts[activity.dungeonId] =
-      (state.history.dungeonClearCounts[activity.dungeonId] ?? 0) + 1;
-    completeExpeditionDungeonClearQuests(state, activity, settledAt);
-  }
   unlockEligibleDungeons(state, content);
 
   advanceAfterVictory(state, content, scheduler, activity, settledAt);
@@ -148,6 +183,122 @@ export function settleNextExpeditionStage(
     itemInstanceIds: generatedLoot.map(({ instance }) => instance.id),
     reportId: stage.report.id,
   };
+}
+
+function selectDevelopmentCacheItems(
+  state: GameState,
+  content: ContentRegistry,
+  activity: ExpeditionActivity,
+  stage: ExpeditionEncounterPlan,
+  completedQuestIds: readonly QuestId[],
+): readonly ItemDefinitionId[] {
+  if (completedQuestIds.length === 0) return [];
+  const candidates = [
+    ...new Set(
+      completedQuestIds.flatMap((questId) => {
+        const quest = content.questById.get(questId);
+        return quest ? [...quest.rewards.fixedItemIds, ...quest.rewards.itemChoiceIds] : [];
+      }),
+    ),
+  ];
+  const optionalCompletions = completedQuestIds.filter((questId) => {
+    const snapshot = activity.developmentSnapshot.commissions.find(
+      (commission) => commission.questId === questId,
+    );
+    return Boolean(
+      stage.routeNodeId && snapshot?.requiredOptionalNodeIds.includes(stage.routeNodeId),
+    );
+  }).length;
+  const count = Math.min(candidates.length, 1 + optionalCompletions);
+  return candidates
+    .map((itemId) => ({ itemId, score: developmentRewardScore(state, content, activity, itemId) }))
+    .sort((left, right) => right.score - left.score || left.itemId.localeCompare(right.itemId))
+    .slice(0, count)
+    .map((entry) => entry.itemId);
+}
+
+function developmentRewardScore(
+  state: GameState,
+  content: ContentRegistry,
+  activity: ExpeditionActivity,
+  itemId: ItemDefinitionId,
+): number {
+  const definition = content.itemById.get(itemId);
+  if (!definition) return Number.NEGATIVE_INFINITY;
+  const synthetic: ItemInstance = {
+    id: asBrandedId<"ItemInstanceId">(`development-preview:${itemId}`),
+    definitionId: itemId,
+    bound: false,
+    acquiredAt: activity.createdAt,
+    source: { type: "grant", reasonId: "development-preview" },
+    enchantmentIds: [],
+  };
+  let wishlist = 0;
+  let equippable = 0;
+  let bestUpgrade = 0;
+  for (const memberId of activity.participantIds) {
+    const member = state.members[memberId];
+    if (!member) continue;
+    if (member.wishlist.entries.some((entry) => entry.itemDefinitionId === itemId)) wishlist = 1;
+    let evaluation;
+    try {
+      evaluation = evaluateUpgrade(member, synthetic, state, content);
+    } catch {
+      continue;
+    }
+    if (!evaluation.equippable) continue;
+    equippable = 1;
+    bestUpgrade = Math.max(bestUpgrade, evaluation.recommendationScore);
+  }
+  const uncollected = state.collection.items[itemId] ? 0 : 1;
+  return (
+    wishlist * 1_000_000_000 +
+    equippable * 1_000_000 +
+    Math.max(0, bestUpgrade) * 1_000 +
+    uncollected * 100 +
+    equipmentSellValue(definition)
+  );
+}
+
+function recordDevelopmentEvents(
+  activity: ExpeditionActivity,
+  content: ContentRegistry,
+  encounterId: ExpeditionEncounterPlan["encounterId"],
+  occurredAt: number,
+  runNumber: number,
+  events: readonly import("./dungeon-development").CommissionProgressEvent[],
+  cacheItemInstanceIds: readonly ItemInstance["id"][],
+): void {
+  let cacheRecorded = false;
+  for (const event of events) {
+    const quest = content.questById.get(event.questId);
+    if (!quest) continue;
+    if (event.discovered && !event.completed) {
+      activity.developmentEvents.push({
+        id: `${activity.id}:${occurredAt}:${event.questId}:clue`,
+        type: "clue",
+        questId: event.questId,
+        occurredAt,
+        runNumber,
+        encounterId,
+        text: `队伍发现了“${quest.name.zhCN}”的调查线索。`,
+        itemInstanceIds: [],
+      });
+    }
+    activity.developmentEvents.push({
+      id: `${activity.id}:${occurredAt}:${event.questId}:${event.completed ? "completed" : "progress"}`,
+      type: event.completed ? "completed" : "progress",
+      questId: event.questId,
+      occurredAt,
+      runNumber,
+      encounterId,
+      text: event.completed
+        ? `远征委托“${quest.name.zhCN}”开发完成，相关装备已纳入副本掉落。`
+        : `远征委托“${quest.name.zhCN}”取得进展（${event.progress}/${event.required}）。`,
+      itemInstanceIds: event.completed && !cacheRecorded ? [...cacheItemInstanceIds] : [],
+    });
+    if (event.completed) cacheRecorded = true;
+  }
 }
 
 function applyEncounterVictoryCollectionRewards(
@@ -259,6 +410,8 @@ function advanceAfterVictory(
     content,
     activity.dungeonId,
     activity.participantIds,
+    DEFAULT_DUNGEON_EXPERIENCE_CONFIG,
+    activity.developmentSnapshot.experienceMultiplier,
   );
   nextRun.maximumExperiencePerMember = DEFAULT_DUNGEON_EXPERIENCE_CONFIG.maximumFractionPerRun;
   nextRun.experienceAwardedByMember = {};

@@ -6,6 +6,7 @@ import type {
   DungeonRouteNodeId,
   DungeonRouteVariantId,
   GuildUpgradeId,
+  ItemDefinitionId,
   MemberId,
   QuestId,
 } from "../../domain/shared/ids";
@@ -16,8 +17,19 @@ import {
   getNextGuildUpgrade,
 } from "../../domain/guild/guild-upgrade-rules";
 import { getPartyPreview } from "./get-party-preview";
-import { projectExpeditionExperience } from "../../domain/dungeon/expedition-activity";
+import {
+  DEFAULT_DUNGEON_EXPERIENCE_CONFIG,
+  projectExpeditionExperience,
+} from "../../domain/dungeon/expedition-activity";
 import { getMemberLevelCap } from "../../domain/member/member-level-cap";
+import {
+  getDungeonDevelopmentSummary,
+  unlockedDevelopmentItemsByEncounter,
+} from "../../domain/dungeon/dungeon-development";
+import type { ItemInstance } from "../../domain/equipment/item-instance";
+import { asBrandedId } from "../../domain/shared/ids";
+import { evaluateUpgrade } from "../../domain/equipment/upgrade-evaluation";
+import { equipmentSellValue } from "../../domain/equipment/item-value";
 
 export interface DungeonOptionView {
   readonly id: DungeonId;
@@ -108,6 +120,23 @@ export interface PartyPreviewView {
     readonly projectedLevel: number;
     readonly projectedExperience: number;
   }[];
+  readonly yields: {
+    readonly experienceLevelsPerHour: number;
+    readonly saleValuePerHour: number;
+    readonly upgradeChancePerHour: number;
+    readonly recommendedItem: {
+      readonly id: ItemDefinitionId;
+      readonly name: string;
+      readonly itemLevel: number;
+      readonly bossNames: readonly string[];
+    } | null;
+    readonly rewardPool: readonly {
+      readonly id: ItemDefinitionId;
+      readonly name: string;
+      readonly itemLevel: number;
+      readonly bossNames: readonly string[];
+    }[];
+  };
 }
 
 export interface OptionalRouteNodeView {
@@ -383,7 +412,7 @@ export function getDungeonPlanningView(
   let mechanicReadiness: PartyMechanicReadinessView[] = [];
   let optionalRoutes: OptionalRouteNodeView[] = [];
   let rareRoutes: RareRouteNodeView[] = [];
-  let questRouteWarnings: QuestRouteWarningView[] = [];
+  const questRouteWarnings: QuestRouteWarningView[] = [];
   let routeVariants: DungeonRouteVariantView[] = [];
   let selectedRouteVariantId: DungeonRouteVariantId | null = null;
   const maximumRuns = getExpeditionRunCapacity(state, content);
@@ -404,49 +433,6 @@ export function getDungeonPlanningView(
       selected: variant.id === selectedRouteVariantId,
     }));
     const selectedOptionalIds = new Set(selectedOptionalNodeIds);
-    questRouteWarnings = selectedMemberIds.flatMap((memberId) => {
-      const member = state.members[memberId];
-      if (!member) return [];
-      return Object.values(member.quests.entries).flatMap((progress) => {
-        if (!progress || progress.status !== "accepted" || progress.trackingPausedAt !== undefined)
-          return [];
-        const quest = content.questById.get(progress.questId);
-        if (!quest) return [];
-        const encounterIds =
-          quest.completion.type === "encounter-victories" ? quest.completion.encounterIds : [];
-        if (
-          quest.completion.type === "dungeon-clear"
-            ? quest.dungeonId !== selectedDungeon.id
-            : !encounterIds.some(
-                (encounterId) =>
-                  content.encounterById.get(encounterId)?.dungeonId === selectedDungeon.id,
-              )
-        ) {
-          return [];
-        }
-        const missingNodes = dungeonDefinition.route.filter(
-          (node) =>
-            node.type === "optional" &&
-            encounterIds.includes(node.encounterId) &&
-            !selectedOptionalIds.has(node.id),
-        );
-        if (missingNodes.length === 0) return [];
-        const bossNames = missingNodes.map(
-          (node) => content.encounterById.get(node.encounterId)?.name.zhCN ?? node.encounterId,
-        );
-        return [
-          {
-            memberId,
-            memberName: member.identity.name,
-            questId: quest.id,
-            questName: quest.name.zhCN,
-            optionalNodeIds: missingNodes.map((node) => node.id),
-            bossNames,
-            message: `${member.identity.name}的任务“${quest.name.zhCN}”需要挑战可选首领${bossNames.join("、")}。`,
-          },
-        ];
-      });
-    });
     optionalRoutes = dungeonDefinition.route.flatMap((node) => {
       if (node.type !== "optional") return [];
       const encounter = content.encounterById.get(node.encounterId)!;
@@ -555,6 +541,28 @@ export function getDungeonPlanningView(
             mechanicView(content, encounter.encounterId, mechanic),
           ),
         );
+        const development = getDungeonDevelopmentSummary(state, content, selectedDungeon.id);
+        const experience = projectExpeditionExperience(
+          state,
+          content,
+          selectedDungeon.id,
+          selectedMemberIds,
+          result.preview.encounters.reduce(
+            (sum, encounter) =>
+              sum + (content.encounterById.get(encounter.encounterId)?.experienceShare ?? 0),
+            0,
+          ),
+          requestedRuns,
+          DEFAULT_DUNGEON_EXPERIENCE_CONFIG,
+          development.experienceMultiplier,
+        ).map((projection) => {
+          const member = state.members[projection.memberId]!;
+          return {
+            ...projection,
+            memberName: member.identity.name,
+            currentLevel: member.progression.level,
+          };
+        });
         preview = {
           formulaVersion: result.preview.formulaVersion,
           levelCap: getMemberLevelCap(state, content),
@@ -577,25 +585,19 @@ export function getDungeonPlanningView(
               result.preview.durationSeconds +
               rareRoutes.reduce((sum, route) => sum + (route.durationSeconds ?? 0), 0),
           },
-          experience: projectExpeditionExperience(
+          experience,
+          yields: projectYieldPreview(
             state,
             content,
             selectedDungeon.id,
             selectedMemberIds,
-            result.preview.encounters.reduce(
-              (sum, encounter) =>
-                sum + (content.encounterById.get(encounter.encounterId)?.experienceShare ?? 0),
-              0,
-            ),
+            result.preview.encounters,
+            result.preview.durationSeconds,
             requestedRuns,
-          ).map((projection) => {
-            const member = state.members[projection.memberId]!;
-            return {
-              ...projection,
-              memberName: member.identity.name,
-              currentLevel: member.progression.level,
-            };
-          }),
+            result.preview.clearProbability,
+            experience.reduce((sum, member) => sum + member.experienceFraction, 0),
+            development.extraLootChance,
+          ),
         };
       } else {
         issues.push(...result.issues.map((issue) => issue.message));
@@ -638,6 +640,136 @@ export function getDungeonPlanningView(
     issues: [...new Set(issues)],
     canStart: issues.length === 0 && preview !== null,
   };
+}
+
+function projectYieldPreview(
+  state: GameState,
+  content: ContentRegistry,
+  dungeonId: DungeonId,
+  memberIds: readonly MemberId[],
+  encounters: readonly { readonly encounterId: string; readonly probability: number }[],
+  durationSeconds: number,
+  requestedRuns: number,
+  clearProbability: number,
+  totalProjectedExperience: number,
+  extraLootChance: number,
+): PartyPreviewView["yields"] {
+  const unlocked = unlockedDevelopmentItemsByEncounter(state, content, dungeonId);
+  const rewardSources = new Map<
+    ItemDefinitionId,
+    { readonly score: number; readonly bossNames: Set<string> }
+  >();
+  let expectedSaleValuePerRun = 0;
+  let noUpgradePerRun = 1;
+  for (const preview of encounters) {
+    const encounter = content.encounterById.get(
+      preview.encounterId as ContentRegistry["encounters"][number]["id"],
+    );
+    if (!encounter) continue;
+    const table = encounter.lootTableId
+      ? content.lootTableById.get(encounter.lootTableId)
+      : undefined;
+    const baseItems = table?.items ?? [];
+    const unlockedWeight =
+      baseItems.length > 0
+        ? baseItems.reduce((sum, entry) => sum + entry.weight, 0) / baseItems.length
+        : 1;
+    const pool = [
+      ...baseItems,
+      ...(unlocked[encounter.id] ?? [])
+        .filter((itemId) => !baseItems.some((entry) => entry.itemId === itemId))
+        .map((itemId) => ({ itemId, weight: unlockedWeight })),
+    ];
+    if (pool.length === 0) continue;
+    const totalWeight = pool.reduce((sum, entry) => sum + entry.weight, 0);
+    let upgradeWeight = 0;
+    let averageSaleValue = 0;
+    for (const entry of pool) {
+      const definition = content.itemById.get(entry.itemId);
+      if (!definition) continue;
+      const score = previewItemScore(state, content, memberIds, entry.itemId);
+      if (score > 0) upgradeWeight += entry.weight;
+      averageSaleValue += equipmentSellValue(definition) * (entry.weight / totalWeight);
+      const source = rewardSources.get(entry.itemId) ?? { score, bossNames: new Set<string>() };
+      source.bossNames.add(encounter.name.zhCN);
+      rewardSources.set(entry.itemId, source);
+    }
+    const dropCount = (table?.guaranteedEquipmentDrops ?? 1) + extraLootChance;
+    expectedSaleValuePerRun += preview.probability * averageSaleValue * dropCount;
+    const upgradePerDrop = upgradeWeight / totalWeight;
+    const encounterUpgradeChance =
+      preview.probability * (1 - Math.pow(1 - upgradePerDrop, dropCount));
+    noUpgradePerRun *= 1 - encounterUpgradeChance;
+  }
+  const rewardPool = [...rewardSources.entries()]
+    .map(([itemId, entry]) => {
+      const item = content.itemById.get(itemId)!;
+      return {
+        id: itemId,
+        name: item.name.zhCN,
+        itemLevel: item.itemLevel,
+        bossNames: [...entry.bossNames],
+        score: entry.score,
+      };
+    })
+    .sort((left, right) => right.score - left.score || left.name.localeCompare(right.name));
+  const runSeconds = Math.max(1, durationSeconds);
+  const runsPerHour = 3_600 / runSeconds;
+  const upgradeChancePerRun = 1 - noUpgradePerRun;
+  const recommended = rewardPool[0];
+  return {
+    experienceLevelsPerHour:
+      (totalProjectedExperience / Math.max(1, requestedRuns)) * runsPerHour * clearProbability,
+    saleValuePerHour: expectedSaleValuePerRun * runsPerHour,
+    upgradeChancePerHour: 1 - Math.pow(1 - upgradeChancePerRun, runsPerHour),
+    recommendedItem: recommended
+      ? {
+          id: recommended.id,
+          name: recommended.name,
+          itemLevel: recommended.itemLevel,
+          bossNames: recommended.bossNames,
+        }
+      : null,
+    rewardPool: rewardPool.map((item) => ({
+      id: item.id,
+      name: item.name,
+      itemLevel: item.itemLevel,
+      bossNames: item.bossNames,
+    })),
+  };
+}
+
+function previewItemScore(
+  state: GameState,
+  content: ContentRegistry,
+  memberIds: readonly MemberId[],
+  itemId: ItemDefinitionId,
+): number {
+  const synthetic: ItemInstance = {
+    id: asBrandedId<"ItemInstanceId">(`yield-preview:${itemId}`),
+    definitionId: itemId,
+    bound: false,
+    acquiredAt: state.updatedAt,
+    source: { type: "grant", reasonId: "yield-preview" },
+    enchantmentIds: [],
+  };
+  let best = 0;
+  for (const memberId of memberIds) {
+    const member = state.members[memberId];
+    if (!member) continue;
+    const wishlist = member.wishlist.entries.some((entry) => entry.itemDefinitionId === itemId);
+    let evaluation;
+    try {
+      evaluation = evaluateUpgrade(member, synthetic, state, content);
+    } catch {
+      continue;
+    }
+    if (wishlist) best = Math.max(best, 1_000_000);
+    if (evaluation.equippable && evaluation.primaryResponsibilityDelta > 1e-9) {
+      best = Math.max(best, 1_000 + evaluation.recommendationScore);
+    }
+  }
+  return best;
 }
 
 function projectRunCapacityUpgrade(

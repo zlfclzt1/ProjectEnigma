@@ -10,97 +10,72 @@ import { FakeClock } from "../helpers/runtime-fakes";
 import { useGameStore } from "../../src/stores/game-store";
 import QuestsPage from "../../src/ui/pages/QuestsPage.vue";
 
-describe("quests page", () => {
+describe("dungeon development archive", () => {
   beforeEach(() => setActivePinia(createPinia()));
 
-  it("groups guild quests and approves all eligible members in one action", async () => {
+  async function setup(seed: string) {
     const game = useGameStore();
     await game.initialize(() =>
       loadOrCreateV2Client({
         saves: new MemorySaveRepository(),
         content: loadBrowserContentRegistry(),
         clock: new FakeClock(1_000),
-        slotId: asBrandedId<"SaveSlotId">("quests-page"),
-        seed: "quests-page",
+        slotId: asBrandedId<"SaveSlotId">(seed),
+        seed,
       }),
     );
+    return game;
+  }
+
+  it("shows fuzzy clues without task-management controls", async () => {
+    await setup("development-archive-clues");
     const wrapper = mount(QuestsPage);
     await flushPromises();
 
-    expect(wrapper.text()).toContain("归还背包");
-    expect(wrapper.text()).toContain("羽珠护腕 / 草原狮护腕");
-    expect(wrapper.text()).toContain("公会联络人 · 艾琳");
-    expect(wrapper.text()).toMatch(/申请|这趟让我去|顺路处理/);
-    expect(wrapper.get(".status-board").text()).toContain("待批准");
-    expect(wrapper.get(".approve-button").text()).toContain("批准选中申请（10）");
-    await wrapper.get(".approve-button").trigger("click");
-    await flushPromises();
-    expect(wrapper.text()).toContain("已批准 10 项成员任务");
-    expect(
-      game
-        .memberDungeonQuests(game.members!.members[0]!.id)
-        ?.quests.find((quest) => quest.id === "rfc_returning_lost_satchel")?.status,
-    ).toBe("accepted");
-    expect(game.dungeonQuestHall(game.members!.members.map((member) => member.id))?.totals).toEqual(
-      {
-        pendingApproval: 0,
-        inProgress: 10,
-        pendingClaim: 0,
-      },
-    );
-
-    await wrapper.findAll(".status-board button")[1]!.trigger("click");
-    await wrapper.findAll(".details-toggle")[0]!.trigger("click");
-    await wrapper.findAll(".tracking-actions button")[0]!.trigger("click");
-    await flushPromises();
-    expect(wrapper.text()).toContain("任务已暂缓跟踪");
-    expect(
-      game
-        .memberDungeonQuests(game.members!.members[0]!.id)
-        ?.quests.find((quest) => quest.id === "rfc_returning_lost_satchel")?.trackingPaused,
-    ).toBe(true);
+    expect(wrapper.text()).toContain("副本开发档案");
+    expect(wrapper.text()).toContain("未查明的远征线索");
+    expect(wrapper.text()).not.toContain("归还背包");
+    expect(wrapper.text()).not.toContain("接取");
+    expect(wrapper.text()).not.toContain("领取奖励");
+    expect(wrapper.find(".approve-button").exists()).toBe(false);
   });
 
-  it("opens a settlement meeting with recommended rewards and claims them together", async () => {
-    const game = useGameStore();
-    await game.initialize(() =>
-      loadOrCreateV2Client({
-        saves: new MemorySaveRepository(),
-        content: loadBrowserContentRegistry(),
-        clock: new FakeClock(1_000),
-        slotId: asBrandedId<"SaveSlotId">("quest-settlement-page"),
-        seed: "quest-settlement-page",
-      }),
-    );
-    const member = game.members!.members[0]!;
+  it("reveals completed commissions, permanent bonuses, and Boss drop assignments", async () => {
+    const game = await setup("development-archive-complete");
     await game.execute({
-      type: "prepare-quest-settlement-page",
+      type: "prepare-development-archive",
       execute(draft) {
-        const questId = asBrandedId<"QuestId">("rfc_returning_lost_satchel");
-        draft.members[member.id]!.quests.entries[questId] = {
-          questId,
+        const satchelId = asBrandedId<"QuestId">("rfc_returning_lost_satchel");
+        const powerId = asBrandedId<"QuestId">("rfc_power_to_destroy");
+        draft.dungeonDevelopment.entries[satchelId] = {
+          questId: satchelId,
           status: "completed",
-          acceptedAt: 1_000,
+          discoveredAt: 1_500,
           completedAt: 2_000,
+          completionEncounterId: asBrandedId<"EncounterId">("oggleflint"),
+          encounterVictoryIds: [asBrandedId<"EncounterId">("oggleflint")],
+        };
+        draft.dungeonDevelopment.entries[powerId] = {
+          questId: powerId,
+          status: "completed",
+          discoveredAt: 1_500,
+          completedAt: 2_500,
+          completionEncounterId: asBrandedId<"EncounterId">("bazzalan"),
           encounterVictoryIds: [],
         };
       },
     });
     const wrapper = mount(QuestsPage);
-    await wrapper.findAll(".status-board button")[2]!.trigger("click");
-    await wrapper.get(".approve-button").trigger("click");
-
-    const meeting = wrapper.get(".settlement-meeting");
-    expect(meeting.text()).toContain("系统推荐");
-    expect(meeting.text()).toContain(member.name);
-    await meeting.get("footer .primary").trigger("click");
     await flushPromises();
 
-    expect(wrapper.text()).toContain("结算会完成");
-    expect(
-      game
-        .memberDungeonQuests(member.id)
-        ?.quests.find((quest) => quest.id === "rfc_returning_lost_satchel")?.status,
-    ).toBe("claimed");
+    expect(wrapper.text()).toContain("归还背包");
+    expect(wrapper.text()).toContain("毁灭之力");
+    expect(wrapper.text()).toContain("开发 5 级");
+    expect(wrapper.text()).toContain("+20%");
+    expect(wrapper.text()).toContain("+15%");
+    const details = wrapper.findAll(".commission details")[0]!;
+    await details.find("summary").trigger("click");
+    expect(details.text()).toContain("奥格弗林特");
+    expect(details.text()).toContain("羽珠护腕");
   });
 });

@@ -16,6 +16,7 @@ import type {
   RecipeId,
   SpecId,
   TrainingDefinitionId,
+  QuestId,
 } from "../shared/ids";
 import type { EquipmentSlot } from "../equipment/equipment-slot";
 import type { CombatCapabilityValues, CombatUtilityProfile } from "../combat/combat-profile";
@@ -52,6 +53,33 @@ export interface ExpeditionActivity extends ActivityBase<"expedition"> {
   partySnapshot: ExpeditionPartySnapshot;
   runPlans: ExpeditionRunPlan[];
   questSnapshots: ExpeditionMemberQuestSnapshot[];
+  developmentSnapshot: ExpeditionDevelopmentSnapshot;
+  developmentEvents: ExpeditionDevelopmentEvent[];
+}
+
+export interface ExpeditionDevelopmentSnapshot {
+  level: number;
+  experienceMultiplier: number;
+  extraLootChance: number;
+  unlockedItemIdsByEncounter: Partial<Record<EncounterId, ItemDefinitionId[]>>;
+  commissions: ExpeditionCommissionSnapshot[];
+}
+
+export interface ExpeditionCommissionSnapshot {
+  questId: QuestId;
+  completion: DungeonQuestCompletion;
+  requiredOptionalNodeIds: DungeonRouteNodeId[];
+}
+
+export interface ExpeditionDevelopmentEvent {
+  id: string;
+  type: "clue" | "progress" | "completed";
+  questId: QuestId;
+  occurredAt: number;
+  runNumber: number;
+  encounterId: EncounterId;
+  text: string;
+  itemInstanceIds: ItemInstanceId[];
 }
 
 export interface ExpeditionMemberQuestSnapshot {

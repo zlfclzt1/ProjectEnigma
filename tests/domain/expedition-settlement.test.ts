@@ -134,49 +134,36 @@ describe("expedition settlement", () => {
     expect(activity.runPlans[0]!.experienceAwardedByMember?.[member.id]).toBe(2);
   });
 
-  it("keeps completed Boss quest progress when the party wipes later", async () => {
+  it("keeps completed guild investigation progress and its cache when the party wipes later", async () => {
     const state = newState("quest-progress-before-wipe");
     const participant = Object.values(state.members)[0]!;
     const bossQuestId = asBrandedId<"QuestId">("rfc_returning_lost_satchel");
     const clearQuestId = asBrandedId<"QuestId">("rfc_power_to_destroy");
-    for (const questId of [bossQuestId, clearQuestId]) {
-      participant.quests.entries[questId] = {
-        questId,
-        status: "accepted",
-        acceptedAt: 1_000,
-        encounterVictoryIds: [],
-      };
-    }
     const activity = await startExpedition(state, [participant.id]);
     forceAll(activity, "victory");
     activity.runPlans[0]!.stages[1]!.successRoll = 0.99;
     const service = new SettlementService(content);
 
     service.settleDueActivities(state, activity.nextSettlementAt);
-    expect(participant.quests.entries[bossQuestId]).toMatchObject({
+    expect(state.dungeonDevelopment.entries[bossQuestId]).toMatchObject({
       status: "completed",
       encounterVictoryIds: ["oggleflint"],
     });
-    const completedAt = participant.quests.entries[bossQuestId]!.completedAt;
+    const completedAt = state.dungeonDevelopment.entries[bossQuestId]!.completedAt;
+    const cacheIds = activity.developmentEvents.flatMap((event) => event.itemInstanceIds);
+    expect(cacheIds).toHaveLength(1);
 
     service.settleDueActivities(state, activity.nextSettlementAt);
     expect(activity.status).toBe("failed");
-    expect(participant.quests.entries[bossQuestId]!.completedAt).toBe(completedAt);
-    expect(participant.quests.entries[clearQuestId]!.status).toBe("accepted");
+    expect(state.dungeonDevelopment.entries[bossQuestId]!.completedAt).toBe(completedAt);
+    expect(state.dungeonDevelopment.entries[clearQuestId]).toBeUndefined();
+    expect(cacheIds.every((itemId) => state.itemInstances[itemId])).toBe(true);
   });
 
-  it("completes a dungeon-clear quest once across repeated runs and excludes nonparticipants", async () => {
+  it("completes a guild dungeon-clear commission only once across repeated runs", async () => {
     const state = newState("quest-clear-repeat");
-    const [participant, absentMember] = Object.values(state.members);
+    const [participant] = Object.values(state.members);
     const questId = asBrandedId<"QuestId">("rfc_power_to_destroy");
-    for (const member of [participant!, absentMember!]) {
-      member.quests.entries[questId] = {
-        questId,
-        status: "accepted",
-        acceptedAt: 1_000,
-        encounterVictoryIds: [],
-      };
-    }
     const activity = await startExpedition(state, [participant!.id], 2);
     forceAll(activity, "victory");
     const service = new SettlementService(content);
@@ -184,14 +171,14 @@ describe("expedition settlement", () => {
     for (let index = 0; index < 4; index += 1) {
       service.settleDueActivities(state, activity.nextSettlementAt);
     }
-    expect(participant!.quests.entries[questId]).toMatchObject({ status: "completed" });
-    const firstCompletedAt = participant!.quests.entries[questId]!.completedAt;
-    expect(absentMember!.quests.entries[questId]!.status).toBe("accepted");
+    expect(state.dungeonDevelopment.entries[questId]).toMatchObject({ status: "completed" });
+    const firstCompletedAt = state.dungeonDevelopment.entries[questId]!.completedAt;
+    expect(activity.developmentEvents.filter((event) => event.questId === questId)).toHaveLength(1);
 
     service.settleDueActivities(state, Number.MAX_SAFE_INTEGER);
     expect(activity.status).toBe("completed");
-    expect(participant!.quests.entries[questId]!.completedAt).toBe(firstCompletedAt);
-    expect(absentMember!.quests.entries[questId]!.status).toBe("accepted");
+    expect(state.dungeonDevelopment.entries[questId]!.completedAt).toBe(firstCompletedAt);
+    expect(activity.developmentEvents.filter((event) => event.questId === questId)).toHaveLength(1);
   });
 
   it("skips absent rare nodes without rewards and settles spawned rare loot normally", async () => {
@@ -290,15 +277,20 @@ describe("expedition settlement", () => {
     expect(firstReport.rewards.itemInstanceIds).toEqual(first.settled[0]!.itemInstanceIds);
     expect(activity.activeEncounterIndex).toBe(1);
     expect(state.guild.funds).toBe(fundsBefore + 10 + 20);
-    expect(first.settled[0]!.itemInstanceIds).toEqual([]);
-    expect(Object.values(state.pendingLoot)).toHaveLength(0);
-    expect(Object.values(state.itemInstances)).toHaveLength(85);
+    expect(first.settled[0]!.itemInstanceIds).toHaveLength(1);
+    expect(activity.developmentEvents.at(-1)).toMatchObject({
+      type: "completed",
+      questId: "rfc_returning_lost_satchel",
+      itemInstanceIds: first.settled[0]!.itemInstanceIds,
+    });
+    expect(Object.values(state.pendingLoot)).toHaveLength(1);
+    expect(Object.values(state.itemInstances)).toHaveLength(86);
     const second = service.settleDueActivities(state, activity.nextSettlementAt);
     expect(second.settled[0]).toMatchObject({
       encounterId: "taragaman_the_hungerer",
       outcome: "victory",
     });
-    expect(Object.values(state.pendingLoot)).toHaveLength(1);
+    expect(Object.values(state.pendingLoot)).toHaveLength(2);
     const acquiredInstance = state.itemInstances[second.settled[0]!.itemInstanceIds[0]!]!;
     expect(state.collection.items[acquiredInstance.definitionId]).toEqual({
       acquisitionCount: 1,
@@ -390,14 +382,19 @@ describe("expedition settlement", () => {
     const settledActivity = settledState.activities[activity.id] as ExpeditionActivity;
     expect(settledActivity.status).toBe("completed");
     expect(settledActivity.completedRuns).toBe(2);
-    expect(Object.values(settledState.pendingLoot)).toHaveLength(4);
+    expect(Object.values(settledState.pendingLoot)).toHaveLength(6);
+    expect(
+      settledActivity.developmentEvents.filter((event) => event.type === "completed"),
+    ).toHaveLength(2);
     expect(
       result.result.settled
         .filter((event) => event.itemInstanceIds.length > 0)
         .map((event) => event.encounterId),
     ).toEqual([
+      "oggleflint",
       "taragaman_the_hungerer",
       "jergosh_the_invoker",
+      "bazzalan",
       "taragaman_the_hungerer",
       "jergosh_the_invoker",
     ]);
@@ -448,10 +445,10 @@ describe("expedition settlement", () => {
     expect(activity.status).toBe("completed");
     expect(summary.settled).toHaveLength(4);
     expect(summary.settled.every((event) => event.outcome === "victory")).toBe(true);
-    expect(summary.settled.every((event) => event.itemInstanceIds.length === 0)).toBe(true);
-    expect(Object.values(state.itemInstances)).toHaveLength(initialItemCount);
-    expect(Object.values(state.pendingLoot)).toHaveLength(0);
-    expect(state.collection.items).toEqual({});
+    expect(summary.settled.flatMap((event) => event.itemInstanceIds)).toHaveLength(2);
+    expect(Object.values(state.itemInstances)).toHaveLength(initialItemCount + 2);
+    expect(Object.values(state.pendingLoot)).toHaveLength(2);
+    expect(Object.keys(state.collection.items)).toHaveLength(2);
     expect(state.guild.funds).toBeGreaterThan(initialFunds);
     expect(
       members.every(
@@ -464,10 +461,11 @@ describe("expedition settlement", () => {
     );
     expect(state.history.dungeonClearCounts[dungeonId]).toBe(1);
     expect(
-      activity.runPlans[0]!.stages.every(
-        (stage) => stage.report?.rewards.itemInstanceIds.length === 0,
+      activity.runPlans[0]!.stages.reduce(
+        (sum, stage) => sum + (stage.report?.rewards.itemInstanceIds.length ?? 0),
+        0,
       ),
-    ).toBe(true);
+    ).toBe(2);
   });
 
   it("settles every guaranteed equipment drop from a multi-drop table", async () => {
@@ -491,7 +489,7 @@ describe("expedition settlement", () => {
       (event) => event.encounterId === "taragaman_the_hungerer",
     )!;
     expect(taragaman.itemInstanceIds).toHaveLength(2);
-    expect(Object.values(state.pendingLoot)).toHaveLength(3);
+    expect(Object.values(state.pendingLoot)).toHaveLength(5);
     expect(activity.runPlans[0]!.stages[1]!.report?.rewards.itemInstanceIds).toEqual(
       taragaman.itemInstanceIds,
     );
@@ -530,6 +528,36 @@ describe("expedition settlement", () => {
     expect(members[1]!.activeActivityId).toBeUndefined();
   });
 
+  it("awards each first-development cache once when multiple teams pursue the same commission", async () => {
+    const state = newState("parallel-development");
+    const members = Object.values(state.members);
+    const first = await startExpedition(state, [members[0]!.id]);
+    const second = await startExpedition(state, [members[1]!.id]);
+    forceAll(first, "victory");
+    forceAll(second, "victory");
+
+    new SettlementService(content).settleDueActivities(state, Number.MAX_SAFE_INTEGER);
+
+    const completedEvents = [first, second].flatMap((activity) =>
+      activity.developmentEvents.filter((event) => event.type === "completed"),
+    );
+    expect(completedEvents.map((event) => event.questId).sort()).toEqual([
+      "rfc_power_to_destroy",
+      "rfc_returning_lost_satchel",
+    ]);
+    expect(completedEvents.flatMap((event) => event.itemInstanceIds)).toHaveLength(2);
+    expect(
+      state.dungeonDevelopment.entries[asBrandedId<"QuestId">("rfc_returning_lost_satchel")],
+    ).toMatchObject({
+      status: "completed",
+    });
+    expect(
+      state.dungeonDevelopment.entries[asBrandedId<"QuestId">("rfc_power_to_destroy")],
+    ).toMatchObject({
+      status: "completed",
+    });
+  });
+
   it("records each pending item as unbound loot eligible only to that activity's party", async () => {
     const state = newState();
     const participant = Object.values(state.members)[0]!;
@@ -538,7 +566,13 @@ describe("expedition settlement", () => {
 
     new SettlementService(content).settleDueActivities(state, Number.MAX_SAFE_INTEGER);
 
-    const pending = Object.values(state.pendingLoot)[0]!;
+    const pending = Object.values(state.pendingLoot).find((entry) => {
+      const candidate = state.itemInstances[entry.itemInstanceId];
+      return (
+        candidate?.source.type === "encounter" &&
+        candidate.source.encounterId === "taragaman_the_hungerer"
+      );
+    })!;
     const item = state.itemInstances[pending.itemInstanceId]!;
     expect(pending.sourceActivityId).toBe(activity.id);
     expect(pending.eligibleMemberIds).toEqual([participant.id]);
