@@ -4,6 +4,7 @@ import type {
   ContentVersion,
   DungeonId,
   DungeonRouteNodeId,
+  DungeonRouteVariantId,
   EncounterId,
   FormulaVersion,
   GatheringSiteId,
@@ -42,6 +43,7 @@ export interface ActivityBase<Type extends ActivityType> {
 
 export interface ExpeditionActivity extends ActivityBase<"expedition"> {
   dungeonId: DungeonId;
+  routeVariantId?: DungeonRouteVariantId;
   selectedOptionalNodeIds: DungeonRouteNodeId[];
   requestedRuns: number;
   completedRuns: number;

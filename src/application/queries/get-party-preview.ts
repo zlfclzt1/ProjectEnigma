@@ -1,6 +1,11 @@
 import type { ContentRegistry } from "../../content/registry";
 import type { GameState } from "../../domain/game-state";
-import type { DungeonId, DungeonRouteNodeId, MemberId } from "../../domain/shared/ids";
+import type {
+  DungeonId,
+  DungeonRouteNodeId,
+  DungeonRouteVariantId,
+  MemberId,
+} from "../../domain/shared/ids";
 import {
   evaluateExpeditionParty,
   type PartyPreviewResult,
@@ -13,6 +18,7 @@ export function getPartyPreview(
   memberIds: readonly MemberId[],
   selectedOptionalNodeIds: readonly DungeonRouteNodeId[] = [],
   includedRareNodeIds: readonly DungeonRouteNodeId[] = [],
+  routeVariantId?: DungeonRouteVariantId,
 ): PartyPreviewResult {
   return evaluateExpeditionParty(
     state,
@@ -21,5 +27,6 @@ export function getPartyPreview(
     memberIds,
     selectedOptionalNodeIds,
     includedRareNodeIds,
+    routeVariantId,
   );
 }

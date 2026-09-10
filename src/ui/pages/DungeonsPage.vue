@@ -15,12 +15,19 @@ const planning = computed(() =>
     ui.selectedPartyMemberIds,
     ui.requestedExpeditionRuns,
     ui.selectedOptionalNodeIds,
+    ui.selectedRouteVariantId,
   ),
 );
 
 watchEffect(() => {
   const selected = planning.value?.selectedDungeon;
   if (selected && ui.selectedDungeonId !== selected.id) ui.selectDungeon(selected.id);
+  if (
+    planning.value?.selectedRouteVariantId &&
+    ui.selectedRouteVariantId !== planning.value.selectedRouteVariantId
+  ) {
+    ui.selectRouteVariant(planning.value.selectedRouteVariantId);
+  }
 });
 
 async function start(): Promise<void> {
@@ -32,6 +39,7 @@ async function start(): Promise<void> {
     ui.selectedPartyMemberIds,
     ui.requestedExpeditionRuns,
     ui.selectedOptionalNodeIds,
+    ui.selectedRouteVariantId ?? undefined,
   );
   if (!outcome.ok) return;
   notice.value = `${dungeon.name}队伍已经出发，可以继续组织另一支队伍。`;
@@ -116,6 +124,7 @@ async function purchaseRunCapacity(): Promise<void> {
         :mechanic-readiness="planning.mechanicReadiness"
         :optional-routes="planning.optionalRoutes"
         :rare-routes="planning.rareRoutes"
+        :route-variants="planning.routeVariants"
         :quest-route-warnings="planning.questRouteWarnings"
         :issues="planning.issues"
         :requested-runs="ui.requestedExpeditionRuns"
@@ -123,6 +132,7 @@ async function purchaseRunCapacity(): Promise<void> {
         :pending="game.commandPending"
         @start="start"
         @toggle-optional="ui.toggleOptionalNode"
+        @select-route-variant="ui.selectRouteVariant"
       />
     </div>
   </section>

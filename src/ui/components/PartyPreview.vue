@@ -5,6 +5,7 @@ import type {
   PartyMechanicReadinessView,
   OptionalRouteNodeView,
   RareRouteNodeView,
+  DungeonRouteVariantView,
   QuestRouteWarningView,
 } from "../../application/queries/get-dungeons-view";
 import BossRoute from "./BossRoute.vue";
@@ -15,6 +16,7 @@ defineProps<{
   mechanicReadiness: readonly PartyMechanicReadinessView[];
   optionalRoutes: readonly OptionalRouteNodeView[];
   rareRoutes: readonly RareRouteNodeView[];
+  routeVariants?: readonly DungeonRouteVariantView[];
   questRouteWarnings?: readonly QuestRouteWarningView[];
   issues: readonly string[];
   requestedRuns: number;
@@ -22,7 +24,11 @@ defineProps<{
   pending: boolean;
 }>();
 
-defineEmits<{ start: []; toggleOptional: [nodeId: OptionalRouteNodeView["id"]] }>();
+defineEmits<{
+  start: [];
+  toggleOptional: [nodeId: OptionalRouteNodeView["id"]];
+  selectRouteVariant: [variantId: DungeonRouteVariantView["id"]];
+}>();
 
 function probabilityLabel(probability: number): string {
   return `${(probability * 100).toFixed(2)}%`;
@@ -45,6 +51,22 @@ function durationLabel(seconds: number): string {
     </header>
 
     <template v-if="preview">
+      <section v-if="routeVariants?.length" class="route-variants">
+        <h4>副本路线</h4>
+        <label v-for="variant in routeVariants" :key="variant.id">
+          <input
+            type="radio"
+            name="dungeon-route-variant"
+            :value="variant.id"
+            :checked="variant.selected"
+            @change="$emit('selectRouteVariant', variant.id)"
+          />
+          <span>
+            <strong>{{ variant.name }}</strong>
+            <small>{{ variant.description }}</small>
+          </span>
+        </label>
+      </section>
       <dl class="metrics">
         <div>
           <dt>坦克</dt>
@@ -206,6 +228,42 @@ header p {
 header > strong {
   color: #e6bd5d;
   font-size: 1.05rem;
+}
+.route-variants {
+  display: grid;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+.route-variants h4 {
+  margin: 0 0 2px;
+  color: #bca87f;
+  font-size: 0.72rem;
+}
+.route-variants label {
+  display: flex;
+  align-items: start;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid #3d3529;
+  background: #090c0d;
+  cursor: pointer;
+}
+.route-variants input {
+  margin-top: 3px;
+  accent-color: #c89543;
+}
+.route-variants span {
+  display: grid;
+  gap: 2px;
+}
+.route-variants strong {
+  color: #d6c39f;
+  font-size: 0.68rem;
+}
+.route-variants small {
+  color: #8f8575;
+  font-size: 0.61rem;
+  line-height: 1.4;
 }
 .metrics {
   display: grid;

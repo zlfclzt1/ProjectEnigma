@@ -4,6 +4,7 @@ import { averageEquippedItemLevel } from "../../domain/equipment/item-level";
 import type {
   DungeonId,
   DungeonRouteNodeId,
+  DungeonRouteVariantId,
   GuildUpgradeId,
   MemberId,
   QuestId,
@@ -123,6 +124,13 @@ export interface RareRouteNodeView {
   readonly lootItemCount: number;
 }
 
+export interface DungeonRouteVariantView {
+  readonly id: DungeonRouteVariantId;
+  readonly name: string;
+  readonly description: string;
+  readonly selected: boolean;
+}
+
 export interface ExpeditionRunCapacityUpgradeView {
   readonly id: GuildUpgradeId;
   readonly name: string;
@@ -168,6 +176,8 @@ export interface DungeonPlanningView {
   readonly runCapacityUpgrade: ExpeditionRunCapacityUpgradeView | null;
   readonly questRouteWarnings: readonly QuestRouteWarningView[];
   readonly selectedOptionalNodeIds: readonly DungeonRouteNodeId[];
+  readonly selectedRouteVariantId: DungeonRouteVariantId | null;
+  readonly routeVariants: readonly DungeonRouteVariantView[];
   readonly optionalRoutes: readonly OptionalRouteNodeView[];
   readonly rareRoutes: readonly RareRouteNodeView[];
   readonly preview: PartyPreviewView | null;
@@ -301,6 +311,7 @@ export function getDungeonPlanningView(
   selectedMemberIds: readonly MemberId[],
   requestedRuns: number,
   selectedOptionalNodeIds: readonly DungeonRouteNodeId[] = [],
+  routeVariantId: DungeonRouteVariantId | null = null,
 ): DungeonPlanningView {
   const dungeons = dungeonOptions(state, content);
   const selectedDungeon =
@@ -315,6 +326,8 @@ export function getDungeonPlanningView(
   let optionalRoutes: OptionalRouteNodeView[] = [];
   let rareRoutes: RareRouteNodeView[] = [];
   let questRouteWarnings: QuestRouteWarningView[] = [];
+  let routeVariants: DungeonRouteVariantView[] = [];
+  let selectedRouteVariantId: DungeonRouteVariantId | null = null;
   const maximumRuns = getExpeditionRunCapacity(state, content);
   const nextRunUpgrade = getNextGuildUpgrade(state, content, EXPEDITION_RUN_CAPACITY_TRACK_ID);
   const runUpgradeEligibility = nextRunUpgrade ? evaluateGuildUpgrade(state, nextRunUpgrade) : null;
@@ -322,6 +335,16 @@ export function getDungeonPlanningView(
   if (!selectedDungeon) issues.push("没有可用的副本内容。");
   else {
     const dungeonDefinition = content.dungeonById.get(selectedDungeon.id)!;
+    selectedRouteVariantId =
+      dungeonDefinition.routeVariants?.find((variant) => variant.id === routeVariantId)?.id ??
+      dungeonDefinition.routeVariants?.[0]?.id ??
+      null;
+    routeVariants = (dungeonDefinition.routeVariants ?? []).map((variant) => ({
+      id: variant.id,
+      name: variant.name.zhCN,
+      description: variant.description.zhCN,
+      selected: variant.id === selectedRouteVariantId,
+    }));
     const selectedOptionalIds = new Set(selectedOptionalNodeIds);
     questRouteWarnings = selectedMemberIds.flatMap((memberId) => {
       const member = state.members[memberId];
@@ -420,6 +443,8 @@ export function getDungeonPlanningView(
         selectedDungeon.id,
         selectedMemberIds,
         selectedOptionalNodeIds,
+        [],
+        selectedRouteVariantId ?? undefined,
       );
       if (result.ok) {
         optionalRoutes = optionalRoutes.map((option) => {
@@ -432,6 +457,8 @@ export function getDungeonPlanningView(
             selectedDungeon.id,
             selectedMemberIds,
             optionSelection,
+            [],
+            selectedRouteVariantId ?? undefined,
           );
           const encounter = optionPreview.ok
             ? optionPreview.preview.encounters.find((entry) => entry.routeNodeId === option.id)
@@ -450,6 +477,7 @@ export function getDungeonPlanningView(
           selectedMemberIds,
           selectedOptionalNodeIds,
           rareNodeIds,
+          selectedRouteVariantId ?? undefined,
         );
         if (rarePreview.ok) {
           rareRoutes = rareRoutes.map((route) => {
@@ -542,6 +570,8 @@ export function getDungeonPlanningView(
         : null,
     questRouteWarnings,
     selectedOptionalNodeIds: [...selectedOptionalNodeIds],
+    selectedRouteVariantId,
+    routeVariants,
     optionalRoutes,
     rareRoutes,
     preview,

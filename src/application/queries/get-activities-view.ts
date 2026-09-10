@@ -25,6 +25,7 @@ export interface RareRouteEventView {
 export interface ExpeditionActivityView {
   readonly id: ActivityId;
   readonly dungeonName: string;
+  readonly routeVariantName?: string;
   readonly status: ExpeditionActivity["status"];
   readonly statusLabel: string;
   readonly memberNames: readonly string[];
@@ -105,6 +106,13 @@ function projectActivity(
   return {
     id: activity.id,
     dungeonName: content.dungeonById.get(activity.dungeonId)?.name.zhCN ?? activity.dungeonId,
+    ...(activity.routeVariantId
+      ? {
+          routeVariantName:
+            dungeon?.routeVariants?.find((variant) => variant.id === activity.routeVariantId)?.name
+              .zhCN ?? activity.routeVariantId,
+        }
+      : {}),
     status: activity.status,
     statusLabel: statusLabel(activity.status),
     memberNames: activity.participantIds.map(

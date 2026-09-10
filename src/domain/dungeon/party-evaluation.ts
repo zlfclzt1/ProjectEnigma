@@ -12,6 +12,7 @@ import type { Member } from "../member/member";
 import type {
   DungeonId,
   DungeonRouteNodeId,
+  DungeonRouteVariantId,
   EncounterId,
   FormulaVersion,
   MemberId,
@@ -25,6 +26,7 @@ import {
   type EncounterMechanicEvaluation,
   type EncounterMechanicResult,
 } from "./mechanic-evaluation";
+import { getDungeonRouteVariant, routeForVariant } from "./dungeon-route";
 
 export interface PartyEvaluationIssue {
   readonly code: string;
@@ -70,6 +72,7 @@ export function evaluateExpeditionParty(
   memberIds: readonly MemberId[],
   selectedOptionalNodeIds: readonly DungeonRouteNodeId[] = [],
   includedRareNodeIds: readonly DungeonRouteNodeId[] = [],
+  routeVariantId?: DungeonRouteVariantId,
 ): PartyPreviewResult {
   const dungeon = content.dungeonById.get(dungeonId);
   if (!dungeon) {
@@ -77,6 +80,15 @@ export function evaluateExpeditionParty(
   }
 
   const issues: PartyEvaluationIssue[] = [];
+  if (dungeon.routeVariants?.length) {
+    if (!routeVariantId) {
+      issues.push({ code: "route.variant-required", message: "请先选择一条副本路线。" });
+    } else if (!getDungeonRouteVariant(dungeon, routeVariantId)) {
+      issues.push({ code: "route.variant-not-found", message: "选择的副本路线不存在。" });
+    }
+  } else if (routeVariantId) {
+    issues.push({ code: "route.variant-not-found", message: "该副本没有命名路线可选。" });
+  }
   const members: Member[] = [];
   for (const memberId of memberIds) {
     const member = state.members[memberId];
@@ -130,7 +142,7 @@ export function evaluateExpeditionParty(
   );
   const selectedOptionalIds = new Set(selectedOptionalNodeIds);
   const includedRareIds = new Set(includedRareNodeIds);
-  const route = dungeon.route.filter(
+  const route = routeForVariant(dungeon, routeVariantId).filter(
     (node) =>
       node.type === "required" ||
       (node.type === "optional" && selectedOptionalIds.has(node.id)) ||

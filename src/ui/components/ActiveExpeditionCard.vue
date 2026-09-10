@@ -19,7 +19,9 @@ function remainingLabel(milliseconds: number | undefined): string {
         <h3>{{ activity.dungeonName }}</h3>
         <p>
           第 {{ activity.currentRunNumber }} / {{ activity.requestedRuns }} 次 ·
-          {{ activity.participantCount }} 人
+          {{ activity.participantCount }} 人<span v-if="activity.routeVariantName">
+            · {{ activity.routeVariantName }}</span
+          >
         </p>
       </div>
       <time>{{ remainingLabel(activity.remainingMilliseconds) }}</time>

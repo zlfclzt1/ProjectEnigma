@@ -8,12 +8,18 @@ import type {
 } from "../activity/activity";
 import type { CombatProfile } from "../combat/combat-profile";
 import type { GameState } from "../game-state";
-import { asBrandedId, type DungeonId, type DungeonRouteNodeId } from "../shared/ids";
+import {
+  asBrandedId,
+  type DungeonId,
+  type DungeonRouteNodeId,
+  type DungeonRouteVariantId,
+} from "../shared/ids";
 import { SeededRandomSource } from "../../infrastructure/random/seeded-random-source";
 import { evaluateExpeditionParty } from "./party-evaluation";
 import { lockRareRouteSpawns, revealRareRouteNodes } from "./rare-route";
 import { getExpeditionRunCapacity } from "../guild/guild-upgrade-rules";
 import { applyMemberExperience, getMemberLevelCap } from "../member/member-level-cap";
+import { routeForVariant } from "./dungeon-route";
 
 export interface DungeonExperienceConfig {
   readonly baseFraction: number;
@@ -52,6 +58,7 @@ export interface StartExpeditionRequest extends ActivityStartRequest {
   readonly dungeonId: DungeonId;
   readonly requestedRuns: number;
   readonly selectedOptionalNodeIds?: readonly DungeonRouteNodeId[];
+  readonly routeVariantId?: DungeonRouteVariantId;
 }
 
 export function createExpeditionActivityHandler(
@@ -116,6 +123,8 @@ export function createExpeditionActivityHandler(
         request.dungeonId,
         request.participantIds,
         selectedOptionalNodeIds,
+        [],
+        request.routeVariantId,
       );
       if (!preview.ok) issues.push(...preview.issues);
       return issues.length === 0 ? { ok: true } : { ok: false, issues };
@@ -123,7 +132,8 @@ export function createExpeditionActivityHandler(
     create(context, request) {
       const dungeon = content.dungeonById.get(request.dungeonId)!;
       const requestedOptionalIds = new Set(request.selectedOptionalNodeIds ?? []);
-      const selectedOptionalNodeIds = dungeon.route
+      const activeRoute = routeForVariant(dungeon, request.routeVariantId);
+      const selectedOptionalNodeIds = activeRoute
         .filter((node) => node.type === "optional" && requestedOptionalIds.has(node.id))
         .map((node) => node.id);
       const previewResult = evaluateExpeditionParty(
@@ -132,6 +142,8 @@ export function createExpeditionActivityHandler(
         request.dungeonId,
         request.participantIds,
         selectedOptionalNodeIds,
+        [],
+        request.routeVariantId,
       );
       if (!previewResult.ok) throw new Error("通过校验的副本队伍无法生成预览。");
       const activityId = asBrandedId<"ActivityId">(context.ids.next("expedition"));
@@ -140,7 +152,7 @@ export function createExpeditionActivityHandler(
       for (let runNumber = 1; runNumber <= request.requestedRuns; runNumber += 1) {
         const runSeed = `${activitySeed}:run:${runNumber}:${context.random.next("run-seed")}`;
         const runRandom = new SeededRandomSource(runSeed);
-        const rareNodeSpawns = lockRareRouteSpawns(dungeon.route, runRandom);
+        const rareNodeSpawns = lockRareRouteSpawns(activeRoute, runRandom);
         const includedRareNodeIds = Object.entries(rareNodeSpawns).flatMap(([nodeId, spawned]) =>
           spawned ? [asBrandedId<"DungeonRouteNodeId">(nodeId)] : [],
         );
@@ -151,6 +163,7 @@ export function createExpeditionActivityHandler(
           request.participantIds,
           selectedOptionalNodeIds,
           includedRareNodeIds,
+          request.routeVariantId,
         );
         if (!runPreview.ok) throw new Error("稀有首领路线无法使用当前队伍生成。");
         const runPlan: ExpeditionRunPlan = {
@@ -183,7 +196,7 @@ export function createExpeditionActivityHandler(
           rareNodeReveals: {},
           mainRouteCompleted: false,
         };
-        revealRareRouteNodes(runPlan, dungeon.route, runPlan.stages[0]?.routeNodeId);
+        revealRareRouteNodes(runPlan, activeRoute, runPlan.stages[0]?.routeNodeId);
         runPlans.push(runPlan);
       }
       const firstStage = runPlans[0]!.stages[0]!;
@@ -200,7 +213,7 @@ export function createExpeditionActivityHandler(
               memberId,
               questId: quest.id,
               completion: structuredClone(quest.completion),
-              requiredOptionalNodeIds: dungeon.route.flatMap((node) =>
+              requiredOptionalNodeIds: activeRoute.flatMap((node) =>
                 node.type === "optional" && encounterIds.includes(node.encounterId)
                   ? [node.id]
                   : [],
@@ -220,6 +233,7 @@ export function createExpeditionActivityHandler(
         seed: activitySeed,
         contentVersion: context.state.contentVersion,
         dungeonId: request.dungeonId,
+        ...(request.routeVariantId ? { routeVariantId: request.routeVariantId } : {}),
         selectedOptionalNodeIds,
         requestedRuns: request.requestedRuns,
         completedRuns: 0,

@@ -1,6 +1,12 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
-import type { ClassId, DungeonId, DungeonRouteNodeId, MemberId } from "../domain/shared/ids";
+import type {
+  ClassId,
+  DungeonId,
+  DungeonRouteNodeId,
+  DungeonRouteVariantId,
+  MemberId,
+} from "../domain/shared/ids";
 import type { MemberSortKey } from "../ui/member-list-sorting";
 
 export type RoleFilter = "tank" | "healer" | "dps" | null;
@@ -24,6 +30,7 @@ export const useUiStore = defineStore("ui", () => {
   const selectedDungeonId = ref<DungeonId | null>(null);
   const selectedPartyMemberIds = ref<MemberId[]>([]);
   const selectedOptionalNodeIds = ref<DungeonRouteNodeId[]>([]);
+  const selectedRouteVariantId = ref<DungeonRouteVariantId | null>(null);
   const requestedExpeditionRuns = ref(1);
   const selectedMemberId = ref<MemberId | null>(null);
   const activeModal = ref<UiModal | null>(null);
@@ -38,8 +45,15 @@ export const useUiStore = defineStore("ui", () => {
   }
 
   function selectDungeon(dungeonId: DungeonId | null): void {
-    if (selectedDungeonId.value !== dungeonId) selectedOptionalNodeIds.value = [];
+    if (selectedDungeonId.value !== dungeonId) {
+      selectedOptionalNodeIds.value = [];
+      selectedRouteVariantId.value = null;
+    }
     selectedDungeonId.value = dungeonId;
+  }
+
+  function selectRouteVariant(routeVariantId: DungeonRouteVariantId | null): void {
+    selectedRouteVariantId.value = routeVariantId;
   }
 
   function toggleOptionalNode(nodeId: DungeonRouteNodeId): void {
@@ -90,6 +104,7 @@ export const useUiStore = defineStore("ui", () => {
     selectedDungeonId,
     selectedPartyMemberIds,
     selectedOptionalNodeIds,
+    selectedRouteVariantId,
     requestedExpeditionRuns,
     selectedMemberId,
     activeModal,
@@ -98,6 +113,7 @@ export const useUiStore = defineStore("ui", () => {
     setPartyFilters,
     selectDungeon,
     toggleOptionalNode,
+    selectRouteVariant,
     togglePartyMember,
     clearParty,
     setRequestedExpeditionRuns,

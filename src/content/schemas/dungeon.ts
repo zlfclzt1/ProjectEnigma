@@ -15,6 +15,7 @@ const lootTableIdSchema = brandedContentIdSchema<"LootTableId">();
 const itemDefinitionIdSchema = brandedContentIdSchema<"ItemDefinitionId">();
 const mechanicIdSchema = brandedContentIdSchema<"MechanicId">();
 const routeNodeIdSchema = brandedContentIdSchema<"DungeonRouteNodeId">();
+const routeVariantIdSchema = brandedContentIdSchema<"DungeonRouteVariantId">();
 
 const contentFileBaseSchema = z
   .object({ schemaVersion: z.literal(1), attribution: contentAttributionSchema })
@@ -52,6 +53,19 @@ export const dungeonRouteNodeSchema = z.discriminatedUnion("type", [
   optionalRouteNodeSchema,
   rareRouteNodeSchema,
 ]);
+
+const dungeonRouteVariantSchema = z
+  .object({
+    id: routeVariantIdSchema,
+    name: localizedTextSchema,
+    description: localizedTextSchema,
+    requiredNodeIds: z.array(routeNodeIdSchema).min(1),
+  })
+  .strict()
+  .refine(
+    ({ requiredNodeIds }) => new Set(requiredNodeIds).size === requiredNodeIds.length,
+    "命名路线不能重复引用同一必打节点",
+  );
 
 export const dungeonDefinitionSchema = z
   .object({
@@ -115,6 +129,7 @@ export const dungeonDefinitionSchema = z
       })
       .strict(),
     route: z.array(dungeonRouteNodeSchema).min(1),
+    routeVariants: z.array(dungeonRouteVariantSchema).min(2).optional(),
   })
   .strict()
   .refine((dungeon) => dungeon.route.some((node) => node.type === "required"), {
@@ -122,6 +137,27 @@ export const dungeonDefinitionSchema = z
     message: "副本路线至少需要一个必打节点",
   })
   .superRefine((dungeon, context) => {
+    const routeNodeById = new Map(dungeon.route.map((node) => [node.id, node]));
+    const variantIds = new Set<string>();
+    for (const [variantIndex, variant] of (dungeon.routeVariants ?? []).entries()) {
+      if (variantIds.has(variant.id)) {
+        context.addIssue({
+          code: "custom",
+          path: ["routeVariants", variantIndex, "id"],
+          message: `命名路线 ID ${variant.id} 重复`,
+        });
+      }
+      variantIds.add(variant.id);
+      for (const [nodeIndex, nodeId] of variant.requiredNodeIds.entries()) {
+        const node = routeNodeById.get(nodeId);
+        if (node?.type === "required") continue;
+        context.addIssue({
+          code: "custom",
+          path: ["routeVariants", variantIndex, "requiredNodeIds", nodeIndex],
+          message: node ? "命名路线只能引用必打节点" : `命名路线引用了不存在的节点 ${nodeId}`,
+        });
+      }
+    }
     const groupTotals = new Map<string, number>();
     for (const node of dungeon.route) {
       if (node.type !== "rare" || !node.spawnGroup) continue;
@@ -197,5 +233,6 @@ export const lootTableFileSchema = contentFileBaseSchema.safeExtend({
 
 export type DungeonDefinition = z.infer<typeof dungeonDefinitionSchema>;
 export type DungeonRouteNode = z.infer<typeof dungeonRouteNodeSchema>;
+export type DungeonRouteVariant = z.infer<typeof dungeonRouteVariantSchema>;
 export type EncounterDefinition = z.infer<typeof encounterDefinitionSchema>;
 export type LootTable = z.infer<typeof lootTableSchema>;

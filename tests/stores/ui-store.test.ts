@@ -12,10 +12,12 @@ describe("UI store", () => {
     const memberId = asBrandedId<"MemberId">("member_7");
     const classId = asBrandedId<"ClassId">("warrior");
     const optionalNodeId = asBrandedId<"DungeonRouteNodeId">("optional_cookie");
+    const routeVariantId = asBrandedId<"DungeonRouteVariantId">("tribute_run");
 
     store.selectDungeon(dungeonId);
     store.togglePartyMember(memberId);
     store.toggleOptionalNode(optionalNodeId);
+    store.selectRouteVariant(routeVariantId);
     store.setRequestedExpeditionRuns(3);
     store.selectMember(memberId);
     store.setMemberFilters({ classId, role: "tank", sortBy: "level" });
@@ -26,6 +28,7 @@ describe("UI store", () => {
     expect(store.selectedDungeonId).toBe(dungeonId);
     expect(store.selectedPartyMemberIds).toEqual([memberId]);
     expect(store.selectedOptionalNodeIds).toEqual([optionalNodeId]);
+    expect(store.selectedRouteVariantId).toBe(routeVariantId);
     expect(store.requestedExpeditionRuns).toBe(3);
     expect(store.selectedMemberId).toBe(memberId);
     expect(store.memberFilters).toEqual({ classId, role: "tank", sortBy: "level" });
@@ -43,6 +46,7 @@ describe("UI store", () => {
     expect(store.activeModal).toBeNull();
     expect(store.selectedPartyMemberIds).toEqual([]);
     expect(store.selectedOptionalNodeIds).toEqual([]);
+    expect(store.selectedRouteVariantId).toBe(routeVariantId);
     expect(store.memberFilters).toEqual({ classId: null, role: null, sortBy: "default" });
     expect(store.partyFilters).toEqual({ classId: null, role: null, sortBy: "default" });
   });
