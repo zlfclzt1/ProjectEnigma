@@ -191,7 +191,7 @@
         "simulatedRuns": 100000,
         "clearRate": 1,
         "previewClearProbability": 1,
-        "durationSeconds": 817.6,
+        "durationSeconds": 720,
         "wipeCounts": {}
       },
       "with-optional": {
@@ -199,17 +199,17 @@
         "simulatedRuns": 100000,
         "clearRate": 1,
         "previewClearProbability": 1,
-        "durationSeconds": 964.8,
+        "durationSeconds": 720,
         "wipeCounts": {}
       },
       "with-rare": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.96431,
-        "previewClearProbability": 0.9642,
-        "durationSeconds": 813.4,
+        "clearRate": 0.96805,
+        "previewClearProbability": 0.968,
+        "durationSeconds": 720,
         "wipeCounts": {
-          "bfd_akumai": 1206,
+          "bfd_akumai": 832,
           "bfd_twilight_lord_kelris": 2363
         }
       }
@@ -220,7 +220,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.9781,
         "previewClearProbability": 0.9780000000000001,
-        "durationSeconds": 817.4,
+        "durationSeconds": 720,
         "wipeCounts": {
           "bfd_twilight_lord_kelris": 1407,
           "bfd_akumai": 783
@@ -229,23 +229,22 @@
       "with-optional": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.9769,
-        "previewClearProbability": 0.976,
-        "durationSeconds": 965.2,
+        "clearRate": 0.98085,
+        "previewClearProbability": 0.9800000000000001,
+        "durationSeconds": 720,
         "wipeCounts": {
-          "bfd_twilight_lord_kelris": 1915,
-          "bfd_akumai": 395
+          "bfd_twilight_lord_kelris": 1915
         }
       },
       "with-rare": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.97401,
-        "previewClearProbability": 0.9739999999999999,
-        "durationSeconds": 835.8,
+        "clearRate": 0.98216,
+        "previewClearProbability": 0.982,
+        "durationSeconds": 720,
         "wipeCounts": {
           "bfd_twilight_lord_kelris": 990,
-          "bfd_akumai": 1609
+          "bfd_akumai": 794
         }
       }
     }

@@ -15,6 +15,7 @@ import {
   getNextGuildUpgrade,
 } from "../../domain/guild/guild-upgrade-rules";
 import { getPartyPreview } from "./get-party-preview";
+import { projectExpeditionExperience } from "../../domain/dungeon/expedition-activity";
 
 export interface DungeonOptionView {
   readonly id: DungeonId;
@@ -88,6 +89,15 @@ export interface PartyPreviewView {
     readonly minimumSeconds: number;
     readonly maximumSeconds: number;
   };
+  readonly experience: readonly {
+    readonly memberId: MemberId;
+    readonly memberName: string;
+    readonly currentLevel: number;
+    readonly experienceFraction: number;
+    readonly boostMultiplier: number;
+    readonly projectedLevel: number;
+    readonly projectedExperience: number;
+  }[];
 }
 
 export interface OptionalRouteNodeView {
@@ -477,6 +487,25 @@ export function getDungeonPlanningView(
               result.preview.durationSeconds +
               rareRoutes.reduce((sum, route) => sum + (route.durationSeconds ?? 0), 0),
           },
+          experience: projectExpeditionExperience(
+            state,
+            content,
+            selectedDungeon.id,
+            selectedMemberIds,
+            result.preview.encounters.reduce(
+              (sum, encounter) =>
+                sum + (content.encounterById.get(encounter.encounterId)?.experienceShare ?? 0),
+              0,
+            ),
+            requestedRuns,
+          ).map((projection) => {
+            const member = state.members[projection.memberId]!;
+            return {
+              ...projection,
+              memberName: member.identity.name,
+              currentLevel: member.progression.level,
+            };
+          }),
         };
       } else {
         issues.push(...result.issues.map((issue) => issue.message));

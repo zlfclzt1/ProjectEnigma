@@ -160,22 +160,26 @@ export function evaluateExpeditionParty(
     }
   }
   if (issues.length > 0) return { ok: false, issues };
-  const encounters = route.map((node) => {
-    const encounterId = node.encounterId;
-    const encounter = content.encounterById.get(encounterId)!;
-    const mechanics = mechanicEvaluations.find(
-      (evaluation) => evaluation.encounterId === encounterId,
-    )!;
-    const probability = bossProbability(contribution, encounter, dungeon, mechanics);
-    return {
-      routeNodeId: node.id,
-      routeNodeType: node.type,
-      encounterId,
-      ...probability,
-      durationSeconds: stageDurationSeconds(contribution, encounter, dungeon, members, mechanics),
-      mechanics,
-    };
-  });
+  const encounters = enforceRouteDurationFloor(
+    route.map((node) => {
+      const encounterId = node.encounterId;
+      const encounter = content.encounterById.get(encounterId)!;
+      const mechanics = mechanicEvaluations.find(
+        (evaluation) => evaluation.encounterId === encounterId,
+      )!;
+      const probability = bossProbability(contribution, encounter, dungeon, mechanics);
+      return {
+        routeNodeId: node.id,
+        routeNodeType: node.type,
+        encounterId,
+        ...probability,
+        durationSeconds: stageDurationSeconds(contribution, encounter, dungeon, members, mechanics),
+        mechanics,
+      };
+    }),
+    dungeon,
+    content,
+  );
   return {
     ok: true,
     preview: {
@@ -194,6 +198,36 @@ export function evaluateExpeditionParty(
 
 function clamp(minimum: number, maximum: number, value: number): number {
   return Math.min(maximum, Math.max(minimum, value));
+}
+
+function enforceRouteDurationFloor(
+  encounters: readonly EncounterPreview[],
+  dungeon: DungeonDefinition,
+  content: ContentRegistry,
+): EncounterPreview[] {
+  if (encounters.length === 0) return [];
+  const rawRouteSeconds = encounters.reduce(
+    (sum, encounter) => sum + content.encounterById.get(encounter.encounterId)!.stageSeconds,
+    0,
+  );
+  const minimumSeconds = Math.ceil(
+    Math.max(dungeon.duration.baseSeconds, rawRouteSeconds) * dungeon.duration.minimumRatio,
+  );
+  const currentSeconds = encounters.reduce((sum, encounter) => sum + encounter.durationSeconds, 0);
+  if (currentSeconds >= minimumSeconds) return [...encounters];
+
+  let allocatedSeconds = 0;
+  return encounters.map((encounter, index) => {
+    const durationSeconds =
+      index === encounters.length - 1
+        ? minimumSeconds - allocatedSeconds
+        : Math.round(
+            (content.encounterById.get(encounter.encounterId)!.stageSeconds / rawRouteSeconds) *
+              minimumSeconds,
+          );
+    allocatedSeconds += durationSeconds;
+    return { ...encounter, durationSeconds };
+  });
 }
 
 function personalityPowerMultiplier(
@@ -330,6 +364,14 @@ function partyDurationModifier(party: readonly Member[]): number {
   );
 }
 
+function overlevelDurationModifier(party: readonly Member[], dungeon: DungeonDefinition): number {
+  if (party.length === 0) return 1;
+  const averageLevel =
+    party.reduce((sum, member) => sum + member.progression.level, 0) / party.length;
+  const overlevel = Math.max(0, averageLevel - dungeon.recommendedLevel);
+  return clamp(0.5, 1, 1 - overlevel * 0.03);
+}
+
 function stageDurationSeconds(
   contribution: PartyContribution,
   encounter: EncounterDefinition,
@@ -360,6 +402,7 @@ function stageDurationSeconds(
     dungeon.duration.maximumRatio,
     outputFactor *
       survivalFactor *
+      overlevelDurationModifier(party, dungeon) *
       partyDurationModifier(party) *
       mechanics.effects.durationMultiplier,
   );

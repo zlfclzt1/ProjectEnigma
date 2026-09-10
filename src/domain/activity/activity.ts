@@ -107,6 +107,8 @@ export interface ExpeditionRunPlan {
   runNumber: number;
   seed: string;
   experienceFractionByMember: Partial<Record<MemberId, number>>;
+  maximumExperiencePerMember?: number;
+  experienceAwardedByMember?: Partial<Record<MemberId, number>>;
   stages: ExpeditionEncounterPlan[];
   rareNodeSpawns?: RareRouteSpawnLocks;
   rareNodeReveals: RareRouteReveals;

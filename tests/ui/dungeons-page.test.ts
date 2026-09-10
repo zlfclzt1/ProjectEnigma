@@ -137,6 +137,17 @@ describe("dungeons page", () => {
           clearProbability: 0.8,
           durationSeconds: 600,
           durationRange: { minimumSeconds: 600, maximumSeconds: 720 },
+          experience: [
+            {
+              memberId: asBrandedId<"MemberId">("member_1"),
+              memberName: "铁锤",
+              currentLevel: 10,
+              experienceFraction: 0.7,
+              boostMultiplier: 0.7,
+              projectedLevel: 10,
+              projectedExperience: 0.7,
+            },
+          ],
         },
         issues: [],
         requestedRuns: 2,
@@ -172,6 +183,9 @@ describe("dungeons page", () => {
     expect(wrapper.text()).toContain("可选 · 饥饿者塔拉加曼");
     expect(wrapper.text()).toContain("出现率 35.00%");
     expect(wrapper.text()).toContain("20:00–24:00");
+    expect(wrapper.text()).toContain("铁锤");
+    expect(wrapper.text()).toContain("等级差衰减 70%");
+    expect(wrapper.text()).toContain("+0.70 级");
     await wrapper.find('.route-options input[type="checkbox"]').setValue(true);
     expect(wrapper.emitted("toggleOptional")?.[0]).toEqual(["optional_taragaman"]);
   });

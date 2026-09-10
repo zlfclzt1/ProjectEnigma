@@ -6,37 +6,37 @@
       "required": {
         "level": 40,
         "simulatedRuns": 100000,
-        "clearRate": 0.82604,
-        "previewClearProbability": 0.8256587973321097,
-        "durationSeconds": 334.6,
+        "clearRate": 0.83344,
+        "previewClearProbability": 0.8338497983377469,
+        "durationSeconds": 333.2,
         "wipeCounts": {
-          "scarlet_gy_interrogator_vishas": 3640,
-          "scarlet_gy_bloodmage_thalnos": 13756
+          "scarlet_gy_interrogator_vishas": 3543,
+          "scarlet_gy_bloodmage_thalnos": 13113
         }
       },
       "with-optional": {
         "level": 40,
         "simulatedRuns": 100000,
-        "clearRate": 0.80904,
-        "previewClearProbability": 0.8097604995796533,
-        "durationSeconds": 339.2,
+        "clearRate": 0.82652,
+        "previewClearProbability": 0.8267113710734411,
+        "durationSeconds": 336.4,
         "wipeCounts": {
-          "scarlet_gy_bloodmage_thalnos": 12906,
-          "scarlet_gy_interrogator_vishas": 6190
+          "scarlet_gy_bloodmage_thalnos": 12221,
+          "scarlet_gy_interrogator_vishas": 5127
         }
       },
       "with-rare": {
         "level": 40,
         "simulatedRuns": 100000,
-        "clearRate": 0.59709,
-        "previewClearProbability": 0.5941487241341694,
-        "durationSeconds": 558,
+        "clearRate": 0.61858,
+        "previewClearProbability": 0.6180821792321669,
+        "durationSeconds": 553.4,
         "wipeCounts": {
-          "scarlet_gy_azshir_the_sleepless": 7274,
-          "scarlet_gy_fallen_champion": 9485,
-          "scarlet_gy_bloodmage_thalnos": 10637,
-          "scarlet_gy_ironspine": 8014,
-          "scarlet_gy_interrogator_vishas": 4881
+          "scarlet_gy_azshir_the_sleepless": 6739,
+          "scarlet_gy_fallen_champion": 8977,
+          "scarlet_gy_bloodmage_thalnos": 10590,
+          "scarlet_gy_ironspine": 7530,
+          "scarlet_gy_interrogator_vishas": 4306
         }
       }
     },
@@ -46,7 +46,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.00266,
         "previewClearProbability": 0.0025000000000000005,
-        "durationSeconds": 370.2,
+        "durationSeconds": 369,
         "wipeCounts": {
           "scarlet_gy_interrogator_vishas": 95038,
           "scarlet_gy_bloodmage_thalnos": 4696
@@ -57,7 +57,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.0024,
         "previewClearProbability": 0.0025000000000000005,
-        "durationSeconds": 373.2,
+        "durationSeconds": 372.6,
         "wipeCounts": {
           "scarlet_gy_interrogator_vishas": 94937,
           "scarlet_gy_bloodmage_thalnos": 4823
@@ -68,7 +68,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 3.1250000000000013e-7,
-        "durationSeconds": 593.8,
+        "durationSeconds": 589,
         "wipeCounts": {
           "scarlet_gy_interrogator_vishas": 94876,
           "scarlet_gy_azshir_the_sleepless": 4902,
@@ -83,7 +83,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.00246,
         "previewClearProbability": 0.0025000000000000005,
-        "durationSeconds": 369.8,
+        "durationSeconds": 366.8,
         "wipeCounts": {
           "scarlet_gy_interrogator_vishas": 95030,
           "scarlet_gy_bloodmage_thalnos": 4724
@@ -94,7 +94,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.00253,
         "previewClearProbability": 0.0025000000000000005,
-        "durationSeconds": 370.6,
+        "durationSeconds": 366.8,
         "wipeCounts": {
           "scarlet_gy_interrogator_vishas": 95035,
           "scarlet_gy_bloodmage_thalnos": 4712
@@ -105,7 +105,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 3.1250000000000013e-7,
-        "durationSeconds": 599.4,
+        "durationSeconds": 596.4,
         "wipeCounts": {
           "scarlet_gy_interrogator_vishas": 95069,
           "scarlet_gy_azshir_the_sleepless": 4714,
@@ -157,37 +157,37 @@
       "required": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.91308,
-        "previewClearProbability": 0.9121821538065922,
-        "durationSeconds": 310.2,
+        "clearRate": 0.92702,
+        "previewClearProbability": 0.926228011532533,
+        "durationSeconds": 300,
         "wipeCounts": {
-          "scarlet_gy_bloodmage_thalnos": 6760,
+          "scarlet_gy_bloodmage_thalnos": 5366,
           "scarlet_gy_interrogator_vishas": 1932
         }
       },
       "with-optional": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.93741,
-        "previewClearProbability": 0.9370439024791176,
-        "durationSeconds": 305.4,
+        "clearRate": 0.95372,
+        "previewClearProbability": 0.9532544238726256,
+        "durationSeconds": 300,
         "wipeCounts": {
           "scarlet_gy_interrogator_vishas": 2016,
-          "scarlet_gy_bloodmage_thalnos": 4243
+          "scarlet_gy_bloodmage_thalnos": 2612
         }
       },
       "with-rare": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.78538,
-        "previewClearProbability": 0.7884726419524619,
-        "durationSeconds": 514.2,
+        "clearRate": 0.81176,
+        "previewClearProbability": 0.8115003999748502,
+        "durationSeconds": 429.2,
         "wipeCounts": {
-          "scarlet_gy_fallen_champion": 2655,
-          "scarlet_gy_bloodmage_thalnos": 9523,
-          "scarlet_gy_azshir_the_sleepless": 3889,
-          "scarlet_gy_interrogator_vishas": 2021,
-          "scarlet_gy_ironspine": 3374
+          "scarlet_gy_fallen_champion": 2420,
+          "scarlet_gy_bloodmage_thalnos": 8361,
+          "scarlet_gy_ironspine": 2772,
+          "scarlet_gy_interrogator_vishas": 1997,
+          "scarlet_gy_azshir_the_sleepless": 3274
         }
       }
     },
@@ -195,37 +195,37 @@
       "required": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.87084,
-        "previewClearProbability": 0.8708373996708577,
-        "durationSeconds": 315.6,
+        "clearRate": 0.89157,
+        "previewClearProbability": 0.8919307004488717,
+        "durationSeconds": 300,
         "wipeCounts": {
           "scarlet_gy_interrogator_vishas": 2000,
-          "scarlet_gy_bloodmage_thalnos": 10916
+          "scarlet_gy_bloodmage_thalnos": 8843
         }
       },
       "with-optional": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.89632,
-        "previewClearProbability": 0.8955317141244648,
-        "durationSeconds": 310,
+        "clearRate": 0.9039,
+        "previewClearProbability": 0.903430950017157,
+        "durationSeconds": 300,
         "wipeCounts": {
-          "scarlet_gy_bloodmage_thalnos": 8385,
+          "scarlet_gy_bloodmage_thalnos": 7627,
           "scarlet_gy_interrogator_vishas": 1983
         }
       },
       "with-rare": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.76186,
-        "previewClearProbability": 0.759527398053837,
-        "durationSeconds": 527,
+        "clearRate": 0.794,
+        "previewClearProbability": 0.7946729093549327,
+        "durationSeconds": 436.6,
         "wipeCounts": {
-          "scarlet_gy_ironspine": 4512,
-          "scarlet_gy_fallen_champion": 6224,
-          "scarlet_gy_bloodmage_thalnos": 7650,
-          "scarlet_gy_azshir_the_sleepless": 3499,
-          "scarlet_gy_interrogator_vishas": 1929
+          "scarlet_gy_ironspine": 3792,
+          "scarlet_gy_fallen_champion": 5383,
+          "scarlet_gy_bloodmage_thalnos": 6870,
+          "scarlet_gy_azshir_the_sleepless": 2576,
+          "scarlet_gy_interrogator_vishas": 1979
         }
       }
     }

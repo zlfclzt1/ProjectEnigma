@@ -6,43 +6,43 @@
       "required": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.8599,
-        "previewClearProbability": 0.8599039142839999,
-        "durationSeconds": 1091.6,
+        "clearRate": 0.88308,
+        "previewClearProbability": 0.8815310956796452,
+        "durationSeconds": 1075.2,
         "wipeCounts": {
-          "razorfen_downs_amnennar_the_coldbringer": 6558,
-          "razorfen_downs_tutenkash": 2036,
-          "razorfen_downs_glutton": 1930,
-          "razorfen_downs_mordresh_fire_eye": 3486
+          "razorfen_downs_amnennar_the_coldbringer": 5205,
+          "razorfen_downs_tutenkash": 1969,
+          "razorfen_downs_glutton": 1907,
+          "razorfen_downs_mordresh_fire_eye": 2611
         }
       },
       "with-optional": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.85428,
-        "previewClearProbability": 0.8527742192285712,
-        "durationSeconds": 1338.2,
+        "clearRate": 0.87772,
+        "previewClearProbability": 0.877773297136013,
+        "durationSeconds": 1315.6,
         "wipeCounts": {
-          "razorfen_downs_mordresh_fire_eye": 3007,
-          "razorfen_downs_plaguemaw_the_rotting": 2150,
-          "razorfen_downs_amnennar_the_coldbringer": 4912,
-          "razorfen_downs_tutenkash": 1976,
-          "razorfen_downs_glutton": 2527
+          "razorfen_downs_tutenkash": 2053,
+          "razorfen_downs_mordresh_fire_eye": 2247,
+          "razorfen_downs_amnennar_the_coldbringer": 3861,
+          "razorfen_downs_plaguemaw_the_rotting": 1928,
+          "razorfen_downs_glutton": 2139
         }
       },
       "with-rare": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.82199,
-        "previewClearProbability": 0.8225364428763214,
-        "durationSeconds": 1341.2,
+        "clearRate": 0.8482,
+        "previewClearProbability": 0.8469293051157392,
+        "durationSeconds": 1318.4,
         "wipeCounts": {
-          "razorfen_downs_amnennar_the_coldbringer": 6507,
-          "razorfen_downs_tutenkash": 1957,
-          "razorfen_downs_lady_faltheress": 2033,
-          "razorfen_downs_glutton": 1948,
-          "razorfen_downs_ragglesnout": 2091,
-          "razorfen_downs_mordresh_fire_eye": 3265
+          "razorfen_downs_amnennar_the_coldbringer": 5087,
+          "razorfen_downs_tutenkash": 1990,
+          "razorfen_downs_lady_faltheress": 1957,
+          "razorfen_downs_glutton": 1835,
+          "razorfen_downs_ragglesnout": 2021,
+          "razorfen_downs_mordresh_fire_eye": 2290
         }
       }
     },
@@ -52,7 +52,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.00001,
         "previewClearProbability": 0.000006250000000000001,
-        "durationSeconds": 1223.8,
+        "durationSeconds": 1195.6,
         "wipeCounts": {
           "razorfen_downs_tutenkash": 95027,
           "razorfen_downs_mordresh_fire_eye": 4734,
@@ -65,7 +65,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 3.1250000000000013e-7,
-        "durationSeconds": 1509.2,
+        "durationSeconds": 1496.4,
         "wipeCounts": {
           "razorfen_downs_mordresh_fire_eye": 4640,
           "razorfen_downs_tutenkash": 95126,
@@ -79,7 +79,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.5625000000000006e-8,
-        "durationSeconds": 1466.4,
+        "durationSeconds": 1418,
         "wipeCounts": {
           "razorfen_downs_tutenkash": 95033,
           "razorfen_downs_lady_faltheress": 4729,
@@ -94,7 +94,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 0.000006250000000000001,
-        "durationSeconds": 1221,
+        "durationSeconds": 1209.2,
         "wipeCounts": {
           "razorfen_downs_tutenkash": 94892,
           "razorfen_downs_mordresh_fire_eye": 4843,
@@ -107,7 +107,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 3.1250000000000013e-7,
-        "durationSeconds": 1485.4,
+        "durationSeconds": 1476,
         "wipeCounts": {
           "razorfen_downs_tutenkash": 94997,
           "razorfen_downs_mordresh_fire_eye": 4779,
@@ -120,7 +120,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.5625000000000006e-8,
-        "durationSeconds": 1462.2,
+        "durationSeconds": 1439.6,
         "wipeCounts": {
           "razorfen_downs_tutenkash": 94880,
           "razorfen_downs_lady_faltheress": 4881,
@@ -133,43 +133,43 @@
       "required": {
         "level": 42,
         "simulatedRuns": 100000,
-        "clearRate": 0.81416,
-        "previewClearProbability": 0.8125535675045299,
-        "durationSeconds": 1126,
+        "clearRate": 0.82836,
+        "previewClearProbability": 0.829777757089551,
+        "durationSeconds": 1115.4,
         "wipeCounts": {
-          "razorfen_downs_amnennar_the_coldbringer": 7948,
-          "razorfen_downs_glutton": 2055,
-          "razorfen_downs_mordresh_fire_eye": 5520,
-          "razorfen_downs_tutenkash": 3061
+          "razorfen_downs_amnennar_the_coldbringer": 7175,
+          "razorfen_downs_glutton": 1969,
+          "razorfen_downs_mordresh_fire_eye": 5210,
+          "razorfen_downs_tutenkash": 2810
         }
       },
       "with-optional": {
         "level": 42,
         "simulatedRuns": 100000,
-        "clearRate": 0.6822,
-        "previewClearProbability": 0.6805689282555962,
-        "durationSeconds": 1422,
+        "clearRate": 0.69607,
+        "previewClearProbability": 0.6973424255840226,
+        "durationSeconds": 1408.8,
         "wipeCounts": {
-          "razorfen_downs_mordresh_fire_eye": 8078,
-          "razorfen_downs_glutton": 4095,
-          "razorfen_downs_amnennar_the_coldbringer": 9944,
-          "razorfen_downs_plaguemaw_the_rotting": 5882,
-          "razorfen_downs_tutenkash": 3781
+          "razorfen_downs_mordresh_fire_eye": 7629,
+          "razorfen_downs_glutton": 4073,
+          "razorfen_downs_amnennar_the_coldbringer": 9450,
+          "razorfen_downs_plaguemaw_the_rotting": 5616,
+          "razorfen_downs_tutenkash": 3625
         }
       },
       "with-rare": {
         "level": 42,
         "simulatedRuns": 100000,
-        "clearRate": 0.79355,
-        "previewClearProbability": 0.795124485026356,
-        "durationSeconds": 1349.4,
+        "clearRate": 0.83039,
+        "previewClearProbability": 0.8279764698726977,
+        "durationSeconds": 1322.2,
         "wipeCounts": {
-          "razorfen_downs_amnennar_the_coldbringer": 6378,
-          "razorfen_downs_glutton": 2885,
-          "razorfen_downs_mordresh_fire_eye": 4042,
-          "razorfen_downs_tutenkash": 2018,
-          "razorfen_downs_ragglesnout": 3130,
-          "razorfen_downs_lady_faltheress": 2192
+          "razorfen_downs_amnennar_the_coldbringer": 5175,
+          "razorfen_downs_glutton": 2851,
+          "razorfen_downs_ragglesnout": 2658,
+          "razorfen_downs_lady_faltheress": 1916,
+          "razorfen_downs_mordresh_fire_eye": 2429,
+          "razorfen_downs_tutenkash": 1932
         }
       }
     },
@@ -177,43 +177,43 @@
       "required": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.85119,
-        "previewClearProbability": 0.8523947039251093,
-        "durationSeconds": 1101.4,
+        "clearRate": 0.87797,
+        "previewClearProbability": 0.878833095310319,
+        "durationSeconds": 1082,
         "wipeCounts": {
-          "razorfen_downs_mordresh_fire_eye": 4043,
-          "razorfen_downs_amnennar_the_coldbringer": 6534,
-          "razorfen_downs_glutton": 1877,
-          "razorfen_downs_tutenkash": 2427
+          "razorfen_downs_mordresh_fire_eye": 3070,
+          "razorfen_downs_amnennar_the_coldbringer": 4912,
+          "razorfen_downs_glutton": 1866,
+          "razorfen_downs_tutenkash": 2355
         }
       },
       "with-optional": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.8646,
-        "previewClearProbability": 0.8655605348161572,
-        "durationSeconds": 1337,
+        "clearRate": 0.89006,
+        "previewClearProbability": 0.8922599801102509,
+        "durationSeconds": 1311.4,
         "wipeCounts": {
-          "razorfen_downs_glutton": 1911,
-          "razorfen_downs_amnennar_the_coldbringer": 4845,
-          "razorfen_downs_mordresh_fire_eye": 2421,
-          "razorfen_downs_tutenkash": 2063,
-          "razorfen_downs_plaguemaw_the_rotting": 2300
+          "razorfen_downs_glutton": 1947,
+          "razorfen_downs_amnennar_the_coldbringer": 3128,
+          "razorfen_downs_tutenkash": 1991,
+          "razorfen_downs_plaguemaw_the_rotting": 1971,
+          "razorfen_downs_mordresh_fire_eye": 1957
         }
       },
       "with-rare": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.78069,
-        "previewClearProbability": 0.7812013408223041,
-        "durationSeconds": 1351.2,
+        "clearRate": 0.80748,
+        "previewClearProbability": 0.8081929636084366,
+        "durationSeconds": 1327.8,
         "wipeCounts": {
-          "razorfen_downs_tutenkash": 1923,
-          "razorfen_downs_ragglesnout": 1983,
-          "razorfen_downs_amnennar_the_coldbringer": 8889,
-          "razorfen_downs_mordresh_fire_eye": 5219,
-          "razorfen_downs_glutton": 1962,
-          "razorfen_downs_lady_faltheress": 1955
+          "razorfen_downs_tutenkash": 2035,
+          "razorfen_downs_ragglesnout": 1744,
+          "razorfen_downs_amnennar_the_coldbringer": 7537,
+          "razorfen_downs_mordresh_fire_eye": 4037,
+          "razorfen_downs_glutton": 1831,
+          "razorfen_downs_lady_faltheress": 2068
         }
       }
     },
@@ -221,43 +221,43 @@
       "required": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.80262,
-        "previewClearProbability": 0.8005629809772339,
-        "durationSeconds": 1104,
+        "clearRate": 0.83408,
+        "previewClearProbability": 0.8335028789939184,
+        "durationSeconds": 1084,
         "wipeCounts": {
-          "razorfen_downs_amnennar_the_coldbringer": 10107,
-          "razorfen_downs_mordresh_fire_eye": 5894,
-          "razorfen_downs_glutton": 1831,
-          "razorfen_downs_tutenkash": 1906
+          "razorfen_downs_amnennar_the_coldbringer": 8479,
+          "razorfen_downs_mordresh_fire_eye": 4147,
+          "razorfen_downs_glutton": 1914,
+          "razorfen_downs_tutenkash": 2052
         }
       },
       "with-optional": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.81753,
-        "previewClearProbability": 0.8197748172211089,
-        "durationSeconds": 1346.8,
+        "clearRate": 0.83366,
+        "previewClearProbability": 0.8338211564189034,
+        "durationSeconds": 1333,
         "wipeCounts": {
-          "razorfen_downs_glutton": 1898,
-          "razorfen_downs_tutenkash": 2039,
-          "razorfen_downs_amnennar_the_coldbringer": 7374,
-          "razorfen_downs_mordresh_fire_eye": 4832,
-          "razorfen_downs_plaguemaw_the_rotting": 2104
+          "razorfen_downs_glutton": 1806,
+          "razorfen_downs_tutenkash": 2072,
+          "razorfen_downs_amnennar_the_coldbringer": 6614,
+          "razorfen_downs_mordresh_fire_eye": 4305,
+          "razorfen_downs_plaguemaw_the_rotting": 1837
         }
       },
       "with-rare": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.72605,
-        "previewClearProbability": 0.7272818970066997,
-        "durationSeconds": 1376.8,
+        "clearRate": 0.7802,
+        "previewClearProbability": 0.7794707118914748,
+        "durationSeconds": 1343.6,
         "wipeCounts": {
-          "razorfen_downs_amnennar_the_coldbringer": 8709,
-          "razorfen_downs_tutenkash": 2967,
-          "razorfen_downs_mordresh_fire_eye": 7076,
-          "razorfen_downs_ragglesnout": 3339,
-          "razorfen_downs_glutton": 3194,
-          "razorfen_downs_lady_faltheress": 2110
+          "razorfen_downs_amnennar_the_coldbringer": 7109,
+          "razorfen_downs_tutenkash": 2223,
+          "razorfen_downs_mordresh_fire_eye": 4964,
+          "razorfen_downs_glutton": 3009,
+          "razorfen_downs_lady_faltheress": 1909,
+          "razorfen_downs_ragglesnout": 2766
         }
       }
     }

@@ -184,7 +184,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.98496,
         "previewClearProbability": 0.9843968000000001,
-        "durationSeconds": 425.6,
+        "durationSeconds": 360,
         "wipeCounts": {
           "stockade_kam_deepfury": 411,
           "stockade_targorr_the_dread": 762,
@@ -196,22 +196,20 @@
         "simulatedRuns": 100000,
         "clearRate": 1,
         "previewClearProbability": 1,
-        "durationSeconds": 419,
+        "durationSeconds": 360,
         "wipeCounts": {}
       },
       "with-rare": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.9645,
-        "previewClearProbability": 0.9653284761727999,
-        "durationSeconds": 503.8,
+        "clearRate": 0.9799,
+        "previewClearProbability": 0.9802384,
+        "durationSeconds": 360,
         "wipeCounts": {
-          "stockade_hamhock": 1174,
-          "stockade_kam_deepfury": 409,
-          "stockade_bruegal_ironknuckle": 768,
-          "stockade_bazil_thredd": 381,
-          "stockade_dextren_ward": 378,
-          "stockade_targorr_the_dread": 440
+          "stockade_dextren_ward": 426,
+          "stockade_bruegal_ironknuckle": 390,
+          "stockade_kam_deepfury": 387,
+          "stockade_hamhock": 807
         }
       }
     },
@@ -221,7 +219,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.99209,
         "previewClearProbability": 0.992,
-        "durationSeconds": 421.4,
+        "durationSeconds": 360,
         "wipeCounts": {
           "stockade_hamhock": 791
         }
@@ -229,30 +227,26 @@
       "with-optional": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.9809,
-        "previewClearProbability": 0.98078415936,
-        "durationSeconds": 418.2,
+        "clearRate": 0.99198,
+        "previewClearProbability": 0.99208,
+        "durationSeconds": 360,
         "wipeCounts": {
-          "stockade_dextren_ward": 364,
-          "stockade_kam_deepfury": 366,
-          "stockade_bazil_thredd": 404,
-          "stockade_targorr_the_dread": 400,
-          "stockade_hamhock": 376
+          "stockade_dextren_ward": 414,
+          "stockade_kam_deepfury": 388
         }
       },
       "with-rare": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.94163,
-        "previewClearProbability": 0.9423369523456,
-        "durationSeconds": 522.4,
+        "clearRate": 0.96505,
+        "previewClearProbability": 0.9647120319999999,
+        "durationSeconds": 360,
         "wipeCounts": {
-          "stockade_dextren_ward": 761,
-          "stockade_bazil_thredd": 794,
-          "stockade_hamhock": 1498,
-          "stockade_bruegal_ironknuckle": 1152,
-          "stockade_targorr_the_dread": 845,
-          "stockade_kam_deepfury": 787
+          "stockade_dextren_ward": 768,
+          "stockade_bruegal_ironknuckle": 676,
+          "stockade_kam_deepfury": 820,
+          "stockade_hamhock": 823,
+          "stockade_targorr_the_dread": 408
         }
       }
     }

@@ -148,6 +148,37 @@ function contentWithOptionalQuestBoss() {
 }
 
 describe("dungeon and activity queries", () => {
+  it("previews each member's boosted experience and projected level before departure", () => {
+    const game = state();
+    const members = Object.values(game.members);
+    const newcomer = members[0]!;
+    newcomer.progression.level = 10;
+    newcomer.progression.experience = 0.25;
+    for (const veteran of members.slice(1)) veteran.progression.level = 45;
+
+    const view = getDungeonPlanningView(
+      game,
+      content,
+      asBrandedId<"DungeonId">("ragefire_chasm"),
+      members.map((member) => member.id),
+      2,
+    );
+
+    const newcomerExperience = view.preview?.experience.find(
+      (entry) => entry.memberId === newcomer.id,
+    );
+    expect(newcomerExperience).toMatchObject({
+      memberName: newcomer.identity.name,
+      currentLevel: 10,
+      boostMultiplier: 0.7,
+      projectedLevel: 11,
+    });
+    expect(newcomerExperience!.experienceFraction).toBeGreaterThan(0);
+    expect(view.preview?.experience.filter((entry) => entry.experienceFraction === 0)).toHaveLength(
+      4,
+    );
+  });
+
   it("projects all dungeons, filter metadata, and exact party probabilities", () => {
     const game = state();
     const memberIds = Object.values(game.members).map((member) => member.id);

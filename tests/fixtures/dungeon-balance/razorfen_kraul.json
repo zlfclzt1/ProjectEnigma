@@ -188,7 +188,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.90489,
         "previewClearProbability": 0.9039207967999998,
-        "durationSeconds": 951.8,
+        "durationSeconds": 850,
         "wipeCounts": {
           "razorfen_kraul_agathelos_the_raging": 1844,
           "razorfen_kraul_charlga_razorflank": 1861,
@@ -202,7 +202,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.88602,
         "previewClearProbability": 0.8858423808639998,
-        "durationSeconds": 1047.8,
+        "durationSeconds": 850,
         "wipeCounts": {
           "razorfen_kraul_death_speaker_jargba": 1875,
           "razorfen_kraul_roogug": 1963,
@@ -215,17 +215,17 @@
       "with-rare": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.86914,
-        "previewClearProbability": 0.8671375874543248,
-        "durationSeconds": 1237.4,
+        "clearRate": 0.86991,
+        "previewClearProbability": 0.8681255332467199,
+        "durationSeconds": 888,
         "wipeCounts": {
-          "razorfen_kraul_overlord_ramtusk": 1867,
-          "razorfen_kraul_death_speaker_jargba": 1983,
-          "razorfen_kraul_blind_hunter": 1820,
-          "razorfen_kraul_aggem_thorncurse": 2009,
-          "razorfen_kraul_earthcaller_halmgar": 1709,
-          "razorfen_kraul_agathelos_the_raging": 1967,
-          "razorfen_kraul_charlga_razorflank": 1731
+          "razorfen_kraul_overlord_ramtusk": 1828,
+          "razorfen_kraul_death_speaker_jargba": 1978,
+          "razorfen_kraul_blind_hunter": 1790,
+          "razorfen_kraul_aggem_thorncurse": 2064,
+          "razorfen_kraul_earthcaller_halmgar": 1682,
+          "razorfen_kraul_agathelos_the_raging": 1875,
+          "razorfen_kraul_charlga_razorflank": 1792
         }
       }
     },
@@ -233,46 +233,46 @@
       "required": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.89991,
-        "previewClearProbability": 0.9008897988004421,
-        "durationSeconds": 949.6,
+        "clearRate": 0.90408,
+        "previewClearProbability": 0.9039207967999998,
+        "durationSeconds": 850,
         "wipeCounts": {
-          "razorfen_kraul_agathelos_the_raging": 2220,
-          "razorfen_kraul_death_speaker_jargba": 2017,
-          "razorfen_kraul_overlord_ramtusk": 1899,
-          "razorfen_kraul_aggem_thorncurse": 2003,
-          "razorfen_kraul_charlga_razorflank": 1870
+          "razorfen_kraul_agathelos_the_raging": 1822,
+          "razorfen_kraul_death_speaker_jargba": 1980,
+          "razorfen_kraul_overlord_ramtusk": 1920,
+          "razorfen_kraul_aggem_thorncurse": 2014,
+          "razorfen_kraul_charlga_razorflank": 1856
         }
       },
       "with-optional": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.88692,
-        "previewClearProbability": 0.8858423808639998,
-        "durationSeconds": 1049.8,
+        "clearRate": 0.89428,
+        "previewClearProbability": 0.8931475366911998,
+        "durationSeconds": 850,
         "wipeCounts": {
-          "razorfen_kraul_roogug": 2094,
-          "razorfen_kraul_charlga_razorflank": 1801,
-          "razorfen_kraul_overlord_ramtusk": 1836,
-          "razorfen_kraul_aggem_thorncurse": 1901,
-          "razorfen_kraul_agathelos_the_raging": 1829,
-          "razorfen_kraul_death_speaker_jargba": 1847
+          "razorfen_kraul_roogug": 1542,
+          "razorfen_kraul_charlga_razorflank": 1751,
+          "razorfen_kraul_overlord_ramtusk": 1917,
+          "razorfen_kraul_agathelos_the_raging": 1898,
+          "razorfen_kraul_aggem_thorncurse": 1537,
+          "razorfen_kraul_death_speaker_jargba": 1927
         }
       },
       "with-rare": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.86192,
-        "previewClearProbability": 0.8616829650973031,
-        "durationSeconds": 1277,
+        "clearRate": 0.86606,
+        "previewClearProbability": 0.8657289206250093,
+        "durationSeconds": 911.2,
         "wipeCounts": {
-          "razorfen_kraul_earthcaller_halmgar": 2179,
-          "razorfen_kraul_death_speaker_jargba": 2000,
-          "razorfen_kraul_overlord_ramtusk": 2133,
-          "razorfen_kraul_blind_hunter": 1833,
-          "razorfen_kraul_aggem_thorncurse": 1969,
-          "razorfen_kraul_charlga_razorflank": 1802,
-          "razorfen_kraul_agathelos_the_raging": 1892
+          "razorfen_kraul_earthcaller_halmgar": 1984,
+          "razorfen_kraul_death_speaker_jargba": 1968,
+          "razorfen_kraul_overlord_ramtusk": 1901,
+          "razorfen_kraul_blind_hunter": 1850,
+          "razorfen_kraul_aggem_thorncurse": 2066,
+          "razorfen_kraul_charlga_razorflank": 1823,
+          "razorfen_kraul_agathelos_the_raging": 1802
         }
       }
     }

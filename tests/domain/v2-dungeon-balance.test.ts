@@ -2,7 +2,10 @@ import { describe, expect, it } from "vitest";
 import balance from "../fixtures/v2-dungeon-balance.json";
 import { getPartyPreview } from "../../src/application/queries/get-party-preview";
 import { loadBrowserContentRegistry } from "../../src/content/manifest";
-import { experienceFractions } from "../../src/domain/dungeon/expedition-activity";
+import {
+  DEFAULT_DUNGEON_EXPERIENCE_CONFIG,
+  experienceFractions,
+} from "../../src/domain/dungeon/expedition-activity";
 import { createNewGame } from "../../src/domain/guild/new-game";
 import { asBrandedId } from "../../src/domain/shared/ids";
 import { LocalIdGenerator } from "../../src/infrastructure/ids/local-id-generator";
@@ -56,7 +59,7 @@ describe("V2 dungeon balance", () => {
     }
   });
 
-  it("lets veteran members carry a low-level member without reducing that member's XP", () => {
+  it("lets veterans carry a low-level member with a configurable level-spread penalty", () => {
     const state = newState("carry-xp");
     const members = Object.values(state.members);
     const lowLevelMember = members[0]!;
@@ -90,7 +93,10 @@ describe("V2 dungeon balance", () => {
     );
 
     expect(soloHighDungeonXp[lowLevelMember.id]).toBeGreaterThan(lowDungeonXp[lowLevelMember.id]!);
-    expect(carriedXp[lowLevelMember.id]).toBe(soloHighDungeonXp[lowLevelMember.id]);
+    expect(carriedXp[lowLevelMember.id]).toBeGreaterThan(0);
+    expect(carriedXp[lowLevelMember.id]).toBeLessThan(soloHighDungeonXp[lowLevelMember.id]!);
+    expect(carriedXp[lowLevelMember.id]).toBeGreaterThan(lowDungeonXp[lowLevelMember.id]!);
+    for (const veteran of members.slice(1)) expect(carriedXp[veteran.id]).toBe(0);
     expect(allLowPreview.ok && carriedPreview.ok).toBe(true);
     if (!allLowPreview.ok || !carriedPreview.ok) throw new Error("Expected valid carry previews");
     expect(carriedPreview.preview.clearProbability).toBeGreaterThan(
@@ -99,5 +105,20 @@ describe("V2 dungeon balance", () => {
     expect(carriedPreview.preview.durationSeconds).toBeLessThan(
       allLowPreview.preview.durationSeconds,
     );
+
+    const withoutSpreadPenalty = experienceFractions(
+      state,
+      content,
+      shadowfangId,
+      members.map((member) => member.id),
+      {
+        ...DEFAULT_DUNGEON_EXPERIENCE_CONFIG,
+        boost: {
+          ...DEFAULT_DUNGEON_EXPERIENCE_CONFIG.boost,
+          graceLevelSpread: 100,
+        },
+      },
+    );
+    expect(withoutSpreadPenalty[lowLevelMember.id]).toBe(soloHighDungeonXp[lowLevelMember.id]);
   });
 });

@@ -8,7 +8,7 @@ import type { ItemInstance } from "../equipment/item-instance";
 import type { GameState } from "../game-state";
 import type { CombatReportId, MemberId } from "../shared/ids";
 import { generateCombatReport } from "../combat/report-generator";
-import { experienceFractions } from "./expedition-activity";
+import { DEFAULT_DUNGEON_EXPERIENCE_CONFIG, experienceFractions } from "./expedition-activity";
 import { generateGuaranteedLoot } from "./loot-generation";
 import { revealRareRouteNodes } from "./rare-route";
 import {
@@ -166,14 +166,28 @@ function applyEncounterExperience(
 ): Partial<Record<MemberId, number>> {
   const run = activity.runPlans[activity.activeRunIndex]!;
   const awarded: Partial<Record<MemberId, number>> = {};
+  run.experienceAwardedByMember ??= {};
   for (const memberId of activity.participantIds) {
     const member = state.members[memberId];
     if (!member) continue;
+    const maximumExperience =
+      run.maximumExperiencePerMember ?? DEFAULT_DUNGEON_EXPERIENCE_CONFIG.maximumFractionPerRun;
+    const remainingExperience = Math.max(
+      0,
+      maximumExperience - (run.experienceAwardedByMember[memberId] ?? 0),
+    );
     const gained = applyExperience(
       member,
-      (run.experienceFractionByMember[memberId] ?? 0) * experienceShare,
+      Math.min(
+        remainingExperience,
+        (run.experienceFractionByMember[memberId] ?? 0) * experienceShare,
+      ),
     );
-    if (gained > 0) awarded[memberId] = gained;
+    if (gained > 0) {
+      awarded[memberId] = gained;
+      run.experienceAwardedByMember[memberId] =
+        (run.experienceAwardedByMember[memberId] ?? 0) + gained;
+    }
   }
   return awarded;
 }
@@ -229,6 +243,8 @@ function advanceAfterVictory(
     activity.dungeonId,
     activity.participantIds,
   );
+  nextRun.maximumExperiencePerMember = DEFAULT_DUNGEON_EXPERIENCE_CONFIG.maximumFractionPerRun;
+  nextRun.experienceAwardedByMember = {};
   activity.nextSettlementAt = settledAt + nextRun.stages[0]!.durationSeconds * 1_000;
 }
 

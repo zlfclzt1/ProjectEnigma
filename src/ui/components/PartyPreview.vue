@@ -113,6 +113,27 @@ function durationLabel(seconds: number): string {
           }}
         </strong>
       </p>
+      <section v-if="preview.experience.length" class="experience-preview">
+        <h4>预计经验</h4>
+        <p>按所选路线全部取胜计算 {{ requestedRuns }} 次；实际经验随灭团位置结算。</p>
+        <article v-for="member in preview.experience" :key="member.memberId">
+          <span>
+            <strong>{{ member.memberName }}</strong>
+            <small v-if="member.boostMultiplier < 1 && member.experienceFraction > 0">
+              等级差衰减 {{ Math.round(member.boostMultiplier * 100) }}%
+            </small>
+          </span>
+          <span>
+            <strong>+{{ member.experienceFraction.toFixed(2) }} 级</strong>
+            <small>
+              {{ member.currentLevel }} 级 → {{ member.projectedLevel }} 级
+              <template v-if="member.projectedLevel < 45">
+                {{ Math.round(member.projectedExperience * 100) }}%
+              </template>
+            </small>
+          </span>
+        </article>
+      </section>
     </template>
     <p v-else class="placeholder">选择成员后，会在这里显示每位 Boss 的精确胜率与固定出发耗时。</p>
 
@@ -216,6 +237,46 @@ dd {
 }
 .total-time strong {
   color: #e2b85c;
+}
+.experience-preview {
+  display: grid;
+  gap: 5px;
+  margin-top: 12px;
+}
+.experience-preview h4,
+.experience-preview p {
+  margin: 0;
+}
+.experience-preview h4 {
+  color: #bca87f;
+  font-size: 0.72rem;
+}
+.experience-preview > p {
+  color: #756e61;
+  font-size: 0.62rem;
+}
+.experience-preview article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 7px 9px;
+  background: #090c0d;
+}
+.experience-preview article > span {
+  display: grid;
+  gap: 2px;
+}
+.experience-preview article > span:last-child {
+  text-align: right;
+}
+.experience-preview strong {
+  color: #d9c9a9;
+  font-size: 0.68rem;
+}
+.experience-preview small {
+  color: #8e8577;
+  font-size: 0.58rem;
 }
 .placeholder {
   padding: 35px 10px;

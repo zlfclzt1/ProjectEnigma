@@ -69,6 +69,17 @@ function contentWithRagefireDropCount(count: number): ContentRegistry {
   return loadContentRegistry(modules);
 }
 
+function contentWithRagefireExperienceShare(experienceShare: number): ContentRegistry {
+  const modules = structuredClone(browserContentModules) as Record<string, unknown>;
+  const key = Object.keys(modules).find((path) =>
+    path.endsWith("/content/encounters/ragefire-chasm.json"),
+  );
+  if (!key) throw new Error("Expected ragefire encounter content");
+  const file = modules[key] as { encounters: Array<{ experienceShare: number }> };
+  for (const encounter of file.encounters) encounter.experienceShare = experienceShare;
+  return loadContentRegistry(modules);
+}
+
 function contentWithRareTaragaman(spawnProbability: number): ContentRegistry {
   const modules = structuredClone(browserContentModules) as Record<string, unknown>;
   const key = Object.keys(modules).find((path) =>
@@ -105,6 +116,24 @@ function forceAll(activity: ExpeditionActivity, outcome: "victory" | "defeat"): 
 }
 
 describe("expedition settlement", () => {
+  it("caps each member's experience across all bosses in a single run", async () => {
+    const highExperienceContent = contentWithRagefireExperienceShare(1);
+    const state = newState("experience-cap", highExperienceContent);
+    const member = Object.values(state.members)[0]!;
+    member.progression.level = 1;
+    member.progression.experience = 0;
+    const activity = await startExpedition(state, [member.id], 1, 2_000, highExperienceContent);
+    forceAll(activity, "victory");
+
+    new SettlementService(highExperienceContent).settleDueActivities(
+      state,
+      Number.MAX_SAFE_INTEGER,
+    );
+
+    expect(member.progression.level + member.progression.experience).toBe(3);
+    expect(activity.runPlans[0]!.experienceAwardedByMember?.[member.id]).toBe(2);
+  });
+
   it("keeps completed Boss quest progress when the party wipes later", async () => {
     const state = newState("quest-progress-before-wipe");
     const participant = Object.values(state.members)[0]!;

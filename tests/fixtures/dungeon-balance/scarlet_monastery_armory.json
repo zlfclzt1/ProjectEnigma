@@ -6,31 +6,31 @@
       "required": {
         "level": 42,
         "simulatedRuns": 100000,
-        "clearRate": 0.8385,
-        "previewClearProbability": 0.8383771263328322,
-        "durationSeconds": 1031.6,
+        "clearRate": 0.8522,
+        "previewClearProbability": 0.8529773675474684,
+        "durationSeconds": 1013.2,
         "wipeCounts": {
-          "scarlet_armory_herod": 16150
+          "scarlet_armory_herod": 14780
         }
       },
       "with-optional": {
         "level": 42,
         "simulatedRuns": 100000,
-        "clearRate": 0.84612,
-        "previewClearProbability": 0.8438855328005929,
-        "durationSeconds": 1030.2,
+        "clearRate": 0.85721,
+        "previewClearProbability": 0.8556859099506193,
+        "durationSeconds": 1011.2,
         "wipeCounts": {
-          "scarlet_armory_herod": 15388
+          "scarlet_armory_herod": 14279
         }
       },
       "with-rare": {
         "level": 42,
         "simulatedRuns": 100000,
-        "clearRate": 0.82615,
-        "previewClearProbability": 0.8237727635758038,
-        "durationSeconds": 1040.8,
+        "clearRate": 0.8327,
+        "previewClearProbability": 0.830294284654887,
+        "durationSeconds": 1029.6,
         "wipeCounts": {
-          "scarlet_armory_herod": 17385
+          "scarlet_armory_herod": 16730
         }
       }
     },
@@ -40,7 +40,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.04947,
         "previewClearProbability": 0.05,
-        "durationSeconds": 1114.6,
+        "durationSeconds": 1105,
         "wipeCounts": {
           "scarlet_armory_herod": 95053
         }
@@ -50,7 +50,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.05006,
         "previewClearProbability": 0.05,
-        "durationSeconds": 1105.8,
+        "durationSeconds": 1098.8,
         "wipeCounts": {
           "scarlet_armory_herod": 94994
         }
@@ -60,7 +60,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.05079,
         "previewClearProbability": 0.05,
-        "durationSeconds": 1099.6,
+        "durationSeconds": 1075.8,
         "wipeCounts": {
           "scarlet_armory_herod": 94921
         }
@@ -72,7 +72,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.05047,
         "previewClearProbability": 0.05,
-        "durationSeconds": 1115.2,
+        "durationSeconds": 1105.8,
         "wipeCounts": {
           "scarlet_armory_herod": 94953
         }
@@ -82,7 +82,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.05072,
         "previewClearProbability": 0.05,
-        "durationSeconds": 1127.2,
+        "durationSeconds": 1115.2,
         "wipeCounts": {
           "scarlet_armory_herod": 94928
         }
@@ -92,7 +92,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.04985,
         "previewClearProbability": 0.05,
-        "durationSeconds": 1120.6,
+        "durationSeconds": 1107.2,
         "wipeCounts": {
           "scarlet_armory_herod": 95015
         }
@@ -134,31 +134,31 @@
       "required": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.85902,
-        "previewClearProbability": 0.8582207032355139,
-        "durationSeconds": 1009,
+        "clearRate": 0.87818,
+        "previewClearProbability": 0.8779001226386768,
+        "durationSeconds": 895.2,
         "wipeCounts": {
-          "scarlet_armory_herod": 14098
+          "scarlet_armory_herod": 12182
         }
       },
       "with-optional": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.88722,
-        "previewClearProbability": 0.8879929801845435,
-        "durationSeconds": 983.6,
+        "clearRate": 0.91577,
+        "previewClearProbability": 0.9159900685325766,
+        "durationSeconds": 866.8,
         "wipeCounts": {
-          "scarlet_armory_herod": 11278
+          "scarlet_armory_herod": 8423
         }
       },
       "with-rare": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.8821,
-        "previewClearProbability": 0.8804580569397766,
-        "durationSeconds": 976.2,
+        "clearRate": 0.89892,
+        "previewClearProbability": 0.8969852524479174,
+        "durationSeconds": 867.2,
         "wipeCounts": {
-          "scarlet_armory_herod": 11790
+          "scarlet_armory_herod": 10108
         }
       }
     },
@@ -166,31 +166,31 @@
       "required": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.87586,
-        "previewClearProbability": 0.8750787883611183,
-        "durationSeconds": 977.8,
+        "clearRate": 0.90422,
+        "previewClearProbability": 0.9043269701479627,
+        "durationSeconds": 863,
         "wipeCounts": {
-          "scarlet_armory_herod": 12414
+          "scarlet_armory_herod": 9578
         }
       },
       "with-optional": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.89302,
-        "previewClearProbability": 0.8939265704949346,
-        "durationSeconds": 969.6,
+        "clearRate": 0.91166,
+        "previewClearProbability": 0.9129864497312699,
+        "durationSeconds": 867,
         "wipeCounts": {
-          "scarlet_armory_herod": 10698
+          "scarlet_armory_herod": 8834
         }
       },
       "with-rare": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.84839,
-        "previewClearProbability": 0.847096474269722,
-        "durationSeconds": 1018.6,
+        "clearRate": 0.86512,
+        "previewClearProbability": 0.864002427427892,
+        "durationSeconds": 900,
         "wipeCounts": {
-          "scarlet_armory_herod": 15161
+          "scarlet_armory_herod": 13488
         }
       }
     }

@@ -6,35 +6,35 @@
       "required": {
         "level": 44,
         "simulatedRuns": 100000,
-        "clearRate": 0.8384,
-        "previewClearProbability": 0.8357237628114025,
-        "durationSeconds": 839.2,
+        "clearRate": 0.853,
+        "previewClearProbability": 0.8537000744505552,
+        "durationSeconds": 826,
         "wipeCounts": {
-          "scarlet_cathedral_high_inquisitor_whitemane": 8450,
-          "scarlet_cathedral_commander_mograine": 7710
+          "scarlet_cathedral_high_inquisitor_whitemane": 7782,
+          "scarlet_cathedral_commander_mograine": 6918
         }
       },
       "with-optional": {
         "level": 44,
         "simulatedRuns": 100000,
-        "clearRate": 0.79028,
-        "previewClearProbability": 0.7925682816241368,
-        "durationSeconds": 1047,
+        "clearRate": 0.8174,
+        "previewClearProbability": 0.8171202859939835,
+        "durationSeconds": 1028.2,
         "wipeCounts": {
-          "scarlet_cathedral_high_inquisitor_whitemane": 7496,
-          "scarlet_cathedral_commander_mograine": 6273,
-          "scarlet_cathedral_high_inquisitor_fairbanks": 7203
+          "scarlet_cathedral_high_inquisitor_whitemane": 6910,
+          "scarlet_cathedral_commander_mograine": 4811,
+          "scarlet_cathedral_high_inquisitor_fairbanks": 6539
         }
       },
       "with-rare": {
         "level": 44,
         "simulatedRuns": 100000,
-        "clearRate": 0.81493,
-        "previewClearProbability": 0.8133807806264498,
-        "durationSeconds": 849.6,
+        "clearRate": 0.83224,
+        "previewClearProbability": 0.832563464217321,
+        "durationSeconds": 831.8,
         "wipeCounts": {
-          "scarlet_cathedral_high_inquisitor_whitemane": 9641,
-          "scarlet_cathedral_commander_mograine": 8866
+          "scarlet_cathedral_high_inquisitor_whitemane": 9064,
+          "scarlet_cathedral_commander_mograine": 7712
         }
       }
     },
@@ -44,7 +44,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.00257,
         "previewClearProbability": 0.0025000000000000005,
-        "durationSeconds": 915.8,
+        "durationSeconds": 903.6,
         "wipeCounts": {
           "scarlet_cathedral_commander_mograine": 95179,
           "scarlet_cathedral_high_inquisitor_whitemane": 4564
@@ -55,7 +55,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.00015,
         "previewClearProbability": 0.00012500000000000003,
-        "durationSeconds": 1161,
+        "durationSeconds": 1153.4,
         "wipeCounts": {
           "scarlet_cathedral_commander_mograine": 4589,
           "scarlet_cathedral_high_inquisitor_fairbanks": 95157,
@@ -67,7 +67,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.00257,
         "previewClearProbability": 0.0025000000000000005,
-        "durationSeconds": 902.6,
+        "durationSeconds": 878.4,
         "wipeCounts": {
           "scarlet_cathedral_commander_mograine": 95032,
           "scarlet_cathedral_high_inquisitor_whitemane": 4711
@@ -80,7 +80,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.00253,
         "previewClearProbability": 0.0025000000000000005,
-        "durationSeconds": 942.4,
+        "durationSeconds": 929,
         "wipeCounts": {
           "scarlet_cathedral_commander_mograine": 94922,
           "scarlet_cathedral_high_inquisitor_whitemane": 4825
@@ -91,7 +91,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.00012,
         "previewClearProbability": 0.00012500000000000003,
-        "durationSeconds": 1149.8,
+        "durationSeconds": 1137.4,
         "wipeCounts": {
           "scarlet_cathedral_high_inquisitor_fairbanks": 94976,
           "scarlet_cathedral_commander_mograine": 4766,
@@ -103,7 +103,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.00263,
         "previewClearProbability": 0.0025000000000000005,
-        "durationSeconds": 903.2,
+        "durationSeconds": 887,
         "wipeCounts": {
           "scarlet_cathedral_commander_mograine": 95061,
           "scarlet_cathedral_high_inquisitor_whitemane": 4676
@@ -114,35 +114,35 @@
       "required": {
         "level": 41,
         "simulatedRuns": 100000,
-        "clearRate": 0.82009,
-        "previewClearProbability": 0.8192727828329269,
-        "durationSeconds": 863.6,
+        "clearRate": 0.82978,
+        "previewClearProbability": 0.8288537760217325,
+        "durationSeconds": 858.6,
         "wipeCounts": {
-          "scarlet_cathedral_commander_mograine": 8369,
-          "scarlet_cathedral_high_inquisitor_whitemane": 9622
+          "scarlet_cathedral_commander_mograine": 8001,
+          "scarlet_cathedral_high_inquisitor_whitemane": 9021
         }
       },
       "with-optional": {
         "level": 41,
         "simulatedRuns": 100000,
-        "clearRate": 0.61961,
-        "previewClearProbability": 0.6205766871471613,
-        "durationSeconds": 1134.6,
+        "clearRate": 0.63631,
+        "previewClearProbability": 0.6351446067507411,
+        "durationSeconds": 1125,
         "wipeCounts": {
-          "scarlet_cathedral_high_inquisitor_whitemane": 11510,
-          "scarlet_cathedral_high_inquisitor_fairbanks": 15974,
-          "scarlet_cathedral_commander_mograine": 10555
+          "scarlet_cathedral_high_inquisitor_whitemane": 10747,
+          "scarlet_cathedral_high_inquisitor_fairbanks": 15278,
+          "scarlet_cathedral_commander_mograine": 10344
         }
       },
       "with-rare": {
         "level": 41,
         "simulatedRuns": 100000,
-        "clearRate": 0.8167,
-        "previewClearProbability": 0.8161414522859728,
-        "durationSeconds": 852.4,
+        "clearRate": 0.8252,
+        "previewClearProbability": 0.8244031390276538,
+        "durationSeconds": 851.6,
         "wipeCounts": {
-          "scarlet_cathedral_high_inquisitor_whitemane": 8002,
-          "scarlet_cathedral_commander_mograine": 10328
+          "scarlet_cathedral_high_inquisitor_whitemane": 7498,
+          "scarlet_cathedral_commander_mograine": 9982
         }
       }
     },
@@ -150,35 +150,35 @@
       "required": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.83929,
-        "previewClearProbability": 0.8388500096288019,
-        "durationSeconds": 835.8,
+        "clearRate": 0.86507,
+        "previewClearProbability": 0.864975909909662,
+        "durationSeconds": 792.6,
         "wipeCounts": {
-          "scarlet_cathedral_commander_mograine": 8566,
-          "scarlet_cathedral_high_inquisitor_whitemane": 7505
+          "scarlet_cathedral_commander_mograine": 7205,
+          "scarlet_cathedral_high_inquisitor_whitemane": 6288
         }
       },
       "with-optional": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.79392,
-        "previewClearProbability": 0.7933212188060783,
-        "durationSeconds": 1033,
+        "clearRate": 0.83576,
+        "previewClearProbability": 0.8350703647265215,
+        "durationSeconds": 978,
         "wipeCounts": {
-          "scarlet_cathedral_high_inquisitor_fairbanks": 11218,
-          "scarlet_cathedral_commander_mograine": 5220,
-          "scarlet_cathedral_high_inquisitor_whitemane": 4170
+          "scarlet_cathedral_high_inquisitor_fairbanks": 9901,
+          "scarlet_cathedral_high_inquisitor_whitemane": 3048,
+          "scarlet_cathedral_commander_mograine": 3475
         }
       },
       "with-rare": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.81839,
-        "previewClearProbability": 0.8176261563216285,
-        "durationSeconds": 851.2,
+        "clearRate": 0.842,
+        "previewClearProbability": 0.8409166250833426,
+        "durationSeconds": 807.8,
         "wipeCounts": {
-          "scarlet_cathedral_high_inquisitor_whitemane": 12139,
-          "scarlet_cathedral_commander_mograine": 6022
+          "scarlet_cathedral_high_inquisitor_whitemane": 11035,
+          "scarlet_cathedral_commander_mograine": 4765
         }
       }
     },
@@ -186,35 +186,35 @@
       "required": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.81001,
-        "previewClearProbability": 0.8097487698575323,
-        "durationSeconds": 844.2,
+        "clearRate": 0.85119,
+        "previewClearProbability": 0.8516840207029356,
+        "durationSeconds": 796.8,
         "wipeCounts": {
-          "scarlet_cathedral_high_inquisitor_whitemane": 12682,
-          "scarlet_cathedral_commander_mograine": 6317
+          "scarlet_cathedral_high_inquisitor_whitemane": 11222,
+          "scarlet_cathedral_commander_mograine": 3659
         }
       },
       "with-optional": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.79979,
-        "previewClearProbability": 0.8002821933251699,
-        "durationSeconds": 1043.4,
+        "clearRate": 0.8221,
+        "previewClearProbability": 0.8193313378870201,
+        "durationSeconds": 1000.8,
         "wipeCounts": {
-          "scarlet_cathedral_high_inquisitor_whitemane": 8243,
-          "scarlet_cathedral_high_inquisitor_fairbanks": 6942,
-          "scarlet_cathedral_commander_mograine": 4836
+          "scarlet_cathedral_high_inquisitor_whitemane": 7990,
+          "scarlet_cathedral_high_inquisitor_fairbanks": 5821,
+          "scarlet_cathedral_commander_mograine": 3979
         }
       },
       "with-rare": {
         "level": 45,
         "simulatedRuns": 100000,
-        "clearRate": 0.80562,
-        "previewClearProbability": 0.8052804047788872,
-        "durationSeconds": 860,
+        "clearRate": 0.83568,
+        "previewClearProbability": 0.8350052244308728,
+        "durationSeconds": 809.8,
         "wipeCounts": {
-          "scarlet_cathedral_high_inquisitor_whitemane": 9514,
-          "scarlet_cathedral_commander_mograine": 9924
+          "scarlet_cathedral_high_inquisitor_whitemane": 8727,
+          "scarlet_cathedral_commander_mograine": 7705
         }
       }
     }

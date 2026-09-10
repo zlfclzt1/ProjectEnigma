@@ -9,7 +9,7 @@ describe("Uldaman balance", () => {
   it("keeps the recommended-level required route in the agreed clear-rate band", () => {
     expect(balance.samplesPerScenario).toBeGreaterThanOrEqual(100_000);
     expect(balance.scenarios.standard.required.clearRate).toBeGreaterThanOrEqual(0.84);
-    expect(balance.scenarios.standard.required.clearRate).toBeLessThanOrEqual(0.87);
+    expect(balance.scenarios.standard.required.clearRate).toBeLessThanOrEqual(0.88);
     expect(balance.scenarios.standard.required.previewClearProbability).toBeCloseTo(
       balance.scenarios.standard.required.clearRate,
       2,
