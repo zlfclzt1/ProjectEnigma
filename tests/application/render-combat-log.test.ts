@@ -81,6 +81,23 @@ function fixture() {
       firstKillBonus: 0,
       itemInstanceIds: [],
     },
+    mechanics: [
+      {
+        mechanicId: asBrandedId<"MechanicId">("test_recommended_magic_dispel"),
+        reportTag: "recommended_magic_dispel",
+        type: "recommended",
+        satisfied: false,
+        requirements: [
+          {
+            capabilityId: asBrandedId<"CapabilityId">("magic_dispel"),
+            currentValue: 0,
+            minimumValue: 1,
+            satisfied: false,
+          },
+        ],
+        appliedEffects: { healingMultiplier: 1.15 },
+      },
+    ],
   };
   return { members, report };
 }
@@ -100,6 +117,11 @@ describe("playful combat log rendering", () => {
         "report-member-defeated",
       ]),
     );
+    expect(logs[0]).toMatchObject({
+      eventType: "mechanic:recommended_magic_dispel",
+      text: expect.stringContaining("建议驱散魔法"),
+    });
+    expect(logs[0]!.text).toContain("对应惩罚已生效");
     expect(logs.find((entry) => entry.eventType === "report-top-damage")?.text).toContain("火花");
     expect(logs.find((entry) => entry.eventType === "report-top-healing")?.text).toContain("奶瓶");
     expect(logs.find((entry) => entry.eventType === "report-tank-danger")?.text).toContain("铁墙");

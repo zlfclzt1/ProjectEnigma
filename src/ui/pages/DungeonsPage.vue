@@ -80,6 +80,7 @@ async function start(): Promise<void> {
       <PartyPreview
         :dungeon="planning.selectedDungeon"
         :preview="planning.preview"
+        :mechanic-readiness="planning.mechanicReadiness"
         :issues="planning.issues"
         :requested-runs="ui.requestedExpeditionRuns"
         :can-start="planning.canStart"

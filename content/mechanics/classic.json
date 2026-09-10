@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "通用首领机制模板；具体副本绑定与数值由后续内容任务完成。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "mechanics": [
+    {
+      "id": "test_required_interrupt",
+      "name": { "zhCN": "必须打断", "enUS": "Required Interrupt" },
+      "type": "required",
+      "requirements": [{ "capabilityId": "interrupt", "minimumValue": 1 }],
+      "description": {
+        "zhCN": "队伍必须准备可靠的打断能力。",
+        "enUS": "The party must bring a reliable interrupt."
+      },
+      "reportTag": "required_interrupt"
+    },
+    {
+      "id": "test_recommended_magic_dispel",
+      "name": { "zhCN": "建议驱散魔法", "enUS": "Recommended Magic Dispel" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "magic_dispel", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.15,
+        "probabilityModifier": -0.05,
+        "durationMultiplier": 1.05
+      },
+      "description": {
+        "zhCN": "缺少魔法驱散会增加治疗压力并拖慢战斗。",
+        "enUS": "Missing a magic dispel increases healing pressure and slows the fight."
+      },
+      "reportTag": "recommended_magic_dispel"
+    }
+  ]
+}

@@ -106,6 +106,7 @@ export function generateCombatReport(request: GenerateCombatReportRequest): Comb
     totals: { damage: totalDamage, healing: totalHealing, damageTaken: incomingDamageBudget },
     members: memberReports,
     events: combatEvents(memberReports, outcome),
+    mechanics: structuredClone(stage.mechanics?.mechanics ?? []),
     rewards,
   };
 }

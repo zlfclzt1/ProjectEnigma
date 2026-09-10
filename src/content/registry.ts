@@ -23,6 +23,9 @@ import type {
   SpecDefinition,
 } from "./schemas/member-definitions";
 import type { CombatProfileDefinition } from "./schemas/combat-profile";
+import type { CapabilityDefinition } from "./schemas/capability";
+import type { MechanicDefinition } from "./schemas/mechanic";
+import type { SpecCapabilityProgression } from "./schemas/spec-capability";
 
 class ReadonlyMapView<Key, Value> implements ReadonlyMap<Key, Value> {
   readonly #source: Map<Key, Value>;
@@ -178,6 +181,8 @@ function validateDisplayNames(loaded: LoadedContent, issues: ContentValidationIs
     ...loaded.collectionRewards,
     ...loaded.dungeons,
     ...loaded.encounters,
+    ...loaded.capabilities,
+    ...loaded.mechanics,
   ];
   for (const entry of named) {
     if (entry.value.name.zhCN.includes("测试装备")) {
@@ -191,6 +196,7 @@ function validateDisplayNames(loaded: LoadedContent, issues: ContentValidationIs
 }
 
 export class ContentRegistry {
+  readonly capabilities: readonly CapabilityDefinition[];
   readonly roles: readonly RoleDefinition[];
   readonly classes: readonly ClassDefinition[];
   readonly races: readonly RaceDefinition[];
@@ -208,8 +214,11 @@ export class ContentRegistry {
   readonly encounters: readonly EncounterDefinition[];
   readonly lootTables: readonly LootTable[];
   readonly logTemplates: readonly LogTemplateGroup[];
+  readonly mechanics: readonly MechanicDefinition[];
+  readonly specCapabilities: readonly SpecCapabilityProgression[];
 
   readonly roleById: ReadonlyMap<RoleDefinition["id"], RoleDefinition>;
+  readonly capabilityById: ReadonlyMap<CapabilityDefinition["id"], CapabilityDefinition>;
   readonly classById: ReadonlyMap<ClassDefinition["id"], ClassDefinition>;
   readonly raceById: ReadonlyMap<RaceDefinition["id"], RaceDefinition>;
   readonly specById: ReadonlyMap<SpecDefinition["id"], SpecDefinition>;
@@ -231,10 +240,16 @@ export class ContentRegistry {
   readonly encounterById: ReadonlyMap<EncounterDefinition["id"], EncounterDefinition>;
   readonly lootTableById: ReadonlyMap<LootTable["id"], LootTable>;
   readonly logTemplateById: ReadonlyMap<LogTemplateGroup["id"], LogTemplateGroup>;
+  readonly mechanicById: ReadonlyMap<MechanicDefinition["id"], MechanicDefinition>;
+  readonly specCapabilityById: ReadonlyMap<
+    SpecCapabilityProgression["id"],
+    SpecCapabilityProgression
+  >;
   readonly namePoolByLocale: ReadonlyMap<NamePoolFile["locale"], NamePoolFile>;
 
   constructor(loaded: LoadedContent) {
     const issues: ContentValidationIssue[] = [];
+    const capabilityById = buildIndex(loaded.capabilities, issues, "队伍能力");
     const roleById = buildIndex(loaded.roles, issues, "定位");
     const classById = buildIndex(loaded.classes, issues, "职业");
     const raceById = buildIndex(loaded.races, issues, "种族");
@@ -251,6 +266,8 @@ export class ContentRegistry {
     const encounterById = buildIndex(loaded.encounters, issues, "首领战");
     const lootTableById = buildIndex(loaded.lootTables, issues, "掉落表");
     const logTemplateById = buildIndex(loaded.logTemplates, issues, "日志模板");
+    const mechanicById = buildIndex(loaded.mechanics, issues, "首领机制");
+    const specCapabilityById = buildIndex(loaded.specCapabilities, issues, "专精能力成长");
     const namePoolByLocale = new Map<NamePoolFile["locale"], NamePoolFile>();
     for (const entry of loaded.namePools) {
       if (namePoolByLocale.has(entry.value.locale)) {
@@ -281,6 +298,15 @@ export class ContentRegistry {
       encounterById,
       lootTableById,
       itemById,
+      mechanicById,
+      issues,
+    );
+    this.validateMechanicReferences(loaded, capabilityById, issues);
+    this.validateSpecCapabilityReferences(
+      loaded,
+      specById,
+      capabilityById,
+      specCapabilityById,
       issues,
     );
     this.validateGuildUpgradeReferences(loaded, dungeonById, issues);
@@ -289,6 +315,7 @@ export class ContentRegistry {
     validateDisplayNames(loaded, issues);
     if (issues.length > 0) throw new ContentValidationError(issues);
 
+    this.capabilities = Object.freeze(loaded.capabilities.map(({ value }) => value));
     this.roles = Object.freeze(loaded.roles.map(({ value }) => value));
     this.classes = Object.freeze(loaded.classes.map(({ value }) => value));
     this.races = Object.freeze(loaded.races.map(({ value }) => value));
@@ -306,6 +333,9 @@ export class ContentRegistry {
     this.encounters = Object.freeze(loaded.encounters.map(({ value }) => value));
     this.lootTables = Object.freeze(loaded.lootTables.map(({ value }) => value));
     this.logTemplates = Object.freeze(loaded.logTemplates.map(({ value }) => value));
+    this.mechanics = Object.freeze(loaded.mechanics.map(({ value }) => value));
+    this.specCapabilities = Object.freeze(loaded.specCapabilities.map(({ value }) => value));
+    this.capabilityById = readonlyMap(capabilityById);
     this.roleById = readonlyMap(roleById);
     this.classById = readonlyMap(classById);
     this.raceById = readonlyMap(raceById);
@@ -322,6 +352,8 @@ export class ContentRegistry {
     this.encounterById = readonlyMap(encounterById);
     this.lootTableById = readonlyMap(lootTableById);
     this.logTemplateById = readonlyMap(logTemplateById);
+    this.mechanicById = readonlyMap(mechanicById);
+    this.specCapabilityById = readonlyMap(specCapabilityById);
     this.namePoolByLocale = readonlyMap(namePoolByLocale);
     Object.freeze(this);
   }
@@ -570,6 +602,7 @@ export class ContentRegistry {
     encounterById: ReadonlyMap<EncounterDefinition["id"], EncounterDefinition>,
     lootTableById: ReadonlyMap<LootTable["id"], LootTable>,
     itemById: ReadonlyMap<ItemDefinition["id"], ItemDefinition>,
+    mechanicById: ReadonlyMap<MechanicDefinition["id"], MechanicDefinition>,
     issues: ContentValidationIssue[],
   ): void {
     const routeOwners = new Map<EncounterDefinition["id"], DungeonDefinition["id"][]>();
@@ -633,6 +666,9 @@ export class ContentRegistry {
           issues,
         );
       }
+      owner.value.mechanicIds.forEach((id, index) =>
+        requireReference(mechanicById, id, owner, `mechanicIds[${index}]`, "首领机制", issues),
+      );
       const owners = routeOwners.get(owner.value.id) ?? [];
       if (owners.length !== 1) {
         issues.push({
@@ -651,6 +687,71 @@ export class ContentRegistry {
         requireReference(itemById, entry.itemId, owner, `items[${index}].itemId`, "物品", issues),
       );
     }
+  }
+
+  private validateMechanicReferences(
+    loaded: LoadedContent,
+    capabilityById: ReadonlyMap<CapabilityDefinition["id"], CapabilityDefinition>,
+    issues: ContentValidationIssue[],
+  ): void {
+    for (const owner of loaded.mechanics) {
+      owner.value.requirements.forEach((requirement, index) =>
+        requireReference(
+          capabilityById,
+          requirement.capabilityId,
+          owner,
+          `requirements[${index}].capabilityId`,
+          "队伍能力",
+          issues,
+        ),
+      );
+    }
+  }
+
+  private validateSpecCapabilityReferences(
+    loaded: LoadedContent,
+    specById: ReadonlyMap<SpecCapabilityProgression["specId"], unknown>,
+    capabilityById: ReadonlyMap<CapabilityDefinition["id"], CapabilityDefinition>,
+    progressionById: ReadonlyMap<SpecCapabilityProgression["id"], SpecCapabilityProgression>,
+    issues: ContentValidationIssue[],
+  ): void {
+    const specOwners = new Map<string, LocatedContent<SpecCapabilityProgression>>();
+    for (const owner of loaded.specCapabilities) {
+      const existing = specOwners.get(owner.value.specId);
+      if (existing) {
+        issues.push({
+          filePath: owner.filePath,
+          fieldPath: `${owner.fieldPath}.specId`,
+          message: `专精能力成长重复定义；首次定义位于 ${existing.filePath}:${existing.fieldPath}.specId`,
+          invalidReferenceId: owner.value.specId,
+        });
+      } else specOwners.set(owner.value.specId, owner);
+      requireReference(specById, owner.value.specId, owner, "specId", "专精", issues);
+      owner.value.entries.forEach((entry, index) =>
+        requireReference(
+          capabilityById,
+          entry.capabilityId,
+          owner,
+          `entries[${index}].capabilityId`,
+          "队伍能力",
+          issues,
+        ),
+      );
+    }
+    for (const spec of loaded.specs) {
+      const matches = loaded.specCapabilities.filter(
+        (entry) => entry.value.specId === spec.value.id,
+      );
+      if (matches.length === 0) {
+        issues.push({
+          filePath: spec.filePath,
+          fieldPath: `${spec.fieldPath}.id`,
+          message: "专精没有定义能力成长",
+          invalidReferenceId: spec.value.id,
+        });
+      }
+    }
+    void progressionById;
   }
 
   private validateLogReferences(

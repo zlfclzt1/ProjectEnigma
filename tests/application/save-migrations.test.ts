@@ -10,6 +10,7 @@ import {
   createLegacyGameStateV3Fixture,
   createLegacyGameStateV4Fixture,
   createLegacyGameStateV5Fixture,
+  createLegacyGameStateV6Fixture,
   createItemInstanceFixture,
 } from "../helpers/game-state-v2-factory";
 
@@ -26,7 +27,7 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(6);
+    expect(result.state.saveVersion).toBe(7);
     expect(
       Object.values(result.state.members).every((member) => member.wishlist.entries.length === 0),
     ).toBe(true);
@@ -41,7 +42,7 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(6);
+    expect(result.state.saveVersion).toBe(7);
     expect(
       Object.values(result.state.itemInstances).every(
         (instance) => instance.randomSuffixId === undefined,
@@ -70,7 +71,7 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(6);
+    expect(result.state.saveVersion).toBe(7);
     expect(result.state.collection).toEqual({
       items: {
         "14148": {
@@ -89,10 +90,40 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(6);
+    expect(result.state.saveVersion).toBe(7);
     expect(
       Object.values(result.state.members).every((member) => member.wishlist.entries.length === 0),
     ).toBe(true);
+  });
+
+  it("migrates V6 expedition capability snapshots from frozen member combat data", () => {
+    const legacy = createLegacyGameStateV6Fixture();
+    const activity = Object.values(legacy.activities)[0]!;
+    if (activity.type !== "expedition") throw new Error("Expected expedition fixture");
+    const member = Object.values(legacy.members)[0]!;
+    activity.partySnapshot.members.push({
+      memberId: member.id,
+      classId: member.identity.classId,
+      specId: member.progression.specId,
+      personalityId: member.identity.personalityId,
+      level: member.progression.level,
+      equipment: {},
+      combat: {
+        formulaVersion: asBrandedId<"FormulaVersion">("classic-light-v1"),
+        role: "tank",
+        capabilities: { survivability: 9, threat: 4, healing: 1, damage: 2 },
+        utility: { interruptScore: 0, dispelScore: 0, crowdControlScore: 0 },
+      },
+    });
+
+    const result = migrateSave(legacy, content);
+
+    expect(result.migrated).toBe(true);
+    expect(result.state.saveVersion).toBe(7);
+    const migrated = Object.values(result.state.activities)[0]!;
+    if (migrated.type !== "expedition") throw new Error("Expected expedition fixture");
+    expect(migrated.partySnapshot.capabilities.values.tanking).toBeGreaterThan(0);
+    expect(migrated.partySnapshot.capabilities.contributions.tanking).toHaveLength(2);
   });
 
   it("keeps current collection state without reporting a migration", () => {
@@ -126,8 +157,8 @@ describe("save migrations", () => {
     });
 
     expect(loaded.origin).toBe("loaded");
-    expect(loaded.session.snapshot()).toMatchObject({ saveVersion: 6, revision: 1 });
+    expect(loaded.session.snapshot()).toMatchObject({ saveVersion: 7, revision: 1 });
     const persisted = await saves.load(legacy.slotId);
-    expect(persisted?.saveVersion).toBe(6);
+    expect(persisted?.saveVersion).toBe(7);
   });
 });

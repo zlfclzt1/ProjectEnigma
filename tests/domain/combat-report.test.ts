@@ -69,6 +69,64 @@ describe("deterministic structured combat reports", () => {
     );
     expect(report.members.every((member) => !member.defeated)).toBe(true);
     expect(report.events[0]).toEqual({ type: "encounter-outcome", outcome: "victory" });
+    expect(report.mechanics).toEqual([]);
+  });
+
+  it("freezes structured mechanic outcomes and report template tags", async () => {
+    const activity = await activityFixture();
+    const stage = activity.runPlans[0]!.stages[0]!;
+    stage.mechanics = {
+      encounterId: stage.encounterId,
+      mechanics: [
+        {
+          mechanicId: asBrandedId<"MechanicId">("test_recommended_magic_dispel"),
+          reportTag: "recommended_magic_dispel",
+          type: "recommended",
+          satisfied: false,
+          requirements: [
+            {
+              capabilityId: asBrandedId<"CapabilityId">("magic_dispel"),
+              currentValue: 0,
+              minimumValue: 1,
+              satisfied: false,
+            },
+          ],
+          appliedEffects: { healingMultiplier: 1.15, probabilityModifier: -0.05 },
+        },
+      ],
+      effects: {
+        tankMultiplier: 1,
+        healingMultiplier: 1.15,
+        damageMultiplier: 1,
+        probabilityModifier: -0.05,
+        durationMultiplier: 1,
+      },
+    };
+    const encounter = content.encounterById.get(stage.encounterId)!;
+    const report = generateCombatReport({
+      activity,
+      stage,
+      encounter,
+      runNumber: 1,
+      outcome: "victory",
+      settledAt: activity.nextSettlementAt,
+      rewards: {
+        experienceFractionByMember: {},
+        funds: encounter.funds,
+        firstKillBonus: 0,
+        itemInstanceIds: [],
+      },
+    });
+
+    expect(report.mechanics).toEqual(stage.mechanics.mechanics);
+    const mutableRequirements = stage.mechanics.mechanics[0]!.requirements as Array<
+      (typeof stage.mechanics.mechanics)[number]["requirements"][number]
+    >;
+    mutableRequirements[0] = {
+      ...stage.mechanics.mechanics[0]!.requirements[0]!,
+      currentValue: 99,
+    };
+    expect(report.mechanics?.[0]?.requirements[0]?.currentValue).toBe(0);
   });
 
   it("produces deterministic defeat progress, casualties, and no invented rewards", async () => {

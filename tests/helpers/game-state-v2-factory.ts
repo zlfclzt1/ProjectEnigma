@@ -7,6 +7,7 @@ import {
   type LegacyGameStateV3,
   type LegacyGameStateV4,
   type LegacyGameStateV5,
+  type LegacyGameStateV6,
 } from "../../src/domain/game-state";
 import type { Member } from "../../src/domain/member/member";
 import { asBrandedId } from "../../src/domain/shared/ids";
@@ -71,6 +72,7 @@ export function createExpeditionActivityFixture(
       contribution: { tank: 10, healing: 10, damage: 30 },
       clearProbability: 0.5,
       durationSeconds: 60,
+      capabilities: { values: {}, contributions: {} },
     },
     runPlans: [
       {
@@ -171,7 +173,7 @@ export function createLegacyGameStateV4Fixture(
 export function createLegacyGameStateV5Fixture(
   overrides: Partial<LegacyGameStateV5> = {},
 ): LegacyGameStateV5 {
-  const current = createGameStateFixture();
+  const current = createLegacyGameStateV6Fixture();
   const members = Object.fromEntries(
     Object.entries(current.members).map(([id, member]) => {
       const { wishlist: _wishlist, ...legacyMember } = member;
@@ -183,6 +185,26 @@ export function createLegacyGameStateV5Fixture(
     ...current,
     saveVersion: 5,
     members,
+    ...overrides,
+  };
+}
+
+export function createLegacyGameStateV6Fixture(
+  overrides: Partial<LegacyGameStateV6> = {},
+): LegacyGameStateV6 {
+  const current = createGameStateFixture();
+  const activities = Object.fromEntries(
+    Object.entries(current.activities).map(([id, activity]) => {
+      if (activity.type !== "expedition") return [id, activity];
+      const { capabilities: _capabilities, ...partySnapshot } = activity.partySnapshot;
+      void _capabilities;
+      return [id, { ...activity, partySnapshot }];
+    }),
+  ) as LegacyGameStateV6["activities"];
+  return {
+    ...current,
+    saveVersion: 6,
+    activities,
     ...overrides,
   };
 }

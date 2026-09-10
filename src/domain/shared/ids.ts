@@ -6,6 +6,7 @@ export type BrandedId<Name extends string> = string & {
 
 export type ActivityId = BrandedId<"ActivityId">;
 export type CandidateId = BrandedId<"CandidateId">;
+export type CapabilityId = BrandedId<"CapabilityId">;
 export type ClassId = BrandedId<"ClassId">;
 export type CombatProfileId = BrandedId<"CombatProfileId">;
 export type CombatReportId = BrandedId<"CombatReportId">;
@@ -38,6 +39,7 @@ export type RecipeId = BrandedId<"RecipeId">;
 export type RandomSuffixId = BrandedId<"RandomSuffixId">;
 export type SaveSlotId = BrandedId<"SaveSlotId">;
 export type SpecId = BrandedId<"SpecId">;
+export type SpecCapabilityProgressionId = BrandedId<"SpecCapabilityProgressionId">;
 export type TrainingDefinitionId = BrandedId<"TrainingDefinitionId">;
 
 export function asBrandedId<Name extends string>(value: string): BrandedId<Name> {

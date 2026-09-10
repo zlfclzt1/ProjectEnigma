@@ -1,0 +1,269 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "能力是放置战斗中的可解释标签；最低等级表示该专精从何时开始稳定提供该能力。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "specCapabilities": [
+    {
+      "id": "warrior_protection_capabilities",
+      "specId": "warrior_protection",
+      "entries": [
+        { "capabilityId": "tanking", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "interrupt", "minimumLevel": 8, "value": 1 },
+        { "capabilityId": "crowd_control", "minimumLevel": 10, "value": 1 }
+      ]
+    },
+    {
+      "id": "warrior_arms_capabilities",
+      "specId": "warrior_arms",
+      "entries": [
+        { "capabilityId": "damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "interrupt", "minimumLevel": 8, "value": 1 },
+        { "capabilityId": "crowd_control", "minimumLevel": 10, "value": 1 }
+      ]
+    },
+    {
+      "id": "warrior_fury_capabilities",
+      "specId": "warrior_fury",
+      "entries": [
+        { "capabilityId": "damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "interrupt", "minimumLevel": 8, "value": 1 }
+      ]
+    },
+    {
+      "id": "paladin_protection_capabilities",
+      "specId": "paladin_protection",
+      "entries": [
+        { "capabilityId": "tanking", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "magic_dispel", "minimumLevel": 8, "value": 1 },
+        { "capabilityId": "poison_dispel", "minimumLevel": 8, "value": 1 },
+        { "capabilityId": "disease_dispel", "minimumLevel": 8, "value": 1 }
+      ]
+    },
+    {
+      "id": "paladin_holy_capabilities",
+      "specId": "paladin_holy",
+      "entries": [
+        { "capabilityId": "healing", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "magic_dispel", "minimumLevel": 8, "value": 1 },
+        { "capabilityId": "poison_dispel", "minimumLevel": 8, "value": 1 },
+        { "capabilityId": "disease_dispel", "minimumLevel": 8, "value": 1 }
+      ]
+    },
+    {
+      "id": "paladin_retribution_capabilities",
+      "specId": "paladin_retribution",
+      "entries": [
+        { "capabilityId": "damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "magic_dispel", "minimumLevel": 8, "value": 1 }
+      ]
+    },
+    {
+      "id": "hunter_beast_mastery_capabilities",
+      "specId": "hunter_beast_mastery",
+      "entries": [
+        { "capabilityId": "damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "ranged_damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "crowd_control", "minimumLevel": 10, "value": 1 }
+      ]
+    },
+    {
+      "id": "hunter_marksmanship_capabilities",
+      "specId": "hunter_marksmanship",
+      "entries": [
+        { "capabilityId": "damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "ranged_damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "crowd_control", "minimumLevel": 10, "value": 1 }
+      ]
+    },
+    {
+      "id": "hunter_survival_capabilities",
+      "specId": "hunter_survival",
+      "entries": [
+        { "capabilityId": "damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "ranged_damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "crowd_control", "minimumLevel": 10, "value": 1 }
+      ]
+    },
+    {
+      "id": "rogue_assassination_capabilities",
+      "specId": "rogue_assassination",
+      "entries": [
+        { "capabilityId": "damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "interrupt", "minimumLevel": 10, "value": 1 },
+        { "capabilityId": "crowd_control", "minimumLevel": 10, "value": 1 }
+      ]
+    },
+    {
+      "id": "rogue_combat_capabilities",
+      "specId": "rogue_combat",
+      "entries": [
+        { "capabilityId": "damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "interrupt", "minimumLevel": 10, "value": 1 },
+        { "capabilityId": "crowd_control", "minimumLevel": 10, "value": 1 }
+      ]
+    },
+    {
+      "id": "rogue_subtlety_capabilities",
+      "specId": "rogue_subtlety",
+      "entries": [
+        { "capabilityId": "damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "interrupt", "minimumLevel": 10, "value": 1 },
+        { "capabilityId": "crowd_control", "minimumLevel": 10, "value": 1 }
+      ]
+    },
+    {
+      "id": "priest_discipline_capabilities",
+      "specId": "priest_discipline",
+      "entries": [
+        { "capabilityId": "healing", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "magic_dispel", "minimumLevel": 8, "value": 1 },
+        { "capabilityId": "disease_dispel", "minimumLevel": 14, "value": 1 }
+      ]
+    },
+    {
+      "id": "priest_holy_capabilities",
+      "specId": "priest_holy",
+      "entries": [
+        { "capabilityId": "healing", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "magic_dispel", "minimumLevel": 8, "value": 1 },
+        { "capabilityId": "disease_dispel", "minimumLevel": 14, "value": 1 }
+      ]
+    },
+    {
+      "id": "priest_shadow_capabilities",
+      "specId": "priest_shadow",
+      "entries": [
+        { "capabilityId": "damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "magic_dispel", "minimumLevel": 8, "value": 1 },
+        { "capabilityId": "disease_dispel", "minimumLevel": 14, "value": 1 }
+      ]
+    },
+    {
+      "id": "shaman_restoration_capabilities",
+      "specId": "shaman_restoration",
+      "entries": [
+        { "capabilityId": "healing", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "interrupt", "minimumLevel": 8, "value": 1 },
+        { "capabilityId": "poison_dispel", "minimumLevel": 8, "value": 1 },
+        { "capabilityId": "disease_dispel", "minimumLevel": 8, "value": 1 }
+      ]
+    },
+    {
+      "id": "shaman_elemental_capabilities",
+      "specId": "shaman_elemental",
+      "entries": [
+        { "capabilityId": "damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "ranged_damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "interrupt", "minimumLevel": 8, "value": 1 }
+      ]
+    },
+    {
+      "id": "shaman_enhancement_capabilities",
+      "specId": "shaman_enhancement",
+      "entries": [
+        { "capabilityId": "damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "interrupt", "minimumLevel": 8, "value": 1 }
+      ]
+    },
+    {
+      "id": "mage_arcane_capabilities",
+      "specId": "mage_arcane",
+      "entries": [
+        { "capabilityId": "damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "ranged_damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "crowd_control", "minimumLevel": 8, "value": 1 }
+      ]
+    },
+    {
+      "id": "mage_fire_capabilities",
+      "specId": "mage_fire",
+      "entries": [
+        { "capabilityId": "damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "ranged_damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "crowd_control", "minimumLevel": 8, "value": 1 }
+      ]
+    },
+    {
+      "id": "mage_frost_capabilities",
+      "specId": "mage_frost",
+      "entries": [
+        { "capabilityId": "damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "ranged_damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "crowd_control", "minimumLevel": 8, "value": 1 }
+      ]
+    },
+    {
+      "id": "warlock_affliction_capabilities",
+      "specId": "warlock_affliction",
+      "entries": [
+        { "capabilityId": "damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "ranged_damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "crowd_control", "minimumLevel": 10, "value": 1 }
+      ]
+    },
+    {
+      "id": "warlock_demonology_capabilities",
+      "specId": "warlock_demonology",
+      "entries": [
+        { "capabilityId": "damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "ranged_damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "crowd_control", "minimumLevel": 10, "value": 1 }
+      ]
+    },
+    {
+      "id": "warlock_destruction_capabilities",
+      "specId": "warlock_destruction",
+      "entries": [
+        { "capabilityId": "damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "ranged_damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "crowd_control", "minimumLevel": 10, "value": 1 }
+      ]
+    },
+    {
+      "id": "druid_feral_tank_capabilities",
+      "specId": "druid_feral_tank",
+      "entries": [
+        { "capabilityId": "tanking", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "poison_dispel", "minimumLevel": 10, "value": 1 },
+        { "capabilityId": "curse_dispel", "minimumLevel": 24, "value": 1 }
+      ]
+    },
+    {
+      "id": "druid_restoration_capabilities",
+      "specId": "druid_restoration",
+      "entries": [
+        { "capabilityId": "healing", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "poison_dispel", "minimumLevel": 10, "value": 1 },
+        { "capabilityId": "curse_dispel", "minimumLevel": 24, "value": 1 }
+      ]
+    },
+    {
+      "id": "druid_balance_capabilities",
+      "specId": "druid_balance",
+      "entries": [
+        { "capabilityId": "damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "ranged_damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "poison_dispel", "minimumLevel": 10, "value": 1 },
+        { "capabilityId": "curse_dispel", "minimumLevel": 24, "value": 1 }
+      ]
+    },
+    {
+      "id": "druid_feral_dps_capabilities",
+      "specId": "druid_feral_dps",
+      "entries": [
+        { "capabilityId": "damage", "minimumLevel": 1, "value": 1 },
+        { "capabilityId": "poison_dispel", "minimumLevel": 10, "value": 1 },
+        { "capabilityId": "curse_dispel", "minimumLevel": 24, "value": 1 }
+      ]
+    }
+  ]
+}

@@ -32,6 +32,15 @@ export interface CombatReportView {
   readonly totals: CombatReport["totals"];
   readonly members: readonly MemberCombatRowView[];
   readonly logs: readonly { readonly eventType: string; readonly text: string }[];
+  readonly mechanics: readonly {
+    readonly id: string;
+    readonly name: string;
+    readonly type: "required" | "recommended";
+    readonly satisfied: boolean;
+    readonly reportTag: string;
+    readonly requirementLabels: readonly string[];
+    readonly impactLabels: readonly string[];
+  }[];
   readonly rewards: {
     readonly funds: number;
     readonly firstKillBonus: number;
@@ -82,6 +91,38 @@ function projectReport(
       eventType: entry.eventType,
       text: entry.text,
     })),
+    mechanics: (report.mechanics ?? []).map((result) => {
+      const mechanic = content.mechanicById.get(result.mechanicId);
+      const effects = result.appliedEffects;
+      return {
+        id: result.mechanicId,
+        name: mechanic?.name.zhCN ?? result.mechanicId,
+        type: result.type,
+        satisfied: result.satisfied,
+        reportTag: result.reportTag,
+        requirementLabels: result.requirements.map((requirement) => {
+          const capability = content.capabilityById.get(requirement.capabilityId);
+          return `${capability?.name.zhCN ?? requirement.capabilityId} ${requirement.currentValue.toFixed(1)}/${requirement.minimumValue.toFixed(1)}`;
+        }),
+        impactLabels: [
+          ...(effects?.tankMultiplier
+            ? [`坦克压力 +${Math.round((effects.tankMultiplier - 1) * 100)}%`]
+            : []),
+          ...(effects?.healingMultiplier
+            ? [`治疗压力 +${Math.round((effects.healingMultiplier - 1) * 100)}%`]
+            : []),
+          ...(effects?.damageMultiplier
+            ? [`输出需求 +${Math.round((effects.damageMultiplier - 1) * 100)}%`]
+            : []),
+          ...(effects?.probabilityModifier
+            ? [`胜率 ${Math.round(effects.probabilityModifier * 100)} 个百分点`]
+            : []),
+          ...(effects?.durationMultiplier
+            ? [`耗时 +${Math.round((effects.durationMultiplier - 1) * 100)}%`]
+            : []),
+        ],
+      };
+    }),
     rewards: {
       funds: report.rewards.funds,
       firstKillBonus: report.rewards.firstKillBonus,

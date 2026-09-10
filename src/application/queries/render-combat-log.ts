@@ -6,7 +6,7 @@ import type { MemberId } from "../../domain/shared/ids";
 import { SeededRandomSource } from "../../infrastructure/random/seeded-random-source";
 
 export interface RenderedCombatLogEntry {
-  readonly eventType: LogTemplateGroup["eventType"];
+  readonly eventType: string;
   readonly text: string;
   readonly memberIds: readonly MemberId[];
 }
@@ -16,6 +16,23 @@ export function renderCombatLog(
   state: Pick<GameState, "members">,
   content: ContentRegistry,
 ): readonly RenderedCombatLogEntry[] {
+  const mechanicEntries: RenderedCombatLogEntry[] = (report.mechanics ?? []).map((result) => {
+    const mechanic = content.mechanicById.get(result.mechanicId);
+    const missing = result.requirements
+      .filter((requirement) => !requirement.satisfied)
+      .map((requirement) => content.capabilityById.get(requirement.capabilityId)?.name.zhCN)
+      .filter((name): name is string => Boolean(name));
+    const outcome = result.satisfied
+      ? `队伍妥善处理了“${mechanic?.name.zhCN ?? result.mechanicId}”。`
+      : result.type === "recommended"
+        ? `队伍缺少${missing.join("、")}，未能完整处理“${mechanic?.name.zhCN ?? result.mechanicId}”，对应惩罚已生效。`
+        : `队伍未满足“${mechanic?.name.zhCN ?? result.mechanicId}”的必需能力。`;
+    return {
+      eventType: `mechanic:${result.reportTag}`,
+      text: outcome,
+      memberIds: [],
+    };
+  });
   const byId = new Map(report.members.map((member) => [member.memberId, member]));
   const tank = best(
     report.members.filter((member) => member.role === "tank"),
@@ -56,7 +73,7 @@ export function renderCombatLog(
   }
 
   const random = new SeededRandomSource(`${report.seed}:render`);
-  return entries.flatMap((entry, index) => {
+  const renderedEntries = entries.flatMap((entry, index) => {
     const group = selectGroup(content, report, entry.eventType);
     if (!group) return [];
     const templateIndex = Math.floor(random.next(`template:${index}`) * group.templates.length);
@@ -82,6 +99,7 @@ export function renderCombatLog(
       },
     ];
   });
+  return [...mechanicEntries, ...renderedEntries];
 }
 
 function best(

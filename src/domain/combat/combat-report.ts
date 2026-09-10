@@ -8,6 +8,9 @@ import type {
   MemberId,
 } from "../shared/ids";
 import type { CombatEvent } from "./combat-event";
+import type { MechanicRequirementResult } from "../dungeon/mechanic-evaluation";
+import type { MissingMechanicEffects } from "../../content/schemas/mechanic";
+import type { MechanicId } from "../shared/ids";
 
 export interface CombatTotals {
   readonly damage: number;
@@ -29,6 +32,15 @@ export interface CombatRewardReport {
   readonly itemInstanceIds: readonly ItemInstanceId[];
 }
 
+export interface CombatMechanicReport {
+  readonly mechanicId: MechanicId;
+  readonly reportTag: string;
+  readonly type: "required" | "recommended";
+  readonly satisfied: boolean;
+  readonly requirements: readonly MechanicRequirementResult[];
+  readonly appliedEffects?: MissingMechanicEffects;
+}
+
 export interface CombatReport {
   readonly id: CombatReportId;
   readonly formulaVersion: FormulaVersion;
@@ -48,5 +60,6 @@ export interface CombatReport {
   readonly totals: CombatTotals;
   readonly members: readonly MemberCombatReport[];
   readonly events: readonly CombatEvent[];
+  readonly mechanics?: readonly CombatMechanicReport[];
   readonly rewards: CombatRewardReport;
 }

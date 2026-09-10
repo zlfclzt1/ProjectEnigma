@@ -46,11 +46,39 @@ describe("combat report page", () => {
         const activity = Object.values(draft.activities)[0]!;
         if (activity.type !== "expedition") throw new Error("Expected expedition");
         for (const stage of activity.runPlans[0]!.stages) stage.successRoll = 0;
+        const stage = activity.runPlans[0]!.stages[0]!;
+        stage.mechanics = {
+          encounterId: stage.encounterId,
+          mechanics: [
+            {
+              mechanicId: asBrandedId<"MechanicId">("test_recommended_magic_dispel"),
+              reportTag: "recommended_magic_dispel",
+              type: "recommended",
+              satisfied: false,
+              requirements: [
+                {
+                  capabilityId: asBrandedId<"CapabilityId">("magic_dispel"),
+                  currentValue: 0,
+                  minimumValue: 1,
+                  satisfied: false,
+                },
+              ],
+              appliedEffects: { healingMultiplier: 1.15, probabilityModifier: -0.05 },
+            },
+          ],
+          effects: {
+            tankMultiplier: 1,
+            healingMultiplier: 1.15,
+            damageMultiplier: 1,
+            probabilityModifier: -0.05,
+            durationMultiplier: 1,
+          },
+        };
       },
     });
     clock.set(24 * 60 * 60 * 1_000);
     await game.tick();
-    const reportId = game.combatReports!.reports[0]!.id;
+    const reportId = game.combatReports!.reports.find((report) => report.mechanics.length > 0)!.id;
 
     setActivePinia(createPinia());
     const restored = useGameStore();
@@ -75,6 +103,10 @@ describe("combat report page", () => {
     expect(wrapper.text()).toMatch(/\d+\.\d{2}%/);
     expect(wrapper.text()).toContain("实际奖励");
     expect(wrapper.text()).toContain("classic-light-v1");
+    expect(wrapper.text()).toContain("机制处理");
+    expect(wrapper.text()).toContain("建议驱散魔法");
+    expect(wrapper.text()).toContain("治疗压力 +15%");
+    expect(wrapper.text()).toContain("对应惩罚已生效");
     expect(restored.combatReport(reportId)?.id).toBe(reportId);
   });
 });

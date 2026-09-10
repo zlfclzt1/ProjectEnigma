@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { getActivitiesView } from "../../src/application/queries/get-activities-view";
 import { getDungeonPlanningView } from "../../src/application/queries/get-dungeons-view";
-import { loadBrowserContentRegistry } from "../../src/content/manifest";
+import { browserContentModules, loadBrowserContentRegistry } from "../../src/content/manifest";
+import { loadContentRegistry } from "../../src/content/registry";
 import { createExpeditionActivityHandler } from "../../src/domain/dungeon/expedition-activity";
 import { ActivityRegistry } from "../../src/domain/activity/activity-registry";
 import { ActivityScheduler } from "../../src/domain/activity/activity-scheduler";
@@ -24,6 +25,27 @@ function state() {
     ids: new LocalIdGenerator(),
     random: new SeededRandomSource("dungeon-query"),
   });
+}
+
+function contentWithMechanic(mechanicId: string, minimumValue = 99) {
+  const modules = structuredClone(browserContentModules) as Record<string, unknown>;
+  const encounterKey = Object.keys(modules).find((path) =>
+    path.endsWith("/content/encounters/ragefire-chasm.json"),
+  )!;
+  const mechanicKey = Object.keys(modules).find((path) =>
+    path.endsWith("/content/mechanics/classic.json"),
+  )!;
+  const encounters = (modules[encounterKey] as { encounters: Array<{ mechanicIds: string[] }> })
+    .encounters;
+  encounters[0]!.mechanicIds = [mechanicId];
+  const mechanics = (
+    modules[mechanicKey] as {
+      mechanics: Array<{ id: string; requirements: Array<{ minimumValue: number }> }>;
+    }
+  ).mechanics;
+  mechanics.find((mechanic) => mechanic.id === mechanicId)!.requirements[0]!.minimumValue =
+    minimumValue;
+  return loadContentRegistry(modules);
 }
 
 describe("dungeon and activity queries", () => {
@@ -91,5 +113,57 @@ describe("dungeon and activity queries", () => {
     expect(view.active[0]!.progressPercent).toBeGreaterThan(0);
     expect(view.active[0]).not.toHaveProperty("partySnapshot");
     expect(view.active[0]).not.toHaveProperty("runPlans");
+  });
+
+  it("explains soft mechanic penalties and hard Boss blockers", () => {
+    const softContent = contentWithMechanic("test_recommended_magic_dispel");
+    const softState = createNewGame({
+      slotId: asBrandedId<"SaveSlotId">("soft-mechanic-query"),
+      content: softContent,
+      contentVersion: asBrandedId<"ContentVersion">("classic-v1"),
+      clock: new FakeClock(1_000),
+      ids: new LocalIdGenerator(),
+      random: new SeededRandomSource("soft-mechanic-query"),
+    });
+    const softView = getDungeonPlanningView(
+      softState,
+      softContent,
+      asBrandedId<"DungeonId">("ragefire_chasm"),
+      Object.values(softState.members).map((member) => member.id),
+      1,
+    );
+    expect(softView.canStart).toBe(true);
+    expect(softView.mechanicReadiness[0]).toMatchObject({
+      encounterName: "奥格弗林特",
+      name: "建议驱散魔法",
+      type: "recommended",
+      status: "missing",
+      impactLabels: ["治疗压力 +15%", "胜率 -5 个百分点", "耗时 +5%"],
+    });
+
+    const hardContent = contentWithMechanic("test_required_interrupt");
+    const hardState = createNewGame({
+      slotId: asBrandedId<"SaveSlotId">("hard-mechanic-query"),
+      content: hardContent,
+      contentVersion: asBrandedId<"ContentVersion">("classic-v1"),
+      clock: new FakeClock(1_000),
+      ids: new LocalIdGenerator(),
+      random: new SeededRandomSource("hard-mechanic-query"),
+    });
+    const hardView = getDungeonPlanningView(
+      hardState,
+      hardContent,
+      asBrandedId<"DungeonId">("ragefire_chasm"),
+      Object.values(hardState.members).map((member) => member.id),
+      1,
+    );
+    expect(hardView.canStart).toBe(false);
+    expect(hardView.preview).toBeNull();
+    expect(hardView.mechanicReadiness[0]).toMatchObject({
+      encounterName: "奥格弗林特",
+      name: "必须打断",
+      type: "required",
+      status: "missing",
+    });
   });
 });

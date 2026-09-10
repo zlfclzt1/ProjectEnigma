@@ -2,12 +2,14 @@
 import type {
   DungeonOptionView,
   PartyPreviewView,
+  PartyMechanicReadinessView,
 } from "../../application/queries/get-dungeons-view";
 import BossRoute from "./BossRoute.vue";
 
 defineProps<{
   dungeon: DungeonOptionView | null;
   preview: PartyPreviewView | null;
+  mechanicReadiness: readonly PartyMechanicReadinessView[];
   issues: readonly string[];
   requestedRuns: number;
   canStart: boolean;
@@ -62,6 +64,32 @@ function durationLabel(seconds: number): string {
       </p>
     </template>
     <p v-else class="placeholder">选择成员后，会在这里显示每位 Boss 的精确胜率与固定出发耗时。</p>
+
+    <section v-if="mechanicReadiness.length" class="mechanics">
+      <h4>机制准备</h4>
+      <article
+        v-for="mechanic in mechanicReadiness"
+        :key="`${mechanic.encounterId}:${mechanic.id}`"
+        :class="mechanic.status"
+      >
+        <header>
+          <strong>{{ mechanic.encounterName }} · {{ mechanic.name }}</strong>
+          <em>{{
+            { satisfied: "已满足", partial: "部分满足", missing: "缺失" }[mechanic.status]
+          }}</em>
+        </header>
+        <p>{{ mechanic.description }}</p>
+        <ul>
+          <li v-for="requirement in mechanic.requirements" :key="requirement.capabilityName">
+            {{ requirement.capabilityName }}
+            {{ requirement.currentValue.toFixed(1) }}/{{ requirement.minimumValue.toFixed(1) }}
+          </li>
+        </ul>
+        <small v-if="mechanic.impactLabels.length">{{ mechanic.impactLabels.join(" · ") }}</small>
+        <small v-else-if="mechanic.status === 'satisfied'">无额外惩罚</small>
+        <small v-else-if="mechanic.type === 'required'">必须满足后才能出发</small>
+      </article>
+    </section>
 
     <ul v-if="issues.length" class="issues">
       <li v-for="issue in issues" :key="issue">{{ issue }}</li>
@@ -144,6 +172,57 @@ dd {
   margin: 12px 0;
   color: #c97569;
   font-size: 0.68rem;
+  list-style: none;
+}
+.mechanics {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+}
+.mechanics h4 {
+  margin: 0;
+  color: #bca87f;
+  font-size: 0.72rem;
+}
+.mechanics article {
+  padding: 8px 10px;
+  border-left: 2px solid #a75249;
+  background: #0a0d0f;
+}
+.mechanics article.satisfied {
+  border-left-color: #5e9d65;
+}
+.mechanics article.partial {
+  border-left-color: #b08743;
+}
+.mechanics article header {
+  align-items: center;
+  margin: 0 0 4px;
+}
+.mechanics article em {
+  color: #c97569;
+  font-size: 0.62rem;
+  font-style: normal;
+}
+.mechanics article.satisfied em {
+  color: #77bd7d;
+}
+.mechanics article.partial em {
+  color: #d4a653;
+}
+.mechanics article p,
+.mechanics article li,
+.mechanics article small {
+  color: #918777;
+  font-size: 0.62rem;
+  line-height: 1.45;
+}
+.mechanics article ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  padding: 0;
+  margin: 4px 0;
   list-style: none;
 }
 button {

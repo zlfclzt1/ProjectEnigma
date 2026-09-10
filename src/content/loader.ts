@@ -23,6 +23,12 @@ import {
   type GuildUpgradeDefinition,
 } from "./schemas/guild-upgrade";
 import { logTemplateFileSchema, type LogTemplateGroup } from "./schemas/log-template";
+import { capabilityDefinitionFileSchema, type CapabilityDefinition } from "./schemas/capability";
+import { mechanicDefinitionFileSchema, type MechanicDefinition } from "./schemas/mechanic";
+import {
+  specCapabilityProgressionFileSchema,
+  type SpecCapabilityProgression,
+} from "./schemas/spec-capability";
 import {
   classDefinitionFileSchema,
   hiddenCharacterDefinitionFileSchema,
@@ -81,6 +87,7 @@ export interface LocatedContent<T> {
 }
 
 export interface LoadedContent {
+  readonly capabilities: readonly LocatedContent<CapabilityDefinition>[];
   readonly roles: readonly LocatedContent<RoleDefinition>[];
   readonly classes: readonly LocatedContent<ClassDefinition>[];
   readonly races: readonly LocatedContent<RaceDefinition>[];
@@ -98,6 +105,8 @@ export interface LoadedContent {
   readonly encounters: readonly LocatedContent<EncounterDefinition>[];
   readonly lootTables: readonly LocatedContent<LootTable>[];
   readonly logTemplates: readonly LocatedContent<LogTemplateGroup>[];
+  readonly mechanics: readonly LocatedContent<MechanicDefinition>[];
+  readonly specCapabilities: readonly LocatedContent<SpecCapabilityProgression>[];
 }
 
 type MutableLoadedContent = {
@@ -111,6 +120,11 @@ interface FileDescriptor {
 }
 
 const DIRECTORY_DESCRIPTORS: Readonly<Record<string, FileDescriptor>> = {
+  capabilities: {
+    schema: capabilityDefinitionFileSchema,
+    collection: "capabilities",
+    property: "capabilities",
+  },
   "combat-profiles": {
     schema: combatProfileDefinitionFileSchema,
     collection: "combatProfiles",
@@ -166,10 +180,21 @@ const DIRECTORY_DESCRIPTORS: Readonly<Record<string, FileDescriptor>> = {
     property: "lootTables",
   },
   logs: { schema: logTemplateFileSchema, collection: "logTemplates", property: "groups" },
+  mechanics: {
+    schema: mechanicDefinitionFileSchema,
+    collection: "mechanics",
+    property: "mechanics",
+  },
+  "spec-capabilities": {
+    schema: specCapabilityProgressionFileSchema,
+    collection: "specCapabilities",
+    property: "specCapabilities",
+  },
 };
 
 function emptyLoadedContent(): MutableLoadedContent {
   return {
+    capabilities: [],
     roles: [],
     classes: [],
     races: [],
@@ -187,6 +212,8 @@ function emptyLoadedContent(): MutableLoadedContent {
     encounters: [],
     lootTables: [],
     logTemplates: [],
+    mechanics: [],
+    specCapabilities: [],
   };
 }
 

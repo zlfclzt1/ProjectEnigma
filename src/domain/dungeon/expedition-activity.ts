@@ -91,6 +91,7 @@ export function createExpeditionActivityHandler(
             probability: encounter.probability,
             rawRatios: { ...encounter.rawRatios },
             durationSeconds: encounter.durationSeconds,
+            mechanics: structuredClone(encounter.mechanics),
             successRoll: runRandom.next(`success:${encounter.encounterId}`),
             lootSeed: `${runSeed}:loot:${encounter.encounterId}:${runRandom.next(`loot:${encounter.encounterId}`)}`,
             status: "pending",
@@ -127,6 +128,7 @@ export function createExpeditionActivityHandler(
           contribution: { ...previewResult.preview.contribution },
           clearProbability: previewResult.preview.clearProbability,
           durationSeconds: previewResult.preview.durationSeconds,
+          capabilities: previewResult.preview.capabilities,
         },
         runPlans,
       };

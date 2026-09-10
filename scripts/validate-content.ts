@@ -45,6 +45,7 @@ try {
   const modules = readContentModules();
   const registry = loadContentRegistry(modules);
   const counts = [
+    `队伍能力 ${registry.capabilities.length}`,
     `职业 ${registry.classes.length}`,
     `种族 ${registry.races.length}`,
     `专精 ${registry.specs.length}`,
@@ -60,6 +61,8 @@ try {
     `首领战 ${registry.encounters.length}`,
     `掉落表 ${registry.lootTables.length}`,
     `日志模板组 ${registry.logTemplates.length}`,
+    `首领机制 ${registry.mechanics.length}`,
+    `专精能力成长 ${registry.specCapabilities.length}`,
   ].join("，");
   console.log(`内容校验通过：发现 ${Object.keys(modules).length} 个文件；${counts}。`);
 } catch (error) {

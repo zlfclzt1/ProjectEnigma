@@ -78,6 +78,18 @@ function durationLabel(seconds: number): string {
         <h4>成员统计</h4>
         <MemberCombatTable :members="selected.members" />
       </section>
+      <section v-if="selected.mechanics.length" class="panel mechanics">
+        <h4>机制处理</h4>
+        <article v-for="mechanic in selected.mechanics" :key="mechanic.id">
+          <strong>{{ mechanic.name }}</strong>
+          <span :data-satisfied="mechanic.satisfied">{{
+            mechanic.satisfied ? "已处理" : "未完整处理"
+          }}</span>
+          <p>{{ mechanic.requirementLabels.join(" · ") }}</p>
+          <small v-if="mechanic.impactLabels.length">{{ mechanic.impactLabels.join(" · ") }}</small>
+          <small v-else>无额外惩罚 · {{ mechanic.reportTag }}</small>
+        </article>
+      </section>
       <section class="panel">
         <h4>副本日常</h4>
         <CombatEventList :logs="selected.logs" />
@@ -224,6 +236,35 @@ h4 {
   color: #948a79;
   font-size: 0.7rem;
   line-height: 1.5;
+}
+.mechanics article {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 3px 10px;
+  padding: 8px 10px;
+  border-left: 2px solid #a75249;
+  background: #090c0e;
+}
+.mechanics article + article {
+  margin-top: 5px;
+}
+.mechanics article strong {
+  color: #d4c6ad;
+  font-size: 0.72rem;
+}
+.mechanics article span {
+  color: #cb7065;
+  font-size: 0.62rem;
+}
+.mechanics article span[data-satisfied="true"] {
+  color: #77bd7d;
+}
+.mechanics article p,
+.mechanics article small {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: #8d8475;
+  font-size: 0.62rem;
 }
 @media (max-width: 760px) {
   .report-layout {

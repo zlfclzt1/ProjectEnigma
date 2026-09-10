@@ -1,4 +1,4 @@
-import type { Activity } from "./activity/activity";
+import type { Activity, ExpeditionActivity } from "./activity/activity";
 import type { CollectionState } from "./collection/item-collection";
 import type { ItemInstance, PendingLoot } from "./equipment/item-instance";
 import type { GuildState, HistorySummary, RecruitmentState } from "./guild/guild";
@@ -15,7 +15,7 @@ import type {
 } from "./shared/ids";
 import type { IdGeneratorState, RandomState } from "./shared/runtime-state";
 
-export const GAME_STATE_SAVE_VERSION = 6 as const;
+export const GAME_STATE_SAVE_VERSION = 7 as const;
 
 export interface GameState {
   slotId: SaveSlotId;
@@ -42,7 +42,18 @@ export type LegacyItemInstanceV3 = Omit<ItemInstance, "randomSuffixId">;
 
 export type LegacyMemberV5 = Omit<Member, "wishlist">;
 
-export interface LegacyGameStateV5 extends Omit<GameState, "saveVersion" | "members"> {
+export type LegacyExpeditionActivityV6 = Omit<ExpeditionActivity, "partySnapshot"> & {
+  partySnapshot: Omit<ExpeditionActivity["partySnapshot"], "capabilities">;
+};
+
+export type LegacyActivityV6 = Exclude<Activity, ExpeditionActivity> | LegacyExpeditionActivityV6;
+
+export interface LegacyGameStateV6 extends Omit<GameState, "saveVersion" | "activities"> {
+  saveVersion: 6;
+  activities: Record<ActivityId, LegacyActivityV6>;
+}
+
+export interface LegacyGameStateV5 extends Omit<LegacyGameStateV6, "saveVersion" | "members"> {
   saveVersion: 5;
   members: Record<MemberId, LegacyMemberV5>;
 }
@@ -75,4 +86,9 @@ export interface LegacyGameStateV2 extends Omit<
 }
 
 export type PersistedGameState =
-  GameState | LegacyGameStateV5 | LegacyGameStateV4 | LegacyGameStateV3 | LegacyGameStateV2;
+  | GameState
+  | LegacyGameStateV6
+  | LegacyGameStateV5
+  | LegacyGameStateV4
+  | LegacyGameStateV3
+  | LegacyGameStateV2;

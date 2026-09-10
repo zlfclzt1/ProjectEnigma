@@ -10,11 +10,22 @@ import type { FormulaModifier } from "../combat/formula-context";
 import type { GameState } from "../game-state";
 import type { Member } from "../member/member";
 import type { DungeonId, EncounterId, FormulaVersion, MemberId } from "../shared/ids";
+import {
+  aggregatePartyCapabilities,
+  type PartyCapabilitySnapshot,
+} from "../combat/party-capabilities";
+import {
+  evaluateEncounterMechanics,
+  type EncounterMechanicEvaluation,
+  type EncounterMechanicResult,
+} from "./mechanic-evaluation";
 
 export interface PartyEvaluationIssue {
   readonly code: string;
   readonly message: string;
   readonly memberId?: MemberId;
+  readonly encounterId?: EncounterId;
+  readonly mechanic?: EncounterMechanicResult;
 }
 
 export type PartyContribution = PartyCombatContribution;
@@ -25,6 +36,7 @@ export interface EncounterPreview {
   readonly rawRatios: PartyContribution;
   readonly readiness: number;
   readonly durationSeconds: number;
+  readonly mechanics: EncounterMechanicEvaluation;
 }
 
 export interface PartyPreview {
@@ -36,6 +48,7 @@ export interface PartyPreview {
   readonly encounters: readonly EncounterPreview[];
   readonly clearProbability: number;
   readonly durationSeconds: number;
+  readonly capabilities: PartyCapabilitySnapshot;
 }
 
 export type PartyPreviewResult =
@@ -96,13 +109,50 @@ export function evaluateExpeditionParty(
     };
   }
   const contribution = partyCombatProfile.contribution;
+  const capabilities = aggregatePartyCapabilities(
+    content,
+    members.map((member) => ({
+      memberId: member.id,
+      specId: member.progression.specId,
+      level: member.progression.level,
+    })),
+    partyCombatProfile.members,
+  );
+  const mechanicEvaluations = dungeon.route.map((encounterId) =>
+    evaluateEncounterMechanics(content, encounterId, capabilities),
+  );
+  for (const evaluation of mechanicEvaluations) {
+    const encounter = content.encounterById.get(evaluation.encounterId)!;
+    for (const result of evaluation.mechanics) {
+      if (result.type !== "required" || result.satisfied) continue;
+      const mechanic = content.mechanicById.get(result.mechanicId)!;
+      const missing = result.requirements
+        .filter((requirement) => !requirement.satisfied)
+        .map((requirement) => {
+          const capability = content.capabilityById.get(requirement.capabilityId)!;
+          return `${capability.name.zhCN} ${requirement.currentValue}/${requirement.minimumValue}`;
+        })
+        .join("、");
+      issues.push({
+        code: "mechanic.required-missing",
+        message: `${encounter.name.zhCN}的“${mechanic.name.zhCN}”尚未满足：${missing}。`,
+        encounterId: encounter.id,
+        mechanic: result,
+      });
+    }
+  }
+  if (issues.length > 0) return { ok: false, issues };
   const encounters = dungeon.route.map((encounterId) => {
     const encounter = content.encounterById.get(encounterId)!;
-    const probability = bossProbability(contribution, encounter, dungeon);
+    const mechanics = mechanicEvaluations.find(
+      (evaluation) => evaluation.encounterId === encounterId,
+    )!;
+    const probability = bossProbability(contribution, encounter, dungeon, mechanics);
     return {
       encounterId,
       ...probability,
-      durationSeconds: stageDurationSeconds(contribution, encounter, dungeon, members),
+      durationSeconds: stageDurationSeconds(contribution, encounter, dungeon, members, mechanics),
+      mechanics,
     };
   });
   return {
@@ -112,6 +162,7 @@ export function evaluateExpeditionParty(
       formulaVersion: partyCombatProfile.formulaVersion,
       memberIds: [...memberIds],
       memberProfiles: partyCombatProfile.members,
+      capabilities,
       contribution,
       encounters,
       clearProbability: encounters.reduce((product, result) => product * result.probability, 1),
@@ -198,21 +249,32 @@ function bossProbability(
   contribution: PartyContribution,
   encounter: EncounterDefinition,
   dungeon: DungeonDefinition,
+  mechanics: EncounterMechanicEvaluation,
 ): { probability: number; rawRatios: PartyContribution; readiness: number } {
   const rawRatios = {
     tank:
       contribution.tank /
-      (encounter.requirements.tank * dungeon.combatTuning.requirementMultipliers.tank),
+      (encounter.requirements.tank *
+        dungeon.combatTuning.requirementMultipliers.tank *
+        mechanics.effects.tankMultiplier),
     healing:
       contribution.healing /
-      (encounter.requirements.healing * dungeon.combatTuning.requirementMultipliers.healing),
+      (encounter.requirements.healing *
+        dungeon.combatTuning.requirementMultipliers.healing *
+        mechanics.effects.healingMultiplier),
     damage:
       contribution.damage /
-      (encounter.requirements.damage * dungeon.combatTuning.requirementMultipliers.damage),
+      (encounter.requirements.damage *
+        dungeon.combatTuning.requirementMultipliers.damage *
+        mechanics.effects.damageMultiplier),
   };
   const settings = dungeon.probability;
   if (Object.values(rawRatios).every((ratio) => ratio >= settings.overpowerThreshold)) {
-    return { probability: 1, rawRatios, readiness: 1.5 };
+    return {
+      probability: clamp(0, 1, 1 + mechanics.effects.probabilityModifier),
+      rawRatios,
+      readiness: 1.5,
+    };
   }
   const geometricReadiness = (["tank", "healing", "damage"] as const).reduce(
     (product, role) =>
@@ -226,7 +288,9 @@ function bossProbability(
     probability: clamp(
       settings.minimum,
       Math.min(settings.maximum, dungeon.combatTuning.bossProbabilityMaximum),
-      settings.base + settings.readinessMultiplier * readiness,
+      settings.base +
+        settings.readinessMultiplier * readiness +
+        mechanics.effects.probabilityModifier,
     ),
     rawRatios,
     readiness,
@@ -250,23 +314,33 @@ function stageDurationSeconds(
   encounter: EncounterDefinition,
   dungeon: DungeonDefinition,
   party: readonly Member[],
+  mechanics: EncounterMechanicEvaluation,
 ): number {
   const damageRatio =
-    (encounter.requirements.damage * dungeon.combatTuning.requirementMultipliers.damage) /
+    (encounter.requirements.damage *
+      dungeon.combatTuning.requirementMultipliers.damage *
+      mechanics.effects.damageMultiplier) /
     Math.max(0.01, contribution.damage);
   const outputFactor = clamp(0.5, 1.5, damageRatio ** 0.6);
   const tankRatio =
     contribution.tank /
-    (encounter.requirements.tank * dungeon.combatTuning.requirementMultipliers.tank);
+    (encounter.requirements.tank *
+      dungeon.combatTuning.requirementMultipliers.tank *
+      mechanics.effects.tankMultiplier);
   const healingRatio =
     contribution.healing /
-    (encounter.requirements.healing * dungeon.combatTuning.requirementMultipliers.healing);
+    (encounter.requirements.healing *
+      dungeon.combatTuning.requirementMultipliers.healing *
+      mechanics.effects.healingMultiplier);
   const survivalFactor =
     1 + Math.max(0, 1 - tankRatio) * 0.25 + Math.max(0, 1 - healingRatio) * 0.25;
   const ratio = clamp(
     dungeon.duration.minimumRatio,
     dungeon.duration.maximumRatio,
-    outputFactor * survivalFactor * partyDurationModifier(party),
+    outputFactor *
+      survivalFactor *
+      partyDurationModifier(party) *
+      mechanics.effects.durationMultiplier,
   );
   return Math.round(encounter.stageSeconds * ratio);
 }

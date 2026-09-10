@@ -62,6 +62,7 @@ describe("V2 expedition creation", () => {
     expect(activity.partySnapshot.formulaVersion).toBe("classic-light-v1");
     expect(activity.partySnapshot.clearProbability).toBe(preview.preview.clearProbability);
     expect(activity.partySnapshot.durationSeconds).toBe(preview.preview.durationSeconds);
+    expect(activity.partySnapshot.capabilities).toEqual(preview.preview.capabilities);
     expect(activity.runPlans).toHaveLength(3);
     for (const run of activity.runPlans) {
       expect(
@@ -127,10 +128,14 @@ describe("V2 expedition creation", () => {
       utility: previewProfile.utility,
     });
 
+    const frozenCapabilities = structuredClone(result.result.partySnapshot.capabilities);
+
     original.progression.level = 45;
     delete original.equipment.head;
+    original.progression.specId = asBrandedId<"SpecId">("warrior_arms");
     expect(snapshot.level).toBe(10);
     expect(snapshot.equipment.head?.itemInstanceId).toBe(originalHead);
+    expect(result.result.partySnapshot.capabilities).toEqual(frozenCapabilities);
   });
 
   it("keeps a level-10 starter party near the intended first-dungeon curve", () => {

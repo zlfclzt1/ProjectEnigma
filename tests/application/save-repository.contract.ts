@@ -86,7 +86,7 @@ export function runSaveRepositoryContract(
       const loadedInstance = loaded?.itemInstances[instance.id] as
         { randomSuffixId?: unknown } | undefined;
 
-      expect(loaded?.saveVersion).toBe(6);
+      expect(loaded?.saveVersion).toBe(7);
       expect(loadedInstance?.randomSuffixId).toBe("prototype_of_readiness");
     } finally {
       await harness.dispose();

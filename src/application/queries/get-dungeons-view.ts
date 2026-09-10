@@ -43,6 +43,25 @@ export interface PartyEncounterPreviewView {
   readonly damageRatio: number;
 }
 
+export interface PartyMechanicRequirementView {
+  readonly capabilityName: string;
+  readonly currentValue: number;
+  readonly minimumValue: number;
+  readonly satisfied: boolean;
+}
+
+export interface PartyMechanicReadinessView {
+  readonly id: string;
+  readonly encounterId: string;
+  readonly encounterName: string;
+  readonly name: string;
+  readonly description: string;
+  readonly type: "required" | "recommended";
+  readonly status: "satisfied" | "partial" | "missing";
+  readonly requirements: readonly PartyMechanicRequirementView[];
+  readonly impactLabels: readonly string[];
+}
+
 export interface PartyPreviewView {
   readonly formulaVersion: string;
   readonly contribution: {
@@ -70,8 +89,56 @@ export interface DungeonPlanningView {
   readonly selectedMemberIds: readonly MemberId[];
   readonly requestedRuns: number;
   readonly preview: PartyPreviewView | null;
+  readonly mechanicReadiness: readonly PartyMechanicReadinessView[];
   readonly issues: readonly string[];
   readonly canStart: boolean;
+}
+
+function effectLabels(
+  effects: NonNullable<ContentRegistry["mechanics"][number]["missingEffects"]> | undefined,
+): string[] {
+  if (!effects) return [];
+  const labels: string[] = [];
+  if (effects.tankMultiplier)
+    labels.push(`坦克压力 +${Math.round((effects.tankMultiplier - 1) * 100)}%`);
+  if (effects.healingMultiplier)
+    labels.push(`治疗压力 +${Math.round((effects.healingMultiplier - 1) * 100)}%`);
+  if (effects.damageMultiplier)
+    labels.push(`输出需求 +${Math.round((effects.damageMultiplier - 1) * 100)}%`);
+  if (effects.probabilityModifier)
+    labels.push(`胜率 ${Math.round(effects.probabilityModifier * 100)} 个百分点`);
+  if (effects.durationMultiplier)
+    labels.push(`耗时 +${Math.round((effects.durationMultiplier - 1) * 100)}%`);
+  return labels;
+}
+
+function mechanicView(
+  content: ContentRegistry,
+  encounterId: string,
+  result: import("../../domain/dungeon/mechanic-evaluation").EncounterMechanicResult,
+): PartyMechanicReadinessView {
+  const encounter = content.encounterById.get(
+    encounterId as ContentRegistry["encounters"][number]["id"],
+  )!;
+  const mechanic = content.mechanicById.get(result.mechanicId)!;
+  const satisfiedCount = result.requirements.filter((entry) => entry.satisfied).length;
+  return {
+    id: result.mechanicId,
+    encounterId,
+    encounterName: encounter.name.zhCN,
+    name: mechanic.name.zhCN,
+    description: mechanic.description.zhCN,
+    type: result.type,
+    status: result.satisfied ? "satisfied" : satisfiedCount > 0 ? "partial" : "missing",
+    requirements: result.requirements.map((requirement) => ({
+      capabilityName:
+        content.capabilityById.get(requirement.capabilityId)?.name.zhCN ?? requirement.capabilityId,
+      currentValue: requirement.currentValue,
+      minimumValue: requirement.minimumValue,
+      satisfied: requirement.satisfied,
+    })),
+    impactLabels: effectLabels(result.appliedEffects),
+  };
 }
 
 function unlockHint(
@@ -154,6 +221,7 @@ export function getDungeonPlanningView(
   const members = partyMembers(state, content);
   const issues: string[] = [];
   let preview: PartyPreviewView | null = null;
+  let mechanicReadiness: PartyMechanicReadinessView[] = [];
 
   if (!selectedDungeon) issues.push("没有可用的副本内容。");
   else {
@@ -177,6 +245,11 @@ export function getDungeonPlanningView(
     if (selectedMemberIds.length > 0 && !selectedMembers.some((member) => !member)) {
       const result = getPartyPreview(state, content, selectedDungeon.id, selectedMemberIds);
       if (result.ok) {
+        mechanicReadiness = result.preview.encounters.flatMap((encounter) =>
+          encounter.mechanics.mechanics.map((mechanic) =>
+            mechanicView(content, encounter.encounterId, mechanic),
+          ),
+        );
         preview = {
           formulaVersion: result.preview.formulaVersion,
           contribution: { ...result.preview.contribution },
@@ -193,7 +266,14 @@ export function getDungeonPlanningView(
           clearProbability: result.preview.clearProbability,
           durationSeconds: result.preview.durationSeconds,
         };
-      } else issues.push(...result.issues.map((issue) => issue.message));
+      } else {
+        issues.push(...result.issues.map((issue) => issue.message));
+        mechanicReadiness = result.issues.flatMap((issue) =>
+          issue.encounterId && issue.mechanic
+            ? [mechanicView(content, issue.encounterId, issue.mechanic)]
+            : [],
+        );
+      }
     }
   }
 
@@ -212,6 +292,7 @@ export function getDungeonPlanningView(
     selectedMemberIds: [...selectedMemberIds],
     requestedRuns,
     preview,
+    mechanicReadiness,
     issues: [...new Set(issues)],
     canStart: issues.length === 0 && preview !== null,
   };

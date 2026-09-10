@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "用于放置战斗评估的队伍能力抽象，不模拟逐技能循环。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "capabilities": [
+    {
+      "id": "tanking",
+      "name": { "zhCN": "坦克能力", "enUS": "Tanking" },
+      "description": {
+        "zhCN": "承受首领攻击并维持仇恨的综合能力。",
+        "enUS": "Ability to survive boss attacks and maintain threat."
+      },
+      "category": "primary-role"
+    },
+    {
+      "id": "healing",
+      "name": { "zhCN": "治疗能力", "enUS": "Healing" },
+      "description": {
+        "zhCN": "维持队伍生命并应对持续伤害的综合能力。",
+        "enUS": "Ability to sustain the party through incoming damage."
+      },
+      "category": "primary-role"
+    },
+    {
+      "id": "damage",
+      "name": { "zhCN": "输出能力", "enUS": "Damage" },
+      "description": {
+        "zhCN": "在战斗时限内击败敌人的综合能力。",
+        "enUS": "Ability to defeat enemies within the encounter window."
+      },
+      "category": "primary-role"
+    },
+    {
+      "id": "interrupt",
+      "name": { "zhCN": "打断", "enUS": "Interrupt" },
+      "description": {
+        "zhCN": "阻止敌人完成可打断的法术。",
+        "enUS": "Stops enemies from completing interruptible spells."
+      },
+      "category": "interrupt"
+    },
+    {
+      "id": "magic_dispel",
+      "name": { "zhCN": "驱散魔法", "enUS": "Magic Dispel" },
+      "description": {
+        "zhCN": "移除友方身上的有害魔法效果。",
+        "enUS": "Removes harmful magic effects from allies."
+      },
+      "category": "dispel"
+    },
+    {
+      "id": "poison_dispel",
+      "name": { "zhCN": "解除中毒", "enUS": "Poison Dispel" },
+      "description": {
+        "zhCN": "移除友方身上的中毒效果。",
+        "enUS": "Removes poison effects from allies."
+      },
+      "category": "dispel"
+    },
+    {
+      "id": "disease_dispel",
+      "name": { "zhCN": "解除疾病", "enUS": "Disease Dispel" },
+      "description": {
+        "zhCN": "移除友方身上的疾病效果。",
+        "enUS": "Removes disease effects from allies."
+      },
+      "category": "dispel"
+    },
+    {
+      "id": "curse_dispel",
+      "name": { "zhCN": "解除诅咒", "enUS": "Curse Dispel" },
+      "description": {
+        "zhCN": "移除友方身上的诅咒效果。",
+        "enUS": "Removes curse effects from allies."
+      },
+      "category": "dispel"
+    },
+    {
+      "id": "crowd_control",
+      "name": { "zhCN": "控制", "enUS": "Crowd Control" },
+      "description": {
+        "zhCN": "暂时限制危险敌人的行动。",
+        "enUS": "Temporarily restricts dangerous enemies."
+      },
+      "category": "control"
+    },
+    {
+      "id": "area_damage",
+      "name": { "zhCN": "范围伤害", "enUS": "Area Damage" },
+      "description": {
+        "zhCN": "同时处理多个敌人的伤害能力。",
+        "enUS": "Deals effective damage to multiple enemies."
+      },
+      "category": "area-damage"
+    },
+    {
+      "id": "ranged_damage",
+      "name": { "zhCN": "远程伤害", "enUS": "Ranged Damage" },
+      "description": {
+        "zhCN": "在远离目标时保持输出的能力。",
+        "enUS": "Maintains damage while away from the target."
+      },
+      "category": "ranged-damage"
+    }
+  ]
+}

@@ -10,6 +10,7 @@ import { MemorySaveRepository } from "../../src/infrastructure/persistence/memor
 import { useGameStore } from "../../src/stores/game-store";
 import { useUiStore } from "../../src/stores/ui-store";
 import DungeonsPage from "../../src/ui/pages/DungeonsPage.vue";
+import PartyPreview from "../../src/ui/components/PartyPreview.vue";
 import { FakeClock } from "../helpers/runtime-fakes";
 
 describe("dungeons page", () => {
@@ -70,5 +71,44 @@ describe("dungeons page", () => {
     expect(useUiStore().selectedPartyMemberIds).toEqual([]);
     expect(wrapper.text()).toContain("可以继续组织另一支队伍");
     expect(wrapper.findAll('.member-options input[type="checkbox"][disabled]')).toHaveLength(5);
+  });
+
+  it("renders mechanic readiness, exact requirements, and applied effects", () => {
+    const wrapper = mount(PartyPreview, {
+      props: {
+        dungeon: null,
+        preview: null,
+        issues: ["奥格弗林特的机制尚未满足。"],
+        requestedRuns: 1,
+        canStart: false,
+        pending: false,
+        mechanicReadiness: [
+          {
+            id: "test_recommended_magic_dispel",
+            encounterId: "oggleflint",
+            encounterName: "奥格弗林特",
+            name: "建议驱散魔法",
+            description: "缺少魔法驱散会增加治疗压力并拖慢战斗。",
+            type: "recommended",
+            status: "partial",
+            requirements: [
+              {
+                capabilityName: "驱散魔法",
+                currentValue: 1,
+                minimumValue: 2,
+                satisfied: false,
+              },
+            ],
+            impactLabels: ["治疗压力 +15%", "胜率 -5 个百分点", "耗时 +5%"],
+          },
+        ],
+      },
+    });
+
+    expect(wrapper.text()).toContain("奥格弗林特 · 建议驱散魔法");
+    expect(wrapper.text()).toContain("部分满足");
+    expect(wrapper.text()).toContain("驱散魔法 1.0/2.0");
+    expect(wrapper.text()).toContain("治疗压力 +15% · 胜率 -5 个百分点 · 耗时 +5%");
+    expect(wrapper.find("button").attributes("disabled")).toBeDefined();
   });
 });
