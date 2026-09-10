@@ -7,7 +7,7 @@ import type {
   ExpeditionRunPlan,
 } from "../activity/activity";
 import type { CombatProfile } from "../combat/combat-profile";
-import type { GameStateV2 } from "../game-state";
+import type { GameState } from "../game-state";
 import { asBrandedId, type DungeonId } from "../shared/ids";
 import { SeededRandomSource } from "../../infrastructure/random/seeded-random-source";
 import { evaluateExpeditionParty } from "./party-evaluation";
@@ -135,7 +135,7 @@ export function createExpeditionActivityHandler(
 }
 
 export function experienceFractions(
-  state: GameStateV2,
+  state: GameState,
   content: ContentRegistry,
   dungeonId: StartExpeditionRequest["dungeonId"],
   memberIds: readonly ExpeditionMemberSnapshot["memberId"][],
@@ -162,7 +162,7 @@ export function experienceFractions(
 }
 
 function snapshotMember(
-  state: GameStateV2,
+  state: GameState,
   memberId: ExpeditionMemberSnapshot["memberId"],
   profile: CombatProfile,
 ): ExpeditionMemberSnapshot {

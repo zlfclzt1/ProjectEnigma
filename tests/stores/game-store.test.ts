@@ -4,20 +4,20 @@ import { beforeEach, describe, expect, it } from "vitest";
 import type { SaveRepository, SaveResult } from "../../src/application/ports/save-repository";
 import { loadOrCreateV2Client } from "../../src/app/client-bootstrap";
 import { loadBrowserContentRegistry } from "../../src/content/manifest";
-import type { GameStateV2 } from "../../src/domain/game-state";
+import type { GameState } from "../../src/domain/game-state";
 import { asBrandedId } from "../../src/domain/shared/ids";
 import { MemorySaveRepository } from "../../src/infrastructure/persistence/memory-save-repository";
 import { useGameStore } from "../../src/stores/game-store";
 import { FakeClock } from "../helpers/runtime-fakes";
 
 class MissingSaveRepository implements SaveRepository {
-  async load(): Promise<GameStateV2 | null> {
+  async load(): Promise<GameState | null> {
     return null;
   }
 
   async create(): Promise<void> {}
 
-  async save(_state: GameStateV2, expectedRevision: number): Promise<SaveResult> {
+  async save(_state: GameState, expectedRevision: number): Promise<SaveResult> {
     return { status: "not-found", expectedRevision };
   }
 }
@@ -218,7 +218,8 @@ describe("game store", () => {
     const store = useGameStore();
     await store.initialize(() => loadOrCreateV2Client(deps));
     const persisted = await saves.load(deps.slotId);
-    await saves.save(persisted!, 0);
+    if (!persisted || persisted.saveVersion !== 3) throw new Error("Expected current save");
+    await saves.save(persisted, 0);
 
     const conflict = await store.execute({ type: "stale-command", execute() {} });
     expect(conflict.ok).toBe(false);

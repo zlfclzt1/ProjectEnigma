@@ -1,8 +1,17 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { useGameStore } from "../../stores/game-store";
 import ActivitySummary from "../components/ActivitySummary.vue";
+import GuildUpgradePanel from "../components/GuildUpgradePanel.vue";
 
 const game = useGameStore();
+const showGuildUpgradePanel = ref(false);
+
+async function purchaseNextUpgrade(): Promise<void> {
+  const upgrade = game.guildUpgrades?.nextUpgrade;
+  if (!upgrade) return;
+  await game.purchaseGuildUpgrade(upgrade.id);
+}
 </script>
 
 <template>
@@ -15,32 +24,43 @@ const game = useGameStore();
       <strong>{{ game.overview.funds }} G</strong>
     </header>
 
-    <dl class="summary-grid">
-      <div>
-        <dt>公会成员</dt>
-        <dd>{{ game.overview.memberCount }} / {{ game.overview.memberCapacity }}</dd>
+    <div class="summary-grid">
+      <button
+        class="summary-card member-capacity-card"
+        :class="{ purchasable: game.guildUpgrades?.hasPurchasableUpgrade }"
+        type="button"
+        @click="showGuildUpgradePanel = true"
+      >
+        <span class="summary-label">公会成员</span>
+        <strong class="summary-value">
+          {{ game.overview.memberCount }} / {{ game.overview.memberCapacity }}
+        </strong>
+        <span v-if="game.guildUpgrades?.hasPurchasableUpgrade" class="upgrade-badge">可扩建</span>
+        <span v-else class="card-action">查看扩建</span>
+      </button>
+      <div class="summary-card">
+        <span class="summary-label">空闲成员</span>
+        <strong class="summary-value">{{ game.overview.idleMemberCount }}</strong>
       </div>
-      <div>
-        <dt>空闲成员</dt>
-        <dd>{{ game.overview.idleMemberCount }}</dd>
+      <div class="summary-card">
+        <span class="summary-label">出勤成员</span>
+        <strong class="summary-value">{{ game.overview.activeMemberCount }}</strong>
       </div>
-      <div>
-        <dt>出勤成员</dt>
-        <dd>{{ game.overview.activeMemberCount }}</dd>
+      <div class="summary-card">
+        <span class="summary-label">候选区</span>
+        <strong class="summary-value">
+          {{ game.overview.candidateCount }} / {{ game.overview.candidateCapacity }}
+        </strong>
       </div>
-      <div>
-        <dt>候选区</dt>
-        <dd>{{ game.overview.candidateCount }} / {{ game.overview.candidateCapacity }}</dd>
+      <div class="summary-card">
+        <span class="summary-label">待分配装备</span>
+        <strong class="summary-value">{{ game.overview.pendingLootCount }}</strong>
       </div>
-      <div>
-        <dt>待分配装备</dt>
-        <dd>{{ game.overview.pendingLootCount }}</dd>
+      <div class="summary-card">
+        <span class="summary-label">已完成副本</span>
+        <strong class="summary-value">{{ game.overview.completedExpeditionCount }}</strong>
       </div>
-      <div>
-        <dt>已完成副本</dt>
-        <dd>{{ game.overview.completedExpeditionCount }}</dd>
-      </div>
-    </dl>
+    </div>
 
     <section>
       <div class="section-heading">
@@ -57,6 +77,14 @@ const game = useGameStore();
       </div>
       <p v-else class="empty">目前没人出门。酒馆老板说这通常不是好兆头。</p>
     </section>
+
+    <GuildUpgradePanel
+      v-if="showGuildUpgradePanel && game.guildUpgrades"
+      :view="game.guildUpgrades"
+      :busy="game.commandPending"
+      @close="showGuildUpgradePanel = false"
+      @purchase="purchaseNextUpgrade"
+    />
   </section>
 </template>
 
@@ -95,21 +123,56 @@ const game = useGameStore();
   gap: 10px;
   margin: 0;
 }
-.summary-grid div {
+.summary-card {
+  position: relative;
   padding: 17px;
   border: 1px solid #343129;
   border-radius: 8px;
   background: #121518;
+  text-align: left;
 }
-dt {
+.summary-grid button {
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.member-capacity-card {
+  transition:
+    border-color 120ms ease,
+    transform 120ms ease;
+}
+.member-capacity-card:hover {
+  border-color: #80622f;
+  transform: translateY(-1px);
+}
+.member-capacity-card.purchasable {
+  border-color: #b78b40;
+  box-shadow: inset 0 0 24px #8a612418;
+}
+.summary-label {
+  display: block;
   color: #908675;
   font-size: 0.76rem;
 }
-dd {
-  margin: 7px 0 0;
+.summary-value {
+  display: block;
+  margin-top: 7px;
   color: #eadbbd;
   font-size: 1.3rem;
   font-weight: 800;
+}
+.card-action,
+.upgrade-badge {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+.card-action {
+  color: #817766;
+}
+.upgrade-badge {
+  color: #f2cc72;
 }
 .section-heading h3 {
   margin: 0;

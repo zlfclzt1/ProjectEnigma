@@ -49,7 +49,7 @@ describe("Vue view queries", () => {
   });
 
   it("projects overview counts and only active activities", () => {
-    const view = getOverviewView(state());
+    const view = getOverviewView(state(), content);
     expect(view).toMatchObject({
       guildName: "神秘公会",
       funds: 100,

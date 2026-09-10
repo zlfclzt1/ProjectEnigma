@@ -1,5 +1,5 @@
 import type { ContentRegistry } from "../../content/registry";
-import type { GameStateV2 } from "../../domain/game-state";
+import type { GameState } from "../../domain/game-state";
 import type { DungeonId, MemberId } from "../../domain/shared/ids";
 import {
   evaluateExpeditionParty,
@@ -7,7 +7,7 @@ import {
 } from "../../domain/dungeon/party-evaluation";
 
 export function getPartyPreview(
-  state: GameStateV2,
+  state: GameState,
   content: ContentRegistry,
   dungeonId: DungeonId,
   memberIds: readonly MemberId[],

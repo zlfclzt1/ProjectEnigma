@@ -3,7 +3,7 @@ import type { IdGenerator } from "../../application/ports/id-generator";
 import type { RandomSource } from "../../application/ports/random-source";
 import type { ContentRegistry } from "../../content/registry";
 import type { ItemInstance } from "../equipment/item-instance";
-import { GAME_STATE_V2_SAVE_VERSION, type GameStateV2 } from "../game-state";
+import { GAME_STATE_SAVE_VERSION, type GameState } from "../game-state";
 import { createCandidate, createMember, type MemberFactoryContext } from "../member/member-factory";
 import type { Candidate, Member } from "../member/member";
 import type {
@@ -33,7 +33,7 @@ const INITIAL_ROLES = ["tank", "healer", "dps", "dps", "dps"] as const;
 export function createNewGame(
   dependencies: NewGameDependencies,
   options: NewGameOptions = {},
-): GameStateV2 {
+): GameState {
   const createdAt = dependencies.clock.now();
   const factoryContext: MemberFactoryContext = {
     content: dependencies.content,
@@ -59,14 +59,14 @@ export function createNewGame(
 
   return {
     slotId: dependencies.slotId,
-    saveVersion: GAME_STATE_V2_SAVE_VERSION,
+    saveVersion: GAME_STATE_SAVE_VERSION,
     revision: 0,
     contentVersion: dependencies.contentVersion,
     guild: {
       name: options.guildName?.trim() || "神秘公会",
       funds: 100,
-      memberCapacity: 10,
       candidateCapacity: 10,
+      purchasedUpgradeIds: [],
       unlockedDungeonIds: dependencies.content.dungeons
         .filter((dungeon) => dungeon.defaultUnlocked)
         .map((dungeon) => dungeon.id),
@@ -85,6 +85,7 @@ export function createNewGame(
       cancelledActivityCount: 0,
       completedExpeditionCount: 0,
       encounterVictoryCounts: {},
+      dungeonClearCounts: {},
     },
     random: dependencies.random.snapshot(),
     ids: dependencies.ids.snapshot(),

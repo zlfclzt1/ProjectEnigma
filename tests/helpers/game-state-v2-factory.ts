@@ -1,6 +1,10 @@
 import type { ExpeditionActivity } from "../../src/domain/activity/activity";
 import type { ItemInstance } from "../../src/domain/equipment/item-instance";
-import { GAME_STATE_V2_SAVE_VERSION, type GameStateV2 } from "../../src/domain/game-state";
+import {
+  GAME_STATE_SAVE_VERSION,
+  type GameState,
+  type LegacyGameStateV2,
+} from "../../src/domain/game-state";
 import type { Member } from "../../src/domain/member/member";
 import { asBrandedId } from "../../src/domain/shared/ids";
 
@@ -86,7 +90,7 @@ export function createExpeditionActivityFixture(
   };
 }
 
-export function createGameStateV2Fixture(overrides: Partial<GameStateV2> = {}): GameStateV2 {
+export function createGameStateFixture(overrides: Partial<GameState> = {}): GameState {
   const member = createMemberFixture();
   const item = createItemInstanceFixture();
   const activity = createExpeditionActivityFixture();
@@ -95,14 +99,14 @@ export function createGameStateV2Fixture(overrides: Partial<GameStateV2> = {}): 
 
   return {
     slotId: asBrandedId<"SaveSlotId">("slot_1"),
-    saveVersion: GAME_STATE_V2_SAVE_VERSION,
+    saveVersion: GAME_STATE_SAVE_VERSION,
     revision: 0,
     contentVersion: asBrandedId<"ContentVersion">("classic-v1"),
     guild: {
       name: "神秘公会",
       funds: 100,
-      memberCapacity: 10,
       candidateCapacity: 10,
+      purchasedUpgradeIds: [],
       unlockedDungeonIds: [asBrandedId<"DungeonId">("ragefire_chasm")],
       firstKillEncounterIds: [],
     },
@@ -119,11 +123,29 @@ export function createGameStateV2Fixture(overrides: Partial<GameStateV2> = {}): 
       cancelledActivityCount: 0,
       completedExpeditionCount: 0,
       encounterVictoryCounts: {},
+      dungeonClearCounts: {},
     },
     random: { seed: "guild-seed", counter: 0 },
     ids: { counter: 3 },
     createdAt: 1_000,
     updatedAt: 1_000,
+    ...overrides,
+  };
+}
+
+export function createLegacyGameStateV2Fixture(
+  overrides: Partial<LegacyGameStateV2> = {},
+): LegacyGameStateV2 {
+  const current = createGameStateFixture();
+  const { purchasedUpgradeIds: _purchasedUpgradeIds, ...guild } = current.guild;
+  const { dungeonClearCounts: _dungeonClearCounts, ...history } = current.history;
+  void _purchasedUpgradeIds;
+  void _dungeonClearCounts;
+  return {
+    ...current,
+    saveVersion: 2,
+    guild: { ...guild, memberCapacity: 10 },
+    history,
     ...overrides,
   };
 }

@@ -1,6 +1,6 @@
 import type { ContentRegistry } from "../../content/registry";
 import type { CombatReport } from "../../domain/combat/combat-report";
-import type { GameStateV2 } from "../../domain/game-state";
+import type { GameState } from "../../domain/game-state";
 import type { CombatReportId } from "../../domain/shared/ids";
 import { renderCombatLog } from "./render-combat-log";
 
@@ -44,7 +44,7 @@ export interface CombatReportsView {
 }
 
 function projectReport(
-  state: GameStateV2,
+  state: GameState,
   content: ContentRegistry,
   report: CombatReport,
 ): CombatReportView {
@@ -102,7 +102,7 @@ function projectReport(
 }
 
 export function getCombatReportsView(
-  state: GameStateV2,
+  state: GameState,
   content: ContentRegistry,
 ): CombatReportsView {
   const reports = Object.values(state.activities).flatMap((activity) =>

@@ -12,7 +12,7 @@ import {
 import { ActivityScheduler } from "../../src/domain/activity/activity-scheduler";
 import type { TrainingActivity } from "../../src/domain/activity/activity";
 import { asBrandedId } from "../../src/domain/shared/ids";
-import { createGameStateV2Fixture, createMemberFixture } from "../helpers/game-state-v2-factory";
+import { createGameStateFixture, createMemberFixture } from "../helpers/game-state-v2-factory";
 import { FixedRandomSource, SequentialIdGenerator } from "../helpers/runtime-fakes";
 
 interface TrainingRequest extends ActivityStartRequest {
@@ -70,7 +70,7 @@ describe("ActivityRegistry", () => {
 
 describe("ActivityScheduler", () => {
   it("atomically starts an activity and occupies every participant", () => {
-    const state = createGameStateV2Fixture({ activities: {} });
+    const state = createGameStateFixture({ activities: {} });
     const firstMember = Object.values(state.members)[0]!;
     delete firstMember.activeActivityId;
     const secondMember = createMemberFixture({ id: asBrandedId<"MemberId">("member_2") });
@@ -98,7 +98,7 @@ describe("ActivityScheduler", () => {
   });
 
   it("rejects an invalid multi-member activity without partially occupying members", () => {
-    const state = createGameStateV2Fixture({ activities: {} });
+    const state = createGameStateFixture({ activities: {} });
     const freeMember = Object.values(state.members)[0]!;
     delete freeMember.activeActivityId;
     const missingMemberId = asBrandedId<"MemberId">("missing");
@@ -124,7 +124,7 @@ describe("ActivityScheduler", () => {
   });
 
   it("rejects busy, duplicate, and handler-specific invalid requests", () => {
-    const state = createGameStateV2Fixture();
+    const state = createGameStateFixture();
     const member = Object.values(state.members)[0]!;
     const { scheduler } = setup();
 
@@ -160,7 +160,7 @@ describe("ActivityScheduler", () => {
     ["failed", "failedActivityCount"],
     ["cancelled", "cancelledActivityCount"],
   ] as const)("releases participants when an activity is %s", (terminalStatus, counter) => {
-    const state = createGameStateV2Fixture();
+    const state = createGameStateFixture();
     const member = Object.values(state.members)[0]!;
     const activityId = member.activeActivityId!;
     const { scheduler } = setup();
@@ -178,7 +178,7 @@ describe("ActivityScheduler", () => {
   });
 
   it("sorts due activities by settlement time and then stable ID", () => {
-    const first = createGameStateV2Fixture().activities[asBrandedId<"ActivityId">("activity_1")]!;
+    const first = createGameStateFixture().activities[asBrandedId<"ActivityId">("activity_1")]!;
     const second = structuredClone(first);
     const third = structuredClone(first);
     first.id = asBrandedId<"ActivityId">("activity_b");
@@ -187,7 +187,7 @@ describe("ActivityScheduler", () => {
     second.nextSettlementAt = 10;
     third.id = asBrandedId<"ActivityId">("activity_a");
     third.nextSettlementAt = 20;
-    const state = createGameStateV2Fixture({
+    const state = createGameStateFixture({
       activities: { [first.id]: first, [second.id]: second, [third.id]: third },
     });
     const { scheduler } = setup();

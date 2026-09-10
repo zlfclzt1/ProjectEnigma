@@ -1,7 +1,7 @@
 import type { ContentRegistry } from "../../content/registry";
 import { evaluateUpgrade } from "../../domain/equipment/upgrade-evaluation";
 import { equipmentSellValue } from "../../domain/equipment/item-value";
-import type { GameStateV2 } from "../../domain/game-state";
+import type { GameState } from "../../domain/game-state";
 import type { MemberId, PendingLootId } from "../../domain/shared/ids";
 import { getEquippedItemView, type EquippedItemView } from "./get-members-view";
 
@@ -43,7 +43,7 @@ export interface LootView {
   readonly lockedCount: number;
 }
 
-export function getLootView(state: GameStateV2, content: ContentRegistry): LootView {
+export function getLootView(state: GameState, content: ContentRegistry): LootView {
   const pending = Object.values(state.pendingLoot)
     .sort((left, right) => left.acquiredAt - right.acquiredAt || left.id.localeCompare(right.id))
     .flatMap((entry): PendingLootView[] => {

@@ -1,5 +1,5 @@
 import type { ContentRegistry } from "../../content/registry";
-import type { GameStateV2 } from "../game-state";
+import type { GameState } from "../game-state";
 import type { Member } from "../member/member";
 import type { EquipmentSlot } from "./equipment-slot";
 import { equipItem } from "./equipment";
@@ -27,7 +27,7 @@ export const EQUIPMENT_SLOT_WEIGHTS: Readonly<Record<EquipmentSlot, number>> = {
 
 export function averageEquippedItemLevel(
   member: Member,
-  itemInstances: GameStateV2["itemInstances"],
+  itemInstances: GameState["itemInstances"],
   content: ContentRegistry,
 ): number {
   let weightedLevels = 0;
@@ -54,7 +54,7 @@ export interface ItemLevelUpgradeEvaluation {
 export function evaluateItemLevelUpgrade(
   member: Member,
   instance: ItemInstance,
-  itemInstances: GameStateV2["itemInstances"],
+  itemInstances: GameState["itemInstances"],
   content: ContentRegistry,
 ): ItemLevelUpgradeEvaluation | null {
   try {

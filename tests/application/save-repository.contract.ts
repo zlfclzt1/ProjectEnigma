@@ -5,7 +5,7 @@ import {
   type SaveRepository,
 } from "../../src/application/ports/save-repository";
 import { asBrandedId } from "../../src/domain/shared/ids";
-import { createGameStateV2Fixture } from "../helpers/game-state-v2-factory";
+import { createGameStateFixture } from "../helpers/game-state-v2-factory";
 
 export interface SaveRepositoryHarness {
   readonly repository: SaveRepository;
@@ -18,7 +18,7 @@ export function runSaveRepositoryContract(
   it("creates and asynchronously loads an isolated save", async () => {
     const harness = await createHarness();
     try {
-      const initial = createGameStateV2Fixture();
+      const initial = createGameStateFixture();
       await harness.repository.create(initial);
       initial.guild.funds = 999;
 
@@ -35,14 +35,14 @@ export function runSaveRepositoryContract(
   it("rejects duplicate slots and non-zero initial revisions", async () => {
     const harness = await createHarness();
     try {
-      const initial = createGameStateV2Fixture();
+      const initial = createGameStateFixture();
       await harness.repository.create(initial);
       await expect(harness.repository.create(initial)).rejects.toBeInstanceOf(
         SaveSlotAlreadyExistsError,
       );
       await expect(
         harness.repository.create(
-          createGameStateV2Fixture({
+          createGameStateFixture({
             slotId: asBrandedId<"SaveSlotId">("slot_2"),
             revision: 1,
           }),
@@ -56,7 +56,7 @@ export function runSaveRepositoryContract(
   it("increments revisions without mutating the caller state", async () => {
     const harness = await createHarness();
     try {
-      const state = createGameStateV2Fixture();
+      const state = createGameStateFixture();
       await harness.repository.create(state);
       state.guild.funds = 75;
 
@@ -77,7 +77,7 @@ export function runSaveRepositoryContract(
   it("reports stale revisions without overwriting the current save", async () => {
     const harness = await createHarness();
     try {
-      const state = createGameStateV2Fixture();
+      const state = createGameStateFixture();
       await harness.repository.create(state);
       const first = await harness.repository.save(state, 0);
       expect(first.status).toBe("saved");
@@ -97,7 +97,7 @@ export function runSaveRepositoryContract(
   it("reports a missing slot", async () => {
     const harness = await createHarness();
     try {
-      const missing = createGameStateV2Fixture({
+      const missing = createGameStateFixture({
         slotId: asBrandedId<"SaveSlotId">("missing"),
       });
       await expect(harness.repository.save(missing, 0)).resolves.toEqual({

@@ -34,6 +34,7 @@ function durationLabel(seconds: number): string {
         >{{ dungeon.minimumMembers }}–{{ dungeon.maximumMembers }} 人 · 基础
         {{ durationLabel(dungeon.baseDurationSeconds) }}</small
       >
+      <small>完整通关：{{ dungeon.clearCount }} 次</small>
       <em>{{ dungeon.unlockHint }}</em>
     </button>
   </div>

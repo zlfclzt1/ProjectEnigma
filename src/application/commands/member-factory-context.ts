@@ -2,12 +2,12 @@ import type { Clock } from "../ports/clock";
 import type { IdGenerator } from "../ports/id-generator";
 import type { RandomSource } from "../ports/random-source";
 import type { ContentRegistry } from "../../content/registry";
-import type { GameStateV2 } from "../../domain/game-state";
+import type { GameState } from "../../domain/game-state";
 import { claimedHiddenCharacterIds, knownMemberNames } from "../../domain/guild/recruitment";
 import type { MemberFactoryContext } from "../../domain/member/member-factory";
 
 export function memberFactoryContext(
-  state: GameStateV2,
+  state: GameState,
   content: ContentRegistry,
   clock: Clock,
   ids: IdGenerator,

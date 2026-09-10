@@ -7,6 +7,7 @@ import {
   removeCandidate,
   resumeRecruitmentTimer,
 } from "../../domain/guild/recruitment";
+import { getMemberCapacity } from "../../domain/guild/guild-upgrade-rules";
 import {
   createMemberFromCandidate,
   type GeneratedMember,
@@ -23,7 +24,7 @@ export function recruitMemberCommand(
   return {
     type: "recruit-member",
     execute(draft) {
-      if (memberCount(draft) >= draft.guild.memberCapacity) {
+      if (memberCount(draft) >= getMemberCapacity(draft, dependencies.content)) {
         throw new Error("公会人数已达上限。请先扩建或移除成员。");
       }
       ensureCandidateReferencesValid(draft, dependencies.content, candidateId);

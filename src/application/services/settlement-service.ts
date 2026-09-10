@@ -4,7 +4,7 @@ import type { ContentRegistry } from "../../content/registry";
 import { ActivityRegistry } from "../../domain/activity/activity-registry";
 import { ActivityScheduler } from "../../domain/activity/activity-scheduler";
 import type { ExpeditionActivity } from "../../domain/activity/activity";
-import type { GameStateV2 } from "../../domain/game-state";
+import type { GameState } from "../../domain/game-state";
 import {
   settleNextExpeditionStage,
   type ExpeditionSettlementResult,
@@ -20,7 +20,7 @@ export class SettlementService {
 
   constructor(private readonly content: ContentRegistry) {}
 
-  settleDueActivities(state: GameStateV2, now: number): SettlementSummary {
+  settleDueActivities(state: GameState, now: number): SettlementSummary {
     const ids = new LocalIdGenerator(state.ids);
     const settled: Extract<ExpeditionSettlementResult, { status: "settled" }>[] = [];
 

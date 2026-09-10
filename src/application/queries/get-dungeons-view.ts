@@ -1,5 +1,5 @@
 import type { ContentRegistry } from "../../content/registry";
-import type { GameStateV2 } from "../../domain/game-state";
+import type { GameState } from "../../domain/game-state";
 import { averageEquippedItemLevel } from "../../domain/equipment/item-level";
 import type { DungeonId, MemberId } from "../../domain/shared/ids";
 import { getPartyPreview } from "./get-party-preview";
@@ -14,6 +14,7 @@ export interface DungeonOptionView {
   readonly recommendedMembers: number;
   readonly baseDurationSeconds: number;
   readonly encounterCount: number;
+  readonly clearCount: number;
   readonly unlocked: boolean;
   readonly unlockHint: string;
 }
@@ -23,7 +24,7 @@ export interface PartyMemberOptionView {
   readonly name: string;
   readonly level: number;
   readonly itemLevel: number;
-  readonly classId: GameStateV2["members"][MemberId]["identity"]["classId"];
+  readonly classId: GameState["members"][MemberId]["identity"]["classId"];
   readonly className: string;
   readonly specName: string;
   readonly role: "tank" | "healer" | "dps";
@@ -74,7 +75,7 @@ export interface DungeonPlanningView {
 }
 
 function unlockHint(
-  state: GameStateV2,
+  state: GameState,
   content: ContentRegistry,
   dungeon: ContentRegistry["dungeons"][number],
 ): string {
@@ -88,7 +89,7 @@ function unlockHint(
   return `${requiredAny.length > 0 ? "通关其中一座" : "完成前置"}：${names.join("、")}`;
 }
 
-function dungeonOptions(state: GameStateV2, content: ContentRegistry): DungeonOptionView[] {
+function dungeonOptions(state: GameState, content: ContentRegistry): DungeonOptionView[] {
   return content.dungeons
     .map((dungeon) => ({
       id: dungeon.id,
@@ -100,6 +101,7 @@ function dungeonOptions(state: GameStateV2, content: ContentRegistry): DungeonOp
       recommendedMembers: dungeon.members.recommended,
       baseDurationSeconds: dungeon.duration.baseSeconds,
       encounterCount: dungeon.route.length,
+      clearCount: state.history.dungeonClearCounts[dungeon.id] ?? 0,
       unlocked: state.guild.unlockedDungeonIds.includes(dungeon.id),
       unlockHint: unlockHint(state, content, dungeon),
     }))
@@ -110,7 +112,7 @@ function dungeonOptions(state: GameStateV2, content: ContentRegistry): DungeonOp
     );
 }
 
-function partyMembers(state: GameStateV2, content: ContentRegistry): PartyMemberOptionView[] {
+function partyMembers(state: GameState, content: ContentRegistry): PartyMemberOptionView[] {
   return Object.values(state.members)
     .map((member): PartyMemberOptionView => {
       const spec = content.specById.get(member.progression.specId)!;
@@ -137,7 +139,7 @@ function partyMembers(state: GameStateV2, content: ContentRegistry): PartyMember
 }
 
 export function getDungeonPlanningView(
-  state: GameStateV2,
+  state: GameState,
   content: ContentRegistry,
   dungeonId: DungeonId | null,
   selectedMemberIds: readonly MemberId[],

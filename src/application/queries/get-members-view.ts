@@ -4,7 +4,7 @@ import { buildCombatProfile } from "../../domain/combat/formula-pipeline";
 import { EQUIPMENT_SLOTS, type EquipmentSlot } from "../../domain/equipment/equipment-slot";
 import { averageEquippedItemLevel } from "../../domain/equipment/item-level";
 import type { ItemInstance } from "../../domain/equipment/item-instance";
-import type { GameStateV2 } from "../../domain/game-state";
+import type { GameState } from "../../domain/game-state";
 import { RESPEC_COST } from "../../domain/guild/recruitment";
 import type { ClassId, MemberId, SpecId } from "../../domain/shared/ids";
 
@@ -149,9 +149,9 @@ const PERCENT_FIELDS = new Set([
 ]);
 
 function directoryEntry(
-  state: GameStateV2,
+  state: GameState,
   content: ContentRegistry,
-  member: GameStateV2["members"][MemberId],
+  member: GameState["members"][MemberId],
 ): MemberDirectoryEntryView {
   const spec = content.specById.get(member.progression.specId)!;
   return {
@@ -171,7 +171,7 @@ function directoryEntry(
 }
 
 export function getMemberDirectoryView(
-  state: GameStateV2,
+  state: GameState,
   content: ContentRegistry,
 ): MemberDirectoryView {
   return {
@@ -349,7 +349,7 @@ function aggregateStats(equipment: readonly EquipmentSlotView[]): ItemStatLineVi
 }
 
 export function getMemberDetailView(
-  state: GameStateV2,
+  state: GameState,
   content: ContentRegistry,
   memberId: MemberId,
 ): MemberDetailView | null {

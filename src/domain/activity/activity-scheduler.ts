@@ -1,4 +1,4 @@
-import type { GameStateV2 } from "../game-state";
+import type { GameState } from "../game-state";
 import type { ActivityId, MemberId } from "../shared/ids";
 import type { IdGenerator } from "../../application/ports/id-generator";
 import type { RandomSource } from "../../application/ports/random-source";
@@ -21,7 +21,7 @@ export class ActivityScheduler {
   constructor(private readonly registry: ActivityRegistry) {}
 
   start<Request extends ActivityStartRequest, ManagedActivity extends Activity>(
-    state: GameStateV2,
+    state: GameState,
     request: Request,
     now: number,
     runtime: { readonly ids: IdGenerator; readonly random: RandomSource },
@@ -46,7 +46,7 @@ export class ActivityScheduler {
   }
 
   finish(
-    state: GameStateV2,
+    state: GameState,
     activityId: ActivityId,
     terminalStatus: Extract<ActivityStatus, "completed" | "failed" | "cancelled">,
     completedAt: number,
@@ -76,7 +76,7 @@ export class ActivityScheduler {
     return { status: "finished", activity: structuredClone(activity) };
   }
 
-  due(state: GameStateV2, now: number): Activity[] {
+  due(state: GameState, now: number): Activity[] {
     return Object.values(state.activities)
       .filter(
         (activity) =>
@@ -92,7 +92,7 @@ export class ActivityScheduler {
 }
 
 function validateCommonStartRules(
-  state: GameStateV2,
+  state: GameState,
   request: ActivityStartRequest,
 ): ActivityValidationIssue[] {
   const issues: ActivityValidationIssue[] = [];
@@ -123,7 +123,7 @@ function validateCommonStartRules(
 }
 
 function validateCreatedActivity(
-  state: GameStateV2,
+  state: GameState,
   request: ActivityStartRequest,
   activity: Activity,
 ): ActivityValidationIssue[] {

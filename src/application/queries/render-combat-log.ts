@@ -1,7 +1,7 @@
 import type { ContentRegistry } from "../../content/registry";
 import type { LogTemplateGroup } from "../../content/schemas/log-template";
 import type { CombatReport, MemberCombatReport } from "../../domain/combat/combat-report";
-import type { GameStateV2 } from "../../domain/game-state";
+import type { GameState } from "../../domain/game-state";
 import type { MemberId } from "../../domain/shared/ids";
 import { SeededRandomSource } from "../../infrastructure/random/seeded-random-source";
 
@@ -13,7 +13,7 @@ export interface RenderedCombatLogEntry {
 
 export function renderCombatLog(
   report: CombatReport,
-  state: Pick<GameStateV2, "members">,
+  state: Pick<GameState, "members">,
   content: ContentRegistry,
 ): readonly RenderedCombatLogEntry[] {
   const byId = new Map(report.members.map((member) => [member.memberId, member]));
@@ -118,6 +118,6 @@ function selectGroup(
   );
 }
 
-function name(state: Pick<GameStateV2, "members">, memberId?: MemberId): string {
+function name(state: Pick<GameState, "members">, memberId?: MemberId): string {
   return memberId ? (state.members[memberId]?.identity.name ?? "成员") : "成员";
 }

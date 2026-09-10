@@ -5,26 +5,26 @@ import { sellLootCommand } from "../../src/application/commands/sell-loot";
 import { GameSession } from "../../src/application/services/game-session";
 import { loadBrowserContentRegistry } from "../../src/content/manifest";
 import type { ActivityStatus } from "../../src/domain/activity/activity";
-import type { GameStateV2 } from "../../src/domain/game-state";
+import type { GameState } from "../../src/domain/game-state";
 import { asBrandedId, type MemberId } from "../../src/domain/shared/ids";
 import { MemorySaveRepository } from "../../src/infrastructure/persistence/memory-save-repository";
 import {
   createExpeditionActivityFixture,
-  createGameStateV2Fixture,
+  createGameStateFixture,
   createItemInstanceFixture,
   createMemberFixture,
 } from "../helpers/game-state-v2-factory";
 
 const content = loadBrowserContentRegistry();
 
-async function createSession(state: GameStateV2) {
+async function createSession(state: GameState) {
   const saves = new MemorySaveRepository();
   await saves.create(state);
   return GameSession.fromState(saves, state);
 }
 
 function addPendingLoot(
-  state: GameStateV2,
+  state: GameState,
   sequence: number,
   definitionId: string,
   eligibleMemberIds: readonly MemberId[],
@@ -61,8 +61,8 @@ function addPendingLoot(
   return { activityId, item, pendingId };
 }
 
-function idleFixture(): GameStateV2 {
-  const state = createGameStateV2Fixture({ activities: {} });
+function idleFixture(): GameState {
+  const state = createGameStateFixture({ activities: {} });
   const member = Object.values(state.members)[0]!;
   delete member.activeActivityId;
   return state;

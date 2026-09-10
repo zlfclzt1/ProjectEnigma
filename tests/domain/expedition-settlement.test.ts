@@ -139,6 +139,7 @@ describe("expedition settlement", () => {
     ).toEqual(afterFirstBoss.experience);
     expect(Object.values(state.members).every((member) => !member.activeActivityId)).toBe(true);
     expect(state.history.failedActivityCount).toBe(1);
+    expect(state.history.dungeonClearCounts[dungeonId] ?? 0).toBe(0);
   });
 
   it("catches up every overdue stage after reload and guarantees loot for every victory", async () => {
@@ -174,12 +175,27 @@ describe("expedition settlement", () => {
     );
     expect(settledState.history.completedActivityCount).toBe(1);
     expect(settledState.history.completedExpeditionCount).toBe(1);
+    expect(settledState.history.dungeonClearCounts[dungeonId]).toBe(2);
 
     const lootIds = Object.keys(settledState.pendingLoot);
     await restored.execute(
       settleDueActivitiesCommand({ content, clock: new FakeClock(24 * 60 * 60 * 1_000) }),
     );
     expect(Object.keys(restored.snapshot().pendingLoot)).toEqual(lootIds);
+    expect(restored.snapshot().history.dungeonClearCounts[dungeonId]).toBe(2);
+  });
+
+  it("keeps completed run counts when a later repeated run wipes", async () => {
+    const state = newState("clear-count-before-wipe");
+    const activity = await startExpedition(state, undefined, 2);
+    forceAll(activity, "victory");
+    activity.runPlans[1]!.stages[0]!.successRoll = 0.99;
+
+    new SettlementService(content).settleDueActivities(state, 24 * 60 * 60 * 1_000);
+
+    expect(activity.status).toBe("failed");
+    expect(activity.completedRuns).toBe(1);
+    expect(state.history.dungeonClearCounts[dungeonId]).toBe(1);
   });
 
   it("settles multiple teams with equal deadlines in stable activity-ID order", async () => {

@@ -3,7 +3,7 @@ import type { CombatCapability, CombatCapabilityValues } from "../combat/combat-
 import { buildCombatProfile } from "../combat/formula-pipeline";
 import type { CombatStatId, FormulaModifier } from "../combat/formula-context";
 import type { StatContribution } from "../combat/stat-contribution";
-import type { GameStateV2 } from "../game-state";
+import type { GameState } from "../game-state";
 import type { Member } from "../member/member";
 import type { ItemInstanceId } from "../shared/ids";
 import { candidateEquipmentSlots, equipItem, EquipmentRuleError } from "./equipment";
@@ -44,7 +44,7 @@ export type UpgradeEvaluation =
 export function evaluateUpgrade(
   member: Member,
   candidate: ItemInstance,
-  state: Pick<GameStateV2, "itemInstances">,
+  state: Pick<GameState, "itemInstances">,
   content: ContentRegistry,
   context: UpgradeEvaluationContext = {},
 ): UpgradeEvaluation {

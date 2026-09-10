@@ -1,10 +1,10 @@
-import type { DungeonId, EncounterId } from "../shared/ids";
+import type { DungeonId, EncounterId, GuildUpgradeId } from "../shared/ids";
 
 export interface GuildState {
   name: string;
   funds: number;
-  memberCapacity: number;
   candidateCapacity: number;
+  purchasedUpgradeIds: GuildUpgradeId[];
   unlockedDungeonIds: DungeonId[];
   firstKillEncounterIds: EncounterId[];
 }
@@ -19,4 +19,5 @@ export interface HistorySummary {
   cancelledActivityCount: number;
   completedExpeditionCount: number;
   encounterVictoryCounts: Record<EncounterId, number>;
+  dungeonClearCounts: Record<DungeonId, number>;
 }

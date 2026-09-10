@@ -12,6 +12,10 @@ import {
   type LootTable,
 } from "./schemas/dungeon";
 import { itemDefinitionFileSchema, type ItemDefinition } from "./schemas/item";
+import {
+  guildUpgradeDefinitionFileSchema,
+  type GuildUpgradeDefinition,
+} from "./schemas/guild-upgrade";
 import { logTemplateFileSchema, type LogTemplateGroup } from "./schemas/log-template";
 import {
   classDefinitionFileSchema,
@@ -79,6 +83,7 @@ export interface LoadedContent {
   readonly personalities: readonly LocatedContent<PersonalityDefinition>[];
   readonly namePools: readonly LocatedContent<NamePoolFile>[];
   readonly hiddenCharacters: readonly LocatedContent<HiddenCharacterDefinition>[];
+  readonly guildUpgrades: readonly LocatedContent<GuildUpgradeDefinition>[];
   readonly items: readonly LocatedContent<ItemDefinition>[];
   readonly dungeons: readonly LocatedContent<DungeonDefinition>[];
   readonly encounters: readonly LocatedContent<EncounterDefinition>[];
@@ -115,6 +120,11 @@ const DIRECTORY_DESCRIPTORS: Readonly<Record<string, FileDescriptor>> = {
     collection: "hiddenCharacters",
     property: "hiddenCharacters",
   },
+  "guild-upgrades": {
+    schema: guildUpgradeDefinitionFileSchema,
+    collection: "guildUpgrades",
+    property: "guildUpgrades",
+  },
   items: { schema: itemDefinitionFileSchema, collection: "items", property: "items" },
   dungeons: {
     schema: dungeonDefinitionFileSchema,
@@ -144,6 +154,7 @@ function emptyLoadedContent(): MutableLoadedContent {
     personalities: [],
     namePools: [],
     hiddenCharacters: [],
+    guildUpgrades: [],
     items: [],
     dungeons: [],
     encounters: [],

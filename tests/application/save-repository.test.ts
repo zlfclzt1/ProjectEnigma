@@ -40,7 +40,7 @@ describe("IndexedDbSaveRepository", () => {
       databaseName: `save-repository-default-dependencies-${sequence++}`,
     });
     try {
-      const state = (await import("../helpers/game-state-v2-factory")).createGameStateV2Fixture();
+      const state = (await import("../helpers/game-state-v2-factory")).createGameStateFixture();
       await repository.create(state);
       await expect(repository.load(state.slotId)).resolves.toEqual(state);
     } finally {

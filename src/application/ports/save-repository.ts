@@ -1,8 +1,8 @@
-import type { GameStateV2 } from "../../domain/game-state";
+import type { GameState, PersistedGameState } from "../../domain/game-state";
 import type { SaveSlotId } from "../../domain/shared/ids";
 
 export type SaveResult =
-  | { readonly status: "saved"; readonly state: GameStateV2 }
+  | { readonly status: "saved"; readonly state: GameState }
   | {
       readonly status: "conflict";
       readonly expectedRevision: number;
@@ -11,9 +11,9 @@ export type SaveResult =
   | { readonly status: "not-found"; readonly expectedRevision: number };
 
 export interface SaveRepository {
-  load(slotId: SaveSlotId): Promise<GameStateV2 | null>;
-  create(initialState: GameStateV2): Promise<void>;
-  save(state: GameStateV2, expectedRevision: number): Promise<SaveResult>;
+  load(slotId: SaveSlotId): Promise<PersistedGameState | null>;
+  create(initialState: GameState): Promise<void>;
+  save(state: GameState, expectedRevision: number): Promise<SaveResult>;
 }
 
 export class SaveSlotAlreadyExistsError extends Error {

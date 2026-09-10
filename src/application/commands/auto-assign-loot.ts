@@ -1,7 +1,7 @@
 import type { GameCommand } from "../services/game-session";
 import type { ContentRegistry } from "../../content/registry";
 import { evaluateUpgrade } from "../../domain/equipment/upgrade-evaluation";
-import type { GameStateV2 } from "../../domain/game-state";
+import type { GameState } from "../../domain/game-state";
 import { assignLoot, assertLootUnlocked } from "./assign-loot";
 import { sellLoot } from "./sell-loot";
 
@@ -20,7 +20,7 @@ export function autoAssignLootCommand(content: ContentRegistry): GameCommand<Aut
   };
 }
 
-export function autoAssignLoot(state: GameStateV2, content: ContentRegistry): AutoAssignLootResult {
+export function autoAssignLoot(state: GameState, content: ContentRegistry): AutoAssignLootResult {
   let assigned = 0;
   let sold = 0;
   let locked = 0;

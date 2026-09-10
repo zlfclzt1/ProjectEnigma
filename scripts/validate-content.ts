@@ -51,6 +51,7 @@ try {
     `战斗配置 ${registry.combatProfiles.length}`,
     `性格 ${registry.personalities.length}`,
     `隐藏角色 ${registry.hiddenCharacters.length}`,
+    `公会升级 ${registry.guildUpgrades.length}`,
     `物品 ${registry.items.length}`,
     `副本 ${registry.dungeons.length}`,
     `首领战 ${registry.encounters.length}`,

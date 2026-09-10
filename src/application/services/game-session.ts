@@ -1,17 +1,17 @@
 import type { SaveRepository } from "../ports/save-repository";
-import type { GameStateV2 } from "../../domain/game-state";
+import type { GameState } from "../../domain/game-state";
 import type { SaveSlotId } from "../../domain/shared/ids";
 
 export interface GameCommand<Result> {
   readonly type: string;
-  execute(draft: GameStateV2): Result | Promise<Result>;
+  execute(draft: GameState): Result | Promise<Result>;
 }
 
 export type CommandExecutionResult<Result> =
   | {
       readonly status: "committed";
       readonly result: Result;
-      readonly state: GameStateV2;
+      readonly state: GameState;
     }
   | {
       readonly status: "conflict";
@@ -25,19 +25,21 @@ export class GameSession {
 
   private constructor(
     private readonly saves: SaveRepository,
-    private state: GameStateV2,
+    private state: GameState,
   ) {}
 
-  static fromState(saves: SaveRepository, state: GameStateV2): GameSession {
+  static fromState(saves: SaveRepository, state: GameState): GameSession {
     return new GameSession(saves, structuredClone(state));
   }
 
   static async load(saves: SaveRepository, slotId: SaveSlotId): Promise<GameSession | null> {
     const state = await saves.load(slotId);
-    return state ? new GameSession(saves, state) : null;
+    if (!state) return null;
+    if (state.saveVersion !== 3) throw new Error("旧版存档必须先经过迁移才能创建游戏会话。");
+    return new GameSession(saves, state);
   }
 
-  snapshot(): GameStateV2 {
+  snapshot(): GameState {
     return structuredClone(this.state);
   }
 

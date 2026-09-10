@@ -7,7 +7,7 @@ import { loadContentRegistry } from "../src/content/registry";
 import { equipItem } from "../src/domain/equipment/equipment";
 import type { ItemInstance } from "../src/domain/equipment/item-instance";
 import { evaluateUpgrade } from "../src/domain/equipment/upgrade-evaluation";
-import type { GameStateV2 } from "../src/domain/game-state";
+import type { GameState } from "../src/domain/game-state";
 import { createNewGame } from "../src/domain/guild/new-game";
 import { asBrandedId, type DungeonId } from "../src/domain/shared/ids";
 import { LocalIdGenerator } from "../src/infrastructure/ids/local-id-generator";
@@ -35,7 +35,7 @@ function contentRegistry(): ContentRegistry {
   return loadContentRegistry(modules);
 }
 
-function gearedState(content: ContentRegistry, level: number, seed: string): GameStateV2 {
+function gearedState(content: ContentRegistry, level: number, seed: string): GameState {
   const state = createNewGame({
     slotId: asBrandedId<"SaveSlotId">(`simulation_${seed}`),
     content,
@@ -78,7 +78,7 @@ function gearedState(content: ContentRegistry, level: number, seed: string): Gam
   return state;
 }
 
-function withoutTank(state: GameStateV2, content: ContentRegistry): GameStateV2 {
+function withoutTank(state: GameState, content: ContentRegistry): GameState {
   const clone = structuredClone(state);
   const tank = Object.values(clone.members).find(
     (member) => content.specById.get(member.progression.specId)?.role === "tank",

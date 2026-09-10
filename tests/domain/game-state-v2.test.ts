@@ -5,21 +5,23 @@ import type {
   GatheringActivity,
   TrainingActivity,
 } from "../../src/domain/activity/activity";
-import type { GameStateV2 } from "../../src/domain/game-state";
+import type { GameState } from "../../src/domain/game-state";
 import { asBrandedId } from "../../src/domain/shared/ids";
 import {
   createExpeditionActivityFixture,
-  createGameStateV2Fixture,
+  createGameStateFixture,
 } from "../helpers/game-state-v2-factory";
 
-describe("normalized GameStateV2", () => {
+describe("normalized GameState", () => {
   it("stores runtime entities in ID-indexed records", () => {
-    const state = createGameStateV2Fixture();
+    const state = createGameStateFixture();
     const member = state.members[asBrandedId<"MemberId">("member_1")];
     const item = state.itemInstances[asBrandedId<"ItemInstanceId">("item_1")];
     const activity = state.activities[asBrandedId<"ActivityId">("activity_1")];
 
-    expect(state.saveVersion).toBe(2);
+    expect(state.saveVersion).toBe(3);
+    expect(state.guild.purchasedUpgradeIds).toEqual([]);
+    expect(state.history.dungeonClearCounts).toEqual({});
     expect(state.revision).toBe(0);
     expect(state.contentVersion).toBe("classic-v1");
     expect(member.id).toBe("member_1");
@@ -29,7 +31,7 @@ describe("normalized GameStateV2", () => {
   });
 
   it("keeps static display and balance data out of the save", () => {
-    const state = createGameStateV2Fixture();
+    const state = createGameStateFixture();
     const member = state.members[asBrandedId<"MemberId">("member_1")] as unknown as Record<
       string,
       unknown
@@ -95,7 +97,7 @@ describe("normalized GameStateV2", () => {
   });
 
   it("allows empty records for a newly reset save", () => {
-    const emptyState: GameStateV2 = createGameStateV2Fixture({
+    const emptyState: GameState = createGameStateFixture({
       members: {},
       candidates: {},
       itemInstances: {},

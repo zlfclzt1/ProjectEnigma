@@ -4,35 +4,35 @@ import { createNewGameSession } from "../../src/application/commands/create-new-
 import { getGameSnapshot } from "../../src/application/queries/get-game-snapshot";
 import { GameSession } from "../../src/application/services/game-session";
 import { loadBrowserContentRegistry } from "../../src/content/manifest";
-import type { GameStateV2 } from "../../src/domain/game-state";
+import type { GameState, PersistedGameState } from "../../src/domain/game-state";
 import { asBrandedId, type SaveSlotId } from "../../src/domain/shared/ids";
 import { LocalIdGenerator } from "../../src/infrastructure/ids/local-id-generator";
 import { MemorySaveRepository } from "../../src/infrastructure/persistence/memory-save-repository";
 import { SeededRandomSource } from "../../src/infrastructure/random/seeded-random-source";
 import { FakeClock } from "../helpers/runtime-fakes";
-import { createGameStateV2Fixture } from "../helpers/game-state-v2-factory";
+import { createGameStateFixture } from "../helpers/game-state-v2-factory";
 
 class CountingSaveRepository implements SaveRepository {
   saveCalls = 0;
 
   constructor(readonly inner = new MemorySaveRepository()) {}
 
-  load(slotId: SaveSlotId): Promise<GameStateV2 | null> {
+  load(slotId: SaveSlotId): Promise<PersistedGameState | null> {
     return this.inner.load(slotId);
   }
 
-  create(initialState: GameStateV2): Promise<void> {
+  create(initialState: GameState): Promise<void> {
     return this.inner.create(initialState);
   }
 
-  save(state: GameStateV2, expectedRevision: number): Promise<SaveResult> {
+  save(state: GameState, expectedRevision: number): Promise<SaveResult> {
     this.saveCalls += 1;
     return this.inner.save(state, expectedRevision);
   }
 }
 
 describe("GameSession", () => {
-  it("creates, persists, and restores a V2 game", async () => {
+  it("creates, persists, and restores the current game state", async () => {
     const saves = new MemorySaveRepository();
     const slotId = asBrandedId<"SaveSlotId">("main");
     const created = await createNewGameSession({
@@ -53,7 +53,7 @@ describe("GameSession", () => {
 
   it("commits a successful command exactly once", async () => {
     const saves = new CountingSaveRepository();
-    const initial = createGameStateV2Fixture();
+    const initial = createGameStateFixture();
     await saves.create(initial);
     const session = GameSession.fromState(saves, initial);
 
@@ -74,7 +74,7 @@ describe("GameSession", () => {
 
   it("discards partial mutations and skips persistence when a command fails", async () => {
     const saves = new CountingSaveRepository();
-    const initial = createGameStateV2Fixture();
+    const initial = createGameStateFixture();
     await saves.create(initial);
     const session = GameSession.fromState(saves, initial);
 
@@ -95,7 +95,7 @@ describe("GameSession", () => {
 
   it("returns a save conflict without adopting the rejected draft", async () => {
     const saves = new MemorySaveRepository();
-    const initial = createGameStateV2Fixture();
+    const initial = createGameStateFixture();
     await saves.create(initial);
     const session = GameSession.fromState(saves, initial);
     await saves.save(initial, 0);
@@ -114,7 +114,7 @@ describe("GameSession", () => {
 
   it("serializes concurrent commands and returns isolated snapshots", async () => {
     const saves = new MemorySaveRepository();
-    const initial = createGameStateV2Fixture();
+    const initial = createGameStateFixture();
     await saves.create(initial);
     const session = GameSession.fromState(saves, initial);
 

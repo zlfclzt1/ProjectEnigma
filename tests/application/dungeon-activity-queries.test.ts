@@ -46,6 +46,7 @@ describe("dungeon and activity queries", () => {
       unlocked: true,
       maximumMembers: 5,
       encounterCount: 4,
+      clearCount: 0,
     });
     expect(view.preview?.encounters).toHaveLength(4);
     expect(view.preview?.clearProbability).toBeGreaterThan(0);

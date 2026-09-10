@@ -21,7 +21,7 @@ import { LocalIdGenerator } from "../../src/infrastructure/ids/local-id-generato
 import { MemorySaveRepository } from "../../src/infrastructure/persistence/memory-save-repository";
 import { SeededRandomSource } from "../../src/infrastructure/random/seeded-random-source";
 import {
-  createGameStateV2Fixture,
+  createGameStateFixture,
   createItemInstanceFixture,
 } from "../helpers/game-state-v2-factory";
 import { FakeClock } from "../helpers/runtime-fakes";
@@ -134,7 +134,13 @@ describe("member recruitment and dismissal", () => {
 
   it("enforces member capacity and restarts a stopped recruitment timer after hiring", async () => {
     const state = newState();
-    state.guild.memberCapacity = 5;
+    const template = Object.values(state.members)[0]!;
+    for (let index = Object.keys(state.members).length; index < 10; index += 1) {
+      const member = structuredClone(template);
+      member.id = asBrandedId<"MemberId">(`capacity_member_${index}`);
+      member.identity.name = `容量测试${index}`;
+      state.members[member.id] = member;
+    }
     const candidateId = Object.values(state.candidates)[0]!.id;
     const { session } = await createSession(state);
     await expect(
@@ -183,9 +189,9 @@ describe("member recruitment and dismissal", () => {
 
 describe("member respec", () => {
   it("charges the fixed fee, uses equip rules, sells incompatible gear, and fills empty slots", async () => {
-    const state = createGameStateV2Fixture({
+    const state = createGameStateFixture({
       guild: {
-        ...createGameStateV2Fixture().guild,
+        ...createGameStateFixture().guild,
         funds: 400,
       },
       activities: {},
@@ -230,7 +236,7 @@ describe("member respec", () => {
   });
 
   it("rejects respec for busy members, other classes, and insufficient funds", async () => {
-    const state = createGameStateV2Fixture();
+    const state = createGameStateFixture();
     const member = Object.values(state.members)[0]!;
     const { session } = await createSession(state);
     await expect(
@@ -243,7 +249,7 @@ describe("member respec", () => {
       ),
     ).rejects.toThrow(/活动中的成员/);
 
-    const idleState = createGameStateV2Fixture({ activities: {} });
+    const idleState = createGameStateFixture({ activities: {} });
     const idleMember = Object.values(idleState.members)[0]!;
     delete idleMember.activeActivityId;
     const idleSession = (await createSession(idleState)).session;

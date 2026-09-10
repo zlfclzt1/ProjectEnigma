@@ -26,13 +26,16 @@ import { autoAssignLootCommand } from "../application/commands/auto-assign-loot"
 import { sellLootCommand } from "../application/commands/sell-loot";
 import { getLootView } from "../application/queries/get-loot-view";
 import { getCombatReportsView } from "../application/queries/get-combat-reports-view";
+import { getGuildUpgradeView } from "../application/queries/get-guild-upgrade-view";
+import { purchaseGuildUpgradeCommand } from "../application/commands/purchase-guild-upgrade";
 import type { GameCommand, GameSession } from "../application/services/game-session";
 import type { ContentRegistry } from "../content/registry";
-import type { GameStateV2 } from "../domain/game-state";
+import type { GameState } from "../domain/game-state";
 import type {
   CandidateId,
   CombatReportId,
   DungeonId,
+  GuildUpgradeId,
   MemberId,
   PendingLootId,
   SpecId,
@@ -73,7 +76,7 @@ function messageOf(reason: unknown): string {
 
 export const useGameStore = defineStore("game", () => {
   const status = shallowRef<GameStoreStatus>("idle");
-  const stateSnapshot = shallowRef<GameStateV2 | null>(null);
+  const stateSnapshot = shallowRef<GameState | null>(null);
   const origin = shallowRef<V2ClientOrigin | null>(null);
   const error = shallowRef<GameStoreError | null>(null);
   const pendingCommandCount = shallowRef(0);
@@ -106,7 +109,7 @@ export const useGameStore = defineStore("game", () => {
     };
   });
   const overview = computed(() =>
-    stateSnapshot.value ? getOverviewView(stateSnapshot.value) : null,
+    stateSnapshot.value && content ? getOverviewView(stateSnapshot.value, content) : null,
   );
   const recruitment = computed(() =>
     stateSnapshot.value && content
@@ -126,6 +129,9 @@ export const useGameStore = defineStore("game", () => {
   );
   const combatReports = computed(() =>
     stateSnapshot.value && content ? getCombatReportsView(stateSnapshot.value, content) : null,
+  );
+  const guildUpgrades = computed(() =>
+    stateSnapshot.value && content ? getGuildUpgradeView(stateSnapshot.value, content) : null,
   );
 
   function refreshSnapshot(): void {
@@ -281,6 +287,13 @@ export const useGameStore = defineStore("game", () => {
     return execute(dismissMemberCommand(memberId));
   }
 
+  async function purchaseGuildUpgrade(
+    upgradeId: GuildUpgradeId,
+  ): Promise<GameCommandOutcome<unknown>> {
+    if (!content) return unavailableOutcome("purchase-guild-upgrade");
+    return execute(purchaseGuildUpgradeCommand(content, upgradeId));
+  }
+
   function dungeonPlanning(
     dungeonId: DungeonId | null,
     memberIds: readonly MemberId[],
@@ -350,6 +363,7 @@ export const useGameStore = defineStore("game", () => {
     activities,
     loot,
     combatReports,
+    guildUpgrades,
     initialize,
     execute,
     tick,
@@ -359,6 +373,7 @@ export const useGameStore = defineStore("game", () => {
     memberDetail,
     respecMember,
     dismissMember,
+    purchaseGuildUpgrade,
     dungeonPlanning,
     startExpedition,
     assignLoot,

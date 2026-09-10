@@ -5,7 +5,7 @@ import {
   type SaveRepository,
   type SaveResult,
 } from "../../application/ports/save-repository";
-import type { GameStateV2 } from "../../domain/game-state";
+import type { GameState, PersistedGameState } from "../../domain/game-state";
 import type { SaveSlotId } from "../../domain/shared/ids";
 
 export interface IndexedDbSaveRepositoryOptions {
@@ -15,7 +15,7 @@ export interface IndexedDbSaveRepositoryOptions {
 }
 
 class GameSaveDatabase extends Dexie {
-  readonly saves!: EntityTable<GameStateV2, "slotId">;
+  readonly saves!: EntityTable<PersistedGameState, "slotId">;
 
   constructor(options: IndexedDbSaveRepositoryOptions) {
     super(options.databaseName ?? "mystery-guild-master-v2", {
@@ -33,12 +33,12 @@ export class IndexedDbSaveRepository implements SaveRepository {
     this.database = new GameSaveDatabase(options);
   }
 
-  async load(slotId: SaveSlotId): Promise<GameStateV2 | null> {
+  async load(slotId: SaveSlotId): Promise<PersistedGameState | null> {
     const state = await this.database.saves.get(slotId);
     return state ? structuredClone(state) : null;
   }
 
-  async create(initialState: GameStateV2): Promise<void> {
+  async create(initialState: GameState): Promise<void> {
     if (initialState.revision !== 0) {
       throw new InvalidInitialRevisionError(initialState.revision);
     }
@@ -51,7 +51,7 @@ export class IndexedDbSaveRepository implements SaveRepository {
     });
   }
 
-  async save(state: GameStateV2, expectedRevision: number): Promise<SaveResult> {
+  async save(state: GameState, expectedRevision: number): Promise<SaveResult> {
     return this.database.transaction("rw", this.database.saves, async () => {
       const current = await this.database.saves.get(state.slotId);
       if (!current) return { status: "not-found", expectedRevision };

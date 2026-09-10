@@ -8,6 +8,7 @@ import {
 } from "./loader";
 import type { DungeonDefinition, EncounterDefinition, LootTable } from "./schemas/dungeon";
 import type { ItemDefinition } from "./schemas/item";
+import type { GuildUpgradeDefinition } from "./schemas/guild-upgrade";
 import type { LogTemplateGroup } from "./schemas/log-template";
 import type {
   ClassDefinition,
@@ -168,6 +169,7 @@ function validateDisplayNames(loaded: LoadedContent, issues: ContentValidationIs
     ...loaded.specs,
     ...loaded.personalities,
     ...loaded.hiddenCharacters,
+    ...loaded.guildUpgrades,
     ...loaded.items,
     ...loaded.dungeons,
     ...loaded.encounters,
@@ -192,6 +194,7 @@ export class ContentRegistry {
   readonly personalities: readonly PersonalityDefinition[];
   readonly namePools: readonly NamePoolFile[];
   readonly hiddenCharacters: readonly HiddenCharacterDefinition[];
+  readonly guildUpgrades: readonly GuildUpgradeDefinition[];
   readonly items: readonly ItemDefinition[];
   readonly dungeons: readonly DungeonDefinition[];
   readonly encounters: readonly EncounterDefinition[];
@@ -208,6 +211,7 @@ export class ContentRegistry {
     HiddenCharacterDefinition["id"],
     HiddenCharacterDefinition
   >;
+  readonly guildUpgradeById: ReadonlyMap<GuildUpgradeDefinition["id"], GuildUpgradeDefinition>;
   readonly itemById: ReadonlyMap<ItemDefinition["id"], ItemDefinition>;
   readonly dungeonById: ReadonlyMap<DungeonDefinition["id"], DungeonDefinition>;
   readonly encounterById: ReadonlyMap<EncounterDefinition["id"], EncounterDefinition>;
@@ -224,6 +228,7 @@ export class ContentRegistry {
     const combatProfileById = buildIndex(loaded.combatProfiles, issues, "战斗配置");
     const personalityById = buildIndex(loaded.personalities, issues, "性格");
     const hiddenCharacterById = buildIndex(loaded.hiddenCharacters, issues, "隐藏角色");
+    const guildUpgradeById = buildIndex(loaded.guildUpgrades, issues, "公会升级");
     const itemById = buildIndex(loaded.items, issues, "物品");
     const dungeonById = buildIndex(loaded.dungeons, issues, "副本");
     const encounterById = buildIndex(loaded.encounters, issues, "首领战");
@@ -260,6 +265,7 @@ export class ContentRegistry {
       itemById,
       issues,
     );
+    this.validateGuildUpgradeReferences(loaded, dungeonById, issues);
     this.validateLogReferences(loaded, dungeonById, encounterById, issues);
     validateUnlockCycles(loaded.dungeons, dungeonById, issues);
     validateDisplayNames(loaded, issues);
@@ -273,6 +279,7 @@ export class ContentRegistry {
     this.personalities = Object.freeze(loaded.personalities.map(({ value }) => value));
     this.namePools = Object.freeze(loaded.namePools.map(({ value }) => value));
     this.hiddenCharacters = Object.freeze(loaded.hiddenCharacters.map(({ value }) => value));
+    this.guildUpgrades = Object.freeze(loaded.guildUpgrades.map(({ value }) => value));
     this.items = Object.freeze(loaded.items.map(({ value }) => value));
     this.dungeons = Object.freeze(loaded.dungeons.map(({ value }) => value));
     this.encounters = Object.freeze(loaded.encounters.map(({ value }) => value));
@@ -285,6 +292,7 @@ export class ContentRegistry {
     this.combatProfileById = readonlyMap(combatProfileById);
     this.personalityById = readonlyMap(personalityById);
     this.hiddenCharacterById = readonlyMap(hiddenCharacterById);
+    this.guildUpgradeById = readonlyMap(guildUpgradeById);
     this.itemById = readonlyMap(itemById);
     this.dungeonById = readonlyMap(dungeonById);
     this.encounterById = readonlyMap(encounterById);
@@ -412,6 +420,59 @@ export class ContentRegistry {
           issues,
         ),
       );
+    }
+  }
+
+  private validateGuildUpgradeReferences(
+    loaded: LoadedContent,
+    dungeonById: ReadonlyMap<DungeonDefinition["id"], DungeonDefinition>,
+    issues: ContentValidationIssue[],
+  ): void {
+    const tracks = new Map<string, LocatedContent<GuildUpgradeDefinition>[]>();
+    for (const owner of loaded.guildUpgrades) {
+      const track = tracks.get(owner.value.trackId) ?? [];
+      track.push(owner);
+      tracks.set(owner.value.trackId, track);
+      owner.value.requirements.forEach((requirement, index) => {
+        if (requirement.type === "dungeon-clear-count") {
+          requireReference(
+            dungeonById,
+            requirement.dungeonId,
+            owner,
+            `requirements[${index}].dungeonId`,
+            "副本",
+            issues,
+          );
+        }
+      });
+    }
+
+    for (const upgrades of tracks.values()) {
+      const orders = new Set<number>();
+      let previousCapacity = 0;
+      for (const owner of [...upgrades].sort(
+        (left, right) => left.value.order - right.value.order,
+      )) {
+        if (orders.has(owner.value.order)) {
+          issues.push({
+            filePath: owner.filePath,
+            fieldPath: `${owner.fieldPath}.order`,
+            message: `升级路线 ${owner.value.trackId} 的顺序重复`,
+          });
+        }
+        orders.add(owner.value.order);
+        const capacityEffect = owner.value.effects.find(
+          (effect) => effect.type === "member-capacity",
+        );
+        if (capacityEffect && capacityEffect.value <= previousCapacity) {
+          issues.push({
+            filePath: owner.filePath,
+            fieldPath: `${owner.fieldPath}.effects`,
+            message: `升级路线 ${owner.value.trackId} 的成员容量必须严格递增`,
+          });
+        }
+        if (capacityEffect) previousCapacity = capacityEffect.value;
+      }
     }
   }
 

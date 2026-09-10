@@ -1,8 +1,9 @@
 import type { ContentRegistry } from "../../content/registry";
 import { EQUIPMENT_SLOTS } from "../../domain/equipment/equipment-slot";
 import { EQUIPMENT_SLOT_WEIGHTS } from "../../domain/equipment/item-level";
-import type { GameStateV2 } from "../../domain/game-state";
+import type { GameState } from "../../domain/game-state";
 import { PAID_CANDIDATE_COST } from "../../domain/guild/recruitment";
+import { getMemberCapacity } from "../../domain/guild/guild-upgrade-rules";
 import type { CandidateId, ClassId } from "../../domain/shared/ids";
 
 export interface RecruitCandidateView {
@@ -56,7 +57,7 @@ function starterItemLevel(content: ContentRegistry, classId: ClassId): number {
 }
 
 export function getRecruitmentView(
-  state: GameStateV2,
+  state: GameState,
   content: ContentRegistry,
   now: number,
 ): RecruitmentView {
@@ -80,7 +81,8 @@ export function getRecruitmentView(
   });
   const recruitmentFull = candidates.length >= state.guild.candidateCapacity;
   const memberCount = Object.keys(state.members).length;
-  const canRecruit = memberCount < state.guild.memberCapacity;
+  const memberCapacity = getMemberCapacity(state, content);
+  const canRecruit = memberCount < memberCapacity;
   let paidRefreshReason: string | undefined;
   if (recruitmentFull) paidRefreshReason = "候选区已经满员。";
   else if (state.guild.funds < PAID_CANDIDATE_COST) paidRefreshReason = "公会资金不足。";
@@ -90,7 +92,7 @@ export function getRecruitmentView(
     candidateCount: candidates.length,
     candidateCapacity: state.guild.candidateCapacity,
     memberCount,
-    memberCapacity: state.guild.memberCapacity,
+    memberCapacity,
     funds: state.guild.funds,
     paidRefreshCost: PAID_CANDIDATE_COST,
     canPaidRefresh: paidRefreshReason === undefined,

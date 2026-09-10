@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "公会成员容量扩建采用严格顺序；当前版本随死亡矿井和影牙城堡开放到 20 人。"
+      }
+    ]
+  },
+  "guildUpgrades": [
+    {
+      "id": "guild_roster_15",
+      "trackId": "member-capacity",
+      "order": 10,
+      "name": { "zhCN": "第一次公会扩建" },
+      "description": { "zhCN": "添置床位、桌椅和一块绝不会写满的值日表。" },
+      "cost": 500,
+      "requirements": [{ "type": "dungeon-clear-count", "dungeonId": "deadmines", "count": 1 }],
+      "effects": [{ "type": "member-capacity", "value": 15 }]
+    },
+    {
+      "id": "guild_roster_20",
+      "trackId": "member-capacity",
+      "order": 20,
+      "name": { "zhCN": "第二次公会扩建" },
+      "description": { "zhCN": "把隔壁仓间也租下来，并郑重承诺这次会准备足够的椅子。" },
+      "cost": 1500,
+      "requirements": [
+        { "type": "dungeon-clear-count", "dungeonId": "shadowfang_keep", "count": 1 }
+      ],
+      "effects": [{ "type": "member-capacity", "value": 20 }]
+    }
+  ]
+}

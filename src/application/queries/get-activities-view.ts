@@ -1,6 +1,6 @@
 import type { ContentRegistry } from "../../content/registry";
 import type { ExpeditionActivity, ExpeditionEncounterPlan } from "../../domain/activity/activity";
-import type { GameStateV2 } from "../../domain/game-state";
+import type { GameState } from "../../domain/game-state";
 import type { ActivityId } from "../../domain/shared/ids";
 
 export interface ActivityRouteStageView {
@@ -64,7 +64,7 @@ function statusLabel(status: ExpeditionActivity["status"]): string {
 }
 
 function projectActivity(
-  state: GameStateV2,
+  state: GameState,
   content: ContentRegistry,
   activity: ExpeditionActivity,
   now: number,
@@ -119,7 +119,7 @@ function projectActivity(
 }
 
 export function getActivitiesView(
-  state: GameStateV2,
+  state: GameState,
   content: ContentRegistry,
   now: number,
 ): ActivitiesView {

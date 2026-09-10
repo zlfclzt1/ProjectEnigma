@@ -1,4 +1,4 @@
-import type { GameStateV2 } from "../game-state";
+import type { GameState } from "../game-state";
 import type { MemberId } from "../shared/ids";
 import type { IdGenerator } from "../../application/ports/id-generator";
 import type { RandomSource } from "../../application/ports/random-source";
@@ -10,14 +10,14 @@ export interface ActivityStartRequest {
 }
 
 export interface ActivityStartContext {
-  readonly state: GameStateV2;
+  readonly state: GameState;
   readonly now: number;
   readonly ids: IdGenerator;
   readonly random: RandomSource;
 }
 
 export interface ActivitySettlementContext {
-  readonly state: GameStateV2;
+  readonly state: GameState;
   readonly now: number;
 }
 

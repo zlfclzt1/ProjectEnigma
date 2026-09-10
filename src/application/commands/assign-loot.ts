@@ -4,7 +4,7 @@ import { equipItem } from "../../domain/equipment/equipment";
 import { equipmentSellValue } from "../../domain/equipment/item-value";
 import type { ItemInstance } from "../../domain/equipment/item-instance";
 import type { EquipmentSlot } from "../../domain/equipment/equipment-slot";
-import type { GameStateV2 } from "../../domain/game-state";
+import type { GameState } from "../../domain/game-state";
 import type { ActivityId, ItemInstanceId, MemberId, PendingLootId } from "../../domain/shared/ids";
 
 export interface AssignLootResult {
@@ -29,7 +29,7 @@ export function assignLootCommand(
 }
 
 export function assignLoot(
-  state: GameStateV2,
+  state: GameState,
   content: ContentRegistry,
   pendingLootId: PendingLootId,
   memberId: MemberId,
@@ -78,7 +78,7 @@ export function assignLoot(
   };
 }
 
-export function assertLootUnlocked(state: GameStateV2, sourceActivityId: ActivityId): void {
+export function assertLootUnlocked(state: GameState, sourceActivityId: ActivityId): void {
   const source = state.activities[sourceActivityId];
   if (source?.status === "active" || source?.status === "scheduled") {
     throw new Error("该队伍的连续副本尚未结束，暂时不能处理装备。");

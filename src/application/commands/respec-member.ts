@@ -5,7 +5,7 @@ import { evaluateEquipEligibility } from "../../domain/equipment/equip-rules";
 import { EQUIPMENT_SLOTS, type EquipmentSlot } from "../../domain/equipment/equipment-slot";
 import type { ItemInstance } from "../../domain/equipment/item-instance";
 import { equipmentSellValue } from "../../domain/equipment/item-value";
-import type { GameStateV2 } from "../../domain/game-state";
+import type { GameState } from "../../domain/game-state";
 import {
   createStarterItemForMember,
   type MemberFactoryContext,
@@ -88,7 +88,7 @@ export function respecMemberCommand(
 
 function fillMissingStarterEquipment(
   member: Member,
-  itemInstances: GameStateV2["itemInstances"] & Record<ItemInstanceId, ItemInstance>,
+  itemInstances: GameState["itemInstances"] & Record<ItemInstanceId, ItemInstance>,
   content: ContentRegistry,
   context: MemberFactoryContext,
 ): void {

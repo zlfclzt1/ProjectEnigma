@@ -3,7 +3,7 @@ import type { ContentRegistry } from "../../content/registry";
 import type { ActivityScheduler } from "../activity/activity-scheduler";
 import type { ExpeditionActivity, ExpeditionEncounterPlan } from "../activity/activity";
 import type { ItemInstance } from "../equipment/item-instance";
-import type { GameStateV2 } from "../game-state";
+import type { GameState } from "../game-state";
 import type { CombatReportId, MemberId } from "../shared/ids";
 import { generateCombatReport } from "../combat/report-generator";
 import { experienceFractions } from "./expedition-activity";
@@ -25,7 +25,7 @@ export type ExpeditionSettlementResult =
     };
 
 export function settleNextExpeditionStage(
-  state: GameStateV2,
+  state: GameState,
   content: ContentRegistry,
   scheduler: ActivityScheduler,
   activity: ExpeditionActivity,
@@ -110,6 +110,10 @@ export function settleNextExpeditionStage(
       itemInstanceIds: generatedLoot.map(({ instance }) => instance.id),
     },
   });
+  if (activity.activeEncounterIndex === run.stages.length - 1) {
+    state.history.dungeonClearCounts[activity.dungeonId] =
+      (state.history.dungeonClearCounts[activity.dungeonId] ?? 0) + 1;
+  }
   unlockEligibleDungeons(state, content);
 
   advanceAfterVictory(state, content, scheduler, activity, settledAt);
@@ -125,7 +129,7 @@ export function settleNextExpeditionStage(
 }
 
 function applyEncounterExperience(
-  state: GameStateV2,
+  state: GameState,
   activity: ExpeditionActivity,
   experienceShare: number,
 ): Partial<Record<MemberId, number>> {
@@ -143,7 +147,7 @@ function applyEncounterExperience(
   return awarded;
 }
 
-function applyExperience(member: GameStateV2["members"][MemberId], fraction: number): number {
+function applyExperience(member: GameState["members"][MemberId], fraction: number): number {
   if (member.progression.level >= 45 || fraction <= 0) return 0;
   const before = member.progression.level + member.progression.experience;
   let experience = member.progression.experience + fraction;
@@ -156,7 +160,7 @@ function applyExperience(member: GameStateV2["members"][MemberId], fraction: num
 }
 
 function advanceAfterVictory(
-  state: GameStateV2,
+  state: GameState,
   content: ContentRegistry,
   scheduler: ActivityScheduler,
   activity: ExpeditionActivity,
@@ -188,7 +192,7 @@ function advanceAfterVictory(
   activity.nextSettlementAt = settledAt + nextRun.stages[0]!.durationSeconds * 1_000;
 }
 
-function unlockEligibleDungeons(state: GameStateV2, content: ContentRegistry): void {
+function unlockEligibleDungeons(state: GameState, content: ContentRegistry): void {
   const unlocked = new Set(state.guild.unlockedDungeonIds);
   let changed = true;
   while (changed) {
@@ -200,9 +204,9 @@ function unlockEligibleDungeons(state: GameStateV2, content: ContentRegistry): v
       );
       const required = dungeon.unlock?.requiredDungeonIds ?? [];
       const requiredAny = dungeon.unlock?.requiredAnyDungeonIds ?? [];
-      const requiredReady = required.every((id) => dungeonCleared(state, content, id));
+      const requiredReady = required.every((id) => dungeonCleared(state, id));
       const requiredAnyReady =
-        requiredAny.length === 0 || requiredAny.some((id) => dungeonCleared(state, content, id));
+        requiredAny.length === 0 || requiredAny.some((id) => dungeonCleared(state, id));
       if (dungeon.defaultUnlocked || (levelReady && requiredReady && requiredAnyReady)) {
         unlocked.add(dungeon.id);
         changed = true;
@@ -212,13 +216,6 @@ function unlockEligibleDungeons(state: GameStateV2, content: ContentRegistry): v
   state.guild.unlockedDungeonIds = [...unlocked];
 }
 
-function dungeonCleared(
-  state: GameStateV2,
-  content: ContentRegistry,
-  dungeonId: ExpeditionActivity["dungeonId"],
-): boolean {
-  const dungeon = content.dungeonById.get(dungeonId);
-  return Boolean(
-    dungeon?.route.every((encounterId) => state.guild.firstKillEncounterIds.includes(encounterId)),
-  );
+function dungeonCleared(state: GameState, dungeonId: ExpeditionActivity["dungeonId"]): boolean {
+  return (state.history.dungeonClearCounts[dungeonId] ?? 0) > 0;
 }

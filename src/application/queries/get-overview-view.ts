@@ -1,5 +1,7 @@
-import type { GameStateV2 } from "../../domain/game-state";
+import type { GameState } from "../../domain/game-state";
 import type { ActivityId } from "../../domain/shared/ids";
+import type { ContentRegistry } from "../../content/registry";
+import { getMemberCapacity } from "../../domain/guild/guild-upgrade-rules";
 
 export interface ActivitySummaryView {
   readonly id: ActivityId;
@@ -24,7 +26,7 @@ export interface OverviewView {
   readonly activities: readonly ActivitySummaryView[];
 }
 
-export function getOverviewView(state: GameStateV2): OverviewView {
+export function getOverviewView(state: GameState, content: ContentRegistry): OverviewView {
   const members = Object.values(state.members);
   const activities = Object.values(state.activities)
     .filter((activity) => activity.status === "active")
@@ -53,7 +55,7 @@ export function getOverviewView(state: GameStateV2): OverviewView {
     guildName: state.guild.name,
     funds: state.guild.funds,
     memberCount: members.length,
-    memberCapacity: state.guild.memberCapacity,
+    memberCapacity: getMemberCapacity(state, content),
     idleMemberCount: members.filter((member) => !member.activeActivityId).length,
     activeMemberCount: members.filter((member) => member.activeActivityId).length,
     candidateCount: Object.keys(state.candidates).length,

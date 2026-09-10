@@ -1,7 +1,7 @@
 import type { GameCommand } from "../services/game-session";
 import type { ContentRegistry } from "../../content/registry";
 import { equipmentSellValue } from "../../domain/equipment/item-value";
-import type { GameStateV2 } from "../../domain/game-state";
+import type { GameState } from "../../domain/game-state";
 import type { PendingLootId } from "../../domain/shared/ids";
 import { assertLootUnlocked } from "./assign-loot";
 
@@ -18,7 +18,7 @@ export function sellLootCommand(
 }
 
 export function sellLoot(
-  state: GameStateV2,
+  state: GameState,
   content: ContentRegistry,
   pendingLootId: PendingLootId,
 ): number {

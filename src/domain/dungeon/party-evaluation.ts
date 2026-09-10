@@ -7,7 +7,7 @@ import {
 } from "../combat/party-combat-profile";
 import type { CombatProfile } from "../combat/combat-profile";
 import type { FormulaModifier } from "../combat/formula-context";
-import type { GameStateV2 } from "../game-state";
+import type { GameState } from "../game-state";
 import type { Member } from "../member/member";
 import type { DungeonId, EncounterId, FormulaVersion, MemberId } from "../shared/ids";
 
@@ -43,7 +43,7 @@ export type PartyPreviewResult =
   | { readonly ok: false; readonly issues: readonly PartyEvaluationIssue[] };
 
 export function evaluateExpeditionParty(
-  state: GameStateV2,
+  state: GameState,
   content: ContentRegistry,
   dungeonId: DungeonId,
   memberIds: readonly MemberId[],
@@ -169,7 +169,7 @@ function personalityModifiers(
 }
 
 function memberCombatProfile(
-  state: GameStateV2,
+  state: GameState,
   content: ContentRegistry,
   member: Member,
   dungeon: DungeonDefinition,
