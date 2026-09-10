@@ -29,7 +29,8 @@ describe("V2 game layout", () => {
     });
 
     expect(wrapper.text()).toContain("夜班公会");
-    expect(wrapper.text()).toContain("V2");
+    expect(wrapper.find("h1").exists()).toBe(false);
+    expect(wrapper.get(".version-mark").text()).toBe("V2");
     expect(wrapper.text()).toContain("88 G");
   });
 

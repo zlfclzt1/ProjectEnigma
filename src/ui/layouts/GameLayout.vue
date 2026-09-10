@@ -13,11 +13,8 @@ defineProps<{
 
 <template>
   <main class="v2-shell">
+    <span class="version-mark" aria-label="版本 V2">V2</span>
     <header class="masthead">
-      <div>
-        <p class="eyebrow">CLASSIC GUILD OPERATIONS</p>
-        <h1>公会会长 V2</h1>
-      </div>
       <div v-if="diagnostics" class="guild-meta">
         <strong>{{ diagnostics.guildName }}</strong>
         <span>{{ diagnostics.funds }} G · {{ diagnostics.memberCount }} 名成员</span>
@@ -35,7 +32,7 @@ defineProps<{
       <span class="rune">M</span>
       <div>
         <h2>正在翻阅公会账本</h2>
-        <p>加载 V2 存档与内容注册表……</p>
+        <p>加载存档与内容注册表……</p>
       </div>
     </section>
 
@@ -71,20 +68,26 @@ defineProps<{
   margin: 0 auto;
   padding: 64px 0;
 }
+.version-mark {
+  position: fixed;
+  right: 10px;
+  bottom: 8px;
+  z-index: 10;
+  color: #9d927f;
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  opacity: 0.35;
+  pointer-events: none;
+  user-select: none;
+}
 .masthead {
   display: flex;
   align-items: end;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 20px;
   padding-bottom: 18px;
   margin-bottom: 32px;
   border-bottom: 1px solid #52452f;
-}
-.masthead h1 {
-  margin: 4px 0 8px;
-  color: #f2cc72;
-  font-family: Georgia, serif;
-  font-size: clamp(2.25rem, 7vw, 4.75rem);
 }
 .guild-meta {
   display: grid;
@@ -97,13 +100,6 @@ defineProps<{
 .guild-meta span {
   color: #9d927f;
   font-size: 0.8rem;
-}
-.eyebrow {
-  margin: 0;
-  color: #b88742;
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.2em;
 }
 .status-card {
   display: flex;
