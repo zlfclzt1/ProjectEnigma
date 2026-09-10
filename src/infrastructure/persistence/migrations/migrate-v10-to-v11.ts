@@ -1,10 +1,6 @@
-import {
-  GAME_STATE_SAVE_VERSION,
-  type GameState,
-  type LegacyGameStateV10,
-} from "../../../domain/game-state";
+import { type LegacyGameStateV11, type LegacyGameStateV10 } from "../../../domain/game-state";
 
-export function migrateV10ToV11(legacy: LegacyGameStateV10): GameState {
+export function migrateV10ToV11(legacy: LegacyGameStateV10): LegacyGameStateV11 {
   const activities = Object.fromEntries(
     Object.entries(legacy.activities).map(([activityId, activity]) => [
       activityId,
@@ -12,10 +8,10 @@ export function migrateV10ToV11(legacy: LegacyGameStateV10): GameState {
         ? { ...structuredClone(activity), questSnapshots: [] }
         : structuredClone(activity),
     ]),
-  ) as GameState["activities"];
+  ) as LegacyGameStateV11["activities"];
   return {
     ...structuredClone(legacy),
-    saveVersion: GAME_STATE_SAVE_VERSION,
+    saveVersion: 11,
     activities,
   };
 }

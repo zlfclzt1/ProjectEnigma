@@ -41,7 +41,7 @@ function selected(memberId: MemberId): boolean {
 
 function disabled(member: PartyMemberOptionView): boolean {
   return (
-    member.active ||
+    (member.active && !selected(member.id)) ||
     (!selected(member.id) && props.selectedMemberIds.length >= props.maximumMembers)
   );
 }

@@ -4,6 +4,7 @@ import type { ItemInstance, PendingLoot } from "./equipment/item-instance";
 import type { GuildState, HistorySummary, RecruitmentState } from "./guild/guild";
 import type { GuildBank } from "./inventory/guild-bank";
 import type { Candidate, Member } from "./member/member";
+import type { RosterPresetState } from "./guild/roster-preset";
 import type {
   ActivityId,
   CandidateId,
@@ -15,7 +16,7 @@ import type {
 } from "./shared/ids";
 import type { IdGeneratorState, RandomState } from "./shared/runtime-state";
 
-export const GAME_STATE_SAVE_VERSION = 11 as const;
+export const GAME_STATE_SAVE_VERSION = 12 as const;
 
 export interface GameState {
   slotId: SaveSlotId;
@@ -31,11 +32,16 @@ export interface GameState {
   pendingLoot: Record<PendingLootId, PendingLoot>;
   collection: CollectionState;
   guildBank: GuildBank;
+  rosterPresets: RosterPresetState;
   history: HistorySummary;
   random: RandomState;
   ids: IdGeneratorState;
   createdAt: number;
   updatedAt: number;
+}
+
+export interface LegacyGameStateV11 extends Omit<GameState, "saveVersion" | "rosterPresets"> {
+  saveVersion: 11;
 }
 
 export type LegacyItemInstanceV3 = Omit<ItemInstance, "randomSuffixId">;
@@ -46,7 +52,7 @@ export type LegacyExpeditionActivityV10 = Omit<ExpeditionActivity, "questSnapsho
 
 export type LegacyActivityV10 = Exclude<Activity, ExpeditionActivity> | LegacyExpeditionActivityV10;
 
-export interface LegacyGameStateV10 extends Omit<GameState, "saveVersion" | "activities"> {
+export interface LegacyGameStateV10 extends Omit<LegacyGameStateV11, "saveVersion" | "activities"> {
   saveVersion: 10;
   activities: Record<ActivityId, LegacyActivityV10>;
 }
@@ -128,6 +134,7 @@ export interface LegacyGameStateV2 extends Omit<
 
 export type PersistedGameState =
   | GameState
+  | LegacyGameStateV11
   | LegacyGameStateV10
   | LegacyGameStateV9
   | LegacyGameStateV8

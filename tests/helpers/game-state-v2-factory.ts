@@ -12,6 +12,7 @@ import {
   type LegacyGameStateV8,
   type LegacyGameStateV9,
   type LegacyGameStateV10,
+  type LegacyGameStateV11,
 } from "../../src/domain/game-state";
 import type { Member } from "../../src/domain/member/member";
 import { asBrandedId } from "../../src/domain/shared/ids";
@@ -133,6 +134,7 @@ export function createGameStateFixture(overrides: Partial<GameState> = {}): Game
     pendingLoot: {},
     collection: { items: {}, claimedRewardIds: [] },
     guildBank: { stackCounts: {}, equipmentInstanceIds: [] },
+    rosterPresets: { presets: {} },
     history: {
       completedActivityCount: 0,
       failedActivityCount: 0,
@@ -145,6 +147,19 @@ export function createGameStateFixture(overrides: Partial<GameState> = {}): Game
     ids: { counter: 3 },
     createdAt: 1_000,
     updatedAt: 1_000,
+    ...overrides,
+  };
+}
+
+export function createLegacyGameStateV11Fixture(
+  overrides: Partial<LegacyGameStateV11> = {},
+): LegacyGameStateV11 {
+  const current = createGameStateFixture();
+  const { rosterPresets: _rosterPresets, ...legacy } = current;
+  void _rosterPresets;
+  return {
+    ...legacy,
+    saveVersion: 11,
     ...overrides,
   };
 }
@@ -288,7 +303,7 @@ export function createLegacyGameStateV9Fixture(
 export function createLegacyGameStateV10Fixture(
   overrides: Partial<LegacyGameStateV10> = {},
 ): LegacyGameStateV10 {
-  const current = createGameStateFixture();
+  const current = createLegacyGameStateV11Fixture();
   const activities = Object.fromEntries(
     Object.entries(current.activities).map(([id, activity]) => {
       if (activity.type !== "expedition") return [id, activity];

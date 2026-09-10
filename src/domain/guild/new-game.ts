@@ -15,6 +15,7 @@ import type {
   SaveSlotId,
 } from "../shared/ids";
 import { RECRUIT_INTERVAL_MS } from "./recruitment";
+import { createEmptyRosterPresetState } from "./roster-preset";
 
 export interface NewGameDependencies {
   readonly slotId: SaveSlotId;
@@ -85,6 +86,7 @@ export function createNewGame(
     pendingLoot: {},
     collection,
     guildBank: { stackCounts: {}, equipmentInstanceIds: [] },
+    rosterPresets: createEmptyRosterPresetState(),
     history: {
       completedActivityCount: 0,
       failedActivityCount: 0,

@@ -36,6 +36,13 @@ import { removeMemberWishlistTargetCommand } from "../application/commands/remov
 import { acceptMemberDungeonQuestCommand } from "../application/commands/accept-member-dungeon-quest";
 import { claimMemberDungeonQuestCommand } from "../application/commands/claim-member-dungeon-quest";
 import { getMemberDungeonQuestsView } from "../application/queries/get-member-dungeon-quests-view";
+import { getRosterPresetsView } from "../application/queries/get-roster-presets-view";
+import {
+  createRosterPresetCommand,
+  deleteRosterPresetCommand,
+  renameRosterPresetCommand,
+  updateRosterPresetCommand,
+} from "../application/commands/manage-roster-presets";
 import {
   setMemberWishlistTargetCommand,
   type SetMemberWishlistTargetInput,
@@ -43,6 +50,7 @@ import {
 import type { GameCommand, GameSession } from "../application/services/game-session";
 import type { ContentRegistry } from "../content/registry";
 import type { GameState } from "../domain/game-state";
+import type { RosterPreset } from "../domain/guild/roster-preset";
 import type {
   CandidateId,
   CollectionRewardId,
@@ -53,6 +61,7 @@ import type {
   MemberId,
   PendingLootId,
   QuestId,
+  RosterPresetId,
   SpecId,
 } from "../domain/shared/ids";
 
@@ -153,6 +162,9 @@ export const useGameStore = defineStore("game", () => {
   );
   const autoLootPreview = computed(() =>
     stateSnapshot.value && content ? getAutoLootPreview(stateSnapshot.value, content) : null,
+  );
+  const rosterPresets = computed(() =>
+    stateSnapshot.value && content ? getRosterPresetsView(stateSnapshot.value, content) : null,
   );
 
   function refreshSnapshot(): void {
@@ -410,6 +422,36 @@ export const useGameStore = defineStore("game", () => {
     );
   }
 
+  async function createRosterPreset(
+    name: string,
+    memberIds: readonly MemberId[],
+  ): Promise<GameCommandOutcome<RosterPreset>> {
+    if (!clock) return unavailableOutcome<RosterPreset>("create-roster-preset");
+    return execute(createRosterPresetCommand(clock, name, memberIds));
+  }
+
+  async function updateRosterPreset(
+    presetId: RosterPresetId,
+    memberIds: readonly MemberId[],
+  ): Promise<GameCommandOutcome<RosterPreset>> {
+    if (!clock) return unavailableOutcome<RosterPreset>("update-roster-preset");
+    return execute(updateRosterPresetCommand(clock, presetId, memberIds));
+  }
+
+  async function renameRosterPreset(
+    presetId: RosterPresetId,
+    name: string,
+  ): Promise<GameCommandOutcome<RosterPreset>> {
+    if (!clock) return unavailableOutcome<RosterPreset>("rename-roster-preset");
+    return execute(renameRosterPresetCommand(clock, presetId, name));
+  }
+
+  async function deleteRosterPreset(
+    presetId: RosterPresetId,
+  ): Promise<GameCommandOutcome<boolean>> {
+    return execute(deleteRosterPresetCommand(presetId));
+  }
+
   async function assignLoot(
     pendingLootId: PendingLootId,
     memberId: MemberId,
@@ -458,6 +500,7 @@ export const useGameStore = defineStore("game", () => {
     guildUpgrades,
     itemCatalog,
     autoLootPreview,
+    rosterPresets,
     initialize,
     execute,
     tick,
@@ -477,6 +520,10 @@ export const useGameStore = defineStore("game", () => {
     claimMemberDungeonQuest,
     dungeonPlanning,
     startExpedition,
+    createRosterPreset,
+    updateRosterPreset,
+    renameRosterPreset,
+    deleteRosterPreset,
     assignLoot,
     sellLoot,
     autoAssignLoot,

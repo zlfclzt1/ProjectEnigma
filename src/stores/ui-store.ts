@@ -68,6 +68,10 @@ export const useUiStore = defineStore("ui", () => {
       : [...selectedPartyMemberIds.value, memberId];
   }
 
+  function setPartyMembers(memberIds: readonly MemberId[]): void {
+    selectedPartyMemberIds.value = [...new Set(memberIds)];
+  }
+
   function clearParty(): void {
     selectedPartyMemberIds.value = [];
     selectedOptionalNodeIds.value = [];
@@ -115,6 +119,7 @@ export const useUiStore = defineStore("ui", () => {
     toggleOptionalNode,
     selectRouteVariant,
     togglePartyMember,
+    setPartyMembers,
     clearParty,
     setRequestedExpeditionRuns,
     selectMember,

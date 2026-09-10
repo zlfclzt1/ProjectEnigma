@@ -224,4 +224,87 @@ describe("dungeons page", () => {
     await wrapper.get(".page-heading select").setValue("5");
     expect(useUiStore().requestedExpeditionRuns).toBe(5);
   });
+
+  it("saves and reapplies the current party as a named fixed team", async () => {
+    const game = useGameStore();
+    await game.initialize(() =>
+      loadOrCreateV2Client({
+        saves: new MemorySaveRepository(),
+        content: loadBrowserContentRegistry(),
+        clock: new FakeClock(1_000),
+        slotId: asBrandedId<"SaveSlotId">("fixed-team-page"),
+        seed: "fixed-team-page",
+      }),
+    );
+    const wrapper = mount(DungeonsPage);
+    await flushPromises();
+    const ui = useUiStore();
+    const checkboxes = wrapper.findAll<HTMLInputElement>('.party-builder input[type="checkbox"]');
+    for (const checkbox of checkboxes) await checkbox.setValue(true);
+
+    await wrapper.get(".preset-actions button:nth-of-type(2)").trigger("click");
+    const nameDialog = wrapper.get(".name-dialog");
+    expect(nameDialog.get("input").element.value).toBe("固定队伍 1");
+    await nameDialog.get("input").setValue("怒焰常驻队");
+    await nameDialog.trigger("submit");
+    await flushPromises();
+
+    expect(game.rosterPresets?.presets[0]?.name).toBe("怒焰常驻队");
+    expect(game.rosterPresets?.presets[0]?.members).toHaveLength(5);
+    ui.clearParty();
+    await wrapper.get(".preset-actions select").setValue(game.rosterPresets!.presets[0]!.id);
+    await wrapper.get(".preset-actions button:nth-of-type(1)").trigger("click");
+    expect(ui.selectedPartyMemberIds).toHaveLength(5);
+    expect(wrapper.text()).toContain("已套用“怒焰常驻队”");
+  });
+
+  it("opens a reduction picker instead of silently truncating an oversized fixed team", async () => {
+    const game = useGameStore();
+    await game.initialize(() =>
+      loadOrCreateV2Client({
+        saves: new MemorySaveRepository(),
+        content: loadBrowserContentRegistry(),
+        clock: new FakeClock(1_000),
+        slotId: asBrandedId<"SaveSlotId">("fixed-team-reduction"),
+        seed: "fixed-team-reduction",
+      }),
+    );
+    await game.execute({
+      type: "add-fixed-team-members",
+      execute(draft) {
+        const originals = Object.values(draft.members);
+        for (let index = 0; index < 5; index += 1) {
+          const source = originals[index]!;
+          const id = asBrandedId<"MemberId">(`reduction_member_${index}`);
+          draft.members[id] = {
+            ...structuredClone(source),
+            id,
+            identity: { ...structuredClone(source.identity), name: `减员候选 ${index + 1}` },
+            equipment: {},
+            activeActivityId: undefined,
+          };
+        }
+      },
+    });
+    const allIds = game.dungeonPlanning(null, [], 1)!.members.map((member) => member.id);
+    const created = await game.createRosterPreset("十人名单", allIds);
+    if (!created.ok) throw new Error("Expected fixed team creation");
+    const wrapper = mount(DungeonsPage);
+    await flushPromises();
+    await wrapper.get(".preset-actions select").setValue(created.result.id);
+    await wrapper.get(".preset-actions button:nth-of-type(1)").trigger("click");
+
+    const reduction = wrapper.get(".reduction");
+    expect(reduction.text()).toContain("选择本次参战成员");
+    expect(reduction.findAll('.members input[type="checkbox"]')).toHaveLength(10);
+    for (const checkbox of reduction
+      .findAll<HTMLInputElement>('.members input[type="checkbox"]')
+      .slice(0, 5)) {
+      await checkbox.setValue(true);
+    }
+    expect(reduction.text()).toContain("5 / 5 人");
+    await reduction.findAll("footer button")[1]!.trigger("click");
+    expect(useUiStore().selectedPartyMemberIds).toHaveLength(5);
+    expect(wrapper.find(".reduction").exists()).toBe(false);
+  });
 });
