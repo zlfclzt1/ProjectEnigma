@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "contentScope": "classic-2019-phase-6",
+  "targetLevel": 45,
+  "maxDays": 30,
+  "requestedRuns": 3,
+  "sampleCount": 32,
+  "seedPrefix": "zulfarrak-stage-baseline-v1",
+  "policy": {
+    "startingCoreMembers": 5,
+    "dungeonSelection": "highest-recommended-at-55-percent-clear-otherwise-safest",
+    "lootHandling": "auto-assign-after-player-scheduled-activity",
+    "offlineIncome": "none-outside-player-scheduled-activities"
+  },
+  "scenarios": [
+    {
+      "managementActionsPerDay": 4,
+      "outcomes": {
+        "target-reached": 0,
+        "content-cap": 32,
+        "day-limit": 0
+      },
+      "daysToTarget": null,
+      "daysElapsed": {
+        "mean": 6.063,
+        "p10": 5,
+        "p50": 6,
+        "p90": 7
+      },
+      "attemptedDungeonRuns": {
+        "mean": 54.969,
+        "p10": 51,
+        "p50": 54,
+        "p90": 59
+      },
+      "completedDungeonRuns": {
+        "mean": 46.906,
+        "p10": 42,
+        "p50": 48,
+        "p90": 51
+      },
+      "failedDungeonRuns": {
+        "mean": 8.063,
+        "p10": 4,
+        "p50": 8,
+        "p90": 11
+      },
+      "funds": {
+        "mean": 13484.313,
+        "p10": 12504,
+        "p50": 13689,
+        "p90": 14257
+      },
+      "averageItemLevel": {
+        "mean": 13.747,
+        "p10": 13.054,
+        "p50": 13.608,
+        "p90": 14.367
+      },
+      "minimumCoreLevel": {
+        "mean": 30,
+        "p10": 30,
+        "p50": 30,
+        "p90": 30
+      }
+    },
+    {
+      "managementActionsPerDay": 5,
+      "outcomes": {
+        "target-reached": 0,
+        "content-cap": 32,
+        "day-limit": 0
+      },
+      "daysToTarget": null,
+      "daysElapsed": {
+        "mean": 4.969,
+        "p10": 4,
+        "p50": 5,
+        "p90": 6
+      },
+      "attemptedDungeonRuns": {
+        "mean": 54.813,
+        "p10": 50,
+        "p50": 54,
+        "p90": 59
+      },
+      "completedDungeonRuns": {
+        "mean": 46.406,
+        "p10": 42,
+        "p50": 46,
+        "p90": 50
+      },
+      "failedDungeonRuns": {
+        "mean": 8.406,
+        "p10": 4,
+        "p50": 8,
+        "p90": 12
+      },
+      "funds": {
+        "mean": 13281.844,
+        "p10": 12288,
+        "p50": 13549,
+        "p90": 14024
+      },
+      "averageItemLevel": {
+        "mean": 13.521,
+        "p10": 12.812,
+        "p50": 13.52,
+        "p90": 14.014
+      },
+      "minimumCoreLevel": {
+        "mean": 30,
+        "p10": 30,
+        "p50": 30,
+        "p90": 30
+      }
+    },
+    {
+      "managementActionsPerDay": 6,
+      "outcomes": {
+        "target-reached": 0,
+        "content-cap": 32,
+        "day-limit": 0
+      },
+      "daysToTarget": null,
+      "daysElapsed": {
+        "mean": 4.219,
+        "p10": 4,
+        "p50": 4,
+        "p90": 5
+      },
+      "attemptedDungeonRuns": {
+        "mean": 54.906,
+        "p10": 50,
+        "p50": 55,
+        "p90": 59
+      },
+      "completedDungeonRuns": {
+        "mean": 46.375,
+        "p10": 44,
+        "p50": 45,
+        "p90": 50
+      },
+      "failedDungeonRuns": {
+        "mean": 8.531,
+        "p10": 6,
+        "p50": 9,
+        "p90": 12
+      },
+      "funds": {
+        "mean": 13440.063,
+        "p10": 12440,
+        "p50": 13661,
+        "p90": 14253
+      },
+      "averageItemLevel": {
+        "mean": 13.558,
+        "p10": 12.955,
+        "p50": 13.369,
+        "p90": 14.235
+      },
+      "minimumCoreLevel": {
+        "mean": 30,
+        "p10": 30,
+        "p50": 30,
+        "p90": 30
+      }
+    }
+  ]
+}

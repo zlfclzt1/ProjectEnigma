@@ -10,27 +10,27 @@
         "level": 18,
         "equipment": "best-compatible-real-drops-at-level",
         "simulatedRuns": 100000,
-        "simulatedClearRate": 0.80895,
+        "simulatedClearRate": 0.81309,
         "previewClearProbability": {
-          "mean": 0.8094818001173482,
-          "p10": 0.6455525705561485,
-          "p50": 0.8231077633683254,
-          "p90": 0.9201136252233124
+          "mean": 0.8121241535505649,
+          "p10": 0.6395541470291274,
+          "p50": 0.8279147602439386,
+          "p90": 0.9199462800916184
         },
         "durationSeconds": {
-          "mean": 1437.49,
-          "p10": 1384,
-          "p50": 1444,
-          "p90": 1490
+          "mean": 1433.58,
+          "p10": 1391,
+          "p50": 1434,
+          "p90": 1474
         },
         "wipeCounts": {
-          "dm_captain_greenskin": 3167,
-          "dm_gilnid": 2017,
-          "dm_cookie": 3343,
-          "dm_mr_smite": 2600,
-          "dm_edwin_vancleef": 5196,
-          "dm_sneed": 1500,
-          "dm_rhahkzor": 1282
+          "dm_mr_smite": 2474,
+          "dm_edwin_vancleef": 5176,
+          "dm_gilnid": 2026,
+          "dm_cookie": 3209,
+          "dm_captain_greenskin": 3081,
+          "dm_rhahkzor": 1224,
+          "dm_sneed": 1501
         }
       },
       "recommendedNoTank": {
@@ -45,10 +45,10 @@
           "p90": 7.812500000000004e-10
         },
         "durationSeconds": {
-          "mean": 1595.35,
-          "p10": 1548,
-          "p50": 1591,
-          "p90": 1645
+          "mean": 1590,
+          "p10": 1545,
+          "p50": 1585,
+          "p90": 1647
         },
         "wipeCounts": {
           "dm_rhahkzor": 94988,
@@ -70,10 +70,10 @@
           "p90": 1
         },
         "durationSeconds": {
-          "mean": 839.29,
-          "p10": 816,
-          "p50": 837,
-          "p90": 865
+          "mean": 839.85,
+          "p10": 813,
+          "p50": 838,
+          "p90": 864
         },
         "wipeCounts": {}
       }
@@ -92,10 +92,10 @@
           "p90": 0.8145062499999999
         },
         "durationSeconds": {
-          "mean": 524.19,
-          "p10": 507,
-          "p50": 525,
-          "p90": 538
+          "mean": 528.15,
+          "p10": 509,
+          "p50": 528,
+          "p90": 547
         },
         "wipeCounts": {
           "taragaman_the_hungerer": 4722,
@@ -116,9 +116,9 @@
           "p90": 0.000006250000000000002
         },
         "durationSeconds": {
-          "mean": 587.22,
-          "p10": 567,
-          "p50": 586,
+          "mean": 585.65,
+          "p10": 568,
+          "p50": 583,
           "p90": 608
         },
         "wipeCounts": {
@@ -140,10 +140,10 @@
           "p90": 1
         },
         "durationSeconds": {
-          "mean": 304.06,
+          "mean": 304.34,
           "p10": 300,
           "p50": 304,
-          "p90": 309
+          "p90": 311
         },
         "wipeCounts": {}
       }
@@ -154,28 +154,28 @@
         "level": 22,
         "equipment": "best-compatible-real-drops-at-level",
         "simulatedRuns": 100000,
-        "simulatedClearRate": 0.81785,
+        "simulatedClearRate": 0.83034,
         "previewClearProbability": {
-          "mean": 0.8175629520089793,
-          "p10": 0.6495821675710886,
-          "p50": 0.8426090361382975,
-          "p90": 0.9180107068482297
+          "mean": 0.8272807543738991,
+          "p10": 0.6581899693268041,
+          "p50": 0.8571646184194345,
+          "p90": 0.92274469442792
         },
         "durationSeconds": {
-          "mean": 822.93,
-          "p10": 789,
-          "p50": 821,
-          "p90": 857
+          "mean": 814.74,
+          "p10": 781,
+          "p50": 814,
+          "p90": 847
         },
         "wipeCounts": {
-          "sfk_archmage_arugal": 4520,
-          "sfk_baron_silverlaine": 1407,
-          "sfk_wolf_master_nandos": 3502,
-          "sfk_commander_springvale": 2009,
-          "sfk_odo": 1709,
-          "sfk_razorclaw": 1418,
-          "sfk_fenrus": 2665,
-          "sfk_rethilgore": 985
+          "sfk_archmage_arugal": 4108,
+          "sfk_commander_springvale": 1986,
+          "sfk_razorclaw": 1262,
+          "sfk_rethilgore": 1005,
+          "sfk_fenrus": 2605,
+          "sfk_baron_silverlaine": 1320,
+          "sfk_odo": 1482,
+          "sfk_wolf_master_nandos": 3198
         }
       },
       "recommendedNoTank": {
@@ -190,10 +190,10 @@
           "p90": 3.906250000000002e-11
         },
         "durationSeconds": {
-          "mean": 913.32,
-          "p10": 881,
+          "mean": 913.21,
+          "p10": 884,
           "p50": 914,
-          "p90": 950
+          "p90": 943
         },
         "wipeCounts": {
           "sfk_rethilgore": 94995,
@@ -214,10 +214,10 @@
           "p90": 1
         },
         "durationSeconds": {
-          "mean": 540.24,
+          "mean": 542.18,
           "p10": 522,
-          "p50": 540,
-          "p90": 557
+          "p50": 541,
+          "p90": 560
         },
         "wipeCounts": {}
       }
@@ -228,28 +228,28 @@
         "level": 17,
         "equipment": "best-compatible-real-drops-at-level",
         "simulatedRuns": 100000,
-        "simulatedClearRate": 0.7968,
+        "simulatedClearRate": 0.80509,
         "previewClearProbability": {
-          "mean": 0.7985182763460789,
-          "p10": 0.6539155813672549,
-          "p50": 0.8150438588251702,
-          "p90": 0.8984871230560779
+          "mean": 0.805165167968521,
+          "p10": 0.6615554736038394,
+          "p50": 0.8138711238926543,
+          "p90": 0.9194214198614621
         },
         "durationSeconds": {
-          "mean": 1663.49,
+          "mean": 1666.61,
           "p10": 1593,
-          "p50": 1660,
-          "p90": 1732
+          "p50": 1670,
+          "p90": 1735
         },
         "wipeCounts": {
-          "wc_lord_cobrahn": 1301,
-          "wc_lord_pythas": 1949,
-          "wc_mutanus": 5086,
-          "wc_lord_serpentis": 2817,
-          "wc_verdan": 4523,
-          "wc_kresh": 1195,
-          "wc_skum": 2297,
-          "wc_lady_anacondra": 1152
+          "wc_lord_cobrahn": 1318,
+          "wc_mutanus": 4578,
+          "wc_lord_serpentis": 2791,
+          "wc_lord_pythas": 1827,
+          "wc_verdan": 4376,
+          "wc_lady_anacondra": 1162,
+          "wc_skum": 2150,
+          "wc_kresh": 1289
         }
       },
       "recommendedNoTank": {
@@ -264,10 +264,10 @@
           "p90": 3.906250000000002e-11
         },
         "durationSeconds": {
-          "mean": 1842.15,
-          "p10": 1778,
-          "p50": 1843,
-          "p90": 1900
+          "mean": 1840.51,
+          "p10": 1777,
+          "p50": 1835,
+          "p90": 1901
         },
         "wipeCounts": {
           "wc_lord_cobrahn": 4719,
@@ -288,10 +288,10 @@
           "p90": 1
         },
         "durationSeconds": {
-          "mean": 942.12,
-          "p10": 917,
-          "p50": 941,
-          "p90": 967
+          "mean": 940.4,
+          "p10": 908,
+          "p50": 938,
+          "p90": 974
         },
         "wipeCounts": {}
       }

@@ -30,6 +30,7 @@ npm run typecheck
 npm run validate:content
 npm run item-stats:audit
 npm run loot-sources:audit
+npm run progression:baseline:check
 npm run baseline:check
 npm run build
 ```
