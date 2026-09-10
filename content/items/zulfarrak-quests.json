@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/classic-wow-zulfarrak-dungeon-quests",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对深渊王冠与探水棒任务的四件可选装备奖励，并通过逐件中文 XML 核对属性。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].restrictions", "items[].description"],
+        "reason": "按当前职业与定位规则补齐任务装备可装备性，并标记任务来源。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "9527",
+      "name": {
+        "zhCN": "幻法之杖",
+        "enUS": "Spellshifter Rod"
+      },
+      "itemLevel": 46,
+      "requiredLevel": 40,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "priest", "shaman", "mage", "warlock", "druid"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_wand_11"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克成员任务“深渊王冠”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 6,
+          "intellectPoints": 16
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 77,
+            "maximumPoints": 116
+          },
+          "speedSeconds": 2.7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9527",
+        "url": "https://www.wowhead.com/classic/cn/item=9527&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9531",
+      "name": {
+        "zhCN": "晶岩肩铠",
+        "enUS": "Gemshale Pauldrons"
+      },
+      "itemLevel": 46,
+      "requiredLevel": 40,
+      "quality": "uncommon",
+      "slot": "shoulder",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_23"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克成员任务“深渊王冠”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 10,
+          "staminaPoints": 9
+        },
+        "defense": {
+          "armorPoints": 334
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9531",
+        "url": "https://www.wowhead.com/classic/cn/item=9531&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9533",
+      "name": {
+        "zhCN": "石工兄弟会之戒",
+        "enUS": "Mason's Fraternity Ring"
+      },
+      "itemLevel": 47,
+      "requiredLevel": 40,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_03"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克成员任务“探水棒”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 13,
+          "staminaPoints": 5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9533",
+        "url": "https://www.wowhead.com/classic/cn/item=9533&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9534",
+      "name": {
+        "zhCN": "工程学协会头盔",
+        "enUS": "Engineer's Guild Headpiece"
+      },
+      "itemLevel": 47,
+      "requiredLevel": 40,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["shaman", "druid"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_33"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克成员任务“探水棒”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 23,
+          "spiritPoints": 9
+        },
+        "defense": {
+          "armorPoints": 113
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9534",
+        "url": "https://www.wowhead.com/classic/cn/item=9534&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    }
+  ]
+}

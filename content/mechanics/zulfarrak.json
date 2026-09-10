@@ -1,0 +1,349 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/zulfarrak-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对孽生蛇、治疗图腾、甲虫、僵尸、楼梯波次、双首领、冰霜、击飞与顺劈机制。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "使用现有队伍能力表达原版机制的软性处理优势，不增加职业硬门槛。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "mechanics": [
+    {
+      "id": "zulfarrak_zerillis_net",
+      "name": {
+        "zhCN": "冰霜射击与捕网",
+        "enUS": "Frost Shot and Net"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "magic_dispel",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "healingMultiplier": 1.08,
+        "probabilityModifier": -0.03,
+        "durationMultiplier": 1.05
+      },
+      "description": {
+        "zhCN": "魔法驱散可以缩短泽雷利斯的减速与定身，避免稀有巡逻战拖延路线。"
+      },
+      "reportTag": "zulfarrak_zerillis_net"
+    },
+    {
+      "id": "zulfarrak_antusul_adds",
+      "name": {
+        "zhCN": "苏利萨孽生蛇与仆从",
+        "enUS": "Sul'lithuz Broodlings"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "area_damage",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.12,
+        "healingMultiplier": 1.08,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.07
+      },
+      "description": {
+        "zhCN": "范围伤害可以及时处理安图苏尔召唤的孽生蛇与仆从。"
+      },
+      "reportTag": "zulfarrak_antusul_adds"
+    },
+    {
+      "id": "zulfarrak_antusul_healing",
+      "name": {
+        "zhCN": "治疗图腾与治疗波",
+        "enUS": "Healing Ward"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "interrupt",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "healingMultiplier": 1.1,
+        "damageMultiplier": 1.08,
+        "probabilityModifier": -0.05,
+        "durationMultiplier": 1.08
+      },
+      "description": {
+        "zhCN": "可靠打断和转火可以阻止治疗波与治疗图腾拉长战斗。"
+      },
+      "reportTag": "zulfarrak_antusul_healing"
+    },
+    {
+      "id": "zulfarrak_sandarr_control",
+      "name": {
+        "zhCN": "稀有守护者",
+        "enUS": "Dunereaver Control"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "crowd_control",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.08,
+        "probabilityModifier": -0.03,
+        "durationMultiplier": 1.04
+      },
+      "description": {
+        "zhCN": "控制能力可以稳定处理沙怒守护者与附近巡逻怪的意外接战。"
+      },
+      "reportTag": "zulfarrak_sandarr_control"
+    },
+    {
+      "id": "zulfarrak_theka_scarabs",
+      "name": {
+        "zhCN": "殉教变形与甲虫群",
+        "enUS": "Martyr Form and Scarabs"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "area_damage",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "healingMultiplier": 1.08,
+        "damageMultiplier": 1.07,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.08
+      },
+      "description": {
+        "zhCN": "塞卡低血量变形会拖延输出，范围伤害可快速清理随之出现的甲虫。"
+      },
+      "reportTag": "zulfarrak_theka_scarabs"
+    },
+    {
+      "id": "zulfarrak_zumrah_wards",
+      "name": {
+        "zhCN": "暗影法术与祖穆拉恩结界",
+        "enUS": "Wards of Zum'rah"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "interrupt",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "healingMultiplier": 1.15,
+        "probabilityModifier": -0.05,
+        "durationMultiplier": 1.07
+      },
+      "description": {
+        "zhCN": "可靠打断可以压制祖穆拉恩的暗影法术、治疗和结界。"
+      },
+      "reportTag": "zulfarrak_zumrah_wards"
+    },
+    {
+      "id": "zulfarrak_dustwraith_magic",
+      "name": {
+        "zhCN": "怨灵法术",
+        "enUS": "Dustwraith Magic"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "interrupt",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "healingMultiplier": 1.08,
+        "probabilityModifier": -0.03,
+        "durationMultiplier": 1.04
+      },
+      "description": {
+        "zhCN": "打断可以限制灰尘怨灵的施法，让随机稀有战保持轻量。"
+      },
+      "reportTag": "zulfarrak_dustwraith_magic"
+    },
+    {
+      "id": "zulfarrak_pyramid_waves",
+      "name": {
+        "zhCN": "百人斩连续波次",
+        "enUS": "Pyramid Waves"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "area_damage",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "crowd_control",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.14,
+        "healingMultiplier": 1.14,
+        "damageMultiplier": 1.06,
+        "probabilityModifier": -0.06,
+        "durationMultiplier": 1.1
+      },
+      "description": {
+        "zhCN": "范围伤害与控制能稳定清理楼梯上的连续怪群，并降低俘虏小队承受的压力。"
+      },
+      "reportTag": "zulfarrak_pyramid_waves"
+    },
+    {
+      "id": "zulfarrak_sezzziz_duo",
+      "name": {
+        "zhCN": "双首领与暗影治疗",
+        "enUS": "Nekrum and Sezz'ziz"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "interrupt",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "crowd_control",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.1,
+        "healingMultiplier": 1.15,
+        "probabilityModifier": -0.06,
+        "durationMultiplier": 1.08
+      },
+      "description": {
+        "zhCN": "控制耐克鲁姆并打断塞瑟斯的暗影法术和治疗，可以稳定楼梯事件的最后一波。"
+      },
+      "reportTag": "zulfarrak_sezzziz_duo"
+    },
+    {
+      "id": "zulfarrak_bly_mutiny",
+      "name": {
+        "zhCN": "俘虏小队背叛",
+        "enUS": "Sergeant Bly Mutiny"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "crowd_control",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "area_damage",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.12,
+        "healingMultiplier": 1.1,
+        "probabilityModifier": -0.05,
+        "durationMultiplier": 1.08
+      },
+      "description": {
+        "zhCN": "控制和范围伤害可以应对布莱与多名俘虏同时翻脸的任务支线。"
+      },
+      "reportTag": "zulfarrak_bly_mutiny"
+    },
+    {
+      "id": "zulfarrak_velratha_frost",
+      "name": {
+        "zhCN": "冰霜法术",
+        "enUS": "Velratha Frost Magic"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "interrupt",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "healingMultiplier": 1.1,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.05
+      },
+      "description": {
+        "zhCN": "打断可以降低维蕾萨的冰霜法术压力并更快取得深渊王冠。"
+      },
+      "reportTag": "zulfarrak_velratha_frost"
+    },
+    {
+      "id": "zulfarrak_gahzrilla_slam",
+      "name": {
+        "zhCN": "冻结、冰锥与击飞",
+        "enUS": "Gahz'rilla Slam"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "magic_dispel",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "ranged_damage",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.1,
+        "healingMultiplier": 1.16,
+        "probabilityModifier": -0.06,
+        "durationMultiplier": 1.08
+      },
+      "description": {
+        "zhCN": "魔法驱散与远程火力可以降低冻结和击飞造成的停手与恢复压力。"
+      },
+      "reportTag": "zulfarrak_gahzrilla_slam"
+    },
+    {
+      "id": "zulfarrak_chief_cleave",
+      "name": {
+        "zhCN": "双首领顺劈与狂暴",
+        "enUS": "Chief and Ruuzlu"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "crowd_control",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.16,
+        "healingMultiplier": 1.12,
+        "damageMultiplier": 1.05,
+        "probabilityModifier": -0.06,
+        "durationMultiplier": 1.07
+      },
+      "description": {
+        "zhCN": "限制卢兹鲁并保持双首领击杀顺序，可以降低顺劈和乌克兹狂暴阶段的坦克压力。"
+      },
+      "reportTag": "zulfarrak_chief_cleave"
+    }
+  ]
+}

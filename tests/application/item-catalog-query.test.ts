@@ -82,7 +82,7 @@ describe("item collection catalog query", () => {
     ]);
     expect(view.globalProgress).toEqual({
       acquiredItemCount: 0,
-      totalItemCount: 191,
+      totalItemCount: 210,
       completionPercent: 0,
     });
     expect(JSON.stringify(view)).not.toContain("尖牙腰带");
@@ -186,6 +186,7 @@ describe("item collection catalog query", () => {
       "9389",
       "9388",
       "9390",
+      "9640",
     ].forEach((itemId, index) => acquire(game, content, itemId, index + 1));
 
     const view = getItemCatalogView(game, content);
@@ -204,8 +205,8 @@ describe("item collection catalog query", () => {
         completionPercent: 100,
       }),
     ]);
-    expect(view.globalProgress).toMatchObject({ acquiredItemCount: 20, totalItemCount: 191 });
-    expect(view.globalProgress.completionPercent).toBeCloseTo((20 / 191) * 100);
+    expect(view.globalProgress).toMatchObject({ acquiredItemCount: 21, totalItemCount: 210 });
+    expect(view.globalProgress.completionPercent).toBeCloseTo((21 / 210) * 100);
     expect(view.rewards).toHaveLength(3);
     expect(view.rewards.every((reward) => reward.claimable)).toBe(true);
     expect(view.rewards.every((reward) => !reward.claimed)).toBe(true);

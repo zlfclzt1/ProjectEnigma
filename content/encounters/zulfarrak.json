@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/zulfarrak-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对各首领能力、楼梯事件、可选召唤和装备归属。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对无装备首领、随机稀有首领与真实掉落表引用。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "阶段时长、战斗需求、经验、资金和首杀奖励作为 D15.D 模拟前的保守初始基线。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "encounters": [
+    {
+      "id": "zulfarrak_zerillis",
+      "dungeonId": "zulfarrak",
+      "name": {
+        "zhCN": "泽雷利斯"
+      },
+      "stageSeconds": 70,
+      "requirements": {
+        "tank": 40,
+        "healing": 42,
+        "damage": 184
+      },
+      "weights": {
+        "tank": 0.3,
+        "healing": 0.28,
+        "damage": 0.42
+      },
+      "experienceShare": 0.05,
+      "funds": 58,
+      "firstKillBonus": 116,
+      "lootTableId": "zulfarrak_zerillis",
+      "mechanicIds": ["zulfarrak_zerillis_net"]
+    },
+    {
+      "id": "zulfarrak_antusul",
+      "dungeonId": "zulfarrak",
+      "name": {
+        "zhCN": "安图苏尔"
+      },
+      "stageSeconds": 150,
+      "requirements": {
+        "tank": 43,
+        "healing": 47,
+        "damage": 192
+      },
+      "weights": {
+        "tank": 0.31,
+        "healing": 0.35,
+        "damage": 0.34
+      },
+      "experienceShare": 0.17,
+      "funds": 112,
+      "firstKillBonus": 224,
+      "lootTableId": "zulfarrak_antusul",
+      "mechanicIds": ["zulfarrak_antusul_adds", "zulfarrak_antusul_healing"]
+    },
+    {
+      "id": "zulfarrak_sandarr_dunereaver",
+      "dungeonId": "zulfarrak",
+      "name": {
+        "zhCN": "沙怒守护者"
+      },
+      "stageSeconds": 60,
+      "requirements": {
+        "tank": 41,
+        "healing": 43,
+        "damage": 184
+      },
+      "weights": {
+        "tank": 0.32,
+        "healing": 0.3,
+        "damage": 0.38
+      },
+      "experienceShare": 0.04,
+      "funds": 46,
+      "firstKillBonus": 92,
+      "mechanicIds": ["zulfarrak_sandarr_control"]
+    },
+    {
+      "id": "zulfarrak_theka_the_martyr",
+      "dungeonId": "zulfarrak",
+      "name": {
+        "zhCN": "殉教者塞卡"
+      },
+      "stageSeconds": 100,
+      "requirements": {
+        "tank": 41,
+        "healing": 43,
+        "damage": 186
+      },
+      "weights": {
+        "tank": 0.28,
+        "healing": 0.3,
+        "damage": 0.42
+      },
+      "experienceShare": 0.12,
+      "funds": 68,
+      "firstKillBonus": 136,
+      "mechanicIds": ["zulfarrak_theka_scarabs"]
+    },
+    {
+      "id": "zulfarrak_witch_doctor_zumrah",
+      "dungeonId": "zulfarrak",
+      "name": {
+        "zhCN": "巫医祖穆拉恩"
+      },
+      "stageSeconds": 120,
+      "requirements": {
+        "tank": 42,
+        "healing": 47,
+        "damage": 188
+      },
+      "weights": {
+        "tank": 0.25,
+        "healing": 0.4,
+        "damage": 0.35
+      },
+      "experienceShare": 0.15,
+      "funds": 92,
+      "firstKillBonus": 184,
+      "lootTableId": "zulfarrak_witch_doctor_zumrah",
+      "mechanicIds": ["zulfarrak_zumrah_wards"]
+    },
+    {
+      "id": "zulfarrak_dustwraith",
+      "dungeonId": "zulfarrak",
+      "name": {
+        "zhCN": "灰尘怨灵"
+      },
+      "stageSeconds": 60,
+      "requirements": {
+        "tank": 42,
+        "healing": 44,
+        "damage": 188
+      },
+      "weights": {
+        "tank": 0.3,
+        "healing": 0.34,
+        "damage": 0.36
+      },
+      "experienceShare": 0.05,
+      "funds": 52,
+      "firstKillBonus": 104,
+      "lootTableId": "zulfarrak_dustwraith",
+      "mechanicIds": ["zulfarrak_dustwraith_magic"]
+    },
+    {
+      "id": "zulfarrak_sandfury_executioner",
+      "dungeonId": "zulfarrak",
+      "name": {
+        "zhCN": "沙怒刽子手与百人斩"
+      },
+      "stageSeconds": 220,
+      "requirements": {
+        "tank": 43,
+        "healing": 48,
+        "damage": 190
+      },
+      "weights": {
+        "tank": 0.3,
+        "healing": 0.38,
+        "damage": 0.32
+      },
+      "experienceShare": 0.16,
+      "funds": 104,
+      "firstKillBonus": 208,
+      "mechanicIds": ["zulfarrak_pyramid_waves"]
+    },
+    {
+      "id": "zulfarrak_nekrum_and_sezzziz",
+      "dungeonId": "zulfarrak",
+      "name": {
+        "zhCN": "耐克鲁姆·食尸者与暗影祭司塞瑟斯"
+      },
+      "stageSeconds": 150,
+      "requirements": {
+        "tank": 44,
+        "healing": 49,
+        "damage": 194
+      },
+      "weights": {
+        "tank": 0.31,
+        "healing": 0.39,
+        "damage": 0.3
+      },
+      "experienceShare": 0.2,
+      "funds": 116,
+      "firstKillBonus": 232,
+      "lootTableId": "zulfarrak_nekrum_and_sezzziz",
+      "mechanicIds": ["zulfarrak_sezzziz_duo"]
+    },
+    {
+      "id": "zulfarrak_sergeant_bly",
+      "dungeonId": "zulfarrak",
+      "name": {
+        "zhCN": "布莱中士"
+      },
+      "stageSeconds": 120,
+      "requirements": {
+        "tank": 45,
+        "healing": 49,
+        "damage": 196
+      },
+      "weights": {
+        "tank": 0.34,
+        "healing": 0.34,
+        "damage": 0.32
+      },
+      "experienceShare": 0.08,
+      "funds": 84,
+      "firstKillBonus": 168,
+      "mechanicIds": ["zulfarrak_bly_mutiny"]
+    },
+    {
+      "id": "zulfarrak_hydromancer_velratha",
+      "dungeonId": "zulfarrak",
+      "name": {
+        "zhCN": "水占师维蕾萨"
+      },
+      "stageSeconds": 100,
+      "requirements": {
+        "tank": 42,
+        "healing": 46,
+        "damage": 190
+      },
+      "weights": {
+        "tank": 0.27,
+        "healing": 0.38,
+        "damage": 0.35
+      },
+      "experienceShare": 0.12,
+      "funds": 76,
+      "firstKillBonus": 152,
+      "mechanicIds": ["zulfarrak_velratha_frost"]
+    },
+    {
+      "id": "zulfarrak_gahzrilla",
+      "dungeonId": "zulfarrak",
+      "name": {
+        "zhCN": "加兹瑞拉"
+      },
+      "stageSeconds": 130,
+      "requirements": {
+        "tank": 45,
+        "healing": 50,
+        "damage": 198
+      },
+      "weights": {
+        "tank": 0.36,
+        "healing": 0.38,
+        "damage": 0.26
+      },
+      "experienceShare": 0.12,
+      "funds": 106,
+      "firstKillBonus": 212,
+      "lootTableId": "zulfarrak_gahzrilla",
+      "mechanicIds": ["zulfarrak_gahzrilla_slam"]
+    },
+    {
+      "id": "zulfarrak_chief_ukorz",
+      "dungeonId": "zulfarrak",
+      "name": {
+        "zhCN": "乌克兹·沙顶与卢兹鲁"
+      },
+      "stageSeconds": 160,
+      "requirements": {
+        "tank": 47,
+        "healing": 52,
+        "damage": 204
+      },
+      "weights": {
+        "tank": 0.38,
+        "healing": 0.36,
+        "damage": 0.26
+      },
+      "experienceShare": 0.27,
+      "funds": 142,
+      "firstKillBonus": 284,
+      "lootTableId": "zulfarrak_chief_ukorz",
+      "mechanicIds": ["zulfarrak_chief_cleave"]
+    }
+  ]
+}

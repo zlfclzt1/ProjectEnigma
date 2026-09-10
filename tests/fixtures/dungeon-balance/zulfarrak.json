@@ -1,0 +1,311 @@
+{
+  "dungeonId": "zulfarrak",
+  "samplesPerScenario": 100000,
+  "scenarios": {
+    "standard": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.86904,
+        "previewClearProbability": 0.8681255332467199,
+        "durationSeconds": 992.2,
+        "wipeCounts": {
+          "zulfarrak_chief_ukorz": 1696,
+          "zulfarrak_sandfury_executioner": 1874,
+          "zulfarrak_theka_the_martyr": 1894,
+          "zulfarrak_nekrum_and_sezzziz": 1841,
+          "zulfarrak_antusul": 1975,
+          "zulfarrak_hydromancer_velratha": 1830,
+          "zulfarrak_witch_doctor_zumrah": 1986
+        }
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.83407,
+        "previewClearProbability": 0.8337477621301497,
+        "durationSeconds": 1242.8,
+        "wipeCounts": {
+          "zulfarrak_witch_doctor_zumrah": 1977,
+          "zulfarrak_sandfury_executioner": 1862,
+          "zulfarrak_nekrum_and_sezzziz": 1899,
+          "zulfarrak_theka_the_martyr": 1943,
+          "zulfarrak_gahzrilla": 1740,
+          "zulfarrak_hydromancer_velratha": 1751,
+          "zulfarrak_chief_ukorz": 1639,
+          "zulfarrak_antusul": 2013,
+          "zulfarrak_sergeant_bly": 1769
+        }
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.81635,
+        "previewClearProbability": 0.8170728068875468,
+        "durationSeconds": 1170.6,
+        "wipeCounts": {
+          "zulfarrak_hydromancer_velratha": 1679,
+          "zulfarrak_sandarr_dunereaver": 1964,
+          "zulfarrak_chief_ukorz": 1601,
+          "zulfarrak_sandfury_executioner": 1840,
+          "zulfarrak_antusul": 2000,
+          "zulfarrak_theka_the_martyr": 1920,
+          "zulfarrak_dustwraith": 1772,
+          "zulfarrak_witch_doctor_zumrah": 1816,
+          "zulfarrak_zerillis": 2034,
+          "zulfarrak_nekrum_and_sezzziz": 1739
+        }
+      }
+    },
+    "no-tank": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 7.812500000000005e-10,
+        "durationSeconds": 1102.6,
+        "wipeCounts": {
+          "zulfarrak_antusul": 95047,
+          "zulfarrak_theka_the_martyr": 4704,
+          "zulfarrak_witch_doctor_zumrah": 238,
+          "zulfarrak_sandfury_executioner": 11
+        }
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.953125000000001e-12,
+        "durationSeconds": 1413.2,
+        "wipeCounts": {
+          "zulfarrak_antusul": 95139,
+          "zulfarrak_theka_the_martyr": 4616,
+          "zulfarrak_witch_doctor_zumrah": 225,
+          "zulfarrak_sandfury_executioner": 17,
+          "zulfarrak_sergeant_bly": 1,
+          "zulfarrak_nekrum_and_sezzziz": 2
+        }
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 9.765625000000004e-14,
+        "durationSeconds": 1260.4,
+        "wipeCounts": {
+          "zulfarrak_zerillis": 95070,
+          "zulfarrak_antusul": 4701,
+          "zulfarrak_sandarr_dunereaver": 219,
+          "zulfarrak_theka_the_martyr": 9,
+          "zulfarrak_witch_doctor_zumrah": 1
+        }
+      }
+    },
+    "no-healing": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 7.812500000000005e-10,
+        "durationSeconds": 1120.8,
+        "wipeCounts": {
+          "zulfarrak_antusul": 95130,
+          "zulfarrak_witch_doctor_zumrah": 215,
+          "zulfarrak_theka_the_martyr": 4650,
+          "zulfarrak_sandfury_executioner": 5
+        }
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.953125000000001e-12,
+        "durationSeconds": 1388,
+        "wipeCounts": {
+          "zulfarrak_antusul": 95043,
+          "zulfarrak_theka_the_martyr": 4709,
+          "zulfarrak_witch_doctor_zumrah": 237,
+          "zulfarrak_sandfury_executioner": 11
+        }
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 9.765625000000004e-14,
+        "durationSeconds": 1274.6,
+        "wipeCounts": {
+          "zulfarrak_zerillis": 94980,
+          "zulfarrak_antusul": 4757,
+          "zulfarrak_sandarr_dunereaver": 252,
+          "zulfarrak_theka_the_martyr": 11
+        }
+      }
+    },
+    "overlevel": {
+      "required": {
+        "level": 42,
+        "simulatedRuns": 100000,
+        "clearRate": 0.85251,
+        "previewClearProbability": 0.8527017026742578,
+        "durationSeconds": 1027.8,
+        "wipeCounts": {
+          "zulfarrak_chief_ukorz": 1684,
+          "zulfarrak_nekrum_and_sezzziz": 1807,
+          "zulfarrak_sandfury_executioner": 3467,
+          "zulfarrak_witch_doctor_zumrah": 1959,
+          "zulfarrak_theka_the_martyr": 1975,
+          "zulfarrak_antusul": 1998,
+          "zulfarrak_hydromancer_velratha": 1859
+        }
+      },
+      "with-optional": {
+        "level": 42,
+        "simulatedRuns": 100000,
+        "clearRate": 0.77,
+        "previewClearProbability": 0.7712865782604557,
+        "durationSeconds": 1318.2,
+        "wipeCounts": {
+          "zulfarrak_gahzrilla": 2994,
+          "zulfarrak_antusul": 3631,
+          "zulfarrak_hydromancer_velratha": 1722,
+          "zulfarrak_sergeant_bly": 2801,
+          "zulfarrak_sandfury_executioner": 3864,
+          "zulfarrak_witch_doctor_zumrah": 1910,
+          "zulfarrak_nekrum_and_sezzziz": 2540,
+          "zulfarrak_theka_the_martyr": 1955,
+          "zulfarrak_chief_ukorz": 1583
+        }
+      },
+      "with-rare": {
+        "level": 42,
+        "simulatedRuns": 100000,
+        "clearRate": 0.81661,
+        "previewClearProbability": 0.8170728068875468,
+        "durationSeconds": 1169.2,
+        "wipeCounts": {
+          "zulfarrak_antusul": 2023,
+          "zulfarrak_sandarr_dunereaver": 1934,
+          "zulfarrak_zerillis": 1974,
+          "zulfarrak_chief_ukorz": 1646,
+          "zulfarrak_hydromancer_velratha": 1788,
+          "zulfarrak_theka_the_martyr": 1806,
+          "zulfarrak_dustwraith": 1783,
+          "zulfarrak_sandfury_executioner": 1803,
+          "zulfarrak_nekrum_and_sezzziz": 1750,
+          "zulfarrak_witch_doctor_zumrah": 1832
+        }
+      }
+    },
+    "max-level": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.85174,
+        "previewClearProbability": 0.8545427478534304,
+        "durationSeconds": 1004.8,
+        "wipeCounts": {
+          "zulfarrak_chief_ukorz": 2857,
+          "zulfarrak_hydromancer_velratha": 1784,
+          "zulfarrak_antusul": 2072,
+          "zulfarrak_theka_the_martyr": 2000,
+          "zulfarrak_nekrum_and_sezzziz": 1894,
+          "zulfarrak_witch_doctor_zumrah": 2016,
+          "zulfarrak_sandfury_executioner": 2203
+        }
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.83396,
+        "previewClearProbability": 0.8337477621301497,
+        "durationSeconds": 1235.4,
+        "wipeCounts": {
+          "zulfarrak_witch_doctor_zumrah": 1931,
+          "zulfarrak_hydromancer_velratha": 1752,
+          "zulfarrak_theka_the_martyr": 1934,
+          "zulfarrak_gahzrilla": 1733,
+          "zulfarrak_chief_ukorz": 1733,
+          "zulfarrak_antusul": 1986,
+          "zulfarrak_nekrum_and_sezzziz": 1847,
+          "zulfarrak_sandfury_executioner": 1878,
+          "zulfarrak_sergeant_bly": 1810
+        }
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.81253,
+        "previewClearProbability": 0.8095173630826297,
+        "durationSeconds": 1183.6,
+        "wipeCounts": {
+          "zulfarrak_dustwraith": 1762,
+          "zulfarrak_sandfury_executioner": 1719,
+          "zulfarrak_antusul": 2615,
+          "zulfarrak_chief_ukorz": 1613,
+          "zulfarrak_nekrum_and_sezzziz": 1762,
+          "zulfarrak_witch_doctor_zumrah": 1773,
+          "zulfarrak_sandarr_dunereaver": 1888,
+          "zulfarrak_zerillis": 1982,
+          "zulfarrak_theka_the_martyr": 1950,
+          "zulfarrak_hydromancer_velratha": 1683
+        }
+      }
+    },
+    "speed-run": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.85856,
+        "previewClearProbability": 0.8588095469912961,
+        "durationSeconds": 1000.6,
+        "wipeCounts": {
+          "zulfarrak_antusul": 2891,
+          "zulfarrak_nekrum_and_sezzziz": 1989,
+          "zulfarrak_chief_ukorz": 1738,
+          "zulfarrak_witch_doctor_zumrah": 1879,
+          "zulfarrak_sandfury_executioner": 1839,
+          "zulfarrak_theka_the_martyr": 2038,
+          "zulfarrak_hydromancer_velratha": 1770
+        }
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.83162,
+        "previewClearProbability": 0.8322064423820535,
+        "durationSeconds": 1256.2,
+        "wipeCounts": {
+          "zulfarrak_theka_the_martyr": 2014,
+          "zulfarrak_gahzrilla": 1736,
+          "zulfarrak_antusul": 2272,
+          "zulfarrak_sergeant_bly": 1770,
+          "zulfarrak_nekrum_and_sezzziz": 1933,
+          "zulfarrak_hydromancer_velratha": 1747,
+          "zulfarrak_sandfury_executioner": 1836,
+          "zulfarrak_witch_doctor_zumrah": 1912,
+          "zulfarrak_chief_ukorz": 1618
+        }
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.80013,
+        "previewClearProbability": 0.7983956236392504,
+        "durationSeconds": 1198,
+        "wipeCounts": {
+          "zulfarrak_sandarr_dunereaver": 1920,
+          "zulfarrak_hydromancer_velratha": 1706,
+          "zulfarrak_nekrum_and_sezzziz": 1654,
+          "zulfarrak_antusul": 2416,
+          "zulfarrak_sandfury_executioner": 2037,
+          "zulfarrak_theka_the_martyr": 1833,
+          "zulfarrak_witch_doctor_zumrah": 1837,
+          "zulfarrak_zerillis": 2022,
+          "zulfarrak_chief_ukorz": 2788,
+          "zulfarrak_dustwraith": 1774
+        }
+      }
+    }
+  }
+}

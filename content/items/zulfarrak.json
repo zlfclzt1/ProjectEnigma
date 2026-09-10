@@ -1,0 +1,805 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/zulfarrak-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对祖尔法拉克常驻与稀有 Boss 装备，并通过逐件中文 XML 核对属性、图标和需求等级。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-09",
+        "notes": "交叉核对十三个首领与事件记录、七张装备掉落表及十九件非世界装备归属。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].restrictions", "items[].description"],
+        "reason": "按当前职业、定位和装备栏位规则补齐可装备性与来源说明。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "9640",
+      "name": {
+        "zhCN": "虎钳夹口",
+        "enUS": "Vice Grips"
+      },
+      "itemLevel": 48,
+      "requiredLevel": 43,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_26"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克：安图苏尔的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 318
+        },
+        "physical": {
+          "attackPowerPoints": 14,
+          "rangedAttackPowerPoints": 14
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9640",
+        "url": "https://www.wowhead.com/classic/cn/item=9640&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9641",
+      "name": {
+        "zhCN": "活力护符",
+        "enUS": "Lifeblood Amulet"
+      },
+      "itemLevel": 48,
+      "requiredLevel": 43,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_necklace_02"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克：安图苏尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 13,
+          "spiritPoints": 5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9641",
+        "url": "https://www.wowhead.com/classic/cn/item=9641&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9639",
+      "name": {
+        "zhCN": "安图苏尔之手",
+        "enUS": "The Hand of Antu'sul"
+      },
+      "itemLevel": 48,
+      "requiredLevel": 43,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "priest", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_mace_11"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克：安图苏尔的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 61,
+            "maximumPoints": 113
+          },
+          "speedSeconds": 2.7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9639",
+        "url": "https://www.wowhead.com/classic/cn/item=9639&xml",
+        "verifiedAt": "2026-09-09",
+        "notes": "触发式闪电效果不作为单件常驻属性写入。"
+      }
+    },
+    {
+      "id": "9379",
+      "name": {
+        "zhCN": "反击者桑萨斯",
+        "enUS": "Sang'thraze the Deflector"
+      },
+      "itemLevel": 49,
+      "requiredLevel": 44,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_45"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克：安图苏尔的稀有专属掉落；可与保护者迦萨斯组合。"
+      },
+      "stats": {
+        "defense": {
+          "parryPercent": 1
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 34,
+            "maximumPoints": 65
+          },
+          "speedSeconds": 1.7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9379",
+        "url": "https://www.wowhead.com/classic/cn/item=9379&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "18083",
+      "name": {
+        "zhCN": "苏玛赞护手",
+        "enUS": "Jumanza Grips"
+      },
+      "itemLevel": 47,
+      "requiredLevel": 42,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_09"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克：巫医祖穆拉恩的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 11,
+          "spiritPoints": 10
+        },
+        "defense": {
+          "armorPoints": 42
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18083",
+        "url": "https://www.wowhead.com/classic/cn/item=18083&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "18082",
+      "name": {
+        "zhCN": "祖穆拉恩的能量法杖",
+        "enUS": "Zum'rah's Vexing Cane"
+      },
+      "itemLevel": 47,
+      "requiredLevel": 42,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "priest", "shaman", "mage", "warlock", "druid"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_staff_10"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克：巫医祖穆拉恩的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 10
+        },
+        "spell": {
+          "spellPowerPoints": 21,
+          "healingPowerPoints": 21
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 88,
+            "maximumPoints": 133
+          },
+          "speedSeconds": 2.7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18082",
+        "url": "https://www.wowhead.com/classic/cn/item=18082&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9470",
+      "name": {
+        "zhCN": "大坏蛋面具",
+        "enUS": "Bad Mojo Mask"
+      },
+      "itemLevel": 49,
+      "requiredLevel": 44,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_banner_01"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克：暗影祭司塞瑟斯的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 24
+        },
+        "defense": {
+          "armorPoints": 57
+        },
+        "spell": {
+          "shadowSpellPowerPoints": 14
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9470",
+        "url": "https://www.wowhead.com/classic/cn/item=9470&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9473",
+      "name": {
+        "zhCN": "霉运巫毒之皮",
+        "enUS": "Jinxed Hoodoo Skin"
+      },
+      "itemLevel": 49,
+      "requiredLevel": 44,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["rogue", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_leather_05"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克：暗影祭司塞瑟斯的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 8,
+          "staminaPoints": 10,
+          "spiritPoints": 20
+        },
+        "defense": {
+          "armorPoints": 144
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9473",
+        "url": "https://www.wowhead.com/classic/cn/item=9473&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9474",
+      "name": {
+        "zhCN": "霉运巫毒之裙",
+        "enUS": "Jinxed Hoodoo Kilt"
+      },
+      "itemLevel": 49,
+      "requiredLevel": 44,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["shaman", "druid"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_05"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克：暗影祭司塞瑟斯的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 10,
+          "spiritPoints": 24
+        },
+        "defense": {
+          "armorPoints": 126
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9474",
+        "url": "https://www.wowhead.com/classic/cn/item=9474&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9475",
+      "name": {
+        "zhCN": "魔鬼割皮刀",
+        "enUS": "Diabolic Skiver"
+      },
+      "itemLevel": 49,
+      "requiredLevel": 44,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_spear_01"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克：暗影祭司塞瑟斯的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 99,
+            "maximumPoints": 149
+          },
+          "speedSeconds": 2.9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9475",
+        "url": "https://www.wowhead.com/classic/cn/item=9475&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "12471",
+      "name": {
+        "zhCN": "沙漠行者藤条",
+        "enUS": "Desertwalker Cane"
+      },
+      "itemLevel": 47,
+      "requiredLevel": 42,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["priest", "shaman", "mage", "warlock", "druid"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_staff_21"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克：随机稀有首领灰尘怨灵的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 5,
+          "intellectPoints": 4,
+          "spiritPoints": 13
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12471",
+        "url": "https://www.wowhead.com/classic/cn/item=12471&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9469",
+      "name": {
+        "zhCN": "加兹瑞拉鳞片护甲",
+        "enUS": "Gahz'rilla Scale Armor"
+      },
+      "itemLevel": 48,
+      "requiredLevel": 43,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_chain_06"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克：加兹瑞拉的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "spiritPoints": 23
+        },
+        "defense": {
+          "armorPoints": 290
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9469",
+        "url": "https://www.wowhead.com/classic/cn/item=9469&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9467",
+      "name": {
+        "zhCN": "加兹瑞拉之牙",
+        "enUS": "Gahz'rilla Fang"
+      },
+      "itemLevel": 47,
+      "requiredLevel": 42,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_monsterfang_01"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克：加兹瑞拉的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 35,
+            "maximumPoints": 66
+          },
+          "speedSeconds": 1.8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9467",
+        "url": "https://www.wowhead.com/classic/cn/item=9467&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9479",
+      "name": {
+        "zhCN": "狂乱者的拥抱",
+        "enUS": "Embrace of the Lycan"
+      },
+      "itemLevel": 50,
+      "requiredLevel": 45,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "ability_mount_whitedirewolf"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克：乌克兹·沙顶的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 8,
+          "staminaPoints": 16,
+          "spiritPoints": 5
+        },
+        "defense": {
+          "armorPoints": 118
+        },
+        "physical": {
+          "attackPowerPoints": 32,
+          "rangedAttackPowerPoints": 32
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9479",
+        "url": "https://www.wowhead.com/classic/cn/item=9479&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9476",
+      "name": {
+        "zhCN": "大坏蛋肩甲",
+        "enUS": "Big Bad Pauldrons"
+      },
+      "itemLevel": 50,
+      "requiredLevel": 45,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_01"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克：乌克兹·沙顶的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 12,
+          "staminaPoints": 12,
+          "spiritPoints": 8
+        },
+        "defense": {
+          "armorPoints": 396
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9476",
+        "url": "https://www.wowhead.com/classic/cn/item=9476&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9478",
+      "name": {
+        "zhCN": "撕裂之锯",
+        "enUS": "Ripsaw"
+      },
+      "itemLevel": 50,
+      "requiredLevel": 45,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_axe_07"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克：乌克兹·沙顶的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 63,
+            "maximumPoints": 117
+          },
+          "speedSeconds": 2.7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9478",
+        "url": "https://www.wowhead.com/classic/cn/item=9478&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9477",
+      "name": {
+        "zhCN": "酋长的执行者",
+        "enUS": "The Chief's Enforcer"
+      },
+      "itemLevel": 50,
+      "requiredLevel": 45,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "priest", "shaman", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_staff_goldfeathered_01"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克：乌克兹·沙顶的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 118,
+            "maximumPoints": 178
+          },
+          "speedSeconds": 3.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9477",
+        "url": "https://www.wowhead.com/classic/cn/item=9477&xml",
+        "verifiedAt": "2026-09-09",
+        "notes": "击晕触发效果不作为单件常驻属性写入。"
+      }
+    },
+    {
+      "id": "11086",
+      "name": {
+        "zhCN": "保护者迦萨斯",
+        "enUS": "Jang'thraze the Protector"
+      },
+      "itemLevel": 50,
+      "requiredLevel": 45,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_43"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克：乌克兹·沙顶的稀有专属掉落；可与反击者桑萨斯组合。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 44,
+            "maximumPoints": 83
+          },
+          "speedSeconds": 1.9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11086",
+        "url": "https://www.wowhead.com/classic/cn/item=11086&xml",
+        "verifiedAt": "2026-09-09",
+        "notes": "物品组合效果不作为单件常驻属性写入。"
+      }
+    },
+    {
+      "id": "12470",
+      "name": {
+        "zhCN": "沙行者护足",
+        "enUS": "Sandstalker Ankleguards"
+      },
+      "itemLevel": 47,
+      "requiredLevel": 42,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_04"
+      },
+      "description": {
+        "zhCN": "祖尔法拉克：随机稀有首领泽雷利斯的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 6,
+          "agilityPoints": 17,
+          "spiritPoints": 3
+        },
+        "defense": {
+          "armorPoints": 95
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12470",
+        "url": "https://www.wowhead.com/classic/cn/item=12470&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    }
+  ]
+}

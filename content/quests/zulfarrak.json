@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/classic-wow-zulfarrak-dungeon-quests",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对深渊王冠与探水棒任务的实例内目标和四件装备奖励。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "阵营与任务物品背包不模拟；以已建模 Encounter 胜利表达王冠、楼梯事件与探水棒获取。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": [
+          "quests[].dungeonId",
+          "quests[].completion",
+          "quests[].rewards.experienceFraction"
+        ],
+        "reason": "使用可确定结算的 Encounter 胜利表达实例内任务步骤，并保持原版装备二选一奖励方式。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "zulfarrak_tiara_of_the_deep",
+      "name": {
+        "zhCN": "深渊王冠"
+      },
+      "description": {
+        "zhCN": "击败水占师维蕾萨并取得深渊王冠。"
+      },
+      "dungeonId": "zulfarrak",
+      "eligibility": {
+        "minimumLevel": 40,
+        "allowedClassIds": []
+      },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["zulfarrak_hydromancer_velratha"]
+      },
+      "rewards": {
+        "experienceFraction": 1,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["9527", "9531"]
+      }
+    },
+    {
+      "id": "zulfarrak_divino_matic_rod",
+      "name": {
+        "zhCN": "探水棒"
+      },
+      "description": {
+        "zhCN": "完成百人斩，击败最后一波首领并主动挑战布莱中士，取回探水棒。"
+      },
+      "dungeonId": "zulfarrak",
+      "eligibility": {
+        "minimumLevel": 40,
+        "allowedClassIds": []
+      },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": [
+          "zulfarrak_sandfury_executioner",
+          "zulfarrak_nekrum_and_sezzziz",
+          "zulfarrak_sergeant_bly"
+        ]
+      },
+      "rewards": {
+        "experienceFraction": 1.1,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["9533", "9534"]
+      }
+    }
+  ]
+}

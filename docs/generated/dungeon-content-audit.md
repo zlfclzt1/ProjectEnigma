@@ -90,11 +90,23 @@
 | 哀嚎洞穴（wailing_caverns） | wc_lord_serpentis | required | 瑟芬迪斯领主（wc_lord_serpentis） | boss_drop:wc_lord_serpentis | 1 | 6469 毒蛇、5970 毒蛇手套、10411 尖牙足垫、6459 野蛮锁靴 |
 | 哀嚎洞穴（wailing_caverns） | wc_verdan | required | 永生者沃尔丹（wc_verdan） | boss_drop:wc_verdan | 1 | 6630 淡云圆盾、6631 生命之根、6629 蜘蛛斗篷 |
 | 哀嚎洞穴（wailing_caverns） | wc_mutanus | required | 吞噬者穆坦努斯（wc_mutanus） | boss_drop:wc_mutanus | 1 | 6461 粘液覆盖的垫肩、6627 穆坦努斯的胸甲、6463 深渊之戒 |
+| 祖尔法拉克（zulfarrak） | zulfarrak_zerillis | rare（0.14） | 泽雷利斯（zulfarrak_zerillis） | boss_drop:zulfarrak_zerillis | 1 | 12470 沙行者护足 |
+| 祖尔法拉克（zulfarrak） | zulfarrak_antusul | required | 安图苏尔（zulfarrak_antusul） | boss_drop:zulfarrak_antusul | 1 | 9640 虎钳夹口、9641 活力护符、9639 安图苏尔之手、9379 反击者桑萨斯 |
+| 祖尔法拉克（zulfarrak） | zulfarrak_sandarr_dunereaver | rare（0.12） | 沙怒守护者（zulfarrak_sandarr_dunereaver） | 无装备掉落 | 0 | — |
+| 祖尔法拉克（zulfarrak） | zulfarrak_theka_the_martyr | required | 殉教者塞卡（zulfarrak_theka_the_martyr） | 无装备掉落 | 0 | — |
+| 祖尔法拉克（zulfarrak） | zulfarrak_witch_doctor_zumrah | required | 巫医祖穆拉恩（zulfarrak_witch_doctor_zumrah） | boss_drop:zulfarrak_witch_doctor_zumrah | 1 | 18083 苏玛赞护手、18082 祖穆拉恩的能量法杖 |
+| 祖尔法拉克（zulfarrak） | zulfarrak_dustwraith | rare（0.12） | 灰尘怨灵（zulfarrak_dustwraith） | boss_drop:zulfarrak_dustwraith | 1 | 12471 沙漠行者藤条 |
+| 祖尔法拉克（zulfarrak） | zulfarrak_sandfury_executioner | required | 沙怒刽子手与百人斩（zulfarrak_sandfury_executioner） | 无装备掉落 | 0 | — |
+| 祖尔法拉克（zulfarrak） | zulfarrak_nekrum_and_sezzziz | required | 耐克鲁姆·食尸者与暗影祭司塞瑟斯（zulfarrak_nekrum_and_sezzziz） | boss_drop:zulfarrak_nekrum_and_sezzziz | 1 | 9470 大坏蛋面具、9473 霉运巫毒之皮、9474 霉运巫毒之裙、9475 魔鬼割皮刀 |
+| 祖尔法拉克（zulfarrak） | zulfarrak_sergeant_bly | optional | 布莱中士（zulfarrak_sergeant_bly） | 无装备掉落 | 0 | — |
+| 祖尔法拉克（zulfarrak） | zulfarrak_hydromancer_velratha | required | 水占师维蕾萨（zulfarrak_hydromancer_velratha） | 无装备掉落 | 0 | — |
+| 祖尔法拉克（zulfarrak） | zulfarrak_gahzrilla | optional | 加兹瑞拉（zulfarrak_gahzrilla） | boss_drop:zulfarrak_gahzrilla | 1 | 9469 加兹瑞拉鳞片护甲、9467 加兹瑞拉之牙 |
+| 祖尔法拉克（zulfarrak） | zulfarrak_chief_ukorz | required | 乌克兹·沙顶与卢兹鲁（zulfarrak_chief_ukorz） | boss_drop:zulfarrak_chief_ukorz | 1 | 9479 狂乱者的拥抱、9476 大坏蛋肩甲、9478 撕裂之锯、9477 酋长的执行者、11086 保护者迦萨斯 |
 
 ## 引用完整度
 
-- 副本路线节点：82。
-- 副本任务：24。
+- 副本路线节点：94。
+- 副本任务：26。
 - 套装：1。
 - 未被路线引用的掉落表：0。
 - 未被掉落、任务或套装引用的非初始装备：0。

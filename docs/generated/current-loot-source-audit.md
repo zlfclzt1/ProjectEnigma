@@ -6,12 +6,12 @@
 
 ## 汇总
 
-- 路线 Encounter：82。
-- 掉落表：71。
-- 掉落表分类：Boss 专属掉落 71，任务奖励 0，世界掉落 0，设计占位 0。
-- Encounter 引用分类：Boss 专属掉落 71，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 11。
-- 不同装备分类：Boss 专属掉落 191，任务奖励 0，世界掉落 0，设计占位 0。
-- 成员副本任务：24，不同任务奖励装备：54。
+- 路线 Encounter：94。
+- 掉落表：78。
+- 掉落表分类：Boss 专属掉落 78，任务奖励 0，世界掉落 0，设计占位 0。
+- Encounter 引用分类：Boss 专属掉落 78，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 16。
+- 不同装备分类：Boss 专属掉落 210，任务奖励 0，世界掉落 0，设计占位 0。
+- 成员副本任务：26，不同任务奖励装备：58。
 - Boss 掉落与任务奖励重复：0。
 - 未显式填写 `sourceType` 的 Boss 掉落表：0。
 - 未被路线 Encounter 引用的掉落表：0。
@@ -174,6 +174,23 @@
 | 永生者沃尔丹（wc_verdan） | wc_verdan | Boss 专属掉落 | 1 | 6630 淡云圆盾、6631 生命之根、6629 蜘蛛斗篷 |
 | 吞噬者穆坦努斯（wc_mutanus） | wc_mutanus | Boss 专属掉落 | 1 | 6461 粘液覆盖的垫肩、6627 穆坦努斯的胸甲、6463 深渊之戒 |
 
+### 祖尔法拉克（zulfarrak）
+
+| Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
+|---|---|---|---:|---|
+| 泽雷利斯（zulfarrak_zerillis） | zulfarrak_zerillis | Boss 专属掉落 | 1 | 12470 沙行者护足 |
+| 安图苏尔（zulfarrak_antusul） | zulfarrak_antusul | Boss 专属掉落 | 1 | 9640 虎钳夹口、9641 活力护符、9639 安图苏尔之手、9379 反击者桑萨斯 |
+| 沙怒守护者（zulfarrak_sandarr_dunereaver） | — | 无装备掉落 | 0 | — |
+| 殉教者塞卡（zulfarrak_theka_the_martyr） | — | 无装备掉落 | 0 | — |
+| 巫医祖穆拉恩（zulfarrak_witch_doctor_zumrah） | zulfarrak_witch_doctor_zumrah | Boss 专属掉落 | 1 | 18083 苏玛赞护手、18082 祖穆拉恩的能量法杖 |
+| 灰尘怨灵（zulfarrak_dustwraith） | zulfarrak_dustwraith | Boss 专属掉落 | 1 | 12471 沙漠行者藤条 |
+| 沙怒刽子手与百人斩（zulfarrak_sandfury_executioner） | — | 无装备掉落 | 0 | — |
+| 耐克鲁姆·食尸者与暗影祭司塞瑟斯（zulfarrak_nekrum_and_sezzziz） | zulfarrak_nekrum_and_sezzziz | Boss 专属掉落 | 1 | 9470 大坏蛋面具、9473 霉运巫毒之皮、9474 霉运巫毒之裙、9475 魔鬼割皮刀 |
+| 布莱中士（zulfarrak_sergeant_bly） | — | 无装备掉落 | 0 | — |
+| 水占师维蕾萨（zulfarrak_hydromancer_velratha） | — | 无装备掉落 | 0 | — |
+| 加兹瑞拉（zulfarrak_gahzrilla） | zulfarrak_gahzrilla | Boss 专属掉落 | 1 | 9469 加兹瑞拉鳞片护甲、9467 加兹瑞拉之牙 |
+| 乌克兹·沙顶与卢兹鲁（zulfarrak_chief_ukorz） | zulfarrak_chief_ukorz | Boss 专属掉落 | 1 | 9479 狂乱者的拥抱、9476 大坏蛋肩甲、9478 撕裂之锯、9477 酋长的执行者、11086 保护者迦萨斯 |
+
 ## 成员任务奖励
 
 | 副本 | 任务 | 奖励选择 |
@@ -202,6 +219,8 @@
 | 奥达曼（uldaman） | 密室（uldaman_the_hidden_chamber） | 9626 矮人冲锋斧、9627 探险者联盟徽章 |
 | 奥达曼（uldaman） | 意志石板（uldaman_lost_tablets_of_will） | 6723 勇气勋章 |
 | 奥达曼（uldaman） | 修复项链 / 项链任务的终结（uldaman_restoring_the_necklace） | 7673 塔瓦斯德的魔法项链、7888 加卡尔的强化项链 |
+| 祖尔法拉克（zulfarrak） | 深渊王冠（zulfarrak_tiara_of_the_deep） | 9527 幻法之杖、9531 晶岩肩铠 |
+| 祖尔法拉克（zulfarrak） | 探水棒（zulfarrak_divino_matic_rod） | 9533 石工兄弟会之戒、9534 工程学协会头盔 |
 
 ## 审计结论
 

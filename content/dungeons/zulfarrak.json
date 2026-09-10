@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/zulfarrak-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对祖尔法拉克主要首领、楼梯事件、加兹瑞拉召唤与完整路线。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对三名随机稀有首领及各首领的任务或掉落性质。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "将百人斩拆为钥匙、最终波次和可选布莱背叛；加兹瑞拉与布莱为主动可选，三名稀有首领为种子确定的随机路线。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["minimumLevel", "recommendedLevel", "duration", "probability", "route"],
+        "reason": "按 45 级阶段终局、24 分钟完整路线和奥达曼后续进度定位设置初始参数。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "dungeons": [
+    {
+      "id": "zulfarrak",
+      "name": {
+        "zhCN": "祖尔法拉克",
+        "enUS": "Zul'Farrak"
+      },
+      "minimumLevel": 40,
+      "recommendedLevel": 45,
+      "defaultUnlocked": false,
+      "unlock": {
+        "requiredDungeonIds": ["uldaman"]
+      },
+      "members": {
+        "minimum": 1,
+        "maximum": 5,
+        "recommended": 5
+      },
+      "duration": {
+        "baseSeconds": 1440,
+        "minimumRatio": 0.5,
+        "maximumRatio": 1.8
+      },
+      "probability": {
+        "minimum": 0.05,
+        "maximum": 0.99,
+        "base": 0.05,
+        "readinessMultiplier": 0.97,
+        "surplusEffect": 0.5,
+        "geometricWeight": 0.7,
+        "bottleneckWeight": 0.3,
+        "overpowerThreshold": 1.5
+      },
+      "combatTuning": {
+        "bossProbabilityMaximum": 0.98,
+        "requirementMultipliers": {
+          "tank": 0.68,
+          "healing": 0.68,
+          "damage": 0.68
+        }
+      },
+      "route": [
+        {
+          "id": "zulfarrak_zerillis",
+          "type": "rare",
+          "encounterId": "zulfarrak_zerillis",
+          "spawnProbability": 0.14
+        },
+        {
+          "id": "zulfarrak_antusul",
+          "type": "required",
+          "encounterId": "zulfarrak_antusul"
+        },
+        {
+          "id": "zulfarrak_sandarr_dunereaver",
+          "type": "rare",
+          "encounterId": "zulfarrak_sandarr_dunereaver",
+          "spawnProbability": 0.12
+        },
+        {
+          "id": "zulfarrak_theka_the_martyr",
+          "type": "required",
+          "encounterId": "zulfarrak_theka_the_martyr"
+        },
+        {
+          "id": "zulfarrak_witch_doctor_zumrah",
+          "type": "required",
+          "encounterId": "zulfarrak_witch_doctor_zumrah"
+        },
+        {
+          "id": "zulfarrak_dustwraith",
+          "type": "rare",
+          "encounterId": "zulfarrak_dustwraith",
+          "spawnProbability": 0.12
+        },
+        {
+          "id": "zulfarrak_sandfury_executioner",
+          "type": "required",
+          "encounterId": "zulfarrak_sandfury_executioner"
+        },
+        {
+          "id": "zulfarrak_nekrum_and_sezzziz",
+          "type": "required",
+          "encounterId": "zulfarrak_nekrum_and_sezzziz"
+        },
+        {
+          "id": "zulfarrak_sergeant_bly",
+          "type": "optional",
+          "encounterId": "zulfarrak_sergeant_bly",
+          "description": {
+            "zhCN": "完成楼梯事件后主动质问布莱中士，触发俘虏小队的背叛战并取得探水棒。"
+          }
+        },
+        {
+          "id": "zulfarrak_hydromancer_velratha",
+          "type": "required",
+          "encounterId": "zulfarrak_hydromancer_velratha"
+        },
+        {
+          "id": "zulfarrak_gahzrilla",
+          "type": "optional",
+          "encounterId": "zulfarrak_gahzrilla",
+          "description": {
+            "zhCN": "携带祖尔法拉克之槌敲响水池边的锣，主动召唤加兹瑞拉。"
+          }
+        },
+        {
+          "id": "zulfarrak_chief_ukorz",
+          "type": "required",
+          "encounterId": "zulfarrak_chief_ukorz"
+        }
+      ]
+    }
+  ]
+}

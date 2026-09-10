@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对祖尔法拉克七个拥有专属装备的首领与十九件非世界装备归属。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/cn/npc=8127",
+        "verifiedAt": "2026-09-09",
+        "notes": "使用 安图苏尔 Classic 模式公开样本数归一化池内相对权重。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/cn/npc=7271",
+        "verifiedAt": "2026-09-09",
+        "notes": "使用 巫医祖穆拉恩 Classic 模式公开样本数归一化池内相对权重。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/cn/npc=7275",
+        "verifiedAt": "2026-09-09",
+        "notes": "使用 暗影祭司塞瑟斯 Classic 模式公开样本数归一化池内相对权重。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/cn/npc=7273",
+        "verifiedAt": "2026-09-09",
+        "notes": "使用 加兹瑞拉 Classic 模式公开样本数归一化池内相对权重。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/cn/npc=7267",
+        "verifiedAt": "2026-09-09",
+        "notes": "使用 乌克兹·沙顶 Classic 模式公开样本数归一化池内相对权重。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["lootTables[].guaranteedEquipmentDrops"],
+        "reason": "拥有专属装备池的 Boss 每次胜利保证掉落一件装备；只覆盖总掉落数量，不改变真实池与相对权重。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "lootTables": [
+    {
+      "id": "zulfarrak_antusul",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "9640",
+          "weight": 0.3684001061
+        },
+        {
+          "itemId": "9641",
+          "weight": 0.4002387901
+        },
+        {
+          "itemId": "9639",
+          "weight": 0.2065534625
+        },
+        {
+          "itemId": "9379",
+          "weight": 0.0248076413
+        }
+      ]
+    },
+    {
+      "id": "zulfarrak_witch_doctor_zumrah",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "18083",
+          "weight": 0.6936631944
+        },
+        {
+          "itemId": "18082",
+          "weight": 0.3063368056
+        }
+      ]
+    },
+    {
+      "id": "zulfarrak_nekrum_and_sezzziz",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "9470",
+          "weight": 0.2579589782
+        },
+        {
+          "itemId": "9473",
+          "weight": 0.2515414622
+        },
+        {
+          "itemId": "9474",
+          "weight": 0.2439914433
+        },
+        {
+          "itemId": "9475",
+          "weight": 0.2465081163
+        }
+      ]
+    },
+    {
+      "id": "zulfarrak_dustwraith",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "12471",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "zulfarrak_gahzrilla",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "9469",
+          "weight": 0.4896640827
+        },
+        {
+          "itemId": "9467",
+          "weight": 0.5103359173
+        }
+      ]
+    },
+    {
+      "id": "zulfarrak_chief_ukorz",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "9479",
+          "weight": 0.1120583148
+        },
+        {
+          "itemId": "9476",
+          "weight": 0.3594020262
+        },
+        {
+          "itemId": "9478",
+          "weight": 0.2514208055
+        },
+        {
+          "itemId": "9477",
+          "weight": 0.2579688658
+        },
+        {
+          "itemId": "11086",
+          "weight": 0.0191499876
+        }
+      ]
+    },
+    {
+      "id": "zulfarrak_zerillis",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "12470",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

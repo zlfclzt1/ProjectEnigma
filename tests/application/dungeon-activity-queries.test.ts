@@ -159,7 +159,7 @@ describe("dungeon and activity queries", () => {
       2,
     );
 
-    expect(view.dungeons).toHaveLength(14);
+    expect(view.dungeons).toHaveLength(15);
     expect(view.classOptions).toHaveLength(9);
     expect(view.roleOptions.map((role) => role.id)).toEqual(["tank", "healer", "dps"]);
     expect(view.selectedDungeon).toMatchObject({

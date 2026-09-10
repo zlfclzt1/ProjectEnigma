@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "祖尔法拉克副本日志；只描述已经结算的路线与战斗事实。"
+      }
+    ]
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "zulfarrak_zerillis_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "zulfarrak_zerillis"
+      },
+      "availableParameters": ["member", "healer"],
+      "templates": [
+        "泽雷利斯的网刚落地，{member}已经决定用直线把巡逻战拉回计划路线。",
+        "冰霜射击被驱散后，{healer}宣布这只稀有首领没有资格继续拖时间。"
+      ]
+    },
+    {
+      "id": "zulfarrak_antusul_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "zulfarrak_antusul"
+      },
+      "availableParameters": ["tank", "member"],
+      "templates": [
+        "安图苏尔的治疗图腾刚出现，{member}就带着孽生蛇一起清掉了它。",
+        "{tank}顶住最后一波仆从，安图苏尔再也没能读完治疗波。"
+      ]
+    },
+    {
+      "id": "zulfarrak_sandarr_dunereaver_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "zulfarrak_sandarr_dunereaver"
+      },
+      "availableParameters": ["member", "tank"],
+      "templates": [
+        "沙怒守护者突然从转角出现，{member}确认稀有首领也可能只带着任务材料。",
+        "{tank}稳住巡逻怪后提醒全队：没有装备池也要把路走完。"
+      ]
+    },
+    {
+      "id": "zulfarrak_theka_the_martyr_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "zulfarrak_theka_the_martyr"
+      },
+      "availableParameters": ["member", "healer"],
+      "templates": [
+        "塞卡进入殉教形态时，{member}把注意力转向了满地甲虫。",
+        "物理攻击暂时失效，{healer}正好用这段时间重新整理了蓝量。"
+      ]
+    },
+    {
+      "id": "zulfarrak_witch_doctor_zumrah_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "zulfarrak_witch_doctor_zumrah"
+      },
+      "availableParameters": ["healer", "member"],
+      "templates": [
+        "祖穆拉恩的结界接连倒下，{healer}终于不用和敌方治疗比赛。",
+        "{member}打断最后一道暗影法术，墓地里的僵尸也随首领一同安静。"
+      ]
+    },
+    {
+      "id": "zulfarrak_dustwraith_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "zulfarrak_dustwraith"
+      },
+      "availableParameters": ["member", "healer"],
+      "templates": [
+        "灰尘怨灵从沙雾里现身，{member}在它施法前抢到了先手。",
+        "稀有战结束得很快，{healer}把藤条列入了本次远征的意外收获。"
+      ]
+    },
+    {
+      "id": "zulfarrak_sandfury_executioner_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "zulfarrak_sandfury_executioner"
+      },
+      "availableParameters": ["tank", "healer"],
+      "templates": [
+        "{tank}拿到刽子手钥匙后打开牢笼，楼梯上的敌人随即开始成批涌来。",
+        "百人斩的最后一波出现前，{healer}已经不再追问到底还剩多少波。"
+      ]
+    },
+    {
+      "id": "zulfarrak_nekrum_and_sezzziz_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "zulfarrak_nekrum_and_sezzziz"
+      },
+      "availableParameters": ["tank", "member"],
+      "templates": [
+        "{tank}拖住耐克鲁姆，{member}让暗影祭司塞瑟斯没能完成下一次治疗。",
+        "楼梯事件终于结束，耐克鲁姆与塞瑟斯一起倒在最后一层台阶。"
+      ]
+    },
+    {
+      "id": "zulfarrak_sergeant_bly_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "zulfarrak_sergeant_bly"
+      },
+      "availableParameters": ["member", "tank"],
+      "templates": [
+        "布莱中士刚说完翻脸宣言，{member}已经把探水棒列进了任务报告。",
+        "{tank}控制住俘虏小队，证明主动选择的支路也必须认真收尾。"
+      ]
+    },
+    {
+      "id": "zulfarrak_hydromancer_velratha_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "zulfarrak_hydromancer_velratha"
+      },
+      "availableParameters": ["healer", "member"],
+      "templates": [
+        "维蕾萨的冰霜法术被打断，{member}从水池边取回了深渊王冠。",
+        "{healer}确认王冠任务已经完成，也确认这名首领没有装备池。"
+      ]
+    },
+    {
+      "id": "zulfarrak_gahzrilla_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "zulfarrak_gahzrilla"
+      },
+      "availableParameters": ["tank", "member"],
+      "templates": [
+        "锣声落下，加兹瑞拉冲出水池，{tank}背靠墙接住了它的第一次猛击。",
+        "{member}落地后重新加入战斗，并发誓下次一定站得离击飞更远。"
+      ]
+    },
+    {
+      "id": "zulfarrak_chief_ukorz_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "zulfarrak_chief_ukorz"
+      },
+      "availableParameters": ["tank", "healer"],
+      "templates": [
+        "{tank}先稳住卢兹鲁，再把乌克兹的顺劈牢牢朝向远离队伍的一侧。",
+        "乌克兹进入狂暴姿态时，{healer}用最后一轮恢复把队伍送过了 45 级阶段终点。"
+      ]
+    }
+  ]
+}
