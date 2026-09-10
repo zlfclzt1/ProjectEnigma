@@ -32,8 +32,10 @@ describe("quests page", () => {
     await wrapper.get(".quest-card button").trigger("click");
     await flushPromises();
     expect(wrapper.text()).toContain("已接取");
-    expect(game.memberDungeonQuests(game.members!.members[0]!.id)?.quests[0]?.status).toBe(
-      "accepted",
-    );
+    expect(
+      game
+        .memberDungeonQuests(game.members!.members[0]!.id)
+        ?.quests.find((quest) => quest.id === "rfc_returning_lost_satchel")?.status,
+    ).toBe("accepted");
   });
 });

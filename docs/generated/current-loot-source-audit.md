@@ -6,12 +6,12 @@
 
 ## 汇总
 
-- 路线 Encounter：28。
-- 掉落表：26。
-- 掉落表分类：Boss 专属掉落 26，任务奖励 0，世界掉落 0，设计占位 0。
-- Encounter 引用分类：Boss 专属掉落 26，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 2。
-- 不同装备分类：Boss 专属掉落 64，任务奖励 0，世界掉落 0，设计占位 0。
-- 成员副本任务：2，不同任务奖励装备：5。
+- 路线 Encounter：36。
+- 掉落表：32。
+- 掉落表分类：Boss 专属掉落 32，任务奖励 0，世界掉落 0，设计占位 0。
+- Encounter 引用分类：Boss 专属掉落 32，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 4。
+- 不同装备分类：Boss 专属掉落 79，任务奖励 0，世界掉落 0，设计占位 0。
+- 成员副本任务：5，不同任务奖励装备：11。
 - Boss 掉落与任务奖励重复：0。
 - 未显式填写 `sourceType` 的 Boss 掉落表：0。
 - 未被路线 Encounter 引用的掉落表：0。
@@ -21,6 +21,19 @@
 当前没有非 Boss 来源被 Encounter 当作 Boss 掉落引用。
 
 ## 逐副本明细
+
+### 黑暗深渊（blackfathom_deeps）
+
+| Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
+|---|---|---|---:|---|
+| 加摩拉（bfd_ghamoo_ra） | bfd_ghamoo_ra | Boss 专属掉落 | 1 | 6907 海龟护甲、6908 加摩拉的绳索 |
+| 瑟拉维斯（bfd_lady_sarevess） | bfd_lady_sarevess | Boss 专属掉落 | 1 | 888 纳迦军用手套、11121 黑水刀、3078 纳迦穿心者 |
+| 格里哈斯特（bfd_gelihast） | bfd_gelihast | Boss 专属掉落 | 1 | 6906 海藻手套、6905 暗礁战斧 |
+| 洛古斯·杰特（bfd_lorgus_jett） | — | 无装备掉落 | 0 | — |
+| 阿奎尼斯男爵（bfd_baron_aquanis） | — | 无装备掉落 | 0 | — |
+| 老年塞拉吉斯（bfd_old_serrakis） | bfd_old_serrakis | Boss 专属掉落 | 1 | 6901 发光的蛇颈龙斗篷、6902 瑟拉吉斯指环、6904 瑟拉吉斯之刺 |
+| 梦游者克尔里斯（bfd_twilight_lord_kelris） | bfd_twilight_lord_kelris | Boss 专属掉落 | 1 | 1155 梦游者魔棒、6903 凝望短裤 |
+| 阿库麦尔（bfd_akumai） | bfd_akumai | Boss 专属掉落 | 1 | 6909 海蛇之击、6910 吸血短裤、6911 苔藓腰带 |
 
 ### 死亡矿井（deadmines）
 
@@ -74,6 +87,9 @@
 
 | 副本 | 任务 | 奖励选择 |
 |---|---|---|
+| 黑暗深渊（blackfathom_deeps） | 黑暗深渊的罪恶（bfd_blackfathom_villainy） | 7001 墓碑节杖、7002 极光圆盾 |
+| 黑暗深渊（blackfathom_deeps） | 暮光之锤的末日（bfd_twilight_falls） | 6998 云光长靴、7000 赤木束带 |
+| 黑暗深渊（blackfathom_deeps） | 阿奎尼斯男爵（bfd_baron_aquanis） | 16886 逃犯弯刀、16887 女巫之指 |
 | 怒焰裂谷（ragefire_chasm） | 归还背包（rfc_returning_lost_satchel） | 15452 羽珠护腕、15453 草原狮护腕 |
 | 怒焰裂谷（ragefire_chasm） | 毁灭之力（rfc_power_to_destroy） | 15449 苍白长裤、15450 泥泞护腿、15451 石像鬼护腿 |
 

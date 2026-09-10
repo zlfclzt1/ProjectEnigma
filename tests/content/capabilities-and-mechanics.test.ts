@@ -19,14 +19,18 @@ describe("party capability and encounter mechanic content", () => {
     const registry = loadBrowserContentRegistry();
 
     expect(registry.capabilityById.size).toBe(11);
-    expect(registry.mechanicById.size).toBe(2);
+    expect(registry.mechanicById.size).toBe(4);
     expect(registry.capabilityById.get(asBrandedId<"CapabilityId">("interrupt"))?.category).toBe(
       "interrupt",
     );
     expect(
       registry.mechanicById.get(asBrandedId<"MechanicId">("test_required_interrupt"))?.type,
     ).toBe("required");
-    expect(registry.encounters.every((encounter) => encounter.mechanicIds.length === 0)).toBe(true);
+    expect(
+      registry.encounters
+        .filter((encounter) => encounter.dungeonId === "ragefire_chasm")
+        .every((encounter) => encounter.mechanicIds.length === 0),
+    ).toBe(true);
   });
 
   it("rejects missing capability and encounter mechanic references", () => {

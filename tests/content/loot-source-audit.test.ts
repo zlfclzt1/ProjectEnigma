@@ -17,24 +17,24 @@ describe("loot source audit", () => {
 
   it("reports explicit no-equipment encounters without inventing loot", () => {
     const audit = auditLootSources(loadBrowserContentRegistry());
-    expect(audit.rows).toHaveLength(28);
+    expect(audit.rows).toHaveLength(36);
     expect(audit.lootTableCounts).toEqual({
-      "boss-drop": 26,
+      "boss-drop": 32,
       "quest-reward": 0,
       "world-drop": 0,
       "design-placeholder": 0,
     });
-    expect(audit.encounterCounts["no-equipment"]).toBe(2);
-    expect(audit.questRewards).toHaveLength(2);
+    expect(audit.encounterCounts["no-equipment"]).toBe(4);
+    expect(audit.questRewards).toHaveLength(5);
     expect(audit.bossQuestRewardOverlap).toEqual([]);
     expect(
       audit.rows.filter((row) => row.category === "no-equipment").map((row) => row.encounterId),
-    ).toEqual(["oggleflint", "bazzalan"]);
+    ).toEqual(["bfd_lorgus_jett", "bfd_baron_aquanis", "oggleflint", "bazzalan"]);
     expect(audit.unusedLootTableIds).toEqual([]);
 
     const report = renderLootSourceAudit(audit);
-    expect(report).toContain("无装备掉落 2");
-    expect(report).toContain("成员副本任务：2，不同任务奖励装备：5");
+    expect(report).toContain("无装备掉落 4");
+    expect(report).toContain("成员副本任务：5，不同任务奖励装备：11");
     expect(report).toContain("奥格弗林特（oggleflint） | — | 无装备掉落");
     expect(report).toContain("毁灭之力（rfc_power_to_destroy）");
   });

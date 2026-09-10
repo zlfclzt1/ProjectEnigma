@@ -164,7 +164,7 @@ describe("member view queries", () => {
     const item = detail.equipment.find((slot) => slot.item?.instanceId === instance.id)!.item!;
     expect(item.iconUrl).toMatch(/^https:\/\/wow\.zamimg\.com\/images\/wow\/icons\/large\//);
     expect(item.stats.length).toBeGreaterThan(0);
-    expect(item.statsSource).toBe("Wowhead Classic · 2026-09-08");
+    expect(item.statsSource).toMatch(/^Wowhead Classic · 2026-09-0[89]$/);
     expect(item.acquisitionSource).toContain("怒焰裂谷");
     expect(item.acquisitionSource).toContain("奥格弗林特");
     expect(item.requirements[0]).toMatch(/^需要等级 /);

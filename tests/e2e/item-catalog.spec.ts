@@ -5,7 +5,7 @@ test("browses the unlocked item catalog without revealing locked loot", async ({
   await page.getByRole("link", { name: "装备图鉴" }).click();
   await expect(page).toHaveURL(/#\/catalog$/);
   await expect(page.getByRole("heading", { name: "装备图鉴" })).toBeVisible();
-  await expect(page.locator(".dungeon-catalog")).toHaveCount(4);
+  await expect(page.locator(".dungeon-catalog")).toHaveCount(5);
   await expect(page.getByText("装备资料封存中").first()).toBeVisible();
   await expect(page.getByText("狼王斗篷")).toHaveCount(0);
 
@@ -51,7 +51,19 @@ test("claims collection rewards once and persists their effects", async ({ page 
     const collection = state.collection as {
       items: Record<string, { acquisitionCount: number; seenRandomSuffixIds: string[] }>;
     };
-    for (const itemId of ["10412", "6460", "13245", "6472"]) {
+    for (const itemId of [
+      "10412",
+      "6460",
+      "13245",
+      "6472",
+      "5404",
+      "10410",
+      "6465",
+      "6447",
+      "6473",
+      "6449",
+      "6448",
+    ]) {
       collection.items[itemId] = { acquisitionCount: 1, seenRandomSuffixIds: [] };
     }
     store.put(state);

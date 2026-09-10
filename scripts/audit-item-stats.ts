@@ -77,7 +77,7 @@ function buildReport(): string {
   const realItems = items.filter((item) => !item.isStarter);
   const starterItems = items.filter((item) => item.isStarter);
 
-  assert.equal(realItems.length, 69, "当前真实副本与任务装备数量应为 69");
+  assert.equal(realItems.length, 90, "当前真实副本与任务装备数量应为 90");
   assert.equal(starterItems.length, 41, "当前初始装备定义数量应为 41");
   for (const item of realItems) {
     assert.ok(Object.keys(item.stats).length > 0, `${item.id} 缺少真实属性`);
@@ -97,7 +97,7 @@ function buildReport(): string {
   const lines = [
     "# 当前装备属性审计",
     "",
-    "生成日期：2026-09-08",
+    "生成日期：2026-09-09",
     "",
     "## 结论",
     "",
@@ -105,7 +105,7 @@ function buildReport(): string {
     `- 初始装备：${starterItems.length} / ${starterItems.length} 已录入本游戏平衡属性，并标记 manual 与 stats balance override。`,
     "- 未确认而猜测的真实属性：0 项。",
     "- 触发效果和套装效果不作为单件常驻属性写入；相关排除项记录在物品来源说明中。",
-    "- Boss 与掉落关系已于 2026-09-08 对照 AtlasLootClassic；本游戏的必掉数量和公共任务奖励池继续作为平衡覆盖。",
+    "- Boss 与掉落关系已于 2026-09-09 对照 AtlasLootClassic；本游戏的必掉数量和公共任务奖励池继续作为平衡覆盖。",
     "",
     "## 真实装备",
     "",
@@ -150,7 +150,7 @@ if (mode === "--write") {
     report,
     "装备属性审计报告已变化；请显式运行 npm run item-stats:audit:write。",
   );
-  console.log("装备属性审计通过：69 件真实装备与 41 件初始装备属性完整。");
+  console.log("装备属性审计通过：90 件真实装备与 41 件初始装备属性完整。");
 } else {
   throw new Error(`未知参数：${mode}`);
 }

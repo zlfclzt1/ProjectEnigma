@@ -8,6 +8,14 @@
 
 | 副本 | 节点 | 类型 | Encounter | 掉落来源 | 保证数量 | 装备 |
 |---|---|---|---|---|---:|---|
+| 黑暗深渊（blackfathom_deeps） | bfd_ghamoo_ra | required | 加摩拉（bfd_ghamoo_ra） | boss_drop:bfd_ghamoo_ra | 1 | 6907 海龟护甲、6908 加摩拉的绳索 |
+| 黑暗深渊（blackfathom_deeps） | bfd_lady_sarevess | required | 瑟拉维斯（bfd_lady_sarevess） | boss_drop:bfd_lady_sarevess | 1 | 888 纳迦军用手套、11121 黑水刀、3078 纳迦穿心者 |
+| 黑暗深渊（blackfathom_deeps） | bfd_gelihast | required | 格里哈斯特（bfd_gelihast） | boss_drop:bfd_gelihast | 1 | 6906 海藻手套、6905 暗礁战斧 |
+| 黑暗深渊（blackfathom_deeps） | bfd_lorgus_jett | optional | 洛古斯·杰特（bfd_lorgus_jett） | 无装备掉落 | 0 | — |
+| 黑暗深渊（blackfathom_deeps） | bfd_baron_aquanis | optional | 阿奎尼斯男爵（bfd_baron_aquanis） | 无装备掉落 | 0 | — |
+| 黑暗深渊（blackfathom_deeps） | bfd_old_serrakis | required | 老年塞拉吉斯（bfd_old_serrakis） | boss_drop:bfd_old_serrakis | 1 | 6901 发光的蛇颈龙斗篷、6902 瑟拉吉斯指环、6904 瑟拉吉斯之刺 |
+| 黑暗深渊（blackfathom_deeps） | bfd_twilight_lord_kelris | required | 梦游者克尔里斯（bfd_twilight_lord_kelris） | boss_drop:bfd_twilight_lord_kelris | 1 | 1155 梦游者魔棒、6903 凝望短裤 |
+| 黑暗深渊（blackfathom_deeps） | bfd_akumai | required | 阿库麦尔（bfd_akumai） | boss_drop:bfd_akumai | 1 | 6909 海蛇之击、6910 吸血短裤、6911 苔藓腰带 |
 | 死亡矿井（deadmines） | dm_rhahkzor | required | 拉克佐（dm_rhahkzor） | boss_drop:dm_rhahkzor | 1 | 872 切石者、5187 拉克佐之锤 |
 | 死亡矿井（deadmines） | dm_sneeds_shredder | required | 斯尼德的伐木机（dm_sneeds_shredder） | boss_drop:dm_sneeds_shredder | 1 | 1937 电锯、2169 蜂鸣之刃 |
 | 死亡矿井（deadmines） | dm_sneed | required | 斯尼德（dm_sneed） | boss_drop:dm_sneed | 1 | 5194 工头战斧、5195 金斑手套 |
@@ -39,8 +47,8 @@
 
 ## 引用完整度
 
-- 副本路线节点：28。
-- 副本任务：2。
+- 副本路线节点：36。
+- 副本任务：5。
 - 套装：1。
 - 未被路线引用的掉落表：0。
 - 未被掉落、任务或套装引用的非初始装备：0。

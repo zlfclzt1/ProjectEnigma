@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "黑暗深渊 D05 趣味日志；只描述已结算事实，不参与概率或奖励计算。"
+      }
+    ]
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "bfd_twilight_lord_kelris_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "bfd_twilight_lord_kelris" },
+      "availableParameters": ["member", "tank"],
+      "templates": [
+        "克尔里斯开始吟唱梦魇。{tank} 确认队伍里至少有人记得打断。",
+        "暗影低语响起，{member} 在最后一秒想起自己带了打断。",
+        "仪式被打断，队伍决定把这次胜利归功于提前写好的计划。"
+      ]
+    },
+    {
+      "id": "bfd_akumai_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "bfd_akumai" },
+      "availableParameters": ["healer", "member"],
+      "templates": [
+        "阿库麦尔倒下了，{healer} 终于可以停止数自己的蓝量。",
+        "深水腐蚀散去，{member} 坚称自己从头到尾都没有害怕。",
+        "最终 Boss 已被击败，装备委员会自动开始排队。"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/classic-wow-blackfathom-deeps-dungeon-quests",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对 Blackfathom Villainy、Twilight Falls、Baron Aquanis 任务目标与奖励。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "省略阵营、跑腿、任务书籍和声望步骤，只保留成员主动安排副本即可判断的目标。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["completion", "rewards.experienceFraction", "rewards.funds"],
+        "reason": "把原版任务链压缩为成员级副本任务；奖励装备和选择关系保持真实来源。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "bfd_blackfathom_villainy",
+      "name": { "zhCN": "黑暗深渊的罪恶" },
+      "description": { "zhCN": "击败梦游者克尔里斯，终止黑暗深渊中的暮光仪式。" },
+      "dungeonId": "blackfathom_deeps",
+      "eligibility": { "minimumLevel": 18, "allowedClassIds": [] },
+      "completion": { "type": "encounter-victories", "encounterIds": ["bfd_twilight_lord_kelris"] },
+      "rewards": { "experienceFraction": 0.8, "funds": 0, "itemChoiceIds": ["7001", "7002"] }
+    },
+    {
+      "id": "bfd_twilight_falls",
+      "name": { "zhCN": "暮光之锤的末日" },
+      "description": { "zhCN": "完成黑暗深渊主线，带回暮光之锤覆灭的证明。" },
+      "dungeonId": "blackfathom_deeps",
+      "eligibility": { "minimumLevel": 18, "allowedClassIds": [] },
+      "completion": { "type": "dungeon-clear" },
+      "rewards": { "experienceFraction": 0.8, "funds": 0, "itemChoiceIds": ["6998", "7000"] }
+    },
+    {
+      "id": "bfd_baron_aquanis",
+      "name": { "zhCN": "阿奎尼斯男爵" },
+      "description": { "zhCN": "在出发前主动勾选阿奎尼斯男爵，并击败这名水元素首领。" },
+      "dungeonId": "blackfathom_deeps",
+      "eligibility": { "minimumLevel": 25, "allowedClassIds": [] },
+      "completion": { "type": "encounter-victories", "encounterIds": ["bfd_baron_aquanis"] },
+      "rewards": { "experienceFraction": 0.7, "funds": 0, "itemChoiceIds": ["16886", "16887"] }
+    }
+  ]
+}

@@ -1,0 +1,572 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/blackfathom-deeps-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "使用 Classic XML 逐件核对 15 件黑暗深渊 Boss 专属装备的名称、物品等级、需求等级、图标和常驻属性。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-09",
+        "notes": "交叉核对装备与 Boss 的专属掉落关系；探索赛季新增物品不录入。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].restrictions", "items[].description"],
+        "reason": "按当前职业/定位装备规则补齐 Classic XML 未直接提供的可装备性与项目内说明。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "6901",
+      "name": { "zhCN": "发光的蛇颈龙斗篷", "enUS": "Glowing Thresher Cape" },
+      "itemLevel": 29,
+      "requiredLevel": 24,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "database", "name": "inv_misc_monsterscales_03" },
+      "description": { "zhCN": "黑暗深渊：瑟拉吉斯的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 3, "spiritPoints": 8 },
+        "defense": { "armorPoints": 23 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6901",
+        "url": "https://www.wowhead.com/classic/cn/item=6901&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6902",
+      "name": { "zhCN": "瑟拉吉斯指环", "enUS": "Bands of Serra'kis" },
+      "itemLevel": 27,
+      "requiredLevel": 22,
+      "quality": "uncommon",
+      "slot": "wrist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["mage", "priest", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_bracer_08" },
+      "description": { "zhCN": "黑暗深渊：瑟拉吉斯的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 4, "staminaPoints": 2 },
+        "defense": { "armorPoints": 39 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6902",
+        "url": "https://www.wowhead.com/classic/cn/item=6902&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6903",
+      "name": { "zhCN": "凝望短裤", "enUS": "Gaze Dreamer Pants" },
+      "itemLevel": 28,
+      "requiredLevel": 23,
+      "quality": "uncommon",
+      "slot": "legs",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["mage", "priest", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_pants_02" },
+      "description": { "zhCN": "黑暗深渊：梦游者克尔里斯的专属掉落。" },
+      "stats": {
+        "primary": { "intellectPoints": 7, "spiritPoints": 6 },
+        "defense": { "armorPoints": 36 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6903",
+        "url": "https://www.wowhead.com/classic/cn/item=6903&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6904",
+      "name": { "zhCN": "瑟拉吉斯之刺", "enUS": "Bite of Serra'kis" },
+      "itemLevel": 28,
+      "requiredLevel": 23,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_misc_monsterfang_01" },
+      "description": { "zhCN": "黑暗深渊：瑟拉吉斯的专属掉落。" },
+      "stats": {
+        "weapon": { "damage": { "minimumPoints": 16, "maximumPoints": 30 }, "speedSeconds": 1.3 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6904",
+        "url": "https://www.wowhead.com/classic/cn/item=6904&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6905",
+      "name": { "zhCN": "暗礁战斧", "enUS": "Reef Axe" },
+      "itemLevel": 27,
+      "requiredLevel": 22,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_weapon_halberd_06" },
+      "description": { "zhCN": "黑暗深渊：格里哈斯特的专属掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 5, "spiritPoints": 7 },
+        "weapon": { "damage": { "minimumPoints": 48, "maximumPoints": 73 }, "speedSeconds": 3.3 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6905",
+        "url": "https://www.wowhead.com/classic/cn/item=6905&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6906",
+      "name": { "zhCN": "海藻手套", "enUS": "Algae Fists" },
+      "itemLevel": 28,
+      "requiredLevel": 23,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_gauntlets_10" },
+      "description": { "zhCN": "黑暗深渊：格里哈斯特的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 10, "staminaPoints": 4 },
+        "defense": { "armorPoints": 132 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6906",
+        "url": "https://www.wowhead.com/classic/cn/item=6906&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6907",
+      "name": { "zhCN": "海龟护甲", "enUS": "Tortoise Armor" },
+      "itemLevel": 25,
+      "requiredLevel": 20,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_shirt_06" },
+      "description": { "zhCN": "黑暗深渊：加摩拉的专属掉落。" },
+      "stats": { "defense": { "armorPoints": 421 } },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6907",
+        "url": "https://www.wowhead.com/classic/cn/item=6907&xml",
+        "verifiedAt": "2026-09-09",
+        "notes": "armorPoints 合并 XML 的基础护甲与 armorbonus。"
+      }
+    },
+    {
+      "id": "6908",
+      "name": { "zhCN": "加摩拉的绳索", "enUS": "Ghamoo-ra's Bind" },
+      "itemLevel": 25,
+      "requiredLevel": 20,
+      "quality": "uncommon",
+      "slot": "waist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["mage", "priest", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_belt_24" },
+      "description": { "zhCN": "黑暗深渊：加摩拉的专属掉落。" },
+      "stats": {
+        "primary": { "intellectPoints": 4, "staminaPoints": 4 },
+        "defense": { "armorPoints": 22 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6908",
+        "url": "https://www.wowhead.com/classic/cn/item=6908&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6909",
+      "name": { "zhCN": "海蛇之击", "enUS": "Strike of the Hydra" },
+      "itemLevel": 31,
+      "requiredLevel": 26,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "shaman"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_sword_42" },
+      "description": { "zhCN": "黑暗深渊：阿库麦尔的专属掉落。" },
+      "stats": {
+        "weapon": { "damage": { "minimumPoints": 67, "maximumPoints": 102 }, "speedSeconds": 3.3 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6909",
+        "url": "https://www.wowhead.com/classic/cn/item=6909&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6910",
+      "name": { "zhCN": "吸血短裤", "enUS": "Leech Pants" },
+      "itemLevel": 31,
+      "requiredLevel": 26,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["mage", "priest", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_pants_14" },
+      "description": { "zhCN": "黑暗深渊：阿库麦尔的专属掉落。" },
+      "stats": {
+        "primary": { "intellectPoints": 5, "staminaPoints": 1, "spiritPoints": 15 },
+        "defense": { "armorPoints": 42 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6910",
+        "url": "https://www.wowhead.com/classic/cn/item=6910&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6911",
+      "name": { "zhCN": "苔藓腰带", "enUS": "Moss Cinch" },
+      "itemLevel": 31,
+      "requiredLevel": 26,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "leather",
+      "restrictions": { "allowedClassIds": ["rogue", "druid"], "allowedRoles": ["dps", "healer"] },
+      "icon": { "kind": "database", "name": "inv_belt_25" },
+      "description": { "zhCN": "黑暗深渊：阿库麦尔的专属掉落。" },
+      "stats": {
+        "primary": { "intellectPoints": 11, "staminaPoints": 5 },
+        "defense": { "armorPoints": 59 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6911",
+        "url": "https://www.wowhead.com/classic/cn/item=6911&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "888",
+      "name": { "zhCN": "纳迦军用手套", "enUS": "Naga Battle Gloves" },
+      "itemLevel": 27,
+      "requiredLevel": 22,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "druid"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_gauntlets_13" },
+      "description": { "zhCN": "黑暗深渊：瑟拉维斯的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 4, "staminaPoints": 4, "spiritPoints": 7 },
+        "defense": { "armorPoints": 61 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "888",
+        "url": "https://www.wowhead.com/classic/cn/item=888&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "1155",
+      "name": { "zhCN": "梦游者魔棒", "enUS": "Rod of the Sleepwalker" },
+      "itemLevel": 29,
+      "requiredLevel": 24,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_staff_06" },
+      "description": { "zhCN": "黑暗深渊：梦游者克尔里斯的专属掉落。" },
+      "stats": {
+        "primary": { "intellectPoints": 11, "spiritPoints": 10 },
+        "weapon": { "damage": { "minimumPoints": 53, "maximumPoints": 80 }, "speedSeconds": 2.8 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "1155",
+        "url": "https://www.wowhead.com/classic/cn/item=1155&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "3078",
+      "name": { "zhCN": "纳迦穿心者", "enUS": "Naga Heartpiercer" },
+      "itemLevel": 26,
+      "requiredLevel": 21,
+      "quality": "uncommon",
+      "slot": "ranged",
+      "restrictions": { "allowedClassIds": ["hunter"], "allowedRoles": ["dps"] },
+      "icon": { "kind": "database", "name": "inv_weapon_bow_04" },
+      "description": { "zhCN": "黑暗深渊：瑟拉维斯的专属掉落。" },
+      "stats": {
+        "weapon": { "damage": { "minimumPoints": 13, "maximumPoints": 25 }, "speedSeconds": 1.8 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "3078",
+        "url": "https://www.wowhead.com/classic/cn/item=3078&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "11121",
+      "name": { "zhCN": "黑水刀", "enUS": "Darkwater Talwar" },
+      "itemLevel": 26,
+      "requiredLevel": 21,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "shaman"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_sword_36" },
+      "description": { "zhCN": "黑暗深渊：瑟拉维斯的专属掉落。" },
+      "stats": {
+        "weapon": { "damage": { "minimumPoints": 20, "maximumPoints": 39 }, "speedSeconds": 2.2 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11121",
+        "url": "https://www.wowhead.com/classic/cn/item=11121&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6998",
+      "name": { "zhCN": "云光长靴", "enUS": "Nimbus Boots" },
+      "itemLevel": 25,
+      "requiredLevel": 20,
+      "quality": "uncommon",
+      "slot": "feet",
+      "armorType": "leather",
+      "restrictions": { "allowedClassIds": ["rogue", "druid"], "allowedRoles": ["dps", "healer"] },
+      "icon": { "kind": "database", "name": "inv_boots_05" },
+      "description": { "zhCN": "黑暗深渊任务奖励。" },
+      "stats": {
+        "primary": { "agilityPoints": 3, "spiritPoints": 5 },
+        "defense": { "armorPoints": 27 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6998",
+        "url": "https://www.wowhead.com/classic/cn/item=6998&xml",
+        "verifiedAt": "2026-09-09",
+        "notes": "任务奖励，不进入 Boss 掉落池。"
+      }
+    },
+    {
+      "id": "7000",
+      "name": { "zhCN": "赤木束带", "enUS": "Heartwood Girdle" },
+      "itemLevel": 25,
+      "requiredLevel": 20,
+      "quality": "uncommon",
+      "slot": "waist",
+      "armorType": "leather",
+      "restrictions": { "allowedClassIds": ["rogue", "druid"], "allowedRoles": ["dps", "healer"] },
+      "icon": { "kind": "database", "name": "inv_belt_04" },
+      "description": { "zhCN": "黑暗深渊任务奖励。" },
+      "stats": {
+        "primary": { "staminaPoints": 4, "spiritPoints": 4 },
+        "defense": { "armorPoints": 48 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7000",
+        "url": "https://www.wowhead.com/classic/cn/item=7000&xml",
+        "verifiedAt": "2026-09-09",
+        "notes": "任务奖励，不进入 Boss 掉落池。"
+      }
+    },
+    {
+      "id": "7001",
+      "name": { "zhCN": "墓碑节杖", "enUS": "Gravestone Scepter" },
+      "itemLevel": 29,
+      "requiredLevel": 18,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["mage", "priest", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_wand_04" },
+      "description": { "zhCN": "黑暗深渊任务奖励。" },
+      "stats": {
+        "weapon": { "damage": { "minimumPoints": 30, "maximumPoints": 57 }, "speedSeconds": 1.5 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7001",
+        "url": "https://www.wowhead.com/classic/cn/item=7001&xml",
+        "verifiedAt": "2026-09-09",
+        "notes": "任务奖励，不进入 Boss 掉落池。"
+      }
+    },
+    {
+      "id": "7002",
+      "name": { "zhCN": "极光圆盾", "enUS": "Arctic Buckler" },
+      "itemLevel": 29,
+      "requiredLevel": 18,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_shield_02" },
+      "description": { "zhCN": "黑暗深渊任务奖励。" },
+      "stats": {
+        "primary": { "staminaPoints": 3, "spiritPoints": 8 },
+        "defense": { "armorPoints": 642, "blockValuePoints": 13 },
+        "resistances": { "frostPoints": 5 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7002",
+        "url": "https://www.wowhead.com/classic/cn/item=7002&xml",
+        "verifiedAt": "2026-09-09",
+        "notes": "任务奖励，不进入 Boss 掉落池。"
+      }
+    },
+    {
+      "id": "16886",
+      "name": { "zhCN": "逃犯弯刀", "enUS": "Outlaw Sabre" },
+      "itemLevel": 30,
+      "requiredLevel": 25,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "shaman"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_sword_33" },
+      "description": { "zhCN": "黑暗深渊任务奖励。" },
+      "stats": {
+        "physical": { "attackPowerPoints": 15 },
+        "weapon": { "damage": { "minimumPoints": 35, "maximumPoints": 67 }, "speedSeconds": 2.7 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16886",
+        "url": "https://www.wowhead.com/classic/cn/item=16886&xml",
+        "verifiedAt": "2026-09-09",
+        "notes": "任务奖励，不进入 Boss 掉落池。"
+      }
+    },
+    {
+      "id": "16887",
+      "name": { "zhCN": "女巫之指", "enUS": "Witch's Finger" },
+      "itemLevel": 30,
+      "requiredLevel": 25,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["mage", "priest", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_wand_12" },
+      "description": { "zhCN": "黑暗深渊任务奖励。" },
+      "stats": { "primary": { "intellectPoints": 7, "staminaPoints": 4 } },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16887",
+        "url": "https://www.wowhead.com/classic/cn/item=16887&xml",
+        "verifiedAt": "2026-09-09",
+        "notes": "任务奖励，不进入 Boss 掉落池。"
+      }
+    }
+  ]
+}

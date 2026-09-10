@@ -38,6 +38,38 @@
         "enUS": "Missing a magic dispel increases healing pressure and slows the fight."
       },
       "reportTag": "recommended_magic_dispel"
+    },
+    {
+      "id": "bfd_recommended_interrupt",
+      "name": { "zhCN": "梦魇低语", "enUS": "Nightmare Whispers" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "interrupt", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.1,
+        "probabilityModifier": -0.05,
+        "durationMultiplier": 1.05
+      },
+      "description": {
+        "zhCN": "克尔里斯的暗影吟唱必须被可靠打断。",
+        "enUS": "Kelris's shadow channel must be interrupted reliably."
+      },
+      "reportTag": "bfd_nightmare_whispers"
+    },
+    {
+      "id": "bfd_recommended_nature_dispel",
+      "name": { "zhCN": "深水腐蚀", "enUS": "Deepwater Corruption" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "magic_dispel", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.12,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "缺少魔法驱散会让阿库麦尔的腐蚀效果持续更久。",
+        "enUS": "Without a magic dispel, Aku'mai's corruption lingers longer."
+      },
+      "reportTag": "bfd_deepwater_corruption"
     }
   ]
 }

@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "warcraft-wiki",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://wowpedia.fandom.com/wiki/Blackfathom_Deeps",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对经典黑暗深渊 Boss 顺序、可选节点和副本背景。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "推荐等级、解锁条件、时间、成功率和路线节点分类采用放置玩法设计值。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["minimumLevel", "recommendedLevel", "duration", "probability", "route"],
+        "reason": "将 24–32 级经典副本压缩为 10–45 级公会远征中的 25 级垂直切片。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "dungeons": [
+    {
+      "id": "blackfathom_deeps",
+      "name": { "zhCN": "黑暗深渊", "enUS": "Blackfathom Deeps" },
+      "minimumLevel": 15,
+      "recommendedLevel": 25,
+      "defaultUnlocked": false,
+      "unlock": { "requiredAnyDungeonIds": ["shadowfang_keep"] },
+      "members": { "minimum": 1, "maximum": 5, "recommended": 5 },
+      "duration": { "baseSeconds": 1440, "minimumRatio": 0.5, "maximumRatio": 1.8 },
+      "probability": {
+        "minimum": 0.05,
+        "maximum": 0.99,
+        "base": 0.05,
+        "readinessMultiplier": 0.92,
+        "surplusEffect": 0.5,
+        "geometricWeight": 0.7,
+        "bottleneckWeight": 0.3,
+        "overpowerThreshold": 1.5
+      },
+      "combatTuning": {
+        "bossProbabilityMaximum": 0.98,
+        "requirementMultipliers": { "tank": 0.9, "healing": 0.9, "damage": 0.9 }
+      },
+      "route": [
+        { "id": "bfd_ghamoo_ra", "type": "required", "encounterId": "bfd_ghamoo_ra" },
+        { "id": "bfd_lady_sarevess", "type": "required", "encounterId": "bfd_lady_sarevess" },
+        { "id": "bfd_gelihast", "type": "required", "encounterId": "bfd_gelihast" },
+        {
+          "id": "bfd_lorgus_jett",
+          "type": "optional",
+          "encounterId": "bfd_lorgus_jett",
+          "description": { "zhCN": "可选的暮光信徒首领。" }
+        },
+        {
+          "id": "bfd_baron_aquanis",
+          "type": "optional",
+          "encounterId": "bfd_baron_aquanis",
+          "description": { "zhCN": "可选的水元素首领，关联副本任务。" }
+        },
+        { "id": "bfd_old_serrakis", "type": "required", "encounterId": "bfd_old_serrakis" },
+        {
+          "id": "bfd_twilight_lord_kelris",
+          "type": "required",
+          "encounterId": "bfd_twilight_lord_kelris"
+        },
+        { "id": "bfd_akumai", "type": "required", "encounterId": "bfd_akumai" }
+      ]
+    }
+  ]
+}

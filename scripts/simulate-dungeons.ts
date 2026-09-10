@@ -17,6 +17,12 @@ const projectRoot = fileURLToPath(new URL("../", import.meta.url));
 const fixturePath = path.join(projectRoot, "tests/fixtures/v2-dungeon-balance.json");
 const samples = Number(process.argv.find((argument) => /^\d+$/.test(argument)) ?? 100_000);
 const partyVariants = 100;
+const legacyBaselineDungeonIds = new Set([
+  "ragefire_chasm",
+  "wailing_caverns",
+  "deadmines",
+  "shadowfang_keep",
+]);
 
 function contentRegistry(): ContentRegistry {
   const modules: Record<string, unknown> = {};
@@ -156,12 +162,14 @@ const output = {
   formulaVersion: "classic-light-v1",
   samplesPerScenario: samples,
   partyVariants,
-  dungeons: content.dungeons.map((dungeon) => ({
-    id: dungeon.id,
-    recommendedStandard: scenario(content, dungeon.id, dungeon.recommendedLevel, "standard"),
-    recommendedNoTank: scenario(content, dungeon.id, dungeon.recommendedLevel, "no-tank"),
-    maxLevelStandard: scenario(content, dungeon.id, 45, "standard"),
-  })),
+  dungeons: content.dungeons
+    .filter((dungeon) => legacyBaselineDungeonIds.has(dungeon.id))
+    .map((dungeon) => ({
+      id: dungeon.id,
+      recommendedStandard: scenario(content, dungeon.id, dungeon.recommendedLevel, "standard"),
+      recommendedNoTank: scenario(content, dungeon.id, dungeon.recommendedLevel, "no-tank"),
+      maxLevelStandard: scenario(content, dungeon.id, 45, "standard"),
+    })),
 };
 const serialized = `${JSON.stringify(output, null, 2)}\n`;
 if (process.argv.includes("--write")) {

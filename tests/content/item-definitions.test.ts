@@ -24,10 +24,10 @@ const itemFiles = fs
 const migratedItems = itemFiles.flatMap((file) => file.content.items);
 
 describe("item definitions", () => {
-  it("loads all 69 current dungeon and quest items with stable IDs and database icons", () => {
+  it("loads all 90 current dungeon and quest items with stable IDs and database icons", () => {
     const dungeonItems = migratedItems.filter((item) => !item.isStarter);
 
-    expect(dungeonItems).toHaveLength(69);
+    expect(dungeonItems).toHaveLength(90);
     expect(dungeonItems.map((item) => item.id)).toEqual(
       expect.arrayContaining(["14149", "15451", "15452", "6324"]),
     );
@@ -75,7 +75,7 @@ describe("item definitions", () => {
             item.statsSource.provider === "wowhead-classic" &&
             item.statsSource.gameVersion === "classic-2019-phase-6" &&
             item.statsSource.externalId === item.id &&
-            item.statsSource.verifiedAt === "2026-09-08",
+            /^2026-09-0[89]$/.test(item.statsSource.verifiedAt),
         ),
     ).toBe(true);
     expect(

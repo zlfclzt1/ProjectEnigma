@@ -1,0 +1,253 @@
+{
+  "dungeonId": "blackfathom_deeps",
+  "samplesPerScenario": 100000,
+  "scenarios": {
+    "standard": {
+      "required": {
+        "level": 25,
+        "simulatedRuns": 100000,
+        "clearRate": 0.83063,
+        "previewClearProbability": 0.8308228786655084,
+        "durationSeconds": 1141.2,
+        "wipeCounts": {
+          "bfd_akumai": 4056,
+          "bfd_old_serrakis": 2674,
+          "bfd_ghamoo_ra": 1980,
+          "bfd_twilight_lord_kelris": 4364,
+          "bfd_lady_sarevess": 2020,
+          "bfd_gelihast": 1843
+        }
+      },
+      "with-optional": {
+        "level": 25,
+        "simulatedRuns": 100000,
+        "clearRate": 0.78618,
+        "previewClearProbability": 0.786223260796963,
+        "durationSeconds": 1358,
+        "wipeCounts": {
+          "bfd_baron_aquanis": 1859,
+          "bfd_ghamoo_ra": 1942,
+          "bfd_akumai": 6690,
+          "bfd_twilight_lord_kelris": 3174,
+          "bfd_lady_sarevess": 1999,
+          "bfd_gelihast": 2016,
+          "bfd_old_serrakis": 1832,
+          "bfd_lorgus_jett": 1870
+        }
+      },
+      "with-rare": {
+        "level": 25,
+        "simulatedRuns": 100000,
+        "clearRate": 0.82912,
+        "previewClearProbability": 0.829756177198574,
+        "durationSeconds": 1145.6,
+        "wipeCounts": {
+          "bfd_gelihast": 1913,
+          "bfd_akumai": 5003,
+          "bfd_old_serrakis": 2321,
+          "bfd_twilight_lord_kelris": 3859,
+          "bfd_ghamoo_ra": 1995,
+          "bfd_lady_sarevess": 1997
+        }
+      }
+    },
+    "no-tank": {
+      "required": {
+        "level": 25,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.5625000000000006e-8,
+        "durationSeconds": 1285.8,
+        "wipeCounts": {
+          "bfd_ghamoo_ra": 94951,
+          "bfd_lady_sarevess": 4771,
+          "bfd_gelihast": 271,
+          "bfd_old_serrakis": 7
+        }
+      },
+      "with-optional": {
+        "level": 25,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 3.906250000000002e-11,
+        "durationSeconds": 1533.8,
+        "wipeCounts": {
+          "bfd_ghamoo_ra": 95031,
+          "bfd_lady_sarevess": 4733,
+          "bfd_gelihast": 229,
+          "bfd_lorgus_jett": 7
+        }
+      },
+      "with-rare": {
+        "level": 25,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.5625000000000006e-8,
+        "durationSeconds": 1247.8,
+        "wipeCounts": {
+          "bfd_ghamoo_ra": 95016,
+          "bfd_lady_sarevess": 4719,
+          "bfd_gelihast": 248,
+          "bfd_old_serrakis": 15,
+          "bfd_twilight_lord_kelris": 2
+        }
+      }
+    },
+    "no-healing": {
+      "required": {
+        "level": 25,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.5625000000000006e-8,
+        "durationSeconds": 1249.4,
+        "wipeCounts": {
+          "bfd_ghamoo_ra": 95187,
+          "bfd_lady_sarevess": 4556,
+          "bfd_gelihast": 245,
+          "bfd_old_serrakis": 11,
+          "bfd_twilight_lord_kelris": 1
+        }
+      },
+      "with-optional": {
+        "level": 25,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 3.906250000000002e-11,
+        "durationSeconds": 1504.2,
+        "wipeCounts": {
+          "bfd_ghamoo_ra": 94988,
+          "bfd_lady_sarevess": 4737,
+          "bfd_gelihast": 258,
+          "bfd_lorgus_jett": 17
+        }
+      },
+      "with-rare": {
+        "level": 25,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.5625000000000006e-8,
+        "durationSeconds": 1250,
+        "wipeCounts": {
+          "bfd_ghamoo_ra": 95074,
+          "bfd_lady_sarevess": 4673,
+          "bfd_gelihast": 238,
+          "bfd_old_serrakis": 14,
+          "bfd_twilight_lord_kelris": 1
+        }
+      }
+    },
+    "overlevel": {
+      "required": {
+        "level": 22,
+        "simulatedRuns": 100000,
+        "clearRate": 0.63339,
+        "previewClearProbability": 0.6320383843429248,
+        "durationSeconds": 1247.4,
+        "wipeCounts": {
+          "bfd_lady_sarevess": 4429,
+          "bfd_gelihast": 5361,
+          "bfd_twilight_lord_kelris": 7065,
+          "bfd_old_serrakis": 6104,
+          "bfd_ghamoo_ra": 3327,
+          "bfd_akumai": 10375
+        }
+      },
+      "with-optional": {
+        "level": 22,
+        "simulatedRuns": 100000,
+        "clearRate": 0.5017,
+        "previewClearProbability": 0.5031007809809367,
+        "durationSeconds": 1514.4,
+        "wipeCounts": {
+          "bfd_old_serrakis": 6688,
+          "bfd_ghamoo_ra": 4234,
+          "bfd_akumai": 8594,
+          "bfd_lorgus_jett": 4405,
+          "bfd_gelihast": 7191,
+          "bfd_lady_sarevess": 6255,
+          "bfd_twilight_lord_kelris": 8366,
+          "bfd_baron_aquanis": 4097
+        }
+      },
+      "with-rare": {
+        "level": 22,
+        "simulatedRuns": 100000,
+        "clearRate": 0.6949,
+        "previewClearProbability": 0.696160593860933,
+        "durationSeconds": 1210,
+        "wipeCounts": {
+          "bfd_twilight_lord_kelris": 6015,
+          "bfd_gelihast": 4648,
+          "bfd_ghamoo_ra": 2225,
+          "bfd_old_serrakis": 5503,
+          "bfd_akumai": 8404,
+          "bfd_lady_sarevess": 3715
+        }
+      }
+    },
+    "max-level": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 1,
+        "previewClearProbability": 1,
+        "durationSeconds": 817.6,
+        "wipeCounts": {}
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 1,
+        "previewClearProbability": 1,
+        "durationSeconds": 964.8,
+        "wipeCounts": {}
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.96431,
+        "previewClearProbability": 0.9642,
+        "durationSeconds": 813.4,
+        "wipeCounts": {
+          "bfd_akumai": 1206,
+          "bfd_twilight_lord_kelris": 2363
+        }
+      }
+    },
+    "speed-run": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.9781,
+        "previewClearProbability": 0.9780000000000001,
+        "durationSeconds": 817.4,
+        "wipeCounts": {
+          "bfd_twilight_lord_kelris": 1407,
+          "bfd_akumai": 783
+        }
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.9769,
+        "previewClearProbability": 0.976,
+        "durationSeconds": 965.2,
+        "wipeCounts": {
+          "bfd_twilight_lord_kelris": 1915,
+          "bfd_akumai": 395
+        }
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.97401,
+        "previewClearProbability": 0.9739999999999999,
+        "durationSeconds": 835.8,
+        "wipeCounts": {
+          "bfd_twilight_lord_kelris": 990,
+          "bfd_akumai": 1609
+        }
+      }
+    }
+  }
+}

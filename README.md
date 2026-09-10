@@ -47,7 +47,7 @@ npx playwright install chromium
 - 九职业、固定专精、六种有优缺点的性格，以及低概率隐藏角色。
 - 候选人随时间出现，也可消耗公会资金立即刷新；候选区满后自然计时停止。
 - 职业与定位组合筛选，完整 17 槽人物装备界面和真实装备图标。
-- 当前开放怒焰裂谷、死亡矿井、哀嚎洞穴、影牙城堡，共 27 个 Boss。
+- 当前开放怒焰裂谷、死亡矿井、哀嚎洞穴、影牙城堡、黑暗深渊，共 36 个路线 Encounter。
 - 任意人数限制由副本内容定义，不在页面或核心逻辑中写死五人。
 - 自动战斗，出发前显示每个 Boss 精确胜率、全通率和耗时。
 - 多队并行；单个成员同时只能参加一项活动；连续挑战支持 1–3 次。
@@ -78,7 +78,7 @@ tests/                   领域、应用、Store、组件和 Playwright 测试
 ## 当前边界
 
 - 等级上限暂为 45，尚未导入其余 20–45 级副本和 60 级团队内容。
-- 当前四副本的代表性真实掉落已经录入，完整原版掉落池仍需逐步扩充。
+- 当前五副本的 Boss 专属装备与成员任务奖励已按来源拆分；暴风城监狱至祖尔法拉克仍需逐步导入。
 - 坐骑、专业与公会仓库已在架构计划中预留，尚未开放正式页面。
 - 本地存档使用 IndexedDB，不包含账号、云同步或跨设备同步。
 - 允许删除 V2 IndexedDB 后重新开档；不保证开发阶段存档向后兼容。
@@ -89,6 +89,7 @@ tests/                   领域、应用、Store、组件和 Playwright 测试
 - [10–45 级祖尔法拉克阶段实施计划](./docs/zulfarrak-stage-implementation-plan.md)
 - [经典旧世内容版本与来源政策](./docs/classic-content-source-policy.md)
 - [怒焰裂谷垂直切片](./docs/ragefire-chasm-vertical-slice.md)
+- [黑暗深渊资料清单](./docs/dungeon-research/blackfathom-deeps.md)
 - [新增经典旧世副本工作流](./docs/adding-dungeon-workflow.md)
 - [长期可扩展架构重构方案](./docs/architecture-refactor-plan-v2.md)
 - [V2 架构重构可执行计划](./docs/refactor-execution-plan-v2.md)

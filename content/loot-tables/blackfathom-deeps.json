@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对黑暗深渊六个拥有经典专属装备池的 Boss；Lorgus Jett 与 Baron Aquanis 不创建伪造的装备池。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["lootTables[].guaranteedEquipmentDrops", "lootTables[].items[].weight"],
+        "reason": "每个拥有专属装备池的 Boss 在放置玩法中保证掉落一件；当前以池内等权作为首轮可审计基线，后续平衡模拟可调整相对权重。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "lootTables": [
+    {
+      "id": "bfd_ghamoo_ra",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "6907", "weight": 0.5 },
+        { "itemId": "6908", "weight": 0.5 }
+      ]
+    },
+    {
+      "id": "bfd_lady_sarevess",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "888", "weight": 0.3333333333 },
+        { "itemId": "11121", "weight": 0.3333333333 },
+        { "itemId": "3078", "weight": 0.3333333334 }
+      ]
+    },
+    {
+      "id": "bfd_gelihast",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "6906", "weight": 0.5 },
+        { "itemId": "6905", "weight": 0.5 }
+      ]
+    },
+    {
+      "id": "bfd_twilight_lord_kelris",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "1155", "weight": 0.5 },
+        { "itemId": "6903", "weight": 0.5 }
+      ]
+    },
+    {
+      "id": "bfd_old_serrakis",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "6901", "weight": 0.3333333333 },
+        { "itemId": "6902", "weight": 0.3333333333 },
+        { "itemId": "6904", "weight": 0.3333333334 }
+      ]
+    },
+    {
+      "id": "bfd_akumai",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "6909", "weight": 0.3333333333 },
+        { "itemId": "6910", "weight": 0.3333333333 },
+        { "itemId": "6911", "weight": 0.3333333334 }
+      ]
+    }
+  ]
+}

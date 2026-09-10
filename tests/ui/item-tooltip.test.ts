@@ -26,7 +26,7 @@ describe("item tooltip", () => {
         stats: [{ id: "staminaPoints", label: "耐力", value: "+1", numericValue: 1 }],
       },
       acquisitionSource: "怒焰裂谷 · 奥格弗林特",
-      statsSource: "Wowhead Classic · 2026-09-08",
+      statsSource: expect.stringMatching(/^Wowhead Classic · 2026-09-0[89]$/),
       requirements: ["需要等级 13"],
     };
 

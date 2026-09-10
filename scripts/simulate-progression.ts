@@ -41,7 +41,7 @@ if (process.argv.includes("--write")) {
     serialized,
     "10–45 级进度基线已漂移；请核对后显式运行 npm run progression:baseline:write。",
   );
-  console.log("10–45 级进度基线一致：当前四副本会在达到目标等级前触及内容上限。");
+  console.log("10–45 级进度基线一致：当前已开放内容会在达到目标等级前触及内容上限。");
 } else {
   console.log(serialized);
 }
