@@ -1,0 +1,659 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/classic-wow-blackrock-depths-quests",
+        "verifiedAt": "2026-09-10",
+        "notes": "通过逐件中文 XML 核对六条成员任务的十六件装备奖励。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].requiredLevel", "items[].restrictions", "items[].description"],
+        "reason": "无原生需求等级的任务奖励使用任务最低等级，并按当前装备栏位规则补齐可装备性与来源说明。",
+        "decidedAt": "2026-09-10"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "11865",
+      "name": {
+        "zhCN": "怨恨之靴"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "uncommon",
+      "slot": "feet",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_02"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城成员任务“雷布里·斯库比格特”的装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 12,
+          "intellectPoints": 11
+        },
+        "defense": {
+          "armorPoints": 47
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11865",
+        "url": "https://www.wowhead.com/classic/cn/item=11865&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11963",
+      "name": {
+        "zhCN": "忏悔肩铠"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "uncommon",
+      "slot": "shoulder",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_25"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城成员任务“雷布里·斯库比格特”的装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 8,
+          "staminaPoints": 11,
+          "spiritPoints": 7
+        },
+        "defense": {
+          "armorPoints": 104
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11963",
+        "url": "https://www.wowhead.com/classic/cn/item=11963&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "12049",
+      "name": {
+        "zhCN": "钢条护甲"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "uncommon",
+      "slot": "chest",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_chain_16"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城成员任务“雷布里·斯库比格特”的装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 12,
+          "staminaPoints": 12,
+          "spiritPoints": 12
+        },
+        "defense": {
+          "armorPoints": 288
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12049",
+        "url": "https://www.wowhead.com/classic/cn/item=12049&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11962",
+      "name": {
+        "zhCN": "镣铐护腕"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_13"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城成员任务“爱情药水”的装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 6,
+          "intellectPoints": 15
+        },
+        "defense": {
+          "armorPoints": 34
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11962",
+        "url": "https://www.wowhead.com/classic/cn/item=11962&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11866",
+      "name": {
+        "zhCN": "娜玛拉的腰带"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_11"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城成员任务“爱情药水”的装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 8,
+          "staminaPoints": 14,
+          "spiritPoints": 13
+        },
+        "defense": {
+          "armorPoints": 89
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11866",
+        "url": "https://www.wowhead.com/classic/cn/item=11866&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11964",
+      "name": {
+        "zhCN": "迅捷木槌"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "rogue", "priest", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_mace_08"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城成员任务“霍尔雷·黑须”的装备奖励。"
+      },
+      "stats": {
+        "physical": {
+          "hitPercent": 1
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 36,
+            "maximumPoints": 68
+          },
+          "speedSeconds": 1.6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11964",
+        "url": "https://www.wowhead.com/classic/cn/item=11964&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12000",
+      "name": {
+        "zhCN": "叉刃巨斧"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_axe_02"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城成员任务“失落的雷酒秘方”的装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 21,
+          "staminaPoints": 6
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 82,
+            "maximumPoints": 123
+          },
+          "speedSeconds": 2.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12000",
+        "url": "https://www.wowhead.com/classic/cn/item=12000&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "12059",
+      "name": {
+        "zhCN": "征服者勋章"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_amulet_03"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城成员任务“行动：杀死安格弗将军”的装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 10,
+          "agilityPoints": 4,
+          "staminaPoints": 11,
+          "spiritPoints": 5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12059",
+        "url": "https://www.wowhead.com/classic/cn/item=12059&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "12109",
+      "name": {
+        "zhCN": "蓝月披肩"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 52,
+      "quality": "uncommon",
+      "slot": "shoulder",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_02"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城成员任务“机器的崛起”的装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 8,
+          "intellectPoints": 15
+        },
+        "defense": {
+          "armorPoints": 56
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12109",
+        "url": "https://www.wowhead.com/classic/cn/item=12109&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "12110",
+      "name": {
+        "zhCN": "雨法师斗篷"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 52,
+      "quality": "uncommon",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_16"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城成员任务“机器的崛起”的装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "spiritPoints": 9
+        },
+        "defense": {
+          "armorPoints": 38
+        },
+        "spell": {
+          "healingPowerPoints": 22
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12110",
+        "url": "https://www.wowhead.com/classic/cn/item=12110&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12108",
+      "name": {
+        "zhCN": "黑陶鳞片护甲"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 52,
+      "quality": "uncommon",
+      "slot": "chest",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_chain_16"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城成员任务“机器的崛起”的装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "spiritPoints": 21
+        },
+        "defense": {
+          "armorPoints": 313
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12108",
+        "url": "https://www.wowhead.com/classic/cn/item=12108&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "12111",
+      "name": {
+        "zhCN": "熔岩护手"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 52,
+      "quality": "uncommon",
+      "slot": "hands",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_26"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城成员任务“机器的崛起”的装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 17,
+          "staminaPoints": 5
+        },
+        "defense": {
+          "armorPoints": 345
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12111",
+        "url": "https://www.wowhead.com/classic/cn/item=12111&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "12548",
+      "name": {
+        "zhCN": "麦格尼的意志"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_05"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城成员任务“语出惊人的公主”的装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 6,
+          "staminaPoints": 7
+        },
+        "physical": {
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12548",
+        "url": "https://www.wowhead.com/classic/cn/item=12548&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12543",
+      "name": {
+        "zhCN": "铁炉堡歌唱石"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_05"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城成员任务“语出惊人的公主”的装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 7,
+          "spiritPoints": 4
+        },
+        "spell": {
+          "spellPowerPoints": 18,
+          "healingPowerPoints": 18
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12543",
+        "url": "https://www.wowhead.com/classic/cn/item=12543&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12544",
+      "name": {
+        "zhCN": "萨尔的决心"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_05"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城成员任务“拯救公主？”的装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 4,
+          "staminaPoints": 7
+        },
+        "defense": {
+          "armorPoints": 150
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12544",
+        "url": "https://www.wowhead.com/classic/cn/item=12544&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "12545",
+      "name": {
+        "zhCN": "奥格瑞玛之眼"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_05"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城成员任务“拯救公主？”的装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 7,
+          "spiritPoints": 4
+        },
+        "spell": {
+          "spellPowerPoints": 18,
+          "healingPowerPoints": 18
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12545",
+        "url": "https://www.wowhead.com/classic/cn/item=12545&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    }
+  ]
+}

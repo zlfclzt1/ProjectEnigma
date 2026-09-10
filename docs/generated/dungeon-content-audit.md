@@ -34,6 +34,19 @@
 | 黑石深渊：禁闭区（blackrock_depths_detention_block） | brd_detention_fineous_darkvire | required | 弗诺斯·达克维尔（brd_detention_fineous_darkvire） | boss_drop:brd_detention_fineous_darkvire | 1 | 11839 大石匠的眼镜、22223 工头的面甲、11842 首席测量员的衬肩、11841 主设计师的长裤 |
 | 黑石深渊：禁闭区（blackrock_depths_detention_block） | brd_detention_lord_incendius | optional | 伊森迪奥斯（brd_detention_lord_incendius） | boss_drop:brd_detention_lord_incendius | 1 | 11766 焰纹护腕、11764 灰鳞护臂、11765 焚铁护腕、11767 琥珀臂甲、11768 易然护腕 |
 | 黑石深渊：禁闭区（blackrock_depths_detention_block） | brd_detention_baelgar | optional | 贝尔加（brd_detention_baelgar） | boss_drop:brd_detention_baelgar | 1 | 11807 燃心腰带、11802 火浪护腿、11805 燃石战锤、11803 熔岩之力 |
+| 黑石深渊：暗炉城（blackrock_depths_shadowforge_city） | brd_shadowforge_general_angerforge | optional | 安格弗将军（brd_shadowforge_general_angerforge） | boss_drop:brd_shadowforge_general_angerforge | 1 | 11820 盛饰护甲、11821 战争护腿、11810 意志之力、11817 安格弗的剑、11816 安格弗的战斧、11841 主设计师的长裤 |
+| 黑石深渊：暗炉城（blackrock_depths_shadowforge_city） | brd_shadowforge_golem_lord_argelmach | optional | 傀儡统帅阿格曼奇（brd_shadowforge_golem_lord_argelmach） | boss_drop:brd_shadowforge_golem_lord_argelmach | 1 | 11823 渊博褶裙、11822 全法长靴、11669 阿格曼奇之戒、11819 复苏之风 |
+| 黑石深渊：暗炉城（blackrock_depths_shadowforge_city） | brd_shadowforge_hurley_blackbreath | optional | 霍尔雷·黑须（brd_shadowforge_hurley_blackbreath） | boss_drop:brd_shadowforge_hurley_blackbreath | 1 | 11735 怒气眼罩、18043 煤工长靴、22275 火苔长靴、18044 霍尔雷的酒杯 |
+| 黑石深渊：暗炉城（blackrock_depths_shadowforge_city） | brd_shadowforge_ribbly_screwspigot | optional | 雷布里·斯库比格特（brd_shadowforge_ribbly_screwspigot） | 无装备掉落 | 0 | — |
+| 黑石深渊：暗炉城（blackrock_depths_shadowforge_city） | brd_shadowforge_plugger_spazzring | optional | 普拉格（brd_shadowforge_plugger_spazzring） | boss_drop:brd_shadowforge_plugger_spazzring | 1 | 12793 普拉格的外套、12791 酒吧凶器 |
+| 黑石深渊：暗炉城（blackrock_depths_shadowforge_city） | brd_shadowforge_phalanx | required | 法拉克斯（brd_shadowforge_phalanx） | boss_drop:brd_shadowforge_phalanx | 1 | 22212 石傀儡肩铠、11745 法拉克斯之拳、11744 血拳、11743 石拳 |
+| 黑石深渊：暗炉城（blackrock_depths_shadowforge_city） | brd_shadowforge_ambassador_flamelash | required | 弗莱拉斯大使（brd_shadowforge_ambassador_flamelash） | boss_drop:brd_shadowforge_ambassador_flamelash | 1 | 11808 烈焰之环、11812 火灵斗篷、11814 熔岩之拳、11832 博学坠饰、11809 烈焰之怒 |
+| 黑石深渊：暗炉城（blackrock_depths_shadowforge_city） | brd_shadowforge_panzor | rare（0.32） | 无敌的潘佐尔（brd_shadowforge_panzor） | boss_drop:brd_shadowforge_panzor | 1 | 22245 煤烟护足、11787 岩壳长靴、11785 石傀儡之盾、11786 大地之石 |
+| 黑石深渊：暗炉城（blackrock_depths_shadowforge_city） | brd_shadowforge_seven | required | 七贤（brd_shadowforge_seven） | boss_drop:brd_shadowforge_seven | 1 | 11925 幽灵面罩、11926 死灵胸甲、11929 鬼灵护腿、11927 永恒守护者腿铠、11920 鬼魂镰刀、11923 恩赐之锤、11922 血蚀之刃、11921 磐石巨锤 |
+| 黑石深渊：暗炉城（blackrock_depths_shadowforge_city） | brd_shadowforge_lyceum | required | 讲学厅（brd_shadowforge_lyceum） | 无装备掉落 | 0 | — |
+| 黑石深渊：暗炉城（blackrock_depths_shadowforge_city） | brd_shadowforge_magmus | required | 玛格姆斯（brd_shadowforge_magmus） | boss_drop:brd_shadowforge_magmus | 1 | 11746 石颅头盔、11935 玛格姆斯之石、22395 怒气图腾、22400 真言圣契、22208 熔岩石锤 |
+| 黑石深渊：暗炉城（blackrock_depths_shadowforge_city） | brd_shadowforge_princess_moira | optional | 茉艾拉·铜须公主（brd_shadowforge_princess_moira） | boss_drop:brd_shadowforge_princess_moira | 1 | 12557 乌钢肩甲、12554 传令官之手、12556 高阶女祭司之靴、12553 迅捷长靴 |
+| 黑石深渊：暗炉城（blackrock_depths_shadowforge_city） | brd_shadowforge_emperor_dagran_thaurissan | required | 达格兰·索瑞森大帝（brd_shadowforge_emperor_dagran_thaurissan） | boss_drop:brd_shadowforge_emperor_dagran_thaurissan | 1 | 11684 反对者、11933 帝王宝石、11930 皇帝的新斗篷、11924 皇冠法袍、22204 名望护腕、22207 追猎腰带、11934 皇帝徽记、11815 正义之手、11928 索瑞森皇家节杖、11931 恐怖复仇者、11932 智慧手杖 |
 | 死亡矿井（deadmines） | dm_rhahkzor | required | 拉克佐（dm_rhahkzor） | boss_drop:dm_rhahkzor | 1 | 872 切石者、5187 拉克佐之锤 |
 | 死亡矿井（deadmines） | dm_sneeds_shredder | required | 斯尼德的伐木机（dm_sneeds_shredder） | boss_drop:dm_sneeds_shredder | 1 | 1937 电锯、2169 蜂鸣之刃 |
 | 死亡矿井（deadmines） | dm_sneed | required | 斯尼德（dm_sneed） | boss_drop:dm_sneed | 1 | 5194 工头战斧、5195 金斑手套 |
@@ -142,8 +155,8 @@
 
 ## 引用完整度
 
-- 副本路线节点：131。
-- 副本任务：46。
+- 副本路线节点：144。
+- 副本任务：52。
 - 套装：9。
 - 未被路线引用的掉落表：0。
 - 未被掉落、任务或套装引用的非初始装备：0。

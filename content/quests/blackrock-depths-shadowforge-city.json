@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/classic-wow-blackrock-depths-quests",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对暗炉城成员任务目标、阵营版本和装备奖励。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-10",
+        "notes": "阵营、任务物品和副本外前置不模拟；只在玩家主动安排对应路线并胜利时推进。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": [
+          "quests[].dungeonId",
+          "quests[].completion",
+          "quests[].rewards.experienceFraction"
+        ],
+        "reason": "用可确定结算的 Encounter 胜利压缩阵营差异、材料收集和王座战分支，并保持原版装备奖励方式。",
+        "decidedAt": "2026-09-10"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "brd_shadowforge_ribbly",
+      "name": {
+        "zhCN": "雷布里·斯库比格特"
+      },
+      "description": {
+        "zhCN": "主动挑战并击败雷布里与他的商人同伴。"
+      },
+      "dungeonId": "blackrock_depths_shadowforge_city",
+      "eligibility": {
+        "minimumLevel": 48,
+        "allowedClassIds": []
+      },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["brd_shadowforge_ribbly_screwspigot"]
+      },
+      "rewards": {
+        "experienceFraction": 0.9,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["11865", "11963", "12049"]
+      }
+    },
+    {
+      "id": "brd_shadowforge_love_potion",
+      "name": {
+        "zhCN": "爱情药水"
+      },
+      "description": {
+        "zhCN": "主动完成黑铁酒吧主线，压缩交付娜玛拉所需的副本外材料。"
+      },
+      "dungeonId": "blackrock_depths_shadowforge_city",
+      "eligibility": {
+        "minimumLevel": 50,
+        "allowedClassIds": []
+      },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["brd_shadowforge_phalanx"]
+      },
+      "rewards": {
+        "experienceFraction": 0.9,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["11962", "11866"]
+      }
+    },
+    {
+      "id": "brd_shadowforge_hurley",
+      "name": {
+        "zhCN": "失落的雷酒秘方"
+      },
+      "description": {
+        "zhCN": "主动破坏酒桶并击败霍尔雷·黑须；阵营同目标版本合并。"
+      },
+      "dungeonId": "blackrock_depths_shadowforge_city",
+      "eligibility": {
+        "minimumLevel": 50,
+        "allowedClassIds": []
+      },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["brd_shadowforge_hurley_blackbreath"]
+      },
+      "rewards": {
+        "experienceFraction": 0.9,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["11964", "12000"]
+      }
+    },
+    {
+      "id": "brd_shadowforge_angerforge",
+      "name": {
+        "zhCN": "行动：杀死安格弗将军"
+      },
+      "description": {
+        "zhCN": "主动进入兵营并击败安格弗将军。"
+      },
+      "dungeonId": "blackrock_depths_shadowforge_city",
+      "eligibility": {
+        "minimumLevel": 52,
+        "allowedClassIds": []
+      },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["brd_shadowforge_general_angerforge"]
+      },
+      "rewards": {
+        "experienceFraction": 1,
+        "funds": 0,
+        "fixedItemIds": ["12059"],
+        "itemChoiceIds": []
+      }
+    },
+    {
+      "id": "brd_shadowforge_rise_of_machines",
+      "name": {
+        "zhCN": "机器的崛起"
+      },
+      "description": {
+        "zhCN": "主动清理制造厂并击败傀儡统帅阿格曼奇。"
+      },
+      "dungeonId": "blackrock_depths_shadowforge_city",
+      "eligibility": {
+        "minimumLevel": 52,
+        "allowedClassIds": []
+      },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["brd_shadowforge_golem_lord_argelmach"]
+      },
+      "rewards": {
+        "experienceFraction": 1.1,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["12109", "12110", "12108", "12111"]
+      }
+    },
+    {
+      "id": "brd_shadowforge_royal_rescue",
+      "name": {
+        "zhCN": "拯救公主"
+      },
+      "description": {
+        "zhCN": "击败索瑞森大帝并完成王座战；联盟与部落终章版本合并。"
+      },
+      "dungeonId": "blackrock_depths_shadowforge_city",
+      "eligibility": {
+        "minimumLevel": 54,
+        "allowedClassIds": []
+      },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["brd_shadowforge_emperor_dagran_thaurissan"],
+        "excludedEncounterIds": ["brd_shadowforge_princess_moira"]
+      },
+      "rewards": {
+        "experienceFraction": 1.2,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["12548", "12543", "12544", "12545"]
+      }
+    }
+  ]
+}

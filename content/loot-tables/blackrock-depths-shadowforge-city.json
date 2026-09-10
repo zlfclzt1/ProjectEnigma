@@ -1,0 +1,337 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对暗炉城十一组具有受支持装备的 Boss 掉落池。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/blackrock-depths-shadowforge-city-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对酒吧首领、潘佐尔、七贤与王座战来源。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["lootTables[].guaranteedEquipmentDrops", "lootTables[].items[].weight"],
+        "reason": "每名具有受支持装备池的真实 Boss 保证一件；首版使用等权相对权重。",
+        "decidedAt": "2026-09-10"
+      }
+    ]
+  },
+  "lootTables": [
+    {
+      "id": "brd_shadowforge_general_angerforge",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11820",
+          "weight": 0.16666666666666666
+        },
+        {
+          "itemId": "11821",
+          "weight": 0.16666666666666666
+        },
+        {
+          "itemId": "11810",
+          "weight": 0.16666666666666666
+        },
+        {
+          "itemId": "11817",
+          "weight": 0.16666666666666666
+        },
+        {
+          "itemId": "11816",
+          "weight": 0.16666666666666666
+        },
+        {
+          "itemId": "11841",
+          "weight": 0.16666666666666666
+        }
+      ]
+    },
+    {
+      "id": "brd_shadowforge_golem_lord_argelmach",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11823",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11822",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11669",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11819",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "brd_shadowforge_hurley_blackbreath",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11735",
+          "weight": 0.25
+        },
+        {
+          "itemId": "18043",
+          "weight": 0.25
+        },
+        {
+          "itemId": "22275",
+          "weight": 0.25
+        },
+        {
+          "itemId": "18044",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "brd_shadowforge_plugger_spazzring",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "12793",
+          "weight": 0.5
+        },
+        {
+          "itemId": "12791",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "brd_shadowforge_phalanx",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "22212",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11745",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11744",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11743",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "brd_shadowforge_ambassador_flamelash",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11808",
+          "weight": 0.2
+        },
+        {
+          "itemId": "11812",
+          "weight": 0.2
+        },
+        {
+          "itemId": "11814",
+          "weight": 0.2
+        },
+        {
+          "itemId": "11832",
+          "weight": 0.2
+        },
+        {
+          "itemId": "11809",
+          "weight": 0.2
+        }
+      ]
+    },
+    {
+      "id": "brd_shadowforge_panzor",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "22245",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11787",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11785",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11786",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "brd_shadowforge_seven",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11925",
+          "weight": 0.125
+        },
+        {
+          "itemId": "11926",
+          "weight": 0.125
+        },
+        {
+          "itemId": "11929",
+          "weight": 0.125
+        },
+        {
+          "itemId": "11927",
+          "weight": 0.125
+        },
+        {
+          "itemId": "11920",
+          "weight": 0.125
+        },
+        {
+          "itemId": "11923",
+          "weight": 0.125
+        },
+        {
+          "itemId": "11922",
+          "weight": 0.125
+        },
+        {
+          "itemId": "11921",
+          "weight": 0.125
+        }
+      ]
+    },
+    {
+      "id": "brd_shadowforge_magmus",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11746",
+          "weight": 0.2
+        },
+        {
+          "itemId": "11935",
+          "weight": 0.2
+        },
+        {
+          "itemId": "22395",
+          "weight": 0.2
+        },
+        {
+          "itemId": "22400",
+          "weight": 0.2
+        },
+        {
+          "itemId": "22208",
+          "weight": 0.2
+        }
+      ]
+    },
+    {
+      "id": "brd_shadowforge_princess_moira",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "12557",
+          "weight": 0.25
+        },
+        {
+          "itemId": "12554",
+          "weight": 0.25
+        },
+        {
+          "itemId": "12556",
+          "weight": 0.25
+        },
+        {
+          "itemId": "12553",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "brd_shadowforge_emperor_dagran_thaurissan",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11684",
+          "weight": 0.09090909090909091
+        },
+        {
+          "itemId": "11933",
+          "weight": 0.09090909090909091
+        },
+        {
+          "itemId": "11930",
+          "weight": 0.09090909090909091
+        },
+        {
+          "itemId": "11924",
+          "weight": 0.09090909090909091
+        },
+        {
+          "itemId": "22204",
+          "weight": 0.09090909090909091
+        },
+        {
+          "itemId": "22207",
+          "weight": 0.09090909090909091
+        },
+        {
+          "itemId": "11934",
+          "weight": 0.09090909090909091
+        },
+        {
+          "itemId": "11815",
+          "weight": 0.09090909090909091
+        },
+        {
+          "itemId": "11928",
+          "weight": 0.09090909090909091
+        },
+        {
+          "itemId": "11931",
+          "weight": 0.09090909090909091
+        },
+        {
+          "itemId": "11932",
+          "weight": 0.09090909090909091
+        }
+      ]
+    }
+  ]
+}

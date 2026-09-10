@@ -20,7 +20,7 @@ describe("post-Zul'Farrak progression simulation", () => {
     expect(first.targetReached).toBe(false);
     expect(first.daysToTarget).toBeNull();
     expect(first.levelCap).toBe(60);
-    expect(first.highestAvailableRecommendedLevel).toBe(54);
+    expect(first.highestAvailableRecommendedLevel).toBe(56);
     expect(first.minimumCoreLevel).toBe(60);
     expect(first.maximumCoreLevel).toBe(60);
     expect(first.activitiesStarted).toBeGreaterThan(0);
@@ -29,6 +29,7 @@ describe("post-Zul'Farrak progression simulation", () => {
     expect(first.attemptedDungeonIds).toContain("maraudon");
     expect(first.attemptedDungeonIds).toContain("sunken_temple");
     expect(first.attemptedDungeonIds).toContain("blackrock_depths_detention_block");
+    expect(first.attemptedDungeonIds).toContain("blackrock_depths_shadowforge_city");
     expect(first.recruitedMemberCount).toBe(1);
     expect(first.boostedRunCount).toBe(1);
     expect(first.lootAssignments + first.lootSales).toBeGreaterThan(0);
@@ -42,9 +43,12 @@ describe("post-Zul'Farrak progression simulation", () => {
       type: "dungeon-first-clear",
       dungeonId: "upper_blackrock_spire",
     });
-    expect(baseline.highestAvailableRecommendedLevel).toBe(54);
+    expect(baseline.highestAvailableRecommendedLevel).toBe(56);
     expect(baseline.policy.levelCap).toBe(60);
-    expect(baseline.policy.oldContent).toBe("all-eighteen-current-dungeons-remain-repeatable");
+    expect(baseline.policy.oldContent).toBe("all-nineteen-current-dungeons-remain-repeatable");
+    expect(baseline.policy.expectedStop).toBe(
+      "content-cap-after-shadowforge-city-current-scope-complete",
+    );
     expect(baseline.policy.offlineIncome).toBe("none-outside-player-scheduled-activities");
     for (const scenario of baseline.scenarios) {
       expect(scenario.outcomes["content-cap"]).toBe(baseline.sampleCount);

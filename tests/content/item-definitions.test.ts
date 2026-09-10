@@ -27,7 +27,7 @@ describe("item definitions", () => {
   it("loads all current dungeon and quest items with stable IDs and database icons", () => {
     const dungeonItems = migratedItems.filter((item) => !item.isStarter);
 
-    expect(dungeonItems).toHaveLength(460);
+    expect(dungeonItems).toHaveLength(531);
     expect(dungeonItems.map((item) => item.id)).toEqual(
       expect.arrayContaining(["14149", "15451", "15452", "6324"]),
     );

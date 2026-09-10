@@ -208,6 +208,20 @@ export function createExpeditionActivityHandler(
           if (!quest || !questProgressesInDungeon(quest, request.dungeonId, content)) return [];
           const encounterIds =
             quest.completion.type === "encounter-victories" ? quest.completion.encounterIds : [];
+          const excludedEncounterIds =
+            quest.completion.type === "encounter-victories"
+              ? (quest.completion.excludedEncounterIds ?? [])
+              : [];
+          if (
+            activeRoute.some(
+              (node) =>
+                node.type === "optional" &&
+                selectedOptionalNodeIds.includes(node.id) &&
+                excludedEncounterIds.includes(node.encounterId),
+            )
+          ) {
+            return [];
+          }
           return [
             {
               memberId,

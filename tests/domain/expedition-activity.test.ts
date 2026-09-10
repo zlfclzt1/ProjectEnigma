@@ -522,6 +522,47 @@ describe("V2 expedition creation", () => {
     ]);
   });
 
+  it("does not freeze a rescue quest when the player actively selects its excluded route", async () => {
+    const shadowforgeId = asBrandedId<"DungeonId">("blackrock_depths_shadowforge_city");
+    const princessNodeId = asBrandedId<"DungeonRouteNodeId">("brd_shadowforge_princess_moira");
+    const questId = asBrandedId<"QuestId">("brd_shadowforge_royal_rescue");
+    const preparedState = (seed: string) => {
+      const state = newState(seed);
+      state.guild.unlockedDungeonIds.push(shadowforgeId);
+      const participant = Object.values(state.members)[0]!;
+      participant.progression.level = 60;
+      participant.quests.entries[questId] = {
+        questId,
+        status: "accepted",
+        acceptedAt: 1_000,
+        encounterVictoryIds: [],
+      };
+      return { state, participant };
+    };
+
+    const rescue = preparedState("shadowforge-rescue-route");
+
+    const rescueActivity = await startExpeditionCommand(
+      { content, clock: new FakeClock(2_000) },
+      { dungeonId: shadowforgeId, participantIds: [rescue.participant.id], requestedRuns: 1 },
+    ).execute(rescue.state);
+    expect(rescueActivity.questSnapshots.map((snapshot) => snapshot.questId)).toContain(questId);
+
+    const princess = preparedState("shadowforge-princess-route");
+    const princessActivity = await startExpeditionCommand(
+      { content, clock: new FakeClock(3_000) },
+      {
+        dungeonId: shadowforgeId,
+        participantIds: [princess.participant.id],
+        requestedRuns: 1,
+        selectedOptionalNodeIds: [princessNodeId],
+      },
+    ).execute(princess.state);
+    expect(princessActivity.questSnapshots.map((snapshot) => snapshot.questId)).not.toContain(
+      questId,
+    );
+  });
+
   it("replays activity IDs, rolls, and plans deterministically from saved runtime state", async () => {
     async function start() {
       const state = newState("deterministic-expedition");

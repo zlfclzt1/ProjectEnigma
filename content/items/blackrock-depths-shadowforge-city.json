@@ -1,0 +1,2267 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/blackrock-depths-shadowforge-city-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-10",
+        "notes": "通过逐件中文 XML 核对暗炉城装备属性、图标、品质与需求等级。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-10",
+        "notes": "交叉核对暗炉城首领、装备 ID 与跨分区共享来源。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].restrictions", "items[].description"],
+        "reason": "按经典职业、护甲熟练度和当前装备栏位规则补齐可装备性与来源说明；图腾和圣契使用远程栏位表达。",
+        "decidedAt": "2026-09-10"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "11820",
+      "name": {
+        "zhCN": "盛饰护甲"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_plate04"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：安格弗将军的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 8,
+          "agilityPoints": 12,
+          "staminaPoints": 26
+        },
+        "defense": {
+          "armorPoints": 344
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11820",
+        "url": "https://www.wowhead.com/classic/cn/item=11820&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11821",
+      "name": {
+        "zhCN": "战争护腿"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_09"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：安格弗将军的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 6,
+          "agilityPoints": 6,
+          "staminaPoints": 12
+        },
+        "defense": {
+          "armorPoints": 144,
+          "dodgePercent": 2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11821",
+        "url": "https://www.wowhead.com/classic/cn/item=11821&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11810",
+      "name": {
+        "zhCN": "意志之力"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_amulet_01"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：安格弗将军的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "defenseSkillPoints": 7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11810",
+        "url": "https://www.wowhead.com/classic/cn/item=11810&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11817",
+      "name": {
+        "zhCN": "安格弗的剑"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 51,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_25"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：安格弗将军的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 67,
+            "maximumPoints": 125
+          },
+          "speedSeconds": 2.6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11817",
+        "url": "https://www.wowhead.com/classic/cn/item=11817&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11816",
+      "name": {
+        "zhCN": "安格弗的战斧"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 51,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_halberd_06"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：安格弗将军的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 27,
+          "staminaPoints": 11
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 100,
+            "maximumPoints": 150
+          },
+          "speedSeconds": 2.6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11816",
+        "url": "https://www.wowhead.com/classic/cn/item=11816&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11823",
+      "name": {
+        "zhCN": "渊博褶裙"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_13"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：傀儡统帅阿格曼奇的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 8,
+          "intellectPoints": 20,
+          "spiritPoints": 8
+        },
+        "defense": {
+          "armorPoints": 147
+        },
+        "spell": {
+          "spellPowerPoints": 22,
+          "healingPowerPoints": 22
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11823",
+        "url": "https://www.wowhead.com/classic/cn/item=11823&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11822",
+      "name": {
+        "zhCN": "全法长靴"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_05"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：傀儡统帅阿格曼奇的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 6,
+          "intellectPoints": 9
+        },
+        "defense": {
+          "armorPoints": 58
+        },
+        "spell": {
+          "spellPowerPoints": 22,
+          "healingPowerPoints": 22
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11822",
+        "url": "https://www.wowhead.com/classic/cn/item=11822&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11669",
+      "name": {
+        "zhCN": "阿格曼奇之戒"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_05"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：傀儡统帅阿格曼奇的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10
+        },
+        "defense": {
+          "armorPoints": 50,
+          "defenseSkillPoints": 5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11669",
+        "url": "https://www.wowhead.com/classic/cn/item=11669&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11819",
+      "name": {
+        "zhCN": "复苏之风"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_talisman_06"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：傀儡统帅阿格曼奇的专属掉落。"
+      },
+      "stats": {
+        "spell": {
+          "healingPowerPoints": 22
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11819",
+        "url": "https://www.wowhead.com/classic/cn/item=11819&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11735",
+      "name": {
+        "zhCN": "怒气眼罩"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_46"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：霍尔雷·黑须的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 6,
+          "staminaPoints": 9
+        },
+        "defense": {
+          "armorPoints": 132
+        },
+        "physical": {
+          "criticalStrikePercent": 2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11735",
+        "url": "https://www.wowhead.com/classic/cn/item=11735&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18043",
+      "name": {
+        "zhCN": "煤工长靴"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_08"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：霍尔雷·黑须的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 9,
+          "staminaPoints": 17
+        },
+        "defense": {
+          "armorPoints": 112
+        },
+        "resistances": {
+          "firePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18043",
+        "url": "https://www.wowhead.com/classic/cn/item=18043&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "22275",
+      "name": {
+        "zhCN": "火苔长靴"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_08"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：霍尔雷·黑须的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 8,
+          "intellectPoints": 18
+        },
+        "defense": {
+          "armorPoints": 112
+        },
+        "spell": {
+          "healingPowerPoints": 20
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22275",
+        "url": "https://www.wowhead.com/classic/cn/item=22275&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18044",
+      "name": {
+        "zhCN": "霍尔雷的酒杯"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "rogue", "priest", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_drink_04"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：霍尔雷·黑须的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 5,
+          "staminaPoints": 12
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 71,
+            "maximumPoints": 132
+          },
+          "speedSeconds": 2.7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18044",
+        "url": "https://www.wowhead.com/classic/cn/item=18044&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "12793",
+      "name": {
+        "zhCN": "普拉格的外套"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_leather_01"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：普拉格的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 18,
+          "agilityPoints": 11,
+          "staminaPoints": 18
+        },
+        "defense": {
+          "armorPoints": 158
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12793",
+        "url": "https://www.wowhead.com/classic/cn/item=12793&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "12791",
+      "name": {
+        "zhCN": "酒吧凶器"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_drink_10"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：普拉格的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 51,
+            "maximumPoints": 95
+          },
+          "speedSeconds": 2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12791",
+        "url": "https://www.wowhead.com/classic/cn/item=12791&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "22212",
+      "name": {
+        "zhCN": "石傀儡肩铠"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 51,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_16"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：法拉克斯的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 13,
+          "staminaPoints": 17
+        },
+        "defense": {
+          "armorPoints": 250
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22212",
+        "url": "https://www.wowhead.com/classic/cn/item=22212&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11745",
+      "name": {
+        "zhCN": "法拉克斯之拳"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 51,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_22"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：法拉克斯的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 20,
+          "staminaPoints": 9
+        },
+        "defense": {
+          "armorPoints": 367
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11745",
+        "url": "https://www.wowhead.com/classic/cn/item=11745&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11744",
+      "name": {
+        "zhCN": "血拳"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 51,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_11"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：法拉克斯的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 38,
+            "maximumPoints": 72
+          },
+          "speedSeconds": 1.5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11744",
+        "url": "https://www.wowhead.com/classic/cn/item=11744&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11743",
+      "name": {
+        "zhCN": "石拳"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_11"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：法拉克斯的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 10
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 32,
+            "maximumPoints": 60
+          },
+          "speedSeconds": 1.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11743",
+        "url": "https://www.wowhead.com/classic/cn/item=11743&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11808",
+      "name": {
+        "zhCN": "烈焰之环"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "epic",
+      "slot": "head",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "spell_fire_fire"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：弗莱拉斯大使的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 20
+        },
+        "defense": {
+          "armorPoints": 74
+        },
+        "resistances": {
+          "firePoints": 15
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11808",
+        "url": "https://www.wowhead.com/classic/cn/item=11808&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11812",
+      "name": {
+        "zhCN": "火灵斗篷"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_18"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：弗莱拉斯大使的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 9,
+          "spiritPoints": 6
+        },
+        "defense": {
+          "armorPoints": 41
+        },
+        "resistances": {
+          "firePoints": 12
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11812",
+        "url": "https://www.wowhead.com/classic/cn/item=11812&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11814",
+      "name": {
+        "zhCN": "熔岩之拳"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_04"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：弗莱拉斯大使的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 10,
+          "staminaPoints": 11,
+          "intellectPoints": 11
+        },
+        "defense": {
+          "armorPoints": 215
+        },
+        "resistances": {
+          "firePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11814",
+        "url": "https://www.wowhead.com/classic/cn/item=11814&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11832",
+      "name": {
+        "zhCN": "博学坠饰"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_amulet_07"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：弗莱拉斯大使的专属掉落。"
+      },
+      "stats": {
+        "spell": {
+          "spellPowerPoints": 12,
+          "healingPowerPoints": 12
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11832",
+        "url": "https://www.wowhead.com/classic/cn/item=11832&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11809",
+      "name": {
+        "zhCN": "烈焰之怒"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 51,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_spear_01"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：弗莱拉斯大使的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 127,
+            "maximumPoints": 191
+          },
+          "speedSeconds": 3.3
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11809",
+        "url": "https://www.wowhead.com/classic/cn/item=11809&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "22245",
+      "name": {
+        "zhCN": "煤烟护足"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 51,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_cloth_05"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：无敌的潘佐尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 8,
+          "intellectPoints": 9,
+          "spiritPoints": 14
+        },
+        "defense": {
+          "armorPoints": 55
+        },
+        "spell": {
+          "healingPowerPoints": 20
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22245",
+        "url": "https://www.wowhead.com/classic/cn/item=22245&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11787",
+      "name": {
+        "zhCN": "岩壳长靴"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_plate_01"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：无敌的潘佐尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 5
+        },
+        "defense": {
+          "armorPoints": 417,
+          "dodgePercent": 2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11787",
+        "url": "https://www.wowhead.com/classic/cn/item=11787&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11785",
+      "name": {
+        "zhCN": "石傀儡之盾"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shield_06"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：无敌的潘佐尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10
+        },
+        "defense": {
+          "armorPoints": 1994,
+          "blockValuePoints": 36
+        },
+        "resistances": {
+          "arcanePoints": 10,
+          "naturePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11785",
+        "url": "https://www.wowhead.com/classic/cn/item=11785&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11786",
+      "name": {
+        "zhCN": "大地之石"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 51,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_47"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：无敌的潘佐尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12
+        },
+        "defense": {
+          "armorPoints": 280
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 123,
+            "maximumPoints": 185
+          },
+          "speedSeconds": 3.2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11786",
+        "url": "https://www.wowhead.com/classic/cn/item=11786&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11925",
+      "name": {
+        "zhCN": "幽灵面罩"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_41"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：七贤的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 12,
+          "agilityPoints": 19,
+          "staminaPoints": 18
+        },
+        "defense": {
+          "armorPoints": 132
+        },
+        "resistances": {
+          "shadowPoints": 5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11925",
+        "url": "https://www.wowhead.com/classic/cn/item=11925&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11926",
+      "name": {
+        "zhCN": "死灵胸甲"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_chain_07"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：七贤的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 8,
+          "staminaPoints": 8
+        },
+        "defense": {
+          "armorPoints": 338
+        },
+        "physical": {
+          "criticalStrikePercent": 2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11926",
+        "url": "https://www.wowhead.com/classic/cn/item=11926&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11929",
+      "name": {
+        "zhCN": "鬼灵护腿"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_11"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：七贤的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 12,
+          "spiritPoints": 28
+        },
+        "defense": {
+          "armorPoints": 71
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11929",
+        "url": "https://www.wowhead.com/classic/cn/item=11929&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11927",
+      "name": {
+        "zhCN": "永恒守护者腿铠"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_04"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：七贤的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 742,
+          "defenseSkillPoints": 15
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11927",
+        "url": "https://www.wowhead.com/classic/cn/item=11927&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11920",
+      "name": {
+        "zhCN": "鬼魂镰刀"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 51,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_axe_13"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：七贤的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 57,
+            "maximumPoints": 106
+          },
+          "speedSeconds": 2.2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11920",
+        "url": "https://www.wowhead.com/classic/cn/item=11920&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11922",
+      "name": {
+        "zhCN": "血蚀之刃"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_shortblade_15"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：七贤的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12
+        },
+        "spell": {
+          "spellPowerPoints": 6,
+          "healingPowerPoints": 6
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 39,
+            "maximumPoints": 74
+          },
+          "speedSeconds": 1.5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11922",
+        "url": "https://www.wowhead.com/classic/cn/item=11922&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11921",
+      "name": {
+        "zhCN": "磐石巨锤"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_hammer_08"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：七贤的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 30
+        },
+        "physical": {
+          "hitPercent": 1,
+          "criticalStrikePercent": 2
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 105,
+            "maximumPoints": 159
+          },
+          "speedSeconds": 2.7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11921",
+        "url": "https://www.wowhead.com/classic/cn/item=11921&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11746",
+      "name": {
+        "zhCN": "石颅头盔"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 51,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_23"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：玛格姆斯的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 18,
+          "staminaPoints": 18
+        },
+        "defense": {
+          "armorPoints": 477,
+          "defenseSkillPoints": 7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11746",
+        "url": "https://www.wowhead.com/classic/cn/item=11746&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11935",
+      "name": {
+        "zhCN": "玛格姆斯之石"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["paladin", "priest", "shaman", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_orb_05"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：玛格姆斯的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 7,
+          "spiritPoints": 4
+        },
+        "resistances": {
+          "firePoints": 15
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11935",
+        "url": "https://www.wowhead.com/classic/cn/item=11935&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "22395",
+      "name": {
+        "zhCN": "怒气图腾"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["shaman"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_relics_totemofrage"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：玛格姆斯的专属掉落。"
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22395",
+        "url": "https://www.wowhead.com/classic/cn/item=22395&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22400",
+      "name": {
+        "zhCN": "真言圣契"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_relics_libramoftruth"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：玛格姆斯的专属掉落。"
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22400",
+        "url": "https://www.wowhead.com/classic/cn/item=22400&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22208",
+      "name": {
+        "zhCN": "熔岩石锤"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_hammer_10"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：玛格姆斯的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 10,
+          "staminaPoints": 14,
+          "intellectPoints": 12
+        },
+        "spell": {
+          "spellPowerPoints": 20,
+          "healingPowerPoints": 20
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 135,
+            "maximumPoints": 203
+          },
+          "speedSeconds": 3.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22208",
+        "url": "https://www.wowhead.com/classic/cn/item=22208&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12557",
+      "name": {
+        "zhCN": "乌钢肩甲"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_25"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：茉艾拉·铜须公主的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 6,
+          "agilityPoints": 7,
+          "staminaPoints": 16
+        },
+        "defense": {
+          "armorPoints": 553
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12557",
+        "url": "https://www.wowhead.com/classic/cn/item=12557&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "12554",
+      "name": {
+        "zhCN": "传令官之手"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_32"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：茉艾拉·铜须公主的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 13,
+          "spiritPoints": 12
+        },
+        "defense": {
+          "armorPoints": 52
+        },
+        "spell": {
+          "healingPowerPoints": 33
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12554",
+        "url": "https://www.wowhead.com/classic/cn/item=12554&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12556",
+      "name": {
+        "zhCN": "高阶女祭司之靴"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_wolf"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：茉艾拉·铜须公主的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 20,
+          "spiritPoints": 7
+        },
+        "defense": {
+          "armorPoints": 58
+        },
+        "resistances": {
+          "shadowPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12556",
+        "url": "https://www.wowhead.com/classic/cn/item=12556&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "12553",
+      "name": {
+        "zhCN": "迅捷长靴"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_02"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：茉艾拉·铜须公主的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 4,
+          "agilityPoints": 21,
+          "staminaPoints": 7
+        },
+        "defense": {
+          "armorPoints": 115
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12553",
+        "url": "https://www.wowhead.com/classic/cn/item=12553&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11684",
+      "name": {
+        "zhCN": "反对者"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "epic",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "rogue", "priest", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "spell_frost_frostbrand"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：达格兰·索瑞森大帝的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 73,
+            "maximumPoints": 136
+          },
+          "speedSeconds": 2.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11684",
+        "url": "https://www.wowhead.com/classic/cn/item=11684&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11933",
+      "name": {
+        "zhCN": "帝王宝石"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_gem_sapphire_01"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：达格兰·索瑞森大帝的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 7
+        },
+        "physical": {
+          "attackPowerPoints": 32,
+          "rangedAttackPowerPoints": 32
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11933",
+        "url": "https://www.wowhead.com/classic/cn/item=11933&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11930",
+      "name": {
+        "zhCN": "皇帝的新斗篷"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_20"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：达格兰·索瑞森大帝的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 7,
+          "staminaPoints": 16
+        },
+        "defense": {
+          "armorPoints": 43
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11930",
+        "url": "https://www.wowhead.com/classic/cn/item=11930&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11924",
+      "name": {
+        "zhCN": "皇冠法袍"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_16"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：达格兰·索瑞森大帝的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 19,
+          "intellectPoints": 12,
+          "spiritPoints": 10
+        },
+        "defense": {
+          "armorPoints": 85
+        },
+        "spell": {
+          "spellPowerPoints": 18,
+          "healingPowerPoints": 18
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11924",
+        "url": "https://www.wowhead.com/classic/cn/item=11924&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22204",
+      "name": {
+        "zhCN": "名望护腕"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_10"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：达格兰·索瑞森大帝的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 9,
+          "agilityPoints": 10,
+          "staminaPoints": 10
+        },
+        "defense": {
+          "armorPoints": 74
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22204",
+        "url": "https://www.wowhead.com/classic/cn/item=22204&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "22207",
+      "name": {
+        "zhCN": "追猎腰带"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_28"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：达格兰·索瑞森大帝的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 15,
+          "staminaPoints": 14,
+          "intellectPoints": 6
+        },
+        "defense": {
+          "armorPoints": 199
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22207",
+        "url": "https://www.wowhead.com/classic/cn/item=22207&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11934",
+      "name": {
+        "zhCN": "皇帝徽记"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_24"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：达格兰·索瑞森大帝的专属掉落。"
+      },
+      "stats": {
+        "resistances": {
+          "arcanePoints": 6,
+          "frostPoints": 6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11934",
+        "url": "https://www.wowhead.com/classic/cn/item=11934&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11815",
+      "name": {
+        "zhCN": "正义之手"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_talisman_01"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：达格兰·索瑞森大帝的专属掉落。"
+      },
+      "stats": {
+        "physical": {
+          "attackPowerPoints": 20,
+          "rangedAttackPowerPoints": 20
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11815",
+        "url": "https://www.wowhead.com/classic/cn/item=11815&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11928",
+      "name": {
+        "zhCN": "索瑞森皇家节杖"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["paladin", "priest", "shaman", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_mace_13"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：达格兰·索瑞森大帝的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 5,
+          "intellectPoints": 5,
+          "spiritPoints": 10
+        },
+        "spell": {
+          "healingPowerPoints": 22
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11928",
+        "url": "https://www.wowhead.com/classic/cn/item=11928&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11931",
+      "name": {
+        "zhCN": "恐怖复仇者"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_axe_22"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：达格兰·索瑞森大帝的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "parryPercent": 1
+        },
+        "physical": {
+          "attackPowerPoints": 30,
+          "rangedAttackPowerPoints": 30,
+          "criticalStrikePercent": 1
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 149,
+            "maximumPoints": 225
+          },
+          "speedSeconds": 3.7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11931",
+        "url": "https://www.wowhead.com/classic/cn/item=11931&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11932",
+      "name": {
+        "zhCN": "智慧手杖"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "priest", "shaman", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_staff_30"
+      },
+      "description": {
+        "zhCN": "黑石深渊暗炉城：达格兰·索瑞森大帝的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 11,
+          "spiritPoints": 10
+        },
+        "spell": {
+          "healingPowerPoints": 53
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 133,
+            "maximumPoints": 200
+          },
+          "speedSeconds": 3.3
+        },
+        "resistances": {
+          "frostPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11932",
+        "url": "https://www.wowhead.com/classic/cn/item=11932&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    }
+  ]
+}

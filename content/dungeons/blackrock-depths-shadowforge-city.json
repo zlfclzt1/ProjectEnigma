@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/blackrock-depths-shadowforge-city-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对暗炉城后半区路线、黑铁酒吧、七贤、讲学厅与王座战。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对暗炉城首领、稀有首领与装备来源。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-10",
+        "notes": "将暗炉城压缩为可主动安排的最终分区；首通后不再解锁新副本。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["minimumLevel", "recommendedLevel", "duration", "probability", "route"],
+        "reason": "按禁闭区后的 52–56 级最终升级入口、约 30 分钟主线和约 45 分钟完整主动路线设置首版参数。",
+        "decidedAt": "2026-09-10"
+      }
+    ]
+  },
+  "dungeons": [
+    {
+      "id": "blackrock_depths_shadowforge_city",
+      "name": {
+        "zhCN": "黑石深渊：暗炉城",
+        "enUS": "Blackrock Depths: Shadowforge City"
+      },
+      "minimumLevel": 52,
+      "recommendedLevel": 56,
+      "defaultUnlocked": false,
+      "unlock": {
+        "requiredDungeonIds": ["blackrock_depths_detention_block"]
+      },
+      "members": {
+        "minimum": 1,
+        "maximum": 5,
+        "recommended": 5
+      },
+      "duration": {
+        "baseSeconds": 2500,
+        "minimumRatio": 0.48,
+        "maximumRatio": 1.8
+      },
+      "probability": {
+        "minimum": 0.05,
+        "maximum": 0.99,
+        "base": 0.05,
+        "readinessMultiplier": 0.97,
+        "surplusEffect": 0.5,
+        "geometricWeight": 0.7,
+        "bottleneckWeight": 0.3,
+        "overpowerThreshold": 1.5
+      },
+      "combatTuning": {
+        "bossProbabilityMaximum": 0.985,
+        "requirementMultipliers": {
+          "tank": 0.6,
+          "healing": 0.6,
+          "damage": 0.6
+        }
+      },
+      "route": [
+        {
+          "id": "brd_shadowforge_general_angerforge",
+          "type": "optional",
+          "description": {
+            "zhCN": "主动进入兵营，挑战安格弗将军。"
+          },
+          "encounterId": "brd_shadowforge_general_angerforge"
+        },
+        {
+          "id": "brd_shadowforge_golem_lord_argelmach",
+          "type": "optional",
+          "description": {
+            "zhCN": "主动清理制造厂，挑战傀儡统帅阿格曼奇。"
+          },
+          "encounterId": "brd_shadowforge_golem_lord_argelmach"
+        },
+        {
+          "id": "brd_shadowforge_hurley_blackbreath",
+          "type": "optional",
+          "description": {
+            "zhCN": "主动破坏酒桶，唤出霍尔雷·黑须。"
+          },
+          "encounterId": "brd_shadowforge_hurley_blackbreath"
+        },
+        {
+          "id": "brd_shadowforge_ribbly_screwspigot",
+          "type": "optional",
+          "description": {
+            "zhCN": "主动挑战雷布里与他的商人同伴。"
+          },
+          "encounterId": "brd_shadowforge_ribbly_screwspigot"
+        },
+        {
+          "id": "brd_shadowforge_plugger_spazzring",
+          "type": "optional",
+          "description": {
+            "zhCN": "主动挑战黑铁酒吧老板普拉格。"
+          },
+          "encounterId": "brd_shadowforge_plugger_spazzring"
+        },
+        {
+          "id": "brd_shadowforge_phalanx",
+          "type": "required",
+          "encounterId": "brd_shadowforge_phalanx"
+        },
+        {
+          "id": "brd_shadowforge_ambassador_flamelash",
+          "type": "required",
+          "encounterId": "brd_shadowforge_ambassador_flamelash"
+        },
+        {
+          "id": "brd_shadowforge_panzor",
+          "type": "rare",
+          "spawnProbability": 0.32,
+          "encounterId": "brd_shadowforge_panzor"
+        },
+        {
+          "id": "brd_shadowforge_seven",
+          "type": "required",
+          "encounterId": "brd_shadowforge_seven"
+        },
+        {
+          "id": "brd_shadowforge_lyceum",
+          "type": "required",
+          "encounterId": "brd_shadowforge_lyceum"
+        },
+        {
+          "id": "brd_shadowforge_magmus",
+          "type": "required",
+          "encounterId": "brd_shadowforge_magmus"
+        },
+        {
+          "id": "brd_shadowforge_princess_moira",
+          "type": "optional",
+          "description": {
+            "zhCN": "主动选择在王座战中击杀茉艾拉并获取她的装备；默认不选表示营救。"
+          },
+          "encounterId": "brd_shadowforge_princess_moira"
+        },
+        {
+          "id": "brd_shadowforge_emperor_dagran_thaurissan",
+          "type": "required",
+          "encounterId": "brd_shadowforge_emperor_dagran_thaurissan"
+        }
+      ]
+    }
+  ]
+}

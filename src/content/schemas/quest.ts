@@ -21,8 +21,18 @@ export const dungeonQuestCompletionSchema = z.discriminatedUnion("type", [
         .array(encounterIdSchema)
         .min(1)
         .refine((ids) => new Set(ids).size === ids.length, "任务目标不能重复引用同一首领"),
+      excludedEncounterIds: z
+        .array(encounterIdSchema)
+        .min(1)
+        .refine((ids) => new Set(ids).size === ids.length, "任务排除目标不能重复引用同一首领")
+        .optional(),
     })
-    .strict(),
+    .strict()
+    .refine(
+      ({ encounterIds, excludedEncounterIds }) =>
+        !(excludedEncounterIds ?? []).some((encounterId) => encounterIds.includes(encounterId)),
+      "任务目标与排除目标不能引用同一首领",
+    ),
   z.object({ type: z.literal("dungeon-clear") }).strict(),
 ]);
 

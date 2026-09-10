@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-10",
+        "notes": "暗炉城日志只描述已经结算的主动路线、随机刷新和战斗事实。"
+      }
+    ]
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "brd_shadowforge_general_angerforge_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_shadowforge_general_angerforge"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "安格弗将军的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了安格弗将军这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_shadowforge_golem_lord_argelmach_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_shadowforge_golem_lord_argelmach"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "傀儡统帅阿格曼奇的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了傀儡统帅阿格曼奇这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_shadowforge_hurley_blackbreath_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_shadowforge_hurley_blackbreath"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "霍尔雷·黑须的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了霍尔雷·黑须这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_shadowforge_ribbly_screwspigot_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_shadowforge_ribbly_screwspigot"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "雷布里·斯库比格特的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了雷布里·斯库比格特这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_shadowforge_plugger_spazzring_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_shadowforge_plugger_spazzring"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "普拉格的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了普拉格这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_shadowforge_phalanx_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_shadowforge_phalanx"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "法拉克斯的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了法拉克斯这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_shadowforge_ambassador_flamelash_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_shadowforge_ambassador_flamelash"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "弗莱拉斯大使的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了弗莱拉斯大使这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_shadowforge_panzor_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_shadowforge_panzor"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "无敌的潘佐尔的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了无敌的潘佐尔这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_shadowforge_seven_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_shadowforge_seven"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "七贤的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了七贤这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_shadowforge_lyceum_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_shadowforge_lyceum"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "讲学厅的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了讲学厅这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_shadowforge_magmus_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_shadowforge_magmus"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "玛格姆斯的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了玛格姆斯这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_shadowforge_princess_moira_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_shadowforge_princess_moira"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "茉艾拉·铜须公主的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了茉艾拉·铜须公主这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_shadowforge_emperor_dagran_thaurissan_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_shadowforge_emperor_dagran_thaurissan"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "达格兰·索瑞森大帝的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了达格兰·索瑞森大帝这段主动路线。"
+      ]
+    }
+  ]
+}

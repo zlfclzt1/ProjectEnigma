@@ -645,6 +645,32 @@ export class ContentRegistry {
           });
         }
       }
+      for (const [index, encounterId] of (
+        owner.value.completion.excludedEncounterIds ?? []
+      ).entries()) {
+        const encounterExists = requireReference(
+          encounterById,
+          encounterId,
+          owner,
+          `completion.excludedEncounterIds[${index}]`,
+          "首领战",
+          issues,
+        );
+        const encounter = encounterById.get(encounterId);
+        const routeNode = encounterExists
+          ? dungeonById
+              .get(encounter!.dungeonId)
+              ?.route.find((node) => node.encounterId === encounterId)
+          : undefined;
+        if (routeNode && routeNode.type !== "optional") {
+          issues.push({
+            filePath: owner.filePath,
+            fieldPath: `${owner.fieldPath}.completion.excludedEncounterIds[${index}]`,
+            message: "任务排除目标必须是普通可选路线",
+            invalidReferenceId: encounterId,
+          });
+        }
+      }
     }
   }
 

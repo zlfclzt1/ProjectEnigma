@@ -1,0 +1,307 @@
+{
+  "dungeonId": "blackrock_depths_shadowforge_city",
+  "samplesPerScenario": 100000,
+  "scenarios": {
+    "standard": {
+      "required": {
+        "level": 56,
+        "simulatedRuns": 100000,
+        "clearRate": 0.80881,
+        "previewClearProbability": 0.8106166321456933,
+        "durationSeconds": 1910.6,
+        "wipeCounts": {
+          "brd_shadowforge_seven": 1592,
+          "brd_shadowforge_phalanx": 2968,
+          "brd_shadowforge_emperor_dagran_thaurissan": 3458,
+          "brd_shadowforge_lyceum": 6041,
+          "brd_shadowforge_magmus": 1280,
+          "brd_shadowforge_ambassador_flamelash": 3780
+        }
+      },
+      "with-optional": {
+        "level": 56,
+        "simulatedRuns": 100000,
+        "clearRate": 0.70369,
+        "previewClearProbability": 0.7033478816227123,
+        "durationSeconds": 2572.8,
+        "wipeCounts": {
+          "brd_shadowforge_hurley_blackbreath": 1462,
+          "brd_shadowforge_emperor_dagran_thaurissan": 6831,
+          "brd_shadowforge_seven": 3444,
+          "brd_shadowforge_lyceum": 4507,
+          "brd_shadowforge_general_angerforge": 1473,
+          "brd_shadowforge_princess_moira": 2038,
+          "brd_shadowforge_phalanx": 1749,
+          "brd_shadowforge_ambassador_flamelash": 2595,
+          "brd_shadowforge_plugger_spazzring": 1401,
+          "brd_shadowforge_golem_lord_argelmach": 1454,
+          "brd_shadowforge_magmus": 1271,
+          "brd_shadowforge_ribbly_screwspigot": 1406
+        }
+      },
+      "with-rare": {
+        "level": 56,
+        "simulatedRuns": 100000,
+        "clearRate": 0.79529,
+        "previewClearProbability": 0.7973863353871231,
+        "durationSeconds": 2063,
+        "wipeCounts": {
+          "brd_shadowforge_phalanx": 2260,
+          "brd_shadowforge_lyceum": 6262,
+          "brd_shadowforge_ambassador_flamelash": 4258,
+          "brd_shadowforge_seven": 1940,
+          "brd_shadowforge_magmus": 1286,
+          "brd_shadowforge_emperor_dagran_thaurissan": 3041,
+          "brd_shadowforge_panzor": 1424
+        }
+      }
+    },
+    "no-tank": {
+      "required": {
+        "level": 56,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.5625000000000006e-8,
+        "durationSeconds": 2142.4,
+        "wipeCounts": {
+          "brd_shadowforge_phalanx": 95085,
+          "brd_shadowforge_ambassador_flamelash": 4672,
+          "brd_shadowforge_seven": 236,
+          "brd_shadowforge_lyceum": 7
+        }
+      },
+      "with-optional": {
+        "level": 56,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 2.4414062500000014e-16,
+        "durationSeconds": 2875.8,
+        "wipeCounts": {
+          "brd_shadowforge_general_angerforge": 95067,
+          "brd_shadowforge_golem_lord_argelmach": 4695,
+          "brd_shadowforge_hurley_blackbreath": 226,
+          "brd_shadowforge_ribbly_screwspigot": 10,
+          "brd_shadowforge_plugger_spazzring": 2
+        }
+      },
+      "with-rare": {
+        "level": 56,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 7.812500000000005e-10,
+        "durationSeconds": 2212.6,
+        "wipeCounts": {
+          "brd_shadowforge_phalanx": 95050,
+          "brd_shadowforge_ambassador_flamelash": 4727,
+          "brd_shadowforge_panzor": 216,
+          "brd_shadowforge_seven": 7
+        }
+      }
+    },
+    "no-healing": {
+      "required": {
+        "level": 56,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.5625000000000006e-8,
+        "durationSeconds": 2174.6,
+        "wipeCounts": {
+          "brd_shadowforge_phalanx": 94981,
+          "brd_shadowforge_ambassador_flamelash": 4766,
+          "brd_shadowforge_seven": 235,
+          "brd_shadowforge_lyceum": 17,
+          "brd_shadowforge_magmus": 1
+        }
+      },
+      "with-optional": {
+        "level": 56,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 2.4414062500000014e-16,
+        "durationSeconds": 2864,
+        "wipeCounts": {
+          "brd_shadowforge_general_angerforge": 94882,
+          "brd_shadowforge_golem_lord_argelmach": 4870,
+          "brd_shadowforge_hurley_blackbreath": 230,
+          "brd_shadowforge_ribbly_screwspigot": 18
+        }
+      },
+      "with-rare": {
+        "level": 56,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 7.812500000000005e-10,
+        "durationSeconds": 2273.8,
+        "wipeCounts": {
+          "brd_shadowforge_phalanx": 94960,
+          "brd_shadowforge_ambassador_flamelash": 4776,
+          "brd_shadowforge_panzor": 255,
+          "brd_shadowforge_seven": 8,
+          "brd_shadowforge_lyceum": 1
+        }
+      }
+    },
+    "overlevel": {
+      "required": {
+        "level": 53,
+        "simulatedRuns": 100000,
+        "clearRate": 0.7479,
+        "previewClearProbability": 0.748647007531768,
+        "durationSeconds": 1981.2,
+        "wipeCounts": {
+          "brd_shadowforge_magmus": 1379,
+          "brd_shadowforge_ambassador_flamelash": 6529,
+          "brd_shadowforge_lyceum": 6604,
+          "brd_shadowforge_phalanx": 4050,
+          "brd_shadowforge_emperor_dagran_thaurissan": 4299,
+          "brd_shadowforge_seven": 2349
+        }
+      },
+      "with-optional": {
+        "level": 53,
+        "simulatedRuns": 100000,
+        "clearRate": 0.54105,
+        "previewClearProbability": 0.5419065964991955,
+        "durationSeconds": 2698.4,
+        "wipeCounts": {
+          "brd_shadowforge_phalanx": 5243,
+          "brd_shadowforge_emperor_dagran_thaurissan": 5945,
+          "brd_shadowforge_plugger_spazzring": 1564,
+          "brd_shadowforge_ribbly_screwspigot": 1427,
+          "brd_shadowforge_seven": 5682,
+          "brd_shadowforge_ambassador_flamelash": 7592,
+          "brd_shadowforge_golem_lord_argelmach": 1444,
+          "brd_shadowforge_lyceum": 7124,
+          "brd_shadowforge_princess_moira": 3663,
+          "brd_shadowforge_magmus": 2020,
+          "brd_shadowforge_hurley_blackbreath": 1757,
+          "brd_shadowforge_general_angerforge": 2434
+        }
+      },
+      "with-rare": {
+        "level": 53,
+        "simulatedRuns": 100000,
+        "clearRate": 0.78569,
+        "previewClearProbability": 0.7868028700735881,
+        "durationSeconds": 2057.4,
+        "wipeCounts": {
+          "brd_shadowforge_magmus": 2709,
+          "brd_shadowforge_phalanx": 1750,
+          "brd_shadowforge_lyceum": 5497,
+          "brd_shadowforge_emperor_dagran_thaurissan": 2994,
+          "brd_shadowforge_ambassador_flamelash": 4522,
+          "brd_shadowforge_seven": 2501,
+          "brd_shadowforge_panzor": 1458
+        }
+      }
+    },
+    "max-level": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.8831,
+        "previewClearProbability": 0.8851730052246942,
+        "durationSeconds": 1617.4,
+        "wipeCounts": {
+          "brd_shadowforge_lyceum": 3073,
+          "brd_shadowforge_ambassador_flamelash": 2480,
+          "brd_shadowforge_emperor_dagran_thaurissan": 1362,
+          "brd_shadowforge_phalanx": 1676,
+          "brd_shadowforge_magmus": 1587,
+          "brd_shadowforge_seven": 1512
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.83102,
+        "previewClearProbability": 0.8311766567242836,
+        "durationSeconds": 2115.2,
+        "wipeCounts": {
+          "brd_shadowforge_lyceum": 1615,
+          "brd_shadowforge_plugger_spazzring": 1450,
+          "brd_shadowforge_princess_moira": 1287,
+          "brd_shadowforge_hurley_blackbreath": 1389,
+          "brd_shadowforge_ambassador_flamelash": 1442,
+          "brd_shadowforge_ribbly_screwspigot": 1376,
+          "brd_shadowforge_phalanx": 1483,
+          "brd_shadowforge_emperor_dagran_thaurissan": 1287,
+          "brd_shadowforge_general_angerforge": 1491,
+          "brd_shadowforge_magmus": 1317,
+          "brd_shadowforge_golem_lord_argelmach": 1445,
+          "brd_shadowforge_seven": 1316
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.85074,
+        "previewClearProbability": 0.8493019415682277,
+        "durationSeconds": 1779.4,
+        "wipeCounts": {
+          "brd_shadowforge_panzor": 1513,
+          "brd_shadowforge_magmus": 1336,
+          "brd_shadowforge_emperor_dagran_thaurissan": 4986,
+          "brd_shadowforge_seven": 1824,
+          "brd_shadowforge_phalanx": 1475,
+          "brd_shadowforge_lyceum": 2030,
+          "brd_shadowforge_ambassador_flamelash": 1762
+        }
+      }
+    },
+    "speed-run": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.87108,
+        "previewClearProbability": 0.8699988605193436,
+        "durationSeconds": 1641.8,
+        "wipeCounts": {
+          "brd_shadowforge_emperor_dagran_thaurissan": 4067,
+          "brd_shadowforge_magmus": 1378,
+          "brd_shadowforge_seven": 1930,
+          "brd_shadowforge_lyceum": 2160,
+          "brd_shadowforge_ambassador_flamelash": 1851,
+          "brd_shadowforge_phalanx": 1506
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.80825,
+        "previewClearProbability": 0.8089723018662761,
+        "durationSeconds": 2142.6,
+        "wipeCounts": {
+          "brd_shadowforge_golem_lord_argelmach": 1519,
+          "brd_shadowforge_plugger_spazzring": 1445,
+          "brd_shadowforge_emperor_dagran_thaurissan": 2962,
+          "brd_shadowforge_princess_moira": 1306,
+          "brd_shadowforge_ribbly_screwspigot": 1443,
+          "brd_shadowforge_hurley_blackbreath": 1446,
+          "brd_shadowforge_ambassador_flamelash": 1402,
+          "brd_shadowforge_lyceum": 2064,
+          "brd_shadowforge_phalanx": 1423,
+          "brd_shadowforge_magmus": 1246,
+          "brd_shadowforge_seven": 1478,
+          "brd_shadowforge_general_angerforge": 1441
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.83997,
+        "previewClearProbability": 0.8393614504631118,
+        "durationSeconds": 1783,
+        "wipeCounts": {
+          "brd_shadowforge_phalanx": 1824,
+          "brd_shadowforge_ambassador_flamelash": 2569,
+          "brd_shadowforge_emperor_dagran_thaurissan": 3267,
+          "brd_shadowforge_seven": 2059,
+          "brd_shadowforge_lyceum": 3415,
+          "brd_shadowforge_magmus": 1396,
+          "brd_shadowforge_panzor": 1473
+        }
+      }
+    }
+  }
+}

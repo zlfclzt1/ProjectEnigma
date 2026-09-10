@@ -1,0 +1,321 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/blackrock-depths-shadowforge-city-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对暗炉城增援、酒吧群战、火焰区域、七贤连战与王座战机制。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-10",
+        "notes": "阶段时长、能力需求、经验、资金和首杀奖励作为 52–60 级最终副本模拟的首版基线。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "encounters": [
+    {
+      "id": "brd_shadowforge_general_angerforge",
+      "dungeonId": "blackrock_depths_shadowforge_city",
+      "name": {
+        "zhCN": "安格弗将军"
+      },
+      "stageSeconds": 120,
+      "requirements": {
+        "tank": 63,
+        "healing": 67,
+        "damage": 280
+      },
+      "weights": {
+        "tank": 0.36,
+        "healing": 0.34,
+        "damage": 0.3
+      },
+      "experienceShare": 0.1,
+      "funds": 132,
+      "firstKillBonus": 264,
+      "lootTableId": "brd_shadowforge_general_angerforge",
+      "mechanicIds": ["brd_shadowforge_barracks_reinforcements"]
+    },
+    {
+      "id": "brd_shadowforge_golem_lord_argelmach",
+      "dungeonId": "blackrock_depths_shadowforge_city",
+      "name": {
+        "zhCN": "傀儡统帅阿格曼奇"
+      },
+      "stageSeconds": 130,
+      "requirements": {
+        "tank": 65,
+        "healing": 69,
+        "damage": 286
+      },
+      "weights": {
+        "tank": 0.36,
+        "healing": 0.35,
+        "damage": 0.29
+      },
+      "experienceShare": 0.11,
+      "funds": 138,
+      "firstKillBonus": 276,
+      "lootTableId": "brd_shadowforge_golem_lord_argelmach",
+      "mechanicIds": ["brd_shadowforge_construct_surge"]
+    },
+    {
+      "id": "brd_shadowforge_hurley_blackbreath",
+      "dungeonId": "blackrock_depths_shadowforge_city",
+      "name": {
+        "zhCN": "霍尔雷·黑须"
+      },
+      "stageSeconds": 90,
+      "requirements": {
+        "tank": 61,
+        "healing": 65,
+        "damage": 270
+      },
+      "weights": {
+        "tank": 0.34,
+        "healing": 0.36,
+        "damage": 0.3
+      },
+      "experienceShare": 0.08,
+      "funds": 116,
+      "firstKillBonus": 232,
+      "lootTableId": "brd_shadowforge_hurley_blackbreath",
+      "mechanicIds": ["brd_shadowforge_bar_brawl"]
+    },
+    {
+      "id": "brd_shadowforge_ribbly_screwspigot",
+      "dungeonId": "blackrock_depths_shadowforge_city",
+      "name": {
+        "zhCN": "雷布里·斯库比格特"
+      },
+      "stageSeconds": 80,
+      "requirements": {
+        "tank": 60,
+        "healing": 64,
+        "damage": 266
+      },
+      "weights": {
+        "tank": 0.34,
+        "healing": 0.36,
+        "damage": 0.3
+      },
+      "experienceShare": 0.07,
+      "funds": 108,
+      "firstKillBonus": 216,
+      "mechanicIds": ["brd_shadowforge_bar_brawl"]
+    },
+    {
+      "id": "brd_shadowforge_plugger_spazzring",
+      "dungeonId": "blackrock_depths_shadowforge_city",
+      "name": {
+        "zhCN": "普拉格"
+      },
+      "stageSeconds": 80,
+      "requirements": {
+        "tank": 61,
+        "healing": 65,
+        "damage": 270
+      },
+      "weights": {
+        "tank": 0.3,
+        "healing": 0.4,
+        "damage": 0.3
+      },
+      "experienceShare": 0.07,
+      "funds": 110,
+      "firstKillBonus": 220,
+      "lootTableId": "brd_shadowforge_plugger_spazzring",
+      "mechanicIds": ["brd_shadowforge_bar_brawl"]
+    },
+    {
+      "id": "brd_shadowforge_phalanx",
+      "dungeonId": "blackrock_depths_shadowforge_city",
+      "name": {
+        "zhCN": "法拉克斯"
+      },
+      "stageSeconds": 230,
+      "requirements": {
+        "tank": 69,
+        "healing": 73,
+        "damage": 304
+      },
+      "weights": {
+        "tank": 0.38,
+        "healing": 0.36,
+        "damage": 0.26
+      },
+      "experienceShare": 0.12,
+      "funds": 172,
+      "firstKillBonus": 344,
+      "lootTableId": "brd_shadowforge_phalanx",
+      "mechanicIds": ["brd_shadowforge_bar_brawl"]
+    },
+    {
+      "id": "brd_shadowforge_ambassador_flamelash",
+      "dungeonId": "blackrock_depths_shadowforge_city",
+      "name": {
+        "zhCN": "弗莱拉斯大使"
+      },
+      "stageSeconds": 210,
+      "requirements": {
+        "tank": 70,
+        "healing": 75,
+        "damage": 309
+      },
+      "weights": {
+        "tank": 0.3,
+        "healing": 0.41,
+        "damage": 0.29
+      },
+      "experienceShare": 0.15,
+      "funds": 184,
+      "firstKillBonus": 368,
+      "lootTableId": "brd_shadowforge_ambassador_flamelash",
+      "mechanicIds": ["brd_shadowforge_flamelash_fire"]
+    },
+    {
+      "id": "brd_shadowforge_panzor",
+      "dungeonId": "blackrock_depths_shadowforge_city",
+      "name": {
+        "zhCN": "无敌的潘佐尔"
+      },
+      "stageSeconds": 150,
+      "requirements": {
+        "tank": 65,
+        "healing": 68,
+        "damage": 288
+      },
+      "weights": {
+        "tank": 0.44,
+        "healing": 0.31,
+        "damage": 0.25
+      },
+      "experienceShare": 0.08,
+      "funds": 124,
+      "firstKillBonus": 248,
+      "lootTableId": "brd_shadowforge_panzor",
+      "mechanicIds": ["brd_shadowforge_construct_surge"]
+    },
+    {
+      "id": "brd_shadowforge_seven",
+      "dungeonId": "blackrock_depths_shadowforge_city",
+      "name": {
+        "zhCN": "七贤"
+      },
+      "stageSeconds": 280,
+      "requirements": {
+        "tank": 71,
+        "healing": 76,
+        "damage": 314
+      },
+      "weights": {
+        "tank": 0.31,
+        "healing": 0.39,
+        "damage": 0.3
+      },
+      "experienceShare": 0.18,
+      "funds": 204,
+      "firstKillBonus": 408,
+      "lootTableId": "brd_shadowforge_seven",
+      "mechanicIds": ["brd_shadowforge_seven_gauntlet"]
+    },
+    {
+      "id": "brd_shadowforge_lyceum",
+      "dungeonId": "blackrock_depths_shadowforge_city",
+      "name": {
+        "zhCN": "讲学厅"
+      },
+      "stageSeconds": 320,
+      "requirements": {
+        "tank": 72,
+        "healing": 77,
+        "damage": 319
+      },
+      "weights": {
+        "tank": 0.31,
+        "healing": 0.38,
+        "damage": 0.31
+      },
+      "experienceShare": 0.2,
+      "funds": 196,
+      "firstKillBonus": 392,
+      "mechanicIds": ["brd_shadowforge_lyceum_crowds"]
+    },
+    {
+      "id": "brd_shadowforge_magmus",
+      "dungeonId": "blackrock_depths_shadowforge_city",
+      "name": {
+        "zhCN": "玛格姆斯"
+      },
+      "stageSeconds": 240,
+      "requirements": {
+        "tank": 73,
+        "healing": 78,
+        "damage": 324
+      },
+      "weights": {
+        "tank": 0.42,
+        "healing": 0.36,
+        "damage": 0.22
+      },
+      "experienceShare": 0.15,
+      "funds": 214,
+      "firstKillBonus": 428,
+      "lootTableId": "brd_shadowforge_magmus",
+      "mechanicIds": ["brd_shadowforge_magmus_fire"]
+    },
+    {
+      "id": "brd_shadowforge_princess_moira",
+      "dungeonId": "blackrock_depths_shadowforge_city",
+      "name": {
+        "zhCN": "茉艾拉·铜须公主"
+      },
+      "stageSeconds": 100,
+      "requirements": {
+        "tank": 67,
+        "healing": 73,
+        "damage": 296
+      },
+      "weights": {
+        "tank": 0.27,
+        "healing": 0.43,
+        "damage": 0.3
+      },
+      "experienceShare": 0.09,
+      "funds": 146,
+      "firstKillBonus": 292,
+      "lootTableId": "brd_shadowforge_princess_moira",
+      "mechanicIds": ["brd_shadowforge_royal_duel"]
+    },
+    {
+      "id": "brd_shadowforge_emperor_dagran_thaurissan",
+      "dungeonId": "blackrock_depths_shadowforge_city",
+      "name": {
+        "zhCN": "达格兰·索瑞森大帝"
+      },
+      "stageSeconds": 470,
+      "requirements": {
+        "tank": 75,
+        "healing": 80,
+        "damage": 332
+      },
+      "weights": {
+        "tank": 0.38,
+        "healing": 0.38,
+        "damage": 0.24
+      },
+      "experienceShare": 0.2,
+      "funds": 244,
+      "firstKillBonus": 488,
+      "lootTableId": "brd_shadowforge_emperor_dagran_thaurissan",
+      "mechanicIds": ["brd_shadowforge_royal_duel"]
+    }
+  ]
+}
