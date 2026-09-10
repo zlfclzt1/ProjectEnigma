@@ -27,6 +27,7 @@ import {
   type EncounterMechanicResult,
 } from "./mechanic-evaluation";
 import { getDungeonRouteVariant, routeForVariant } from "./dungeon-route";
+import { includeGuaranteedRareRouteRepresentatives } from "./rare-route";
 
 export interface PartyEvaluationIssue {
   readonly code: string;
@@ -141,8 +142,11 @@ export function evaluateExpeditionParty(
     partyCombatProfile.members,
   );
   const selectedOptionalIds = new Set(selectedOptionalNodeIds);
-  const includedRareIds = new Set(includedRareNodeIds);
-  const route = routeForVariant(dungeon, routeVariantId).filter(
+  const activeRoute = routeForVariant(dungeon, routeVariantId);
+  const includedRareIds = new Set(
+    includeGuaranteedRareRouteRepresentatives(activeRoute, includedRareNodeIds),
+  );
+  const route = activeRoute.filter(
     (node) =>
       node.type === "required" ||
       (node.type === "optional" && selectedOptionalIds.has(node.id)) ||

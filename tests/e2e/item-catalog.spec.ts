@@ -5,7 +5,7 @@ test("browses the unlocked item catalog without revealing locked loot", async ({
   await page.getByRole("link", { name: "装备图鉴" }).click();
   await expect(page).toHaveURL(/#\/catalog$/);
   await expect(page.getByRole("heading", { name: "装备图鉴" })).toBeVisible();
-  await expect(page.locator(".dungeon-catalog")).toHaveCount(17);
+  await expect(page.locator(".dungeon-catalog")).toHaveCount(18);
   await expect(page.getByText("装备资料封存中").first()).toBeVisible();
   await expect(page.getByText("狼王斗篷")).toHaveCount(0);
 

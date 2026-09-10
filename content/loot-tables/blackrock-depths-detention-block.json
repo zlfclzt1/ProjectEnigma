@@ -1,0 +1,431 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对禁闭区十七组 Boss 或宝库装备池；弹药、配方、材料、钥匙和衬衣排除。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/blackrock-depths-detention-block-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对竞技场六选一、宝库容器与卫兵杜格瑞普共享装备来源。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["lootTables[].guaranteedEquipmentDrops", "lootTables[].items[].weight"],
+        "reason": "每名有装备池的真实 Boss 保证一件；黑色宝库主动容器事件也保证一件；首版使用等权相对权重。",
+        "decidedAt": "2026-09-10"
+      }
+    ]
+  },
+  "lootTables": [
+    {
+      "id": "brd_detention_lord_roccor",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "22234",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11632",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11631",
+          "weight": 0.25
+        },
+        {
+          "itemId": "22397",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "brd_detention_high_interrogator_gerstahn",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11626",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11624",
+          "weight": 0.25
+        },
+        {
+          "itemId": "22240",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11625",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "brd_detention_houndmaster_grebmar",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11623",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11627",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11628",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11629",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "brd_detention_arena_gorosh",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11726",
+          "weight": 0.25
+        },
+        {
+          "itemId": "22271",
+          "weight": 0.25
+        },
+        {
+          "itemId": "22257",
+          "weight": 0.25
+        },
+        {
+          "itemId": "22266",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "brd_detention_arena_grizzle",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11722",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11703",
+          "weight": 0.25
+        },
+        {
+          "itemId": "22270",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11702",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "brd_detention_arena_eviscerator",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11685",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11679",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11686",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11730",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "brd_detention_arena_okthor",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11665",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11662",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11728",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11824",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "brd_detention_arena_anubshiah",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11678",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11677",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11675",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11731",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "brd_detention_arena_hedrum",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11633",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11634",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11635",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11729",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "brd_detention_pyromancer_loregrain",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11747",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11749",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11748",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11750",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "brd_detention_black_vault",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "22256",
+          "weight": 0.14285714285714285
+        },
+        {
+          "itemId": "22205",
+          "weight": 0.14285714285714285
+        },
+        {
+          "itemId": "22255",
+          "weight": 0.14285714285714285
+        },
+        {
+          "itemId": "22254",
+          "weight": 0.14285714285714285
+        },
+        {
+          "itemId": "11923",
+          "weight": 0.14285714285714285
+        },
+        {
+          "itemId": "11945",
+          "weight": 0.14285714285714285
+        },
+        {
+          "itemId": "11946",
+          "weight": 0.1428571428571429
+        }
+      ]
+    },
+    {
+      "id": "brd_detention_watchman_doomgrip",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "22205",
+          "weight": 0.25
+        },
+        {
+          "itemId": "22255",
+          "weight": 0.25
+        },
+        {
+          "itemId": "22256",
+          "weight": 0.25
+        },
+        {
+          "itemId": "22254",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "brd_detention_warder_stilgiss",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11782",
+          "weight": 0.25
+        },
+        {
+          "itemId": "22241",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11783",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11784",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "brd_detention_verek",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11755",
+          "weight": 0.5
+        },
+        {
+          "itemId": "22242",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "brd_detention_fineous_darkvire",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11839",
+          "weight": 0.25
+        },
+        {
+          "itemId": "22223",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11842",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11841",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "brd_detention_lord_incendius",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11766",
+          "weight": 0.2
+        },
+        {
+          "itemId": "11764",
+          "weight": 0.2
+        },
+        {
+          "itemId": "11765",
+          "weight": 0.2
+        },
+        {
+          "itemId": "11767",
+          "weight": 0.2
+        },
+        {
+          "itemId": "11768",
+          "weight": 0.19999999999999996
+        }
+      ]
+    },
+    {
+      "id": "brd_detention_baelgar",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11807",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11802",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11805",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11803",
+          "weight": 0.25
+        }
+      ]
+    }
+  ]
+}

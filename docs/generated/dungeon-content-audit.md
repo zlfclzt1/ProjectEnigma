@@ -16,6 +16,24 @@
 | 黑暗深渊（blackfathom_deeps） | bfd_old_serrakis | required | 老年塞拉吉斯（bfd_old_serrakis） | boss_drop:bfd_old_serrakis | 1 | 6901 发光的蛇颈龙斗篷、6902 瑟拉吉斯指环、6904 瑟拉吉斯之刺 |
 | 黑暗深渊（blackfathom_deeps） | bfd_twilight_lord_kelris | required | 梦游者克尔里斯（bfd_twilight_lord_kelris） | boss_drop:bfd_twilight_lord_kelris | 1 | 1155 梦游者魔棒、6903 凝望短裤 |
 | 黑暗深渊（blackfathom_deeps） | bfd_akumai | required | 阿库麦尔（bfd_akumai） | boss_drop:bfd_akumai | 1 | 6909 海蛇之击、6910 吸血短裤、6911 苔藓腰带 |
+| 黑石深渊：禁闭区（blackrock_depths_detention_block） | brd_detention_high_interrogator_gerstahn | required | 审讯官格斯塔恩（brd_detention_high_interrogator_gerstahn） | boss_drop:brd_detention_high_interrogator_gerstahn | 1 | 11626 黑雾斗篷、11624 肯提克护肩、22240 凋零绝望胫甲、11625 奴役之球 |
+| 黑石深渊：禁闭区（blackrock_depths_detention_block） | brd_detention_lord_roccor | optional | 洛考尔（brd_detention_lord_roccor） | boss_drop:brd_detention_lord_roccor | 1 | 22234 失落希望衬肩、11632 土渣护肩、11631 石壳盾牌、22397 凶猛神像 |
+| 黑石深渊：禁闭区（blackrock_depths_detention_block） | brd_detention_houndmaster_grebmar | optional | 驯犬者格雷布玛尔（brd_detention_houndmaster_grebmar） | boss_drop:brd_detention_houndmaster_grebmar | 1 | 11623 灵法斗篷、11627 铁索胫甲、11628 驯犬者长弓、11629 驯犬者步枪 |
+| 黑石深渊：禁闭区（blackrock_depths_detention_block） | brd_detention_ring_of_law | required | 秩序竞技场（brd_detention_ring_of_law） | 无装备掉落 | 0 | — |
+| 黑石深渊：禁闭区（blackrock_depths_detention_block） | brd_detention_arena_gorosh | rare（0.16666666666666666） | 修行者高罗什（brd_detention_arena_gorosh） | boss_drop:brd_detention_arena_gorosh | 1 | 11726 野蛮角斗士链甲、22271 狂乱魔法护腿、22257 血块指环、22266 火焰荆棘 |
+| 黑石深渊：禁闭区（blackrock_depths_detention_block） | brd_detention_arena_grizzle | rare（0.16666666666666666） | 格里兹尔（brd_detention_arena_grizzle） | boss_drop:brd_detention_arena_grizzle | 1 | 11722 破铁肩甲、11703 石墙腰带、22270 冒犯之靴、11702 格里兹尔的剥皮斧 |
+| 黑石深渊：禁闭区（blackrock_depths_detention_block） | brd_detention_arena_eviscerator | rare（0.16666666666666666） | 剜眼者（brd_detention_arena_eviscerator） | boss_drop:brd_detention_arena_eviscerator | 1 | 11685 碎鳞护肩、11679 透红护臂、11686 野兽怒气腰带、11730 野蛮角斗士护手 |
+| 黑石深渊：禁闭区（blackrock_depths_detention_block） | brd_detention_arena_okthor | rare（0.16666666666666666） | 破坏者奥科索尔（brd_detention_arena_okthor） | boss_drop:brd_detention_arena_okthor | 1 | 11665 食人魔先知之拳、11662 奥科索尔腰带、11728 野蛮角斗士护腿、11824 巨石指环 |
+| 黑石深渊：禁闭区（blackrock_depths_detention_block） | brd_detention_arena_anubshiah | rare（0.16666666666666666） | 阿努希尔（brd_detention_arena_anubshiah） | boss_drop:brd_detention_arena_anubshiah | 1 | 11678 阿努希尔之壳、11677 腐烂斗篷、11675 蛛魔长靴、11731 野蛮角斗士护胫 |
+| 黑石深渊：禁闭区（blackrock_depths_detention_block） | brd_detention_arena_hedrum | rare（0.16666666666666666） | 爬行者赫杜姆（brd_detention_arena_hedrum） | boss_drop:brd_detention_arena_hedrum | 1 | 11633 巨蛛甲壳、11634 丝网手套、11635 钩牙匕首、11729 野蛮角斗士头盔 |
+| 黑石深渊：禁闭区（blackrock_depths_detention_block） | brd_detention_pyromancer_loregrain | rare（0.18） | 控火师罗格雷恩（brd_detention_pyromancer_loregrain） | boss_drop:brd_detention_pyromancer_loregrain | 1 | 11747 烈焰行者长袍、11749 灼鳞护腿、11748 燃烧手杖、11750 引火手杖 |
+| 黑石深渊：禁闭区（blackrock_depths_detention_block） | brd_detention_black_vault | optional | 黑色宝库（brd_detention_black_vault） | boss_drop:brd_detention_black_vault | 1 | 22256 法术塑能裹手、22205 黑钢护腕、22255 岩浆指环、22254 永恒光明魔杖、11923 恩赐之锤、11945 黑铁戒指〔词缀〕、11946 火蛋白石项链〔词缀〕 |
+| 黑石深渊：禁闭区（blackrock_depths_detention_block） | brd_detention_watchman_doomgrip | optional | 卫兵杜格瑞普（brd_detention_watchman_doomgrip） | boss_drop:brd_detention_watchman_doomgrip | 1 | 22205 黑钢护腕、22255 岩浆指环、22256 法术塑能裹手、22254 永恒光明魔杖 |
+| 黑石深渊：禁闭区（blackrock_depths_detention_block） | brd_detention_warder_stilgiss | optional | 典狱官斯迪尔基斯（brd_detention_warder_stilgiss） | boss_drop:brd_detention_warder_stilgiss | 1 | 11782 北地衬肩、22241 黑暗守望者肩甲、11783 寒钢束腰、11784 仲裁者之刃 |
+| 黑石深渊：禁闭区（blackrock_depths_detention_block） | brd_detention_verek | rare（0.35） | 维雷克（brd_detention_verek） | boss_drop:brd_detention_verek | 1 | 11755 维雷克的镣铐、22242 维雷克的束缚 |
+| 黑石深渊：禁闭区（blackrock_depths_detention_block） | brd_detention_fineous_darkvire | required | 弗诺斯·达克维尔（brd_detention_fineous_darkvire） | boss_drop:brd_detention_fineous_darkvire | 1 | 11839 大石匠的眼镜、22223 工头的面甲、11842 首席测量员的衬肩、11841 主设计师的长裤 |
+| 黑石深渊：禁闭区（blackrock_depths_detention_block） | brd_detention_lord_incendius | optional | 伊森迪奥斯（brd_detention_lord_incendius） | boss_drop:brd_detention_lord_incendius | 1 | 11766 焰纹护腕、11764 灰鳞护臂、11765 焚铁护腕、11767 琥珀臂甲、11768 易然护腕 |
+| 黑石深渊：禁闭区（blackrock_depths_detention_block） | brd_detention_baelgar | optional | 贝尔加（brd_detention_baelgar） | boss_drop:brd_detention_baelgar | 1 | 11807 燃心腰带、11802 火浪护腿、11805 燃石战锤、11803 熔岩之力 |
 | 死亡矿井（deadmines） | dm_rhahkzor | required | 拉克佐（dm_rhahkzor） | boss_drop:dm_rhahkzor | 1 | 872 切石者、5187 拉克佐之锤 |
 | 死亡矿井（deadmines） | dm_sneeds_shredder | required | 斯尼德的伐木机（dm_sneeds_shredder） | boss_drop:dm_sneeds_shredder | 1 | 1937 电锯、2169 蜂鸣之刃 |
 | 死亡矿井（deadmines） | dm_sneed | required | 斯尼德（dm_sneed） | boss_drop:dm_sneed | 1 | 5194 工头战斧、5195 金斑手套 |
@@ -124,8 +142,8 @@
 
 ## 引用完整度
 
-- 副本路线节点：113。
-- 副本任务：43。
+- 副本路线节点：131。
+- 副本任务：46。
 - 套装：9。
 - 未被路线引用的掉落表：0。
 - 未被掉落、任务或套装引用的非初始装备：0。

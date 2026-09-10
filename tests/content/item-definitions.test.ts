@@ -27,7 +27,7 @@ describe("item definitions", () => {
   it("loads all current dungeon and quest items with stable IDs and database icons", () => {
     const dungeonItems = migratedItems.filter((item) => !item.isStarter);
 
-    expect(dungeonItems).toHaveLength(386);
+    expect(dungeonItems).toHaveLength(460);
     expect(dungeonItems.map((item) => item.id)).toEqual(
       expect.arrayContaining(["14149", "15451", "15452", "6324"]),
     );
@@ -38,7 +38,7 @@ describe("item definitions", () => {
         .filter((item) => item.randomSuffixIds !== undefined)
         .map((item) => item.id)
         .sort((left, right) => Number(left) - Number(right)),
-    ).toEqual(["9387", "9388", "9389", "9390", "9409", "9410", "11118"]);
+    ).toEqual(["9387", "9388", "9389", "9390", "9409", "9410", "11118", "11945", "11946"]);
   });
 
   it("replaces dynamic starter definitions with stable IDs for every slot and armor type", () => {
@@ -75,7 +75,8 @@ describe("item definitions", () => {
       migratedItems.every(
         (item) =>
           Object.keys(item.stats).length > 0 ||
-          item.statsSource.notes?.includes("暂不进入常驻属性模型"),
+          item.statsSource.notes?.includes("暂不进入常驻属性模型") ||
+          (item.randomSuffixIds?.length ?? 0) > 0,
       ),
     ).toBe(true);
     expect(

@@ -97,7 +97,7 @@ describe("item collection catalog query", () => {
     ]);
     expect(view.globalProgress).toEqual({
       acquiredItemCount: 0,
-      totalItemCount: 283,
+      totalItemCount: 349,
       completionPercent: 0,
     });
     expect(JSON.stringify(view)).not.toContain("尖牙腰带");
@@ -179,7 +179,7 @@ describe("item collection catalog query", () => {
       ]),
     );
     expect(item.acquisitionCount).toBe(1);
-    expect(view.globalProgress).toMatchObject({ acquiredItemCount: 1, totalItemCount: 283 });
+    expect(view.globalProgress).toMatchObject({ acquiredItemCount: 1, totalItemCount: 349 });
   });
 
   it("reveals all four Herod drops after Armory is unlocked", () => {
@@ -260,6 +260,12 @@ describe("item collection catalog query", () => {
       "17750",
       "17751",
       "17755",
+      "22234",
+      "11632",
+      "11631",
+      "22397",
+      "11626",
+      "11624",
     ].forEach((itemId, index) => acquire(game, content, itemId, index + 1));
 
     const view = getItemCatalogView(game, content);
@@ -271,8 +277,8 @@ describe("item collection catalog query", () => {
       completionPercent: (11 / 21) * 100,
     });
     expect(view.itemSets).toEqual([]);
-    expect(view.globalProgress).toMatchObject({ acquiredItemCount: 29, totalItemCount: 283 });
-    expect(view.globalProgress.completionPercent).toBeCloseTo((29 / 283) * 100);
+    expect(view.globalProgress).toMatchObject({ acquiredItemCount: 35, totalItemCount: 349 });
+    expect(view.globalProgress.completionPercent).toBeCloseTo((35 / 349) * 100);
     expect(view.rewards).toHaveLength(2);
     expect(view.rewards.every((reward) => reward.claimable)).toBe(true);
     expect(view.rewards.every((reward) => !reward.claimed)).toBe(true);

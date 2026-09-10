@@ -9,7 +9,7 @@ import type { ItemInstance } from "../src/domain/equipment/item-instance";
 import { evaluateUpgrade } from "../src/domain/equipment/upgrade-evaluation";
 import type { GameState } from "../src/domain/game-state";
 import { createNewGame } from "../src/domain/guild/new-game";
-import { asBrandedId, type DungeonId } from "../src/domain/shared/ids";
+import { asBrandedId, type DungeonId, type DungeonRouteNodeId } from "../src/domain/shared/ids";
 import { LocalIdGenerator } from "../src/infrastructure/ids/local-id-generator";
 import { SeededRandomSource } from "../src/infrastructure/random/seeded-random-source";
 
@@ -98,6 +98,17 @@ function replaceRole(
 
 function routeSelection(content: ContentRegistry, dungeonId: DungeonId, variant: RouteVariant) {
   const dungeon = content.dungeonById.get(dungeonId)!;
+  const rareNodes = dungeon.route.filter((node) => node.type === "rare");
+  const groupedRareIds = new Set<DungeonRouteNodeId>();
+  const groupRepresentatives: DungeonRouteNodeId[] = [];
+  const groups = new Map<string, typeof rareNodes>();
+  for (const node of rareNodes) {
+    if (!node.spawnGroup) continue;
+    groupedRareIds.add(node.id);
+    const nodes = groups.get(node.spawnGroup) ?? [];
+    groups.set(node.spawnGroup, [...nodes, node]);
+  }
+  for (const nodes of groups.values()) groupRepresentatives.push(nodes[0]!.id);
   return {
     optional:
       variant === "with-optional"
@@ -105,7 +116,10 @@ function routeSelection(content: ContentRegistry, dungeonId: DungeonId, variant:
         : [],
     rare:
       variant === "with-rare"
-        ? dungeon.route.filter((node) => node.type === "rare").map((node) => node.id)
+        ? [
+            ...groupRepresentatives,
+            ...rareNodes.filter((node) => !groupedRareIds.has(node.id)).map((node) => node.id),
+          ]
         : [],
   };
 }

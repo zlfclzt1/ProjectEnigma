@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/classic-wow-blackrock-depths-quests",
+        "verifiedAt": "2026-09-10",
+        "notes": "通过逐件中文 XML 核对三条成员任务的八件装备奖励。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].requiredLevel", "items[].restrictions", "items[].description"],
+        "reason": "无原生需求等级的任务奖励使用任务最低等级，并按当前装备栏位规则补齐可装备性与来源说明。",
+        "decidedAt": "2026-09-10"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "12066",
+      "name": {
+        "zhCN": "页岩斗篷",
+        "enUS": "Shaleskin Cape"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 52,
+      "quality": "uncommon",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_02"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区成员任务“烈焰精华”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 6,
+          "staminaPoints": 11
+        },
+        "defense": {
+          "armorPoints": 38
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12066",
+        "url": "https://www.wowhead.com/classic/cn/item=12066&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "12082",
+      "name": {
+        "zhCN": "龙皮肩铠",
+        "enUS": "Wyrmhide Spaulders"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 52,
+      "quality": "uncommon",
+      "slot": "shoulder",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_16"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区成员任务“烈焰精华”可选奖励。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 113
+        },
+        "physical": {
+          "hitPercent": 2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12082",
+        "url": "https://www.wowhead.com/classic/cn/item=12082&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12083",
+      "name": {
+        "zhCN": "火山腰带",
+        "enUS": "Valconian Sash"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 52,
+      "quality": "uncommon",
+      "slot": "waist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_11"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区成员任务“烈焰精华”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 4,
+          "intellectPoints": 17
+        },
+        "defense": {
+          "armorPoints": 42
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12083",
+        "url": "https://www.wowhead.com/classic/cn/item=12083&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "12113",
+      "name": {
+        "zhCN": "阳焰斗篷",
+        "enUS": "Sunborne Cape"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 48,
+      "quality": "uncommon",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_08"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区成员任务“伊森迪奥斯！”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "spiritPoints": 5
+        },
+        "defense": {
+          "armorPoints": 36
+        },
+        "spell": {
+          "fireSpellPowerPoints": 17
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12113",
+        "url": "https://www.wowhead.com/classic/cn/item=12113&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12114",
+      "name": {
+        "zhCN": "夜暮手套",
+        "enUS": "Nightfall Gloves"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 48,
+      "quality": "uncommon",
+      "slot": "hands",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_17"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区成员任务“伊森迪奥斯！”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 12,
+          "agilityPoints": 12
+        },
+        "defense": {
+          "armorPoints": 91
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12114",
+        "url": "https://www.wowhead.com/classic/cn/item=12114&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "12112",
+      "name": {
+        "zhCN": "地穴恶魔护腕",
+        "enUS": "Crypt Demon Bracers"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 48,
+      "quality": "uncommon",
+      "slot": "wrist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_17"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区成员任务“伊森迪奥斯！”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 14
+        },
+        "defense": {
+          "armorPoints": 132
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12112",
+        "url": "https://www.wowhead.com/classic/cn/item=12112&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "12115",
+      "name": {
+        "zhCN": "坚定束腰",
+        "enUS": "Stalwart Clutch"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 48,
+      "quality": "uncommon",
+      "slot": "waist",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_34"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区成员任务“伊森迪奥斯！”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12
+        },
+        "defense": {
+          "armorPoints": 300,
+          "defenseSkillPoints": 8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12115",
+        "url": "https://www.wowhead.com/classic/cn/item=12115&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12038",
+      "name": {
+        "zhCN": "拉格雷的徽记之戒",
+        "enUS": "Lagrave's Seal"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 48,
+      "quality": "uncommon",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_03"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区成员任务“最后的元素”固定奖励。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 7,
+          "intellectPoints": 7,
+          "spiritPoints": 7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12038",
+        "url": "https://www.wowhead.com/classic/cn/item=12038&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    }
+  ]
+}

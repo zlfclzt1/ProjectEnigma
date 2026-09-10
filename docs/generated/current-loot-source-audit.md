@@ -6,12 +6,12 @@
 
 ## 汇总
 
-- 路线 Encounter：113。
-- 掉落表：96。
-- 掉落表分类：Boss 专属掉落 96，任务奖励 0，世界掉落 0，设计占位 0。
-- Encounter 引用分类：Boss 专属掉落 96，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 17。
-- 不同装备分类：Boss 专属掉落 283，任务奖励 0，世界掉落 0，设计占位 0。
-- 成员副本任务：43，不同任务奖励装备：103。
+- 路线 Encounter：131。
+- 掉落表：113。
+- 掉落表分类：Boss 专属掉落 113，任务奖励 0，世界掉落 0，设计占位 0。
+- Encounter 引用分类：Boss 专属掉落 113，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 18。
+- 不同装备分类：Boss 专属掉落 349，任务奖励 0，世界掉落 0，设计占位 0。
+- 成员副本任务：46，不同任务奖励装备：111。
 - Boss 掉落与任务奖励重复：0。
 - 未显式填写 `sourceType` 的 Boss 掉落表：0。
 - 未被路线 Encounter 引用的掉落表：0。
@@ -34,6 +34,29 @@
 | 老年塞拉吉斯（bfd_old_serrakis） | bfd_old_serrakis | Boss 专属掉落 | 1 | 6901 发光的蛇颈龙斗篷、6902 瑟拉吉斯指环、6904 瑟拉吉斯之刺 |
 | 梦游者克尔里斯（bfd_twilight_lord_kelris） | bfd_twilight_lord_kelris | Boss 专属掉落 | 1 | 1155 梦游者魔棒、6903 凝望短裤 |
 | 阿库麦尔（bfd_akumai） | bfd_akumai | Boss 专属掉落 | 1 | 6909 海蛇之击、6910 吸血短裤、6911 苔藓腰带 |
+
+### 黑石深渊：禁闭区（blackrock_depths_detention_block）
+
+| Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
+|---|---|---|---:|---|
+| 审讯官格斯塔恩（brd_detention_high_interrogator_gerstahn） | brd_detention_high_interrogator_gerstahn | Boss 专属掉落 | 1 | 11626 黑雾斗篷、11624 肯提克护肩、22240 凋零绝望胫甲、11625 奴役之球 |
+| 洛考尔（brd_detention_lord_roccor） | brd_detention_lord_roccor | Boss 专属掉落 | 1 | 22234 失落希望衬肩、11632 土渣护肩、11631 石壳盾牌、22397 凶猛神像 |
+| 驯犬者格雷布玛尔（brd_detention_houndmaster_grebmar） | brd_detention_houndmaster_grebmar | Boss 专属掉落 | 1 | 11623 灵法斗篷、11627 铁索胫甲、11628 驯犬者长弓、11629 驯犬者步枪 |
+| 秩序竞技场（brd_detention_ring_of_law） | — | 无装备掉落 | 0 | — |
+| 修行者高罗什（brd_detention_arena_gorosh） | brd_detention_arena_gorosh | Boss 专属掉落 | 1 | 11726 野蛮角斗士链甲、22271 狂乱魔法护腿、22257 血块指环、22266 火焰荆棘 |
+| 格里兹尔（brd_detention_arena_grizzle） | brd_detention_arena_grizzle | Boss 专属掉落 | 1 | 11722 破铁肩甲、11703 石墙腰带、22270 冒犯之靴、11702 格里兹尔的剥皮斧 |
+| 剜眼者（brd_detention_arena_eviscerator） | brd_detention_arena_eviscerator | Boss 专属掉落 | 1 | 11685 碎鳞护肩、11679 透红护臂、11686 野兽怒气腰带、11730 野蛮角斗士护手 |
+| 破坏者奥科索尔（brd_detention_arena_okthor） | brd_detention_arena_okthor | Boss 专属掉落 | 1 | 11665 食人魔先知之拳、11662 奥科索尔腰带、11728 野蛮角斗士护腿、11824 巨石指环 |
+| 阿努希尔（brd_detention_arena_anubshiah） | brd_detention_arena_anubshiah | Boss 专属掉落 | 1 | 11678 阿努希尔之壳、11677 腐烂斗篷、11675 蛛魔长靴、11731 野蛮角斗士护胫 |
+| 爬行者赫杜姆（brd_detention_arena_hedrum） | brd_detention_arena_hedrum | Boss 专属掉落 | 1 | 11633 巨蛛甲壳、11634 丝网手套、11635 钩牙匕首、11729 野蛮角斗士头盔 |
+| 控火师罗格雷恩（brd_detention_pyromancer_loregrain） | brd_detention_pyromancer_loregrain | Boss 专属掉落 | 1 | 11747 烈焰行者长袍、11749 灼鳞护腿、11748 燃烧手杖、11750 引火手杖 |
+| 黑色宝库（brd_detention_black_vault） | brd_detention_black_vault | Boss 专属掉落 | 1 | 22256 法术塑能裹手、22205 黑钢护腕、22255 岩浆指环、22254 永恒光明魔杖、11923 恩赐之锤、11945 黑铁戒指、11946 火蛋白石项链 |
+| 卫兵杜格瑞普（brd_detention_watchman_doomgrip） | brd_detention_watchman_doomgrip | Boss 专属掉落 | 1 | 22205 黑钢护腕、22255 岩浆指环、22256 法术塑能裹手、22254 永恒光明魔杖 |
+| 典狱官斯迪尔基斯（brd_detention_warder_stilgiss） | brd_detention_warder_stilgiss | Boss 专属掉落 | 1 | 11782 北地衬肩、22241 黑暗守望者肩甲、11783 寒钢束腰、11784 仲裁者之刃 |
+| 维雷克（brd_detention_verek） | brd_detention_verek | Boss 专属掉落 | 1 | 11755 维雷克的镣铐、22242 维雷克的束缚 |
+| 弗诺斯·达克维尔（brd_detention_fineous_darkvire） | brd_detention_fineous_darkvire | Boss 专属掉落 | 1 | 11839 大石匠的眼镜、22223 工头的面甲、11842 首席测量员的衬肩、11841 主设计师的长裤 |
+| 伊森迪奥斯（brd_detention_lord_incendius） | brd_detention_lord_incendius | Boss 专属掉落 | 1 | 11766 焰纹护腕、11764 灰鳞护臂、11765 焚铁护腕、11767 琥珀臂甲、11768 易然护腕 |
+| 贝尔加（brd_detention_baelgar） | brd_detention_baelgar | Boss 专属掉落 | 1 | 11807 燃心腰带、11802 火浪护腿、11805 燃石战锤、11803 熔岩之力 |
 
 ### 死亡矿井（deadmines）
 
@@ -227,6 +250,9 @@
 | 黑暗深渊（blackfathom_deeps） | 黑暗深渊的罪恶（bfd_blackfathom_villainy） | 7001 墓碑节杖、7002 极光圆盾 |
 | 黑暗深渊（blackfathom_deeps） | 暮光之锤的末日（bfd_twilight_falls） | 6998 云光长靴、7000 赤木束带 |
 | 黑暗深渊（blackfathom_deeps） | 阿奎尼斯男爵（bfd_baron_aquanis） | 16886 逃犯弯刀、16887 女巫之指 |
+| 黑石深渊：禁闭区（blackrock_depths_detention_block） | 烈焰精华（brd_detention_taste_of_flame） | 12066 页岩斗篷、12082 龙皮肩铠、12083 火山腰带 |
+| 黑石深渊：禁闭区（blackrock_depths_detention_block） | 伊森迪奥斯！（brd_detention_incendius） | 12113 阳焰斗篷、12114 夜暮手套、12112 地穴恶魔护腕、12115 坚定束腰 |
+| 黑石深渊：禁闭区（blackrock_depths_detention_block） | 最后的元素（brd_detention_last_element） | 12038 拉格雷的徽记之戒 |
 | 诺莫瑞根（gnomeregan） | 大叛乱（gnomeregan_the_grand_betrayal） | 9623 公民长袍、9624 旅行皮裤、9625 双链护腿 |
 | 诺莫瑞根（gnomeregan） | 数据救援（gnomeregan_data_rescue） | 9605 修理工的斗篷、9604 蒸汽锤 |
 | 诺莫瑞根（gnomeregan） | 陀螺钻挖掘器（gnomeregan_gyrodrillmatic_excavationators） | 9608 舒尼的扳手、9609 欺诈手套 |

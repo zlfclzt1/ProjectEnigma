@@ -1,0 +1,250 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-10",
+        "notes": "黑石深渊禁闭区日志；只描述已经结算的主动路线、随机刷新与战斗事实。"
+      }
+    ]
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "brd_detention_high_interrogator_gerstahn_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_detention_high_interrogator_gerstahn"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "审讯官格斯塔恩的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了审讯官格斯塔恩这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_detention_lord_roccor_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_detention_lord_roccor"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "洛考尔的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了洛考尔这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_detention_houndmaster_grebmar_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_detention_houndmaster_grebmar"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "驯犬者格雷布玛尔的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了驯犬者格雷布玛尔这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_detention_ring_of_law_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_detention_ring_of_law"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "秩序竞技场的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了秩序竞技场这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_detention_arena_gorosh_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_detention_arena_gorosh"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "修行者高罗什的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了修行者高罗什这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_detention_arena_grizzle_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_detention_arena_grizzle"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "格里兹尔的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了格里兹尔这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_detention_arena_eviscerator_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_detention_arena_eviscerator"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "剜眼者的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了剜眼者这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_detention_arena_okthor_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_detention_arena_okthor"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "破坏者奥科索尔的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了破坏者奥科索尔这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_detention_arena_anubshiah_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_detention_arena_anubshiah"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "阿努希尔的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了阿努希尔这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_detention_arena_hedrum_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_detention_arena_hedrum"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "爬行者赫杜姆的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了爬行者赫杜姆这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_detention_pyromancer_loregrain_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_detention_pyromancer_loregrain"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "控火师罗格雷恩的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了控火师罗格雷恩这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_detention_black_vault_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_detention_black_vault"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "黑色宝库的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了黑色宝库这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_detention_watchman_doomgrip_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_detention_watchman_doomgrip"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "卫兵杜格瑞普的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了卫兵杜格瑞普这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_detention_warder_stilgiss_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_detention_warder_stilgiss"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "典狱官斯迪尔基斯的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了典狱官斯迪尔基斯这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_detention_verek_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_detention_verek"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "维雷克的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了维雷克这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_detention_fineous_darkvire_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_detention_fineous_darkvire"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "弗诺斯·达克维尔的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了弗诺斯·达克维尔这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_detention_lord_incendius_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_detention_lord_incendius"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "伊森迪奥斯的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了伊森迪奥斯这段主动路线。"
+      ]
+    },
+    {
+      "id": "brd_detention_baelgar_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "brd_detention_baelgar"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "贝尔加的关键机制被处理后，{tank}把战线稳定在队伍前方。",
+        "{healer}稳住最后一轮压力，{member}完成了贝尔加这段主动路线。"
+      ]
+    }
+  ]
+}

@@ -1,7 +1,11 @@
 import { describe, expect, it } from "vitest";
 import type { DungeonRouteNode } from "../../src/content/schemas/dungeon";
 import type { ExpeditionRunPlan } from "../../src/domain/activity/activity";
-import { lockRareRouteSpawns, revealRareRouteNodes } from "../../src/domain/dungeon/rare-route";
+import {
+  includeGuaranteedRareRouteRepresentatives,
+  lockRareRouteSpawns,
+  revealRareRouteNodes,
+} from "../../src/domain/dungeon/rare-route";
 import { asBrandedId } from "../../src/domain/shared/ids";
 import { SeededRandomSource } from "../../src/infrastructure/random/seeded-random-source";
 
@@ -57,6 +61,28 @@ describe("rare route spawn locks", () => {
       );
       expect(Object.values(locks).filter(Boolean)).toHaveLength(1);
     }
+  });
+
+  it("includes one representative when a random group is guaranteed to produce an encounter", () => {
+    const groupedRoute: DungeonRouteNode[] = [
+      route[0]!,
+      ...["first", "second"].map((id) => ({
+        id: asBrandedId<"DungeonRouteNodeId">(id),
+        type: "rare" as const,
+        encounterId: asBrandedId<"EncounterId">(id),
+        spawnProbability: 0.5,
+        spawnGroup: "guaranteed-opponent",
+      })),
+    ];
+
+    expect(includeGuaranteedRareRouteRepresentatives(groupedRoute, [])).toEqual([
+      asBrandedId<"DungeonRouteNodeId">("first"),
+    ]);
+    expect(
+      includeGuaranteedRareRouteRepresentatives(groupedRoute, [
+        asBrandedId<"DungeonRouteNodeId">("second"),
+      ]),
+    ).toEqual([asBrandedId<"DungeonRouteNodeId">("second")]);
   });
 
   it("reveals a locked outcome only when progress reaches the rare node", () => {

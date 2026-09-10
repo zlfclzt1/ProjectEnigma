@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/blackrock-depths-detention-block-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对黑石深渊前半区路线、主要首领、竞技场随机对手、宝库和暗炉钥匙路线。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对禁闭区首领、宝库容器、装备池与共享来源。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-10",
+        "notes": "将监牢、竞技场、宝库和暗炉钥匙路线压缩为一座可主动安排的分区副本；首通以公会里程碑表达钥匙与捷径。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["minimumLevel", "recommendedLevel", "duration", "probability", "route"],
+        "reason": "按神庙后的 50–54 级升级入口、约 27 分钟主线和约 38 分钟完整主动路线设置初始参数。",
+        "decidedAt": "2026-09-10"
+      }
+    ]
+  },
+  "dungeons": [
+    {
+      "id": "blackrock_depths_detention_block",
+      "name": {
+        "zhCN": "黑石深渊：禁闭区",
+        "enUS": "Blackrock Depths: Detention Block"
+      },
+      "minimumLevel": 50,
+      "recommendedLevel": 54,
+      "defaultUnlocked": false,
+      "unlock": {
+        "requiredDungeonIds": ["sunken_temple"]
+      },
+      "members": {
+        "minimum": 1,
+        "maximum": 5,
+        "recommended": 5
+      },
+      "duration": {
+        "baseSeconds": 3310,
+        "minimumRatio": 0.48,
+        "maximumRatio": 1.8
+      },
+      "probability": {
+        "minimum": 0.05,
+        "maximum": 0.99,
+        "base": 0.05,
+        "readinessMultiplier": 0.97,
+        "surplusEffect": 0.5,
+        "geometricWeight": 0.7,
+        "bottleneckWeight": 0.3,
+        "overpowerThreshold": 1.5
+      },
+      "combatTuning": {
+        "bossProbabilityMaximum": 0.98,
+        "requirementMultipliers": {
+          "tank": 0.6,
+          "healing": 0.6,
+          "damage": 0.6
+        }
+      },
+      "route": [
+        {
+          "id": "brd_detention_high_interrogator_gerstahn",
+          "type": "required",
+          "encounterId": "brd_detention_high_interrogator_gerstahn"
+        },
+        {
+          "id": "brd_detention_lord_roccor",
+          "type": "optional",
+          "description": {
+            "zhCN": "清理入口大厅的岩石元素支路，主动挑战洛考尔。"
+          },
+          "encounterId": "brd_detention_lord_roccor"
+        },
+        {
+          "id": "brd_detention_houndmaster_grebmar",
+          "type": "optional",
+          "description": {
+            "zhCN": "进入监牢犬舍，主动挑战驯犬者格雷布玛尔。"
+          },
+          "encounterId": "brd_detention_houndmaster_grebmar"
+        },
+        {
+          "id": "brd_detention_ring_of_law",
+          "type": "required",
+          "encounterId": "brd_detention_ring_of_law"
+        },
+        {
+          "id": "brd_detention_arena_gorosh",
+          "type": "rare",
+          "spawnProbability": 0.16666666666666666,
+          "spawnGroup": "brd_detention_ring_of_law_opponent",
+          "encounterId": "brd_detention_arena_gorosh"
+        },
+        {
+          "id": "brd_detention_arena_grizzle",
+          "type": "rare",
+          "spawnProbability": 0.16666666666666666,
+          "spawnGroup": "brd_detention_ring_of_law_opponent",
+          "encounterId": "brd_detention_arena_grizzle"
+        },
+        {
+          "id": "brd_detention_arena_eviscerator",
+          "type": "rare",
+          "spawnProbability": 0.16666666666666666,
+          "spawnGroup": "brd_detention_ring_of_law_opponent",
+          "encounterId": "brd_detention_arena_eviscerator"
+        },
+        {
+          "id": "brd_detention_arena_okthor",
+          "type": "rare",
+          "spawnProbability": 0.16666666666666666,
+          "spawnGroup": "brd_detention_ring_of_law_opponent",
+          "encounterId": "brd_detention_arena_okthor"
+        },
+        {
+          "id": "brd_detention_arena_anubshiah",
+          "type": "rare",
+          "spawnProbability": 0.16666666666666666,
+          "spawnGroup": "brd_detention_ring_of_law_opponent",
+          "encounterId": "brd_detention_arena_anubshiah"
+        },
+        {
+          "id": "brd_detention_arena_hedrum",
+          "type": "rare",
+          "spawnProbability": 0.16666666666666666,
+          "spawnGroup": "brd_detention_ring_of_law_opponent",
+          "encounterId": "brd_detention_arena_hedrum"
+        },
+        {
+          "id": "brd_detention_pyromancer_loregrain",
+          "type": "rare",
+          "spawnProbability": 0.18,
+          "encounterId": "brd_detention_pyromancer_loregrain"
+        },
+        {
+          "id": "brd_detention_black_vault",
+          "type": "optional",
+          "description": {
+            "zhCN": "主动准备黑暗守护者与遗物宝箱路线，开启黑色宝库。"
+          },
+          "encounterId": "brd_detention_black_vault"
+        },
+        {
+          "id": "brd_detention_watchman_doomgrip",
+          "type": "optional",
+          "description": {
+            "zhCN": "主动开启全部遗物宝箱，唤出并击败卫兵杜格瑞普。"
+          },
+          "encounterId": "brd_detention_watchman_doomgrip"
+        },
+        {
+          "id": "brd_detention_warder_stilgiss",
+          "type": "optional",
+          "description": {
+            "zhCN": "进入宝库驻守区，主动挑战典狱官斯迪尔基斯。"
+          },
+          "encounterId": "brd_detention_warder_stilgiss"
+        },
+        {
+          "id": "brd_detention_verek",
+          "type": "rare",
+          "spawnProbability": 0.35,
+          "encounterId": "brd_detention_verek"
+        },
+        {
+          "id": "brd_detention_fineous_darkvire",
+          "type": "required",
+          "encounterId": "brd_detention_fineous_darkvire"
+        },
+        {
+          "id": "brd_detention_lord_incendius",
+          "type": "optional",
+          "description": {
+            "zhCN": "转入黑铁砧支路，主动挑战伊森迪奥斯并推进对应任务。"
+          },
+          "encounterId": "brd_detention_lord_incendius"
+        },
+        {
+          "id": "brd_detention_baelgar",
+          "type": "optional",
+          "description": {
+            "zhCN": "深入西侧入口支路，主动挑战贝尔加并取得烈焰精华。"
+          },
+          "encounterId": "brd_detention_baelgar"
+        }
+      ]
+    }
+  ]
+}

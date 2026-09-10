@@ -50,12 +50,14 @@ describe("random item suffix definitions", () => {
 
   it("discovers prototype and formal dungeon suffix files through the content loader", () => {
     const loaded = loadContentModules(browserContentModules);
-    expect(loaded.itemSuffixes.map((entry) => entry.value.id)).toHaveLength(91);
+    expect(loaded.itemSuffixes.map((entry) => entry.value.id)).toHaveLength(137);
     expect(loaded.itemSuffixes.map((entry) => entry.value.id)).toEqual(
       expect.arrayContaining([
         "prototype_of_readiness",
         "uldaman_9389_monkey",
         "uldaman_11118_regeneration",
+        "brd_11945_owl",
+        "brd_11946_regeneration",
       ]),
     );
   });

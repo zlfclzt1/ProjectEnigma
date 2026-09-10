@@ -1,0 +1,437 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/blackrock-depths-detention-block-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对监牢法术、竞技场连战、火焰首领、宝库守卫和钥匙路线机制。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-10",
+        "notes": "阶段时长、战斗需求、经验、资金与首杀奖励作为 50–60 级模拟前的初始基线。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "encounters": [
+    {
+      "id": "brd_detention_high_interrogator_gerstahn",
+      "dungeonId": "blackrock_depths_detention_block",
+      "name": {
+        "zhCN": "审讯官格斯塔恩"
+      },
+      "stageSeconds": 360,
+      "requirements": {
+        "tank": 75,
+        "healing": 80,
+        "damage": 320
+      },
+      "weights": {
+        "tank": 0.29,
+        "healing": 0.4,
+        "damage": 0.31
+      },
+      "experienceShare": 0.22,
+      "funds": 174,
+      "firstKillBonus": 348,
+      "lootTableId": "brd_detention_high_interrogator_gerstahn",
+      "mechanicIds": ["brd_detention_prison_control"]
+    },
+    {
+      "id": "brd_detention_lord_roccor",
+      "dungeonId": "blackrock_depths_detention_block",
+      "name": {
+        "zhCN": "洛考尔"
+      },
+      "stageSeconds": 90,
+      "requirements": {
+        "tank": 61,
+        "healing": 64,
+        "damage": 262
+      },
+      "weights": {
+        "tank": 0.4,
+        "healing": 0.32,
+        "damage": 0.28
+      },
+      "experienceShare": 0.08,
+      "funds": 106,
+      "firstKillBonus": 212,
+      "lootTableId": "brd_detention_lord_roccor",
+      "mechanicIds": ["brd_detention_stone_pressure"]
+    },
+    {
+      "id": "brd_detention_houndmaster_grebmar",
+      "dungeonId": "blackrock_depths_detention_block",
+      "name": {
+        "zhCN": "驯犬者格雷布玛尔"
+      },
+      "stageSeconds": 100,
+      "requirements": {
+        "tank": 62,
+        "healing": 66,
+        "damage": 266
+      },
+      "weights": {
+        "tank": 0.34,
+        "healing": 0.36,
+        "damage": 0.3
+      },
+      "experienceShare": 0.09,
+      "funds": 112,
+      "firstKillBonus": 224,
+      "lootTableId": "brd_detention_houndmaster_grebmar",
+      "mechanicIds": ["brd_detention_hound_pack"]
+    },
+    {
+      "id": "brd_detention_ring_of_law",
+      "dungeonId": "blackrock_depths_detention_block",
+      "name": {
+        "zhCN": "秩序竞技场"
+      },
+      "stageSeconds": 300,
+      "requirements": {
+        "tank": 75,
+        "healing": 79,
+        "damage": 318
+      },
+      "weights": {
+        "tank": 0.33,
+        "healing": 0.35,
+        "damage": 0.32
+      },
+      "experienceShare": 0.18,
+      "funds": 160,
+      "firstKillBonus": 320,
+      "mechanicIds": ["brd_detention_arena_gauntlet"]
+    },
+    {
+      "id": "brd_detention_arena_gorosh",
+      "dungeonId": "blackrock_depths_detention_block",
+      "name": {
+        "zhCN": "修行者高罗什"
+      },
+      "stageSeconds": 180,
+      "requirements": {
+        "tank": 80,
+        "healing": 84,
+        "damage": 330
+      },
+      "weights": {
+        "tank": 0.42,
+        "healing": 0.34,
+        "damage": 0.24
+      },
+      "experienceShare": 0.12,
+      "funds": 138,
+      "firstKillBonus": 276,
+      "lootTableId": "brd_detention_arena_gorosh",
+      "mechanicIds": ["brd_detention_arena_melee"]
+    },
+    {
+      "id": "brd_detention_arena_grizzle",
+      "dungeonId": "blackrock_depths_detention_block",
+      "name": {
+        "zhCN": "格里兹尔"
+      },
+      "stageSeconds": 180,
+      "requirements": {
+        "tank": 80,
+        "healing": 84,
+        "damage": 330
+      },
+      "weights": {
+        "tank": 0.42,
+        "healing": 0.34,
+        "damage": 0.24
+      },
+      "experienceShare": 0.12,
+      "funds": 138,
+      "firstKillBonus": 276,
+      "lootTableId": "brd_detention_arena_grizzle",
+      "mechanicIds": ["brd_detention_arena_melee"]
+    },
+    {
+      "id": "brd_detention_arena_eviscerator",
+      "dungeonId": "blackrock_depths_detention_block",
+      "name": {
+        "zhCN": "剜眼者"
+      },
+      "stageSeconds": 180,
+      "requirements": {
+        "tank": 80,
+        "healing": 84,
+        "damage": 330
+      },
+      "weights": {
+        "tank": 0.42,
+        "healing": 0.34,
+        "damage": 0.24
+      },
+      "experienceShare": 0.12,
+      "funds": 138,
+      "firstKillBonus": 276,
+      "lootTableId": "brd_detention_arena_eviscerator",
+      "mechanicIds": ["brd_detention_arena_melee"]
+    },
+    {
+      "id": "brd_detention_arena_okthor",
+      "dungeonId": "blackrock_depths_detention_block",
+      "name": {
+        "zhCN": "破坏者奥科索尔"
+      },
+      "stageSeconds": 180,
+      "requirements": {
+        "tank": 80,
+        "healing": 84,
+        "damage": 330
+      },
+      "weights": {
+        "tank": 0.26,
+        "healing": 0.42,
+        "damage": 0.32
+      },
+      "experienceShare": 0.12,
+      "funds": 138,
+      "firstKillBonus": 276,
+      "lootTableId": "brd_detention_arena_okthor",
+      "mechanicIds": ["brd_detention_arena_caster"]
+    },
+    {
+      "id": "brd_detention_arena_anubshiah",
+      "dungeonId": "blackrock_depths_detention_block",
+      "name": {
+        "zhCN": "阿努希尔"
+      },
+      "stageSeconds": 180,
+      "requirements": {
+        "tank": 80,
+        "healing": 84,
+        "damage": 330
+      },
+      "weights": {
+        "tank": 0.32,
+        "healing": 0.39,
+        "damage": 0.29
+      },
+      "experienceShare": 0.12,
+      "funds": 138,
+      "firstKillBonus": 276,
+      "lootTableId": "brd_detention_arena_anubshiah",
+      "mechanicIds": ["brd_detention_arena_control"]
+    },
+    {
+      "id": "brd_detention_arena_hedrum",
+      "dungeonId": "blackrock_depths_detention_block",
+      "name": {
+        "zhCN": "爬行者赫杜姆"
+      },
+      "stageSeconds": 180,
+      "requirements": {
+        "tank": 80,
+        "healing": 84,
+        "damage": 330
+      },
+      "weights": {
+        "tank": 0.32,
+        "healing": 0.39,
+        "damage": 0.29
+      },
+      "experienceShare": 0.12,
+      "funds": 138,
+      "firstKillBonus": 276,
+      "lootTableId": "brd_detention_arena_hedrum",
+      "mechanicIds": ["brd_detention_arena_control"]
+    },
+    {
+      "id": "brd_detention_pyromancer_loregrain",
+      "dungeonId": "blackrock_depths_detention_block",
+      "name": {
+        "zhCN": "控火师罗格雷恩"
+      },
+      "stageSeconds": 100,
+      "requirements": {
+        "tank": 63,
+        "healing": 68,
+        "damage": 270
+      },
+      "weights": {
+        "tank": 0.25,
+        "healing": 0.42,
+        "damage": 0.33
+      },
+      "experienceShare": 0.07,
+      "funds": 96,
+      "firstKillBonus": 192,
+      "lootTableId": "brd_detention_pyromancer_loregrain",
+      "mechanicIds": ["brd_detention_fire_hazards"]
+    },
+    {
+      "id": "brd_detention_black_vault",
+      "dungeonId": "blackrock_depths_detention_block",
+      "name": {
+        "zhCN": "黑色宝库"
+      },
+      "stageSeconds": 130,
+      "requirements": {
+        "tank": 65,
+        "healing": 70,
+        "damage": 276
+      },
+      "weights": {
+        "tank": 0.34,
+        "healing": 0.37,
+        "damage": 0.29
+      },
+      "experienceShare": 0.12,
+      "funds": 146,
+      "firstKillBonus": 292,
+      "lootTableId": "brd_detention_black_vault",
+      "mechanicIds": ["brd_detention_vault_gauntlet"]
+    },
+    {
+      "id": "brd_detention_watchman_doomgrip",
+      "dungeonId": "blackrock_depths_detention_block",
+      "name": {
+        "zhCN": "卫兵杜格瑞普"
+      },
+      "stageSeconds": 100,
+      "requirements": {
+        "tank": 67,
+        "healing": 71,
+        "damage": 280
+      },
+      "weights": {
+        "tank": 0.39,
+        "healing": 0.36,
+        "damage": 0.25
+      },
+      "experienceShare": 0.09,
+      "funds": 124,
+      "firstKillBonus": 248,
+      "lootTableId": "brd_detention_watchman_doomgrip",
+      "mechanicIds": ["brd_detention_vault_gauntlet"]
+    },
+    {
+      "id": "brd_detention_warder_stilgiss",
+      "dungeonId": "blackrock_depths_detention_block",
+      "name": {
+        "zhCN": "典狱官斯迪尔基斯"
+      },
+      "stageSeconds": 100,
+      "requirements": {
+        "tank": 65,
+        "healing": 71,
+        "damage": 278
+      },
+      "weights": {
+        "tank": 0.31,
+        "healing": 0.4,
+        "damage": 0.29
+      },
+      "experienceShare": 0.09,
+      "funds": 124,
+      "firstKillBonus": 248,
+      "lootTableId": "brd_detention_warder_stilgiss",
+      "mechanicIds": ["brd_detention_vault_frost"]
+    },
+    {
+      "id": "brd_detention_verek",
+      "dungeonId": "blackrock_depths_detention_block",
+      "name": {
+        "zhCN": "维雷克"
+      },
+      "stageSeconds": 90,
+      "requirements": {
+        "tank": 66,
+        "healing": 69,
+        "damage": 276
+      },
+      "weights": {
+        "tank": 0.39,
+        "healing": 0.35,
+        "damage": 0.26
+      },
+      "experienceShare": 0.06,
+      "funds": 88,
+      "firstKillBonus": 176,
+      "lootTableId": "brd_detention_verek",
+      "mechanicIds": ["brd_detention_vault_frost"]
+    },
+    {
+      "id": "brd_detention_fineous_darkvire",
+      "dungeonId": "blackrock_depths_detention_block",
+      "name": {
+        "zhCN": "弗诺斯·达克维尔"
+      },
+      "stageSeconds": 600,
+      "requirements": {
+        "tank": 82,
+        "healing": 86,
+        "damage": 335
+      },
+      "weights": {
+        "tank": 0.38,
+        "healing": 0.36,
+        "damage": 0.26
+      },
+      "experienceShare": 0.3,
+      "funds": 226,
+      "firstKillBonus": 452,
+      "lootTableId": "brd_detention_fineous_darkvire",
+      "mechanicIds": ["brd_detention_darkvire_constructs"]
+    },
+    {
+      "id": "brd_detention_lord_incendius",
+      "dungeonId": "blackrock_depths_detention_block",
+      "name": {
+        "zhCN": "伊森迪奥斯"
+      },
+      "stageSeconds": 130,
+      "requirements": {
+        "tank": 67,
+        "healing": 73,
+        "damage": 284
+      },
+      "weights": {
+        "tank": 0.29,
+        "healing": 0.42,
+        "damage": 0.29
+      },
+      "experienceShare": 0.12,
+      "funds": 152,
+      "firstKillBonus": 304,
+      "lootTableId": "brd_detention_lord_incendius",
+      "mechanicIds": ["brd_detention_fire_hazards"]
+    },
+    {
+      "id": "brd_detention_baelgar",
+      "dungeonId": "blackrock_depths_detention_block",
+      "name": {
+        "zhCN": "贝尔加"
+      },
+      "stageSeconds": 130,
+      "requirements": {
+        "tank": 69,
+        "healing": 73,
+        "damage": 286
+      },
+      "weights": {
+        "tank": 0.4,
+        "healing": 0.37,
+        "damage": 0.23
+      },
+      "experienceShare": 0.12,
+      "funds": 152,
+      "firstKillBonus": 304,
+      "lootTableId": "brd_detention_baelgar",
+      "mechanicIds": ["brd_detention_magma_pressure"]
+    }
+  ]
+}

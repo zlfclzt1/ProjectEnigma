@@ -1,0 +1,291 @@
+{
+  "dungeonId": "blackrock_depths_detention_block",
+  "samplesPerScenario": 100000,
+  "scenarios": {
+    "standard": {
+      "required": {
+        "level": 54,
+        "simulatedRuns": 100000,
+        "clearRate": 0.79284,
+        "previewClearProbability": 0.7935265569215912,
+        "durationSeconds": 1610.4,
+        "wipeCounts": {
+          "brd_detention_high_interrogator_gerstahn": 3463,
+          "brd_detention_fineous_darkvire": 4554,
+          "brd_detention_ring_of_law": 8903,
+          "brd_detention_arena_gorosh": 3796
+        }
+      },
+      "with-optional": {
+        "level": 54,
+        "simulatedRuns": 100000,
+        "clearRate": 0.69322,
+        "previewClearProbability": 0.6915620848343821,
+        "durationSeconds": 2414.6,
+        "wipeCounts": {
+          "brd_detention_lord_roccor": 1835,
+          "brd_detention_high_interrogator_gerstahn": 6794,
+          "brd_detention_baelgar": 1455,
+          "brd_detention_ring_of_law": 6986,
+          "brd_detention_lord_incendius": 1409,
+          "brd_detention_houndmaster_grebmar": 1845,
+          "brd_detention_fineous_darkvire": 3031,
+          "brd_detention_watchman_doomgrip": 1698,
+          "brd_detention_warder_stilgiss": 1499,
+          "brd_detention_arena_gorosh": 2510,
+          "brd_detention_black_vault": 1616
+        }
+      },
+      "with-rare": {
+        "level": 54,
+        "simulatedRuns": 100000,
+        "clearRate": 0.76422,
+        "previewClearProbability": 0.761390061835583,
+        "durationSeconds": 1803,
+        "wipeCounts": {
+          "brd_detention_ring_of_law": 9015,
+          "brd_detention_high_interrogator_gerstahn": 3062,
+          "brd_detention_pyromancer_loregrain": 1658,
+          "brd_detention_arena_gorosh": 3687,
+          "brd_detention_fineous_darkvire": 4543,
+          "brd_detention_verek": 1613
+        }
+      }
+    },
+    "no-tank": {
+      "required": {
+        "level": 54,
+        "simulatedRuns": 100000,
+        "clearRate": 0.00002,
+        "previewClearProbability": 0.000006250000000000001,
+        "durationSeconds": 1782.4,
+        "wipeCounts": {
+          "brd_detention_high_interrogator_gerstahn": 94971,
+          "brd_detention_ring_of_law": 4770,
+          "brd_detention_arena_gorosh": 245,
+          "brd_detention_fineous_darkvire": 12
+        }
+      },
+      "with-optional": {
+        "level": 54,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 4.882812500000003e-15,
+        "durationSeconds": 2691,
+        "wipeCounts": {
+          "brd_detention_high_interrogator_gerstahn": 95081,
+          "brd_detention_lord_roccor": 4691,
+          "brd_detention_ring_of_law": 8,
+          "brd_detention_houndmaster_grebmar": 220
+        }
+      },
+      "with-rare": {
+        "level": 54,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.5625000000000006e-8,
+        "durationSeconds": 1928,
+        "wipeCounts": {
+          "brd_detention_high_interrogator_gerstahn": 95115,
+          "brd_detention_ring_of_law": 4656,
+          "brd_detention_pyromancer_loregrain": 22,
+          "brd_detention_arena_gorosh": 206,
+          "brd_detention_verek": 1
+        }
+      }
+    },
+    "no-healing": {
+      "required": {
+        "level": 54,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 0.000006250000000000001,
+        "durationSeconds": 1886,
+        "wipeCounts": {
+          "brd_detention_high_interrogator_gerstahn": 94924,
+          "brd_detention_ring_of_law": 4832,
+          "brd_detention_arena_gorosh": 233,
+          "brd_detention_fineous_darkvire": 11
+        }
+      },
+      "with-optional": {
+        "level": 54,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 4.882812500000003e-15,
+        "durationSeconds": 2794.6,
+        "wipeCounts": {
+          "brd_detention_high_interrogator_gerstahn": 94875,
+          "brd_detention_lord_roccor": 4859,
+          "brd_detention_houndmaster_grebmar": 255,
+          "brd_detention_ring_of_law": 10,
+          "brd_detention_arena_gorosh": 1
+        }
+      },
+      "with-rare": {
+        "level": 54,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.5625000000000006e-8,
+        "durationSeconds": 2067.6,
+        "wipeCounts": {
+          "brd_detention_high_interrogator_gerstahn": 95077,
+          "brd_detention_ring_of_law": 4656,
+          "brd_detention_arena_gorosh": 255,
+          "brd_detention_pyromancer_loregrain": 11,
+          "brd_detention_verek": 1
+        }
+      }
+    },
+    "overlevel": {
+      "required": {
+        "level": 51,
+        "simulatedRuns": 100000,
+        "clearRate": 0.73743,
+        "previewClearProbability": 0.7357529354116462,
+        "durationSeconds": 1664,
+        "wipeCounts": {
+          "brd_detention_ring_of_law": 11033,
+          "brd_detention_fineous_darkvire": 4689,
+          "brd_detention_high_interrogator_gerstahn": 6399,
+          "brd_detention_arena_gorosh": 4136
+        }
+      },
+      "with-optional": {
+        "level": 51,
+        "simulatedRuns": 100000,
+        "clearRate": 0.50666,
+        "previewClearProbability": 0.5050507957478437,
+        "durationSeconds": 2573.8,
+        "wipeCounts": {
+          "brd_detention_ring_of_law": 11485,
+          "brd_detention_black_vault": 2649,
+          "brd_detention_houndmaster_grebmar": 2590,
+          "brd_detention_lord_roccor": 1770,
+          "brd_detention_watchman_doomgrip": 2930,
+          "brd_detention_high_interrogator_gerstahn": 11554,
+          "brd_detention_fineous_darkvire": 6687,
+          "brd_detention_arena_gorosh": 5063,
+          "brd_detention_warder_stilgiss": 1591,
+          "brd_detention_lord_incendius": 1899,
+          "brd_detention_baelgar": 1116
+        }
+      },
+      "with-rare": {
+        "level": 51,
+        "simulatedRuns": 100000,
+        "clearRate": 0.74632,
+        "previewClearProbability": 0.7457059182988871,
+        "durationSeconds": 1812.2,
+        "wipeCounts": {
+          "brd_detention_high_interrogator_gerstahn": 4234,
+          "brd_detention_ring_of_law": 9125,
+          "brd_detention_verek": 1532,
+          "brd_detention_fineous_darkvire": 5996,
+          "brd_detention_pyromancer_loregrain": 1633,
+          "brd_detention_arena_gorosh": 2848
+        }
+      }
+    },
+    "max-level": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.88561,
+        "previewClearProbability": 0.8850113205976106,
+        "durationSeconds": 1589,
+        "wipeCounts": {
+          "brd_detention_arena_gorosh": 1927,
+          "brd_detention_high_interrogator_gerstahn": 1980,
+          "brd_detention_ring_of_law": 3770,
+          "brd_detention_fineous_darkvire": 3762
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.79006,
+        "previewClearProbability": 0.7912868906599464,
+        "durationSeconds": 1845.6,
+        "wipeCounts": {
+          "brd_detention_watchman_doomgrip": 1822,
+          "brd_detention_fineous_darkvire": 2527,
+          "brd_detention_lord_incendius": 1643,
+          "brd_detention_houndmaster_grebmar": 1959,
+          "brd_detention_arena_gorosh": 1854,
+          "brd_detention_baelgar": 1665,
+          "brd_detention_warder_stilgiss": 1715,
+          "brd_detention_high_interrogator_gerstahn": 2034,
+          "brd_detention_black_vault": 1801,
+          "brd_detention_ring_of_law": 1976,
+          "brd_detention_lord_roccor": 1998
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.8713,
+        "previewClearProbability": 0.8729035341609265,
+        "durationSeconds": 1589,
+        "wipeCounts": {
+          "brd_detention_verek": 1793,
+          "brd_detention_high_interrogator_gerstahn": 2908,
+          "brd_detention_ring_of_law": 2540,
+          "brd_detention_arena_gorosh": 1930,
+          "brd_detention_fineous_darkvire": 1755,
+          "brd_detention_pyromancer_loregrain": 1944
+        }
+      }
+    },
+    "speed-run": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.88911,
+        "previewClearProbability": 0.888456310998793,
+        "durationSeconds": 1589,
+        "wipeCounts": {
+          "brd_detention_arena_gorosh": 1841,
+          "brd_detention_high_interrogator_gerstahn": 3841,
+          "brd_detention_ring_of_law": 3557,
+          "brd_detention_fineous_darkvire": 1850
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.79406,
+        "previewClearProbability": 0.7954188870060073,
+        "durationSeconds": 1846.6,
+        "wipeCounts": {
+          "brd_detention_lord_incendius": 1746,
+          "brd_detention_watchman_doomgrip": 1725,
+          "brd_detention_high_interrogator_gerstahn": 2020,
+          "brd_detention_baelgar": 1643,
+          "brd_detention_black_vault": 1800,
+          "brd_detention_houndmaster_grebmar": 1947,
+          "brd_detention_warder_stilgiss": 1731,
+          "brd_detention_lord_roccor": 1957,
+          "brd_detention_fineous_darkvire": 1703,
+          "brd_detention_arena_gorosh": 1837,
+          "brd_detention_ring_of_law": 2485
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.8372,
+        "previewClearProbability": 0.8369440672398589,
+        "durationSeconds": 1589,
+        "wipeCounts": {
+          "brd_detention_fineous_darkvire": 3444,
+          "brd_detention_ring_of_law": 4589,
+          "brd_detention_high_interrogator_gerstahn": 2525,
+          "brd_detention_verek": 1727,
+          "brd_detention_arena_gorosh": 2155,
+          "brd_detention_pyromancer_loregrain": 1840
+        }
+      }
+    }
+  }
+}

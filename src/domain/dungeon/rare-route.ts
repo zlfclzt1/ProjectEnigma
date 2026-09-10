@@ -12,6 +12,26 @@ export interface RareRouteRevealEvent {
   readonly outcome: RareRouteRevealOutcome;
 }
 
+export function includeGuaranteedRareRouteRepresentatives(
+  route: readonly DungeonRouteNode[],
+  includedNodeIds: readonly DungeonRouteNodeId[],
+): readonly DungeonRouteNodeId[] {
+  const included = new Set(includedNodeIds);
+  const groups = new Map<string, Extract<DungeonRouteNode, { type: "rare" }>[]>();
+  for (const node of route) {
+    if (node.type !== "rare" || !node.spawnGroup) continue;
+    const nodes = groups.get(node.spawnGroup) ?? [];
+    nodes.push(node);
+    groups.set(node.spawnGroup, nodes);
+  }
+  for (const nodes of groups.values()) {
+    const guaranteed = nodes.reduce((sum, node) => sum + node.spawnProbability, 0) >= 1 - 1e-9;
+    if (!guaranteed || nodes.some((node) => included.has(node.id))) continue;
+    included.add(nodes[0]!.id);
+  }
+  return [...included];
+}
+
 export function lockRareRouteSpawns(
   route: readonly DungeonRouteNode[],
   random: RandomSource,

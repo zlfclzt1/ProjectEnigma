@@ -1,0 +1,2893 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/blackrock-depths-detention-block-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-10",
+        "notes": "通过逐件中文 XML 核对禁闭区 66 件不重复 Boss 与宝库装备的属性、图标、品质和需求等级。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-10",
+        "notes": "交叉核对首领、宝库、装备 ID 与共享来源。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].restrictions", "items[].description"],
+        "reason": "按经典职业、护甲熟练度和当前装备栏位规则补齐可装备性与来源说明；神像使用当前远程栏位表达。",
+        "decidedAt": "2026-09-10"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "22234",
+      "name": {
+        "zhCN": "失落希望衬肩",
+        "enUS": "Mantle of Lost Hope"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_09"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：洛考尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 5,
+          "intellectPoints": 11
+        },
+        "defense": {
+          "armorPoints": 57
+        },
+        "spell": {
+          "healingPowerPoints": 26,
+          "manaRegenPer5Seconds": 3
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22234",
+        "url": "https://www.wowhead.com/classic/cn/item=22234&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11632",
+      "name": {
+        "zhCN": "土渣护肩",
+        "enUS": "Earthslag Shoulders"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 47,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_26"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：洛考尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 13,
+          "staminaPoints": 8,
+          "intellectPoints": 8
+        },
+        "defense": {
+          "armorPoints": 410
+        },
+        "spell": {
+          "spellPowerPoints": 9,
+          "healingPowerPoints": 9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11632",
+        "url": "https://www.wowhead.com/classic/cn/item=11632&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11631",
+      "name": {
+        "zhCN": "石壳盾牌",
+        "enUS": "Stoneshell Guard"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 47,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shield_02"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：洛考尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 6,
+          "staminaPoints": 9
+        },
+        "defense": {
+          "armorPoints": 2003,
+          "blockValuePoints": 31
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11631",
+        "url": "https://www.wowhead.com/classic/cn/item=11631&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "22397",
+      "name": {
+        "zhCN": "凶猛神像",
+        "enUS": "Idol of Ferocity"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_relics_idolofferocity"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：洛考尔的专属掉落。"
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22397",
+        "url": "https://www.wowhead.com/classic/cn/item=22397&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "11626",
+      "name": {
+        "zhCN": "黑雾斗篷",
+        "enUS": "Blackveil Cape"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_18"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：审讯官格斯塔恩的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 6,
+          "agilityPoints": 14
+        },
+        "defense": {
+          "armorPoints": 38
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11626",
+        "url": "https://www.wowhead.com/classic/cn/item=11626&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11624",
+      "name": {
+        "zhCN": "肯提克护肩",
+        "enUS": "Kentic Amice"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 47,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_25"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：审讯官格斯塔恩的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 5,
+          "intellectPoints": 13,
+          "spiritPoints": 6
+        },
+        "defense": {
+          "armorPoints": 56
+        },
+        "spell": {
+          "spellPowerPoints": 14,
+          "healingPowerPoints": 14
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11624",
+        "url": "https://www.wowhead.com/classic/cn/item=11624&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22240",
+      "name": {
+        "zhCN": "凋零绝望胫甲",
+        "enUS": "Greaves of Withering Despair"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_chain_04"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：审讯官格斯塔恩的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 10
+        },
+        "defense": {
+          "armorPoints": 218
+        },
+        "spell": {
+          "spellPowerPoints": 11,
+          "healingPowerPoints": 11,
+          "hitPercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22240",
+        "url": "https://www.wowhead.com/classic/cn/item=22240&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11625",
+      "name": {
+        "zhCN": "奴役之球",
+        "enUS": "Enthralled Sphere"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["paladin", "priest", "shaman", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_orb_03"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：审讯官格斯塔恩的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 3,
+          "intellectPoints": 14,
+          "spiritPoints": 5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11625",
+        "url": "https://www.wowhead.com/classic/cn/item=11625&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11623",
+      "name": {
+        "zhCN": "灵法斗篷",
+        "enUS": "Spritecaster Cape"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 47,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_20"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：驯犬者格雷布玛尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 4,
+          "intellectPoints": 4,
+          "spiritPoints": 5
+        },
+        "defense": {
+          "armorPoints": 37
+        },
+        "spell": {
+          "spellPowerPoints": 14,
+          "healingPowerPoints": 14
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11623",
+        "url": "https://www.wowhead.com/classic/cn/item=11623&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11627",
+      "name": {
+        "zhCN": "铁索胫甲",
+        "enUS": "Fleetfoot Greaves"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_01"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：驯犬者格雷布玛尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 19,
+          "staminaPoints": 6,
+          "intellectPoints": 5
+        },
+        "defense": {
+          "armorPoints": 218
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11627",
+        "url": "https://www.wowhead.com/classic/cn/item=11627&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11628",
+      "name": {
+        "zhCN": "驯犬者长弓",
+        "enUS": "Houndmaster's Bow"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_bow_04"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：驯犬者格雷布玛尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 3
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 34,
+            "maximumPoints": 64
+          },
+          "speedSeconds": 1.8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11628",
+        "url": "https://www.wowhead.com/classic/cn/item=11628&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11629",
+      "name": {
+        "zhCN": "驯犬者步枪",
+        "enUS": "Houndmaster's Rifle"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_rifle_07"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：驯犬者格雷布玛尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 3
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 44,
+            "maximumPoints": 82
+          },
+          "speedSeconds": 2.3
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11629",
+        "url": "https://www.wowhead.com/classic/cn/item=11629&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11726",
+      "name": {
+        "zhCN": "野蛮角斗士链甲",
+        "enUS": "Savage Gladiator Chain"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "epic",
+      "slot": "chest",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_chain_15"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：修行者高罗什的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 13,
+          "agilityPoints": 14,
+          "staminaPoints": 13
+        },
+        "defense": {
+          "armorPoints": 369
+        },
+        "physical": {
+          "criticalStrikePercent": 2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11726",
+        "url": "https://www.wowhead.com/classic/cn/item=11726&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22271",
+      "name": {
+        "zhCN": "狂乱魔法护腿",
+        "enUS": "Leggings of Frenzied Magic"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_leather_21"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：修行者高罗什的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 15,
+          "intellectPoints": 15
+        },
+        "defense": {
+          "armorPoints": 142
+        },
+        "spell": {
+          "spellPowerPoints": 16,
+          "healingPowerPoints": 16,
+          "manaRegenPer5Seconds": 5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22271",
+        "url": "https://www.wowhead.com/classic/cn/item=22271&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22257",
+      "name": {
+        "zhCN": "血块指环",
+        "enUS": "Bloodclot Band"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_36"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：修行者高罗什的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 8,
+          "intellectPoints": 8,
+          "spiritPoints": 7
+        },
+        "spell": {
+          "healingPowerPoints": 15
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22257",
+        "url": "https://www.wowhead.com/classic/cn/item=22257&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22266",
+      "name": {
+        "zhCN": "火焰荆棘",
+        "enUS": "Flarethorn"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_spear_01"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：修行者高罗什的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 5
+        },
+        "spell": {
+          "fireSpellPowerPoints": 17
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 47,
+            "maximumPoints": 88
+          },
+          "speedSeconds": 1.8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22266",
+        "url": "https://www.wowhead.com/classic/cn/item=22266&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11722",
+      "name": {
+        "zhCN": "破铁肩甲",
+        "enUS": "Dregmetal Spaulders"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_30"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：格里兹尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 6,
+          "staminaPoints": 5,
+          "intellectPoints": 15,
+          "spiritPoints": 10
+        },
+        "defense": {
+          "armorPoints": 246
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11722",
+        "url": "https://www.wowhead.com/classic/cn/item=11722&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11703",
+      "name": {
+        "zhCN": "石墙腰带",
+        "enUS": "Stonewall Girdle"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_16"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：格里兹尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12
+        },
+        "defense": {
+          "armorPoints": 644
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11703",
+        "url": "https://www.wowhead.com/classic/cn/item=11703&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "22270",
+      "name": {
+        "zhCN": "冒犯之靴",
+        "enUS": "Entrenching Boots"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_plate_02"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：格里兹尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 11,
+          "agilityPoints": 5,
+          "staminaPoints": 10,
+          "intellectPoints": 10
+        },
+        "defense": {
+          "armorPoints": 397
+        },
+        "spell": {
+          "spellPowerPoints": 7,
+          "healingPowerPoints": 7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22270",
+        "url": "https://www.wowhead.com/classic/cn/item=22270&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11702",
+      "name": {
+        "zhCN": "格里兹尔的剥皮斧",
+        "enUS": "Grizzle's Skinner"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_axe_12"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：格里兹尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 8,
+          "agilityPoints": 6,
+          "staminaPoints": 5
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 61,
+            "maximumPoints": 114
+          },
+          "speedSeconds": 2.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11702",
+        "url": "https://www.wowhead.com/classic/cn/item=11702&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11685",
+      "name": {
+        "zhCN": "碎鳞护肩",
+        "enUS": "Splinthide Shoulders"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_13"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：剜眼者的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 11,
+          "staminaPoints": 10,
+          "intellectPoints": 10
+        },
+        "defense": {
+          "armorPoints": 118
+        },
+        "spell": {
+          "spellPowerPoints": 9,
+          "healingPowerPoints": 9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11685",
+        "url": "https://www.wowhead.com/classic/cn/item=11685&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11679",
+      "name": {
+        "zhCN": "透红护臂",
+        "enUS": "Rubicund Armguards"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_13"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：剜眼者的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 8,
+          "staminaPoints": 14
+        },
+        "defense": {
+          "armorPoints": 143
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11679",
+        "url": "https://www.wowhead.com/classic/cn/item=11679&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11686",
+      "name": {
+        "zhCN": "野兽怒气腰带",
+        "enUS": "Girdle of Beastial Fury"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_12"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：剜眼者的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 8,
+          "staminaPoints": 10
+        },
+        "defense": {
+          "armorPoints": 89
+        },
+        "physical": {
+          "attackPowerPoints": 30,
+          "rangedAttackPowerPoints": 30
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11686",
+        "url": "https://www.wowhead.com/classic/cn/item=11686&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11730",
+      "name": {
+        "zhCN": "野蛮角斗士护手",
+        "enUS": "Savage Gladiator Grips"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_04"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：剜眼者的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 5,
+          "agilityPoints": 9,
+          "staminaPoints": 14,
+          "intellectPoints": 12
+        },
+        "defense": {
+          "armorPoints": 211
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11730",
+        "url": "https://www.wowhead.com/classic/cn/item=11730&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11665",
+      "name": {
+        "zhCN": "食人魔先知之拳",
+        "enUS": "Ogreseer Fists"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_15"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：破坏者奥科索尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 10,
+          "spiritPoints": 8
+        },
+        "defense": {
+          "armorPoints": 97
+        },
+        "spell": {
+          "spellPowerPoints": 13,
+          "healingPowerPoints": 13
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11665",
+        "url": "https://www.wowhead.com/classic/cn/item=11665&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11662",
+      "name": {
+        "zhCN": "奥科索尔腰带",
+        "enUS": "Ban'thok Sash"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_29"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：破坏者奥科索尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 11
+        },
+        "defense": {
+          "armorPoints": 43
+        },
+        "spell": {
+          "spellPowerPoints": 12,
+          "healingPowerPoints": 12,
+          "hitPercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11662",
+        "url": "https://www.wowhead.com/classic/cn/item=11662&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11728",
+      "name": {
+        "zhCN": "野蛮角斗士护腿",
+        "enUS": "Savage Gladiator Leggings"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_03"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：破坏者奥科索尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 12,
+          "agilityPoints": 18,
+          "staminaPoints": 19
+        },
+        "defense": {
+          "armorPoints": 296
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11728",
+        "url": "https://www.wowhead.com/classic/cn/item=11728&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11824",
+      "name": {
+        "zhCN": "巨石指环",
+        "enUS": "Cyclopean Band"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_08"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：破坏者奥科索尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 4,
+          "staminaPoints": 8,
+          "intellectPoints": 7,
+          "spiritPoints": 4
+        },
+        "spell": {
+          "spellPowerPoints": 9,
+          "healingPowerPoints": 9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11824",
+        "url": "https://www.wowhead.com/classic/cn/item=11824&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11678",
+      "name": {
+        "zhCN": "阿努希尔之壳",
+        "enUS": "Carapace of Anub'shiah"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_plate08"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：阿努希尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 11,
+          "agilityPoints": 11,
+          "staminaPoints": 22
+        },
+        "defense": {
+          "armorPoints": 577
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11678",
+        "url": "https://www.wowhead.com/classic/cn/item=11678&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11677",
+      "name": {
+        "zhCN": "腐烂斗篷",
+        "enUS": "Graverot Cape"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_19"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：阿努希尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 15,
+          "spiritPoints": 6
+        },
+        "defense": {
+          "armorPoints": 39
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11677",
+        "url": "https://www.wowhead.com/classic/cn/item=11677&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11675",
+      "name": {
+        "zhCN": "蛛魔长靴",
+        "enUS": "Shadefiend Boots"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_01"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：阿努希尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 10,
+          "agilityPoints": 11,
+          "staminaPoints": 13
+        },
+        "defense": {
+          "armorPoints": 109
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11675",
+        "url": "https://www.wowhead.com/classic/cn/item=11675&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11731",
+      "name": {
+        "zhCN": "野蛮角斗士护胫",
+        "enUS": "Savage Gladiator Greaves"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_01"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：阿努希尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 10,
+          "agilityPoints": 15,
+          "staminaPoints": 13
+        },
+        "defense": {
+          "armorPoints": 233
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11731",
+        "url": "https://www.wowhead.com/classic/cn/item=11731&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11633",
+      "name": {
+        "zhCN": "巨蛛甲壳",
+        "enUS": "Spiderfang Carapace"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_plate02"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：爬行者赫杜姆的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 14,
+          "staminaPoints": 14,
+          "intellectPoints": 13
+        },
+        "defense": {
+          "armorPoints": 567
+        },
+        "spell": {
+          "spellPowerPoints": 13,
+          "healingPowerPoints": 13
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11633",
+        "url": "https://www.wowhead.com/classic/cn/item=11633&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11634",
+      "name": {
+        "zhCN": "丝网手套",
+        "enUS": "Silkweb Gloves"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_12"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：爬行者赫杜姆的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 14,
+          "intellectPoints": 13
+        },
+        "defense": {
+          "armorPoints": 48
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 3
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11634",
+        "url": "https://www.wowhead.com/classic/cn/item=11634&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11635",
+      "name": {
+        "zhCN": "钩牙匕首",
+        "enUS": "Hookfang Shanker"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_shortblade_10"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：爬行者赫杜姆的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 35,
+            "maximumPoints": 65
+          },
+          "speedSeconds": 1.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11635",
+        "url": "https://www.wowhead.com/classic/cn/item=11635&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11729",
+      "name": {
+        "zhCN": "野蛮角斗士头盔",
+        "enUS": "Savage Gladiator Helm"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_01"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：爬行者赫杜姆的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 12,
+          "staminaPoints": 28
+        },
+        "defense": {
+          "armorPoints": 275
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11729",
+        "url": "https://www.wowhead.com/classic/cn/item=11729&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11747",
+      "name": {
+        "zhCN": "烈焰行者长袍",
+        "enUS": "Flamestrider Robes"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_07"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：控火师罗格雷恩的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 5,
+          "intellectPoints": 6,
+          "spiritPoints": 16
+        },
+        "defense": {
+          "armorPoints": 153
+        },
+        "spell": {
+          "spellPowerPoints": 20,
+          "healingPowerPoints": 20
+        },
+        "resistances": {
+          "firePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11747",
+        "url": "https://www.wowhead.com/classic/cn/item=11747&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11749",
+      "name": {
+        "zhCN": "灼鳞护腿",
+        "enUS": "Searingscale Leggings"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_03"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：控火师罗格雷恩的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 13,
+          "staminaPoints": 13,
+          "intellectPoints": 13,
+          "spiritPoints": 10
+        },
+        "defense": {
+          "armorPoints": 277
+        },
+        "resistances": {
+          "firePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11749",
+        "url": "https://www.wowhead.com/classic/cn/item=11749&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11748",
+      "name": {
+        "zhCN": "燃烧手杖",
+        "enUS": "Pyric Caduceus"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_staff_13"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：控火师罗格雷恩的专属掉落。"
+      },
+      "stats": {
+        "spell": {
+          "fireSpellPowerPoints": 13
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 66,
+            "maximumPoints": 123
+          },
+          "speedSeconds": 1.8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11748",
+        "url": "https://www.wowhead.com/classic/cn/item=11748&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11750",
+      "name": {
+        "zhCN": "引火手杖",
+        "enUS": "Kindling Stave"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "priest", "shaman", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_staff_18"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：控火师罗格雷恩的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 12,
+          "spiritPoints": 13
+        },
+        "spell": {
+          "criticalStrikePercent": 1
+        },
+        "resistances": {
+          "firePoints": 10
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 106,
+            "maximumPoints": 160
+          },
+          "speedSeconds": 2.9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11750",
+        "url": "https://www.wowhead.com/classic/cn/item=11750&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22256",
+      "name": {
+        "zhCN": "法术塑能裹手",
+        "enUS": "Mana Shaping Handwraps"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_17"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：黑色宝库与卫兵杜格瑞普的共享掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 9,
+          "intellectPoints": 11,
+          "spiritPoints": 7
+        },
+        "defense": {
+          "armorPoints": 51
+        },
+        "spell": {
+          "spellPowerPoints": 16,
+          "healingPowerPoints": 16
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22256",
+        "url": "https://www.wowhead.com/classic/cn/item=22256&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22205",
+      "name": {
+        "zhCN": "黑钢护腕",
+        "enUS": "Black Steel Bindings"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_14"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：黑色宝库与卫兵杜格瑞普的共享掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 10,
+          "agilityPoints": 7,
+          "staminaPoints": 10
+        },
+        "defense": {
+          "armorPoints": 261
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22205",
+        "url": "https://www.wowhead.com/classic/cn/item=22205&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "22255",
+      "name": {
+        "zhCN": "岩浆指环",
+        "enUS": "Magma Forged Band"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_04"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：黑色宝库与卫兵杜格瑞普的共享掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 7,
+          "agilityPoints": 12,
+          "staminaPoints": 7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22255",
+        "url": "https://www.wowhead.com/classic/cn/item=22255&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "22254",
+      "name": {
+        "zhCN": "永恒光明魔杖",
+        "enUS": "Wand of Eternal Light"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_wand_02"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：黑色宝库与卫兵杜格瑞普的共享掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 6
+        },
+        "spell": {
+          "healingPowerPoints": 9,
+          "manaRegenPer5Seconds": 2
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 58,
+            "maximumPoints": 109
+          },
+          "speedSeconds": 1.5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22254",
+        "url": "https://www.wowhead.com/classic/cn/item=22254&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11923",
+      "name": {
+        "zhCN": "恩赐之锤",
+        "enUS": "The Hammer of Grace"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "rogue", "priest", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_hammer_07"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：黑色宝库的专属掉落。"
+      },
+      "stats": {
+        "spell": {
+          "healingPowerPoints": 31
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 71,
+            "maximumPoints": 132
+          },
+          "speedSeconds": 2.7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11923",
+        "url": "https://www.wowhead.com/classic/cn/item=11923&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11945",
+      "name": {
+        "zhCN": "黑铁戒指",
+        "enUS": "Dark Iron Ring"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "uncommon",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_15"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：黑色宝库的专属掉落。"
+      },
+      "randomSuffixIds": [
+        "brd_11945_owl",
+        "brd_11945_bear",
+        "brd_11945_monkey",
+        "brd_11945_wolf",
+        "brd_11945_tiger",
+        "brd_11945_eagle",
+        "brd_11945_whale",
+        "brd_11945_boar",
+        "brd_11945_gorilla",
+        "brd_11945_agility",
+        "brd_11945_stamina",
+        "brd_11945_strength",
+        "brd_11945_falcon",
+        "brd_11945_intellect",
+        "brd_11945_spirit",
+        "brd_11945_eluding",
+        "brd_11945_regeneration",
+        "brd_11945_concentration",
+        "brd_11945_nature_resistance",
+        "brd_11945_fire_resistance",
+        "brd_11945_arcane_resistance",
+        "brd_11945_frost_resistance",
+        "brd_11945_shadow_resistance"
+      ],
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11945",
+        "url": "https://www.wowhead.com/classic/cn/item=11945&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "基础物品没有固定常驻属性；实际属性由 Wowhead Classic 核对的随机附魔池产生。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "11946",
+      "name": {
+        "zhCN": "火蛋白石项链",
+        "enUS": "Fire Opal Necklace"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 47,
+      "quality": "uncommon",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_necklace_02"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：黑色宝库的专属掉落。"
+      },
+      "randomSuffixIds": [
+        "brd_11946_owl",
+        "brd_11946_monkey",
+        "brd_11946_bear",
+        "brd_11946_regeneration",
+        "brd_11946_eluding",
+        "brd_11946_tiger",
+        "brd_11946_concentration",
+        "brd_11946_wolf",
+        "brd_11946_gorilla",
+        "brd_11946_boar",
+        "brd_11946_whale",
+        "brd_11946_eagle",
+        "brd_11946_intellect",
+        "brd_11946_falcon",
+        "brd_11946_stamina",
+        "brd_11946_agility",
+        "brd_11946_strength",
+        "brd_11946_spirit",
+        "brd_11946_shadow_resistance",
+        "brd_11946_frost_resistance",
+        "brd_11946_fire_resistance",
+        "brd_11946_arcane_resistance",
+        "brd_11946_nature_resistance"
+      ],
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11946",
+        "url": "https://www.wowhead.com/classic/cn/item=11946&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "基础物品没有固定常驻属性；实际属性由 Wowhead Classic 核对的随机附魔池产生。"
+      },
+      "stats": {}
+    },
+    {
+      "id": "11782",
+      "name": {
+        "zhCN": "北地衬肩",
+        "enUS": "Boreal Mantle"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_02"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：典狱官斯迪尔基斯的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 5,
+          "intellectPoints": 8
+        },
+        "defense": {
+          "armorPoints": 61
+        },
+        "spell": {
+          "frostSpellPowerPoints": 29
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11782",
+        "url": "https://www.wowhead.com/classic/cn/item=11782&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22241",
+      "name": {
+        "zhCN": "黑暗守望者肩甲",
+        "enUS": "Dark Warder's Pauldrons"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_07"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：典狱官斯迪尔基斯的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 11,
+          "agilityPoints": 17,
+          "staminaPoints": 7
+        },
+        "defense": {
+          "armorPoints": 122
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22241",
+        "url": "https://www.wowhead.com/classic/cn/item=22241&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11783",
+      "name": {
+        "zhCN": "寒钢束腰",
+        "enUS": "Chillsteel Girdle"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_33"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：典狱官斯迪尔基斯的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 20,
+          "spiritPoints": 7
+        },
+        "defense": {
+          "armorPoints": 190
+        },
+        "resistances": {
+          "frostPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11783",
+        "url": "https://www.wowhead.com/classic/cn/item=11783&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11784",
+      "name": {
+        "zhCN": "仲裁者之刃",
+        "enUS": "Arbiter's Blade"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_23"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：典狱官斯迪尔基斯的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 8,
+          "intellectPoints": 5
+        },
+        "spell": {
+          "spellPowerPoints": 8,
+          "healingPowerPoints": 8
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 59,
+            "maximumPoints": 110
+          },
+          "speedSeconds": 2.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11784",
+        "url": "https://www.wowhead.com/classic/cn/item=11784&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11755",
+      "name": {
+        "zhCN": "维雷克的镣铐",
+        "enUS": "Verek's Collar"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 51,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_bandage_14"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：维雷克的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 6,
+          "staminaPoints": 7
+        },
+        "defense": {
+          "dodgePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11755",
+        "url": "https://www.wowhead.com/classic/cn/item=11755&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22242",
+      "name": {
+        "zhCN": "维雷克的束缚",
+        "enUS": "Verek's Leash"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 51,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_18"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：维雷克的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 8,
+          "agilityPoints": 8,
+          "staminaPoints": 8,
+          "intellectPoints": 8,
+          "spiritPoints": 7
+        },
+        "defense": {
+          "armorPoints": 187
+        },
+        "spell": {
+          "spellPowerPoints": 11,
+          "healingPowerPoints": 11
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22242",
+        "url": "https://www.wowhead.com/classic/cn/item=22242&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11839",
+      "name": {
+        "zhCN": "大石匠的眼镜",
+        "enUS": "Chief Architect's Monocle"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_44"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：弗诺斯·达克维尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 27,
+          "spiritPoints": 3
+        },
+        "defense": {
+          "armorPoints": 64
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11839",
+        "url": "https://www.wowhead.com/classic/cn/item=11839&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "22223",
+      "name": {
+        "zhCN": "工头的面甲",
+        "enUS": "Foreman's Head Protector"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_20"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：弗诺斯·达克维尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 15,
+          "staminaPoints": 14,
+          "intellectPoints": 11
+        },
+        "defense": {
+          "armorPoints": 469
+        },
+        "spell": {
+          "spellPowerPoints": 13,
+          "healingPowerPoints": 13
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22223",
+        "url": "https://www.wowhead.com/classic/cn/item=22223&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11842",
+      "name": {
+        "zhCN": "首席测量员的衬肩",
+        "enUS": "Lead Surveyor's Mantle"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_15"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：弗诺斯·达克维尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 14,
+          "spiritPoints": 8
+        },
+        "defense": {
+          "armorPoints": 246
+        },
+        "spell": {
+          "spellPowerPoints": 15,
+          "healingPowerPoints": 15
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11842",
+        "url": "https://www.wowhead.com/classic/cn/item=11842&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11841",
+      "name": {
+        "zhCN": "主设计师的长裤",
+        "enUS": "Senior Designer's Pantaloons"
+      },
+      "itemLevel": 55,
+      "requiredLevel": 50,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_09"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：弗诺斯·达克维尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 8,
+          "intellectPoints": 7,
+          "spiritPoints": 18
+        },
+        "defense": {
+          "armorPoints": 69
+        },
+        "spell": {
+          "healingPowerPoints": 40
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11841",
+        "url": "https://www.wowhead.com/classic/cn/item=11841&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11766",
+      "name": {
+        "zhCN": "焰纹护腕",
+        "enUS": "Flameweave Cuffs"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_05"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：伊森迪奥斯的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 35
+        },
+        "resistances": {
+          "firePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11766",
+        "url": "https://www.wowhead.com/classic/cn/item=11766&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11764",
+      "name": {
+        "zhCN": "灰鳞护臂",
+        "enUS": "Cinderhide Armsplints"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_02"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：伊森迪奥斯的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 71
+        },
+        "resistances": {
+          "firePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11764",
+        "url": "https://www.wowhead.com/classic/cn/item=11764&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11765",
+      "name": {
+        "zhCN": "焚铁护腕",
+        "enUS": "Pyremail Wristguards"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_18"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：伊森迪奥斯的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 148
+        },
+        "resistances": {
+          "firePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11765",
+        "url": "https://www.wowhead.com/classic/cn/item=11765&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11767",
+      "name": {
+        "zhCN": "琥珀臂甲",
+        "enUS": "Emberplate Armguards"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_18"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：伊森迪奥斯的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 261
+        },
+        "resistances": {
+          "firePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11767",
+        "url": "https://www.wowhead.com/classic/cn/item=11767&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11768",
+      "name": {
+        "zhCN": "易然护腕",
+        "enUS": "Incendic Bracers"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "uncommon",
+      "slot": "wrist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_10"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：伊森迪奥斯的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 32
+        },
+        "resistances": {
+          "firePoints": 14
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11768",
+        "url": "https://www.wowhead.com/classic/cn/item=11768&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11807",
+      "name": {
+        "zhCN": "燃心腰带",
+        "enUS": "Sash of the Burning Heart"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_11"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：贝尔加的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 10,
+          "spiritPoints": 10
+        },
+        "defense": {
+          "armorPoints": 46
+        },
+        "spell": {
+          "fireSpellPowerPoints": 14
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11807",
+        "url": "https://www.wowhead.com/classic/cn/item=11807&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "11802",
+      "name": {
+        "zhCN": "火浪护腿",
+        "enUS": "Lavacrest Leggings"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_04"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：贝尔加的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 28,
+          "staminaPoints": 12
+        },
+        "defense": {
+          "armorPoints": 531
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11802",
+        "url": "https://www.wowhead.com/classic/cn/item=11802&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11805",
+      "name": {
+        "zhCN": "燃石战锤",
+        "enUS": "Rubidium Hammer"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 51,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "rogue", "priest", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_hammer_09"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：贝尔加的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 5
+        },
+        "defense": {
+          "armorPoints": 120
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 51,
+            "maximumPoints": 96
+          },
+          "speedSeconds": 2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11805",
+        "url": "https://www.wowhead.com/classic/cn/item=11805&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "11803",
+      "name": {
+        "zhCN": "熔岩之力",
+        "enUS": "Force of Magma"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 51,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_hammer_09"
+      },
+      "description": {
+        "zhCN": "黑石深渊禁闭区：贝尔加的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 14
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 123,
+            "maximumPoints": 185
+          },
+          "speedSeconds": 3.2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11803",
+        "url": "https://www.wowhead.com/classic/cn/item=11803&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "原版使用或触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    }
+  ]
+}

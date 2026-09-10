@@ -26,7 +26,7 @@ describe("member dungeon quest content", () => {
   it("loads member conditions, supported objectives, and real reward choices", () => {
     const content = loadBrowserContentRegistry();
 
-    expect(content.quests).toHaveLength(43);
+    expect(content.quests).toHaveLength(46);
     expect(
       content.questById.get(asBrandedId<"QuestId">("rfc_returning_lost_satchel")),
     ).toMatchObject({

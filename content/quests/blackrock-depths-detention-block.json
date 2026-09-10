@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/classic-wow-blackrock-depths-quests",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对烈焰精华、伊森迪奥斯与最后的元素任务目标和装备奖励。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-10",
+        "notes": "阵营、任务物品背包与副本外前置不模拟；只在玩家主动安排对应支路并胜利时推进。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": [
+          "quests[].dungeonId",
+          "quests[].completion",
+          "quests[].rewards.experienceFraction"
+        ],
+        "reason": "用可确定结算的 Encounter 胜利压缩精华、元素与阵营差异，并保持原版装备奖励方式。",
+        "decidedAt": "2026-09-10"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "brd_detention_taste_of_flame",
+      "name": {
+        "zhCN": "烈焰精华"
+      },
+      "description": {
+        "zhCN": "主动深入西侧入口支路，击败贝尔加并带回烈焰精华。"
+      },
+      "dungeonId": "blackrock_depths_detention_block",
+      "eligibility": {
+        "minimumLevel": 52,
+        "allowedClassIds": []
+      },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["brd_detention_baelgar"]
+      },
+      "rewards": {
+        "experienceFraction": 1.1,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["12066", "12082", "12083"]
+      }
+    },
+    {
+      "id": "brd_detention_incendius",
+      "name": {
+        "zhCN": "伊森迪奥斯！"
+      },
+      "description": {
+        "zhCN": "主动清理黑铁砧支路并击败伊森迪奥斯；联盟与部落同目标版本合并。"
+      },
+      "dungeonId": "blackrock_depths_detention_block",
+      "eligibility": {
+        "minimumLevel": 48,
+        "allowedClassIds": []
+      },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["brd_detention_lord_incendius"]
+      },
+      "rewards": {
+        "experienceFraction": 1,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["12113", "12114", "12112", "12115"]
+      }
+    },
+    {
+      "id": "brd_detention_last_element",
+      "name": {
+        "zhCN": "最后的元素"
+      },
+      "description": {
+        "zhCN": "主动清理伊森迪奥斯支路，压缩完成黑石深渊元素精华收集。"
+      },
+      "dungeonId": "blackrock_depths_detention_block",
+      "eligibility": {
+        "minimumLevel": 48,
+        "allowedClassIds": []
+      },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["brd_detention_lord_incendius"]
+      },
+      "rewards": {
+        "experienceFraction": 0.9,
+        "funds": 0,
+        "fixedItemIds": ["12038"],
+        "itemChoiceIds": []
+      }
+    }
+  ]
+}
