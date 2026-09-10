@@ -57,6 +57,11 @@ describe("loot page", () => {
     const wrapper = mount(LootPage);
     const firstCard = wrapper.findAll(".loot-card")[0]!;
     expect(wrapper.findAll(".loot-card")).toHaveLength(4);
+    for (const [index, loot] of game.loot!.pending.entries()) {
+      expect(wrapper.findAll(".loot-card")[index]!.find(".item-icon").classes()).toContain(
+        `quality-${loot.item.quality}`,
+      );
+    }
     expect(firstCard.findAll("select option")).toHaveLength(5);
     expect(firstCard.text()).toContain("仅本次参战成员");
     expect(firstCard.text()).toContain("主职责");

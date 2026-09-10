@@ -28,7 +28,7 @@ const selectedCandidate = computed(() =>
 <template>
   <article class="loot-card" :class="{ locked: loot.locked }">
     <header>
-      <div class="item-icon">
+      <div class="item-icon" :class="`quality-${loot.item.quality}`">
         <img v-if="loot.item.iconUrl" :src="loot.item.iconUrl" :alt="loot.item.name" />
         <span v-else>{{ loot.item.name.slice(0, 1) }}</span>
         <ItemTooltip :item="loot.item" />
@@ -133,10 +133,25 @@ header {
   width: 50px;
   height: 50px;
   place-items: center;
-  border: 2px solid #4b7ec2;
+  border: 2px solid #555;
   border-radius: 5px;
   color: #d2c3a6;
   background: #20201c;
+}
+.item-icon.quality-poor {
+  border-color: #777;
+}
+.item-icon.quality-common {
+  border-color: #aaa;
+}
+.item-icon.quality-uncommon {
+  border-color: #279b32;
+}
+.item-icon.quality-rare {
+  border-color: #357fcb;
+}
+.item-icon.quality-epic {
+  border-color: #8e49bd;
 }
 .item-icon img {
   width: 100%;
