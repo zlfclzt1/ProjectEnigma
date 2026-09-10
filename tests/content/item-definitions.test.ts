@@ -72,6 +72,7 @@ describe("item definitions", () => {
         .every(
           (item) =>
             item.statsSource.provider === "wowhead-classic" &&
+            item.statsSource.gameVersion === "classic-2019-phase-6" &&
             item.statsSource.externalId === item.id &&
             item.statsSource.verifiedAt === "2026-09-08",
         ),

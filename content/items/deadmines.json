@@ -45,6 +45,7 @@
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
         "externalId": "5187",
         "url": "https://www.wowhead.com/classic/cn/item=5187&xml",
         "verifiedAt": "2026-09-08"
@@ -88,6 +89,7 @@
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
         "externalId": "5194",
         "url": "https://www.wowhead.com/classic/cn/item=5194&xml",
         "verifiedAt": "2026-09-08"
@@ -127,6 +129,7 @@
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
         "externalId": "5199",
         "url": "https://www.wowhead.com/classic/cn/item=5199&xml",
         "verifiedAt": "2026-09-08"
@@ -170,6 +173,7 @@
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
         "externalId": "7230",
         "url": "https://www.wowhead.com/classic/cn/item=7230&xml",
         "verifiedAt": "2026-09-08"
@@ -214,6 +218,7 @@
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
         "externalId": "5201",
         "url": "https://www.wowhead.com/classic/cn/item=5201&xml",
         "verifiedAt": "2026-09-08"
@@ -256,6 +261,7 @@
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
         "externalId": "5191",
         "url": "https://www.wowhead.com/classic/cn/item=5191&xml",
         "verifiedAt": "2026-09-08"
@@ -294,6 +300,7 @@
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
         "externalId": "5198",
         "url": "https://www.wowhead.com/classic/cn/item=5198&xml",
         "verifiedAt": "2026-09-08"

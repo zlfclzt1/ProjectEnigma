@@ -5,6 +5,7 @@
       {
         "kind": "source-fact",
         "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
         "url": "https://raw.githubusercontent.com/Hoizame/AtlasLootClassic/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
         "verifiedAt": "2026-09-08",
         "notes": "核对影牙城堡路线 Boss 与所选经典旧世装备掉落关系。"

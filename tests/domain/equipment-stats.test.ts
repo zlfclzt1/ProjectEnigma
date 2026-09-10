@@ -92,6 +92,7 @@ describe("typed Classic item stats", () => {
       statsSource: {
         kind: "source-fact",
         provider: "wowhead-classic",
+        gameVersion: "classic-2019-phase-6",
         externalId: "typed_test_item",
         url: "https://www.wowhead.com/classic/cn/item=typed_test_item&xml",
         verifiedAt: "2026-09-08",

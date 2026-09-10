@@ -8,6 +8,7 @@ import {
 } from "../../src/content/schemas/common";
 import {
   contentAttributionSchema,
+  contentGameVersionSchema,
   contentSourceSchema,
 } from "../../src/content/schemas/content-source";
 import type { DungeonId } from "../../src/domain/shared/ids";
@@ -41,11 +42,14 @@ describe("content schema foundation", () => {
       contentSourceSchema.parse({
         kind: "source-fact",
         provider: "wowhead-classic",
+        gameVersion: "classic-2019-phase-6",
         externalId: "14145",
         url: "https://www.wowhead.com/classic/item=14145",
         verifiedAt: "2026-09-07",
       }),
     ).toMatchObject({ provider: "wowhead-classic" });
+    expect(contentGameVersionSchema.parse("classic-2019-phase-6")).toBe("classic-2019-phase-6");
+    expect(() => contentGameVersionSchema.parse("season-of-discovery")).toThrow();
 
     expect(() =>
       contentSourceSchema.parse({
@@ -58,9 +62,18 @@ describe("content schema foundation", () => {
       contentSourceSchema.parse({
         kind: "source-fact",
         provider: "warcraft-wiki",
+        gameVersion: "classic-2019-phase-6",
         verifiedAt: "2026-09-07",
       }),
     ).toThrow();
+    expect(() =>
+      contentSourceSchema.parse({
+        kind: "source-fact",
+        provider: "warcraft-wiki",
+        url: "https://warcraft.wiki.gg/wiki/Ragefire_Chasm_(Classic)",
+        verifiedAt: "2026-09-07",
+      }),
+    ).toThrow(/版本/);
     expect(() =>
       contentSourceSchema.parse({
         kind: "design-decision",
@@ -76,6 +89,7 @@ describe("content schema foundation", () => {
         {
           kind: "source-fact",
           provider: "warcraft-wiki",
+          gameVersion: "classic-2019-phase-6",
           url: "https://warcraft.wiki.gg/wiki/Ragefire_Chasm_(Classic)",
           verifiedAt: "2026-09-07",
         },

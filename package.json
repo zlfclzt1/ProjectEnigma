@@ -22,6 +22,8 @@
     "validate:content": "node --import tsx scripts/validate-content.ts",
     "item-stats:audit": "node --import tsx scripts/audit-item-stats.ts --check",
     "item-stats:audit:write": "node --import tsx scripts/audit-item-stats.ts --write",
+    "loot-sources:audit": "node --import tsx scripts/audit-loot-sources.ts --check",
+    "loot-sources:audit:write": "node --import tsx scripts/audit-loot-sources.ts --write",
     "simulate:dungeons": "node --import tsx scripts/simulate-dungeons.ts 100000"
   },
   "devDependencies": {

@@ -29,6 +29,7 @@ npm run lint
 npm run typecheck
 npm run validate:content
 npm run item-stats:audit
+npm run loot-sources:audit
 npm run baseline:check
 npm run build
 ```
@@ -84,6 +85,8 @@ tests/                   领域、应用、Store、组件和 Playwright 测试
 ## 文档
 
 - [游戏设计文档](./docs/game-design-v0.1.md)
+- [10–45 级祖尔法拉克阶段实施计划](./docs/zulfarrak-stage-implementation-plan.md)
+- [经典旧世内容版本与来源政策](./docs/classic-content-source-policy.md)
 - [怒焰裂谷垂直切片](./docs/ragefire-chasm-vertical-slice.md)
 - [新增经典旧世副本工作流](./docs/adding-dungeon-workflow.md)
 - [长期可扩展架构重构方案](./docs/architecture-refactor-plan-v2.md)

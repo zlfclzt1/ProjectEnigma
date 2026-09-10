@@ -7,10 +7,13 @@ export const contentSourceProviderSchema = z.enum([
   "manual",
 ]);
 
+export const contentGameVersionSchema = z.enum(["classic-2019-phase-6"]);
+
 export const contentSourceSchema = z
   .object({
     kind: z.enum(["source-fact", "design-decision"]),
     provider: contentSourceProviderSchema,
+    gameVersion: contentGameVersionSchema.optional(),
     externalId: z.string().trim().min(1).optional(),
     url: z.url().optional(),
     verifiedAt: z.iso.date(),
@@ -30,6 +33,13 @@ export const contentSourceSchema = z
         code: "custom",
         path: ["url"],
         message: "真实资料必须提供来源 URL",
+      });
+    }
+    if (source.kind === "source-fact" && !source.gameVersion) {
+      context.addIssue({
+        code: "custom",
+        path: ["gameVersion"],
+        message: "真实资料必须注明经典内容版本",
       });
     }
     if (source.kind === "design-decision" && source.provider !== "manual") {

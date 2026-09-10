@@ -44,6 +44,7 @@
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
         "externalId": "14145",
         "url": "https://www.wowhead.com/classic/cn/item=14145&xml",
         "verifiedAt": "2026-09-08",
@@ -84,6 +85,7 @@
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
         "externalId": "14148",
         "url": "https://www.wowhead.com/classic/cn/item=14148&xml",
         "verifiedAt": "2026-09-08"
@@ -122,6 +124,7 @@
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
         "externalId": "14149",
         "url": "https://www.wowhead.com/classic/cn/item=14149&xml",
         "verifiedAt": "2026-09-08"
@@ -164,6 +167,7 @@
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
         "externalId": "14151",
         "url": "https://www.wowhead.com/classic/cn/item=14151&xml",
         "verifiedAt": "2026-09-08",
@@ -204,6 +208,7 @@
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
         "externalId": "14150",
         "url": "https://www.wowhead.com/classic/cn/item=14150&xml",
         "verifiedAt": "2026-09-08",
@@ -244,6 +249,7 @@
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
         "externalId": "14147",
         "url": "https://www.wowhead.com/classic/cn/item=14147&xml",
         "verifiedAt": "2026-09-08"
@@ -281,6 +287,7 @@
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
         "externalId": "15452",
         "url": "https://www.wowhead.com/classic/cn/item=15452&xml",
         "verifiedAt": "2026-09-08"
@@ -318,6 +325,7 @@
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
         "externalId": "15453",
         "url": "https://www.wowhead.com/classic/cn/item=15453&xml",
         "verifiedAt": "2026-09-08"
@@ -356,6 +364,7 @@
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
         "externalId": "15449",
         "url": "https://www.wowhead.com/classic/cn/item=15449&xml",
         "verifiedAt": "2026-09-08"
@@ -395,6 +404,7 @@
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
         "externalId": "15450",
         "url": "https://www.wowhead.com/classic/cn/item=15450&xml",
         "verifiedAt": "2026-09-08"
@@ -434,6 +444,7 @@
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
         "externalId": "15451",
         "url": "https://www.wowhead.com/classic/cn/item=15451&xml",
         "verifiedAt": "2026-09-08"
