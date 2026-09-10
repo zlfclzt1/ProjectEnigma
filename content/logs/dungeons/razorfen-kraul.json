@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "剃刀沼泽副本日志；只描述结算事实与机制反馈。"
+      }
+    ]
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "razorfen_kraul_jargba_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "razorfen_kraul_death_speaker_jargba" },
+      "availableParameters": ["healer", "member"],
+      "templates": [
+        "贾格巴倒下，{healer} 确认队伍里没人再被心灵控制。",
+        "{member} 坚称刚才的迷路是一次有意的战术侦察。"
+      ]
+    },
+    {
+      "id": "razorfen_kraul_charlga_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "razorfen_kraul_charlga_razorflank" },
+      "availableParameters": ["tank", "member"],
+      "templates": [
+        "卡尔加·刺肋倒下，{tank} 终于不用再数野猪獠牙。",
+        "最终 Boss 的战利品出现，{member} 已经打开了装备需求清单。"
+      ]
+    }
+  ]
+}

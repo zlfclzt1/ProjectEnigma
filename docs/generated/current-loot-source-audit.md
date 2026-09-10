@@ -6,12 +6,12 @@
 
 ## 汇总
 
-- 路线 Encounter：48。
-- 掉落表：39。
-- 掉落表分类：Boss 专属掉落 39，任务奖励 0，世界掉落 0，设计占位 0。
-- Encounter 引用分类：Boss 专属掉落 39，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 9。
-- 不同装备分类：Boss 专属掉落 98，任务奖励 0，世界掉落 0，设计占位 0。
-- 成员副本任务：11，不同任务奖励装备：24。
+- 路线 Encounter：56。
+- 掉落表：46。
+- 掉落表分类：Boss 专属掉落 46，任务奖励 0，世界掉落 0，设计占位 0。
+- Encounter 引用分类：Boss 专属掉落 46，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 10。
+- 不同装备分类：Boss 专属掉落 114，任务奖励 0，世界掉落 0，设计占位 0。
+- 成员副本任务：13，不同任务奖励装备：28。
 - Boss 掉落与任务奖励重复：0。
 - 未显式填写 `sourceType` 的 Boss 掉落表：0。
 - 未被路线 Encounter 引用的掉落表：0。
@@ -68,6 +68,19 @@
 | 祈求者耶戈什（jergosh_the_invoker） | jergosh_the_invoker | Boss 专属掉落 | 1 | 14151 咏唱之刃、14150 唤魔者长袍、14147 洞穴护腕 |
 | 巴扎兰（bazzalan） | — | 无装备掉落 | 0 | — |
 
+### 剃刀沼泽（razorfen_kraul）
+
+| Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
+|---|---|---|---:|---|
+| 鲁古格（razorfen_kraul_roogug） | — | 无装备掉落 | 0 | — |
+| 阿格姆·荆棘诅咒（razorfen_kraul_aggem_thorncurse） | razorfen_kraul_aggem_thorncurse | Boss 专属掉落 | 1 | 6681 荆棘刺 |
+| 死亡之语者·贾格巴（razorfen_kraul_death_speaker_jargba） | razorfen_kraul_death_speaker_jargba | Boss 专属掉落 | 1 | 6682 死亡之语者肩饰、6685 死亡之语者长袍、2816 死亡之语者节杖 |
+| 主宰拉姆塔斯（razorfen_kraul_overlord_ramtusk） | razorfen_kraul_overlord_ramtusk | Boss 专属掉落 | 1 | 6686 图斯克头盔、6687 尸体制造者 |
+| 暴怒的阿迦赛罗斯（razorfen_kraul_agathelos_the_raging） | razorfen_kraul_agathelos_the_raging | Boss 专属掉落 | 1 | 6690 野兽护腿、6691 野猪獠牙匕首 |
+| 盲眼猎手（razorfen_kraul_blind_hunter） | razorfen_kraul_blind_hunter | Boss 专属掉落 | 1 | 6695 冥骨护符、6696 暗夜追猎者之弓、6697 蝠翼披风 |
+| 卡尔加·刺肋（razorfen_kraul_charlga_razorflank） | razorfen_kraul_charlga_razorflank | Boss 专属掉落 | 1 | 6693 阿迦玛甘之握、6692 阿迦玛甘之心、6694 尖刺收割者 |
+| 召地者哈穆加（razorfen_kraul_earthcaller_halmgar） | razorfen_kraul_earthcaller_halmgar | Boss 专属掉落 | 1 | 6688 低语风帽、6689 风灵法杖 |
+
 ### 影牙城堡（shadowfang_keep）
 
 | Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
@@ -117,6 +130,8 @@
 | 诺莫瑞根（gnomeregan） | 陀螺钻挖掘器（gnomeregan_gyrodrillmatic_excavationators） | 9608 肖尼的拆卸工具、9609 希里的手套 |
 | 怒焰裂谷（ragefire_chasm） | 归还背包（rfc_returning_lost_satchel） | 15452 羽珠护腕、15453 草原狮护腕 |
 | 怒焰裂谷（ragefire_chasm） | 毁灭之力（rfc_power_to_destroy） | 15449 苍白长裤、15450 泥泞护腿、15451 石像鬼护腿 |
+| 剃刀沼泽（razorfen_kraul） | 剃刀沼泽的巫婆（razorfen_kraul_crone_of_the_kraul） | 6684 苍白肩垫 |
+| 剃刀沼泽（razorfen_kraul） | 生命渐逝（razorfen_kraul_mortality_wanes） | 6750 蛇环、6751 哀悼披肩、6752 枪骑兵长靴 |
 | 暴风城监狱（the_stockade） | 伸张正义（stockade_what_comes_around） | 3400 磷铝长剑、1317 硬根法杖 |
 | 暴风城监狱（the_stockade） | 卡姆·深怒（stockade_fury_runs_deep） | 3562 辩护腰带、1264 碎头者 |
 | 暴风城监狱（the_stockade） | 罪与罚（stockade_crime_and_punishment） | 2033 大使之靴、2906 夜色郡锁甲护腿 |
@@ -125,5 +140,5 @@
 
 - 当前没有任务奖励或世界掉落被路线 Encounter 当作 Boss 掉落引用。
 - 当前副本 Boss 掉落表均已显式标记为 `boss_drop`，不再依赖兼容推断。
-- 当前五件真实任务奖励仅由成员副本任务引用，与所有 Boss 掉落池无重复。
+- 当前真实任务奖励仅由成员副本任务引用，与所有 Boss 掉落池无重复。
 - 本报告不能替代外部资料核对；新增内容仍须按经典内容来源政策保存物品与任务来源。

@@ -34,6 +34,14 @@
 | 怒焰裂谷（ragefire_chasm） | taragaman_the_hungerer | required | 饥饿者塔拉加曼（taragaman_the_hungerer） | boss_drop:taragaman_the_hungerer | 1 | 14145 被诅咒的魔刃、14148 水晶腕轮、14149 地下斗篷 |
 | 怒焰裂谷（ragefire_chasm） | jergosh_the_invoker | required | 祈求者耶戈什（jergosh_the_invoker） | boss_drop:jergosh_the_invoker | 1 | 14151 咏唱之刃、14150 唤魔者长袍、14147 洞穴护腕 |
 | 怒焰裂谷（ragefire_chasm） | bazzalan | required | 巴扎兰（bazzalan） | 无装备掉落 | 0 | — |
+| 剃刀沼泽（razorfen_kraul） | razorfen_kraul_roogug | optional | 鲁古格（razorfen_kraul_roogug） | 无装备掉落 | 0 | — |
+| 剃刀沼泽（razorfen_kraul） | razorfen_kraul_aggem_thorncurse | required | 阿格姆·荆棘诅咒（razorfen_kraul_aggem_thorncurse） | boss_drop:razorfen_kraul_aggem_thorncurse | 1 | 6681 荆棘刺 |
+| 剃刀沼泽（razorfen_kraul） | razorfen_kraul_death_speaker_jargba | required | 死亡之语者·贾格巴（razorfen_kraul_death_speaker_jargba） | boss_drop:razorfen_kraul_death_speaker_jargba | 1 | 6682 死亡之语者肩饰、6685 死亡之语者长袍、2816 死亡之语者节杖 |
+| 剃刀沼泽（razorfen_kraul） | razorfen_kraul_overlord_ramtusk | required | 主宰拉姆塔斯（razorfen_kraul_overlord_ramtusk） | boss_drop:razorfen_kraul_overlord_ramtusk | 1 | 6686 图斯克头盔、6687 尸体制造者 |
+| 剃刀沼泽（razorfen_kraul） | razorfen_kraul_agathelos_the_raging | required | 暴怒的阿迦赛罗斯（razorfen_kraul_agathelos_the_raging） | boss_drop:razorfen_kraul_agathelos_the_raging | 1 | 6690 野兽护腿、6691 野猪獠牙匕首 |
+| 剃刀沼泽（razorfen_kraul） | razorfen_kraul_blind_hunter | rare（0.16） | 盲眼猎手（razorfen_kraul_blind_hunter） | boss_drop:razorfen_kraul_blind_hunter | 1 | 6695 冥骨护符、6696 暗夜追猎者之弓、6697 蝠翼披风 |
+| 剃刀沼泽（razorfen_kraul） | razorfen_kraul_charlga_razorflank | required | 卡尔加·刺肋（razorfen_kraul_charlga_razorflank） | boss_drop:razorfen_kraul_charlga_razorflank | 1 | 6693 阿迦玛甘之握、6692 阿迦玛甘之心、6694 尖刺收割者 |
+| 剃刀沼泽（razorfen_kraul） | razorfen_kraul_earthcaller_halmgar | rare（0.12） | 召地者哈穆加（razorfen_kraul_earthcaller_halmgar） | boss_drop:razorfen_kraul_earthcaller_halmgar | 1 | 6688 低语风帽、6689 风灵法杖 |
 | 影牙城堡（shadowfang_keep） | sfk_rethilgore | required | 雷希戈尔（sfk_rethilgore） | boss_drop:sfk_rethilgore | 1 | 5254 皱褶肩甲 |
 | 影牙城堡（shadowfang_keep） | sfk_razorclaw | required | 屠夫拉佐克劳（sfk_razorclaw） | boss_drop:sfk_razorclaw | 1 | 1292 屠夫的切肉刀、6226 鲜血围裙、6633 屠夫的剔骨刀 |
 | 影牙城堡（shadowfang_keep） | sfk_baron_silverlaine | required | 席瓦莱恩男爵（sfk_baron_silverlaine） | boss_drop:sfk_baron_silverlaine | 1 | 6321 席瓦莱恩家族徽记、6323 巴隆的节杖 |
@@ -59,8 +67,8 @@
 
 ## 引用完整度
 
-- 副本路线节点：48。
-- 副本任务：11。
+- 副本路线节点：56。
+- 副本任务：13。
 - 套装：1。
 - 未被路线引用的掉落表：0。
 - 未被掉落、任务或套装引用的非初始装备：0。

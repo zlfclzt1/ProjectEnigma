@@ -1,0 +1,519 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/razorfen-kraul-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对剃刀沼泽 Boss 专属装备 ID、图标和常驻属性。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-09",
+        "notes": "交叉核对 Boss 与装备归属。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].restrictions", "items[].description"],
+        "reason": "按当前职业与定位装备规则补齐可装备性，并标记 Boss 来源。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "6681",
+      "name": { "zhCN": "荆棘刺", "enUS": "Thornspike" },
+      "itemLevel": 30,
+      "requiredLevel": 25,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_sword_04" },
+      "description": { "zhCN": "剃刀沼泽：阿格姆·荆棘诅咒的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 5, "agilityPoints": 4 },
+        "weapon": { "damage": { "minimumPoints": 25, "maximumPoints": 47 }, "speedSeconds": 2.0 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6681",
+        "url": "https://www.wowhead.com/classic/cn/item=6681&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6682",
+      "name": { "zhCN": "死亡之语者肩饰", "enUS": "Death Speaker Mantle" },
+      "itemLevel": 30,
+      "requiredLevel": 25,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["mage", "priest", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_shoulder_02" },
+      "description": { "zhCN": "剃刀沼泽：死亡之语者·贾格巴的专属掉落。" },
+      "stats": {
+        "primary": { "intellectPoints": 8, "spiritPoints": 7 },
+        "defense": { "armorPoints": 35 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6682",
+        "url": "https://www.wowhead.com/classic/cn/item=6682&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6685",
+      "name": { "zhCN": "死亡之语者长袍", "enUS": "Death Speaker Robes" },
+      "itemLevel": 30,
+      "requiredLevel": 25,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["mage", "priest", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_chest_cloth_05" },
+      "description": { "zhCN": "剃刀沼泽：死亡之语者·贾格巴的专属掉落。" },
+      "stats": {
+        "primary": { "intellectPoints": 12, "spiritPoints": 9 },
+        "defense": { "armorPoints": 51 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6685",
+        "url": "https://www.wowhead.com/classic/cn/item=6685&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "2816",
+      "name": { "zhCN": "死亡之语者节杖", "enUS": "Death Speaker Scepter" },
+      "itemLevel": 30,
+      "requiredLevel": 25,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_mace_07" },
+      "description": { "zhCN": "剃刀沼泽：死亡之语者·贾格巴的专属掉落。" },
+      "stats": {
+        "primary": { "intellectPoints": 8, "spiritPoints": 6 },
+        "weapon": { "damage": { "minimumPoints": 33, "maximumPoints": 62 }, "speedSeconds": 2.4 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "2816",
+        "url": "https://www.wowhead.com/classic/cn/item=2816&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6686",
+      "name": { "zhCN": "图斯克头盔", "enUS": "Tusken Helm" },
+      "itemLevel": 31,
+      "requiredLevel": 26,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_helmet_03" },
+      "description": { "zhCN": "剃刀沼泽：主宰拉姆塔斯的专属掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 9, "spiritPoints": 4 },
+        "defense": { "armorPoints": 177 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6686",
+        "url": "https://www.wowhead.com/classic/cn/item=6686&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6687",
+      "name": { "zhCN": "尸体制造者", "enUS": "Corpsemaker" },
+      "itemLevel": 32,
+      "requiredLevel": 27,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_axe_09" },
+      "description": { "zhCN": "剃刀沼泽：主宰拉姆塔斯的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 15, "staminaPoints": 5 },
+        "weapon": { "damage": { "minimumPoints": 58, "maximumPoints": 88 }, "speedSeconds": 2.9 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6687",
+        "url": "https://www.wowhead.com/classic/cn/item=6687&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6690",
+      "name": { "zhCN": "野兽护腿", "enUS": "Ferine Leggings" },
+      "itemLevel": 31,
+      "requiredLevel": 26,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "leather",
+      "restrictions": { "allowedClassIds": ["rogue", "druid"], "allowedRoles": ["dps", "healer"] },
+      "icon": { "kind": "database", "name": "inv_pants_06" },
+      "description": { "zhCN": "剃刀沼泽：暴怒的阿迦赛罗斯的专属掉落。" },
+      "stats": {
+        "primary": { "agilityPoints": 12, "staminaPoints": 7 },
+        "defense": { "armorPoints": 117 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6690",
+        "url": "https://www.wowhead.com/classic/cn/item=6690&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6691",
+      "name": { "zhCN": "野猪獠牙匕首", "enUS": "Swinetusk Shank" },
+      "itemLevel": 31,
+      "requiredLevel": 26,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["rogue", "hunter", "shaman", "druid"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_weapon_shortblade_04" },
+      "description": { "zhCN": "剃刀沼泽：暴怒的阿迦赛罗斯的专属掉落。" },
+      "stats": {
+        "primary": { "agilityPoints": 6 },
+        "weapon": { "damage": { "minimumPoints": 27, "maximumPoints": 51 }, "speedSeconds": 1.8 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6691",
+        "url": "https://www.wowhead.com/classic/cn/item=6691&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6695",
+      "name": { "zhCN": "冥骨护符", "enUS": "Stygian Bone Amulet" },
+      "itemLevel": 32,
+      "requiredLevel": 27,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "database", "name": "inv_jewelry_amulet_05" },
+      "description": { "zhCN": "剃刀沼泽：盲眼猎手的专属掉落。" },
+      "stats": { "primary": { "staminaPoints": 7, "spiritPoints": 5 } },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6695",
+        "url": "https://www.wowhead.com/classic/cn/item=6695&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6696",
+      "name": { "zhCN": "暗夜追猎者之弓", "enUS": "Nightstalker Bow" },
+      "itemLevel": 32,
+      "requiredLevel": 27,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": { "allowedClassIds": ["hunter"], "allowedRoles": ["dps"] },
+      "icon": { "kind": "database", "name": "inv_weapon_bow_04" },
+      "description": { "zhCN": "剃刀沼泽：盲眼猎手的专属掉落。" },
+      "stats": {
+        "weapon": { "damage": { "minimumPoints": 38, "maximumPoints": 71 }, "speedSeconds": 2.8 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6696",
+        "url": "https://www.wowhead.com/classic/cn/item=6696&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6697",
+      "name": { "zhCN": "蝠翼披风", "enUS": "Batwing Mantle" },
+      "itemLevel": 32,
+      "requiredLevel": 27,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "database", "name": "inv_misc_cape_06" },
+      "description": { "zhCN": "剃刀沼泽：盲眼猎手的专属掉落。" },
+      "stats": { "primary": { "agilityPoints": 5, "staminaPoints": 5 } },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6697",
+        "url": "https://www.wowhead.com/classic/cn/item=6697&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6688",
+      "name": { "zhCN": "低语风帽", "enUS": "Whisperwind Headdress" },
+      "itemLevel": 32,
+      "requiredLevel": 27,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "leather",
+      "restrictions": { "allowedClassIds": ["rogue", "druid"], "allowedRoles": ["dps", "healer"] },
+      "icon": { "kind": "database", "name": "inv_helmet_04" },
+      "description": { "zhCN": "剃刀沼泽：召地者哈穆加的专属掉落。" },
+      "stats": {
+        "primary": { "intellectPoints": 9, "spiritPoints": 8 },
+        "defense": { "armorPoints": 94 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6688",
+        "url": "https://www.wowhead.com/classic/cn/item=6688&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6689",
+      "name": { "zhCN": "风灵法杖", "enUS": "Wind Spirit Staff" },
+      "itemLevel": 32,
+      "requiredLevel": 27,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_staff_08" },
+      "description": { "zhCN": "剃刀沼泽：召地者哈穆加的专属掉落。" },
+      "stats": {
+        "primary": { "intellectPoints": 10, "spiritPoints": 9 },
+        "weapon": { "damage": { "minimumPoints": 46, "maximumPoints": 70 }, "speedSeconds": 2.8 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6689",
+        "url": "https://www.wowhead.com/classic/cn/item=6689&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6693",
+      "name": { "zhCN": "阿迦玛甘之握", "enUS": "Agamaggan's Clutch" },
+      "itemLevel": 34,
+      "requiredLevel": 29,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_gauntlets_10" },
+      "description": { "zhCN": "剃刀沼泽：卡尔加·刺肋的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 7, "staminaPoints": 6 },
+        "defense": { "armorPoints": 195 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6693",
+        "url": "https://www.wowhead.com/classic/cn/item=6693&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6692",
+      "name": { "zhCN": "阿迦玛甘之心", "enUS": "Heart of Agamaggan" },
+      "itemLevel": 34,
+      "requiredLevel": 29,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "database", "name": "inv_jewelry_amulet_02" },
+      "description": { "zhCN": "剃刀沼泽：卡尔加·刺肋的专属掉落。" },
+      "stats": { "primary": { "staminaPoints": 8, "spiritPoints": 8 } },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6692",
+        "url": "https://www.wowhead.com/classic/cn/item=6692&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6694",
+      "name": { "zhCN": "尖刺收割者", "enUS": "Pronged Reaver" },
+      "itemLevel": 34,
+      "requiredLevel": 29,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_axe_05" },
+      "description": { "zhCN": "剃刀沼泽：卡尔加·刺肋的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 10, "staminaPoints": 4 },
+        "weapon": { "damage": { "minimumPoints": 41, "maximumPoints": 77 }, "speedSeconds": 2.5 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6694",
+        "url": "https://www.wowhead.com/classic/cn/item=6694&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6684",
+      "name": { "zhCN": "苍白肩垫", "enUS": "Berylline Pads" },
+      "itemLevel": 34,
+      "requiredLevel": 29,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "leather",
+      "restrictions": { "allowedClassIds": ["rogue", "druid"], "allowedRoles": ["dps", "healer"] },
+      "icon": { "kind": "database", "name": "inv_shoulder_08" },
+      "description": { "zhCN": "剃刀沼泽任务奖励。" },
+      "stats": {
+        "primary": { "agilityPoints": 8, "staminaPoints": 6 },
+        "defense": { "armorPoints": 91 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6684",
+        "url": "https://www.wowhead.com/classic/cn/item=6684&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6750",
+      "name": { "zhCN": "蛇环", "enUS": "Snake Hoop" },
+      "itemLevel": 35,
+      "requiredLevel": 30,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "database", "name": "inv_jewelry_ring_01" },
+      "description": { "zhCN": "剃刀沼泽任务奖励。" },
+      "stats": { "primary": { "staminaPoints": 6, "spiritPoints": 5 } },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6750",
+        "url": "https://www.wowhead.com/classic/cn/item=6750&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6751",
+      "name": { "zhCN": "哀悼披肩", "enUS": "Mourning Shawl" },
+      "itemLevel": 35,
+      "requiredLevel": 30,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "database", "name": "inv_misc_cape_07" },
+      "description": { "zhCN": "剃刀沼泽任务奖励。" },
+      "stats": { "primary": { "intellectPoints": 8, "spiritPoints": 7 } },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6751",
+        "url": "https://www.wowhead.com/classic/cn/item=6751&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6752",
+      "name": { "zhCN": "枪骑兵长靴", "enUS": "Lancer Boots" },
+      "itemLevel": 35,
+      "requiredLevel": 30,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_boots_08" },
+      "description": { "zhCN": "剃刀沼泽任务奖励。" },
+      "stats": {
+        "primary": { "staminaPoints": 8, "spiritPoints": 3 },
+        "defense": { "armorPoints": 151 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6752",
+        "url": "https://www.wowhead.com/classic/cn/item=6752&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    }
+  ]
+}

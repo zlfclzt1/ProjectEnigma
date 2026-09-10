@@ -182,6 +182,102 @@
         "enUS": "Without interrupts, Thermaplugg's bombs and area damage are harder to control."
       },
       "reportTag": "gnomeregan_thermaplugg_bombs"
+    },
+    {
+      "id": "razorfen_kraul_bramble_swarm",
+      "name": { "zhCN": "荆棘虫群", "enUS": "Bramble Swarm" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "crowd_control", "minimumValue": 1 }],
+      "missingEffects": {
+        "tankMultiplier": 1.1,
+        "probabilityModifier": -0.03,
+        "durationMultiplier": 1.05
+      },
+      "description": {
+        "zhCN": "缺少群体控制会增加野猪与荆棘随从带来的坦克压力。",
+        "enUS": "Without crowd control, boar and bramble adds pressure the tank."
+      },
+      "reportTag": "razorfen_kraul_bramble_swarm"
+    },
+    {
+      "id": "razorfen_kraul_mind_control",
+      "name": { "zhCN": "心灵控制", "enUS": "Mind Control" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "magic_dispel", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.12,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.05
+      },
+      "description": {
+        "zhCN": "缺少驱散会让贾格巴的心灵控制更难处理。",
+        "enUS": "Without a dispel, Jargba's mind control is harder to contain."
+      },
+      "reportTag": "razorfen_kraul_mind_control"
+    },
+    {
+      "id": "razorfen_kraul_raging_assault",
+      "name": { "zhCN": "暴怒突袭", "enUS": "Raging Assault" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "interrupt", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.12,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.05
+      },
+      "description": {
+        "zhCN": "及时打断可降低阿迦赛罗斯的暴怒伤害压力。",
+        "enUS": "Interrupts reduce Agathelos's enraged damage pressure."
+      },
+      "reportTag": "razorfen_kraul_raging_assault"
+    },
+    {
+      "id": "razorfen_kraul_sonic_burst",
+      "name": { "zhCN": "音爆沉默", "enUS": "Sonic Burst" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "interrupt", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.1,
+        "probabilityModifier": -0.03,
+        "durationMultiplier": 1.04
+      },
+      "description": {
+        "zhCN": "缺少打断会让盲眼猎手的音爆沉默更频繁。",
+        "enUS": "Without interrupts, Blind Hunter's sonic burst lands more often."
+      },
+      "reportTag": "razorfen_kraul_sonic_burst"
+    },
+    {
+      "id": "razorfen_kraul_charlga_bolts",
+      "name": { "zhCN": "荆棘闪电", "enUS": "Charlga Bolts" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "magic_dispel", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.13,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.05
+      },
+      "description": {
+        "zhCN": "驱散与打断可以降低卡尔加的闪电和恢复压力。",
+        "enUS": "Dispel and interrupt coverage reduce Charlga's bolt and recovery pressure."
+      },
+      "reportTag": "razorfen_kraul_charlga_bolts"
+    },
+    {
+      "id": "razorfen_kraul_totems",
+      "name": { "zhCN": "元素图腾", "enUS": "Elemental Totems" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "crowd_control", "minimumValue": 1 }],
+      "missingEffects": {
+        "tankMultiplier": 1.1,
+        "probabilityModifier": -0.03,
+        "durationMultiplier": 1.05
+      },
+      "description": {
+        "zhCN": "控制图腾和元素随从可降低哈穆加的平台压力。",
+        "enUS": "Controlling totems and elemental adds reduces Halmgar's platform pressure."
+      },
+      "reportTag": "razorfen_kraul_totems"
     }
   ]
 }

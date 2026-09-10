@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对剃刀沼泽各 Boss 的非世界装备池。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["lootTables[].guaranteedEquipmentDrops", "lootTables[].items[].weight"],
+        "reason": "拥有专属装备池的 Boss 保证掉落一件；首轮使用池内等权基线。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "lootTables": [
+    {
+      "id": "razorfen_kraul_aggem_thorncurse",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [{ "itemId": "6681", "weight": 1 }]
+    },
+    {
+      "id": "razorfen_kraul_death_speaker_jargba",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "6682", "weight": 0.3333333333 },
+        { "itemId": "6685", "weight": 0.3333333333 },
+        { "itemId": "2816", "weight": 0.3333333334 }
+      ]
+    },
+    {
+      "id": "razorfen_kraul_overlord_ramtusk",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "6686", "weight": 0.5 },
+        { "itemId": "6687", "weight": 0.5 }
+      ]
+    },
+    {
+      "id": "razorfen_kraul_agathelos_the_raging",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "6690", "weight": 0.5 },
+        { "itemId": "6691", "weight": 0.5 }
+      ]
+    },
+    {
+      "id": "razorfen_kraul_blind_hunter",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "6695", "weight": 0.3333333333 },
+        { "itemId": "6696", "weight": 0.3333333333 },
+        { "itemId": "6697", "weight": 0.3333333334 }
+      ]
+    },
+    {
+      "id": "razorfen_kraul_earthcaller_halmgar",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "6688", "weight": 0.5 },
+        { "itemId": "6689", "weight": 0.5 }
+      ]
+    },
+    {
+      "id": "razorfen_kraul_charlga_razorflank",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "6693", "weight": 0.3333333333 },
+        { "itemId": "6692", "weight": 0.3333333333 },
+        { "itemId": "6694", "weight": 0.3333333334 }
+      ]
+    }
+  ]
+}

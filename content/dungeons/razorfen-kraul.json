@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/razorfen-kraul-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对剃刀沼泽 Boss 顺序、稀有标记与路线。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "将原版路线压缩为速带型放置路线，保留一个普通可选 Boss 与两个随机稀有 Boss。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["minimumLevel", "recommendedLevel", "duration", "probability", "route"],
+        "reason": "按 30–40 级中段装备成长与速带定位设定初始参数。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "dungeons": [
+    {
+      "id": "razorfen_kraul",
+      "name": { "zhCN": "剃刀沼泽", "enUS": "Razorfen Kraul" },
+      "minimumLevel": 28,
+      "recommendedLevel": 36,
+      "defaultUnlocked": false,
+      "unlock": { "requiredDungeonIds": ["gnomeregan"] },
+      "members": { "minimum": 1, "maximum": 5, "recommended": 5 },
+      "duration": { "baseSeconds": 1700, "minimumRatio": 0.5, "maximumRatio": 1.8 },
+      "probability": {
+        "minimum": 0.05,
+        "maximum": 0.99,
+        "base": 0.05,
+        "readinessMultiplier": 0.93,
+        "surplusEffect": 0.5,
+        "geometricWeight": 0.7,
+        "bottleneckWeight": 0.3,
+        "overpowerThreshold": 1.5
+      },
+      "combatTuning": {
+        "bossProbabilityMaximum": 0.98,
+        "requirementMultipliers": { "tank": 0.94, "healing": 0.94, "damage": 0.94 }
+      },
+      "route": [
+        {
+          "id": "razorfen_kraul_roogug",
+          "type": "optional",
+          "encounterId": "razorfen_kraul_roogug",
+          "description": { "zhCN": "可选的洞穴事件首领。" }
+        },
+        {
+          "id": "razorfen_kraul_aggem_thorncurse",
+          "type": "required",
+          "encounterId": "razorfen_kraul_aggem_thorncurse"
+        },
+        {
+          "id": "razorfen_kraul_death_speaker_jargba",
+          "type": "required",
+          "encounterId": "razorfen_kraul_death_speaker_jargba"
+        },
+        {
+          "id": "razorfen_kraul_overlord_ramtusk",
+          "type": "required",
+          "encounterId": "razorfen_kraul_overlord_ramtusk"
+        },
+        {
+          "id": "razorfen_kraul_agathelos_the_raging",
+          "type": "required",
+          "encounterId": "razorfen_kraul_agathelos_the_raging"
+        },
+        {
+          "id": "razorfen_kraul_blind_hunter",
+          "type": "rare",
+          "encounterId": "razorfen_kraul_blind_hunter",
+          "spawnProbability": 0.16
+        },
+        {
+          "id": "razorfen_kraul_charlga_razorflank",
+          "type": "required",
+          "encounterId": "razorfen_kraul_charlga_razorflank"
+        },
+        {
+          "id": "razorfen_kraul_earthcaller_halmgar",
+          "type": "rare",
+          "encounterId": "razorfen_kraul_earthcaller_halmgar",
+          "spawnProbability": 0.12
+        }
+      ]
+    }
+  ]
+}

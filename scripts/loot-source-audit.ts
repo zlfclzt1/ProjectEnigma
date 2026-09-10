@@ -283,7 +283,7 @@ export function renderLootSourceAudit(audit: LootSourceAudit): string {
     "",
     "- 当前没有任务奖励或世界掉落被路线 Encounter 当作 Boss 掉落引用。",
     "- 当前副本 Boss 掉落表均已显式标记为 `boss_drop`，不再依赖兼容推断。",
-    "- 当前五件真实任务奖励仅由成员副本任务引用，与所有 Boss 掉落池无重复。",
+    "- 当前真实任务奖励仅由成员副本任务引用，与所有 Boss 掉落池无重复。",
     "- 本报告不能替代外部资料核对；新增内容仍须按经典内容来源政策保存物品与任务来源。",
     "",
   );

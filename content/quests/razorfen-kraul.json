@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/classic-wow-razorfen-kraul-dungeon-quests",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对副本任务目标与奖励候选。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "将阵营、护送与收集步骤压缩为 Boss 胜利或全通条件。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["completion", "rewards.experienceFraction", "rewards.funds"],
+        "reason": "只保留可由副本活动确定结算的成员任务。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "razorfen_kraul_crone_of_the_kraul",
+      "name": { "zhCN": "剃刀沼泽的巫婆" },
+      "description": { "zhCN": "击败卡尔加·刺肋，结束剃刀沼泽的邪恶统治。" },
+      "dungeonId": "razorfen_kraul",
+      "eligibility": { "minimumLevel": 30, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["razorfen_kraul_charlga_razorflank"]
+      },
+      "rewards": { "experienceFraction": 0.8, "funds": 0, "itemChoiceIds": ["6684"] }
+    },
+    {
+      "id": "razorfen_kraul_mortality_wanes",
+      "name": { "zhCN": "生命渐逝" },
+      "description": { "zhCN": "完成剃刀沼泽远征并带回任务目标。" },
+      "dungeonId": "razorfen_kraul",
+      "eligibility": { "minimumLevel": 30, "allowedClassIds": [] },
+      "completion": { "type": "dungeon-clear" },
+      "rewards": {
+        "experienceFraction": 0.75,
+        "funds": 0,
+        "itemChoiceIds": ["6750", "6751", "6752"]
+      }
+    }
+  ]
+}
