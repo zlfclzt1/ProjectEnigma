@@ -25,6 +25,12 @@ export interface MemberDungeonQuestView {
   readonly rewards: {
     readonly experienceFraction: number;
     readonly funds: number;
+    readonly fixedItems: readonly {
+      readonly id: string;
+      readonly name: string;
+      readonly itemLevel: number;
+      readonly quality: string;
+    }[];
     readonly itemChoices: readonly {
       readonly id: string;
       readonly name: string;
@@ -116,6 +122,15 @@ function projectQuest(
     rewards: {
       experienceFraction: quest.rewards.experienceFraction,
       funds: quest.rewards.funds,
+      fixedItems: quest.rewards.fixedItemIds.map((itemId) => {
+        const item = content.itemById.get(itemId)!;
+        return {
+          id: item.id,
+          name: item.name.zhCN,
+          itemLevel: item.itemLevel,
+          quality: item.quality,
+        };
+      }),
       itemChoices: quest.rewards.itemChoiceIds.map((itemId) => {
         const item = content.itemById.get(itemId)!;
         return {

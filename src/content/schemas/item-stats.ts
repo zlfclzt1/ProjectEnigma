@@ -39,6 +39,11 @@ export const spellCombatStatsSchema = z
   .object({
     spellPowerPoints: pointsSchema.optional(),
     healingPowerPoints: pointsSchema.optional(),
+    arcaneSpellPowerPoints: pointsSchema.optional(),
+    fireSpellPowerPoints: pointsSchema.optional(),
+    frostSpellPowerPoints: pointsSchema.optional(),
+    natureSpellPowerPoints: pointsSchema.optional(),
+    shadowSpellPowerPoints: pointsSchema.optional(),
     manaRegenPer5Seconds: pointsSchema.optional(),
     hitPercent: percentSchema.optional(),
     criticalStrikePercent: percentSchema.optional(),

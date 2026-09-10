@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "剃刀高地副本日志；只描述已经结算的战斗事实。"
+      }
+    ]
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "razorfen_downs_tutenkash_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "razorfen_downs_tutenkash" },
+      "availableParameters": ["tank", "member"],
+      "templates": [
+        "第三次锣声落下，图特卡什终于倒在{tank}面前。",
+        "蛛网散开，{member}提议下次让别人负责敲锣。"
+      ]
+    },
+    {
+      "id": "razorfen_downs_lady_faltheress_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "razorfen_downs_lady_faltheress" },
+      "availableParameters": ["healer", "member"],
+      "templates": [
+        "牢笼中的身影化为女妖，{healer}及时稳住了突如其来的暗影压力。",
+        "法瑟蕾丝夫人消散后，{member}确认这不是剃刀高地的常规节目。"
+      ]
+    },
+    {
+      "id": "razorfen_downs_mordresh_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "razorfen_downs_mordresh_fire_eye" },
+      "availableParameters": ["member", "healer"],
+      "templates": [
+        "骨堆上的舞会结束，{member}终于可以停止数骷髅。",
+        "莫德雷斯的火焰熄灭，{healer}拒绝评价刚才漏掉的那发火球。"
+      ]
+    },
+    {
+      "id": "razorfen_downs_plaguemaw_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "razorfen_downs_plaguemaw_the_rotting"
+      },
+      "availableParameters": ["tank", "member"],
+      "templates": [
+        "Belnistrasz完成封印，{tank}则负责把腐烂的普雷莫尔留在仪式外。",
+        "神像归于沉寂，{member}把护送成功郑重写进任务记录。"
+      ]
+    },
+    {
+      "id": "razorfen_downs_glutton_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "razorfen_downs_glutton" },
+      "availableParameters": ["healer", "tank"],
+      "templates": [
+        "暴食者停止狂怒，{healer}宣布所有人回城后先做疾病检查。",
+        "疾病云散去，{tank}终于重新看见自己的状态栏。"
+      ]
+    },
+    {
+      "id": "razorfen_downs_ragglesnout_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "razorfen_downs_ragglesnout" },
+      "availableParameters": ["member", "healer"],
+      "templates": [
+        "精神控制解除后，{member}坚持刚才攻击队友完全不是个人意见。",
+        "拉戈斯诺特倒下，{healer}重新确认每个人都站在正确的一边。"
+      ]
+    },
+    {
+      "id": "razorfen_downs_amnennar_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "razorfen_downs_amnennar_the_coldbringer"
+      },
+      "availableParameters": ["tank", "member"],
+      "templates": [
+        "螺旋坡顶恢复安静，{tank}把亚门纳尔的最后一发寒冰箭挡了下来。",
+        "冰霜幽灵随亚门纳尔一同消散，{member}已经开始核对两件任务奖励。"
+      ]
+    }
+  ]
+}

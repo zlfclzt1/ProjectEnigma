@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/razorfen-downs-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对蛛群、骷髅群、疾病、精神控制、冰霜法术与护送仪式的机制主题。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "使用现有队伍能力表达原版机制的软性处理优势，不增加职业硬门槛。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "mechanics": [
+    {
+      "id": "razorfen_downs_spider_gong",
+      "name": { "zhCN": "蜘蛛锣与蛛群", "enUS": "Spider Gong" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "area_damage", "minimumValue": 1 }],
+      "missingEffects": {
+        "tankMultiplier": 1.1,
+        "healingMultiplier": 1.06,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": { "zhCN": "范围伤害可以稳定清理敲锣后出现的连续蛛群。" },
+      "reportTag": "razorfen_downs_spider_gong"
+    },
+    {
+      "id": "razorfen_downs_banshee_control",
+      "name": { "zhCN": "女妖控制", "enUS": "Banshee Control" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "magic_dispel", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.13,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.05
+      },
+      "description": { "zhCN": "魔法驱散可以缩短法瑟蕾丝夫人的女妖控制和暗影压力。" },
+      "reportTag": "razorfen_downs_banshee_control"
+    },
+    {
+      "id": "razorfen_downs_bone_pile",
+      "name": { "zhCN": "骨堆骷髅群", "enUS": "Bone Pile" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "area_damage", "minimumValue": 1 }],
+      "missingEffects": {
+        "tankMultiplier": 1.12,
+        "damageMultiplier": 1.05,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": { "zhCN": "范围伤害可以在火眼莫德雷斯加入战斗前清理骨堆旁的骷髅群。" },
+      "reportTag": "razorfen_downs_bone_pile"
+    },
+    {
+      "id": "razorfen_downs_fire_eye_casts",
+      "name": { "zhCN": "火球与火焰新星", "enUS": "Fire Eye Casts" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "interrupt", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.12,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.05
+      },
+      "description": { "zhCN": "可靠打断可以降低莫德雷斯火球和范围火焰造成的恢复压力。" },
+      "reportTag": "razorfen_downs_fire_eye_casts"
+    },
+    {
+      "id": "razorfen_downs_escort_swarm",
+      "name": { "zhCN": "封印仪式护送", "enUS": "Idol Escort" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "area_damage", "minimumValue": 1 }],
+      "missingEffects": {
+        "tankMultiplier": 1.1,
+        "healingMultiplier": 1.1,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.08
+      },
+      "description": { "zhCN": "范围伤害可以快速清理仪式期间出现的怪群并保护 Belnistrasz。" },
+      "reportTag": "razorfen_downs_escort_swarm"
+    },
+    {
+      "id": "razorfen_downs_disease_cloud",
+      "name": { "zhCN": "疾病云与狂怒", "enUS": "Disease Cloud" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "disease_dispel", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.16,
+        "probabilityModifier": -0.05,
+        "durationMultiplier": 1.06
+      },
+      "description": { "zhCN": "疾病驱散可以显著降低暴食者疾病云与狂怒阶段的持续恢复压力。" },
+      "reportTag": "razorfen_downs_disease_cloud"
+    },
+    {
+      "id": "razorfen_downs_mind_control",
+      "name": { "zhCN": "精神控制与治疗", "enUS": "Dominate Mind" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "magic_dispel", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.14,
+        "damageMultiplier": 1.05,
+        "probabilityModifier": -0.05,
+        "durationMultiplier": 1.06
+      },
+      "description": { "zhCN": "魔法驱散可以缩短拉戈斯诺特的精神控制并稳定队伍职责。" },
+      "reportTag": "razorfen_downs_mind_control"
+    },
+    {
+      "id": "razorfen_downs_frost_spirits",
+      "name": { "zhCN": "冰霜幽灵", "enUS": "Frost Spectres" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "area_damage", "minimumValue": 1 }],
+      "missingEffects": {
+        "tankMultiplier": 1.08,
+        "healingMultiplier": 1.08,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": { "zhCN": "范围伤害可以及时处理亚门纳尔召唤的冰霜幽灵。" },
+      "reportTag": "razorfen_downs_frost_spirits"
+    },
+    {
+      "id": "razorfen_downs_frostbolt",
+      "name": { "zhCN": "寒冰箭与冰霜新星", "enUS": "Frostbolt and Nova" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "interrupt", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.14,
+        "probabilityModifier": -0.05,
+        "durationMultiplier": 1.06
+      },
+      "description": { "zhCN": "可靠打断可以降低亚门纳尔寒冰箭与冰霜新星造成的爆发压力。" },
+      "reportTag": "razorfen_downs_frostbolt"
+    }
+  ]
+}

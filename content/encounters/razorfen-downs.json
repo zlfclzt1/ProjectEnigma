@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/razorfen-downs-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对各 Boss 能力主题、护送事件和装备归属。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "阶段时长、战斗需求、经验、资金和首杀奖励作为 D13.D 模拟前的保守初始基线。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "encounters": [
+    {
+      "id": "razorfen_downs_tutenkash",
+      "dungeonId": "razorfen_downs",
+      "name": { "zhCN": "图特卡什" },
+      "stageSeconds": 240,
+      "requirements": { "tank": 32, "healing": 34, "damage": 154 },
+      "weights": { "tank": 0.3, "healing": 0.32, "damage": 0.38 },
+      "experienceShare": 0.2,
+      "funds": 74,
+      "firstKillBonus": 148,
+      "lootTableId": "razorfen_downs_tutenkash",
+      "mechanicIds": ["razorfen_downs_spider_gong"]
+    },
+    {
+      "id": "razorfen_downs_lady_faltheress",
+      "dungeonId": "razorfen_downs",
+      "name": { "zhCN": "法瑟蕾丝夫人" },
+      "stageSeconds": 100,
+      "requirements": { "tank": 33, "healing": 36, "damage": 156 },
+      "weights": { "tank": 0.27, "healing": 0.4, "damage": 0.33 },
+      "experienceShare": 0.06,
+      "funds": 54,
+      "firstKillBonus": 108,
+      "lootTableId": "razorfen_downs_lady_faltheress",
+      "mechanicIds": ["razorfen_downs_banshee_control"]
+    },
+    {
+      "id": "razorfen_downs_mordresh_fire_eye",
+      "dungeonId": "razorfen_downs",
+      "name": { "zhCN": "火眼莫德雷斯" },
+      "stageSeconds": 240,
+      "requirements": { "tank": 33, "healing": 35, "damage": 158 },
+      "weights": { "tank": 0.28, "healing": 0.3, "damage": 0.42 },
+      "experienceShare": 0.23,
+      "funds": 78,
+      "firstKillBonus": 156,
+      "lootTableId": "razorfen_downs_mordresh_fire_eye",
+      "mechanicIds": ["razorfen_downs_bone_pile", "razorfen_downs_fire_eye_casts"]
+    },
+    {
+      "id": "razorfen_downs_plaguemaw_the_rotting",
+      "dungeonId": "razorfen_downs",
+      "name": { "zhCN": "腐烂的普雷莫尔" },
+      "stageSeconds": 220,
+      "requirements": { "tank": 34, "healing": 37, "damage": 160 },
+      "weights": { "tank": 0.3, "healing": 0.38, "damage": 0.32 },
+      "experienceShare": 0.12,
+      "funds": 70,
+      "firstKillBonus": 140,
+      "lootTableId": "razorfen_downs_plaguemaw_the_rotting",
+      "mechanicIds": ["razorfen_downs_escort_swarm"]
+    },
+    {
+      "id": "razorfen_downs_glutton",
+      "dungeonId": "razorfen_downs",
+      "name": { "zhCN": "暴食者" },
+      "stageSeconds": 200,
+      "requirements": { "tank": 36, "healing": 38, "damage": 162 },
+      "weights": { "tank": 0.37, "healing": 0.4, "damage": 0.23 },
+      "experienceShare": 0.2,
+      "funds": 78,
+      "firstKillBonus": 156,
+      "lootTableId": "razorfen_downs_glutton",
+      "mechanicIds": ["razorfen_downs_disease_cloud"]
+    },
+    {
+      "id": "razorfen_downs_ragglesnout",
+      "dungeonId": "razorfen_downs",
+      "name": { "zhCN": "拉戈斯诺特" },
+      "stageSeconds": 130,
+      "requirements": { "tank": 34, "healing": 38, "damage": 164 },
+      "weights": { "tank": 0.28, "healing": 0.4, "damage": 0.32 },
+      "experienceShare": 0.07,
+      "funds": 60,
+      "firstKillBonus": 120,
+      "lootTableId": "razorfen_downs_ragglesnout",
+      "mechanicIds": ["razorfen_downs_mind_control"]
+    },
+    {
+      "id": "razorfen_downs_amnennar_the_coldbringer",
+      "dungeonId": "razorfen_downs",
+      "name": { "zhCN": "寒冰之王亚门纳尔" },
+      "stageSeconds": 310,
+      "requirements": { "tank": 37, "healing": 40, "damage": 168 },
+      "weights": { "tank": 0.3, "healing": 0.38, "damage": 0.32 },
+      "experienceShare": 0.37,
+      "funds": 96,
+      "firstKillBonus": 192,
+      "lootTableId": "razorfen_downs_amnennar_the_coldbringer",
+      "mechanicIds": ["razorfen_downs_frost_spirits", "razorfen_downs_frostbolt"]
+    }
+  ]
+}

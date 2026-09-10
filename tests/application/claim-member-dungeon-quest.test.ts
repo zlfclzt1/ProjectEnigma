@@ -4,7 +4,8 @@ import { acceptMemberDungeonQuestCommand } from "../../src/application/commands/
 import { completeMemberQuest } from "../../src/domain/member/member-quest-state";
 import { createNewGame } from "../../src/domain/guild/new-game";
 import { asBrandedId } from "../../src/domain/shared/ids";
-import { loadBrowserContentRegistry } from "../../src/content/manifest";
+import { browserContentModules, loadBrowserContentRegistry } from "../../src/content/manifest";
+import { loadContentRegistry } from "../../src/content/registry";
 import { GameSession } from "../../src/application/services/game-session";
 import { MemorySaveRepository } from "../../src/infrastructure/persistence/memory-save-repository";
 import { LocalIdGenerator } from "../../src/infrastructure/ids/local-id-generator";
@@ -96,5 +97,58 @@ describe("claim member dungeon quest", () => {
       asBrandedId<"ItemDefinitionId">("14145"),
     );
     expect(() => command.execute(state)).toThrow(/任务提供的装备/);
+  });
+
+  it("grants every fixed reward, equips eligible gear, and sells unusable fixed gear", async () => {
+    const modules = structuredClone(browserContentModules) as Record<string, unknown>;
+    const questPath = Object.keys(modules).find((path) =>
+      path.endsWith("/content/quests/ragefire-chasm.json"),
+    )!;
+    const quest = (
+      modules[questPath] as {
+        quests: Array<{
+          id: string;
+          rewards: { fixedItemIds?: string[]; itemChoiceIds: string[] };
+        }>;
+      }
+    ).quests.find((candidate) => candidate.id === questId)!;
+    quest.rewards.fixedItemIds = ["15453"];
+    quest.rewards.itemChoiceIds = ["15452"];
+    const fixedContent = loadContentRegistry(modules);
+    const state = createNewGame({
+      slotId: asBrandedId<"SaveSlotId">("claim-fixed-quest"),
+      content: fixedContent,
+      contentVersion: asBrandedId<"ContentVersion">("classic-v1"),
+      clock: new FakeClock(1_000),
+      ids: new LocalIdGenerator(),
+      random: new SeededRandomSource("claim-fixed-quest"),
+    });
+    const member = Object.values(state.members)[0]!;
+    member.identity.classId = asBrandedId<"ClassId">("mage");
+    member.progression.specId = asBrandedId<"SpecId">("mage_frost");
+    member.quests.entries[questId] = {
+      questId,
+      status: "completed",
+      acceptedAt: 1_000,
+      completedAt: 2_000,
+      encounterVictoryIds: [],
+    };
+    const initialItemCount = Object.keys(state.itemInstances).length;
+    const initialFunds = state.guild.funds;
+
+    const result = await claimMemberDungeonQuestCommand(
+      { content: fixedContent, clock: new FakeClock(3_000) },
+      member.id,
+      questId,
+      firstItemId,
+    ).execute(state);
+
+    expect(result.itemDefinitionIds).toEqual(["15453", "15452"]);
+    expect(result.itemInstanceIds).toHaveLength(1);
+    expect(result.saleProceeds).toBeGreaterThan(0);
+    expect(state.collection.items[firstItemId]?.acquisitionCount).toBe(1);
+    expect(state.collection.items[secondItemId]?.acquisitionCount).toBe(1);
+    expect(Object.values(state.itemInstances)).toHaveLength(initialItemCount);
+    expect(state.guild.funds).toBe(initialFunds + result.saleProceeds);
   });
 });

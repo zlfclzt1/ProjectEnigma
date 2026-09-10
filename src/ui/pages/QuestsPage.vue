@@ -20,7 +20,7 @@ async function accept(questId: string): Promise<void> {
   notice.value = result.ok ? "任务已接取。" : result.error.message;
 }
 
-async function claim(questId: string, itemId: string): Promise<void> {
+async function claim(questId: string, itemId?: string): Promise<void> {
   if (!selectedMember.value) return;
   const result = await game.claimMemberDungeonQuest(
     selectedMember.value.id,
@@ -71,7 +71,15 @@ async function claim(questId: string, itemId: string): Promise<void> {
           <div>
             <dt>奖励</dt>
             <dd>
-              {{ quest.rewards.itemChoices.map((item) => item.name).join(" / ") }}
+              <span v-if="quest.rewards.fixedItems.length">
+                固定获得：{{ quest.rewards.fixedItems.map((item) => item.name).join("、") }}
+              </span>
+              <span v-if="quest.rewards.fixedItems.length && quest.rewards.itemChoices.length">
+                ；
+              </span>
+              <span v-if="quest.rewards.itemChoices.length">
+                选择一件：{{ quest.rewards.itemChoices.map((item) => item.name).join(" / ") }}
+              </span>
             </dd>
           </div>
         </dl>
@@ -79,7 +87,10 @@ async function claim(questId: string, itemId: string): Promise<void> {
           {{ quest.blockedReasons.join("；") }}
         </p>
         <div v-if="quest.status === 'completed'" class="reward-choices">
-          <strong>选择一件奖励并装备给 {{ selectedMember?.name }}</strong>
+          <strong v-if="quest.rewards.itemChoices.length">
+            选择一件奖励并为 {{ selectedMember?.name }} 领取全部奖励
+          </strong>
+          <strong v-else>为 {{ selectedMember?.name }} 领取全部奖励</strong>
           <button
             v-for="item in quest.rewards.itemChoices"
             :key="item.id"
@@ -88,6 +99,14 @@ async function claim(questId: string, itemId: string): Promise<void> {
             @click="claim(quest.id, item.id)"
           >
             领取 {{ item.name }}
+          </button>
+          <button
+            v-if="quest.rewards.itemChoices.length === 0"
+            type="button"
+            :disabled="game.commandPending"
+            @click="claim(quest.id)"
+          >
+            领取全部奖励
           </button>
         </div>
         <button

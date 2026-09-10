@@ -22,6 +22,7 @@ const representativeStats: ClassicItemStats = {
   spell: {
     spellPowerPoints: 18,
     healingPowerPoints: 24,
+    shadowSpellPowerPoints: 10,
     manaRegenPer5Seconds: 3,
     hitPercent: 1,
     criticalStrikePercent: 2,

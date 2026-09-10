@@ -8,9 +8,9 @@ import {
 describe("dungeon content audit", () => {
   it("lists every route node and preserves optional/rare semantics", () => {
     const audit = auditDungeonContent(loadBrowserContentRegistry());
-    expect(audit.routes).toHaveLength(67);
-    expect(audit.routes.filter((row) => row.nodeType === "optional")).toHaveLength(5);
-    expect(audit.routes.filter((row) => row.nodeType === "rare")).toHaveLength(7);
+    expect(audit.routes).toHaveLength(74);
+    expect(audit.routes.filter((row) => row.nodeType === "optional")).toHaveLength(6);
+    expect(audit.routes.filter((row) => row.nodeType === "rare")).toHaveLength(9);
     expect(
       audit.routes.some(
         (row) => row.encounterId === "oggleflint" && row.guaranteedEquipmentDrops === 0,
@@ -18,7 +18,7 @@ describe("dungeon content audit", () => {
     ).toBe(true);
   });
 
-  it("finds no orphan Cathedral content or quest reward overlap", () => {
+  it("finds no orphan Razorfen Downs content or quest reward overlap", () => {
     const audit = auditDungeonContent(loadBrowserContentRegistry());
     expect(audit.unusedLootTableIds).toEqual([]);
     expect(audit.unreferencedItemIds).toEqual([]);

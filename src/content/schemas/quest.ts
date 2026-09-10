@@ -46,12 +46,25 @@ export const dungeonQuestDefinitionSchema = z
       .object({
         experienceFraction: z.number().finite().nonnegative().max(2),
         funds: nonNegativeIntegerSchema,
+        fixedItemIds: z
+          .array(itemDefinitionIdSchema)
+          .refine((ids) => new Set(ids).size === ids.length, "任务固定奖励不能重复引用同一装备")
+          .default([]),
         itemChoiceIds: z
           .array(itemDefinitionIdSchema)
-          .min(1)
-          .refine((ids) => new Set(ids).size === ids.length, "任务奖励不能重复引用同一装备"),
+          .refine((ids) => new Set(ids).size === ids.length, "任务可选奖励不能重复引用同一装备")
+          .default([]),
       })
-      .strict(),
+      .strict()
+      .refine(
+        (rewards) => rewards.fixedItemIds.length + rewards.itemChoiceIds.length > 0,
+        "任务必须提供至少一件固定或可选装备奖励",
+      )
+      .refine(
+        (rewards) =>
+          rewards.fixedItemIds.every((itemId) => !rewards.itemChoiceIds.includes(itemId)),
+        "任务固定奖励与可选奖励不能重复引用同一装备",
+      ),
   })
   .strict();
 

@@ -17,15 +17,15 @@ describe("loot source audit", () => {
 
   it("reports explicit no-equipment encounters without inventing loot", () => {
     const audit = auditLootSources(loadBrowserContentRegistry());
-    expect(audit.rows).toHaveLength(67);
+    expect(audit.rows).toHaveLength(74);
     expect(audit.lootTableCounts).toEqual({
-      "boss-drop": 57,
+      "boss-drop": 64,
       "quest-reward": 0,
       "world-drop": 0,
       "design-placeholder": 0,
     });
     expect(audit.encounterCounts["no-equipment"]).toBe(10);
-    expect(audit.questRewards).toHaveLength(19);
+    expect(audit.questRewards).toHaveLength(21);
     expect(audit.bossQuestRewardOverlap).toEqual([]);
     expect(
       audit.rows.filter((row) => row.category === "no-equipment").map((row) => row.encounterId),
@@ -45,7 +45,7 @@ describe("loot source audit", () => {
 
     const report = renderLootSourceAudit(audit);
     expect(report).toContain("无装备掉落 10");
-    expect(report).toContain("成员副本任务：19，不同任务奖励装备：46");
+    expect(report).toContain("成员副本任务：21，不同任务奖励装备：49");
     expect(report).toContain("奥格弗林特（oggleflint） | — | 无装备掉落");
     expect(report).toContain("毁灭之力（rfc_power_to_destroy）");
   });
@@ -53,7 +53,9 @@ describe("loot source audit", () => {
   it("keeps member quest rewards out of every boss loot table", () => {
     const registry = loadBrowserContentRegistry();
     const questRewardIds = new Set(
-      registry.quests.flatMap((quest) => quest.rewards.itemChoiceIds.map(String)),
+      registry.quests.flatMap((quest) =>
+        [...quest.rewards.fixedItemIds, ...quest.rewards.itemChoiceIds].map(String),
+      ),
     );
     const bossDropIds = new Set(
       registry.lootTables

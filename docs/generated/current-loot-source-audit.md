@@ -6,12 +6,12 @@
 
 ## 汇总
 
-- 路线 Encounter：67。
-- 掉落表：57。
-- 掉落表分类：Boss 专属掉落 57，任务奖励 0，世界掉落 0，设计占位 0。
-- Encounter 引用分类：Boss 专属掉落 57，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 10。
-- 不同装备分类：Boss 专属掉落 146，任务奖励 0，世界掉落 0，设计占位 0。
-- 成员副本任务：19，不同任务奖励装备：46。
+- 路线 Encounter：74。
+- 掉落表：64。
+- 掉落表分类：Boss 专属掉落 64，任务奖励 0，世界掉落 0，设计占位 0。
+- Encounter 引用分类：Boss 专属掉落 64，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 10。
+- 不同装备分类：Boss 专属掉落 166，任务奖励 0，世界掉落 0，设计占位 0。
+- 成员副本任务：21，不同任务奖励装备：49。
 - Boss 掉落与任务奖励重复：0。
 - 未显式填写 `sourceType` 的 Boss 掉落表：0。
 - 未被路线 Encounter 引用的掉落表：0。
@@ -67,6 +67,18 @@
 | 饥饿者塔拉加曼（taragaman_the_hungerer） | taragaman_the_hungerer | Boss 专属掉落 | 1 | 14145 被诅咒的魔刃、14148 水晶腕轮、14149 地下斗篷 |
 | 祈求者耶戈什（jergosh_the_invoker） | jergosh_the_invoker | Boss 专属掉落 | 1 | 14151 咏唱之刃、14150 唤魔者长袍、14147 洞穴护腕 |
 | 巴扎兰（bazzalan） | — | 无装备掉落 | 0 | — |
+
+### 剃刀高地（razorfen_downs）
+
+| Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
+|---|---|---|---:|---|
+| 图特卡什（razorfen_downs_tutenkash） | razorfen_downs_tutenkash | Boss 专属掉落 | 1 | 10776 蜘蛛银丝斗篷、10775 图特卡什的甲壳、10777 蜘蛛手套 |
+| 法瑟蕾丝夫人（razorfen_downs_lady_faltheress） | razorfen_downs_lady_faltheress | Boss 专属掉落 | 1 | 23178 法瑟蕾丝夫人的衬肩、23177 法瑟蕾丝夫人的手指 |
+| 火眼莫德雷斯（razorfen_downs_mordresh_fire_eye） | razorfen_downs_mordresh_fire_eye | Boss 专属掉落 | 1 | 10769 莫德雷斯之眼、10771 死亡法师腰带、10770 莫德雷斯的颅骨 |
+| 腐烂的普雷莫尔（razorfen_downs_plaguemaw_the_rotting） | razorfen_downs_plaguemaw_the_rotting | Boss 专属掉落 | 1 | 10766 瘟疫短枝、10760 野猪之拳 |
+| 暴食者（razorfen_downs_glutton） | razorfen_downs_glutton | Boss 专属掉落 | 1 | 10774 血皮护肩、10772 暴食者之斧 |
+| 拉戈斯诺特（razorfen_downs_ragglesnout） | razorfen_downs_ragglesnout | Boss 专属掉落 | 1 | 10768 野猪人勇士腰带、10767 野猪之盾、10758 石猪剑 |
+| 寒冰之王亚门纳尔（razorfen_downs_amnennar_the_coldbringer） | razorfen_downs_amnennar_the_coldbringer | Boss 专属掉落 | 1 | 10763 冰铁之盔、10762 巫妖法袍、10764 死寒护甲、10761 寒怒匕首、10765 白骨手指 |
 
 ### 剃刀沼泽（razorfen_kraul）
 
@@ -161,6 +173,8 @@
 | 诺莫瑞根（gnomeregan） | 陀螺钻挖掘器（gnomeregan_gyrodrillmatic_excavationators） | 9608 舒尼的扳手、9609 欺诈手套 |
 | 怒焰裂谷（ragefire_chasm） | 归还背包（rfc_returning_lost_satchel） | 15452 羽珠护腕、15453 草原狮护腕 |
 | 怒焰裂谷（ragefire_chasm） | 毁灭之力（rfc_power_to_destroy） | 15449 苍白长裤、15450 泥泞护腿、15451 石像鬼护腿 |
+| 剃刀高地（razorfen_downs） | 封印神像（razorfen_downs_extinguishing_the_idol） | 10710 龙爪戒指 |
+| 剃刀高地（razorfen_downs） | Bring the Light / Bring the End（razorfen_downs_bring_the_light_or_end） | 10823 征服者之剑、10824 琥珀之光 |
 | 剃刀沼泽（razorfen_kraul） | 剃刀沼泽的巫婆（razorfen_kraul_crone_of_the_kraul） | 4197 绿宝石护肩、6742 石拳束带、6725 石饰圆盾 |
 | 剃刀沼泽（razorfen_kraul） | 进口商威利克斯（razorfen_kraul_willix_the_importer） | 6748 猴子戒指、6749 猛虎指环、6750 蛇环 |
 | 剃刀沼泽（razorfen_kraul） | 生命渐逝（razorfen_kraul_mortality_wanes） | 6751 悲伤披风、6752 枪骑兵战靴 |

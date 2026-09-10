@@ -76,6 +76,7 @@ export function auditDungeonContent(registry: ContentRegistry): DungeonContentAu
   }
 
   const questIds = registry.quests.map((quest) => {
+    quest.rewards.fixedItemIds.forEach((itemId) => referencedItemIds.add(itemId));
     quest.rewards.itemChoiceIds.forEach((itemId) => referencedItemIds.add(itemId));
     return String(quest.id);
   });
@@ -84,7 +85,9 @@ export function auditDungeonContent(registry: ContentRegistry): DungeonContentAu
     return String(itemSet.id);
   });
   const questRewardIds = new Set(
-    registry.quests.flatMap((quest) => quest.rewards.itemChoiceIds.map(String)),
+    registry.quests.flatMap((quest) =>
+      [...quest.rewards.fixedItemIds, ...quest.rewards.itemChoiceIds].map(String),
+    ),
   );
   const bossDropIds = new Set(
     registry.lootTables

@@ -25,6 +25,11 @@ export interface PhysicalCombatStats {
 export interface SpellCombatStats {
   readonly spellPowerPoints?: number;
   readonly healingPowerPoints?: number;
+  readonly arcaneSpellPowerPoints?: number;
+  readonly fireSpellPowerPoints?: number;
+  readonly frostSpellPowerPoints?: number;
+  readonly natureSpellPowerPoints?: number;
+  readonly shadowSpellPowerPoints?: number;
   readonly manaRegenPer5Seconds?: number;
   readonly hitPercent?: number;
   readonly criticalStrikePercent?: number;

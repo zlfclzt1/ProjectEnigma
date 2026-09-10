@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对剃刀高地常驻、随机稀有及天灾入侵 Boss 的非世界装备池。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["lootTables[].guaranteedEquipmentDrops", "lootTables[].items[].weight"],
+        "reason": "拥有专属装备池的 Boss 保证掉落一件；首轮使用池内等权基线。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "lootTables": [
+    {
+      "id": "razorfen_downs_tutenkash",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "10776", "weight": 0.3333333333 },
+        { "itemId": "10775", "weight": 0.3333333333 },
+        { "itemId": "10777", "weight": 0.3333333334 }
+      ]
+    },
+    {
+      "id": "razorfen_downs_lady_faltheress",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "23178", "weight": 0.5 },
+        { "itemId": "23177", "weight": 0.5 }
+      ]
+    },
+    {
+      "id": "razorfen_downs_mordresh_fire_eye",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "10769", "weight": 0.3333333333 },
+        { "itemId": "10771", "weight": 0.3333333333 },
+        { "itemId": "10770", "weight": 0.3333333334 }
+      ]
+    },
+    {
+      "id": "razorfen_downs_plaguemaw_the_rotting",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "10766", "weight": 0.5 },
+        { "itemId": "10760", "weight": 0.5 }
+      ]
+    },
+    {
+      "id": "razorfen_downs_glutton",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "10774", "weight": 0.5 },
+        { "itemId": "10772", "weight": 0.5 }
+      ]
+    },
+    {
+      "id": "razorfen_downs_ragglesnout",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "10768", "weight": 0.3333333333 },
+        { "itemId": "10767", "weight": 0.3333333333 },
+        { "itemId": "10758", "weight": 0.3333333334 }
+      ]
+    },
+    {
+      "id": "razorfen_downs_amnennar_the_coldbringer",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "10763", "weight": 0.2 },
+        { "itemId": "10762", "weight": 0.2 },
+        { "itemId": "10764", "weight": 0.2 },
+        { "itemId": "10761", "weight": 0.2 },
+        { "itemId": "10765", "weight": 0.2 }
+      ]
+    }
+  ]
+}

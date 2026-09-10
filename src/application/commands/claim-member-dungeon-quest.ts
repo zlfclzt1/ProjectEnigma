@@ -14,7 +14,8 @@ import type { GameCommand } from "../services/game-session";
 export interface ClaimMemberDungeonQuestResult {
   readonly memberId: MemberId;
   readonly questId: QuestId;
-  readonly itemInstanceId: ItemInstanceId;
+  readonly itemInstanceIds: readonly ItemInstanceId[];
+  readonly itemDefinitionIds: readonly ItemDefinitionId[];
   readonly saleProceeds: number;
   readonly experienceGained: number;
   readonly fundsGained: number;
@@ -24,7 +25,7 @@ export function claimMemberDungeonQuestCommand(
   dependencies: { readonly content: ContentRegistry; readonly clock: Clock },
   memberId: MemberId,
   questId: QuestId,
-  itemDefinitionId: ItemDefinitionId,
+  itemDefinitionId?: ItemDefinitionId,
 ): GameCommand<ClaimMemberDungeonQuestResult> {
   return {
     type: "claim-member-dungeon-quest",
@@ -37,52 +38,80 @@ export function claimMemberDungeonQuestCommand(
       if (!progress || progress.status !== "completed") {
         throw new Error("任务尚未完成或奖励已经领取。");
       }
-      if (!quest.rewards.itemChoiceIds.includes(itemDefinitionId)) {
+      if (quest.rewards.itemChoiceIds.length > 0 && !itemDefinitionId) {
+        throw new Error("必须从该任务提供的装备奖励中选择一件。");
+      }
+      if (itemDefinitionId && !quest.rewards.itemChoiceIds.includes(itemDefinitionId)) {
         throw new Error("只能从该任务提供的装备奖励中选择一件。");
       }
-      const definition = dependencies.content.itemById.get(itemDefinitionId);
-      if (!definition) throw new Error("任务奖励装备不存在。");
+      if (quest.rewards.itemChoiceIds.length === 0 && itemDefinitionId) {
+        throw new Error("该任务没有需要选择的装备奖励。");
+      }
+
+      const rewardDefinitionIds = [
+        ...quest.rewards.fixedItemIds,
+        ...(itemDefinitionId ? [itemDefinitionId] : []),
+      ];
+      const definitions = rewardDefinitionIds.map((definitionId) => {
+        const definition = dependencies.content.itemById.get(definitionId);
+        if (!definition) throw new Error("任务奖励装备不存在。");
+        return definition;
+      });
 
       const ids = new LocalIdGenerator(draft.ids);
-      const instance: ItemInstance = {
-        id: ids.next("quest-item") as ItemInstanceId,
-        definitionId: itemDefinitionId,
-        ownerMemberId: memberId,
-        bound: true,
-        acquiredAt: dependencies.clock.now(),
-        source: { type: "quest", questId, memberId },
-        enchantmentIds: [],
-      };
-      let equipped;
-      try {
-        equipped = equipItem(member, instance, {
-          content: dependencies.content,
-          itemInstances: draft.itemInstances,
-        });
-      } catch {
-        throw new Error("该成员无法装备所选任务奖励。");
-      }
-
+      const acquiredAt = dependencies.clock.now();
+      let updatedMember = member;
       let saleProceeds = 0;
-      for (const displacedId of equipped.displacedItemInstanceIds) {
-        const displaced = draft.itemInstances[displacedId];
-        if (!displaced) throw new Error("被替换的装备数据不完整。");
-        saleProceeds += equipmentSellValue(
-          resolveItemInstance(displaced, dependencies.content).definition,
-        );
-        delete draft.itemInstances[displacedId];
+      const retainedInstanceIds: ItemInstanceId[] = [];
+      for (const definition of definitions) {
+        const instance: ItemInstance = {
+          id: ids.next("quest-item") as ItemInstanceId,
+          definitionId: definition.id,
+          ownerMemberId: memberId,
+          bound: true,
+          acquiredAt,
+          source: { type: "quest", questId, memberId },
+          enchantmentIds: [],
+        };
+        recordAcquiredItem(draft.collection, instance, dependencies.content);
+        try {
+          const equipped = equipItem(updatedMember, instance, {
+            content: dependencies.content,
+            itemInstances: draft.itemInstances,
+          });
+          for (const displacedId of equipped.displacedItemInstanceIds) {
+            const displaced = draft.itemInstances[displacedId];
+            if (!displaced) throw new Error("被替换的装备数据不完整。");
+            saleProceeds += equipmentSellValue(
+              resolveItemInstance(displaced, dependencies.content).definition,
+            );
+            delete draft.itemInstances[displacedId];
+            const retainedIndex = retainedInstanceIds.indexOf(displacedId);
+            if (retainedIndex >= 0) retainedInstanceIds.splice(retainedIndex, 1);
+          }
+          updatedMember = equipped.member;
+          draft.itemInstances[instance.id] = equipped.equippedInstance;
+          retainedInstanceIds.push(instance.id);
+        } catch (error) {
+          if (error instanceof Error && error.message === "被替换的装备数据不完整。") {
+            throw error;
+          }
+          saleProceeds += equipmentSellValue(definition);
+        }
       }
-      const experienceGained = applyQuestExperience(member, quest.rewards.experienceFraction);
-      claimMemberQuest(member.quests, questId, dependencies.clock.now());
-      draft.members[memberId] = equipped.member;
-      draft.itemInstances[instance.id] = equipped.equippedInstance;
-      recordAcquiredItem(draft.collection, instance, dependencies.content);
+      const experienceGained = applyQuestExperience(
+        updatedMember,
+        quest.rewards.experienceFraction,
+      );
+      claimMemberQuest(updatedMember.quests, questId, acquiredAt);
+      draft.members[memberId] = updatedMember;
       draft.guild.funds += quest.rewards.funds + saleProceeds;
       draft.ids = ids.snapshot();
       return {
         memberId,
         questId,
-        itemInstanceId: instance.id,
+        itemInstanceIds: retainedInstanceIds,
+        itemDefinitionIds: rewardDefinitionIds,
         saleProceeds,
         experienceGained,
         fundsGained: quest.rewards.funds,

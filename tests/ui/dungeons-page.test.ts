@@ -30,7 +30,7 @@ describe("dungeons page", () => {
     const wrapper = mount(DungeonsPage);
     await flushPromises();
 
-    expect(wrapper.findAll(".dungeon-selector button")).toHaveLength(12);
+    expect(wrapper.findAll(".dungeon-selector button")).toHaveLength(13);
     await wrapper.findAll(".dungeon-selector button")[1]!.trigger("click");
     expect(useUiStore().selectedDungeonId).not.toBeNull();
     await wrapper.findAll(".dungeon-selector button")[0]!.trigger("click");

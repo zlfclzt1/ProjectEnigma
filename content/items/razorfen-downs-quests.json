@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/classic-wow-razorfen-downs-dungeon-quests",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对封印神像、Bring the Light 与 Bring the End 的装备奖励，并通过逐件中文 XML 核对属性。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].restrictions", "items[].description"],
+        "reason": "按当前职业与定位规则补齐任务装备可装备性，并标记任务来源。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "10710",
+      "name": { "zhCN": "龙爪戒指", "enUS": "Dragonclaw Ring" },
+      "itemLevel": 38,
+      "requiredLevel": 32,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "database", "name": "inv_jewelry_ring_04" },
+      "description": { "zhCN": "剃刀高地成员任务“封印神像”奖励。" },
+      "stats": { "primary": { "staminaPoints": 10, "spiritPoints": 4 } },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10710",
+        "url": "https://www.wowhead.com/classic/cn/item=10710&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "10823",
+      "name": { "zhCN": "征服者之剑", "enUS": "Vanquisher's Sword" },
+      "itemLevel": 44,
+      "requiredLevel": 39,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_sword_35" },
+      "description": { "zhCN": "剃刀高地成员任务“Bring the Light / Bring the End”固定奖励。" },
+      "stats": {
+        "physical": { "attackPowerPoints": 28, "rangedAttackPowerPoints": 28 },
+        "weapon": {
+          "damage": { "minimumPoints": 46, "maximumPoints": 86 },
+          "speedSeconds": 2.2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10823",
+        "url": "https://www.wowhead.com/classic/cn/item=10823&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "10824",
+      "name": { "zhCN": "琥珀之光", "enUS": "Amberglow Talisman" },
+      "itemLevel": 44,
+      "requiredLevel": 39,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "database", "name": "inv_jewelry_necklace_07" },
+      "description": { "zhCN": "剃刀高地成员任务“Bring the Light / Bring the End”固定奖励。" },
+      "stats": { "primary": { "agilityPoints": 1, "staminaPoints": 7, "spiritPoints": 10 } },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10824",
+        "url": "https://www.wowhead.com/classic/cn/item=10824&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    }
+  ]
+}

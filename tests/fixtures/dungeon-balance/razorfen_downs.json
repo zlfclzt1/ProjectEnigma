@@ -1,0 +1,265 @@
+{
+  "dungeonId": "razorfen_downs",
+  "samplesPerScenario": 100000,
+  "scenarios": {
+    "standard": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.8599,
+        "previewClearProbability": 0.8599039142839999,
+        "durationSeconds": 1091.6,
+        "wipeCounts": {
+          "razorfen_downs_amnennar_the_coldbringer": 6558,
+          "razorfen_downs_tutenkash": 2036,
+          "razorfen_downs_glutton": 1930,
+          "razorfen_downs_mordresh_fire_eye": 3486
+        }
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.85428,
+        "previewClearProbability": 0.8527742192285712,
+        "durationSeconds": 1338.2,
+        "wipeCounts": {
+          "razorfen_downs_mordresh_fire_eye": 3007,
+          "razorfen_downs_plaguemaw_the_rotting": 2150,
+          "razorfen_downs_amnennar_the_coldbringer": 4912,
+          "razorfen_downs_tutenkash": 1976,
+          "razorfen_downs_glutton": 2527
+        }
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.82199,
+        "previewClearProbability": 0.8225364428763214,
+        "durationSeconds": 1341.2,
+        "wipeCounts": {
+          "razorfen_downs_amnennar_the_coldbringer": 6507,
+          "razorfen_downs_tutenkash": 1957,
+          "razorfen_downs_lady_faltheress": 2033,
+          "razorfen_downs_glutton": 1948,
+          "razorfen_downs_ragglesnout": 2091,
+          "razorfen_downs_mordresh_fire_eye": 3265
+        }
+      }
+    },
+    "no-tank": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.00001,
+        "previewClearProbability": 0.000006250000000000001,
+        "durationSeconds": 1223.8,
+        "wipeCounts": {
+          "razorfen_downs_tutenkash": 95027,
+          "razorfen_downs_mordresh_fire_eye": 4734,
+          "razorfen_downs_amnennar_the_coldbringer": 5,
+          "razorfen_downs_glutton": 233
+        }
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 3.1250000000000013e-7,
+        "durationSeconds": 1509.2,
+        "wipeCounts": {
+          "razorfen_downs_mordresh_fire_eye": 4640,
+          "razorfen_downs_tutenkash": 95126,
+          "razorfen_downs_plaguemaw_the_rotting": 219,
+          "razorfen_downs_glutton": 14,
+          "razorfen_downs_amnennar_the_coldbringer": 1
+        }
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.5625000000000006e-8,
+        "durationSeconds": 1466.4,
+        "wipeCounts": {
+          "razorfen_downs_tutenkash": 95033,
+          "razorfen_downs_lady_faltheress": 4729,
+          "razorfen_downs_mordresh_fire_eye": 229,
+          "razorfen_downs_glutton": 9
+        }
+      }
+    },
+    "no-healing": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 0.000006250000000000001,
+        "durationSeconds": 1221,
+        "wipeCounts": {
+          "razorfen_downs_tutenkash": 94892,
+          "razorfen_downs_mordresh_fire_eye": 4843,
+          "razorfen_downs_glutton": 245,
+          "razorfen_downs_amnennar_the_coldbringer": 20
+        }
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 3.1250000000000013e-7,
+        "durationSeconds": 1485.4,
+        "wipeCounts": {
+          "razorfen_downs_tutenkash": 94997,
+          "razorfen_downs_mordresh_fire_eye": 4779,
+          "razorfen_downs_plaguemaw_the_rotting": 212,
+          "razorfen_downs_glutton": 12
+        }
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.5625000000000006e-8,
+        "durationSeconds": 1462.2,
+        "wipeCounts": {
+          "razorfen_downs_tutenkash": 94880,
+          "razorfen_downs_lady_faltheress": 4881,
+          "razorfen_downs_mordresh_fire_eye": 225,
+          "razorfen_downs_glutton": 14
+        }
+      }
+    },
+    "overlevel": {
+      "required": {
+        "level": 42,
+        "simulatedRuns": 100000,
+        "clearRate": 0.81416,
+        "previewClearProbability": 0.8125535675045299,
+        "durationSeconds": 1126,
+        "wipeCounts": {
+          "razorfen_downs_amnennar_the_coldbringer": 7948,
+          "razorfen_downs_glutton": 2055,
+          "razorfen_downs_mordresh_fire_eye": 5520,
+          "razorfen_downs_tutenkash": 3061
+        }
+      },
+      "with-optional": {
+        "level": 42,
+        "simulatedRuns": 100000,
+        "clearRate": 0.6822,
+        "previewClearProbability": 0.6805689282555962,
+        "durationSeconds": 1422,
+        "wipeCounts": {
+          "razorfen_downs_mordresh_fire_eye": 8078,
+          "razorfen_downs_glutton": 4095,
+          "razorfen_downs_amnennar_the_coldbringer": 9944,
+          "razorfen_downs_plaguemaw_the_rotting": 5882,
+          "razorfen_downs_tutenkash": 3781
+        }
+      },
+      "with-rare": {
+        "level": 42,
+        "simulatedRuns": 100000,
+        "clearRate": 0.79355,
+        "previewClearProbability": 0.795124485026356,
+        "durationSeconds": 1349.4,
+        "wipeCounts": {
+          "razorfen_downs_amnennar_the_coldbringer": 6378,
+          "razorfen_downs_glutton": 2885,
+          "razorfen_downs_mordresh_fire_eye": 4042,
+          "razorfen_downs_tutenkash": 2018,
+          "razorfen_downs_ragglesnout": 3130,
+          "razorfen_downs_lady_faltheress": 2192
+        }
+      }
+    },
+    "max-level": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.85119,
+        "previewClearProbability": 0.8523947039251093,
+        "durationSeconds": 1101.4,
+        "wipeCounts": {
+          "razorfen_downs_mordresh_fire_eye": 4043,
+          "razorfen_downs_amnennar_the_coldbringer": 6534,
+          "razorfen_downs_glutton": 1877,
+          "razorfen_downs_tutenkash": 2427
+        }
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.8646,
+        "previewClearProbability": 0.8655605348161572,
+        "durationSeconds": 1337,
+        "wipeCounts": {
+          "razorfen_downs_glutton": 1911,
+          "razorfen_downs_amnennar_the_coldbringer": 4845,
+          "razorfen_downs_mordresh_fire_eye": 2421,
+          "razorfen_downs_tutenkash": 2063,
+          "razorfen_downs_plaguemaw_the_rotting": 2300
+        }
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.78069,
+        "previewClearProbability": 0.7812013408223041,
+        "durationSeconds": 1351.2,
+        "wipeCounts": {
+          "razorfen_downs_tutenkash": 1923,
+          "razorfen_downs_ragglesnout": 1983,
+          "razorfen_downs_amnennar_the_coldbringer": 8889,
+          "razorfen_downs_mordresh_fire_eye": 5219,
+          "razorfen_downs_glutton": 1962,
+          "razorfen_downs_lady_faltheress": 1955
+        }
+      }
+    },
+    "speed-run": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.80262,
+        "previewClearProbability": 0.8005629809772339,
+        "durationSeconds": 1104,
+        "wipeCounts": {
+          "razorfen_downs_amnennar_the_coldbringer": 10107,
+          "razorfen_downs_mordresh_fire_eye": 5894,
+          "razorfen_downs_glutton": 1831,
+          "razorfen_downs_tutenkash": 1906
+        }
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.81753,
+        "previewClearProbability": 0.8197748172211089,
+        "durationSeconds": 1346.8,
+        "wipeCounts": {
+          "razorfen_downs_glutton": 1898,
+          "razorfen_downs_tutenkash": 2039,
+          "razorfen_downs_amnennar_the_coldbringer": 7374,
+          "razorfen_downs_mordresh_fire_eye": 4832,
+          "razorfen_downs_plaguemaw_the_rotting": 2104
+        }
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.72605,
+        "previewClearProbability": 0.7272818970066997,
+        "durationSeconds": 1376.8,
+        "wipeCounts": {
+          "razorfen_downs_amnennar_the_coldbringer": 8709,
+          "razorfen_downs_tutenkash": 2967,
+          "razorfen_downs_mordresh_fire_eye": 7076,
+          "razorfen_downs_ragglesnout": 3339,
+          "razorfen_downs_glutton": 3194,
+          "razorfen_downs_lady_faltheress": 2110
+        }
+      }
+    }
+  }
+}

@@ -50,6 +50,17 @@ function statSummary(item: ItemDefinition): string {
   const spell = item.stats.spell;
   if (spell?.spellPowerPoints) parts.push(`法术强度 ${spell.spellPowerPoints}`);
   if (spell?.healingPowerPoints) parts.push(`治疗强度 ${spell.healingPowerPoints}`);
+  const schoolSpellPowerLabels = {
+    arcaneSpellPowerPoints: "奥术法术强度",
+    fireSpellPowerPoints: "火焰法术强度",
+    frostSpellPowerPoints: "冰霜法术强度",
+    natureSpellPowerPoints: "自然法术强度",
+    shadowSpellPowerPoints: "暗影法术强度",
+  } as const;
+  for (const [key, label] of Object.entries(schoolSpellPowerLabels)) {
+    const value = spell?.[key as keyof typeof schoolSpellPowerLabels];
+    if (value) parts.push(`${label} ${value}`);
+  }
   if (spell?.manaRegenPer5Seconds) parts.push(`每 5 秒法力回复 ${spell.manaRegenPer5Seconds}`);
   if (spell?.hitPercent) parts.push(`法术命中 ${spell.hitPercent}%`);
   if (spell?.criticalStrikePercent) parts.push(`法术暴击 ${spell.criticalStrikePercent}%`);
@@ -78,7 +89,7 @@ function buildReport(): string {
   const realItems = items.filter((item) => !item.isStarter);
   const starterItems = items.filter((item) => item.isStarter);
 
-  assert.equal(realItems.length, 192, "当前真实副本与任务装备数量应为 192");
+  assert.equal(realItems.length, 215, "当前真实副本与任务装备数量应为 215");
   assert.equal(starterItems.length, 41, "当前初始装备定义数量应为 41");
   for (const item of realItems) {
     assert.ok(Object.keys(item.stats).length > 0, `${item.id} 缺少真实属性`);
@@ -151,7 +162,7 @@ if (mode === "--write") {
     report,
     "装备属性审计报告已变化；请显式运行 npm run item-stats:audit:write。",
   );
-  console.log("装备属性审计通过：192 件真实装备与 41 件初始装备属性完整。");
+  console.log("装备属性审计通过：215 件真实装备与 41 件初始装备属性完整。");
 } else {
   throw new Error(`未知参数：${mode}`);
 }

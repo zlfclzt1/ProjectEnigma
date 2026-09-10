@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/classic-wow-razorfen-downs-dungeon-quests",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对封印神像、Bring the Light 与 Bring the End 的目标和装备奖励。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "阵营与外部前置不模拟；联盟和部落的亚门纳尔任务合并为中立成员任务。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": [
+          "quests[].dungeonId",
+          "quests[].completion",
+          "quests[].rewards.experienceFraction"
+        ],
+        "reason": "使用可确定结算的 Encounter 胜利表达护送和最终 Boss 任务，并保持原版装备奖励方式。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "razorfen_downs_extinguishing_the_idol",
+      "name": { "zhCN": "封印神像" },
+      "description": { "zhCN": "保护 Belnistrasz 完成仪式并击败腐烂的普雷莫尔。" },
+      "dungeonId": "razorfen_downs",
+      "eligibility": { "minimumLevel": 33, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["razorfen_downs_plaguemaw_the_rotting"]
+      },
+      "rewards": {
+        "experienceFraction": 0.8,
+        "funds": 0,
+        "fixedItemIds": ["10710"],
+        "itemChoiceIds": []
+      }
+    },
+    {
+      "id": "razorfen_downs_bring_the_light_or_end",
+      "name": { "zhCN": "Bring the Light / Bring the End" },
+      "description": { "zhCN": "击败剃刀高地最终首领寒冰之王亚门纳尔。" },
+      "dungeonId": "razorfen_downs",
+      "eligibility": { "minimumLevel": 37, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["razorfen_downs_amnennar_the_coldbringer"]
+      },
+      "rewards": {
+        "experienceFraction": 1,
+        "funds": 0,
+        "fixedItemIds": ["10823", "10824"],
+        "itemChoiceIds": []
+      }
+    }
+  ]
+}

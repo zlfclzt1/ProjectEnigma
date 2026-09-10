@@ -256,6 +256,11 @@ const STAT_LABELS: Readonly<Record<string, string>> = {
   rangedAttackPowerPoints: "远程攻击强度",
   spellPowerPoints: "法术强度",
   healingPowerPoints: "治疗强度",
+  arcaneSpellPowerPoints: "奥术法术强度",
+  fireSpellPowerPoints: "火焰法术强度",
+  frostSpellPowerPoints: "冰霜法术强度",
+  natureSpellPowerPoints: "自然法术强度",
+  shadowSpellPowerPoints: "暗影法术强度",
   manaRegenPer5Seconds: "每 5 秒法力回复",
   arcanePoints: "奥术抗性",
   firePoints: "火焰抗性",
@@ -363,6 +368,21 @@ export function getItemStatLines(stats: ClassicItemStats): ItemStatLineView[] {
           ...(stats.spell.healingPowerPoints === undefined
             ? {}
             : { healingPowerPoints: stats.spell.healingPowerPoints }),
+          ...(stats.spell.arcaneSpellPowerPoints === undefined
+            ? {}
+            : { arcaneSpellPowerPoints: stats.spell.arcaneSpellPowerPoints }),
+          ...(stats.spell.fireSpellPowerPoints === undefined
+            ? {}
+            : { fireSpellPowerPoints: stats.spell.fireSpellPowerPoints }),
+          ...(stats.spell.frostSpellPowerPoints === undefined
+            ? {}
+            : { frostSpellPowerPoints: stats.spell.frostSpellPowerPoints }),
+          ...(stats.spell.natureSpellPowerPoints === undefined
+            ? {}
+            : { natureSpellPowerPoints: stats.spell.natureSpellPowerPoints }),
+          ...(stats.spell.shadowSpellPowerPoints === undefined
+            ? {}
+            : { shadowSpellPowerPoints: stats.spell.shadowSpellPowerPoints }),
           ...(stats.spell.manaRegenPer5Seconds === undefined
             ? {}
             : { manaRegenPer5Seconds: stats.spell.manaRegenPer5Seconds }),

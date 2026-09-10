@@ -34,6 +34,13 @@
 | 怒焰裂谷（ragefire_chasm） | taragaman_the_hungerer | required | 饥饿者塔拉加曼（taragaman_the_hungerer） | boss_drop:taragaman_the_hungerer | 1 | 14145 被诅咒的魔刃、14148 水晶腕轮、14149 地下斗篷 |
 | 怒焰裂谷（ragefire_chasm） | jergosh_the_invoker | required | 祈求者耶戈什（jergosh_the_invoker） | boss_drop:jergosh_the_invoker | 1 | 14151 咏唱之刃、14150 唤魔者长袍、14147 洞穴护腕 |
 | 怒焰裂谷（ragefire_chasm） | bazzalan | required | 巴扎兰（bazzalan） | 无装备掉落 | 0 | — |
+| 剃刀高地（razorfen_downs） | razorfen_downs_tutenkash | required | 图特卡什（razorfen_downs_tutenkash） | boss_drop:razorfen_downs_tutenkash | 1 | 10776 蜘蛛银丝斗篷、10775 图特卡什的甲壳、10777 蜘蛛手套 |
+| 剃刀高地（razorfen_downs） | razorfen_downs_lady_faltheress | rare（0.08） | 法瑟蕾丝夫人（razorfen_downs_lady_faltheress） | boss_drop:razorfen_downs_lady_faltheress | 1 | 23178 法瑟蕾丝夫人的衬肩、23177 法瑟蕾丝夫人的手指 |
+| 剃刀高地（razorfen_downs） | razorfen_downs_mordresh_fire_eye | required | 火眼莫德雷斯（razorfen_downs_mordresh_fire_eye） | boss_drop:razorfen_downs_mordresh_fire_eye | 1 | 10769 莫德雷斯之眼、10771 死亡法师腰带、10770 莫德雷斯的颅骨 |
+| 剃刀高地（razorfen_downs） | razorfen_downs_plaguemaw_the_rotting | optional | 腐烂的普雷莫尔（razorfen_downs_plaguemaw_the_rotting） | boss_drop:razorfen_downs_plaguemaw_the_rotting | 1 | 10766 瘟疫短枝、10760 野猪之拳 |
+| 剃刀高地（razorfen_downs） | razorfen_downs_glutton | required | 暴食者（razorfen_downs_glutton） | boss_drop:razorfen_downs_glutton | 1 | 10774 血皮护肩、10772 暴食者之斧 |
+| 剃刀高地（razorfen_downs） | razorfen_downs_ragglesnout | rare（0.16） | 拉戈斯诺特（razorfen_downs_ragglesnout） | boss_drop:razorfen_downs_ragglesnout | 1 | 10768 野猪人勇士腰带、10767 野猪之盾、10758 石猪剑 |
+| 剃刀高地（razorfen_downs） | razorfen_downs_amnennar_the_coldbringer | required | 寒冰之王亚门纳尔（razorfen_downs_amnennar_the_coldbringer） | boss_drop:razorfen_downs_amnennar_the_coldbringer | 1 | 10763 冰铁之盔、10762 巫妖法袍、10764 死寒护甲、10761 寒怒匕首、10765 白骨手指 |
 | 剃刀沼泽（razorfen_kraul） | razorfen_kraul_roogug | optional | 鲁古格（razorfen_kraul_roogug） | 无装备掉落 | 0 | — |
 | 剃刀沼泽（razorfen_kraul） | razorfen_kraul_aggem_thorncurse | required | 阿格姆·荆棘诅咒（razorfen_kraul_aggem_thorncurse） | boss_drop:razorfen_kraul_aggem_thorncurse | 1 | 6681 棘刺 |
 | 剃刀沼泽（razorfen_kraul） | razorfen_kraul_death_speaker_jargba | required | 死亡之语者·贾格巴（razorfen_kraul_death_speaker_jargba） | boss_drop:razorfen_kraul_death_speaker_jargba | 1 | 6682 亡语者长袍、6685 亡语者衬肩、2816 死亡之语者节杖 |
@@ -78,8 +85,8 @@
 
 ## 引用完整度
 
-- 副本路线节点：67。
-- 副本任务：19。
+- 副本路线节点：74。
+- 副本任务：21。
 - 套装：1。
 - 未被路线引用的掉落表：0。
 - 未被掉落、任务或套装引用的非初始装备：0。

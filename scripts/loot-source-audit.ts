@@ -141,7 +141,7 @@ export function auditLootSources(registry: ContentRegistry): LootSourceAudit {
       dungeonName: dungeon.name.zhCN,
       questId: quest.id,
       questName: quest.name.zhCN,
-      items: quest.rewards.itemChoiceIds.map((itemId) => {
+      items: [...quest.rewards.fixedItemIds, ...quest.rewards.itemChoiceIds].map((itemId) => {
         const item = registry.itemById.get(itemId);
         if (!item) throw new Error(`任务 ${quest.id} 缺少奖励装备 ${itemId}`);
         return { id: item.id, name: item.name.zhCN };

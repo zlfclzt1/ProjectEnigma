@@ -1,0 +1,572 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/razorfen-downs-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对剃刀高地常驻 Boss 装备，并通过逐件中文 XML 核对属性、图标和需求等级。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-09",
+        "notes": "交叉核对常驻 Boss、随机稀有 Boss、天灾入侵 Boss 与装备归属。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].restrictions", "items[].description"],
+        "reason": "按当前职业、定位和装备栏位规则补齐可装备性与来源说明。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "10776",
+      "name": { "zhCN": "蜘蛛银丝斗篷", "enUS": "Silky Spider Cape" },
+      "itemLevel": 42,
+      "requiredLevel": 35,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "database", "name": "inv_misc_cape_17" },
+      "description": { "zhCN": "剃刀高地：图特卡什的专属掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 11, "spiritPoints": 5 },
+        "defense": { "armorPoints": 30 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10776",
+        "url": "https://www.wowhead.com/classic/cn/item=10776&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "10775",
+      "name": { "zhCN": "图特卡什的甲壳", "enUS": "Carapace of Tuten'kash" },
+      "itemLevel": 42,
+      "requiredLevel": 40,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_chest_plate08" },
+      "description": { "zhCN": "剃刀高地：图特卡什的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 10, "agilityPoints": 8, "staminaPoints": 15 },
+        "defense": { "armorPoints": 373 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10775",
+        "url": "https://www.wowhead.com/classic/cn/item=10775&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "10777",
+      "name": { "zhCN": "蜘蛛手套", "enUS": "Arachnid Gloves" },
+      "itemLevel": 42,
+      "requiredLevel": 37,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["rogue", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_gauntlets_32" },
+      "description": { "zhCN": "剃刀高地：图特卡什的专属掉落。" },
+      "stats": {
+        "defense": { "armorPoints": 79 },
+        "resistances": { "naturePoints": 10 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10777",
+        "url": "https://www.wowhead.com/classic/cn/item=10777&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "10769",
+      "name": { "zhCN": "莫德雷斯之眼", "enUS": "Glowing Eye of Mordresh" },
+      "itemLevel": 41,
+      "requiredLevel": 36,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "database", "name": "inv_misc_orb_03" },
+      "description": { "zhCN": "剃刀高地：火眼莫德雷斯的专属掉落。" },
+      "stats": { "primary": { "intellectPoints": 5, "spiritPoints": 11 } },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10769",
+        "url": "https://www.wowhead.com/classic/cn/item=10769&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "10771",
+      "name": { "zhCN": "死亡法师腰带", "enUS": "Deathmage Sash" },
+      "itemLevel": 41,
+      "requiredLevel": 36,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_belt_24" },
+      "description": { "zhCN": "剃刀高地：火眼莫德雷斯的专属掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 6, "intellectPoints": 15 },
+        "defense": { "armorPoints": 33 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10771",
+        "url": "https://www.wowhead.com/classic/cn/item=10771&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "10770",
+      "name": { "zhCN": "莫德雷斯的颅骨", "enUS": "Mordresh's Lifeless Skull" },
+      "itemLevel": 41,
+      "requiredLevel": 36,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["priest", "shaman", "mage", "warlock", "druid"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_misc_bone_elfskull_01" },
+      "description": { "zhCN": "剃刀高地：火眼莫德雷斯的专属掉落。" },
+      "stats": { "primary": { "staminaPoints": 5, "spiritPoints": 11 } },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10770",
+        "url": "https://www.wowhead.com/classic/cn/item=10770&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "10774",
+      "name": { "zhCN": "血皮护肩", "enUS": "Fleshhide Shoulders" },
+      "itemLevel": 42,
+      "requiredLevel": 37,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["rogue", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_shoulder_28" },
+      "description": { "zhCN": "剃刀高地：暴食者的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 5, "agilityPoints": 6, "staminaPoints": 15 },
+        "defense": { "armorPoints": 95 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10774",
+        "url": "https://www.wowhead.com/classic/cn/item=10774&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "10772",
+      "name": { "zhCN": "暴食者之斧", "enUS": "Glutton's Cleaver" },
+      "itemLevel": 41,
+      "requiredLevel": 36,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_axe_23" },
+      "description": { "zhCN": "剃刀高地：暴食者的专属掉落。" },
+      "stats": {
+        "weapon": {
+          "damage": { "minimumPoints": 32, "maximumPoints": 60 },
+          "speedSeconds": 2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10772",
+        "url": "https://www.wowhead.com/classic/cn/item=10772&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "10768",
+      "name": { "zhCN": "野猪人勇士腰带", "enUS": "Boar Champion's Belt" },
+      "itemLevel": 42,
+      "requiredLevel": 37,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_belt_11" },
+      "description": { "zhCN": "剃刀高地：拉戈斯诺特的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 15, "staminaPoints": 6 },
+        "defense": { "armorPoints": 147 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10768",
+        "url": "https://www.wowhead.com/classic/cn/item=10768&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "10767",
+      "name": { "zhCN": "野猪之盾", "enUS": "Savage Boar's Guard" },
+      "itemLevel": 42,
+      "requiredLevel": 37,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank"]
+      },
+      "icon": { "kind": "database", "name": "inv_shield_17" },
+      "description": { "zhCN": "剃刀高地：拉戈斯诺特的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 11, "staminaPoints": 6 },
+        "defense": { "armorPoints": 1287, "blockValuePoints": 22 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10767",
+        "url": "https://www.wowhead.com/classic/cn/item=10767&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "10758",
+      "name": { "zhCN": "石猪剑", "enUS": "X'caliboar" },
+      "itemLevel": 42,
+      "requiredLevel": 35,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_sword_45" },
+      "description": { "zhCN": "剃刀高地：拉戈斯诺特的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 20, "staminaPoints": 8 },
+        "weapon": {
+          "damage": { "minimumPoints": 98, "maximumPoints": 148 },
+          "speedSeconds": 3.3
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10758",
+        "url": "https://www.wowhead.com/classic/cn/item=10758&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "10763",
+      "name": { "zhCN": "冰铁之盔", "enUS": "Icemetal Barbute" },
+      "itemLevel": 44,
+      "requiredLevel": 40,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_helmet_13" },
+      "description": { "zhCN": "剃刀高地：寒冰之王亚门纳尔的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 15, "staminaPoints": 10, "spiritPoints": 7 },
+        "defense": { "armorPoints": 383 },
+        "resistances": { "frostPoints": 10 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10763",
+        "url": "https://www.wowhead.com/classic/cn/item=10763&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "10762",
+      "name": { "zhCN": "巫妖法袍", "enUS": "Robes of the Lich" },
+      "itemLevel": 44,
+      "requiredLevel": 39,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_chest_cloth_17" },
+      "description": { "zhCN": "剃刀高地：寒冰之王亚门纳尔的专属掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 20, "intellectPoints": 10 },
+        "defense": { "armorPoints": 64 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10762",
+        "url": "https://www.wowhead.com/classic/cn/item=10762&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "10764",
+      "name": { "zhCN": "死寒护甲", "enUS": "Deathchill Armor" },
+      "itemLevel": 44,
+      "requiredLevel": 39,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_chest_plate12" },
+      "description": { "zhCN": "剃刀高地：寒冰之王亚门纳尔的专属掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 3, "intellectPoints": 9, "spiritPoints": 20 },
+        "defense": { "armorPoints": 270 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10764",
+        "url": "https://www.wowhead.com/classic/cn/item=10764&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "10761",
+      "name": { "zhCN": "寒怒匕首", "enUS": "Coldrage Dagger" },
+      "itemLevel": 44,
+      "requiredLevel": 39,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": [
+          "warrior",
+          "hunter",
+          "rogue",
+          "priest",
+          "shaman",
+          "mage",
+          "warlock",
+          "druid"
+        ],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_sword_34" },
+      "description": { "zhCN": "剃刀高地：寒冰之王亚门纳尔的专属掉落。" },
+      "stats": {
+        "weapon": {
+          "damage": { "minimumPoints": 31, "maximumPoints": 58 },
+          "speedSeconds": 1.5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10761",
+        "url": "https://www.wowhead.com/classic/cn/item=10761&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "10765",
+      "name": { "zhCN": "白骨手指", "enUS": "Bonefingers" },
+      "itemLevel": 43,
+      "requiredLevel": 38,
+      "quality": "uncommon",
+      "slot": "hands",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["rogue", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_gauntlets_09" },
+      "description": { "zhCN": "剃刀高地：寒冰之王亚门纳尔的专属掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 9, "intellectPoints": 9 },
+        "defense": { "armorPoints": 73 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10765",
+        "url": "https://www.wowhead.com/classic/cn/item=10765&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "10766",
+      "name": { "zhCN": "瘟疫短枝", "enUS": "Plaguerot Sprig" },
+      "itemLevel": 40,
+      "requiredLevel": 35,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": { "allowedClassIds": ["mage"], "allowedRoles": ["dps"] },
+      "icon": { "kind": "database", "name": "inv_wand_03" },
+      "description": { "zhCN": "剃刀高地：腐烂的普雷莫尔护送事件专属掉落。" },
+      "stats": {
+        "weapon": {
+          "damage": { "minimumPoints": 41, "maximumPoints": 78 },
+          "speedSeconds": 1.6
+        },
+        "resistances": { "shadowPoints": 7 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10766",
+        "url": "https://www.wowhead.com/classic/cn/item=10766&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "10760",
+      "name": { "zhCN": "野猪之拳", "enUS": "Swine Fists" },
+      "itemLevel": 39,
+      "requiredLevel": 34,
+      "quality": "uncommon",
+      "slot": "hands",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["rogue", "druid"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_gauntlets_23" },
+      "description": { "zhCN": "剃刀高地：腐烂的普雷莫尔护送事件专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 8, "agilityPoints": 8 },
+        "defense": { "armorPoints": 68 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10760",
+        "url": "https://www.wowhead.com/classic/cn/item=10760&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "23178",
+      "name": { "zhCN": "法瑟蕾丝夫人的衬肩", "enUS": "Mantle of Lady Falther'ess" },
+      "itemLevel": 41,
+      "requiredLevel": 36,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": ["paladin", "priest", "shaman", "mage", "warlock", "druid"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_misc_cape_17" },
+      "description": { "zhCN": "剃刀高地：第六阶段天灾入侵稀有首领法瑟蕾丝夫人的专属掉落。" },
+      "stats": {
+        "primary": { "intellectPoints": 9 },
+        "defense": { "armorPoints": 30 },
+        "spell": { "spellPowerPoints": 9, "healingPowerPoints": 9 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "23178",
+        "url": "https://www.wowhead.com/classic/cn/item=23178&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "23177",
+      "name": { "zhCN": "法瑟蕾丝夫人的手指", "enUS": "Lady Falther'ess' Finger" },
+      "itemLevel": 41,
+      "requiredLevel": 36,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_wand_12" },
+      "description": { "zhCN": "剃刀高地：第六阶段天灾入侵稀有首领法瑟蕾丝夫人的专属掉落。" },
+      "stats": {
+        "spell": { "shadowSpellPowerPoints": 10 },
+        "weapon": {
+          "damage": { "minimumPoints": 34, "maximumPoints": 65 },
+          "speedSeconds": 1.3
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "23177",
+        "url": "https://www.wowhead.com/classic/cn/item=23177&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    }
+  ]
+}

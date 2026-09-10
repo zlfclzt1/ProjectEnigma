@@ -378,7 +378,7 @@ export const useGameStore = defineStore("game", () => {
   async function claimMemberDungeonQuest(
     memberId: MemberId,
     questId: QuestId,
-    itemDefinitionId: ItemDefinitionId,
+    itemDefinitionId?: ItemDefinitionId,
   ): Promise<GameCommandOutcome<unknown>> {
     if (!content || !clock) return unavailableOutcome("claim-member-dungeon-quest");
     return execute(

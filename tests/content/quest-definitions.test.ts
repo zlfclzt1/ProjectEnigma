@@ -17,7 +17,7 @@ function questFile(modules: Record<string, unknown>) {
       dungeonId: string;
       eligibility: { allowedClassIds: string[] };
       completion: { type: string; encounterIds?: string[] };
-      rewards: { itemChoiceIds: string[] };
+      rewards: { fixedItemIds?: string[]; itemChoiceIds: string[] };
     }>;
   };
 }
@@ -26,7 +26,7 @@ describe("member dungeon quest content", () => {
   it("loads member conditions, supported objectives, and real reward choices", () => {
     const content = loadBrowserContentRegistry();
 
-    expect(content.quests).toHaveLength(19);
+    expect(content.quests).toHaveLength(21);
     expect(
       content.questById.get(asBrandedId<"QuestId">("rfc_returning_lost_satchel")),
     ).toMatchObject({
@@ -53,6 +53,21 @@ describe("member dungeon quest content", () => {
     expect(() => loadContentRegistry(modules)).toThrowError(/不存在的职业/);
     expect(() => loadContentRegistry(modules)).toThrowError(/不存在的首领战/);
     expect(() => loadContentRegistry(modules)).toThrowError(/不存在的装备/);
+  });
+
+  it("supports fixed equipment rewards alongside an optional reward choice", () => {
+    const modules = clonedModules();
+    const rewards = questFile(modules).quests[0]!.rewards;
+    rewards.fixedItemIds = ["15453"];
+    rewards.itemChoiceIds = ["15452"];
+
+    const content = loadContentRegistry(modules);
+    expect(
+      content.questById.get(asBrandedId<"QuestId">("rfc_returning_lost_satchel"))!.rewards,
+    ).toMatchObject({
+      fixedItemIds: ["15453"],
+      itemChoiceIds: ["15452"],
+    });
   });
 
   it("allows required and optional Boss goals but rejects a random rare Boss requirement", () => {

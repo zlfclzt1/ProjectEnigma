@@ -610,6 +610,9 @@ export class ContentRegistry {
           issues,
         ),
       );
+      owner.value.rewards.fixedItemIds.forEach((itemId, index) =>
+        requireReference(itemById, itemId, owner, `rewards.fixedItemIds[${index}]`, "装备", issues),
+      );
       if (owner.value.completion.type !== "encounter-victories") continue;
       for (const [index, encounterId] of owner.value.completion.encounterIds.entries()) {
         const encounterExists = requireReference(

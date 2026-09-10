@@ -166,6 +166,41 @@ describe("member dungeon quests", () => {
     );
   });
 
+  it("projects Razorfen Downs fixed rewards and the optional escort route warning", () => {
+    const game = state();
+    game.guild.unlockedDungeonIds.push(asBrandedId<"DungeonId">("razorfen_downs"));
+    const member = Object.values(game.members)[0]!;
+    member.progression.level = 45;
+
+    const view = getMemberDungeonQuestsView(game, content, member.id)!;
+    expect(view.quests).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          id: "razorfen_downs_extinguishing_the_idol",
+          status: "available",
+          objective: expect.objectContaining({
+            requiredOptionalNodeIds: ["razorfen_downs_plaguemaw_the_rotting"],
+          }),
+          rewards: expect.objectContaining({
+            fixedItems: [expect.objectContaining({ id: "10710", name: "龙爪戒指" })],
+            itemChoices: [],
+          }),
+        }),
+        expect.objectContaining({
+          id: "razorfen_downs_bring_the_light_or_end",
+          status: "available",
+          rewards: expect.objectContaining({
+            fixedItems: [
+              expect.objectContaining({ id: "10823", name: "征服者之剑" }),
+              expect.objectContaining({ id: "10824", name: "琥珀之光" }),
+            ],
+            itemChoices: [],
+          }),
+        }),
+      ]),
+    );
+  });
+
   it("rejects locked dungeons, insufficient levels, and disallowed classes", () => {
     const locked = state();
     const member = Object.values(locked.members)[0]!;
