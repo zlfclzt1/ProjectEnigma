@@ -112,7 +112,9 @@ function routeSelection(content: ContentRegistry, dungeonId: DungeonId, variant:
 
 function scenarioLevel(recommendedLevel: number, scenario: BalanceScenario): number {
   if (scenario === "overlevel") return Math.max(1, recommendedLevel - 3);
-  if (scenario === "max-level" || scenario === "speed-run") return 45;
+  if (scenario === "max-level" || scenario === "speed-run") {
+    return recommendedLevel > 45 ? 60 : 45;
+  }
   return recommendedLevel;
 }
 

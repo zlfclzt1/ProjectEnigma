@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对玛拉顿九名有装备首领的 34 件非世界装备。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/maraudon-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对装备归属，并确认无尽黑暗之刃是瑟莱德丝公主的低概率史诗掉落。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["lootTables[].guaranteedEquipmentDrops", "lootTables[].items[].weight"],
+        "reason": "每名拥有专属装备池的首领保证一件装备；普通池先使用等权基线，无尽黑暗之刃保留约 0.3% 的低权重。",
+        "decidedAt": "2026-09-10"
+      }
+    ]
+  },
+  "lootTables": [
+    {
+      "id": "maraudon_noxxion",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "17746", "weight": 0.3333333333333333 },
+        { "itemId": "17744", "weight": 0.3333333333333333 },
+        { "itemId": "17745", "weight": 0.33333333333333337 }
+      ]
+    },
+    {
+      "id": "maraudon_razorlash",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "17749", "weight": 0.25 },
+        { "itemId": "17748", "weight": 0.25 },
+        { "itemId": "17750", "weight": 0.25 },
+        { "itemId": "17751", "weight": 0.25 }
+      ]
+    },
+    {
+      "id": "maraudon_lord_vyletongue",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "17755", "weight": 0.3333333333333333 },
+        { "itemId": "17754", "weight": 0.3333333333333333 },
+        { "itemId": "17752", "weight": 0.33333333333333337 }
+      ]
+    },
+    {
+      "id": "maraudon_meshlok_the_harvester",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "17767", "weight": 0.3333333333333333 },
+        { "itemId": "17741", "weight": 0.3333333333333333 },
+        { "itemId": "17742", "weight": 0.33333333333333337 }
+      ]
+    },
+    {
+      "id": "maraudon_celebras_the_cursed",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "17740", "weight": 0.3333333333333333 },
+        { "itemId": "17739", "weight": 0.3333333333333333 },
+        { "itemId": "17738", "weight": 0.33333333333333337 }
+      ]
+    },
+    {
+      "id": "maraudon_landslide",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "17734", "weight": 0.25 },
+        { "itemId": "17736", "weight": 0.25 },
+        { "itemId": "17737", "weight": 0.25 },
+        { "itemId": "17943", "weight": 0.25 }
+      ]
+    },
+    {
+      "id": "maraudon_tinkerer_gizlock",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "17718", "weight": 0.3333333333333333 },
+        { "itemId": "17717", "weight": 0.3333333333333333 },
+        { "itemId": "17719", "weight": 0.33333333333333337 }
+      ]
+    },
+    {
+      "id": "maraudon_rotgrip",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "17732", "weight": 0.3333333333333333 },
+        { "itemId": "17728", "weight": 0.3333333333333333 },
+        { "itemId": "17730", "weight": 0.33333333333333337 }
+      ]
+    },
+    {
+      "id": "maraudon_princess_theradras",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "17780", "weight": 0.003 },
+        { "itemId": "17715", "weight": 0.14242857142857143 },
+        { "itemId": "17707", "weight": 0.14242857142857143 },
+        { "itemId": "17714", "weight": 0.14242857142857143 },
+        { "itemId": "17711", "weight": 0.14242857142857143 },
+        { "itemId": "17713", "weight": 0.14242857142857143 },
+        { "itemId": "17710", "weight": 0.14242857142857143 },
+        { "itemId": "17766", "weight": 0.14242857142857143 }
+      ]
+    }
+  ]
+}

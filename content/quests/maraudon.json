@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/zone=2100/maraudon#quests",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对维利塔恩的污染、贱民的指引、扭曲的邪恶和大地的污染任务目标及装备奖励。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-10",
+        "notes": "阵营、任务物品背包与普通怪计数不模拟；以玩家主动安排的路线节点胜利表达实例内任务进度。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": [
+          "quests[].dungeonId",
+          "quests[].completion",
+          "quests[].rewards.experienceFraction"
+        ],
+        "reason": "使用可确定结算的 Encounter 胜利表达藤蔓、可汗与水晶雕像收集，并保持原版装备奖励方式。",
+        "decidedAt": "2026-09-10"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "maraudon_vyletongue_corruption",
+      "name": { "zhCN": "维利塔恩的污染" },
+      "description": { "zhCN": "走完橙色入口并净化污染藤蔓，击败出现的诺克赛恩幼体。" },
+      "dungeonId": "maraudon",
+      "eligibility": { "minimumLevel": 41, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["maraudon_noxxion", "maraudon_razorlash"]
+      },
+      "rewards": {
+        "experienceFraction": 0.9,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["17768", "17778", "17770"]
+      }
+    },
+    {
+      "id": "maraudon_pariahs_instructions",
+      "name": { "zhCN": "贱民的指引" },
+      "description": { "zhCN": "追踪无名预言者与五可汗，合成联合坠饰。" },
+      "dungeonId": "maraudon",
+      "eligibility": { "minimumLevel": 39, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["maraudon_pariahs_instructions"]
+      },
+      "rewards": {
+        "experienceFraction": 1,
+        "funds": 0,
+        "fixedItemIds": ["17774"],
+        "itemChoiceIds": []
+      }
+    },
+    {
+      "id": "maraudon_twisted_evils",
+      "name": { "zhCN": "扭曲的邪恶" },
+      "description": { "zhCN": "清理紫色入口与两翼汇合区，收集足够的瑟莱德丝水晶雕像。" },
+      "dungeonId": "maraudon",
+      "eligibility": { "minimumLevel": 41, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["maraudon_lord_vyletongue", "maraudon_celebras_the_cursed"]
+      },
+      "rewards": {
+        "experienceFraction": 1,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["17775", "17776", "17777", "17779"]
+      }
+    },
+    {
+      "id": "maraudon_corruption_of_earth_and_seed",
+      "name": { "zhCN": "大地的污染" },
+      "description": { "zhCN": "深入玛拉顿瀑布深层并击败瑟莱德丝公主。" },
+      "dungeonId": "maraudon",
+      "eligibility": { "minimumLevel": 45, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["maraudon_princess_theradras"]
+      },
+      "rewards": {
+        "experienceFraction": 1.2,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["17705", "17753", "17743"]
+      }
+    }
+  ]
+}

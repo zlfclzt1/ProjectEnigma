@@ -1,0 +1,287 @@
+{
+  "dungeonId": "maraudon",
+  "samplesPerScenario": 100000,
+  "scenarios": {
+    "standard": {
+      "required": {
+        "level": 49,
+        "simulatedRuns": 100000,
+        "clearRate": 0.82623,
+        "previewClearProbability": 0.8281538198898725,
+        "durationSeconds": 1385.8,
+        "wipeCounts": {
+          "maraudon_lord_vyletongue": 2005,
+          "maraudon_celebras_the_cursed": 2828,
+          "maraudon_landslide": 3970,
+          "maraudon_princess_theradras": 6561,
+          "maraudon_noxxion": 2013
+        }
+      },
+      "with-optional": {
+        "level": 49,
+        "simulatedRuns": 100000,
+        "clearRate": 0.76784,
+        "previewClearProbability": 0.7682861783544643,
+        "durationSeconds": 1774.4,
+        "wipeCounts": {
+          "maraudon_tinkerer_gizlock": 1647,
+          "maraudon_princess_theradras": 4926,
+          "maraudon_celebras_the_cursed": 4379,
+          "maraudon_rotgrip": 1717,
+          "maraudon_noxxion": 1962,
+          "maraudon_landslide": 2683,
+          "maraudon_lord_vyletongue": 1875,
+          "maraudon_pariahs_instructions": 2061,
+          "maraudon_razorlash": 1966
+        }
+      },
+      "with-rare": {
+        "level": 49,
+        "simulatedRuns": 100000,
+        "clearRate": 0.81362,
+        "previewClearProbability": 0.8147961864740945,
+        "durationSeconds": 1453.4,
+        "wipeCounts": {
+          "maraudon_landslide": 3510,
+          "maraudon_princess_theradras": 6650,
+          "maraudon_meshlok_the_harvester": 1968,
+          "maraudon_noxxion": 2051,
+          "maraudon_celebras_the_cursed": 2480,
+          "maraudon_lord_vyletongue": 1979
+        }
+      }
+    },
+    "no-tank": {
+      "required": {
+        "level": 49,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 3.1250000000000013e-7,
+        "durationSeconds": 1553.2,
+        "wipeCounts": {
+          "maraudon_noxxion": 95012,
+          "maraudon_lord_vyletongue": 4741,
+          "maraudon_celebras_the_cursed": 235,
+          "maraudon_landslide": 12
+        }
+      },
+      "with-optional": {
+        "level": 49,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.953125000000001e-12,
+        "durationSeconds": 1995.4,
+        "wipeCounts": {
+          "maraudon_pariahs_instructions": 94973,
+          "maraudon_noxxion": 4763,
+          "maraudon_razorlash": 245,
+          "maraudon_celebras_the_cursed": 2,
+          "maraudon_lord_vyletongue": 17
+        }
+      },
+      "with-rare": {
+        "level": 49,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.5625000000000006e-8,
+        "durationSeconds": 1575,
+        "wipeCounts": {
+          "maraudon_noxxion": 95016,
+          "maraudon_lord_vyletongue": 4726,
+          "maraudon_meshlok_the_harvester": 242,
+          "maraudon_celebras_the_cursed": 15,
+          "maraudon_landslide": 1
+        }
+      }
+    },
+    "no-healing": {
+      "required": {
+        "level": 49,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 3.1250000000000013e-7,
+        "durationSeconds": 1536.6,
+        "wipeCounts": {
+          "maraudon_noxxion": 94899,
+          "maraudon_lord_vyletongue": 4852,
+          "maraudon_celebras_the_cursed": 240,
+          "maraudon_landslide": 9
+        }
+      },
+      "with-optional": {
+        "level": 49,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.953125000000001e-12,
+        "durationSeconds": 1976.8,
+        "wipeCounts": {
+          "maraudon_pariahs_instructions": 95088,
+          "maraudon_noxxion": 4664,
+          "maraudon_razorlash": 236,
+          "maraudon_lord_vyletongue": 11,
+          "maraudon_celebras_the_cursed": 1
+        }
+      },
+      "with-rare": {
+        "level": 49,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.5625000000000006e-8,
+        "durationSeconds": 1590,
+        "wipeCounts": {
+          "maraudon_noxxion": 94988,
+          "maraudon_lord_vyletongue": 4765,
+          "maraudon_meshlok_the_harvester": 235,
+          "maraudon_celebras_the_cursed": 12
+        }
+      }
+    },
+    "overlevel": {
+      "required": {
+        "level": 46,
+        "simulatedRuns": 100000,
+        "clearRate": 0.75702,
+        "previewClearProbability": 0.7575626605182622,
+        "durationSeconds": 1449.4,
+        "wipeCounts": {
+          "maraudon_lord_vyletongue": 2169,
+          "maraudon_landslide": 5200,
+          "maraudon_princess_theradras": 9496,
+          "maraudon_celebras_the_cursed": 4501,
+          "maraudon_noxxion": 2932
+        }
+      },
+      "with-optional": {
+        "level": 46,
+        "simulatedRuns": 100000,
+        "clearRate": 0.60884,
+        "previewClearProbability": 0.6103502057026388,
+        "durationSeconds": 1892,
+        "wipeCounts": {
+          "maraudon_celebras_the_cursed": 8981,
+          "maraudon_pariahs_instructions": 2010,
+          "maraudon_princess_theradras": 10966,
+          "maraudon_tinkerer_gizlock": 2313,
+          "maraudon_rotgrip": 1745,
+          "maraudon_landslide": 6120,
+          "maraudon_noxxion": 3263,
+          "maraudon_lord_vyletongue": 1849,
+          "maraudon_razorlash": 1869
+        }
+      },
+      "with-rare": {
+        "level": 46,
+        "simulatedRuns": 100000,
+        "clearRate": 0.77374,
+        "previewClearProbability": 0.7757559132195498,
+        "durationSeconds": 1468.6,
+        "wipeCounts": {
+          "maraudon_lord_vyletongue": 1993,
+          "maraudon_princess_theradras": 10132,
+          "maraudon_landslide": 3014,
+          "maraudon_celebras_the_cursed": 3523,
+          "maraudon_noxxion": 2083,
+          "maraudon_meshlok_the_harvester": 1881
+        }
+      }
+    },
+    "max-level": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.90056,
+        "previewClearProbability": 0.8991706409267566,
+        "durationSeconds": 844,
+        "wipeCounts": {
+          "maraudon_noxxion": 1941,
+          "maraudon_celebras_the_cursed": 1832,
+          "maraudon_landslide": 1882,
+          "maraudon_lord_vyletongue": 1973,
+          "maraudon_princess_theradras": 2316
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.83256,
+        "previewClearProbability": 0.8337477621301497,
+        "durationSeconds": 1051,
+        "wipeCounts": {
+          "maraudon_celebras_the_cursed": 1817,
+          "maraudon_princess_theradras": 1736,
+          "maraudon_tinkerer_gizlock": 1785,
+          "maraudon_rotgrip": 1765,
+          "maraudon_noxxion": 1901,
+          "maraudon_landslide": 1787,
+          "maraudon_razorlash": 2012,
+          "maraudon_lord_vyletongue": 1900,
+          "maraudon_pariahs_instructions": 2041
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.88644,
+        "previewClearProbability": 0.8858423808639998,
+        "durationSeconds": 870.4,
+        "wipeCounts": {
+          "maraudon_meshlok_the_harvester": 1883,
+          "maraudon_princess_theradras": 1755,
+          "maraudon_celebras_the_cursed": 1944,
+          "maraudon_noxxion": 1987,
+          "maraudon_landslide": 1810,
+          "maraudon_lord_vyletongue": 1977
+        }
+      }
+    },
+    "speed-run": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.90465,
+        "previewClearProbability": 0.9039207967999998,
+        "durationSeconds": 837,
+        "wipeCounts": {
+          "maraudon_noxxion": 1972,
+          "maraudon_celebras_the_cursed": 1933,
+          "maraudon_landslide": 1905,
+          "maraudon_princess_theradras": 1740,
+          "maraudon_lord_vyletongue": 1985
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.83491,
+        "previewClearProbability": 0.8337477621301497,
+        "durationSeconds": 1052.8,
+        "wipeCounts": {
+          "maraudon_celebras_the_cursed": 1870,
+          "maraudon_tinkerer_gizlock": 1733,
+          "maraudon_razorlash": 1825,
+          "maraudon_lord_vyletongue": 1812,
+          "maraudon_pariahs_instructions": 2084,
+          "maraudon_noxxion": 1942,
+          "maraudon_landslide": 1789,
+          "maraudon_princess_theradras": 1703,
+          "maraudon_rotgrip": 1751
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.88709,
+        "previewClearProbability": 0.8858423808639998,
+        "durationSeconds": 887.8,
+        "wipeCounts": {
+          "maraudon_lord_vyletongue": 1949,
+          "maraudon_landslide": 1883,
+          "maraudon_princess_theradras": 1734,
+          "maraudon_celebras_the_cursed": 1850,
+          "maraudon_meshlok_the_harvester": 1884,
+          "maraudon_noxxion": 1991
+        }
+      }
+    }
+  }
+}

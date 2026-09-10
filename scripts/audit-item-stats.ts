@@ -90,10 +90,14 @@ function buildReport(): string {
   const realItems = items.filter((item) => !item.isStarter);
   const starterItems = items.filter((item) => item.isStarter);
 
-  assert.equal(realItems.length, 268, "当前真实副本与任务装备数量应为 268");
+  assert.equal(realItems.length, 313, "当前真实副本与任务装备数量应为 313");
   assert.equal(starterItems.length, 41, "当前初始装备定义数量应为 41");
   for (const item of realItems) {
-    assert.ok(Object.keys(item.stats).length > 0, `${item.id} 缺少真实属性`);
+    assert.ok(
+      Object.keys(item.stats).length > 0 ||
+        (item.id === "17774" && item.statsSource.notes?.includes("触发效果暂不进入")),
+      `${item.id} 缺少真实属性或未说明暂不支持的原版触发效果`,
+    );
     assert.equal(item.statsSource.kind, "source-fact", `${item.id} 属性来源不是事实资料`);
     assert.equal(item.statsSource.provider, "wowhead-classic", `${item.id} 未引用 Wowhead`);
     assert.equal(item.statsSource.externalId, item.id, `${item.id} 外部物品 ID 不匹配`);
@@ -110,11 +114,11 @@ function buildReport(): string {
   const lines = [
     "# 当前装备属性审计",
     "",
-    "生成日期：2026-09-09",
+    "生成日期：2026-09-10",
     "",
     "## 结论",
     "",
-    `- 真实副本与任务装备：${realItems.length} / ${realItems.length} 已录入有单位属性并引用 Wowhead Classic XML。`,
+    `- 真实副本与任务装备：${realItems.length} 件均已引用 Wowhead Classic XML；其中 312 件录入可计算属性，天选者印记保留尚未进入常驻属性模型的原版触发说明。`,
     `- 初始装备：${starterItems.length} / ${starterItems.length} 已录入本游戏平衡属性，并标记 manual 与 stats balance override。`,
     "- 未确认而猜测的真实属性：0 项。",
     "- 触发效果和套装效果不作为单件常驻属性写入；相关排除项记录在物品来源说明中。",
@@ -163,7 +167,7 @@ if (mode === "--write") {
     report,
     "装备属性审计报告已变化；请显式运行 npm run item-stats:audit:write。",
   );
-  console.log("装备属性审计通过：268 件真实装备与 41 件初始装备属性完整。");
+  console.log("装备属性审计通过：313 件真实装备与 41 件初始装备资料完整。");
 } else {
   throw new Error(`未知参数：${mode}`);
 }

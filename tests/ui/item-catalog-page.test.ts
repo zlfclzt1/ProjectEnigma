@@ -73,7 +73,7 @@ describe("item catalog page", () => {
     await flushPromises();
 
     expect(wrapper.text()).toContain("装备图鉴");
-    expect(wrapper.findAll(".dungeon-catalog")).toHaveLength(15);
+    expect(wrapper.findAll(".dungeon-catalog")).toHaveLength(16);
     expect(wrapper.text()).not.toContain("狼王斗篷");
     expect(wrapper.findAll(".set-card")).toHaveLength(0);
     const setSelect = wrapper.findAll(".catalog-filters select")[2]!;

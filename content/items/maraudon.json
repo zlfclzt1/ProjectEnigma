@@ -1,0 +1,1437 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/maraudon-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对玛拉顿 34 件 Boss 装备，并通过逐件中文 XML 核对属性、图标、品质与需求等级。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-10",
+        "notes": "交叉核对玛拉顿首领、装备 ID 与掉落归属。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].restrictions", "items[].description"],
+        "reason": "按经典护甲熟练度、职业、定位与当前装备栏位规则补齐可装备性和来源说明。",
+        "decidedAt": "2026-09-10"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "17746",
+      "name": {
+        "zhCN": "诺克赛恩的镣铐",
+        "enUS": "Noxxion's Shackles"
+      },
+      "itemLevel": 51,
+      "requiredLevel": 46,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_06"
+      },
+      "description": {
+        "zhCN": "玛拉顿：诺克赛恩的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 5
+        },
+        "defense": {
+          "armorPoints": 235
+        },
+        "resistances": {
+          "naturePoints": 15
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17746",
+        "url": "https://www.wowhead.com/classic/cn/item=17746&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17744",
+      "name": {
+        "zhCN": "诺克赛恩之心",
+        "enUS": "Heart of Noxxion"
+      },
+      "itemLevel": 51,
+      "requiredLevel": 46,
+      "quality": "rare",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_gem_pearl_06"
+      },
+      "description": {
+        "zhCN": "玛拉顿：诺克赛恩的专属掉落。"
+      },
+      "stats": {
+        "resistances": {
+          "naturePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17744",
+        "url": "https://www.wowhead.com/classic/cn/item=17744&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "移除中毒的使用效果不作为单件常驻属性写入。"
+      }
+    },
+    {
+      "id": "17745",
+      "name": {
+        "zhCN": "诺克赛恩魔杖",
+        "enUS": "Noxious Shooter"
+      },
+      "itemLevel": 51,
+      "requiredLevel": 46,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_wand_04"
+      },
+      "description": {
+        "zhCN": "玛拉顿：诺克赛恩的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 7
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 56,
+            "maximumPoints": 104
+          },
+          "speedSeconds": 1.6
+        },
+        "resistances": {
+          "naturePoints": 5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17745",
+        "url": "https://www.wowhead.com/classic/cn/item=17745&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17749",
+      "name": {
+        "zhCN": "树皮肩铠",
+        "enUS": "Phytoskin Spaulders"
+      },
+      "itemLevel": 51,
+      "requiredLevel": 46,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_06"
+      },
+      "description": {
+        "zhCN": "玛拉顿：锐刺鞭笞者的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 16,
+          "staminaPoints": 10
+        },
+        "defense": {
+          "armorPoints": 111
+        },
+        "resistances": {
+          "naturePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17749",
+        "url": "https://www.wowhead.com/classic/cn/item=17749&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17748",
+      "name": {
+        "zhCN": "腐藤便鞋",
+        "enUS": "Vinerot Sandals"
+      },
+      "itemLevel": 51,
+      "requiredLevel": 46,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_05"
+      },
+      "description": {
+        "zhCN": "玛拉顿：锐刺鞭笞者的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 12,
+          "spiritPoints": 12
+        },
+        "defense": {
+          "armorPoints": 50
+        },
+        "resistances": {
+          "naturePoints": 12
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17748",
+        "url": "https://www.wowhead.com/classic/cn/item=17748&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17750",
+      "name": {
+        "zhCN": "绿瘤束带",
+        "enUS": "Chloromesh Girdle"
+      },
+      "itemLevel": 51,
+      "requiredLevel": 46,
+      "quality": "uncommon",
+      "slot": "waist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_25"
+      },
+      "description": {
+        "zhCN": "玛拉顿：锐刺鞭笞者的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 37
+        },
+        "resistances": {
+          "naturePoints": 20
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17750",
+        "url": "https://www.wowhead.com/classic/cn/item=17750&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17751",
+      "name": {
+        "zhCN": "藤蔓护腿",
+        "enUS": "Brusslehide Leggings"
+      },
+      "itemLevel": 51,
+      "requiredLevel": 46,
+      "quality": "uncommon",
+      "slot": "legs",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_05"
+      },
+      "description": {
+        "zhCN": "玛拉顿：锐刺鞭笞者的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 11,
+          "intellectPoints": 15
+        },
+        "defense": {
+          "armorPoints": 118
+        },
+        "resistances": {
+          "naturePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17751",
+        "url": "https://www.wowhead.com/classic/cn/item=17751&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17755",
+      "name": {
+        "zhCN": "萨特之鬃",
+        "enUS": "Satyrmane Sash"
+      },
+      "itemLevel": 50,
+      "requiredLevel": 45,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_24"
+      },
+      "description": {
+        "zhCN": "玛拉顿：维利塔恩的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 15
+        },
+        "defense": {
+          "armorPoints": 40
+        },
+        "resistances": {
+          "shadowPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17755",
+        "url": "https://www.wowhead.com/classic/cn/item=17755&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17754",
+      "name": {
+        "zhCN": "恶魔欺诈者护腿",
+        "enUS": "Infernal Trickster Leggings"
+      },
+      "itemLevel": 50,
+      "requiredLevel": 45,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_wolf"
+      },
+      "description": {
+        "zhCN": "玛拉顿：维利塔恩的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 20,
+          "intellectPoints": 9
+        },
+        "defense": {
+          "armorPoints": 263
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17754",
+        "url": "https://www.wowhead.com/classic/cn/item=17754&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17752",
+      "name": {
+        "zhCN": "萨特之刺",
+        "enUS": "Satyr's Lash"
+      },
+      "itemLevel": 50,
+      "requiredLevel": 45,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_shortblade_09"
+      },
+      "description": {
+        "zhCN": "玛拉顿：维利塔恩的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 39,
+            "maximumPoints": 74
+          },
+          "speedSeconds": 1.7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17752",
+        "url": "https://www.wowhead.com/classic/cn/item=17752&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17767",
+      "name": {
+        "zhCN": "花苗头饰",
+        "enUS": "Bloomsprout Headpiece"
+      },
+      "itemLevel": 51,
+      "requiredLevel": 46,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_17"
+      },
+      "description": {
+        "zhCN": "玛拉顿：收割者麦什洛克的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 18
+        },
+        "defense": {
+          "armorPoints": 249
+        },
+        "physical": {
+          "attackPowerPoints": 36,
+          "rangedAttackPowerPoints": 36
+        },
+        "resistances": {
+          "naturePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17767",
+        "url": "https://www.wowhead.com/classic/cn/item=17767&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17741",
+      "name": {
+        "zhCN": "自然的拥抱",
+        "enUS": "Nature's Embrace"
+      },
+      "itemLevel": 51,
+      "requiredLevel": 46,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_15"
+      },
+      "description": {
+        "zhCN": "玛拉顿：收割者麦什洛克的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 73
+        },
+        "spell": {
+          "healingPowerPoints": 29,
+          "manaRegenPer5Seconds": 8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17741",
+        "url": "https://www.wowhead.com/classic/cn/item=17741&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17742",
+      "name": {
+        "zhCN": "蘑菇护甲",
+        "enUS": "Fungus Shroud Armor"
+      },
+      "itemLevel": 51,
+      "requiredLevel": 46,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_leather_08"
+      },
+      "description": {
+        "zhCN": "玛拉顿：收割者麦什洛克的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 25,
+          "staminaPoints": 10
+        },
+        "defense": {
+          "armorPoints": 148
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17742",
+        "url": "https://www.wowhead.com/classic/cn/item=17742&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17740",
+      "name": {
+        "zhCN": "抚慰者头饰",
+        "enUS": "Soothsayer's Headdress"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 47,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_12"
+      },
+      "description": {
+        "zhCN": "玛拉顿：被诅咒的塞雷布拉斯的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 7,
+          "intellectPoints": 25,
+          "spiritPoints": 8
+        },
+        "defense": {
+          "armorPoints": 122
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17740",
+        "url": "https://www.wowhead.com/classic/cn/item=17740&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17739",
+      "name": {
+        "zhCN": "丛林守护者披风",
+        "enUS": "Grovekeeper's Drape"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 47,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_17"
+      },
+      "description": {
+        "zhCN": "玛拉顿：被诅咒的塞雷布拉斯的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12
+        },
+        "defense": {
+          "armorPoints": 37
+        },
+        "resistances": {
+          "naturePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17739",
+        "url": "https://www.wowhead.com/classic/cn/item=17739&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17738",
+      "name": {
+        "zhCN": "塞雷布拉斯之爪",
+        "enUS": "Claw of Celebras"
+      },
+      "itemLevel": 52,
+      "requiredLevel": 47,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "ability_whirlwind"
+      },
+      "description": {
+        "zhCN": "玛拉顿：被诅咒的塞雷布拉斯的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 43,
+            "maximumPoints": 81
+          },
+          "speedSeconds": 1.8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17738",
+        "url": "https://www.wowhead.com/classic/cn/item=17738&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17734",
+      "name": {
+        "zhCN": "山脉头盔",
+        "enUS": "Helm of the Mountain"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_20"
+      },
+      "description": {
+        "zhCN": "玛拉顿：兰斯利德的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 683,
+          "defenseSkillPoints": 7
+        },
+        "resistances": {
+          "naturePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17734",
+        "url": "https://www.wowhead.com/classic/cn/item=17734&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17736",
+      "name": {
+        "zhCN": "石钳护手",
+        "enUS": "Rockgrip Gauntlets"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_28"
+      },
+      "description": {
+        "zhCN": "玛拉顿：兰斯利德的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 10
+        },
+        "defense": {
+          "armorPoints": 198
+        },
+        "physical": {
+          "attackPowerPoints": 28,
+          "rangedAttackPowerPoints": 28
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17736",
+        "url": "https://www.wowhead.com/classic/cn/item=17736&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17737",
+      "name": {
+        "zhCN": "云石",
+        "enUS": "Cloud Stone"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["paladin", "priest", "shaman", "mage", "warlock", "druid"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_orb_01"
+      },
+      "description": {
+        "zhCN": "玛拉顿：兰斯利德的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 10,
+          "spiritPoints": 10
+        },
+        "resistances": {
+          "arcanePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17737",
+        "url": "https://www.wowhead.com/classic/cn/item=17737&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17943",
+      "name": {
+        "zhCN": "石拳",
+        "enUS": "Fist of Stone"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "rogue", "priest", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_hammer_17"
+      },
+      "description": {
+        "zhCN": "玛拉顿：兰斯利德的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 44,
+            "maximumPoints": 83
+          },
+          "speedSeconds": 1.8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17943",
+        "url": "https://www.wowhead.com/classic/cn/item=17943&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17718",
+      "name": {
+        "zhCN": "吉兹洛克的高科技圆盾",
+        "enUS": "Gizlock's Hypertech Buckler"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shield_10"
+      },
+      "description": {
+        "zhCN": "玛拉顿：工匠吉兹洛克的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 5,
+          "intellectPoints": 10
+        },
+        "defense": {
+          "armorPoints": 1835,
+          "blockValuePoints": 32
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17718",
+        "url": "https://www.wowhead.com/classic/cn/item=17718&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17717",
+      "name": {
+        "zhCN": "超射程精密步枪",
+        "enUS": "Megashot Rifle"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_rifle_05"
+      },
+      "description": {
+        "zhCN": "玛拉顿：工匠吉兹洛克的专属掉落。"
+      },
+      "stats": {
+        "physical": {
+          "rangedAttackPowerPoints": 19
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 32,
+            "maximumPoints": 61
+          },
+          "speedSeconds": 1.7
+        },
+        "resistances": {
+          "arcanePoints": 5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17717",
+        "url": "https://www.wowhead.com/classic/cn/item=17717&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17719",
+      "name": {
+        "zhCN": "发明家的聚焦剑",
+        "enUS": "Inventor's Focal Sword"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_14"
+      },
+      "description": {
+        "zhCN": "玛拉顿：工匠吉兹洛克的专属掉落。"
+      },
+      "stats": {
+        "spell": {
+          "criticalStrikePercent": 1
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 54,
+            "maximumPoints": 101
+          },
+          "speedSeconds": 2.2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17719",
+        "url": "https://www.wowhead.com/classic/cn/item=17719&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17732",
+      "name": {
+        "zhCN": "洛特格里普衬肩",
+        "enUS": "Rotgrip Mantle"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_05"
+      },
+      "description": {
+        "zhCN": "玛拉顿：洛特格里普的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 17,
+          "spiritPoints": 11
+        },
+        "defense": {
+          "armorPoints": 57
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17732",
+        "url": "https://www.wowhead.com/classic/cn/item=17732&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17728",
+      "name": {
+        "zhCN": "白鳄长靴",
+        "enUS": "Albino Crocscale Boots"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_05"
+      },
+      "description": {
+        "zhCN": "玛拉顿：洛特格里普的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 20,
+          "staminaPoints": 5
+        },
+        "defense": {
+          "armorPoints": 105
+        },
+        "resistances": {
+          "naturePoints": 5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17728",
+        "url": "https://www.wowhead.com/classic/cn/item=17728&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17730",
+      "name": {
+        "zhCN": "鳄齿利斧",
+        "enUS": "Gatorbite Axe"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 48,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_axe_04"
+      },
+      "description": {
+        "zhCN": "玛拉顿：洛特格里普的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 117,
+            "maximumPoints": 176
+          },
+          "speedSeconds": 3.2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17730",
+        "url": "https://www.wowhead.com/classic/cn/item=17730&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17780",
+      "name": {
+        "zhCN": "无尽黑暗之刃",
+        "enUS": "Blade of Eternal Darkness"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "epic",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_09"
+      },
+      "description": {
+        "zhCN": "玛拉顿：瑟莱德丝公主的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 34,
+            "maximumPoints": 70
+          },
+          "speedSeconds": 1.5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17780",
+        "url": "https://www.wowhead.com/classic/cn/item=17780&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "伤害法术触发的暗影伤害与法力回复不作为单件常驻属性写入。"
+      }
+    },
+    {
+      "id": "17715",
+      "name": {
+        "zhCN": "瑟莱德丝之眼",
+        "enUS": "Eye of Theradras"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_crown_01"
+      },
+      "description": {
+        "zhCN": "玛拉顿：瑟莱德丝公主的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 13,
+          "intellectPoints": 20,
+          "spiritPoints": 11
+        },
+        "defense": {
+          "armorPoints": 63
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17715",
+        "url": "https://www.wowhead.com/classic/cn/item=17715&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17707",
+      "name": {
+        "zhCN": "碎玉之心",
+        "enUS": "Gemshard Heart"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_stone_01"
+      },
+      "description": {
+        "zhCN": "玛拉顿：瑟莱德丝公主的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 10,
+          "spiritPoints": 6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17707",
+        "url": "https://www.wowhead.com/classic/cn/item=17707&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17714",
+      "name": {
+        "zhCN": "岩石公主护腕",
+        "enUS": "Bracers of the Stone Princess"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_14"
+      },
+      "description": {
+        "zhCN": "玛拉顿：瑟莱德丝公主的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 6,
+          "intellectPoints": 5
+        },
+        "defense": {
+          "armorPoints": 141
+        },
+        "physical": {
+          "attackPowerPoints": 30,
+          "rangedAttackPowerPoints": 30
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17714",
+        "url": "https://www.wowhead.com/classic/cn/item=17714&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17711",
+      "name": {
+        "zhCN": "元素石脊护腿",
+        "enUS": "Elemental Rockridge Leggings"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_04"
+      },
+      "description": {
+        "zhCN": "玛拉顿：瑟莱德丝公主的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 20,
+          "staminaPoints": 18
+        },
+        "defense": {
+          "armorPoints": 496
+        },
+        "resistances": {
+          "naturePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17711",
+        "url": "https://www.wowhead.com/classic/cn/item=17711&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17713",
+      "name": {
+        "zhCN": "黑石戒指",
+        "enUS": "Blackstone Ring"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_17"
+      },
+      "description": {
+        "zhCN": "玛拉顿：瑟莱德丝公主的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 6
+        },
+        "physical": {
+          "attackPowerPoints": 20,
+          "rangedAttackPowerPoints": 20,
+          "hitPercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17713",
+        "url": "https://www.wowhead.com/classic/cn/item=17713&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17710",
+      "name": {
+        "zhCN": "焦石飞镖",
+        "enUS": "Charstone Dirk"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_shortblade_14"
+      },
+      "description": {
+        "zhCN": "玛拉顿：瑟莱德丝公主的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 11
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 2
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 40,
+            "maximumPoints": 75
+          },
+          "speedSeconds": 1.6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17710",
+        "url": "https://www.wowhead.com/classic/cn/item=17710&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17766",
+      "name": {
+        "zhCN": "瑟莱德丝公主的节杖",
+        "enUS": "Princess Theradras' Scepter"
+      },
+      "itemLevel": 54,
+      "requiredLevel": 49,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_hammer_10"
+      },
+      "description": {
+        "zhCN": "玛拉顿：瑟莱德丝公主的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 126,
+            "maximumPoints": 190
+          },
+          "speedSeconds": 3.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17766",
+        "url": "https://www.wowhead.com/classic/cn/item=17766&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    }
+  ]
+}

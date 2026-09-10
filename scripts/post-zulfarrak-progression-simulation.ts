@@ -431,7 +431,7 @@ export interface PostZulfarrakProgressionBaseline {
     readonly normalRecruitment: "one-random-newcomer-boosted-once";
     readonly lootHandling: "auto-assign-after-each-player-scheduled-activity";
     readonly offlineIncome: "none-outside-player-scheduled-activities";
-    readonly expectedStop: "content-cap-until-level-46-plus-content-exists";
+    readonly expectedStop: "content-cap-after-maraudon-until-level-50-plus-content-exists";
   };
   readonly highestAvailableRecommendedLevel: number;
   readonly scenarios: readonly PostZulfarrakScenarioSummary[];
@@ -496,7 +496,7 @@ export function buildPostZulfarrakProgressionBaseline(
       normalRecruitment: "one-random-newcomer-boosted-once",
       lootHandling: "auto-assign-after-each-player-scheduled-activity",
       offlineIncome: "none-outside-player-scheduled-activities",
-      expectedStop: "content-cap-until-level-46-plus-content-exists",
+      expectedStop: "content-cap-after-maraudon-until-level-50-plus-content-exists",
     },
     highestAvailableRecommendedLevel: Math.max(
       ...content.dungeons.map((dungeon) => dungeon.recommendedLevel),

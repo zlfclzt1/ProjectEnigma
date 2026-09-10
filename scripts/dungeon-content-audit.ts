@@ -130,7 +130,7 @@ export function renderDungeonContentAudit(audit: DungeonContentAudit): string {
   const lines = [
     "# 副本内容完整度审计",
     "",
-    "生成日期：2026-09-09",
+    "生成日期：2026-09-10",
     "",
     "本报告检查路线节点、Encounter、掉落来源、任务奖励、随机词缀和套装引用，不替代外部资料核对或数值平衡模拟。",
     "",

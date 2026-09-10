@@ -27,7 +27,7 @@ describe("item definitions", () => {
   it("loads all 268 current dungeon and quest items with stable IDs and database icons", () => {
     const dungeonItems = migratedItems.filter((item) => !item.isStarter);
 
-    expect(dungeonItems).toHaveLength(268);
+    expect(dungeonItems).toHaveLength(313);
     expect(dungeonItems.map((item) => item.id)).toEqual(
       expect.arrayContaining(["14149", "15451", "15452", "6324"]),
     );
@@ -71,7 +71,13 @@ describe("item definitions", () => {
   it("keeps IDs unique and attributes every imported stat payload", () => {
     const ids = migratedItems.map((item) => item.id);
     expect(new Set(ids).size).toBe(ids.length);
-    expect(migratedItems.every((item) => Object.keys(item.stats).length > 0)).toBe(true);
+    expect(
+      migratedItems.every(
+        (item) =>
+          Object.keys(item.stats).length > 0 ||
+          (item.id === "17774" && item.statsSource.notes?.includes("触发效果暂不进入")),
+      ),
+    ).toBe(true);
     expect(
       migratedItems
         .filter((item) => !item.isStarter)
@@ -80,7 +86,7 @@ describe("item definitions", () => {
             item.statsSource.provider === "wowhead-classic" &&
             item.statsSource.gameVersion === "classic-2019-phase-6" &&
             item.statsSource.externalId === item.id &&
-            /^2026-09-0[89]$/.test(item.statsSource.verifiedAt),
+            /^2026-09-(0[89]|10)$/.test(item.statsSource.verifiedAt),
         ),
     ).toBe(true);
     expect(

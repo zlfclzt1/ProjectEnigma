@@ -271,7 +271,7 @@ test("completes the playable zulfarrak stage and keeps the guild running", async
     await expect(quest).toContainText("已接取");
 
     await page.getByRole("link", { name: "副本组队" }).click();
-    await page.locator(".dungeon-selector button", { hasText: "祖尔法拉克" }).click();
+    await page.getByRole("button", { name: /^可出发 祖尔法拉克 / }).click();
     await page.getByRole("button", { name: "升级至 5 次 · 1000 G" }).click();
     await expect(page.locator(".page-heading select option")).toHaveCount(5);
 
@@ -341,9 +341,10 @@ test("completes the playable zulfarrak stage and keeps the guild running", async
       "已领取",
     );
     await page.getByRole("link", { name: "副本组队" }).click();
-    await expect(page.locator(".dungeon-selector button", { hasText: "祖尔法拉克" })).toContainText(
+    await expect(page.getByRole("button", { name: /^可出发 祖尔法拉克 / })).toContainText(
       "完整通关：1 次",
     );
+    await expect(page.getByRole("button", { name: /^可出发 玛拉顿 / })).toBeVisible();
     await expect(page.locator(".page-heading select option")).toHaveCount(5);
     await page.getByRole("link", { name: "招募大厅" }).click();
     await expect(page.getByRole("heading", { name: "今天谁在找公会？" })).toBeVisible();

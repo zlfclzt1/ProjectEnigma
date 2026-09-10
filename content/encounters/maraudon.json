@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/maraudon-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对玛拉顿首领分裂、随从、击退、毒素、纠缠、践踏与范围伤害机制。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-10",
+        "notes": "阶段时长、战斗需求、经验、资金和首杀奖励作为后续 45–60 级模拟前的保守初始基线。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "encounters": [
+    {
+      "id": "maraudon_pariahs_instructions",
+      "dungeonId": "maraudon",
+      "name": { "zhCN": "贱民的指引" },
+      "stageSeconds": 100,
+      "requirements": { "tank": 46, "healing": 49, "damage": 208 },
+      "weights": { "tank": 0.32, "healing": 0.3, "damage": 0.38 },
+      "experienceShare": 0.08,
+      "funds": 72,
+      "firstKillBonus": 144,
+      "mechanicIds": ["maraudon_pariah_khans"]
+    },
+    {
+      "id": "maraudon_noxxion",
+      "dungeonId": "maraudon",
+      "name": { "zhCN": "诺克赛恩" },
+      "stageSeconds": 170,
+      "requirements": { "tank": 48, "healing": 52, "damage": 214 },
+      "weights": { "tank": 0.29, "healing": 0.36, "damage": 0.35 },
+      "experienceShare": 0.16,
+      "funds": 118,
+      "firstKillBonus": 236,
+      "lootTableId": "maraudon_noxxion",
+      "mechanicIds": ["maraudon_noxxion_split"]
+    },
+    {
+      "id": "maraudon_razorlash",
+      "dungeonId": "maraudon",
+      "name": { "zhCN": "锐刺鞭笞者" },
+      "stageSeconds": 90,
+      "requirements": { "tank": 49, "healing": 52, "damage": 216 },
+      "weights": { "tank": 0.36, "healing": 0.34, "damage": 0.3 },
+      "experienceShare": 0.09,
+      "funds": 84,
+      "firstKillBonus": 168,
+      "lootTableId": "maraudon_razorlash",
+      "mechanicIds": ["maraudon_razorlash_sweep"]
+    },
+    {
+      "id": "maraudon_lord_vyletongue",
+      "dungeonId": "maraudon",
+      "name": { "zhCN": "维利塔恩" },
+      "stageSeconds": 170,
+      "requirements": { "tank": 49, "healing": 54, "damage": 218 },
+      "weights": { "tank": 0.29, "healing": 0.37, "damage": 0.34 },
+      "experienceShare": 0.16,
+      "funds": 122,
+      "firstKillBonus": 244,
+      "lootTableId": "maraudon_lord_vyletongue",
+      "mechanicIds": ["maraudon_vyletongue_pack", "maraudon_vyletongue_poison"]
+    },
+    {
+      "id": "maraudon_meshlok_the_harvester",
+      "dungeonId": "maraudon",
+      "name": { "zhCN": "收割者麦什洛克" },
+      "stageSeconds": 70,
+      "requirements": { "tank": 49, "healing": 53, "damage": 218 },
+      "weights": { "tank": 0.3, "healing": 0.35, "damage": 0.35 },
+      "experienceShare": 0.06,
+      "funds": 66,
+      "firstKillBonus": 132,
+      "lootTableId": "maraudon_meshlok_the_harvester",
+      "mechanicIds": ["maraudon_meshlok_spores"]
+    },
+    {
+      "id": "maraudon_celebras_the_cursed",
+      "dungeonId": "maraudon",
+      "name": { "zhCN": "被诅咒的塞雷布拉斯" },
+      "stageSeconds": 220,
+      "requirements": { "tank": 51, "healing": 56, "damage": 224 },
+      "weights": { "tank": 0.27, "healing": 0.38, "damage": 0.35 },
+      "experienceShare": 0.18,
+      "funds": 132,
+      "firstKillBonus": 264,
+      "lootTableId": "maraudon_celebras_the_cursed",
+      "mechanicIds": ["maraudon_celebras_treants", "maraudon_celebras_roots"]
+    },
+    {
+      "id": "maraudon_landslide",
+      "dungeonId": "maraudon",
+      "name": { "zhCN": "兰斯利德" },
+      "stageSeconds": 240,
+      "requirements": { "tank": 54, "healing": 57, "damage": 230 },
+      "weights": { "tank": 0.39, "healing": 0.34, "damage": 0.27 },
+      "experienceShare": 0.2,
+      "funds": 142,
+      "firstKillBonus": 284,
+      "lootTableId": "maraudon_landslide",
+      "mechanicIds": ["maraudon_landslide_stomp"]
+    },
+    {
+      "id": "maraudon_tinkerer_gizlock",
+      "dungeonId": "maraudon",
+      "name": { "zhCN": "工匠吉兹洛克" },
+      "stageSeconds": 100,
+      "requirements": { "tank": 52, "healing": 58, "damage": 228 },
+      "weights": { "tank": 0.27, "healing": 0.4, "damage": 0.33 },
+      "experienceShare": 0.1,
+      "funds": 98,
+      "firstKillBonus": 196,
+      "lootTableId": "maraudon_tinkerer_gizlock",
+      "mechanicIds": ["maraudon_gizlock_ordnance"]
+    },
+    {
+      "id": "maraudon_rotgrip",
+      "dungeonId": "maraudon",
+      "name": { "zhCN": "洛特格里普" },
+      "stageSeconds": 90,
+      "requirements": { "tank": 55, "healing": 59, "damage": 230 },
+      "weights": { "tank": 0.42, "healing": 0.38, "damage": 0.2 },
+      "experienceShare": 0.1,
+      "funds": 102,
+      "firstKillBonus": 204,
+      "lootTableId": "maraudon_rotgrip",
+      "mechanicIds": ["maraudon_rotgrip_bleed"]
+    },
+    {
+      "id": "maraudon_princess_theradras",
+      "dungeonId": "maraudon",
+      "name": { "zhCN": "瑟莱德丝公主" },
+      "stageSeconds": 470,
+      "requirements": { "tank": 58, "healing": 62, "damage": 242 },
+      "weights": { "tank": 0.37, "healing": 0.38, "damage": 0.25 },
+      "experienceShare": 0.3,
+      "funds": 178,
+      "firstKillBonus": 356,
+      "lootTableId": "maraudon_princess_theradras",
+      "mechanicIds": ["maraudon_princess_dust_field", "maraudon_princess_knockback"]
+    }
+  ]
+}

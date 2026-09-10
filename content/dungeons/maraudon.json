@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/maraudon-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对玛拉顿两侧入口、瀑布深层、主要首领、可选首领与随机稀有首领。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对十五个首领或任务记录及九张装备掉落表。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-10",
+        "notes": "用单一稳定路线覆盖橙色、紫色与瀑布深层；四个主动节点表达支路，麦什洛克使用随机稀有节点。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["minimumLevel", "recommendedLevel", "duration", "probability", "route"],
+        "reason": "按祖尔法拉克后的 46–49 级升级入口、约 22 分钟主线与约 29 分钟完整路线设置初始参数。",
+        "decidedAt": "2026-09-10"
+      }
+    ]
+  },
+  "dungeons": [
+    {
+      "id": "maraudon",
+      "name": {
+        "zhCN": "玛拉顿",
+        "enUS": "Maraudon"
+      },
+      "minimumLevel": 45,
+      "recommendedLevel": 49,
+      "defaultUnlocked": false,
+      "unlock": {
+        "requiredDungeonIds": ["zulfarrak"]
+      },
+      "members": {
+        "minimum": 1,
+        "maximum": 5,
+        "recommended": 5
+      },
+      "duration": {
+        "baseSeconds": 1720,
+        "minimumRatio": 0.48,
+        "maximumRatio": 1.8
+      },
+      "probability": {
+        "minimum": 0.05,
+        "maximum": 0.99,
+        "base": 0.05,
+        "readinessMultiplier": 0.97,
+        "surplusEffect": 0.5,
+        "geometricWeight": 0.7,
+        "bottleneckWeight": 0.3,
+        "overpowerThreshold": 1.5
+      },
+      "combatTuning": {
+        "bossProbabilityMaximum": 0.98,
+        "requirementMultipliers": {
+          "tank": 0.68,
+          "healing": 0.68,
+          "damage": 0.68
+        }
+      },
+      "route": [
+        {
+          "id": "maraudon_pariahs_instructions",
+          "type": "optional",
+          "encounterId": "maraudon_pariahs_instructions",
+          "description": {
+            "zhCN": "主动追踪无名预言者与五可汗，完成联合坠饰并领取天选者印记。"
+          }
+        },
+        {
+          "id": "maraudon_noxxion",
+          "type": "required",
+          "encounterId": "maraudon_noxxion"
+        },
+        {
+          "id": "maraudon_razorlash",
+          "type": "optional",
+          "encounterId": "maraudon_razorlash",
+          "description": {
+            "zhCN": "深入橙色入口岔路，主动挑战锐刺鞭笞者并清理污染藤蔓。"
+          }
+        },
+        {
+          "id": "maraudon_lord_vyletongue",
+          "type": "required",
+          "encounterId": "maraudon_lord_vyletongue"
+        },
+        {
+          "id": "maraudon_meshlok_the_harvester",
+          "type": "rare",
+          "encounterId": "maraudon_meshlok_the_harvester",
+          "spawnProbability": 0.12
+        },
+        {
+          "id": "maraudon_celebras_the_cursed",
+          "type": "required",
+          "encounterId": "maraudon_celebras_the_cursed"
+        },
+        {
+          "id": "maraudon_landslide",
+          "type": "required",
+          "encounterId": "maraudon_landslide"
+        },
+        {
+          "id": "maraudon_tinkerer_gizlock",
+          "type": "optional",
+          "encounterId": "maraudon_tinkerer_gizlock",
+          "description": {
+            "zhCN": "绕入地精工坊，主动挑战工匠吉兹洛克。"
+          }
+        },
+        {
+          "id": "maraudon_rotgrip",
+          "type": "optional",
+          "encounterId": "maraudon_rotgrip",
+          "description": {
+            "zhCN": "进入地下水域，主动猎杀白色鳄鱼洛特格里普。"
+          }
+        },
+        {
+          "id": "maraudon_princess_theradras",
+          "type": "required",
+          "encounterId": "maraudon_princess_theradras"
+        }
+      ]
+    }
+  ]
+}

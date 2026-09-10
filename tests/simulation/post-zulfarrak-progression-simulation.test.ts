@@ -20,12 +20,13 @@ describe("post-Zul'Farrak progression simulation", () => {
     expect(first.targetReached).toBe(false);
     expect(first.daysToTarget).toBeNull();
     expect(first.levelCap).toBe(60);
-    expect(first.highestAvailableRecommendedLevel).toBe(45);
+    expect(first.highestAvailableRecommendedLevel).toBe(49);
     expect(first.minimumCoreLevel).toBeGreaterThan(45);
     expect(first.maximumCoreLevel).toBeLessThan(60);
     expect(first.activitiesStarted).toBeGreaterThan(0);
     expect(first.attemptedDungeonRuns).toBeGreaterThan(0);
     expect(first.attemptedDungeonIds).toContain("zulfarrak");
+    expect(first.attemptedDungeonIds).toContain("maraudon");
     expect(first.recruitedMemberCount).toBe(1);
     expect(first.boostedRunCount).toBe(1);
     expect(first.lootAssignments + first.lootSales).toBeGreaterThan(0);
@@ -39,14 +40,14 @@ describe("post-Zul'Farrak progression simulation", () => {
       type: "dungeon-first-clear",
       dungeonId: "upper_blackrock_spire",
     });
-    expect(baseline.highestAvailableRecommendedLevel).toBe(45);
+    expect(baseline.highestAvailableRecommendedLevel).toBe(49);
     expect(baseline.policy.levelCap).toBe(60);
     expect(baseline.policy.oldContent).toBe("all-fifteen-dungeons-remain-repeatable");
     expect(baseline.policy.offlineIncome).toBe("none-outside-player-scheduled-activities");
     for (const scenario of baseline.scenarios) {
       expect(scenario.outcomes["content-cap"]).toBe(baseline.sampleCount);
       expect(scenario.outcomes["target-reached"]).toBe(0);
-      expect(scenario.minimumCoreLevel.p50).toBeGreaterThan(45);
+      expect(scenario.minimumCoreLevel.p50).toBe(57);
       expect(scenario.maximumCoreLevel.p90).toBeLessThan(60);
       expect(scenario.activitiesStarted.p50).toBeGreaterThan(0);
       expect(scenario.boostedRunCount.p50).toBe(1);

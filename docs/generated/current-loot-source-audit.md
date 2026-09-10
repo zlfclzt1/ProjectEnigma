@@ -1,17 +1,17 @@
 # 当前副本掉落来源审计
 
-生成日期：2026-09-09
+生成日期：2026-09-10
 
 本报告只描述当前内容元数据和引用关系，不修改掉落、概率或装备属性。分类规则以掉落表 `sourceType` 为准；未填写时按现有兼容规则视为 Boss 专属掉落。
 
 ## 汇总
 
-- 路线 Encounter：94。
-- 掉落表：78。
-- 掉落表分类：Boss 专属掉落 78，任务奖励 0，世界掉落 0，设计占位 0。
-- Encounter 引用分类：Boss 专属掉落 78，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 16。
-- 不同装备分类：Boss 专属掉落 210，任务奖励 0，世界掉落 0，设计占位 0。
-- 成员副本任务：26，不同任务奖励装备：58。
+- 路线 Encounter：104。
+- 掉落表：87。
+- 掉落表分类：Boss 专属掉落 87，任务奖励 0，世界掉落 0，设计占位 0。
+- Encounter 引用分类：Boss 专属掉落 87，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 17。
+- 不同装备分类：Boss 专属掉落 244，任务奖励 0，世界掉落 0，设计占位 0。
+- 成员副本任务：30，不同任务奖励装备：69。
 - Boss 掉落与任务奖励重复：0。
 - 未显式填写 `sourceType` 的 Boss 掉落表：0。
 - 未被路线 Encounter 引用的掉落表：0。
@@ -58,6 +58,21 @@
 | 群体打击者9-60（gnomeregan_crowd_pummeler_9_60） | gnomeregan_crowd_pummeler_9_60 | Boss 专属掉落 | 1 | 9449 手动惩戒器、9450 侏儒机械人操作靴 |
 | 黑铁大师（gnomeregan_dark_iron_ambassador） | gnomeregan_dark_iron_ambassador | Boss 专属掉落 | 1 | 9456 玻璃枪、9457 皇家外交官节杖、9455 使者腕轮 |
 | 麦克尼尔·瑟玛普拉格（gnomeregan_mekgineer_thermaplugg） | gnomeregan_mekgineer_thermaplugg | Boss 专属掉落 | 1 | 9458 瑟玛普拉格的中央模组、9459 瑟玛普拉格的左臂、9461 充能齿轮、9492 电磁熔合激活器 |
+
+### 玛拉顿（maraudon）
+
+| Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
+|---|---|---|---:|---|
+| 贱民的指引（maraudon_pariahs_instructions） | — | 无装备掉落 | 0 | — |
+| 诺克赛恩（maraudon_noxxion） | maraudon_noxxion | Boss 专属掉落 | 1 | 17746 诺克赛恩的镣铐、17744 诺克赛恩之心、17745 诺克赛恩魔杖 |
+| 锐刺鞭笞者（maraudon_razorlash） | maraudon_razorlash | Boss 专属掉落 | 1 | 17749 树皮肩铠、17748 腐藤便鞋、17750 绿瘤束带、17751 藤蔓护腿 |
+| 维利塔恩（maraudon_lord_vyletongue） | maraudon_lord_vyletongue | Boss 专属掉落 | 1 | 17755 萨特之鬃、17754 恶魔欺诈者护腿、17752 萨特之刺 |
+| 收割者麦什洛克（maraudon_meshlok_the_harvester） | maraudon_meshlok_the_harvester | Boss 专属掉落 | 1 | 17767 花苗头饰、17741 自然的拥抱、17742 蘑菇护甲 |
+| 被诅咒的塞雷布拉斯（maraudon_celebras_the_cursed） | maraudon_celebras_the_cursed | Boss 专属掉落 | 1 | 17740 抚慰者头饰、17739 丛林守护者披风、17738 塞雷布拉斯之爪 |
+| 兰斯利德（maraudon_landslide） | maraudon_landslide | Boss 专属掉落 | 1 | 17734 山脉头盔、17736 石钳护手、17737 云石、17943 石拳 |
+| 工匠吉兹洛克（maraudon_tinkerer_gizlock） | maraudon_tinkerer_gizlock | Boss 专属掉落 | 1 | 17718 吉兹洛克的高科技圆盾、17717 超射程精密步枪、17719 发明家的聚焦剑 |
+| 洛特格里普（maraudon_rotgrip） | maraudon_rotgrip | Boss 专属掉落 | 1 | 17732 洛特格里普衬肩、17728 白鳄长靴、17730 鳄齿利斧 |
+| 瑟莱德丝公主（maraudon_princess_theradras） | maraudon_princess_theradras | Boss 专属掉落 | 1 | 17780 无尽黑暗之刃、17715 瑟莱德丝之眼、17707 碎玉之心、17714 岩石公主护腕、17711 元素石脊护腿、17713 黑石戒指、17710 焦石飞镖、17766 瑟莱德丝公主的节杖 |
 
 ### 怒焰裂谷（ragefire_chasm）
 
@@ -201,6 +216,10 @@
 | 诺莫瑞根（gnomeregan） | 大叛乱（gnomeregan_the_grand_betrayal） | 9623 公民长袍、9624 旅行皮裤、9625 双链护腿 |
 | 诺莫瑞根（gnomeregan） | 数据救援（gnomeregan_data_rescue） | 9605 修理工的斗篷、9604 蒸汽锤 |
 | 诺莫瑞根（gnomeregan） | 陀螺钻挖掘器（gnomeregan_gyrodrillmatic_excavationators） | 9608 舒尼的扳手、9609 欺诈手套 |
+| 玛拉顿（maraudon） | 维利塔恩的污染（maraudon_vyletongue_corruption） | 17768 树种之环、17778 山艾束腰、17770 枝爪护手 |
+| 玛拉顿（maraudon） | 贱民的指引（maraudon_pariahs_instructions） | 17774 天选者印记 |
+| 玛拉顿（maraudon） | 扭曲的邪恶（maraudon_twisted_evils） | 17775 聪颖长袍、17776 轻环头盔、17777 无情链甲、17779 巨石肩铠 |
+| 玛拉顿（maraudon） | 大地的污染（maraudon_corruption_of_earth_and_seed） | 17705 痛击之刃、17753 绿色守护者之弓、17743 苏醒之杖 |
 | 怒焰裂谷（ragefire_chasm） | 归还背包（rfc_returning_lost_satchel） | 15452 羽珠护腕、15453 草原狮护腕 |
 | 怒焰裂谷（ragefire_chasm） | 毁灭之力（rfc_power_to_destroy） | 15449 苍白长裤、15450 泥泞护腿、15451 石像鬼护腿 |
 | 剃刀高地（razorfen_downs） | 封印神像（razorfen_downs_extinguishing_the_idol） | 10710 龙爪戒指 |

@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-10",
+        "notes": "玛拉顿副本日志；只描述已经结算的主动路线与战斗事实。"
+      }
+    ]
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "maraudon_pariahs_instructions_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "maraudon_pariahs_instructions" },
+      "availableParameters": ["member", "tank"],
+      "templates": [
+        "{member}把五枚可汗宝石逐一嵌入护符，联合坠饰终于恢复完整。",
+        "{tank}确认入口洞穴已经清理，贱民的指引可以回去交差了。"
+      ]
+    },
+    {
+      "id": "maraudon_noxxion_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "maraudon_noxxion" },
+      "availableParameters": ["member", "healer"],
+      "templates": [
+        "诺克赛恩分裂成幼体时，{member}用一轮范围攻击清空了水池。",
+        "最后一只幼体倒下后，{healer}终于不用再和自然毒素赛跑。"
+      ]
+    },
+    {
+      "id": "maraudon_razorlash_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "maraudon_razorlash" },
+      "availableParameters": ["tank", "member"],
+      "templates": [
+        "锐刺鞭笞者挥出横扫，{tank}仍把正面牢牢留在队伍外侧。",
+        "击退没有打乱节奏，{member}沿橙色岔路完成了这场主动挑战。"
+      ]
+    },
+    {
+      "id": "maraudon_lord_vyletongue_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "maraudon_lord_vyletongue" },
+      "availableParameters": ["member", "healer"],
+      "templates": [
+        "{member}控制住萨特随从，维利塔恩的潜行突袭没能形成合围。",
+        "污染毒素被及时解除，{healer}把紫色入口的恢复压力压了下去。"
+      ]
+    },
+    {
+      "id": "maraudon_meshlok_the_harvester_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "maraudon_meshlok_the_harvester" },
+      "availableParameters": ["member", "healer"],
+      "templates": [
+        "麦什洛克从邪恶洞穴的菌丛中现身，{member}立刻标记了这次稀有刷新。",
+        "孢子被清理后，{healer}确认这场意外遭遇没有拖垮深层路线。"
+      ]
+    },
+    {
+      "id": "maraudon_celebras_the_cursed_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "maraudon_celebras_the_cursed" },
+      "availableParameters": ["member", "healer"],
+      "templates": [
+        "{member}打断塞雷布拉斯的治疗之触，树人随从也随即倒下。",
+        "纠缠根须被驱散后，{healer}带着队伍穿过两翼汇合处。"
+      ]
+    },
+    {
+      "id": "maraudon_landslide_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "maraudon_landslide" },
+      "availableParameters": ["tank", "member"],
+      "templates": [
+        "兰斯利德的践踏震动整片洞穴，{tank}仍顶住了石元素的夹击。",
+        "{member}清完最后一批小石元素，通往公主的深层路线重新安静下来。"
+      ]
+    },
+    {
+      "id": "maraudon_tinkerer_gizlock_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "maraudon_tinkerer_gizlock" },
+      "availableParameters": ["member", "healer"],
+      "templates": [
+        "吉兹洛克刚举起炸弹，{member}已经让他的地精军火提前熄火。",
+        "龙息扫过工坊，{healer}在下一轮枪击前稳住了全队。"
+      ]
+    },
+    {
+      "id": "maraudon_rotgrip_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "maraudon_rotgrip" },
+      "availableParameters": ["tank", "healer"],
+      "templates": [
+        "洛特格里普咬住{tank}时，{healer}已经开始覆盖下一次撕裂。",
+        "白色鳄鱼沉入水底，这条主动支路总算带着装备价值收尾。"
+      ]
+    },
+    {
+      "id": "maraudon_princess_theradras_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "maraudon_princess_theradras" },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "瑟莱德丝公主掀起尘土力场，{tank}在击退后重新接住了她。",
+        "{healer}撑过最后一轮范围伤害，{member}完成了玛拉顿的首次深层全通。"
+      ]
+    }
+  ]
+}

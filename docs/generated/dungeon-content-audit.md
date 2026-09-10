@@ -1,6 +1,6 @@
 # 副本内容完整度审计
 
-生成日期：2026-09-09
+生成日期：2026-09-10
 
 本报告检查路线节点、Encounter、掉落来源、任务奖励、随机词缀和套装引用，不替代外部资料核对或数值平衡模拟。
 
@@ -30,6 +30,16 @@
 | 诺莫瑞根（gnomeregan） | gnomeregan_crowd_pummeler_9_60 | required | 群体打击者9-60（gnomeregan_crowd_pummeler_9_60） | boss_drop:gnomeregan_crowd_pummeler_9_60 | 1 | 9449 手动惩戒器、9450 侏儒机械人操作靴 |
 | 诺莫瑞根（gnomeregan） | gnomeregan_dark_iron_ambassador | rare（0.18） | 黑铁大师（gnomeregan_dark_iron_ambassador） | boss_drop:gnomeregan_dark_iron_ambassador | 1 | 9456 玻璃枪、9457 皇家外交官节杖、9455 使者腕轮 |
 | 诺莫瑞根（gnomeregan） | gnomeregan_mekgineer_thermaplugg | required | 麦克尼尔·瑟玛普拉格（gnomeregan_mekgineer_thermaplugg） | boss_drop:gnomeregan_mekgineer_thermaplugg | 1 | 9458 瑟玛普拉格的中央模组、9459 瑟玛普拉格的左臂、9461 充能齿轮、9492 电磁熔合激活器 |
+| 玛拉顿（maraudon） | maraudon_pariahs_instructions | optional | 贱民的指引（maraudon_pariahs_instructions） | 无装备掉落 | 0 | — |
+| 玛拉顿（maraudon） | maraudon_noxxion | required | 诺克赛恩（maraudon_noxxion） | boss_drop:maraudon_noxxion | 1 | 17746 诺克赛恩的镣铐、17744 诺克赛恩之心、17745 诺克赛恩魔杖 |
+| 玛拉顿（maraudon） | maraudon_razorlash | optional | 锐刺鞭笞者（maraudon_razorlash） | boss_drop:maraudon_razorlash | 1 | 17749 树皮肩铠、17748 腐藤便鞋、17750 绿瘤束带、17751 藤蔓护腿 |
+| 玛拉顿（maraudon） | maraudon_lord_vyletongue | required | 维利塔恩（maraudon_lord_vyletongue） | boss_drop:maraudon_lord_vyletongue | 1 | 17755 萨特之鬃、17754 恶魔欺诈者护腿、17752 萨特之刺 |
+| 玛拉顿（maraudon） | maraudon_meshlok_the_harvester | rare（0.12） | 收割者麦什洛克（maraudon_meshlok_the_harvester） | boss_drop:maraudon_meshlok_the_harvester | 1 | 17767 花苗头饰、17741 自然的拥抱、17742 蘑菇护甲 |
+| 玛拉顿（maraudon） | maraudon_celebras_the_cursed | required | 被诅咒的塞雷布拉斯（maraudon_celebras_the_cursed） | boss_drop:maraudon_celebras_the_cursed | 1 | 17740 抚慰者头饰、17739 丛林守护者披风、17738 塞雷布拉斯之爪 |
+| 玛拉顿（maraudon） | maraudon_landslide | required | 兰斯利德（maraudon_landslide） | boss_drop:maraudon_landslide | 1 | 17734 山脉头盔、17736 石钳护手、17737 云石、17943 石拳 |
+| 玛拉顿（maraudon） | maraudon_tinkerer_gizlock | optional | 工匠吉兹洛克（maraudon_tinkerer_gizlock） | boss_drop:maraudon_tinkerer_gizlock | 1 | 17718 吉兹洛克的高科技圆盾、17717 超射程精密步枪、17719 发明家的聚焦剑 |
+| 玛拉顿（maraudon） | maraudon_rotgrip | optional | 洛特格里普（maraudon_rotgrip） | boss_drop:maraudon_rotgrip | 1 | 17732 洛特格里普衬肩、17728 白鳄长靴、17730 鳄齿利斧 |
+| 玛拉顿（maraudon） | maraudon_princess_theradras | required | 瑟莱德丝公主（maraudon_princess_theradras） | boss_drop:maraudon_princess_theradras | 1 | 17780 无尽黑暗之刃、17715 瑟莱德丝之眼、17707 碎玉之心、17714 岩石公主护腕、17711 元素石脊护腿、17713 黑石戒指、17710 焦石飞镖、17766 瑟莱德丝公主的节杖 |
 | 怒焰裂谷（ragefire_chasm） | oggleflint | required | 奥格弗林特（oggleflint） | 无装备掉落 | 0 | — |
 | 怒焰裂谷（ragefire_chasm） | taragaman_the_hungerer | required | 饥饿者塔拉加曼（taragaman_the_hungerer） | boss_drop:taragaman_the_hungerer | 1 | 14145 被诅咒的魔刃、14148 水晶腕轮、14149 地下斗篷 |
 | 怒焰裂谷（ragefire_chasm） | jergosh_the_invoker | required | 祈求者耶戈什（jergosh_the_invoker） | boss_drop:jergosh_the_invoker | 1 | 14151 咏唱之刃、14150 唤魔者长袍、14147 洞穴护腕 |
@@ -105,8 +115,8 @@
 
 ## 引用完整度
 
-- 副本路线节点：94。
-- 副本任务：26。
+- 副本路线节点：104。
+- 副本任务：30。
 - 套装：9。
 - 未被路线引用的掉落表：0。
 - 未被掉落、任务或套装引用的非初始装备：0。

@@ -1,0 +1,467 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/maraudon-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对玛拉顿四条成员任务的 11 件装备奖励，并通过逐件中文 XML 核对属性与图标。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-10",
+        "notes": "交叉核对玛拉顿首领、装备 ID 与掉落归属。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].requiredLevel", "items[].restrictions", "items[].description"],
+        "reason": "无原生需求等级的任务奖励使用任务最低等级防止提前进入平衡模拟，并按经典护甲熟练度、职业、定位与当前装备栏位规则补齐可装备性和来源说明。",
+        "decidedAt": "2026-09-10"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "17768",
+      "name": {
+        "zhCN": "树种之环",
+        "enUS": "Woodseed Hoop"
+      },
+      "itemLevel": 47,
+      "requiredLevel": 41,
+      "quality": "uncommon",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_18"
+      },
+      "description": {
+        "zhCN": "玛拉顿成员任务“维利塔恩的污染”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 5,
+          "intellectPoints": 9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17768",
+        "url": "https://www.wowhead.com/classic/cn/item=17768&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17778",
+      "name": {
+        "zhCN": "山艾束腰",
+        "enUS": "Sagebrush Girdle"
+      },
+      "itemLevel": 47,
+      "requiredLevel": 41,
+      "quality": "uncommon",
+      "slot": "waist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_25"
+      },
+      "description": {
+        "zhCN": "玛拉顿成员任务“维利塔恩的污染”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 15
+        },
+        "defense": {
+          "armorPoints": 71
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17778",
+        "url": "https://www.wowhead.com/classic/cn/item=17778&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17770",
+      "name": {
+        "zhCN": "枝爪护手",
+        "enUS": "Branchclaw Gauntlets"
+      },
+      "itemLevel": 47,
+      "requiredLevel": 41,
+      "quality": "uncommon",
+      "slot": "hands",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_30"
+      },
+      "description": {
+        "zhCN": "玛拉顿成员任务“维利塔恩的污染”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 12
+        },
+        "defense": {
+          "armorPoints": 284
+        },
+        "spell": {
+          "healthRegenPer5Seconds": 2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17770",
+        "url": "https://www.wowhead.com/classic/cn/item=17770&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17774",
+      "name": {
+        "zhCN": "天选者印记",
+        "enUS": "Mark of the Chosen"
+      },
+      "itemLevel": 48,
+      "requiredLevel": 39,
+      "quality": "uncommon",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_talisman_08"
+      },
+      "description": {
+        "zhCN": "玛拉顿成员任务“贱民的指引”固定奖励。"
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17774",
+        "url": "https://www.wowhead.com/classic/cn/item=17774&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "受击后提高全属性的触发效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "17775",
+      "name": {
+        "zhCN": "聪颖长袍",
+        "enUS": "Acumen Robes"
+      },
+      "itemLevel": 47,
+      "requiredLevel": 41,
+      "quality": "uncommon",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_49"
+      },
+      "description": {
+        "zhCN": "玛拉顿成员任务“扭曲的邪恶”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 20
+        },
+        "defense": {
+          "armorPoints": 61
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17775",
+        "url": "https://www.wowhead.com/classic/cn/item=17775&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17776",
+      "name": {
+        "zhCN": "轻环头盔",
+        "enUS": "Sprightring Helm"
+      },
+      "itemLevel": 47,
+      "requiredLevel": 41,
+      "quality": "uncommon",
+      "slot": "head",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_35"
+      },
+      "description": {
+        "zhCN": "玛拉顿成员任务“扭曲的邪恶”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 15,
+          "staminaPoints": 10
+        },
+        "defense": {
+          "armorPoints": 103
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17776",
+        "url": "https://www.wowhead.com/classic/cn/item=17776&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17777",
+      "name": {
+        "zhCN": "无情链甲",
+        "enUS": "Relentless Chain"
+      },
+      "itemLevel": 47,
+      "requiredLevel": 41,
+      "quality": "uncommon",
+      "slot": "chest",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_chain_07"
+      },
+      "description": {
+        "zhCN": "玛拉顿成员任务“扭曲的邪恶”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 10
+        },
+        "defense": {
+          "armorPoints": 258
+        },
+        "physical": {
+          "attackPowerPoints": 20,
+          "rangedAttackPowerPoints": 20
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17777",
+        "url": "https://www.wowhead.com/classic/cn/item=17777&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17779",
+      "name": {
+        "zhCN": "巨石肩铠",
+        "enUS": "Hulkstone Pauldrons"
+      },
+      "itemLevel": 47,
+      "requiredLevel": 41,
+      "quality": "uncommon",
+      "slot": "shoulder",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_23"
+      },
+      "description": {
+        "zhCN": "玛拉顿成员任务“扭曲的邪恶”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 5,
+          "staminaPoints": 13
+        },
+        "defense": {
+          "armorPoints": 341
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17779",
+        "url": "https://www.wowhead.com/classic/cn/item=17779&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17705",
+      "name": {
+        "zhCN": "痛击之刃",
+        "enUS": "Thrash Blade"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 45,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_36"
+      },
+      "description": {
+        "zhCN": "玛拉顿成员任务“大地的污染”可选奖励。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 66,
+            "maximumPoints": 124
+          },
+          "speedSeconds": 2.7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17705",
+        "url": "https://www.wowhead.com/classic/cn/item=17705&xml",
+        "verifiedAt": "2026-09-10",
+        "notes": "连续攻击触发效果不作为单件常驻属性写入。"
+      }
+    },
+    {
+      "id": "17753",
+      "name": {
+        "zhCN": "绿色守护者之弓",
+        "enUS": "Verdant Keeper's Aim"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 45,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_bow_03"
+      },
+      "description": {
+        "zhCN": "玛拉顿成员任务“大地的污染”可选奖励。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 53,
+            "maximumPoints": 100
+          },
+          "speedSeconds": 2.8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17753",
+        "url": "https://www.wowhead.com/classic/cn/item=17753&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    },
+    {
+      "id": "17743",
+      "name": {
+        "zhCN": "苏醒之杖",
+        "enUS": "Resurgence Rod"
+      },
+      "itemLevel": 53,
+      "requiredLevel": 45,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "priest", "shaman", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_staff_goldfeathered_01"
+      },
+      "description": {
+        "zhCN": "玛拉顿成员任务“大地的污染”可选奖励。"
+      },
+      "stats": {
+        "spell": {
+          "manaRegenPer5Seconds": 8,
+          "healthRegenPer5Seconds": 5
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 139,
+            "maximumPoints": 209
+          },
+          "speedSeconds": 3.8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "17743",
+        "url": "https://www.wowhead.com/classic/cn/item=17743&xml",
+        "verifiedAt": "2026-09-10"
+      }
+    }
+  ]
+}

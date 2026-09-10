@@ -217,7 +217,7 @@ export function renderLootSourceAudit(audit: LootSourceAudit): string {
   const lines = [
     "# 当前副本掉落来源审计",
     "",
-    "生成日期：2026-09-09",
+    "生成日期：2026-09-10",
     "",
     "本报告只描述当前内容元数据和引用关系，不修改掉落、概率或装备属性。分类规则以掉落表 `sourceType` 为准；未填写时按现有兼容规则视为 Boss 专属掉落。",
     "",

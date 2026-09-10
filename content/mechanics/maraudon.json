@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/maraudon-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-10",
+        "notes": "核对分裂、随从、毒素、纠缠、践踏、炸弹、流血、尘土力场与击退机制。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-10",
+        "notes": "使用现有队伍能力表达原版机制的软性处理优势，不增加职业硬门槛。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "mechanics": [
+    {
+      "id": "maraudon_pariah_khans",
+      "name": { "zhCN": "五可汗追猎", "enUS": "Khan Hunt" },
+      "type": "recommended",
+      "requirements": [
+        { "capabilityId": "crowd_control", "minimumValue": 1 },
+        { "capabilityId": "area_damage", "minimumValue": 1 }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.1,
+        "healingMultiplier": 1.08,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.08
+      },
+      "description": { "zhCN": "控制和范围伤害可以稳定处理入口洞穴中的半人马可汗与随从。" },
+      "reportTag": "maraudon_pariah_khans"
+    },
+    {
+      "id": "maraudon_noxxion_split",
+      "name": { "zhCN": "诺克赛恩分裂", "enUS": "Noxxion Split" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "area_damage", "minimumValue": 1 }],
+      "missingEffects": {
+        "tankMultiplier": 1.1,
+        "healingMultiplier": 1.12,
+        "damageMultiplier": 1.06,
+        "probabilityModifier": -0.05,
+        "durationMultiplier": 1.08
+      },
+      "description": { "zhCN": "范围伤害可以在诺克赛恩分裂时快速清理幼体，缩短自然伤害压力。" },
+      "reportTag": "maraudon_noxxion_split"
+    },
+    {
+      "id": "maraudon_razorlash_sweep",
+      "name": { "zhCN": "横扫与击退", "enUS": "Sweep and Knockback" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "ranged_damage", "minimumValue": 1 }],
+      "missingEffects": {
+        "tankMultiplier": 1.1,
+        "healingMultiplier": 1.08,
+        "probabilityModifier": -0.03,
+        "durationMultiplier": 1.05
+      },
+      "description": { "zhCN": "远程输出能在锐刺鞭笞者横扫和击退近战时保持稳定伤害。" },
+      "reportTag": "maraudon_razorlash_sweep"
+    },
+    {
+      "id": "maraudon_vyletongue_pack",
+      "name": { "zhCN": "萨特随从", "enUS": "Satyr Entourage" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "crowd_control", "minimumValue": 1 }],
+      "missingEffects": {
+        "tankMultiplier": 1.12,
+        "healingMultiplier": 1.08,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": { "zhCN": "控制维利塔恩的两名随从可以避免潜行开战后形成持续多目标压力。" },
+      "reportTag": "maraudon_vyletongue_pack"
+    },
+    {
+      "id": "maraudon_vyletongue_poison",
+      "name": { "zhCN": "污染毒素", "enUS": "Vyletongue Poison" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "poison_dispel", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.14,
+        "probabilityModifier": -0.05,
+        "durationMultiplier": 1.05
+      },
+      "description": { "zhCN": "解毒能力可以及时清除维利塔恩施加的持续自然伤害。" },
+      "reportTag": "maraudon_vyletongue_poison"
+    },
+    {
+      "id": "maraudon_meshlok_spores",
+      "name": { "zhCN": "毒性孢子", "enUS": "Toxic Spores" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "poison_dispel", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.1,
+        "probabilityModifier": -0.03,
+        "durationMultiplier": 1.04
+      },
+      "description": { "zhCN": "解毒能力让麦什洛克的随机稀有战保持轻量，不拖慢深层路线。" },
+      "reportTag": "maraudon_meshlok_spores"
+    },
+    {
+      "id": "maraudon_celebras_treants",
+      "name": { "zhCN": "树人随从", "enUS": "Treant Allies" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "area_damage", "minimumValue": 1 }],
+      "missingEffects": {
+        "tankMultiplier": 1.11,
+        "healingMultiplier": 1.08,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": { "zhCN": "范围伤害可以及时清理塞雷布拉斯身边的树人，避免治疗被持续干扰。" },
+      "reportTag": "maraudon_celebras_treants"
+    },
+    {
+      "id": "maraudon_celebras_roots",
+      "name": { "zhCN": "纠缠根须与治疗之触", "enUS": "Entangling Roots" },
+      "type": "recommended",
+      "requirements": [
+        { "capabilityId": "magic_dispel", "minimumValue": 1 },
+        { "capabilityId": "interrupt", "minimumValue": 1 }
+      ],
+      "missingEffects": {
+        "healingMultiplier": 1.1,
+        "damageMultiplier": 1.08,
+        "probabilityModifier": -0.05,
+        "durationMultiplier": 1.08
+      },
+      "description": { "zhCN": "驱散纠缠并打断治疗之触，可以避免塞雷布拉斯反复拉长战斗。" },
+      "reportTag": "maraudon_celebras_roots"
+    },
+    {
+      "id": "maraudon_landslide_stomp",
+      "name": { "zhCN": "践踏与石元素", "enUS": "Stomp and Rock Elementals" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "area_damage", "minimumValue": 1 }],
+      "missingEffects": {
+        "tankMultiplier": 1.13,
+        "healingMultiplier": 1.1,
+        "damageMultiplier": 1.06,
+        "probabilityModifier": -0.05,
+        "durationMultiplier": 1.07
+      },
+      "description": { "zhCN": "范围伤害可以清理兰斯利德召唤的小石元素，并缓解践踏后的恢复压力。" },
+      "reportTag": "maraudon_landslide_stomp"
+    },
+    {
+      "id": "maraudon_gizlock_ordnance",
+      "name": { "zhCN": "地精军火", "enUS": "Goblin Ordnance" },
+      "type": "recommended",
+      "requirements": [
+        { "capabilityId": "interrupt", "minimumValue": 1 },
+        { "capabilityId": "ranged_damage", "minimumValue": 1 }
+      ],
+      "missingEffects": {
+        "healingMultiplier": 1.12,
+        "probabilityModifier": -0.05,
+        "durationMultiplier": 1.07
+      },
+      "description": { "zhCN": "打断与远程火力可以压制吉兹洛克的龙息、炸弹和连续枪击。" },
+      "reportTag": "maraudon_gizlock_ordnance"
+    },
+    {
+      "id": "maraudon_rotgrip_bleed",
+      "name": { "zhCN": "鳄齿撕裂", "enUS": "Rotgrip Bleed" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "healing", "minimumValue": 1 }],
+      "missingEffects": {
+        "tankMultiplier": 1.12,
+        "healingMultiplier": 1.16,
+        "probabilityModifier": -0.06,
+        "durationMultiplier": 1.05
+      },
+      "description": {
+        "zhCN": "稳定治疗能够覆盖洛特格里普的连续撕咬与流血，避免坦克在水域战中崩溃。"
+      },
+      "reportTag": "maraudon_rotgrip_bleed"
+    },
+    {
+      "id": "maraudon_princess_dust_field",
+      "name": { "zhCN": "尘土力场", "enUS": "Dust Field" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "area_damage", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.16,
+        "damageMultiplier": 1.06,
+        "probabilityModifier": -0.06,
+        "durationMultiplier": 1.08
+      },
+      "description": { "zhCN": "范围处理能力代表队伍在尘土力场与群体伤害中维持节奏的能力。" },
+      "reportTag": "maraudon_princess_dust_field"
+    },
+    {
+      "id": "maraudon_princess_knockback",
+      "name": { "zhCN": "击退与远程追击", "enUS": "Knockback Recovery" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "ranged_damage", "minimumValue": 1 }],
+      "missingEffects": {
+        "tankMultiplier": 1.12,
+        "healingMultiplier": 1.08,
+        "probabilityModifier": -0.05,
+        "durationMultiplier": 1.07
+      },
+      "description": { "zhCN": "远程输出可以在瑟莱德丝公主反复击退近战时继续施压，降低终战拖延。" },
+      "reportTag": "maraudon_princess_knockback"
+    }
+  ]
+}
