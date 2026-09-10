@@ -3,6 +3,7 @@ import type {
   ClassId,
   ContentVersion,
   DungeonId,
+  DungeonRouteNodeId,
   EncounterId,
   FormulaVersion,
   GatheringSiteId,
@@ -20,6 +21,7 @@ import type { CombatCapabilityValues, CombatUtilityProfile } from "../combat/com
 import type { PartyCapabilitySnapshot } from "../combat/party-capabilities";
 import type { CombatReport } from "../combat/combat-report";
 import type { EncounterMechanicEvaluation } from "../dungeon/mechanic-evaluation";
+import type { RareRouteReveals, RareRouteSpawnLocks } from "../dungeon/rare-route";
 
 export type ActivityType = "expedition" | "gathering" | "crafting" | "training";
 export type ActivityStatus = "scheduled" | "active" | "completed" | "failed" | "cancelled";
@@ -39,6 +41,7 @@ export interface ActivityBase<Type extends ActivityType> {
 
 export interface ExpeditionActivity extends ActivityBase<"expedition"> {
   dungeonId: DungeonId;
+  selectedOptionalNodeIds: DungeonRouteNodeId[];
   requestedRuns: number;
   completedRuns: number;
   activeRunIndex: number;
@@ -77,6 +80,8 @@ export interface ExpeditionPartySnapshot {
 }
 
 export interface ExpeditionEncounterPlan {
+  routeNodeId?: DungeonRouteNodeId;
+  routeNodeType?: "required" | "optional" | "rare";
   encounterId: EncounterId;
   probability: number;
   rawRatios: { tank: number; healing: number; damage: number };
@@ -94,6 +99,9 @@ export interface ExpeditionRunPlan {
   seed: string;
   experienceFractionByMember: Partial<Record<MemberId, number>>;
   stages: ExpeditionEncounterPlan[];
+  rareNodeSpawns?: RareRouteSpawnLocks;
+  rareNodeReveals: RareRouteReveals;
+  mainRouteCompleted?: boolean;
 }
 
 export interface GatheringActivity extends ActivityBase<"gathering"> {

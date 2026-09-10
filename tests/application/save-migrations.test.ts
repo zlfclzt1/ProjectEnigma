@@ -11,6 +11,8 @@ import {
   createLegacyGameStateV4Fixture,
   createLegacyGameStateV5Fixture,
   createLegacyGameStateV6Fixture,
+  createLegacyGameStateV7Fixture,
+  createLegacyGameStateV8Fixture,
   createItemInstanceFixture,
 } from "../helpers/game-state-v2-factory";
 
@@ -21,13 +23,15 @@ describe("save migrations", () => {
     const legacy = createLegacyGameStateV2Fixture();
     legacy.guild.memberCapacity = 20;
     legacy.guild.firstKillEncounterIds = [
-      ...content.dungeonById.get(asBrandedId<"DungeonId">("deadmines"))!.route,
+      ...content.dungeonById
+        .get(asBrandedId<"DungeonId">("deadmines"))!
+        .route.map((node) => node.encounterId),
     ];
 
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(7);
+    expect(result.state.saveVersion).toBe(9);
     expect(
       Object.values(result.state.members).every((member) => member.wishlist.entries.length === 0),
     ).toBe(true);
@@ -42,7 +46,7 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(7);
+    expect(result.state.saveVersion).toBe(9);
     expect(
       Object.values(result.state.itemInstances).every(
         (instance) => instance.randomSuffixId === undefined,
@@ -71,7 +75,7 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(7);
+    expect(result.state.saveVersion).toBe(9);
     expect(result.state.collection).toEqual({
       items: {
         "14148": {
@@ -90,7 +94,7 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(7);
+    expect(result.state.saveVersion).toBe(9);
     expect(
       Object.values(result.state.members).every((member) => member.wishlist.entries.length === 0),
     ).toBe(true);
@@ -119,11 +123,35 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(7);
+    expect(result.state.saveVersion).toBe(9);
     const migrated = Object.values(result.state.activities)[0]!;
     if (migrated.type !== "expedition") throw new Error("Expected expedition fixture");
     expect(migrated.partySnapshot.capabilities.values.tanking).toBeGreaterThan(0);
     expect(migrated.partySnapshot.capabilities.contributions.tanking).toHaveLength(2);
+  });
+
+  it("migrates V7 expeditions with an empty optional route selection", () => {
+    const legacy = createLegacyGameStateV7Fixture();
+
+    const result = migrateSave(legacy, content);
+
+    expect(result.migrated).toBe(true);
+    expect(result.state.saveVersion).toBe(9);
+    const activity = Object.values(result.state.activities)[0]!;
+    if (activity.type !== "expedition") throw new Error("Expected expedition fixture");
+    expect(activity.selectedOptionalNodeIds).toEqual([]);
+  });
+
+  it("migrates V8 expeditions with no revealed rare route nodes", () => {
+    const legacy = createLegacyGameStateV8Fixture();
+
+    const result = migrateSave(legacy, content);
+
+    expect(result.migrated).toBe(true);
+    expect(result.state.saveVersion).toBe(9);
+    const activity = Object.values(result.state.activities)[0]!;
+    if (activity.type !== "expedition") throw new Error("Expected expedition fixture");
+    expect(activity.runPlans[0]!.rareNodeReveals).toEqual({});
   });
 
   it("keeps current collection state without reporting a migration", () => {
@@ -157,8 +185,8 @@ describe("save migrations", () => {
     });
 
     expect(loaded.origin).toBe("loaded");
-    expect(loaded.session.snapshot()).toMatchObject({ saveVersion: 7, revision: 1 });
+    expect(loaded.session.snapshot()).toMatchObject({ saveVersion: 9, revision: 1 });
     const persisted = await saves.load(legacy.slotId);
-    expect(persisted?.saveVersion).toBe(7);
+    expect(persisted?.saveVersion).toBe(9);
   });
 });

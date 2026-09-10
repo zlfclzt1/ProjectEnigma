@@ -10,7 +10,12 @@ const game = useGameStore();
 const ui = useUiStore();
 const notice = ref("");
 const planning = computed(() =>
-  game.dungeonPlanning(ui.selectedDungeonId, ui.selectedPartyMemberIds, ui.requestedExpeditionRuns),
+  game.dungeonPlanning(
+    ui.selectedDungeonId,
+    ui.selectedPartyMemberIds,
+    ui.requestedExpeditionRuns,
+    ui.selectedOptionalNodeIds,
+  ),
 );
 
 watchEffect(() => {
@@ -26,6 +31,7 @@ async function start(): Promise<void> {
     dungeon.id,
     ui.selectedPartyMemberIds,
     ui.requestedExpeditionRuns,
+    ui.selectedOptionalNodeIds,
   );
   if (!outcome.ok) return;
   notice.value = `${dungeon.name}队伍已经出发，可以继续组织另一支队伍。`;
@@ -81,11 +87,14 @@ async function start(): Promise<void> {
         :dungeon="planning.selectedDungeon"
         :preview="planning.preview"
         :mechanic-readiness="planning.mechanicReadiness"
+        :optional-routes="planning.optionalRoutes"
+        :rare-routes="planning.rareRoutes"
         :issues="planning.issues"
         :requested-runs="ui.requestedExpeditionRuns"
         :can-start="planning.canStart"
         :pending="game.commandPending"
         @start="start"
+        @toggle-optional="ui.toggleOptionalNode"
       />
     </div>
   </section>

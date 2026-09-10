@@ -47,14 +47,30 @@
         "requirementMultipliers": { "tank": 0.9, "healing": 0.9, "damage": 0.9 }
       },
       "route": [
-        "wc_lady_anacondra",
-        "wc_lord_cobrahn",
-        "wc_kresh",
-        "wc_lord_pythas",
-        "wc_skum",
-        "wc_lord_serpentis",
-        "wc_verdan",
-        "wc_mutanus"
+        {
+          "id": "wc_lady_anacondra",
+          "type": "required",
+          "encounterId": "wc_lady_anacondra"
+        },
+        {
+          "id": "wc_lord_cobrahn",
+          "type": "required",
+          "encounterId": "wc_lord_cobrahn"
+        },
+        { "id": "wc_kresh", "type": "required", "encounterId": "wc_kresh" },
+        {
+          "id": "wc_lord_pythas",
+          "type": "required",
+          "encounterId": "wc_lord_pythas"
+        },
+        { "id": "wc_skum", "type": "required", "encounterId": "wc_skum" },
+        {
+          "id": "wc_lord_serpentis",
+          "type": "required",
+          "encounterId": "wc_lord_serpentis"
+        },
+        { "id": "wc_verdan", "type": "required", "encounterId": "wc_verdan" },
+        { "id": "wc_mutanus", "type": "required", "encounterId": "wc_mutanus" }
       ]
     }
   ]

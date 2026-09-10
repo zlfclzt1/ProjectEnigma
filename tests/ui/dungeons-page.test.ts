@@ -82,6 +82,8 @@ describe("dungeons page", () => {
         requestedRuns: 1,
         canStart: false,
         pending: false,
+        optionalRoutes: [],
+        rareRoutes: [],
         mechanicReadiness: [
           {
             id: "test_recommended_magic_dispel",
@@ -110,5 +112,55 @@ describe("dungeons page", () => {
     expect(wrapper.text()).toContain("驱散魔法 1.0/2.0");
     expect(wrapper.text()).toContain("治疗压力 +15% · 胜率 -5 个百分点 · 耗时 +5%");
     expect(wrapper.find("button").attributes("disabled")).toBeDefined();
+  });
+
+  it("renders and toggles optional routes while presenting rare ranges", async () => {
+    const wrapper = mount(PartyPreview, {
+      props: {
+        dungeon: null,
+        preview: {
+          formulaVersion: "classic-light-v1",
+          contribution: { tank: 1, healing: 1, damage: 3 },
+          encounters: [],
+          clearProbability: 0.8,
+          durationSeconds: 600,
+          durationRange: { minimumSeconds: 600, maximumSeconds: 720 },
+        },
+        issues: [],
+        requestedRuns: 2,
+        canStart: true,
+        pending: false,
+        mechanicReadiness: [],
+        optionalRoutes: [
+          {
+            id: asBrandedId<"DungeonRouteNodeId">("optional_taragaman"),
+            encounterId: "taragaman_the_hungerer",
+            name: "饥饿者塔拉加曼",
+            description: "绕行熔岩通道挑战饥饿者。",
+            selected: false,
+            probability: 0.82,
+            durationSeconds: 120,
+            lootItemCount: 3,
+          },
+        ],
+        rareRoutes: [
+          {
+            id: asBrandedId<"DungeonRouteNodeId">("rare_bazzalan"),
+            encounterId: "bazzalan",
+            name: "巴扎兰",
+            spawnProbability: 0.35,
+            conditionalProbability: 0.75,
+            durationSeconds: 60,
+            lootItemCount: 0,
+          },
+        ],
+      },
+    });
+
+    expect(wrapper.text()).toContain("可选 · 饥饿者塔拉加曼");
+    expect(wrapper.text()).toContain("出现率 35.00%");
+    expect(wrapper.text()).toContain("20:00–24:00");
+    await wrapper.find('.route-options input[type="checkbox"]').setValue(true);
+    expect(wrapper.emitted("toggleOptional")?.[0]).toEqual(["optional_taragaman"]);
   });
 });

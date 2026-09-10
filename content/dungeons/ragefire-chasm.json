@@ -43,7 +43,20 @@
         "bossProbabilityMaximum": 0.95,
         "requirementMultipliers": { "tank": 1, "healing": 1, "damage": 1 }
       },
-      "route": ["oggleflint", "taragaman_the_hungerer", "jergosh_the_invoker", "bazzalan"]
+      "route": [
+        { "id": "oggleflint", "type": "required", "encounterId": "oggleflint" },
+        {
+          "id": "taragaman_the_hungerer",
+          "type": "required",
+          "encounterId": "taragaman_the_hungerer"
+        },
+        {
+          "id": "jergosh_the_invoker",
+          "type": "required",
+          "encounterId": "jergosh_the_invoker"
+        },
+        { "id": "bazzalan", "type": "required", "encounterId": "bazzalan" }
+      ]
     }
   ]
 }

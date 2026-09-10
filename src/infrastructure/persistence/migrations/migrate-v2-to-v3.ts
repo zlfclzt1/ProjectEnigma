@@ -21,7 +21,7 @@ export function migrateV2ToV3(
       .filter(
         (dungeon) =>
           dungeon.route.length > 0 &&
-          dungeon.route.every((encounterId) => firstKills.has(encounterId)),
+          dungeon.route.every((node) => firstKills.has(node.encounterId)),
       )
       .map((dungeon) => [dungeon.id, 1]),
   );

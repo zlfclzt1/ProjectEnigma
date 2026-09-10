@@ -170,7 +170,7 @@ export function getItemCatalogView(state: GameState, content: ContentRegistry): 
         name: dungeon.name.zhCN,
         unlocked: true,
         ...progress,
-        encounters: dungeon.route.map((encounterId) => {
+        encounters: dungeon.route.map(({ encounterId }) => {
           const encounter = content.encounterById.get(encounterId)!;
           const lootTable = content.getLootTableForEncounter(encounter.id);
           return {
@@ -257,7 +257,7 @@ function buildCatalogIndex(content: ContentRegistry): CatalogIndex {
   const allItemIds = new Set<ItemDefinitionId>();
   for (const dungeon of content.dungeons) {
     const dungeonItemIds = new Set<ItemDefinitionId>();
-    for (const encounterId of dungeon.route) {
+    for (const { encounterId } of dungeon.route) {
       const encounter = content.encounterById.get(encounterId)!;
       const lootTable = content.getLootTableForEncounter(encounter.id);
       if (!lootTable) continue;

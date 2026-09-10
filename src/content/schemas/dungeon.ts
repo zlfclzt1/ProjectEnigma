@@ -14,10 +14,43 @@ const encounterIdSchema = brandedContentIdSchema<"EncounterId">();
 const lootTableIdSchema = brandedContentIdSchema<"LootTableId">();
 const itemDefinitionIdSchema = brandedContentIdSchema<"ItemDefinitionId">();
 const mechanicIdSchema = brandedContentIdSchema<"MechanicId">();
+const routeNodeIdSchema = brandedContentIdSchema<"DungeonRouteNodeId">();
 
 const contentFileBaseSchema = z
   .object({ schemaVersion: z.literal(1), attribution: contentAttributionSchema })
   .strict();
+
+const requiredRouteNodeSchema = z
+  .object({
+    id: routeNodeIdSchema,
+    type: z.literal("required"),
+    encounterId: encounterIdSchema,
+  })
+  .strict();
+
+const optionalRouteNodeSchema = z
+  .object({
+    id: routeNodeIdSchema,
+    type: z.literal("optional"),
+    encounterId: encounterIdSchema,
+    description: localizedTextSchema,
+  })
+  .strict();
+
+const rareRouteNodeSchema = z
+  .object({
+    id: routeNodeIdSchema,
+    type: z.literal("rare"),
+    encounterId: encounterIdSchema,
+    spawnProbability: probabilitySchema,
+  })
+  .strict();
+
+export const dungeonRouteNodeSchema = z.discriminatedUnion("type", [
+  requiredRouteNodeSchema,
+  optionalRouteNodeSchema,
+  rareRouteNodeSchema,
+]);
 
 export const dungeonDefinitionSchema = z
   .object({
@@ -80,9 +113,13 @@ export const dungeonDefinitionSchema = z
           .strict(),
       })
       .strict(),
-    route: z.array(encounterIdSchema).min(1),
+    route: z.array(dungeonRouteNodeSchema).min(1),
   })
-  .strict();
+  .strict()
+  .refine((dungeon) => dungeon.route.some((node) => node.type === "required"), {
+    path: ["route"],
+    message: "副本路线至少需要一个必打节点",
+  });
 
 export const dungeonDefinitionFileSchema = contentFileBaseSchema.safeExtend({
   dungeons: z.array(dungeonDefinitionSchema).min(1),
@@ -140,5 +177,6 @@ export const lootTableFileSchema = contentFileBaseSchema.safeExtend({
 });
 
 export type DungeonDefinition = z.infer<typeof dungeonDefinitionSchema>;
+export type DungeonRouteNode = z.infer<typeof dungeonRouteNodeSchema>;
 export type EncounterDefinition = z.infer<typeof encounterDefinitionSchema>;
 export type LootTable = z.infer<typeof lootTableSchema>;

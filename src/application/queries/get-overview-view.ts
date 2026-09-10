@@ -33,13 +33,23 @@ export function getOverviewView(state: GameState, content: ContentRegistry): Ove
     .map((activity): ActivitySummaryView => {
       if (activity.type === "expedition") {
         const run = activity.runPlans[activity.activeRunIndex];
+        const visibleStages =
+          run?.stages.filter(
+            (stage) =>
+              stage.routeNodeType !== "rare" ||
+              (stage.routeNodeId && run.rareNodeReveals?.[stage.routeNodeId] === "spawned"),
+          ) ?? [];
+        const currentStage = run?.stages[activity.activeEncounterIndex];
+        const currentVisibleIndex = visibleStages.findIndex((stage) => stage === currentStage);
+        const visibleIndex =
+          currentVisibleIndex >= 0 ? currentVisibleIndex : Math.max(0, visibleStages.length - 1);
         return {
           id: activity.id,
           type: activity.type,
           status: "active",
           participantCount: activity.participantIds.length,
           nextSettlementAt: activity.nextSettlementAt,
-          progressLabel: `第 ${activity.activeRunIndex + 1}/${activity.requestedRuns} 次 · Boss ${activity.activeEncounterIndex + 1}/${run?.stages.length ?? 0}`,
+          progressLabel: `第 ${activity.activeRunIndex + 1}/${activity.requestedRuns} 次 · Boss ${visibleIndex + 1}/${visibleStages.length}`,
         };
       }
       return {

@@ -13,6 +13,7 @@ import { asBrandedId } from "../../src/domain/shared/ids";
 import { LocalIdGenerator } from "../../src/infrastructure/ids/local-id-generator";
 import { SeededRandomSource } from "../../src/infrastructure/random/seeded-random-source";
 import { FakeClock } from "../helpers/runtime-fakes";
+import { SettlementService } from "../../src/application/services/settlement-service";
 
 const content = loadBrowserContentRegistry();
 
@@ -45,6 +46,81 @@ function contentWithMechanic(mechanicId: string, minimumValue = 99) {
   ).mechanics;
   mechanics.find((mechanic) => mechanic.id === mechanicId)!.requirements[0]!.minimumValue =
     minimumValue;
+  return loadContentRegistry(modules);
+}
+
+function contentWithRareBazzalan() {
+  const modules = structuredClone(browserContentModules) as Record<string, unknown>;
+  const dungeonKey = Object.keys(modules).find((path) =>
+    path.endsWith("/content/dungeons/ragefire-chasm.json"),
+  )!;
+  const route = (
+    modules[dungeonKey] as {
+      dungeons: Array<{
+        route: Array<{
+          id: string;
+          type: string;
+          encounterId: string;
+          spawnProbability?: number;
+        }>;
+      }>;
+    }
+  ).dungeons[0]!.route;
+  const bazzalan = route.find((node) => node.encounterId === "bazzalan")!;
+  bazzalan.type = "rare";
+  bazzalan.spawnProbability = 0.5;
+  return loadContentRegistry(modules);
+}
+
+function contentWithRareTaragaman(spawnProbability: number) {
+  const modules = structuredClone(browserContentModules) as Record<string, unknown>;
+  const dungeonKey = Object.keys(modules).find((path) =>
+    path.endsWith("/content/dungeons/ragefire-chasm.json"),
+  )!;
+  const route = (
+    modules[dungeonKey] as {
+      dungeons: Array<{
+        route: Array<{
+          id: string;
+          type: string;
+          encounterId: string;
+          spawnProbability?: number;
+        }>;
+      }>;
+    }
+  ).dungeons[0]!.route;
+  const taragaman = route.find((node) => node.encounterId === "taragaman_the_hungerer")!;
+  taragaman.type = "rare";
+  taragaman.spawnProbability = spawnProbability;
+  return loadContentRegistry(modules);
+}
+
+function contentWithConfigurableRoutes() {
+  const modules = structuredClone(browserContentModules) as Record<string, unknown>;
+  const dungeonKey = Object.keys(modules).find((path) =>
+    path.endsWith("/content/dungeons/ragefire-chasm.json"),
+  )!;
+  const route = (
+    modules[dungeonKey] as {
+      dungeons: Array<{
+        route: Array<{
+          id: string;
+          type: string;
+          encounterId: string;
+          description?: { zhCN: string };
+          spawnProbability?: number;
+        }>;
+      }>;
+    }
+  ).dungeons[0]!.route;
+  const taragaman = route.find((node) => node.encounterId === "taragaman_the_hungerer")!;
+  taragaman.id = "optional_taragaman";
+  taragaman.type = "optional";
+  taragaman.description = { zhCN: "绕行熔岩通道挑战饥饿者。" };
+  const bazzalan = route.find((node) => node.encounterId === "bazzalan")!;
+  bazzalan.id = "rare_bazzalan";
+  bazzalan.type = "rare";
+  bazzalan.spawnProbability = 0.35;
   return loadContentRegistry(modules);
 }
 
@@ -165,5 +241,140 @@ describe("dungeon and activity queries", () => {
       type: "required",
       status: "missing",
     });
+  });
+
+  it("does not expose a locked rare spawn through the activity query before reveal", () => {
+    const rareContent = contentWithRareBazzalan();
+    const game = createNewGame({
+      slotId: asBrandedId<"SaveSlotId">("rare-hidden-query"),
+      content: rareContent,
+      contentVersion: asBrandedId<"ContentVersion">("classic-v1"),
+      clock: new FakeClock(1_000),
+      ids: new LocalIdGenerator(),
+      random: new SeededRandomSource("rare-hidden-query"),
+    });
+    const registry = new ActivityRegistry();
+    registry.register(createExpeditionActivityHandler(rareContent));
+    const scheduler = new ActivityScheduler(registry);
+    const started = scheduler.start<StartExpeditionRequest, ExpeditionActivity>(
+      game,
+      {
+        type: "expedition",
+        dungeonId: asBrandedId<"DungeonId">("ragefire_chasm"),
+        participantIds: Object.values(game.members).map((member) => member.id),
+        requestedRuns: 1,
+      },
+      1_000,
+      { ids: new LocalIdGenerator(), random: new SeededRandomSource("rare-hidden-runtime") },
+    );
+    if (started.status !== "started") throw new Error("Expected expedition to start");
+
+    expect(Object.keys(started.activity.runPlans[0]!.rareNodeSpawns ?? {})).toEqual(["bazzalan"]);
+    const view = getActivitiesView(game, rareContent, 1_000);
+    expect(view.active[0]!.route.map((stage) => stage.id)).not.toContain("bazzalan");
+    expect(view.active[0]!.totalEncounterCount).toBe(3);
+    expect(view.active[0]).not.toHaveProperty("rareNodeSpawns");
+  });
+
+  it.each([
+    { spawnProbability: 1, outcome: "spawned", status: "active", message: "发现了稀有首领" },
+    { spawnProbability: 0, outcome: "absent", status: "absent", message: "没有发现" },
+  ] as const)(
+    "reveals and persists a $outcome rare route result only after reaching its position",
+    ({ spawnProbability, outcome, status, message }) => {
+      const rareContent = contentWithRareTaragaman(spawnProbability);
+      const game = createNewGame({
+        slotId: asBrandedId<"SaveSlotId">(`rare-reveal-${outcome}`),
+        content: rareContent,
+        contentVersion: asBrandedId<"ContentVersion">("classic-v1"),
+        clock: new FakeClock(1_000),
+        ids: new LocalIdGenerator(),
+        random: new SeededRandomSource(`rare-reveal-${outcome}`),
+      });
+      const registry = new ActivityRegistry();
+      registry.register(createExpeditionActivityHandler(rareContent));
+      const scheduler = new ActivityScheduler(registry);
+      const started = scheduler.start<StartExpeditionRequest, ExpeditionActivity>(
+        game,
+        {
+          type: "expedition",
+          dungeonId: asBrandedId<"DungeonId">("ragefire_chasm"),
+          participantIds: Object.values(game.members).map((member) => member.id),
+          requestedRuns: 1,
+        },
+        1_000,
+        { ids: new LocalIdGenerator(), random: new SeededRandomSource(`runtime-${outcome}`) },
+      );
+      if (started.status !== "started") throw new Error("Expected expedition to start");
+      const activity = game.activities[started.activity.id] as ExpeditionActivity;
+      for (const stage of activity.runPlans[0]!.stages) stage.successRoll = 0;
+
+      expect(getActivitiesView(game, rareContent, 1_000).active[0]!.rareEvents).toEqual([]);
+
+      new SettlementService(rareContent).settleDueActivities(game, activity.nextSettlementAt);
+
+      const revealed = getActivitiesView(game, rareContent, activity.nextSettlementAt).active[0]!;
+      expect(revealed.route.find((stage) => stage.id === "taragaman_the_hungerer")).toMatchObject({
+        routeNodeType: "rare",
+        status,
+      });
+      expect(revealed.rareEvents[0]).toMatchObject({ outcome });
+      expect(revealed.rareEvents[0]!.text).toContain(message);
+      expect(
+        getActivitiesView(structuredClone(game), rareContent, activity.nextSettlementAt).active[0]!
+          .rareEvents,
+      ).toEqual(revealed.rareEvents);
+    },
+  );
+
+  it("projects optional choices and rare probability without exposing a spawn lock", () => {
+    const routeContent = contentWithConfigurableRoutes();
+    const game = createNewGame({
+      slotId: asBrandedId<"SaveSlotId">("route-planning-query"),
+      content: routeContent,
+      contentVersion: asBrandedId<"ContentVersion">("classic-v1"),
+      clock: new FakeClock(1_000),
+      ids: new LocalIdGenerator(),
+      random: new SeededRandomSource("route-planning-query"),
+    });
+    const memberIds = Object.values(game.members).map((member) => member.id);
+    const unselected = getDungeonPlanningView(
+      game,
+      routeContent,
+      asBrandedId<"DungeonId">("ragefire_chasm"),
+      memberIds,
+      1,
+    );
+    expect(unselected.optionalRoutes[0]).toMatchObject({
+      id: "optional_taragaman",
+      name: "饥饿者塔拉加曼",
+      selected: false,
+      lootItemCount: 3,
+    });
+    expect(unselected.optionalRoutes[0]!.probability).toBeGreaterThan(0);
+    expect(unselected.rareRoutes[0]).toMatchObject({
+      id: "rare_bazzalan",
+      name: "巴扎兰",
+      spawnProbability: 0.35,
+      lootItemCount: 0,
+    });
+    expect(unselected.rareRoutes[0]).not.toHaveProperty("spawned");
+    expect(unselected.preview!.durationRange.maximumSeconds).toBeGreaterThan(
+      unselected.preview!.durationRange.minimumSeconds,
+    );
+
+    const selected = getDungeonPlanningView(
+      game,
+      routeContent,
+      asBrandedId<"DungeonId">("ragefire_chasm"),
+      memberIds,
+      1,
+      [asBrandedId<"DungeonRouteNodeId">("optional_taragaman")],
+    );
+    expect(selected.optionalRoutes[0]!.selected).toBe(true);
+    expect(selected.preview!.encounters.map((encounter) => encounter.id)).toContain(
+      "taragaman_the_hungerer",
+    );
+    expect(selected.preview!.durationSeconds).toBeGreaterThan(unselected.preview!.durationSeconds);
   });
 });

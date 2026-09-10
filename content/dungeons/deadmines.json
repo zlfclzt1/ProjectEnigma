@@ -47,14 +47,26 @@
         "requirementMultipliers": { "tank": 0.9, "healing": 0.9, "damage": 0.9 }
       },
       "route": [
-        "dm_rhahkzor",
-        "dm_sneeds_shredder",
-        "dm_sneed",
-        "dm_gilnid",
-        "dm_mr_smite",
-        "dm_captain_greenskin",
-        "dm_edwin_vancleef",
-        "dm_cookie"
+        { "id": "dm_rhahkzor", "type": "required", "encounterId": "dm_rhahkzor" },
+        {
+          "id": "dm_sneeds_shredder",
+          "type": "required",
+          "encounterId": "dm_sneeds_shredder"
+        },
+        { "id": "dm_sneed", "type": "required", "encounterId": "dm_sneed" },
+        { "id": "dm_gilnid", "type": "required", "encounterId": "dm_gilnid" },
+        { "id": "dm_mr_smite", "type": "required", "encounterId": "dm_mr_smite" },
+        {
+          "id": "dm_captain_greenskin",
+          "type": "required",
+          "encounterId": "dm_captain_greenskin"
+        },
+        {
+          "id": "dm_edwin_vancleef",
+          "type": "required",
+          "encounterId": "dm_edwin_vancleef"
+        },
+        { "id": "dm_cookie", "type": "required", "encounterId": "dm_cookie" }
       ]
     }
   ]

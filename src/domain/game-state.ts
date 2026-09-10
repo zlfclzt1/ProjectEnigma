@@ -1,4 +1,4 @@
-import type { Activity, ExpeditionActivity } from "./activity/activity";
+import type { Activity, ExpeditionActivity, ExpeditionRunPlan } from "./activity/activity";
 import type { CollectionState } from "./collection/item-collection";
 import type { ItemInstance, PendingLoot } from "./equipment/item-instance";
 import type { GuildState, HistorySummary, RecruitmentState } from "./guild/guild";
@@ -15,7 +15,7 @@ import type {
 } from "./shared/ids";
 import type { IdGeneratorState, RandomState } from "./shared/runtime-state";
 
-export const GAME_STATE_SAVE_VERSION = 7 as const;
+export const GAME_STATE_SAVE_VERSION = 9 as const;
 
 export interface GameState {
   slotId: SaveSlotId;
@@ -42,13 +42,38 @@ export type LegacyItemInstanceV3 = Omit<ItemInstance, "randomSuffixId">;
 
 export type LegacyMemberV5 = Omit<Member, "wishlist">;
 
-export type LegacyExpeditionActivityV6 = Omit<ExpeditionActivity, "partySnapshot"> & {
-  partySnapshot: Omit<ExpeditionActivity["partySnapshot"], "capabilities">;
+export type LegacyExpeditionRunPlanV8 = Omit<ExpeditionRunPlan, "rareNodeReveals">;
+
+export type LegacyExpeditionActivityV8 = Omit<ExpeditionActivity, "runPlans"> & {
+  runPlans: LegacyExpeditionRunPlanV8[];
+};
+
+export type LegacyActivityV8 = Exclude<Activity, ExpeditionActivity> | LegacyExpeditionActivityV8;
+
+export interface LegacyGameStateV8 extends Omit<GameState, "saveVersion" | "activities"> {
+  saveVersion: 8;
+  activities: Record<ActivityId, LegacyActivityV8>;
+}
+
+export type LegacyExpeditionActivityV7 = Omit<
+  LegacyExpeditionActivityV8,
+  "selectedOptionalNodeIds"
+>;
+
+export type LegacyActivityV7 = Exclude<Activity, ExpeditionActivity> | LegacyExpeditionActivityV7;
+
+export interface LegacyGameStateV7 extends Omit<LegacyGameStateV8, "saveVersion" | "activities"> {
+  saveVersion: 7;
+  activities: Record<ActivityId, LegacyActivityV7>;
+}
+
+export type LegacyExpeditionActivityV6 = Omit<LegacyExpeditionActivityV7, "partySnapshot"> & {
+  partySnapshot: Omit<LegacyExpeditionActivityV7["partySnapshot"], "capabilities">;
 };
 
 export type LegacyActivityV6 = Exclude<Activity, ExpeditionActivity> | LegacyExpeditionActivityV6;
 
-export interface LegacyGameStateV6 extends Omit<GameState, "saveVersion" | "activities"> {
+export interface LegacyGameStateV6 extends Omit<LegacyGameStateV7, "saveVersion" | "activities"> {
   saveVersion: 6;
   activities: Record<ActivityId, LegacyActivityV6>;
 }
@@ -87,6 +112,8 @@ export interface LegacyGameStateV2 extends Omit<
 
 export type PersistedGameState =
   | GameState
+  | LegacyGameStateV8
+  | LegacyGameStateV7
   | LegacyGameStateV6
   | LegacyGameStateV5
   | LegacyGameStateV4

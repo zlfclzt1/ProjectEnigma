@@ -609,7 +609,18 @@ export class ContentRegistry {
     for (const owner of loaded.dungeons) {
       const routeIds = new Set<EncounterDefinition["id"]>();
       let stageSeconds = 0;
-      owner.value.route.forEach((encounterId, index) => {
+      const routeNodeIds = new Set<string>();
+      owner.value.route.forEach((node, index) => {
+        const encounterId = node.encounterId;
+        if (routeNodeIds.has(node.id)) {
+          issues.push({
+            filePath: owner.filePath,
+            fieldPath: `${owner.fieldPath}.route[${index}].id`,
+            message: "副本路线节点 ID 重复",
+            invalidReferenceId: node.id,
+          });
+        }
+        routeNodeIds.add(node.id);
         if (routeIds.has(encounterId)) {
           issues.push({
             filePath: owner.filePath,
@@ -623,14 +634,21 @@ export class ContentRegistry {
         owners.push(owner.value.id);
         routeOwners.set(encounterId, owners);
         if (
-          requireReference(encounterById, encounterId, owner, `route[${index}]`, "首领战", issues)
+          requireReference(
+            encounterById,
+            encounterId,
+            owner,
+            `route[${index}].encounterId`,
+            "首领战",
+            issues,
+          )
         ) {
           const encounter = encounterById.get(encounterId)!;
           stageSeconds += encounter.stageSeconds;
           if (encounter.dungeonId !== owner.value.id) {
             issues.push({
               filePath: owner.filePath,
-              fieldPath: `${owner.fieldPath}.route[${index}]`,
+              fieldPath: `${owner.fieldPath}.route[${index}].encounterId`,
               message: `首领战属于副本 ${encounter.dungeonId}，不能加入 ${owner.value.id} 的路线`,
               invalidReferenceId: encounterId,
             });
@@ -786,7 +804,7 @@ export class ContentRegistry {
   getEncountersForDungeon(id: DungeonDefinition["id"]): readonly EncounterDefinition[] {
     const dungeon = this.dungeonById.get(id);
     if (!dungeon) return [];
-    return Object.freeze(dungeon.route.map((encounterId) => this.encounterById.get(encounterId)!));
+    return Object.freeze(dungeon.route.map((node) => this.encounterById.get(node.encounterId)!));
   }
 
   getLootTableForEncounter(id: EncounterDefinition["id"]): LootTable | undefined {

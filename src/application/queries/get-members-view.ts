@@ -159,7 +159,7 @@ function wishlistSourceOptions(
   const unlocked = new Map<ItemDefinitionId, WishlistItemOptionView>();
   const unlockedDungeonIds = new Set(state.guild.unlockedDungeonIds);
   for (const dungeon of content.dungeons) {
-    for (const encounterId of dungeon.route) {
+    for (const { encounterId } of dungeon.route) {
       const encounter = content.encounterById.get(encounterId)!;
       for (const loot of content.getLootTableForEncounter(encounterId)?.items ?? []) {
         if (all.has(loot.itemId)) continue;

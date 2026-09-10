@@ -5,6 +5,7 @@ import { GameSession } from "../../src/application/services/game-session";
 import { loadBrowserContentRegistry } from "../../src/content/manifest";
 import type { ContentRegistry } from "../../src/content/registry";
 import type { ItemDefinition } from "../../src/content/schemas/item";
+import type { DungeonDefinition } from "../../src/content/schemas/dungeon";
 import { createNewGame } from "../../src/domain/guild/new-game";
 import { asBrandedId } from "../../src/domain/shared/ids";
 import { LocalIdGenerator } from "../../src/infrastructure/ids/local-id-generator";
@@ -19,6 +20,28 @@ function contentWithItem(definition: ItemDefinition): ContentRegistry {
   return {
     ...content,
     itemById: new Map([...content.itemById, [definition.id, definition]]),
+  } as unknown as ContentRegistry;
+}
+
+function contentWithOptionalBazzalan(): ContentRegistry {
+  const dungeon = content.dungeonById.get(dungeonId)!;
+  const definition: DungeonDefinition = {
+    ...dungeon,
+    route: dungeon.route.map((node) =>
+      node.encounterId === "bazzalan"
+        ? {
+            id: asBrandedId<"DungeonRouteNodeId">("optional_bazzalan"),
+            type: "optional" as const,
+            encounterId: node.encounterId,
+            description: { zhCN: "绕路挑战巴扎兰。" },
+          }
+        : node,
+    ),
+  };
+  return {
+    ...content,
+    dungeons: content.dungeons.map((entry) => (entry.id === dungeonId ? definition : entry)),
+    dungeonById: new Map([...content.dungeonById, [dungeonId, definition]]),
   } as unknown as ContentRegistry;
 }
 
@@ -40,6 +63,91 @@ async function sessionFor(state = newState()) {
 }
 
 describe("V2 expedition creation", () => {
+  it("selects only valid optional encounters and freezes one route for every run", async () => {
+    const optionalContent = contentWithOptionalBazzalan();
+    const state = createNewGame({
+      slotId: asBrandedId<"SaveSlotId">("optional-route"),
+      content: optionalContent,
+      contentVersion: asBrandedId<"ContentVersion">("classic-v1"),
+      clock: new FakeClock(1_000),
+      ids: new LocalIdGenerator(),
+      random: new SeededRandomSource("optional-route"),
+    });
+    const participantIds = Object.values(state.members).map((member) => member.id);
+    const request = {
+      dungeonId,
+      participantIds,
+      requestedRuns: 3,
+      selectedOptionalNodeIds: [asBrandedId<"DungeonRouteNodeId">("optional_bazzalan")],
+    };
+    const activity = await startExpeditionCommand(
+      { content: optionalContent, clock: new FakeClock(2_000) },
+      request,
+    ).execute(state);
+
+    expect(activity.selectedOptionalNodeIds).toEqual(["optional_bazzalan"]);
+    expect(activity.runPlans).toHaveLength(3);
+    expect(
+      activity.runPlans.every(
+        (run) => run.stages.map((stage) => stage.encounterId).at(-1) === "bazzalan",
+      ),
+    ).toBe(true);
+
+    const secondState = createNewGame({
+      slotId: asBrandedId<"SaveSlotId">("optional-route-empty"),
+      content: optionalContent,
+      contentVersion: asBrandedId<"ContentVersion">("classic-v1"),
+      clock: new FakeClock(1_000),
+      ids: new LocalIdGenerator(),
+      random: new SeededRandomSource("optional-route-empty"),
+    });
+    const withoutOptional = await startExpeditionCommand(
+      { content: optionalContent, clock: new FakeClock(3_000) },
+      { dungeonId, participantIds, requestedRuns: 1 },
+    ).execute(secondState);
+    expect(withoutOptional.runPlans[0]!.stages.map((stage) => stage.encounterId)).not.toContain(
+      "bazzalan",
+    );
+  });
+
+  it("rejects unknown, duplicate, and required route selections", async () => {
+    const optionalContent = contentWithOptionalBazzalan();
+    const state = createNewGame({
+      slotId: asBrandedId<"SaveSlotId">("invalid-optional-route"),
+      content: optionalContent,
+      contentVersion: asBrandedId<"ContentVersion">("classic-v1"),
+      clock: new FakeClock(1_000),
+      ids: new LocalIdGenerator(),
+      random: new SeededRandomSource("invalid-optional-route"),
+    });
+    const participantIds = Object.values(state.members).map((member) => member.id);
+    const { session } = await sessionFor(state);
+    await expect(
+      session.execute(
+        startExpeditionCommand(
+          { content: optionalContent, clock: new FakeClock(2_000) },
+          {
+            dungeonId,
+            participantIds,
+            requestedRuns: 1,
+            selectedOptionalNodeIds: [
+              asBrandedId<"DungeonRouteNodeId">("optional_bazzalan"),
+              asBrandedId<"DungeonRouteNodeId">("optional_bazzalan"),
+              asBrandedId<"DungeonRouteNodeId">("oggleflint"),
+              asBrandedId<"DungeonRouteNodeId">("missing_optional"),
+            ],
+          },
+        ),
+      ),
+    ).rejects.toMatchObject({
+      name: "StartExpeditionError",
+      issues: expect.arrayContaining([
+        expect.objectContaining({ code: "route.optional-duplicate" }),
+        expect.objectContaining({ code: "route.not-optional" }),
+        expect.objectContaining({ code: "route.optional-not-found" }),
+      ]),
+    });
+  });
   it("uses the same exact evaluation for preview and the frozen activity plan", async () => {
     const state = newState();
     const memberIds = Object.values(state.members).map((member) => member.id);

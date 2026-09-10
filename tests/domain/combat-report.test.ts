@@ -158,4 +158,32 @@ describe("deterministic structured combat reports", () => {
       itemInstanceIds: [],
     });
   });
+
+  it("records a revealed rare encounter in the structured report", async () => {
+    const activity = await activityFixture();
+    const stage = activity.runPlans[0]!.stages[0]!;
+    stage.routeNodeType = "rare";
+    stage.routeNodeId = asBrandedId<"DungeonRouteNodeId">("rare_oggleflint");
+    const encounter = content.encounterById.get(stage.encounterId)!;
+
+    const report = generateCombatReport({
+      activity,
+      stage,
+      encounter,
+      runNumber: 1,
+      outcome: "victory",
+      settledAt: activity.nextSettlementAt,
+      rewards: {
+        experienceFractionByMember: {},
+        funds: encounter.funds,
+        firstKillBonus: 0,
+        itemInstanceIds: [],
+      },
+    });
+
+    expect(report.events).toContainEqual({
+      type: "rare-encounter-revealed",
+      routeNodeId: "rare_oggleflint",
+    });
+  });
 });

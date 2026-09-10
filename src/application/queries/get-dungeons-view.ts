@@ -1,7 +1,7 @@
 import type { ContentRegistry } from "../../content/registry";
 import type { GameState } from "../../domain/game-state";
 import { averageEquippedItemLevel } from "../../domain/equipment/item-level";
-import type { DungeonId, MemberId } from "../../domain/shared/ids";
+import type { DungeonId, DungeonRouteNodeId, MemberId } from "../../domain/shared/ids";
 import { getPartyPreview } from "./get-party-preview";
 
 export interface DungeonOptionView {
@@ -72,6 +72,31 @@ export interface PartyPreviewView {
   readonly encounters: readonly PartyEncounterPreviewView[];
   readonly clearProbability: number;
   readonly durationSeconds: number;
+  readonly durationRange: {
+    readonly minimumSeconds: number;
+    readonly maximumSeconds: number;
+  };
+}
+
+export interface OptionalRouteNodeView {
+  readonly id: DungeonRouteNodeId;
+  readonly encounterId: string;
+  readonly name: string;
+  readonly description: string;
+  readonly selected: boolean;
+  readonly probability: number | null;
+  readonly durationSeconds: number | null;
+  readonly lootItemCount: number;
+}
+
+export interface RareRouteNodeView {
+  readonly id: DungeonRouteNodeId;
+  readonly encounterId: string;
+  readonly name: string;
+  readonly spawnProbability: number;
+  readonly conditionalProbability: number | null;
+  readonly durationSeconds: number | null;
+  readonly lootItemCount: number;
 }
 
 export interface DungeonPlanningView {
@@ -88,10 +113,20 @@ export interface DungeonPlanningView {
   }[];
   readonly selectedMemberIds: readonly MemberId[];
   readonly requestedRuns: number;
+  readonly selectedOptionalNodeIds: readonly DungeonRouteNodeId[];
+  readonly optionalRoutes: readonly OptionalRouteNodeView[];
+  readonly rareRoutes: readonly RareRouteNodeView[];
   readonly preview: PartyPreviewView | null;
   readonly mechanicReadiness: readonly PartyMechanicReadinessView[];
   readonly issues: readonly string[];
   readonly canStart: boolean;
+}
+
+function lootItemCount(content: ContentRegistry, encounterId: string): number {
+  return (
+    content.getLootTableForEncounter(encounterId as ContentRegistry["encounters"][number]["id"])
+      ?.items.length ?? 0
+  );
 }
 
 function effectLabels(
@@ -211,6 +246,7 @@ export function getDungeonPlanningView(
   dungeonId: DungeonId | null,
   selectedMemberIds: readonly MemberId[],
   requestedRuns: number,
+  selectedOptionalNodeIds: readonly DungeonRouteNodeId[] = [],
 ): DungeonPlanningView {
   const dungeons = dungeonOptions(state, content);
   const selectedDungeon =
@@ -222,9 +258,44 @@ export function getDungeonPlanningView(
   const issues: string[] = [];
   let preview: PartyPreviewView | null = null;
   let mechanicReadiness: PartyMechanicReadinessView[] = [];
+  let optionalRoutes: OptionalRouteNodeView[] = [];
+  let rareRoutes: RareRouteNodeView[] = [];
 
   if (!selectedDungeon) issues.push("没有可用的副本内容。");
   else {
+    const dungeonDefinition = content.dungeonById.get(selectedDungeon.id)!;
+    const selectedOptionalIds = new Set(selectedOptionalNodeIds);
+    optionalRoutes = dungeonDefinition.route.flatMap((node) => {
+      if (node.type !== "optional") return [];
+      const encounter = content.encounterById.get(node.encounterId)!;
+      return [
+        {
+          id: node.id,
+          encounterId: encounter.id,
+          name: encounter.name.zhCN,
+          description: node.description.zhCN,
+          selected: selectedOptionalIds.has(node.id),
+          probability: null,
+          durationSeconds: null,
+          lootItemCount: lootItemCount(content, encounter.id),
+        },
+      ];
+    });
+    rareRoutes = dungeonDefinition.route.flatMap((node) => {
+      if (node.type !== "rare") return [];
+      const encounter = content.encounterById.get(node.encounterId)!;
+      return [
+        {
+          id: node.id,
+          encounterId: encounter.id,
+          name: encounter.name.zhCN,
+          spawnProbability: node.spawnProbability,
+          conditionalProbability: null,
+          durationSeconds: null,
+          lootItemCount: lootItemCount(content, encounter.id),
+        },
+      ];
+    });
     if (!selectedDungeon.unlocked) issues.push(`${selectedDungeon.name}尚未解锁。`);
     if (selectedMemberIds.length < selectedDungeon.minimumMembers) {
       issues.push(`至少选择 ${selectedDungeon.minimumMembers} 名成员。`);
@@ -243,8 +314,55 @@ export function getDungeonPlanningView(
     }
 
     if (selectedMemberIds.length > 0 && !selectedMembers.some((member) => !member)) {
-      const result = getPartyPreview(state, content, selectedDungeon.id, selectedMemberIds);
+      const result = getPartyPreview(
+        state,
+        content,
+        selectedDungeon.id,
+        selectedMemberIds,
+        selectedOptionalNodeIds,
+      );
       if (result.ok) {
+        optionalRoutes = optionalRoutes.map((option) => {
+          const optionSelection = option.selected
+            ? selectedOptionalNodeIds
+            : [...selectedOptionalNodeIds, option.id];
+          const optionPreview = getPartyPreview(
+            state,
+            content,
+            selectedDungeon.id,
+            selectedMemberIds,
+            optionSelection,
+          );
+          const encounter = optionPreview.ok
+            ? optionPreview.preview.encounters.find((entry) => entry.routeNodeId === option.id)
+            : undefined;
+          return {
+            ...option,
+            probability: encounter?.probability ?? null,
+            durationSeconds: encounter?.durationSeconds ?? null,
+          };
+        });
+        const rareNodeIds = rareRoutes.map((route) => route.id);
+        const rarePreview = getPartyPreview(
+          state,
+          content,
+          selectedDungeon.id,
+          selectedMemberIds,
+          selectedOptionalNodeIds,
+          rareNodeIds,
+        );
+        if (rarePreview.ok) {
+          rareRoutes = rareRoutes.map((route) => {
+            const encounter = rarePreview.preview.encounters.find(
+              (entry) => entry.routeNodeId === route.id,
+            );
+            return {
+              ...route,
+              conditionalProbability: encounter?.probability ?? null,
+              durationSeconds: encounter?.durationSeconds ?? null,
+            };
+          });
+        }
         mechanicReadiness = result.preview.encounters.flatMap((encounter) =>
           encounter.mechanics.mechanics.map((mechanic) =>
             mechanicView(content, encounter.encounterId, mechanic),
@@ -265,6 +383,12 @@ export function getDungeonPlanningView(
           })),
           clearProbability: result.preview.clearProbability,
           durationSeconds: result.preview.durationSeconds,
+          durationRange: {
+            minimumSeconds: result.preview.durationSeconds,
+            maximumSeconds:
+              result.preview.durationSeconds +
+              rareRoutes.reduce((sum, route) => sum + (route.durationSeconds ?? 0), 0),
+          },
         };
       } else {
         issues.push(...result.issues.map((issue) => issue.message));
@@ -291,6 +415,9 @@ export function getDungeonPlanningView(
     })),
     selectedMemberIds: [...selectedMemberIds],
     requestedRuns,
+    selectedOptionalNodeIds: [...selectedOptionalNodeIds],
+    optionalRoutes,
+    rareRoutes,
     preview,
     mechanicReadiness,
     issues: [...new Set(issues)],

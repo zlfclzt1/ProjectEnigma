@@ -3,6 +3,8 @@ import type {
   DungeonOptionView,
   PartyPreviewView,
   PartyMechanicReadinessView,
+  OptionalRouteNodeView,
+  RareRouteNodeView,
 } from "../../application/queries/get-dungeons-view";
 import BossRoute from "./BossRoute.vue";
 
@@ -10,13 +12,15 @@ defineProps<{
   dungeon: DungeonOptionView | null;
   preview: PartyPreviewView | null;
   mechanicReadiness: readonly PartyMechanicReadinessView[];
+  optionalRoutes: readonly OptionalRouteNodeView[];
+  rareRoutes: readonly RareRouteNodeView[];
   issues: readonly string[];
   requestedRuns: number;
   canStart: boolean;
   pending: boolean;
 }>();
 
-defineEmits<{ start: [] }>();
+defineEmits<{ start: []; toggleOptional: [nodeId: OptionalRouteNodeView["id"]] }>();
 
 function probabilityLabel(probability: number): string {
   return `${(probability * 100).toFixed(2)}%`;
@@ -58,9 +62,54 @@ function durationLabel(seconds: number): string {
         </div>
       </dl>
       <BossRoute :stages="preview.encounters" />
+      <section v-if="optionalRoutes.length || rareRoutes.length" class="route-options">
+        <h4>路线安排</h4>
+        <label v-for="route in optionalRoutes" :key="route.id">
+          <input
+            type="checkbox"
+            :checked="route.selected"
+            @change="$emit('toggleOptional', route.id)"
+          />
+          <span>
+            <strong>可选 · {{ route.name }}</strong>
+            <small>{{ route.description }}</small>
+            <small>
+              额外 {{ route.durationSeconds ? durationLabel(route.durationSeconds) : "待评估" }} ·
+              胜率
+              {{ route.probability === null ? "待评估" : probabilityLabel(route.probability) }} ·
+              掉落池 {{ route.lootItemCount }} 件
+            </small>
+          </span>
+        </label>
+        <article v-for="route in rareRoutes" :key="route.id">
+          <span>
+            <strong>稀有 · {{ route.name }}</strong>
+            <small>
+              出现率 {{ probabilityLabel(route.spawnProbability) }} · 条件胜率
+              {{
+                route.conditionalProbability === null
+                  ? "待评估"
+                  : probabilityLabel(route.conditionalProbability)
+              }}
+              · 最多增加
+              {{ route.durationSeconds ? durationLabel(route.durationSeconds) : "待评估" }} · 掉落池
+              {{ route.lootItemCount }} 件
+            </small>
+          </span>
+        </article>
+      </section>
       <p class="total-time">
         连续 {{ requestedRuns }} 次预计占用
-        <strong>{{ durationLabel(preview.durationSeconds * requestedRuns) }}</strong>
+        <strong
+          v-if="preview.durationRange.minimumSeconds === preview.durationRange.maximumSeconds"
+        >
+          {{ durationLabel(preview.durationSeconds * requestedRuns) }}
+        </strong>
+        <strong v-else>
+          {{ durationLabel(preview.durationRange.minimumSeconds * requestedRuns) }}–{{
+            durationLabel(preview.durationRange.maximumSeconds * requestedRuns)
+          }}
+        </strong>
       </p>
     </template>
     <p v-else class="placeholder">选择成员后，会在这里显示每位 Boss 的精确胜率与固定出发耗时。</p>
@@ -178,6 +227,47 @@ dd {
   display: grid;
   gap: 6px;
   margin-top: 12px;
+}
+.route-options {
+  display: grid;
+  gap: 5px;
+  margin-top: 12px;
+}
+.route-options h4 {
+  margin: 0 0 2px;
+  color: #bca87f;
+  font-size: 0.72rem;
+}
+.route-options label,
+.route-options article {
+  display: flex;
+  align-items: start;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid #343027;
+  background: #090c0d;
+}
+.route-options input {
+  margin-top: 3px;
+}
+.route-options span {
+  display: grid;
+  gap: 2px;
+}
+.route-options strong {
+  color: #d6c39f;
+  font-size: 0.68rem;
+}
+.route-options small {
+  color: #8f8575;
+  font-size: 0.61rem;
+  line-height: 1.4;
+}
+.route-options article {
+  border-color: #4a3b5c;
+}
+.route-options article strong {
+  color: #baa3d2;
 }
 .mechanics h4 {
   margin: 0;

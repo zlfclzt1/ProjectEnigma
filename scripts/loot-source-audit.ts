@@ -73,7 +73,8 @@ export function auditLootSources(registry: ContentRegistry): LootSourceAudit {
   const referencedLootTableIds = new Set<string>();
 
   for (const dungeon of registry.dungeons) {
-    for (const encounterId of dungeon.route) {
+    for (const node of dungeon.route) {
+      const encounterId = node.encounterId;
       const encounter = registry.encounterById.get(encounterId);
       if (!encounter) throw new Error(`副本 ${dungeon.id} 路线缺少首领 ${encounterId}`);
       if (!encounter.lootTableId) {

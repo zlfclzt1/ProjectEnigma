@@ -2,13 +2,24 @@ import type { ContentRegistry } from "../../content/registry";
 import type { ExpeditionActivity, ExpeditionEncounterPlan } from "../../domain/activity/activity";
 import type { GameState } from "../../domain/game-state";
 import type { ActivityId } from "../../domain/shared/ids";
+import type { DungeonDefinition } from "../../content/schemas/dungeon";
+import type { ExpeditionRunPlan } from "../../domain/activity/activity";
 
 export interface ActivityRouteStageView {
   readonly id: string;
   readonly name: string;
-  readonly status: "pending" | "active" | "victory" | "defeat";
+  readonly routeNodeType: "required" | "optional" | "rare";
+  readonly status: "pending" | "active" | "victory" | "defeat" | "absent";
   readonly probability: number;
   readonly durationSeconds: number;
+}
+
+export interface RareRouteEventView {
+  readonly id: string;
+  readonly runNumber: number;
+  readonly encounterName: string;
+  readonly outcome: "spawned" | "absent";
+  readonly text: string;
 }
 
 export interface ExpeditionActivityView {
@@ -30,6 +41,7 @@ export interface ExpeditionActivityView {
   readonly durationSeconds: number;
   readonly formulaVersion: string;
   readonly route: readonly ActivityRouteStageView[];
+  readonly rareEvents: readonly RareRouteEventView[];
 }
 
 export interface ActivitiesView {
@@ -69,12 +81,22 @@ function projectActivity(
   activity: ExpeditionActivity,
   now: number,
 ): ExpeditionActivityView {
-  const allStages = activity.runPlans.flatMap((run) => run.stages);
-  const completedEncounterCount = allStages.filter((stage) => stage.status !== "pending").length;
+  const dungeon = content.dungeonById.get(activity.dungeonId);
+  const allVisibleStages = activity.runPlans.flatMap((run) => getVisibleStages(run));
+  const visibleStages = allVisibleStages;
+  const completedEncounterCount = visibleStages.filter(
+    (stage) => stage.status !== "pending",
+  ).length;
   const activeStage =
     activity.runPlans[activity.activeRunIndex]?.stages[activity.activeEncounterIndex];
   let partialProgress = 0;
-  if (activity.status === "active" && activeStage) {
+  const activeRun = activity.runPlans[activity.activeRunIndex];
+  if (
+    activity.status === "active" &&
+    activeStage &&
+    activeRun &&
+    getVisibleStages(activeRun).includes(activeStage)
+  ) {
     const durationMilliseconds = activeStage.durationSeconds * 1_000;
     const stageStartedAt = activity.nextSettlementAt - durationMilliseconds;
     partialProgress = Math.min(1, Math.max(0, (now - stageStartedAt) / durationMilliseconds));
@@ -95,12 +117,12 @@ function projectActivity(
     requestedRuns: activity.requestedRuns,
     completedRuns: activity.completedRuns,
     currentRunNumber: Math.min(activity.requestedRuns, activity.activeRunIndex + 1),
-    totalEncounterCount: allStages.length,
+    totalEncounterCount: visibleStages.length,
     completedEncounterCount,
     progressPercent:
-      allStages.length === 0
+      visibleStages.length === 0
         ? 0
-        : Math.min(100, ((completedEncounterCount + partialProgress) / allStages.length) * 100),
+        : Math.min(100, ((completedEncounterCount + partialProgress) / visibleStages.length) * 100),
     ...(activity.status === "active" ? { nextSettlementAt: activity.nextSettlementAt } : {}),
     ...(activity.status === "active"
       ? { remainingMilliseconds: Math.max(0, activity.nextSettlementAt - now) }
@@ -108,14 +130,103 @@ function projectActivity(
     clearProbability: activity.partySnapshot.clearProbability,
     durationSeconds: activity.partySnapshot.durationSeconds,
     formulaVersion: activity.partySnapshot.formulaVersion,
-    route: (currentRun?.stages ?? []).map((stage, index) => ({
-      id: stage.encounterId,
+    route: currentRun && dungeon ? projectRoute(activity, currentRun, dungeon, content) : [],
+    rareEvents: dungeon
+      ? activity.runPlans.flatMap((run) => projectRareEvents(run, dungeon, content))
+      : [],
+  };
+}
+
+function getVisibleStages(run: ExpeditionRunPlan): readonly ExpeditionEncounterPlan[] {
+  return run.stages.filter(
+    (stage) =>
+      stage.routeNodeType !== "rare" ||
+      (stage.routeNodeId && run.rareNodeReveals?.[stage.routeNodeId] === "spawned"),
+  );
+}
+
+function projectRoute(
+  activity: ExpeditionActivity,
+  run: ExpeditionRunPlan,
+  dungeon: DungeonDefinition,
+  content: ContentRegistry,
+): readonly ActivityRouteStageView[] {
+  const usedStages = new Set<ExpeditionEncounterPlan>();
+  const route = dungeon.route.flatMap((node): ActivityRouteStageView[] => {
+    const stage = run.stages.find(
+      (candidate) =>
+        !usedStages.has(candidate) &&
+        (candidate.routeNodeId === node.id ||
+          (!candidate.routeNodeId && candidate.encounterId === node.encounterId)),
+    );
+    if (node.type === "rare") {
+      const reveal = run.rareNodeReveals?.[node.id];
+      if (!reveal) return [];
+      if (reveal === "absent") {
+        return [
+          {
+            id: node.id,
+            name: content.encounterById.get(node.encounterId)?.name.zhCN ?? node.encounterId,
+            routeNodeType: "rare",
+            status: "absent",
+            probability: 0,
+            durationSeconds: 0,
+          },
+        ];
+      }
+    }
+    if (!stage) return [];
+    usedStages.add(stage);
+    const index = run.stages.indexOf(stage);
+    return [
+      {
+        id: node.id,
+        name: content.encounterById.get(stage.encounterId)?.name.zhCN ?? stage.encounterId,
+        routeNodeType: node.type,
+        status: stageStatus(activity, stage, index),
+        probability: stage.probability,
+        durationSeconds: stage.durationSeconds,
+      },
+    ];
+  });
+  for (const stage of run.stages) {
+    if (usedStages.has(stage) || stage.routeNodeType === "rare") continue;
+    route.push({
+      id: stage.routeNodeId ?? stage.encounterId,
       name: content.encounterById.get(stage.encounterId)?.name.zhCN ?? stage.encounterId,
-      status: stageStatus(activity, stage, index),
+      routeNodeType: stage.routeNodeType ?? "required",
+      status: stageStatus(activity, stage, run.stages.indexOf(stage)),
       probability: stage.probability,
       durationSeconds: stage.durationSeconds,
-    })),
-  };
+    });
+  }
+  return route;
+}
+
+function projectRareEvents(
+  run: ExpeditionRunPlan,
+  dungeon: DungeonDefinition,
+  content: ContentRegistry,
+): readonly RareRouteEventView[] {
+  return dungeon.route.flatMap((node): RareRouteEventView[] => {
+    if (node.type !== "rare") return [];
+    const outcome = run.rareNodeReveals?.[node.id];
+    if (!outcome) return [];
+    const encounterName =
+      content.encounterById.get(node.encounterId)?.name.zhCN ?? node.encounterId;
+    return [
+      {
+        id: `${run.runNumber}:${node.id}`,
+        runNumber: run.runNumber,
+        encounterName,
+        outcome,
+        text:
+          outcome === "spawned"
+            ? `探索途中发现了稀有首领“${encounterName}”。`
+            : `队伍搜索了附近区域，没有发现“${encounterName}”的踪迹。`,
+      },
+    ];
+  });
 }
 
 export function getActivitiesView(

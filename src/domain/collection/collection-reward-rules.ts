@@ -99,7 +99,8 @@ export function getCollectionRewardItemIds(
   const itemIds = new Set<ItemDefinitionId>();
   for (const dungeon of content.dungeons) {
     if (!dungeonIds.has(dungeon.id)) continue;
-    for (const encounterId of dungeon.route) {
+    for (const node of dungeon.route) {
+      const encounterId = node.encounterId;
       const lootTable = content.getLootTableForEncounter(encounterId);
       for (const entry of lootTable?.items ?? []) itemIds.add(entry.itemId);
     }

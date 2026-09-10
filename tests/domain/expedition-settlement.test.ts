@@ -69,6 +69,34 @@ function contentWithRagefireDropCount(count: number): ContentRegistry {
   return loadContentRegistry(modules);
 }
 
+function contentWithRareTaragaman(spawnProbability: number): ContentRegistry {
+  const modules = structuredClone(browserContentModules) as Record<string, unknown>;
+  const key = Object.keys(modules).find((path) =>
+    path.endsWith("/content/dungeons/ragefire-chasm.json"),
+  );
+  if (!key) throw new Error("Expected ragefire dungeon content");
+  const route = (
+    modules[key] as {
+      dungeons: Array<{
+        route: Array<{
+          id: string;
+          type: "required" | "rare";
+          encounterId: string;
+          spawnProbability?: number;
+        }>;
+      }>;
+    }
+  ).dungeons[0]!.route;
+  const index = route.findIndex((node) => node.encounterId === "taragaman_the_hungerer");
+  const [taragaman] = route.splice(index, 1);
+  route.push({
+    ...taragaman!,
+    type: "rare",
+    spawnProbability,
+  });
+  return loadContentRegistry(modules);
+}
+
 function forceAll(activity: ExpeditionActivity, outcome: "victory" | "defeat"): void {
   for (const stage of activity.runPlans.flatMap((run) => run.stages)) {
     stage.probability = 0.5;
@@ -77,6 +105,75 @@ function forceAll(activity: ExpeditionActivity, outcome: "victory" | "defeat"): 
 }
 
 describe("expedition settlement", () => {
+  it("skips absent rare nodes without rewards and settles spawned rare loot normally", async () => {
+    const absentContent = contentWithRareTaragaman(0);
+    const absentState = newState("absent-rare", absentContent);
+    const absentActivity = await startExpedition(
+      absentState,
+      Object.values(absentState.members).map((member) => member.id),
+      1,
+      2_000,
+      absentContent,
+    );
+    forceAll(absentActivity, "victory");
+    const absentFundsBefore = absentState.guild.funds;
+    const absent = new SettlementService(absentContent).settleDueActivities(
+      absentState,
+      Number.MAX_SAFE_INTEGER,
+    );
+    expect(absentActivity.runPlans[0]!.stages.map((stage) => stage.encounterId)).not.toContain(
+      "taragaman_the_hungerer",
+    );
+    expect(absent.settled).toHaveLength(3);
+    expect(absentState.guild.firstKillEncounterIds).not.toContain("taragaman_the_hungerer");
+    expect(absentState.guild.funds - absentFundsBefore).toBe(135);
+
+    const spawnedContent = contentWithRareTaragaman(1);
+    const spawnedState = newState("spawned-rare", spawnedContent);
+    const spawnedActivity = await startExpedition(
+      spawnedState,
+      Object.values(spawnedState.members).map((member) => member.id),
+      1,
+      2_000,
+      spawnedContent,
+    );
+    forceAll(spawnedActivity, "victory");
+    const spawned = new SettlementService(spawnedContent).settleDueActivities(
+      spawnedState,
+      Number.MAX_SAFE_INTEGER,
+    );
+    const rare = spawned.settled.find((result) => result.encounterId === "taragaman_the_hungerer")!;
+    expect(rare.itemInstanceIds).toHaveLength(1);
+    expect(spawnedActivity.runPlans[0]!.stages.at(-1)).toMatchObject({
+      encounterId: "taragaman_the_hungerer",
+      routeNodeType: "rare",
+      status: "victory",
+      report: { outcome: "victory" },
+    });
+  });
+
+  it("keeps required-route completion when a spawned rare Boss wipes the party", async () => {
+    const rareContent = contentWithRareTaragaman(1);
+    const state = newState("rare-wipe", rareContent);
+    const activity = await startExpedition(
+      state,
+      Object.values(state.members).map((member) => member.id),
+      1,
+      2_000,
+      rareContent,
+    );
+    forceAll(activity, "victory");
+    activity.runPlans[0]!.stages.at(-1)!.successRoll = 0.99;
+
+    new SettlementService(rareContent).settleDueActivities(state, Number.MAX_SAFE_INTEGER);
+
+    expect(activity.status).toBe("failed");
+    expect(activity.runPlans[0]!.mainRouteCompleted).toBe(true);
+    expect(state.history.dungeonClearCounts[dungeonId]).toBe(1);
+    expect(
+      state.history.encounterVictoryCounts[asBrandedId<"EncounterId">("taragaman_the_hungerer")],
+    ).toBeUndefined();
+  });
   it("settles one boss at a time and never rewards the same node twice", async () => {
     const state = newState();
     const activity = await startExpedition(state);
@@ -274,7 +371,7 @@ describe("expedition settlement", () => {
       ),
     ).toBe(true);
     expect(state.guild.firstKillEncounterIds).toEqual(
-      noLootContent.dungeonById.get(dungeonId)!.route,
+      noLootContent.dungeonById.get(dungeonId)!.route.map((node) => node.encounterId),
     );
     expect(state.history.dungeonClearCounts[dungeonId]).toBe(1);
     expect(

@@ -8,14 +8,16 @@ import type {
 } from "../activity/activity";
 import type { CombatProfile } from "../combat/combat-profile";
 import type { GameState } from "../game-state";
-import { asBrandedId, type DungeonId } from "../shared/ids";
+import { asBrandedId, type DungeonId, type DungeonRouteNodeId } from "../shared/ids";
 import { SeededRandomSource } from "../../infrastructure/random/seeded-random-source";
 import { evaluateExpeditionParty } from "./party-evaluation";
+import { lockRareRouteSpawns, revealRareRouteNodes } from "./rare-route";
 
 export interface StartExpeditionRequest extends ActivityStartRequest {
   readonly type: "expedition";
   readonly dungeonId: DungeonId;
   readonly requestedRuns: number;
+  readonly selectedOptionalNodeIds?: readonly DungeonRouteNodeId[];
 }
 
 export function createExpeditionActivityHandler(
@@ -29,6 +31,25 @@ export function createExpeditionActivityHandler(
         return { ok: false, issues: [{ code: "dungeon.not-found", message: "找不到该副本。" }] };
       }
       const issues = [];
+      const selectedOptionalNodeIds = request.selectedOptionalNodeIds ?? [];
+      const selectedIds = new Set<DungeonRouteNodeId>();
+      for (const nodeId of selectedOptionalNodeIds) {
+        const node = dungeon.route.find((candidate) => candidate.id === nodeId);
+        if (selectedIds.has(nodeId)) {
+          issues.push({ code: "route.optional-duplicate", message: "同一可选首领不能重复选择。" });
+        } else if (!node) {
+          issues.push({
+            code: "route.optional-not-found",
+            message: "选择了不属于当前副本的可选首领。",
+          });
+        } else if (node.type !== "optional") {
+          issues.push({
+            code: "route.not-optional",
+            message: "必打或稀有首领不能作为普通可选首领提交。",
+          });
+        }
+        selectedIds.add(nodeId);
+      }
       if (!context.state.guild.unlockedDungeonIds.includes(request.dungeonId)) {
         issues.push({ code: "dungeon.locked", message: `${dungeon.name.zhCN}尚未解锁。` });
       }
@@ -56,16 +77,23 @@ export function createExpeditionActivityHandler(
         content,
         request.dungeonId,
         request.participantIds,
+        selectedOptionalNodeIds,
       );
       if (!preview.ok) issues.push(...preview.issues);
       return issues.length === 0 ? { ok: true } : { ok: false, issues };
     },
     create(context, request) {
+      const dungeon = content.dungeonById.get(request.dungeonId)!;
+      const requestedOptionalIds = new Set(request.selectedOptionalNodeIds ?? []);
+      const selectedOptionalNodeIds = dungeon.route
+        .filter((node) => node.type === "optional" && requestedOptionalIds.has(node.id))
+        .map((node) => node.id);
       const previewResult = evaluateExpeditionParty(
         context.state,
         content,
         request.dungeonId,
         request.participantIds,
+        selectedOptionalNodeIds,
       );
       if (!previewResult.ok) throw new Error("通过校验的副本队伍无法生成预览。");
       const activityId = asBrandedId<"ActivityId">(context.ids.next("expedition"));
@@ -74,7 +102,20 @@ export function createExpeditionActivityHandler(
       for (let runNumber = 1; runNumber <= request.requestedRuns; runNumber += 1) {
         const runSeed = `${activitySeed}:run:${runNumber}:${context.random.next("run-seed")}`;
         const runRandom = new SeededRandomSource(runSeed);
-        runPlans.push({
+        const rareNodeSpawns = lockRareRouteSpawns(dungeon.route, runRandom);
+        const includedRareNodeIds = Object.entries(rareNodeSpawns).flatMap(([nodeId, spawned]) =>
+          spawned ? [asBrandedId<"DungeonRouteNodeId">(nodeId)] : [],
+        );
+        const runPreview = evaluateExpeditionParty(
+          context.state,
+          content,
+          request.dungeonId,
+          request.participantIds,
+          selectedOptionalNodeIds,
+          includedRareNodeIds,
+        );
+        if (!runPreview.ok) throw new Error("稀有首领路线无法使用当前队伍生成。");
+        const runPlan: ExpeditionRunPlan = {
           runNumber,
           seed: runSeed,
           experienceFractionByMember:
@@ -86,7 +127,9 @@ export function createExpeditionActivityHandler(
                   request.participantIds,
                 )
               : {},
-          stages: previewResult.preview.encounters.map((encounter) => ({
+          stages: runPreview.preview.encounters.map((encounter) => ({
+            routeNodeId: encounter.routeNodeId,
+            routeNodeType: encounter.routeNodeType,
             encounterId: encounter.encounterId,
             probability: encounter.probability,
             rawRatios: { ...encounter.rawRatios },
@@ -96,7 +139,12 @@ export function createExpeditionActivityHandler(
             lootSeed: `${runSeed}:loot:${encounter.encounterId}:${runRandom.next(`loot:${encounter.encounterId}`)}`,
             status: "pending",
           })),
-        });
+          rareNodeSpawns,
+          rareNodeReveals: {},
+          mainRouteCompleted: false,
+        };
+        revealRareRouteNodes(runPlan, dungeon.route, runPlan.stages[0]?.routeNodeId);
+        runPlans.push(runPlan);
       }
       const firstStage = runPlans[0]!.stages[0]!;
       return {
@@ -110,6 +158,7 @@ export function createExpeditionActivityHandler(
         seed: activitySeed,
         contentVersion: context.state.contentVersion,
         dungeonId: request.dungeonId,
+        selectedOptionalNodeIds,
         requestedRuns: request.requestedRuns,
         completedRuns: 0,
         activeRunIndex: 0,

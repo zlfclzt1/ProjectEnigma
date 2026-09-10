@@ -47,14 +47,38 @@
         "requirementMultipliers": { "tank": 0.88, "healing": 0.88, "damage": 0.88 }
       },
       "route": [
-        "sfk_rethilgore",
-        "sfk_razorclaw",
-        "sfk_baron_silverlaine",
-        "sfk_commander_springvale",
-        "sfk_odo",
-        "sfk_fenrus",
-        "sfk_wolf_master_nandos",
-        "sfk_archmage_arugal"
+        {
+          "id": "sfk_rethilgore",
+          "type": "required",
+          "encounterId": "sfk_rethilgore"
+        },
+        {
+          "id": "sfk_razorclaw",
+          "type": "required",
+          "encounterId": "sfk_razorclaw"
+        },
+        {
+          "id": "sfk_baron_silverlaine",
+          "type": "required",
+          "encounterId": "sfk_baron_silverlaine"
+        },
+        {
+          "id": "sfk_commander_springvale",
+          "type": "required",
+          "encounterId": "sfk_commander_springvale"
+        },
+        { "id": "sfk_odo", "type": "required", "encounterId": "sfk_odo" },
+        { "id": "sfk_fenrus", "type": "required", "encounterId": "sfk_fenrus" },
+        {
+          "id": "sfk_wolf_master_nandos",
+          "type": "required",
+          "encounterId": "sfk_wolf_master_nandos"
+        },
+        {
+          "id": "sfk_archmage_arugal",
+          "type": "required",
+          "encounterId": "sfk_archmage_arugal"
+        }
       ]
     }
   ]

@@ -8,6 +8,8 @@ import {
   type LegacyGameStateV4,
   type LegacyGameStateV5,
   type LegacyGameStateV6,
+  type LegacyGameStateV7,
+  type LegacyGameStateV8,
 } from "../../src/domain/game-state";
 import type { Member } from "../../src/domain/member/member";
 import { asBrandedId } from "../../src/domain/shared/ids";
@@ -62,6 +64,7 @@ export function createExpeditionActivityFixture(
     seed: "activity-seed",
     contentVersion: asBrandedId<"ContentVersion">("classic-v1"),
     dungeonId: asBrandedId<"DungeonId">("ragefire_chasm"),
+    selectedOptionalNodeIds: [],
     requestedRuns: 1,
     completedRuns: 0,
     activeRunIndex: 0,
@@ -79,6 +82,8 @@ export function createExpeditionActivityFixture(
         runNumber: 1,
         seed: "run-seed",
         experienceFractionByMember: { [asBrandedId<"MemberId">("member_1")]: 0.5 },
+        rareNodeSpawns: {},
+        rareNodeReveals: {},
         stages: [
           {
             encounterId: asBrandedId<"EncounterId">("oggleflint"),
@@ -192,7 +197,7 @@ export function createLegacyGameStateV5Fixture(
 export function createLegacyGameStateV6Fixture(
   overrides: Partial<LegacyGameStateV6> = {},
 ): LegacyGameStateV6 {
-  const current = createGameStateFixture();
+  const current = createLegacyGameStateV7Fixture();
   const activities = Object.fromEntries(
     Object.entries(current.activities).map(([id, activity]) => {
       if (activity.type !== "expedition") return [id, activity];
@@ -204,6 +209,54 @@ export function createLegacyGameStateV6Fixture(
   return {
     ...current,
     saveVersion: 6,
+    activities,
+    ...overrides,
+  };
+}
+
+export function createLegacyGameStateV7Fixture(
+  overrides: Partial<LegacyGameStateV7> = {},
+): LegacyGameStateV7 {
+  const current = createLegacyGameStateV8Fixture();
+  const activities = Object.fromEntries(
+    Object.entries(current.activities).map(([id, activity]) => {
+      if (activity.type !== "expedition") return [id, activity];
+      const { selectedOptionalNodeIds: _selectedOptionalNodeIds, ...legacyActivity } = activity;
+      void _selectedOptionalNodeIds;
+      return [id, legacyActivity];
+    }),
+  ) as LegacyGameStateV7["activities"];
+  return {
+    ...current,
+    saveVersion: 7,
+    activities,
+    ...overrides,
+  };
+}
+
+export function createLegacyGameStateV8Fixture(
+  overrides: Partial<LegacyGameStateV8> = {},
+): LegacyGameStateV8 {
+  const current = createGameStateFixture();
+  const activities = Object.fromEntries(
+    Object.entries(current.activities).map(([id, activity]) => {
+      if (activity.type !== "expedition") return [id, activity];
+      return [
+        id,
+        {
+          ...activity,
+          runPlans: activity.runPlans.map((run) => {
+            const { rareNodeReveals: _rareNodeReveals, ...legacyRun } = run;
+            void _rareNodeReveals;
+            return legacyRun;
+          }),
+        },
+      ];
+    }),
+  ) as LegacyGameStateV8["activities"];
+  return {
+    ...current,
+    saveVersion: 8,
     activities,
     ...overrides,
   };

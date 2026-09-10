@@ -22,7 +22,7 @@ export function setMemberWishlistTargetCommand(
       if (!member) throw new Error("成员不存在。");
       const available = draft.guild.unlockedDungeonIds.some((dungeonId) => {
         const dungeon = content.dungeonById.get(dungeonId);
-        return dungeon?.route.some((encounterId) =>
+        return dungeon?.route.some(({ encounterId }) =>
           content
             .getLootTableForEncounter(encounterId)
             ?.items.some((entry) => entry.itemId === input.itemDefinitionId),

@@ -105,7 +105,7 @@ export function generateCombatReport(request: GenerateCombatReportRequest): Comb
     parameters: { equivalentHealth, incomingDamageBudget },
     totals: { damage: totalDamage, healing: totalHealing, damageTaken: incomingDamageBudget },
     members: memberReports,
-    events: combatEvents(memberReports, outcome),
+    events: combatEvents(memberReports, outcome, stage),
     mechanics: structuredClone(stage.mechanics?.mechanics ?? []),
     rewards,
   };
@@ -165,8 +165,12 @@ function defeatedMembers(
 function combatEvents(
   members: readonly MemberCombatReport[],
   outcome: "victory" | "defeat",
+  stage: ExpeditionEncounterPlan,
 ): readonly CombatEvent[] {
   const events: CombatEvent[] = [{ type: "encounter-outcome", outcome }];
+  if (stage.routeNodeType === "rare" && stage.routeNodeId) {
+    events.push({ type: "rare-encounter-revealed", routeNodeId: stage.routeNodeId });
+  }
   const topDamage = [...members].sort(
     (left, right) => right.damage - left.damage || left.memberId.localeCompare(right.memberId),
   )[0];

@@ -9,7 +9,13 @@ import type { CombatProfile } from "../combat/combat-profile";
 import type { FormulaModifier } from "../combat/formula-context";
 import type { GameState } from "../game-state";
 import type { Member } from "../member/member";
-import type { DungeonId, EncounterId, FormulaVersion, MemberId } from "../shared/ids";
+import type {
+  DungeonId,
+  DungeonRouteNodeId,
+  EncounterId,
+  FormulaVersion,
+  MemberId,
+} from "../shared/ids";
 import {
   aggregatePartyCapabilities,
   type PartyCapabilitySnapshot,
@@ -31,6 +37,8 @@ export interface PartyEvaluationIssue {
 export type PartyContribution = PartyCombatContribution;
 
 export interface EncounterPreview {
+  readonly routeNodeId: DungeonRouteNodeId;
+  readonly routeNodeType: "required" | "optional" | "rare";
   readonly encounterId: EncounterId;
   readonly probability: number;
   readonly rawRatios: PartyContribution;
@@ -60,6 +68,8 @@ export function evaluateExpeditionParty(
   content: ContentRegistry,
   dungeonId: DungeonId,
   memberIds: readonly MemberId[],
+  selectedOptionalNodeIds: readonly DungeonRouteNodeId[] = [],
+  includedRareNodeIds: readonly DungeonRouteNodeId[] = [],
 ): PartyPreviewResult {
   const dungeon = content.dungeonById.get(dungeonId);
   if (!dungeon) {
@@ -118,8 +128,16 @@ export function evaluateExpeditionParty(
     })),
     partyCombatProfile.members,
   );
-  const mechanicEvaluations = dungeon.route.map((encounterId) =>
-    evaluateEncounterMechanics(content, encounterId, capabilities),
+  const selectedOptionalIds = new Set(selectedOptionalNodeIds);
+  const includedRareIds = new Set(includedRareNodeIds);
+  const route = dungeon.route.filter(
+    (node) =>
+      node.type === "required" ||
+      (node.type === "optional" && selectedOptionalIds.has(node.id)) ||
+      (node.type === "rare" && includedRareIds.has(node.id)),
+  );
+  const mechanicEvaluations = route.map((node) =>
+    evaluateEncounterMechanics(content, node.encounterId, capabilities),
   );
   for (const evaluation of mechanicEvaluations) {
     const encounter = content.encounterById.get(evaluation.encounterId)!;
@@ -142,13 +160,16 @@ export function evaluateExpeditionParty(
     }
   }
   if (issues.length > 0) return { ok: false, issues };
-  const encounters = dungeon.route.map((encounterId) => {
+  const encounters = route.map((node) => {
+    const encounterId = node.encounterId;
     const encounter = content.encounterById.get(encounterId)!;
     const mechanics = mechanicEvaluations.find(
       (evaluation) => evaluation.encounterId === encounterId,
     )!;
     const probability = bossProbability(contribution, encounter, dungeon, mechanics);
     return {
+      routeNodeId: node.id,
+      routeNodeType: node.type,
       encounterId,
       ...probability,
       durationSeconds: stageDurationSeconds(contribution, encounter, dungeon, members, mechanics),

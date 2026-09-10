@@ -1,12 +1,11 @@
 import type { ContentRegistry } from "../../../content/registry";
 import { aggregatePartyCapabilities } from "../../../domain/combat/party-capabilities";
-import {
-  GAME_STATE_SAVE_VERSION,
-  type GameState,
-  type LegacyGameStateV6,
-} from "../../../domain/game-state";
+import { type LegacyGameStateV6, type LegacyGameStateV7 } from "../../../domain/game-state";
 
-export function migrateV6ToV7(legacy: LegacyGameStateV6, content: ContentRegistry): GameState {
+export function migrateV6ToV7(
+  legacy: LegacyGameStateV6,
+  content: ContentRegistry,
+): LegacyGameStateV7 {
   const activities = Object.fromEntries(
     Object.entries(legacy.activities).map(([activityId, activity]) => {
       if (activity.type !== "expedition") return [activityId, structuredClone(activity)];
@@ -34,10 +33,10 @@ export function migrateV6ToV7(legacy: LegacyGameStateV6, content: ContentRegistr
         },
       ];
     }),
-  ) as GameState["activities"];
+  ) as LegacyGameStateV7["activities"];
   return {
     ...structuredClone(legacy),
-    saveVersion: GAME_STATE_SAVE_VERSION,
+    saveVersion: 7,
     activities,
   };
 }

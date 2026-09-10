@@ -1,6 +1,6 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
-import type { ClassId, DungeonId, MemberId } from "../domain/shared/ids";
+import type { ClassId, DungeonId, DungeonRouteNodeId, MemberId } from "../domain/shared/ids";
 import type { MemberSortKey } from "../ui/member-list-sorting";
 
 export type RoleFilter = "tank" | "healer" | "dps" | null;
@@ -23,6 +23,7 @@ export const useUiStore = defineStore("ui", () => {
   const partyFilters = ref<MemberFilters>({ ...EMPTY_FILTERS });
   const selectedDungeonId = ref<DungeonId | null>(null);
   const selectedPartyMemberIds = ref<MemberId[]>([]);
+  const selectedOptionalNodeIds = ref<DungeonRouteNodeId[]>([]);
   const requestedExpeditionRuns = ref(1);
   const selectedMemberId = ref<MemberId | null>(null);
   const activeModal = ref<UiModal | null>(null);
@@ -37,7 +38,14 @@ export const useUiStore = defineStore("ui", () => {
   }
 
   function selectDungeon(dungeonId: DungeonId | null): void {
+    if (selectedDungeonId.value !== dungeonId) selectedOptionalNodeIds.value = [];
     selectedDungeonId.value = dungeonId;
+  }
+
+  function toggleOptionalNode(nodeId: DungeonRouteNodeId): void {
+    selectedOptionalNodeIds.value = selectedOptionalNodeIds.value.includes(nodeId)
+      ? selectedOptionalNodeIds.value.filter((id) => id !== nodeId)
+      : [...selectedOptionalNodeIds.value, nodeId];
   }
 
   function togglePartyMember(memberId: MemberId): void {
@@ -48,6 +56,7 @@ export const useUiStore = defineStore("ui", () => {
 
   function clearParty(): void {
     selectedPartyMemberIds.value = [];
+    selectedOptionalNodeIds.value = [];
   }
 
   function setRequestedExpeditionRuns(runs: number): void {
@@ -80,6 +89,7 @@ export const useUiStore = defineStore("ui", () => {
     partyFilters,
     selectedDungeonId,
     selectedPartyMemberIds,
+    selectedOptionalNodeIds,
     requestedExpeditionRuns,
     selectedMemberId,
     activeModal,
@@ -87,6 +97,7 @@ export const useUiStore = defineStore("ui", () => {
     setMemberFilters,
     setPartyFilters,
     selectDungeon,
+    toggleOptionalNode,
     togglePartyMember,
     clearParty,
     setRequestedExpeditionRuns,

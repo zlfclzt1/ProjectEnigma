@@ -16,6 +16,17 @@ export function renderCombatLog(
   state: Pick<GameState, "members">,
   content: ContentRegistry,
 ): readonly RenderedCombatLogEntry[] {
+  const rareEntries: RenderedCombatLogEntry[] = report.events.flatMap((event) =>
+    event.type === "rare-encounter-revealed"
+      ? [
+          {
+            eventType: event.type,
+            text: `探索途中发现了稀有首领“${content.encounterById.get(report.encounterId)?.name.zhCN ?? report.encounterId}”。`,
+            memberIds: [],
+          },
+        ]
+      : [],
+  );
   const mechanicEntries: RenderedCombatLogEntry[] = (report.mechanics ?? []).map((result) => {
     const mechanic = content.mechanicById.get(result.mechanicId);
     const missing = result.requirements
@@ -99,7 +110,7 @@ export function renderCombatLog(
       },
     ];
   });
-  return [...mechanicEntries, ...renderedEntries];
+  return [...rareEntries, ...mechanicEntries, ...renderedEntries];
 }
 
 function best(

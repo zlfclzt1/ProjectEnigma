@@ -1,5 +1,6 @@
 import type { IdGenerator } from "../../application/ports/id-generator";
 import type { ContentRegistry } from "../../content/registry";
+import type { DungeonDefinition } from "../../content/schemas/dungeon";
 import type { ActivityScheduler } from "../activity/activity-scheduler";
 import type { ExpeditionActivity, ExpeditionEncounterPlan } from "../activity/activity";
 import { recordAcquiredItem } from "../collection/item-collection";
@@ -9,6 +10,7 @@ import type { CombatReportId, MemberId } from "../shared/ids";
 import { generateCombatReport } from "../combat/report-generator";
 import { experienceFractions } from "./expedition-activity";
 import { generateGuaranteedLoot } from "./loot-generation";
+import { revealRareRouteNodes } from "./rare-route";
 
 export type ExpeditionSettlementResult =
   | {
@@ -116,7 +118,8 @@ export function settleNextExpeditionStage(
       itemInstanceIds: generatedLoot.map(({ instance }) => instance.id),
     },
   });
-  if (activity.activeEncounterIndex === run.stages.length - 1) {
+  if (!run.mainRouteCompleted && requiredStagesCleared(run, dungeon)) {
+    run.mainRouteCompleted = true;
     state.history.dungeonClearCounts[activity.dungeonId] =
       (state.history.dungeonClearCounts[activity.dungeonId] ?? 0) + 1;
   }
@@ -132,6 +135,22 @@ export function settleNextExpeditionStage(
     itemInstanceIds: generatedLoot.map(({ instance }) => instance.id),
     reportId: stage.report.id,
   };
+}
+
+function requiredStagesCleared(
+  run: ExpeditionActivity["runPlans"][number],
+  dungeon: DungeonDefinition,
+): boolean {
+  const requiredEncounterIds = new Set(
+    dungeon.route.filter((node) => node.type === "required").map((node) => node.encounterId),
+  );
+  return run.stages
+    .filter((stage) =>
+      stage.routeNodeType
+        ? stage.routeNodeType === "required"
+        : requiredEncounterIds.has(stage.encounterId),
+    )
+    .every((stage) => stage.status === "victory");
 }
 
 function applyEncounterExperience(
@@ -175,10 +194,15 @@ function advanceAfterVictory(
   const run = activity.runPlans[activity.activeRunIndex]!;
   const nextStage = run.stages[activity.activeEncounterIndex + 1];
   if (nextStage) {
+    const dungeon = content.dungeonById.get(activity.dungeonId);
+    if (dungeon) revealRareRouteNodes(run, dungeon.route, nextStage.routeNodeId);
     activity.activeEncounterIndex += 1;
     activity.nextSettlementAt = settledAt + nextStage.durationSeconds * 1_000;
     return;
   }
+
+  const dungeon = content.dungeonById.get(activity.dungeonId);
+  if (dungeon) revealRareRouteNodes(run, dungeon.route);
 
   activity.completedRuns += 1;
   const nextRun = activity.runPlans[activity.activeRunIndex + 1];
@@ -189,6 +213,10 @@ function advanceAfterVictory(
 
   activity.activeRunIndex += 1;
   activity.activeEncounterIndex = 0;
+  const nextDungeon = content.dungeonById.get(activity.dungeonId);
+  if (nextDungeon) {
+    revealRareRouteNodes(nextRun, nextDungeon.route, nextRun.stages[0]?.routeNodeId);
+  }
   nextRun.experienceFractionByMember = experienceFractions(
     state,
     content,

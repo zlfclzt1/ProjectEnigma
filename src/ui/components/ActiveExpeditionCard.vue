@@ -29,6 +29,11 @@ function remainingLabel(milliseconds: number | undefined): string {
     </div>
     <p class="members">{{ activity.memberNames.join(" · ") }}</p>
     <BossRoute :stages="activity.route" />
+    <ul v-if="activity.rareEvents.length" class="rare-events" aria-label="稀有首领动态">
+      <li v-for="event in activity.rareEvents" :key="event.id" :data-outcome="event.outcome">
+        第 {{ event.runNumber }} 次 · {{ event.text }}
+      </li>
+    </ul>
     <footer>
       <span>全通率 {{ (activity.clearProbability * 100).toFixed(2) }}%</span>
       <span>公式 {{ activity.formulaVersion }}</span>
@@ -86,6 +91,24 @@ time {
 }
 .members {
   margin-bottom: 10px;
+}
+.rare-events {
+  display: grid;
+  gap: 4px;
+  padding: 0;
+  margin: 10px 0 0;
+  list-style: none;
+}
+.rare-events li {
+  padding: 7px 9px;
+  border-left: 2px solid #635b50;
+  background: #0c0f11;
+  color: #9b9386;
+  font-size: 0.64rem;
+}
+.rare-events li[data-outcome="spawned"] {
+  border-left-color: #8f6fb2;
+  color: #c4a8df;
 }
 footer {
   margin-top: 10px;

@@ -343,9 +343,17 @@ export const useGameStore = defineStore("game", () => {
     dungeonId: DungeonId | null,
     memberIds: readonly MemberId[],
     requestedRuns: number,
+    selectedOptionalNodeIds: readonly import("../domain/shared/ids").DungeonRouteNodeId[] = [],
   ) {
     return stateSnapshot.value && content
-      ? getDungeonPlanningView(stateSnapshot.value, content, dungeonId, memberIds, requestedRuns)
+      ? getDungeonPlanningView(
+          stateSnapshot.value,
+          content,
+          dungeonId,
+          memberIds,
+          requestedRuns,
+          selectedOptionalNodeIds,
+        )
       : null;
   }
 
@@ -353,12 +361,18 @@ export const useGameStore = defineStore("game", () => {
     dungeonId: DungeonId,
     participantIds: readonly MemberId[],
     requestedRuns: number,
+    selectedOptionalNodeIds: readonly import("../domain/shared/ids").DungeonRouteNodeId[] = [],
   ): Promise<GameCommandOutcome<unknown>> {
     if (!content || !clock) return unavailableOutcome("start-expedition");
     return execute(
       startExpeditionCommand(
         { content, clock },
-        { dungeonId, participantIds: [...participantIds], requestedRuns },
+        {
+          dungeonId,
+          participantIds: [...participantIds],
+          requestedRuns,
+          selectedOptionalNodeIds: [...selectedOptionalNodeIds],
+        },
       ),
     );
   }

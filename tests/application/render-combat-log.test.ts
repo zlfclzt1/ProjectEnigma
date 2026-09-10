@@ -151,4 +151,26 @@ describe("playful combat log rendering", () => {
     );
     expect(report).toEqual(before);
   });
+
+  it("renders a factual rare encounter reveal before the combat flavor", () => {
+    const { members, report } = fixture();
+    const rareReport: CombatReport = {
+      ...report,
+      events: [
+        ...report.events,
+        {
+          type: "rare-encounter-revealed",
+          routeNodeId: asBrandedId<"DungeonRouteNodeId">("rare_oggleflint"),
+        },
+      ],
+    };
+
+    const logs = renderCombatLog(rareReport, { members }, content);
+
+    expect(logs[0]).toEqual({
+      eventType: "rare-encounter-revealed",
+      text: "探索途中发现了稀有首领“奥格弗林特”。",
+      memberIds: [],
+    });
+  });
 });

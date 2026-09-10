@@ -1,4 +1,4 @@
-import type { MemberId } from "../shared/ids";
+import type { DungeonRouteNodeId, MemberId } from "../shared/ids";
 
 export type CombatEvent =
   | {
@@ -18,4 +18,8 @@ export type CombatEvent =
   | {
       readonly type: "member-defeated";
       readonly memberId: MemberId;
+    }
+  | {
+      readonly type: "rare-encounter-revealed";
+      readonly routeNodeId: DungeonRouteNodeId;
     };

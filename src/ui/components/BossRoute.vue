@@ -2,7 +2,8 @@
 interface BossRouteStage {
   readonly id: string;
   readonly name: string;
-  readonly status?: "pending" | "active" | "victory" | "defeat";
+  readonly routeNodeType?: "required" | "optional" | "rare";
+  readonly status?: "pending" | "active" | "victory" | "defeat" | "absent";
   readonly probability: number;
   readonly durationSeconds: number;
 }
@@ -24,12 +25,18 @@ function durationLabel(seconds: number): string {
     <li v-for="(stage, index) in stages" :key="stage.id" :class="stage.status ?? 'preview'">
       <span>{{ index + 1 }}</span>
       <div>
-        <strong>{{ stage.name }}</strong>
-        <small>胜率 {{ probabilityLabel(stage.probability) }}</small>
+        <strong>{{ stage.routeNodeType === "rare" ? `稀有 · ${stage.name}` : stage.name }}</strong>
+        <small v-if="stage.status !== 'absent'"
+          >胜率 {{ probabilityLabel(stage.probability) }}</small
+        >
+        <small v-else>本次未出现</small>
       </div>
-      <time>{{ durationLabel(stage.durationSeconds) }}</time>
+      <time v-if="stage.status !== 'absent'">{{ durationLabel(stage.durationSeconds) }}</time>
+      <time v-else>—</time>
       <em v-if="stage.status">{{
-        { pending: "等待", active: "交战中", victory: "击败", defeat: "灭团" }[stage.status]
+        { pending: "等待", active: "交战中", victory: "击败", defeat: "灭团", absent: "未现身" }[
+          stage.status
+        ]
       }}</em>
     </li>
   </ol>
@@ -102,5 +109,9 @@ li.defeat {
 }
 li.defeat em {
   color: #d4776c;
+}
+li.absent {
+  border-left-color: #56514a;
+  opacity: 0.72;
 }
 </style>
