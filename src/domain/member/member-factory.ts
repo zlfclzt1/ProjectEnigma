@@ -49,6 +49,7 @@ function selectHiddenCharacter(context: MemberFactoryContext) {
     if (character.appearance.uniquePerSave && context.claimedHiddenCharacterIds.has(character.id)) {
       continue;
     }
+    if (context.usedNames.has(character.name.zhCN)) continue;
     if (context.random.next("hidden-character") < character.appearance.chance) {
       if (character.appearance.uniquePerSave) {
         context.claimedHiddenCharacterIds.add(character.id);
@@ -60,17 +61,11 @@ function selectHiddenCharacter(context: MemberFactoryContext) {
 }
 
 function createUniqueName(context: MemberFactoryContext): string {
-  const parts = context.content.namePartsByLocale.get("zh-CN");
-  if (!parts) throw new Error("缺少 zh-CN 随机姓名定义");
-  const first = randomEntry(context, parts.first, "name-first");
-  const second = randomEntry(context, parts.second, "name-second");
-  const base = `${first}·${second}`;
-  let name = base;
-  let suffix = 2;
-  while (context.usedNames.has(name)) {
-    name = `${base}${suffix}`;
-    suffix += 1;
-  }
+  const pool = context.content.namePoolByLocale.get("zh-CN");
+  if (!pool) throw new Error("缺少 zh-CN 随机姓名定义");
+  const availableNames = pool.names.filter((name) => !context.usedNames.has(name));
+  if (availableNames.length === 0) throw new Error("zh-CN 随机姓名池已耗尽");
+  const name = randomEntry(context, availableNames, "member-name");
   context.usedNames.add(name);
   return name;
 }

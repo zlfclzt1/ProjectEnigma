@@ -12,7 +12,7 @@ import type { LogTemplateGroup } from "./schemas/log-template";
 import type {
   ClassDefinition,
   HiddenCharacterDefinition,
-  NamePartsFile,
+  NamePoolFile,
   PersonalityDefinition,
   RaceDefinition,
   RoleDefinition,
@@ -190,7 +190,7 @@ export class ContentRegistry {
   readonly specs: readonly SpecDefinition[];
   readonly combatProfiles: readonly CombatProfileDefinition[];
   readonly personalities: readonly PersonalityDefinition[];
-  readonly nameParts: readonly NamePartsFile[];
+  readonly namePools: readonly NamePoolFile[];
   readonly hiddenCharacters: readonly HiddenCharacterDefinition[];
   readonly items: readonly ItemDefinition[];
   readonly dungeons: readonly DungeonDefinition[];
@@ -213,7 +213,7 @@ export class ContentRegistry {
   readonly encounterById: ReadonlyMap<EncounterDefinition["id"], EncounterDefinition>;
   readonly lootTableById: ReadonlyMap<LootTable["id"], LootTable>;
   readonly logTemplateById: ReadonlyMap<LogTemplateGroup["id"], LogTemplateGroup>;
-  readonly namePartsByLocale: ReadonlyMap<NamePartsFile["locale"], NamePartsFile>;
+  readonly namePoolByLocale: ReadonlyMap<NamePoolFile["locale"], NamePoolFile>;
 
   constructor(loaded: LoadedContent) {
     const issues: ContentValidationIssue[] = [];
@@ -229,16 +229,16 @@ export class ContentRegistry {
     const encounterById = buildIndex(loaded.encounters, issues, "首领战");
     const lootTableById = buildIndex(loaded.lootTables, issues, "掉落表");
     const logTemplateById = buildIndex(loaded.logTemplates, issues, "日志模板");
-    const namePartsByLocale = new Map<NamePartsFile["locale"], NamePartsFile>();
-    for (const entry of loaded.nameParts) {
-      if (namePartsByLocale.has(entry.value.locale)) {
+    const namePoolByLocale = new Map<NamePoolFile["locale"], NamePoolFile>();
+    for (const entry of loaded.namePools) {
+      if (namePoolByLocale.has(entry.value.locale)) {
         issues.push({
           filePath: entry.filePath,
           fieldPath: "locale",
           message: "随机姓名语言重复",
           invalidReferenceId: entry.value.locale,
         });
-      } else namePartsByLocale.set(entry.value.locale, entry.value);
+      } else namePoolByLocale.set(entry.value.locale, entry.value);
     }
 
     this.validateMemberReferences(
@@ -271,7 +271,7 @@ export class ContentRegistry {
     this.specs = Object.freeze(loaded.specs.map(({ value }) => value));
     this.combatProfiles = Object.freeze(loaded.combatProfiles.map(({ value }) => value));
     this.personalities = Object.freeze(loaded.personalities.map(({ value }) => value));
-    this.nameParts = Object.freeze(loaded.nameParts.map(({ value }) => value));
+    this.namePools = Object.freeze(loaded.namePools.map(({ value }) => value));
     this.hiddenCharacters = Object.freeze(loaded.hiddenCharacters.map(({ value }) => value));
     this.items = Object.freeze(loaded.items.map(({ value }) => value));
     this.dungeons = Object.freeze(loaded.dungeons.map(({ value }) => value));
@@ -290,7 +290,7 @@ export class ContentRegistry {
     this.encounterById = readonlyMap(encounterById);
     this.lootTableById = readonlyMap(lootTableById);
     this.logTemplateById = readonlyMap(logTemplateById);
-    this.namePartsByLocale = readonlyMap(namePartsByLocale);
+    this.namePoolByLocale = readonlyMap(namePoolByLocale);
     Object.freeze(this);
   }
 

@@ -85,10 +85,12 @@ export const personalityDefinitionFileSchema = contentFileBaseSchema.safeExtend(
   personalities: z.array(personalityDefinitionSchema).min(1),
 });
 
-export const namePartsFileSchema = contentFileBaseSchema.safeExtend({
+export const namePoolFileSchema = contentFileBaseSchema.safeExtend({
   locale: z.literal("zh-CN"),
-  first: z.array(z.string().trim().min(1)).min(1),
-  second: z.array(z.string().trim().min(1)).min(1),
+  names: z
+    .array(z.string().trim().min(1))
+    .min(1)
+    .refine((names) => new Set(names).size === names.length, "随机昵称不能重复"),
 });
 
 export const hiddenCharacterDefinitionSchema = z
@@ -117,4 +119,4 @@ export type RaceDefinition = z.infer<typeof raceDefinitionSchema>;
 export type SpecDefinition = z.infer<typeof specDefinitionSchema>;
 export type PersonalityDefinition = z.infer<typeof personalityDefinitionSchema>;
 export type HiddenCharacterDefinition = z.infer<typeof hiddenCharacterDefinitionSchema>;
-export type NamePartsFile = z.infer<typeof namePartsFileSchema>;
+export type NamePoolFile = z.infer<typeof namePoolFileSchema>;

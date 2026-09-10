@@ -90,6 +90,35 @@ describe("V2 new game factory", () => {
     expect(boundary.identity.hiddenCharacterId).toBeUndefined();
   });
 
+  it("uses standalone names and selects another entry instead of adding a suffix", () => {
+    const context = memberFactoryContext([0.5, 0, 0, 0, 0, 0.5, 0, 0, 0, 0]);
+    const first = createCandidate(context);
+    const second = createCandidate(context);
+
+    expect(first.identity.name).toBe("灿仔");
+    expect(second.identity.name).toBe("暮雨");
+    expect(first.identity.name).not.toContain("·");
+    expect(second.identity.name).not.toMatch(/\d+$/);
+  });
+
+  it("does not generate a hidden character whose name is already in use", () => {
+    const context = memberFactoryContext([0, 0, 0, 0, 0]);
+    context.usedNames.add("费厄泼赖");
+    const candidate = createCandidate(context);
+
+    expect(candidate.identity.hiddenCharacterId).toBeUndefined();
+    expect(candidate.identity.name).toBe("灿仔");
+  });
+
+  it("can consume the complete name pool without producing duplicates", () => {
+    const rolls = Array.from({ length: 377 }, () => [0.5, 0, 0, 0, 0]).flat();
+    const context = memberFactoryContext([...rolls, 0.5, 0, 0]);
+    const names = Array.from({ length: 377 }, () => createCandidate(context).identity.name);
+
+    expect(new Set(names).size).toBe(377);
+    expect(() => createCandidate(context)).toThrow("zh-CN 随机姓名池已耗尽");
+  });
+
   it("stores content IDs instead of copied static display fields", () => {
     const state = newGame();
     const member = Object.values(state.members)[0] as unknown as Record<string, unknown>;

@@ -16,14 +16,14 @@ import { logTemplateFileSchema, type LogTemplateGroup } from "./schemas/log-temp
 import {
   classDefinitionFileSchema,
   hiddenCharacterDefinitionFileSchema,
-  namePartsFileSchema,
+  namePoolFileSchema,
   personalityDefinitionFileSchema,
   raceDefinitionFileSchema,
   roleDefinitionFileSchema,
   specDefinitionFileSchema,
   type ClassDefinition,
   type HiddenCharacterDefinition,
-  type NamePartsFile,
+  type NamePoolFile,
   type PersonalityDefinition,
   type RaceDefinition,
   type RoleDefinition,
@@ -77,7 +77,7 @@ export interface LoadedContent {
   readonly specs: readonly LocatedContent<SpecDefinition>[];
   readonly combatProfiles: readonly LocatedContent<CombatProfileDefinition>[];
   readonly personalities: readonly LocatedContent<PersonalityDefinition>[];
-  readonly nameParts: readonly LocatedContent<NamePartsFile>[];
+  readonly namePools: readonly LocatedContent<NamePoolFile>[];
   readonly hiddenCharacters: readonly LocatedContent<HiddenCharacterDefinition>[];
   readonly items: readonly LocatedContent<ItemDefinition>[];
   readonly dungeons: readonly LocatedContent<DungeonDefinition>[];
@@ -109,7 +109,7 @@ const DIRECTORY_DESCRIPTORS: Readonly<Record<string, FileDescriptor>> = {
     collection: "personalities",
     property: "personalities",
   },
-  names: { schema: namePartsFileSchema, collection: "nameParts", property: "$file" },
+  names: { schema: namePoolFileSchema, collection: "namePools", property: "$file" },
   "hidden-characters": {
     schema: hiddenCharacterDefinitionFileSchema,
     collection: "hiddenCharacters",
@@ -142,7 +142,7 @@ function emptyLoadedContent(): MutableLoadedContent {
     specs: [],
     combatProfiles: [],
     personalities: [],
-    nameParts: [],
+    namePools: [],
     hiddenCharacters: [],
     items: [],
     dungeons: [],

@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   classDefinitionFileSchema,
   hiddenCharacterDefinitionFileSchema,
-  namePartsFileSchema,
+  namePoolFileSchema,
   personalityDefinitionFileSchema,
   raceDefinitionFileSchema,
   roleDefinitionFileSchema,
@@ -21,7 +21,7 @@ const specFile = specDefinitionFileSchema.parse(readJson("content/specs/classic.
 const personalityFile = personalityDefinitionFileSchema.parse(
   readJson("content/personalities/classic.json"),
 );
-const nameFile = namePartsFileSchema.parse(readJson("content/names/zh-cn.json"));
+const nameFile = namePoolFileSchema.parse(readJson("content/names/zh-cn.json"));
 const hiddenFile = hiddenCharacterDefinitionFileSchema.parse(
   readJson("content/hidden-characters/classic.json"),
 );
@@ -67,11 +67,15 @@ describe("member content", () => {
     ).toBe(true);
   });
 
-  it("provides independent Chinese random name fragments", () => {
-    expect(nameFile.first.length).toBeGreaterThan(5);
-    expect(nameFile.second.length).toBeGreaterThan(5);
-    expect(new Set(nameFile.first).size).toBe(nameFile.first.length);
-    expect(new Set(nameFile.second).size).toBe(nameFile.second.length);
+  it("provides a unique pool of standalone Chinese character names", () => {
+    expect(nameFile.names).toHaveLength(377);
+    expect(new Set(nameFile.names).size).toBe(nameFile.names.length);
+    expect(nameFile.names.every((name) => !name.includes("·"))).toBe(true);
+    expect(
+      hiddenFile.hiddenCharacters.every(
+        (character) => !nameFile.names.includes(character.name.zhCN),
+      ),
+    ).toBe(true);
   });
 
   it("moves the hidden recruit rule into an independent content definition", () => {
