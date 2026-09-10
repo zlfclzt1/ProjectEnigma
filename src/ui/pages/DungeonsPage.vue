@@ -166,6 +166,11 @@ async function deletePreset(presetId: RosterPresetId): Promise<void> {
     <DungeonSelector
       :dungeons="planning.dungeons"
       :selected-id="planning.selectedDungeon?.id ?? null"
+      :selected-member-levels="
+        planning.members
+          .filter((member) => ui.selectedPartyMemberIds.includes(member.id))
+          .map((member) => member.level)
+      "
       @select="ui.selectDungeon"
     />
     <p v-if="notice" class="notice">{{ notice }}</p>

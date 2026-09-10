@@ -271,7 +271,14 @@ test("completes the playable zulfarrak stage and keeps the guild running", async
     await expect(quest).toContainText("已接取");
 
     await page.getByRole("link", { name: "副本组队" }).click();
-    await page.getByRole("button", { name: /^可出发 祖尔法拉克 / }).click();
+    await page.getByRole("button", { name: "切换副本" }).click();
+    const dungeonDialog = page.getByRole("dialog", { name: "选择副本" });
+    await dungeonDialog.getByPlaceholder("输入副本名称").fill("祖尔法拉克");
+    await dungeonDialog
+      .locator(".dungeon-option")
+      .filter({ hasText: /^祖尔法拉克/ })
+      .click();
+    await dungeonDialog.getByRole("button", { name: "选择这个副本" }).click();
     await page.getByRole("button", { name: "升级至 5 次 · 1000 G" }).click();
     await expect(page.locator(".page-heading select option")).toHaveCount(5);
 
@@ -341,10 +348,17 @@ test("completes the playable zulfarrak stage and keeps the guild running", async
       "已领取",
     );
     await page.getByRole("link", { name: "副本组队" }).click();
-    await expect(page.getByRole("button", { name: /^可出发 祖尔法拉克 / })).toContainText(
-      "完整通关：1 次",
-    );
-    await expect(page.getByRole("button", { name: /^可出发 玛拉顿 / })).toBeVisible();
+    await page.getByRole("button", { name: "切换副本" }).click();
+    const unlockedDialog = page.getByRole("dialog", { name: "选择副本" });
+    await unlockedDialog.getByPlaceholder("输入副本名称").fill("祖尔法拉克");
+    await expect(
+      unlockedDialog.locator(".dungeon-option").filter({ hasText: /^祖尔法拉克/ }),
+    ).toContainText("通关 1 次");
+    await unlockedDialog.getByPlaceholder("输入副本名称").fill("玛拉顿");
+    await expect(
+      unlockedDialog.locator(".dungeon-option").filter({ hasText: /^玛拉顿/ }),
+    ).toBeVisible();
+    await unlockedDialog.getByRole("button", { name: "关闭" }).click();
     await expect(page.locator(".page-heading select option")).toHaveCount(5);
     await page.getByRole("link", { name: "招募大厅" }).click();
     await expect(page.getByRole("heading", { name: "今天谁在找公会？" })).toBeVisible();

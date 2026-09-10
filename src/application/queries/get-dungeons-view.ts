@@ -32,6 +32,13 @@ export interface DungeonOptionView {
   readonly clearCount: number;
   readonly unlocked: boolean;
   readonly unlockHint: string;
+  readonly partyPreview: DungeonPartyPreviewSummary | null;
+}
+
+export interface DungeonPartyPreviewSummary {
+  readonly clearProbability: number | null;
+  readonly durationSeconds: number | null;
+  readonly message: string;
 }
 
 export interface PartyMemberOptionView {
@@ -255,7 +262,57 @@ function unlockHint(
   return `${requiredAny.length > 0 ? "通关其中一座" : "完成前置"}：${names.join("、")}`;
 }
 
-function dungeonOptions(state: GameState, content: ContentRegistry): DungeonOptionView[] {
+function dungeonPartyPreview(
+  state: GameState,
+  content: ContentRegistry,
+  dungeon: ContentRegistry["dungeons"][number],
+  selectedMemberIds: readonly MemberId[],
+): DungeonPartyPreviewSummary | null {
+  if (selectedMemberIds.length === 0) return null;
+  if (selectedMemberIds.length < dungeon.members.minimum) {
+    return {
+      clearProbability: null,
+      durationSeconds: null,
+      message: `人数不足，还需 ${dungeon.members.minimum - selectedMemberIds.length} 人`,
+    };
+  }
+  if (selectedMemberIds.length > dungeon.members.maximum) {
+    return {
+      clearProbability: null,
+      durationSeconds: null,
+      message: `人数超限，需减少 ${selectedMemberIds.length - dungeon.members.maximum} 人`,
+    };
+  }
+  const result = getPartyPreview(
+    state,
+    content,
+    dungeon.id,
+    selectedMemberIds,
+    [],
+    [],
+    dungeon.routeVariants?.[0]?.id,
+  );
+  if (!result.ok) {
+    return {
+      clearProbability: null,
+      durationSeconds: null,
+      message: result.issues.some((issue) => issue.code === "mechanic.required-missing")
+        ? "缺少关键机制"
+        : (result.issues[0]?.message ?? "无法生成预览"),
+    };
+  }
+  return {
+    clearProbability: result.preview.clearProbability,
+    durationSeconds: result.preview.durationSeconds,
+    message: "标准路线，不含可选首领",
+  };
+}
+
+function dungeonOptions(
+  state: GameState,
+  content: ContentRegistry,
+  selectedMemberIds: readonly MemberId[],
+): DungeonOptionView[] {
   return content.dungeons
     .map((dungeon) => ({
       id: dungeon.id,
@@ -270,6 +327,7 @@ function dungeonOptions(state: GameState, content: ContentRegistry): DungeonOpti
       clearCount: state.history.dungeonClearCounts[dungeon.id] ?? 0,
       unlocked: state.guild.unlockedDungeonIds.includes(dungeon.id),
       unlockHint: unlockHint(state, content, dungeon),
+      partyPreview: dungeonPartyPreview(state, content, dungeon, selectedMemberIds),
     }))
     .sort(
       (left, right) =>
@@ -313,7 +371,7 @@ export function getDungeonPlanningView(
   selectedOptionalNodeIds: readonly DungeonRouteNodeId[] = [],
   routeVariantId: DungeonRouteVariantId | null = null,
 ): DungeonPlanningView {
-  const dungeons = dungeonOptions(state, content);
+  const dungeons = dungeonOptions(state, content, selectedMemberIds);
   const selectedDungeon =
     dungeons.find((dungeon) => dungeon.id === dungeonId) ??
     dungeons.find((dungeon) => dungeon.unlocked) ??

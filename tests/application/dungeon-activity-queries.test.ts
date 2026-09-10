@@ -232,6 +232,10 @@ describe("dungeon and activity queries", () => {
     expect(view.preview?.encounters).toHaveLength(4);
     expect(view.preview?.clearProbability).toBeGreaterThan(0);
     expect(view.preview?.clearProbability).toBeLessThanOrEqual(1);
+    expect(view.selectedDungeon?.partyPreview?.clearProbability).toBe(
+      view.preview?.clearProbability,
+    );
+    expect(view.selectedDungeon?.partyPreview?.message).toBe("标准路线，不含可选首领");
     expect(view.preview?.encounters.every((boss) => boss.probability > 0)).toBe(true);
     expect(view.canStart).toBe(true);
     expect(view.maximumRuns).toBe(3);
@@ -240,6 +244,31 @@ describe("dungeon and activity queries", () => {
       targetCapacity: 5,
       canPurchase: false,
       requirements: [{ label: "影牙城堡完整通关", current: 0, target: 1, met: false }],
+    });
+  });
+
+  it("only projects per-dungeon party odds after a lineup is selected", () => {
+    const game = state();
+    const empty = getDungeonPlanningView(
+      game,
+      content,
+      asBrandedId<"DungeonId">("ragefire_chasm"),
+      [],
+      1,
+    );
+    expect(empty.dungeons.every((dungeon) => dungeon.partyPreview === null)).toBe(true);
+
+    const memberIds = Object.values(game.members).map((member) => member.id);
+    const oversized = getDungeonPlanningView(
+      game,
+      content,
+      asBrandedId<"DungeonId">("ragefire_chasm"),
+      [...memberIds, memberIds[0]!],
+      1,
+    );
+    expect(oversized.selectedDungeon?.partyPreview).toMatchObject({
+      clearProbability: null,
+      message: "人数超限，需减少 1 人",
     });
   });
 

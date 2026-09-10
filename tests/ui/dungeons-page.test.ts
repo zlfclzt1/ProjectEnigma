@@ -30,10 +30,27 @@ describe("dungeons page", () => {
     const wrapper = mount(DungeonsPage);
     await flushPromises();
 
-    expect(wrapper.findAll(".dungeon-selector button")).toHaveLength(19);
-    await wrapper.findAll(".dungeon-selector button")[1]!.trigger("click");
-    expect(useUiStore().selectedDungeonId).not.toBeNull();
-    await wrapper.findAll(".dungeon-selector button")[0]!.trigger("click");
+    expect(wrapper.get(".current-dungeon").text()).toContain("怒焰裂谷");
+    expect(wrapper.findAll(".dungeon-selector .dungeon-option")).toHaveLength(0);
+    await wrapper.get(".switch-button").trigger("click");
+    expect(wrapper.get('[role="dialog"]').text()).toContain("选择副本");
+    expect(wrapper.findAll(".dungeon-option")).toHaveLength(1);
+    await wrapper.get(".section-toggle").trigger("click");
+    expect(wrapper.findAll(".dungeon-option")).toHaveLength(19);
+    await wrapper.findAll(".dungeon-option")[1]!.trigger("click");
+    expect(wrapper.get(".dungeon-detail").text()).toContain("哀嚎洞穴");
+    await wrapper.get(".confirm-button").trigger("click");
+    expect(useUiStore().selectedDungeonId).toBe("wailing_caverns");
+    expect(wrapper.get(".current-dungeon").text()).toContain("哀嚎洞穴");
+
+    await wrapper.get(".switch-button").trigger("click");
+    await wrapper.get('.selector-filters input[type="search"]').setValue("黑石深渊");
+    expect(wrapper.get(".result-count").text()).toBe("2 个结果");
+    expect(wrapper.findAll(".dungeon-option")).toHaveLength(2);
+    await wrapper.get('.selector-filters input[type="search"]').setValue("");
+    await wrapper.get(".dungeon-section .dungeon-option").trigger("click");
+    await wrapper.get(".confirm-button").trigger("click");
+    expect(useUiStore().selectedDungeonId).toBe("ragefire_chasm");
 
     const target = game.dungeonPlanning(useUiStore().selectedDungeonId, [], 1)!.members[0]!;
     const filterSelects = wrapper.findAll(".party-builder .filter-bar select");
@@ -53,6 +70,10 @@ describe("dungeons page", () => {
     for (const checkbox of wrapper.findAll('.member-options input[type="checkbox"]')) {
       await checkbox.setValue(true);
     }
+    await wrapper.get(".switch-button").trigger("click");
+    expect(wrapper.get(".party-preview-badge.ready").text()).toMatch(/基础全通 \d+\.\d{2}%/);
+    expect(wrapper.get(".party-preview-detail").text()).toMatch(/当前阵容 · 基础全通\d+\.\d{2}%/);
+    await wrapper.get(".close-button").trigger("click");
     const runsSelect = wrapper.find(".page-heading select");
     await runsSelect.setValue("2");
 
