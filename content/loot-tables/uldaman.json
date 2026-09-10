@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对奥达曼 9 名有装备首领的 25 件非世界装备；黑曜石哨兵只有任务物品，不建立装备池。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["lootTables[].guaranteedEquipmentDrops", "lootTables[].items[].weight"],
+        "reason": "每名拥有专属装备池的首领保证一件装备；合并的失踪矮人遭遇按三名首领保证三件，池内先使用等权基线。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "lootTables": [
+    {
+      "id": "uldaman_lost_dwarves",
+      "guaranteedEquipmentDrops": 3,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "9394",
+          "weight": 0.16666666666666666
+        },
+        {
+          "itemId": "9398",
+          "weight": 0.16666666666666666
+        },
+        {
+          "itemId": "9401",
+          "weight": 0.16666666666666666
+        },
+        {
+          "itemId": "9400",
+          "weight": 0.16666666666666666
+        },
+        {
+          "itemId": "9404",
+          "weight": 0.16666666666666666
+        },
+        {
+          "itemId": "9403",
+          "weight": 0.16666666666666663
+        }
+      ]
+    },
+    {
+      "id": "uldaman_revelosh",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "9389",
+          "weight": 0.25
+        },
+        {
+          "itemId": "9388",
+          "weight": 0.25
+        },
+        {
+          "itemId": "9390",
+          "weight": 0.25
+        },
+        {
+          "itemId": "9387",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "uldaman_ironaya",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "9409",
+          "weight": 0.3333333333333333
+        },
+        {
+          "itemId": "9407",
+          "weight": 0.3333333333333333
+        },
+        {
+          "itemId": "9408",
+          "weight": 0.33333333333333337
+        }
+      ]
+    },
+    {
+      "id": "uldaman_ancient_stone_keeper",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "9410",
+          "weight": 0.5
+        },
+        {
+          "itemId": "9411",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "uldaman_galgann_firehammer",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11310",
+          "weight": 0.25
+        },
+        {
+          "itemId": "9412",
+          "weight": 0.25
+        },
+        {
+          "itemId": "11311",
+          "weight": 0.25
+        },
+        {
+          "itemId": "9419",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "uldaman_grimlok",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "9415",
+          "weight": 0.3333333333333333
+        },
+        {
+          "itemId": "9416",
+          "weight": 0.3333333333333333
+        },
+        {
+          "itemId": "9414",
+          "weight": 0.33333333333333337
+        }
+      ]
+    },
+    {
+      "id": "uldaman_archaedas",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "11118",
+          "weight": 0.3333333333333333
+        },
+        {
+          "itemId": "9413",
+          "weight": 0.3333333333333333
+        },
+        {
+          "itemId": "9418",
+          "weight": 0.33333333333333337
+        }
+      ]
+    }
+  ]
+}

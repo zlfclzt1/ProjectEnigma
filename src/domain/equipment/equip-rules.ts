@@ -3,6 +3,7 @@ import type { ItemDefinition } from "../../content/schemas/item";
 import type { Member } from "../member/member";
 import type { ItemInstance } from "./item-instance";
 import { resolveItemInstance } from "./resolve-item-instance";
+import { canEquipArmorType } from "./armor-proficiency";
 
 export type EquipFailureCode =
   | "definition-mismatch"
@@ -64,7 +65,15 @@ export function evaluateEquipEligibility(
   ) {
     failures.push({ code: "role-restricted", message: "当前专精定位不能装备这件物品。" });
   }
-  if (definition.armorType && definition.armorType !== classDefinition?.armorType) {
+  if (
+    definition.armorType &&
+    !canEquipArmorType(
+      member.identity.classId,
+      member.progression.level,
+      classDefinition?.armorType,
+      definition.armorType,
+    )
+  ) {
     failures.push({ code: "armor-type-mismatch", message: "护甲类型与职业不匹配。" });
   }
   if (instance.ownerMemberId && instance.ownerMemberId !== member.id) {

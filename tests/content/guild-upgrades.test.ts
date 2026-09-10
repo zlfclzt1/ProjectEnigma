@@ -25,12 +25,14 @@ describe("guild upgrade content", () => {
       "guild_roster_15",
       "guild_roster_20",
       "guild_roster_25",
+      "guild_roster_30",
     ]);
-    expect(upgrades.map((upgrade) => upgrade.cost)).toEqual([500, 1500, 4000]);
+    expect(upgrades.map((upgrade) => upgrade.cost)).toEqual([500, 1500, 4000, 10000]);
     expect(upgrades.map((upgrade) => upgrade.effects[0])).toEqual([
       { type: "member-capacity", value: 15 },
       { type: "member-capacity", value: 20 },
       { type: "member-capacity", value: 25 },
+      { type: "member-capacity", value: 30 },
     ]);
   });
 

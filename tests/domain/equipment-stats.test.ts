@@ -23,6 +23,7 @@ const representativeStats: ClassicItemStats = {
     spellPowerPoints: 18,
     healingPowerPoints: 24,
     shadowSpellPowerPoints: 10,
+    healthRegenPer5Seconds: 3,
     manaRegenPer5Seconds: 3,
     hitPercent: 1,
     criticalStrikePercent: 2,
@@ -81,15 +82,15 @@ describe("typed Classic item stats", () => {
     expect(JSON.parse(JSON.stringify(stats))).toEqual(stats);
   });
 
-  it("supports authentic stat penalties and mana regeneration", () => {
+  it("supports authentic stat penalties and health and mana regeneration", () => {
     expect(
       classicItemStatsSchema.parse({
         primary: { spiritPoints: -3 },
-        spell: { manaRegenPer5Seconds: 3 },
+        spell: { healthRegenPer5Seconds: 3, manaRegenPer5Seconds: 3 },
       }),
     ).toEqual({
       primary: { spiritPoints: -3 },
-      spell: { manaRegenPer5Seconds: 3 },
+      spell: { healthRegenPer5Seconds: 3, manaRegenPer5Seconds: 3 },
     });
     expect(() => classicItemStatsSchema.parse({ primary: { staminaPoints: -1 } })).toThrow();
   });

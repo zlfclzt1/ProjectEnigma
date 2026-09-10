@@ -1,0 +1,2591 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/uldaman-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "逐件核对奥达曼 7 件随机附魔装备的词缀种类、属性区间和公开相对出现率。"
+      }
+    ]
+  },
+  "itemSuffixes": [
+    {
+      "id": "uldaman_9387_bear",
+      "nameTemplate": {
+        "zhCN": "野熊之{base}",
+        "enUS": "{base} of the Bear"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 41,
+          "maximumItemLevel": 41,
+          "stats": {
+            "primary": {
+              "staminaPoints": 9,
+              "strengthPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 45.7,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9387",
+        "url": "https://www.wowhead.com/classic/item=9387",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9387_boar",
+      "nameTemplate": {
+        "zhCN": "野猪之{base}",
+        "enUS": "{base} of the Boar"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 41,
+          "maximumItemLevel": 41,
+          "stats": {
+            "primary": {
+              "spiritPoints": 9,
+              "strengthPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 10.8,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9387",
+        "url": "https://www.wowhead.com/classic/item=9387",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9387_stamina",
+      "nameTemplate": {
+        "zhCN": "耐力之{base}",
+        "enUS": "{base} of Stamina"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 41,
+          "maximumItemLevel": 41,
+          "stats": {
+            "primary": {
+              "staminaPoints": 13
+            }
+          }
+        }
+      ],
+      "relativeWeight": 9,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9387",
+        "url": "https://www.wowhead.com/classic/item=9387",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9387_gorilla",
+      "nameTemplate": {
+        "zhCN": "猩猩之{base}",
+        "enUS": "{base} of the Gorilla"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 41,
+          "maximumItemLevel": 41,
+          "stats": {
+            "primary": {
+              "intellectPoints": 9,
+              "strengthPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 6.9,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9387",
+        "url": "https://www.wowhead.com/classic/item=9387",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9387_defense",
+      "nameTemplate": {
+        "zhCN": "防御之{base}",
+        "enUS": "{base} of Defense"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 41,
+          "maximumItemLevel": 41,
+          "stats": {
+            "defense": {
+              "defenseSkillPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 6.4,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9387",
+        "url": "https://www.wowhead.com/classic/item=9387",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9387_whale",
+      "nameTemplate": {
+        "zhCN": "巨鲸之{base}",
+        "enUS": "{base} of the Whale"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 41,
+          "maximumItemLevel": 41,
+          "stats": {
+            "primary": {
+              "spiritPoints": 9,
+              "staminaPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 6.4,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9387",
+        "url": "https://www.wowhead.com/classic/item=9387",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9387_tiger",
+      "nameTemplate": {
+        "zhCN": "猛虎之{base}",
+        "enUS": "{base} of the Tiger"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 41,
+          "maximumItemLevel": 41,
+          "stats": {
+            "primary": {
+              "agilityPoints": 9,
+              "strengthPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 6,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9387",
+        "url": "https://www.wowhead.com/classic/item=9387",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9387_eagle",
+      "nameTemplate": {
+        "zhCN": "雄鹰之{base}",
+        "enUS": "{base} of the Eagle"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 41,
+          "maximumItemLevel": 41,
+          "stats": {
+            "primary": {
+              "intellectPoints": 9,
+              "staminaPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 5.1,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9387",
+        "url": "https://www.wowhead.com/classic/item=9387",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9387_monkey",
+      "nameTemplate": {
+        "zhCN": "灵猴之{base}",
+        "enUS": "{base} of the Monkey"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 41,
+          "maximumItemLevel": 41,
+          "stats": {
+            "primary": {
+              "agilityPoints": 9,
+              "staminaPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 3.9,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9387",
+        "url": "https://www.wowhead.com/classic/item=9387",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9388_monkey",
+      "nameTemplate": {
+        "zhCN": "灵猴之{base}",
+        "enUS": "{base} of the Monkey"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 40,
+          "maximumItemLevel": 40,
+          "stats": {
+            "primary": {
+              "agilityPoints": 6,
+              "staminaPoints": 6
+            }
+          }
+        }
+      ],
+      "relativeWeight": 13.4,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9388",
+        "url": "https://www.wowhead.com/classic/item=9388",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9388_falcon",
+      "nameTemplate": {
+        "zhCN": "猎鹰之{base}",
+        "enUS": "{base} of the Falcon"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 40,
+          "maximumItemLevel": 40,
+          "stats": {
+            "primary": {
+              "agilityPoints": 6,
+              "intellectPoints": 6
+            }
+          }
+        }
+      ],
+      "relativeWeight": 12.4,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9388",
+        "url": "https://www.wowhead.com/classic/item=9388",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9388_wolf",
+      "nameTemplate": {
+        "zhCN": "野狼之{base}",
+        "enUS": "{base} of the Wolf"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 40,
+          "maximumItemLevel": 40,
+          "stats": {
+            "primary": {
+              "agilityPoints": 6,
+              "spiritPoints": 6
+            }
+          }
+        }
+      ],
+      "relativeWeight": 12.3,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9388",
+        "url": "https://www.wowhead.com/classic/item=9388",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9388_eagle",
+      "nameTemplate": {
+        "zhCN": "雄鹰之{base}",
+        "enUS": "{base} of the Eagle"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 40,
+          "maximumItemLevel": 40,
+          "stats": {
+            "primary": {
+              "intellectPoints": 6,
+              "staminaPoints": 6
+            }
+          }
+        }
+      ],
+      "relativeWeight": 10.7,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9388",
+        "url": "https://www.wowhead.com/classic/item=9388",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9388_whale",
+      "nameTemplate": {
+        "zhCN": "巨鲸之{base}",
+        "enUS": "{base} of the Whale"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 40,
+          "maximumItemLevel": 40,
+          "stats": {
+            "primary": {
+              "spiritPoints": 6,
+              "staminaPoints": 6
+            }
+          }
+        }
+      ],
+      "relativeWeight": 10.4,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9388",
+        "url": "https://www.wowhead.com/classic/item=9388",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9388_owl",
+      "nameTemplate": {
+        "zhCN": "夜枭之{base}",
+        "enUS": "{base} of the Owl"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 40,
+          "maximumItemLevel": 40,
+          "stats": {
+            "primary": {
+              "intellectPoints": 6,
+              "spiritPoints": 6
+            }
+          }
+        }
+      ],
+      "relativeWeight": 9.4,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9388",
+        "url": "https://www.wowhead.com/classic/item=9388",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9388_agility",
+      "nameTemplate": {
+        "zhCN": "敏捷之{base}",
+        "enUS": "{base} of Agility"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 40,
+          "maximumItemLevel": 40,
+          "stats": {
+            "primary": {
+              "agilityPoints": 10
+            }
+          }
+        }
+      ],
+      "relativeWeight": 6.7,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9388",
+        "url": "https://www.wowhead.com/classic/item=9388",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9388_power",
+      "nameTemplate": {
+        "zhCN": "强力之{base}",
+        "enUS": "{base} of Power"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 40,
+          "maximumItemLevel": 40,
+          "stats": {
+            "physical": {
+              "attackPowerPoints": 20,
+              "rangedAttackPowerPoints": 20
+            }
+          }
+        }
+      ],
+      "relativeWeight": 6.5,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9388",
+        "url": "https://www.wowhead.com/classic/item=9388",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9388_intellect",
+      "nameTemplate": {
+        "zhCN": "智力之{base}",
+        "enUS": "{base} of Intellect"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 40,
+          "maximumItemLevel": 40,
+          "stats": {
+            "primary": {
+              "intellectPoints": 10
+            }
+          }
+        }
+      ],
+      "relativeWeight": 4.6,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9388",
+        "url": "https://www.wowhead.com/classic/item=9388",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9388_stamina",
+      "nameTemplate": {
+        "zhCN": "耐力之{base}",
+        "enUS": "{base} of Stamina"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 40,
+          "maximumItemLevel": 40,
+          "stats": {
+            "primary": {
+              "staminaPoints": 10
+            }
+          }
+        }
+      ],
+      "relativeWeight": 4.5,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9388",
+        "url": "https://www.wowhead.com/classic/item=9388",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9388_spirit",
+      "nameTemplate": {
+        "zhCN": "精神之{base}",
+        "enUS": "{base} of Spirit"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 40,
+          "maximumItemLevel": 40,
+          "stats": {
+            "primary": {
+              "spiritPoints": 10
+            }
+          }
+        }
+      ],
+      "relativeWeight": 4.4,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9388",
+        "url": "https://www.wowhead.com/classic/item=9388",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9388_natures_wrath",
+      "nameTemplate": {
+        "zhCN": "自然惩戒之{base}",
+        "enUS": "{base} of Nature's Wrath"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 40,
+          "maximumItemLevel": 40,
+          "stats": {
+            "spell": {
+              "natureSpellPowerPoints": 14
+            }
+          }
+        }
+      ],
+      "relativeWeight": 2.4,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9388",
+        "url": "https://www.wowhead.com/classic/item=9388",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9388_arcane_wrath",
+      "nameTemplate": {
+        "zhCN": "奥术惩戒之{base}",
+        "enUS": "{base} of Arcane Wrath"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 40,
+          "maximumItemLevel": 40,
+          "stats": {
+            "spell": {
+              "arcaneSpellPowerPoints": 14
+            }
+          }
+        }
+      ],
+      "relativeWeight": 1.1,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9388",
+        "url": "https://www.wowhead.com/classic/item=9388",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9388_healing",
+      "nameTemplate": {
+        "zhCN": "治疗之{base}",
+        "enUS": "{base} of Healing"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 40,
+          "maximumItemLevel": 40,
+          "stats": {
+            "spell": {
+              "healingPowerPoints": 22
+            }
+          }
+        }
+      ],
+      "relativeWeight": 1.1,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9388",
+        "url": "https://www.wowhead.com/classic/item=9388",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9389_monkey",
+      "nameTemplate": {
+        "zhCN": "灵猴之{base}",
+        "enUS": "{base} of the Monkey"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 41,
+          "maximumItemLevel": 41,
+          "stats": {
+            "primary": {
+              "agilityPoints": 9,
+              "staminaPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 25.5,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9389",
+        "url": "https://www.wowhead.com/classic/item=9389",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9389_owl",
+      "nameTemplate": {
+        "zhCN": "夜枭之{base}",
+        "enUS": "{base} of the Owl"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 41,
+          "maximumItemLevel": 41,
+          "stats": {
+            "primary": {
+              "intellectPoints": 9,
+              "spiritPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 13.4,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9389",
+        "url": "https://www.wowhead.com/classic/item=9389",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9389_agility",
+      "nameTemplate": {
+        "zhCN": "敏捷之{base}",
+        "enUS": "{base} of Agility"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 41,
+          "maximumItemLevel": 41,
+          "stats": {
+            "primary": {
+              "agilityPoints": 13
+            }
+          }
+        }
+      ],
+      "relativeWeight": 9.7,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9389",
+        "url": "https://www.wowhead.com/classic/item=9389",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9389_eagle",
+      "nameTemplate": {
+        "zhCN": "雄鹰之{base}",
+        "enUS": "{base} of the Eagle"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 41,
+          "maximumItemLevel": 41,
+          "stats": {
+            "primary": {
+              "intellectPoints": 9,
+              "staminaPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 9.5,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9389",
+        "url": "https://www.wowhead.com/classic/item=9389",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9389_whale",
+      "nameTemplate": {
+        "zhCN": "巨鲸之{base}",
+        "enUS": "{base} of the Whale"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 41,
+          "maximumItemLevel": 41,
+          "stats": {
+            "primary": {
+              "spiritPoints": 9,
+              "staminaPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 9.3,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9389",
+        "url": "https://www.wowhead.com/classic/item=9389",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9389_stamina",
+      "nameTemplate": {
+        "zhCN": "耐力之{base}",
+        "enUS": "{base} of Stamina"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 41,
+          "maximumItemLevel": 41,
+          "stats": {
+            "primary": {
+              "staminaPoints": 13
+            }
+          }
+        }
+      ],
+      "relativeWeight": 8.9,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9389",
+        "url": "https://www.wowhead.com/classic/item=9389",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9389_bear",
+      "nameTemplate": {
+        "zhCN": "野熊之{base}",
+        "enUS": "{base} of the Bear"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 41,
+          "maximumItemLevel": 41,
+          "stats": {
+            "primary": {
+              "staminaPoints": 9,
+              "strengthPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 7.1,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9389",
+        "url": "https://www.wowhead.com/classic/item=9389",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9389_intellect",
+      "nameTemplate": {
+        "zhCN": "智力之{base}",
+        "enUS": "{base} of Intellect"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 41,
+          "maximumItemLevel": 41,
+          "stats": {
+            "primary": {
+              "intellectPoints": 13
+            }
+          }
+        }
+      ],
+      "relativeWeight": 5.6,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9389",
+        "url": "https://www.wowhead.com/classic/item=9389",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9389_defense",
+      "nameTemplate": {
+        "zhCN": "防御之{base}",
+        "enUS": "{base} of Defense"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 41,
+          "maximumItemLevel": 41,
+          "stats": {
+            "defense": {
+              "defenseSkillPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 3.5,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9389",
+        "url": "https://www.wowhead.com/classic/item=9389",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9389_wolf",
+      "nameTemplate": {
+        "zhCN": "野狼之{base}",
+        "enUS": "{base} of the Wolf"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 41,
+          "maximumItemLevel": 41,
+          "stats": {
+            "primary": {
+              "agilityPoints": 9,
+              "spiritPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 2.9,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9389",
+        "url": "https://www.wowhead.com/classic/item=9389",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9389_boar",
+      "nameTemplate": {
+        "zhCN": "野猪之{base}",
+        "enUS": "{base} of the Boar"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 41,
+          "maximumItemLevel": 41,
+          "stats": {
+            "primary": {
+              "spiritPoints": 9,
+              "strengthPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 2.7,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9389",
+        "url": "https://www.wowhead.com/classic/item=9389",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9389_natures_wrath",
+      "nameTemplate": {
+        "zhCN": "自然惩戒之{base}",
+        "enUS": "{base} of Nature's Wrath"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 41,
+          "maximumItemLevel": 41,
+          "stats": {
+            "spell": {
+              "natureSpellPowerPoints": 19
+            }
+          }
+        }
+      ],
+      "relativeWeight": 2,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9389",
+        "url": "https://www.wowhead.com/classic/item=9389",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9390_owl",
+      "nameTemplate": {
+        "zhCN": "夜枭之{base}",
+        "enUS": "{base} of the Owl"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 40,
+          "maximumItemLevel": 40,
+          "stats": {
+            "primary": {
+              "intellectPoints": 9,
+              "spiritPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 28.2,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9390",
+        "url": "https://www.wowhead.com/classic/item=9390",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9390_eagle",
+      "nameTemplate": {
+        "zhCN": "雄鹰之{base}",
+        "enUS": "{base} of the Eagle"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 40,
+          "maximumItemLevel": 40,
+          "stats": {
+            "primary": {
+              "intellectPoints": 9,
+              "staminaPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 27.1,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9390",
+        "url": "https://www.wowhead.com/classic/item=9390",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9390_whale",
+      "nameTemplate": {
+        "zhCN": "巨鲸之{base}",
+        "enUS": "{base} of the Whale"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 40,
+          "maximumItemLevel": 40,
+          "stats": {
+            "primary": {
+              "spiritPoints": 9,
+              "staminaPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 17.3,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9390",
+        "url": "https://www.wowhead.com/classic/item=9390",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9390_spirit",
+      "nameTemplate": {
+        "zhCN": "精神之{base}",
+        "enUS": "{base} of Spirit"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 40,
+          "maximumItemLevel": 40,
+          "stats": {
+            "primary": {
+              "spiritPoints": 13
+            }
+          }
+        }
+      ],
+      "relativeWeight": 8.3,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9390",
+        "url": "https://www.wowhead.com/classic/item=9390",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9390_healing",
+      "nameTemplate": {
+        "zhCN": "治疗之{base}",
+        "enUS": "{base} of Healing"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 40,
+          "maximumItemLevel": 40,
+          "stats": {
+            "spell": {
+              "healingPowerPoints": 29
+            }
+          }
+        }
+      ],
+      "relativeWeight": 6.7,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9390",
+        "url": "https://www.wowhead.com/classic/item=9390",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9390_fiery_wrath",
+      "nameTemplate": {
+        "zhCN": "火焰惩戒之{base}",
+        "enUS": "{base} of Fiery Wrath"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 40,
+          "maximumItemLevel": 40,
+          "stats": {
+            "spell": {
+              "fireSpellPowerPoints": 19
+            }
+          }
+        }
+      ],
+      "relativeWeight": 5.9,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9390",
+        "url": "https://www.wowhead.com/classic/item=9390",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9390_monkey",
+      "nameTemplate": {
+        "zhCN": "灵猴之{base}",
+        "enUS": "{base} of the Monkey"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 40,
+          "maximumItemLevel": 40,
+          "stats": {
+            "primary": {
+              "agilityPoints": 9,
+              "staminaPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 3.3,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9390",
+        "url": "https://www.wowhead.com/classic/item=9390",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9390_falcon",
+      "nameTemplate": {
+        "zhCN": "猎鹰之{base}",
+        "enUS": "{base} of the Falcon"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 40,
+          "maximumItemLevel": 40,
+          "stats": {
+            "primary": {
+              "agilityPoints": 9,
+              "intellectPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 3.2,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9390",
+        "url": "https://www.wowhead.com/classic/item=9390",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9409_monkey",
+      "nameTemplate": {
+        "zhCN": "灵猴之{base}",
+        "enUS": "{base} of the Monkey"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 42,
+          "maximumItemLevel": 42,
+          "stats": {
+            "primary": {
+              "agilityPoints": 8,
+              "staminaPoints": 8
+            }
+          }
+        }
+      ],
+      "relativeWeight": 13.1,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9409",
+        "url": "https://www.wowhead.com/classic/item=9409",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9409_wolf",
+      "nameTemplate": {
+        "zhCN": "野狼之{base}",
+        "enUS": "{base} of the Wolf"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 42,
+          "maximumItemLevel": 42,
+          "stats": {
+            "primary": {
+              "agilityPoints": 8,
+              "spiritPoints": 8
+            }
+          }
+        }
+      ],
+      "relativeWeight": 12.3,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9409",
+        "url": "https://www.wowhead.com/classic/item=9409",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9409_falcon",
+      "nameTemplate": {
+        "zhCN": "猎鹰之{base}",
+        "enUS": "{base} of the Falcon"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 42,
+          "maximumItemLevel": 42,
+          "stats": {
+            "primary": {
+              "agilityPoints": 8,
+              "intellectPoints": 8
+            }
+          }
+        }
+      ],
+      "relativeWeight": 12.1,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9409",
+        "url": "https://www.wowhead.com/classic/item=9409",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9409_eagle",
+      "nameTemplate": {
+        "zhCN": "雄鹰之{base}",
+        "enUS": "{base} of the Eagle"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 42,
+          "maximumItemLevel": 42,
+          "stats": {
+            "primary": {
+              "intellectPoints": 8,
+              "staminaPoints": 8
+            }
+          }
+        }
+      ],
+      "relativeWeight": 11.3,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9409",
+        "url": "https://www.wowhead.com/classic/item=9409",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9409_whale",
+      "nameTemplate": {
+        "zhCN": "巨鲸之{base}",
+        "enUS": "{base} of the Whale"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 42,
+          "maximumItemLevel": 42,
+          "stats": {
+            "primary": {
+              "spiritPoints": 8,
+              "staminaPoints": 8
+            }
+          }
+        }
+      ],
+      "relativeWeight": 10.1,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9409",
+        "url": "https://www.wowhead.com/classic/item=9409",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9409_owl",
+      "nameTemplate": {
+        "zhCN": "夜枭之{base}",
+        "enUS": "{base} of the Owl"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 42,
+          "maximumItemLevel": 42,
+          "stats": {
+            "primary": {
+              "intellectPoints": 8,
+              "spiritPoints": 8
+            }
+          }
+        }
+      ],
+      "relativeWeight": 9.3,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9409",
+        "url": "https://www.wowhead.com/classic/item=9409",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9409_power",
+      "nameTemplate": {
+        "zhCN": "强力之{base}",
+        "enUS": "{base} of Power"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 42,
+          "maximumItemLevel": 42,
+          "stats": {
+            "physical": {
+              "attackPowerPoints": 22,
+              "rangedAttackPowerPoints": 22
+            }
+          }
+        }
+      ],
+      "relativeWeight": 7,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9409",
+        "url": "https://www.wowhead.com/classic/item=9409",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9409_agility",
+      "nameTemplate": {
+        "zhCN": "敏捷之{base}",
+        "enUS": "{base} of Agility"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 42,
+          "maximumItemLevel": 42,
+          "stats": {
+            "primary": {
+              "agilityPoints": 11
+            }
+          }
+        }
+      ],
+      "relativeWeight": 6.9,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9409",
+        "url": "https://www.wowhead.com/classic/item=9409",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9409_intellect",
+      "nameTemplate": {
+        "zhCN": "智力之{base}",
+        "enUS": "{base} of Intellect"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 42,
+          "maximumItemLevel": 42,
+          "stats": {
+            "primary": {
+              "intellectPoints": 11
+            }
+          }
+        }
+      ],
+      "relativeWeight": 4.5,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9409",
+        "url": "https://www.wowhead.com/classic/item=9409",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9409_spirit",
+      "nameTemplate": {
+        "zhCN": "精神之{base}",
+        "enUS": "{base} of Spirit"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 42,
+          "maximumItemLevel": 42,
+          "stats": {
+            "primary": {
+              "spiritPoints": 11
+            }
+          }
+        }
+      ],
+      "relativeWeight": 4.3,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9409",
+        "url": "https://www.wowhead.com/classic/item=9409",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9409_stamina",
+      "nameTemplate": {
+        "zhCN": "耐力之{base}",
+        "enUS": "{base} of Stamina"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 42,
+          "maximumItemLevel": 42,
+          "stats": {
+            "primary": {
+              "staminaPoints": 11
+            }
+          }
+        }
+      ],
+      "relativeWeight": 4.2,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9409",
+        "url": "https://www.wowhead.com/classic/item=9409",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9409_natures_wrath",
+      "nameTemplate": {
+        "zhCN": "自然惩戒之{base}",
+        "enUS": "{base} of Nature's Wrath"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 42,
+          "maximumItemLevel": 42,
+          "stats": {
+            "spell": {
+              "natureSpellPowerPoints": 16
+            }
+          }
+        }
+      ],
+      "relativeWeight": 2.4,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9409",
+        "url": "https://www.wowhead.com/classic/item=9409",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9409_healing",
+      "nameTemplate": {
+        "zhCN": "治疗之{base}",
+        "enUS": "{base} of Healing"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 42,
+          "maximumItemLevel": 42,
+          "stats": {
+            "spell": {
+              "healingPowerPoints": 24
+            }
+          }
+        }
+      ],
+      "relativeWeight": 1.2,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9409",
+        "url": "https://www.wowhead.com/classic/item=9409",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9409_arcane_wrath",
+      "nameTemplate": {
+        "zhCN": "奥术惩戒之{base}",
+        "enUS": "{base} of Arcane Wrath"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 42,
+          "maximumItemLevel": 42,
+          "stats": {
+            "spell": {
+              "arcaneSpellPowerPoints": 16
+            }
+          }
+        }
+      ],
+      "relativeWeight": 1.1,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9409",
+        "url": "https://www.wowhead.com/classic/item=9409",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9410_bear",
+      "nameTemplate": {
+        "zhCN": "野熊之{base}",
+        "enUS": "{base} of the Bear"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 45,
+          "maximumItemLevel": 45,
+          "stats": {
+            "primary": {
+              "staminaPoints": 11,
+              "strengthPoints": 11
+            }
+          }
+        }
+      ],
+      "relativeWeight": 45.3,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9410",
+        "url": "https://www.wowhead.com/classic/item=9410",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9410_whale",
+      "nameTemplate": {
+        "zhCN": "巨鲸之{base}",
+        "enUS": "{base} of the Whale"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 45,
+          "maximumItemLevel": 45,
+          "stats": {
+            "primary": {
+              "spiritPoints": 11,
+              "staminaPoints": 11
+            }
+          }
+        }
+      ],
+      "relativeWeight": 11.4,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9410",
+        "url": "https://www.wowhead.com/classic/item=9410",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9410_strength",
+      "nameTemplate": {
+        "zhCN": "力量之{base}",
+        "enUS": "{base} of Strength"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 45,
+          "maximumItemLevel": 45,
+          "stats": {
+            "primary": {
+              "strengthPoints": 16
+            }
+          }
+        }
+      ],
+      "relativeWeight": 9.2,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9410",
+        "url": "https://www.wowhead.com/classic/item=9410",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9410_eagle",
+      "nameTemplate": {
+        "zhCN": "雄鹰之{base}",
+        "enUS": "{base} of the Eagle"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 45,
+          "maximumItemLevel": 45,
+          "stats": {
+            "primary": {
+              "intellectPoints": 11,
+              "staminaPoints": 11
+            }
+          }
+        }
+      ],
+      "relativeWeight": 7.5,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9410",
+        "url": "https://www.wowhead.com/classic/item=9410",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9410_boar",
+      "nameTemplate": {
+        "zhCN": "野猪之{base}",
+        "enUS": "{base} of the Boar"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 45,
+          "maximumItemLevel": 45,
+          "stats": {
+            "primary": {
+              "spiritPoints": 11,
+              "strengthPoints": 11
+            }
+          }
+        }
+      ],
+      "relativeWeight": 6.5,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9410",
+        "url": "https://www.wowhead.com/classic/item=9410",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9410_power",
+      "nameTemplate": {
+        "zhCN": "强力之{base}",
+        "enUS": "{base} of Power"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 45,
+          "maximumItemLevel": 45,
+          "stats": {
+            "physical": {
+              "attackPowerPoints": 32,
+              "rangedAttackPowerPoints": 32
+            }
+          }
+        }
+      ],
+      "relativeWeight": 5.7,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9410",
+        "url": "https://www.wowhead.com/classic/item=9410",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9410_monkey",
+      "nameTemplate": {
+        "zhCN": "灵猴之{base}",
+        "enUS": "{base} of the Monkey"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 45,
+          "maximumItemLevel": 45,
+          "stats": {
+            "primary": {
+              "agilityPoints": 11,
+              "staminaPoints": 11
+            }
+          }
+        }
+      ],
+      "relativeWeight": 5.5,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9410",
+        "url": "https://www.wowhead.com/classic/item=9410",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9410_gorilla",
+      "nameTemplate": {
+        "zhCN": "猩猩之{base}",
+        "enUS": "{base} of the Gorilla"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 45,
+          "maximumItemLevel": 45,
+          "stats": {
+            "primary": {
+              "intellectPoints": 11,
+              "strengthPoints": 11
+            }
+          }
+        }
+      ],
+      "relativeWeight": 4.5,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9410",
+        "url": "https://www.wowhead.com/classic/item=9410",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9410_tiger",
+      "nameTemplate": {
+        "zhCN": "猛虎之{base}",
+        "enUS": "{base} of the Tiger"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 45,
+          "maximumItemLevel": 45,
+          "stats": {
+            "primary": {
+              "agilityPoints": 11,
+              "strengthPoints": 11
+            }
+          }
+        }
+      ],
+      "relativeWeight": 3.8,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9410",
+        "url": "https://www.wowhead.com/classic/item=9410",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_9410_healing",
+      "nameTemplate": {
+        "zhCN": "治疗之{base}",
+        "enUS": "{base} of Healing"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 45,
+          "maximumItemLevel": 45,
+          "stats": {
+            "spell": {
+              "healingPowerPoints": 35
+            }
+          }
+        }
+      ],
+      "relativeWeight": 0.6,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9410",
+        "url": "https://www.wowhead.com/classic/item=9410",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_owl",
+      "nameTemplate": {
+        "zhCN": "夜枭之{base}",
+        "enUS": "{base} of the Owl"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "primary": {
+              "intellectPoints": 9,
+              "spiritPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 12.6,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_bear",
+      "nameTemplate": {
+        "zhCN": "野熊之{base}",
+        "enUS": "{base} of the Bear"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "primary": {
+              "staminaPoints": 9,
+              "strengthPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 12,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_monkey",
+      "nameTemplate": {
+        "zhCN": "灵猴之{base}",
+        "enUS": "{base} of the Monkey"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "primary": {
+              "agilityPoints": 9,
+              "staminaPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 10.9,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_wolf",
+      "nameTemplate": {
+        "zhCN": "野狼之{base}",
+        "enUS": "{base} of the Wolf"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "primary": {
+              "agilityPoints": 9,
+              "spiritPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 6.8,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_tiger",
+      "nameTemplate": {
+        "zhCN": "猛虎之{base}",
+        "enUS": "{base} of the Tiger"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "primary": {
+              "agilityPoints": 9,
+              "strengthPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 6.5,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_eagle",
+      "nameTemplate": {
+        "zhCN": "雄鹰之{base}",
+        "enUS": "{base} of the Eagle"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "primary": {
+              "intellectPoints": 9,
+              "staminaPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 6.4,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_whale",
+      "nameTemplate": {
+        "zhCN": "巨鲸之{base}",
+        "enUS": "{base} of the Whale"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "primary": {
+              "spiritPoints": 9,
+              "staminaPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 6.3,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_boar",
+      "nameTemplate": {
+        "zhCN": "野猪之{base}",
+        "enUS": "{base} of the Boar"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "primary": {
+              "spiritPoints": 9,
+              "strengthPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 6.3,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_gorilla",
+      "nameTemplate": {
+        "zhCN": "猩猩之{base}",
+        "enUS": "{base} of the Gorilla"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "primary": {
+              "intellectPoints": 9,
+              "strengthPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 5.8,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_agility",
+      "nameTemplate": {
+        "zhCN": "敏捷之{base}",
+        "enUS": "{base} of Agility"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "primary": {
+              "agilityPoints": 13
+            }
+          }
+        }
+      ],
+      "relativeWeight": 3.7,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_stamina",
+      "nameTemplate": {
+        "zhCN": "耐力之{base}",
+        "enUS": "{base} of Stamina"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "primary": {
+              "staminaPoints": 13
+            }
+          }
+        }
+      ],
+      "relativeWeight": 3.4,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_strength",
+      "nameTemplate": {
+        "zhCN": "力量之{base}",
+        "enUS": "{base} of Strength"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "primary": {
+              "strengthPoints": 13
+            }
+          }
+        }
+      ],
+      "relativeWeight": 3.4,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_falcon",
+      "nameTemplate": {
+        "zhCN": "猎鹰之{base}",
+        "enUS": "{base} of the Falcon"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "primary": {
+              "agilityPoints": 9,
+              "intellectPoints": 9
+            }
+          }
+        }
+      ],
+      "relativeWeight": 3.4,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_intellect",
+      "nameTemplate": {
+        "zhCN": "智力之{base}",
+        "enUS": "{base} of Intellect"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "primary": {
+              "intellectPoints": 13
+            }
+          }
+        }
+      ],
+      "relativeWeight": 3.1,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_spirit",
+      "nameTemplate": {
+        "zhCN": "精神之{base}",
+        "enUS": "{base} of Spirit"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "primary": {
+              "spiritPoints": 13
+            }
+          }
+        }
+      ],
+      "relativeWeight": 3.1,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_eluding",
+      "nameTemplate": {
+        "zhCN": "闪避之{base}",
+        "enUS": "{base} of Eluding"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "primary": {
+              "agilityPoints": 7
+            },
+            "defense": {
+              "dodgePercent": 1
+            }
+          }
+        }
+      ],
+      "relativeWeight": 2,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_regeneration",
+      "nameTemplate": {
+        "zhCN": "再生之{base}",
+        "enUS": "{base} of Regeneration"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "spell": {
+              "healthRegenPer5Seconds": 3
+            }
+          }
+        }
+      ],
+      "relativeWeight": 1.9,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_concentration",
+      "nameTemplate": {
+        "zhCN": "专注之{base}",
+        "enUS": "{base} of Concentration"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "spell": {
+              "manaRegenPer5Seconds": 5
+            }
+          }
+        }
+      ],
+      "relativeWeight": 1.8,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_nature_resistance",
+      "nameTemplate": {
+        "zhCN": "自然抗性之{base}",
+        "enUS": "{base} of Nature Resistance"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "resistances": {
+              "naturePoints": 17
+            }
+          }
+        }
+      ],
+      "relativeWeight": 0.3,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_fire_resistance",
+      "nameTemplate": {
+        "zhCN": "火焰抗性之{base}",
+        "enUS": "{base} of Fire Resistance"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "resistances": {
+              "firePoints": 17
+            }
+          }
+        }
+      ],
+      "relativeWeight": 0.2,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_arcane_resistance",
+      "nameTemplate": {
+        "zhCN": "奥术抗性之{base}",
+        "enUS": "{base} of Arcane Resistance"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "resistances": {
+              "arcanePoints": 17
+            }
+          }
+        }
+      ],
+      "relativeWeight": 0.2,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_frost_resistance",
+      "nameTemplate": {
+        "zhCN": "冰霜抗性之{base}",
+        "enUS": "{base} of Frost Resistance"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "resistances": {
+              "frostPoints": 17
+            }
+          }
+        }
+      ],
+      "relativeWeight": 0.2,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    },
+    {
+      "id": "uldaman_11118_shadow_resistance",
+      "nameTemplate": {
+        "zhCN": "暗影抗性之{base}",
+        "enUS": "{base} of Shadow Resistance"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 47,
+          "maximumItemLevel": 47,
+          "stats": {
+            "resistances": {
+              "shadowPoints": 17
+            }
+          }
+        }
+      ],
+      "relativeWeight": 0.1,
+      "source": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/item=11118",
+        "verifiedAt": "2026-09-09",
+        "notes": "按该基础物品页面公开的随机附魔概率录入；属性区间采用该物品等级的上限值。"
+      }
+    }
+  ]
+}

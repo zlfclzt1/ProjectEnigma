@@ -1,0 +1,1128 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/uldaman-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对奥达曼 Boss 装备，并通过逐件中文 XML 核对属性、图标和需求等级。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-09",
+        "notes": "交叉核对首领与装备归属，排除弹药、消耗品和任务物品。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].restrictions", "items[].description"],
+        "reason": "按经典护甲熟练度、职业、定位与当前装备栏位规则补齐可装备性和来源说明。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "9394",
+      "name": {
+        "zhCN": "海盗角盔",
+        "enUS": "Horned Viking Helmet"
+      },
+      "itemLevel": 42,
+      "requiredLevel": 40,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_25"
+      },
+      "description": {
+        "zhCN": "奥达曼：埃瑞克的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 10,
+          "staminaPoints": 15
+        },
+        "defense": {
+          "armorPoints": 303
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9394",
+        "url": "https://www.wowhead.com/classic/cn/item=9394&xml",
+        "verifiedAt": "2026-09-09",
+        "notes": "未模拟 30 分钟冷却的昏迷使用效果。"
+      }
+    },
+    {
+      "id": "9398",
+      "name": {
+        "zhCN": "穿旧的跑鞋",
+        "enUS": "Worn Running Boots"
+      },
+      "itemLevel": 40,
+      "requiredLevel": 35,
+      "quality": "uncommon",
+      "slot": "feet",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_02"
+      },
+      "description": {
+        "zhCN": "奥达曼：埃瑞克的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 11,
+          "staminaPoints": 3
+        },
+        "defense": {
+          "armorPoints": 76
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9398",
+        "url": "https://www.wowhead.com/classic/cn/item=9398&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9401",
+      "name": {
+        "zhCN": "盗匪长剑",
+        "enUS": "Nordic Longshank"
+      },
+      "itemLevel": 43,
+      "requiredLevel": 38,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_24"
+      },
+      "description": {
+        "zhCN": "奥达曼：巴尔洛戈的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 8,
+          "staminaPoints": 5
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 45,
+            "maximumPoints": 84
+          },
+          "speedSeconds": 2.2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9401",
+        "url": "https://www.wowhead.com/classic/cn/item=9401&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9400",
+      "name": {
+        "zhCN": "巴尔洛戈的短弓",
+        "enUS": "Baelog's Shortbow"
+      },
+      "itemLevel": 41,
+      "requiredLevel": 36,
+      "quality": "common",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "warrior", "rogue"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_bow_11"
+      },
+      "description": {
+        "zhCN": "奥达曼：巴尔洛戈的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 26,
+            "maximumPoints": 50
+          },
+          "speedSeconds": 2.3
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9400",
+        "url": "https://www.wowhead.com/classic/cn/item=9400&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9404",
+      "name": {
+        "zhCN": "奥拉夫之盾",
+        "enUS": "Olaf's All Purpose Shield"
+      },
+      "itemLevel": 42,
+      "requiredLevel": 37,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shield_02"
+      },
+      "description": {
+        "zhCN": "奥达曼：奥拉夫的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 11
+        },
+        "defense": {
+          "armorPoints": 1287,
+          "blockValuePoints": 22
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9404",
+        "url": "https://www.wowhead.com/classic/cn/item=9404&xml",
+        "verifiedAt": "2026-09-09",
+        "notes": "未模拟一小时冷却的降低坠落速度使用效果。"
+      }
+    },
+    {
+      "id": "9403",
+      "name": {
+        "zhCN": "破碎的海盗之盾",
+        "enUS": "Battered Viking Shield"
+      },
+      "itemLevel": 40,
+      "requiredLevel": 35,
+      "quality": "common",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "healer"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shield_07"
+      },
+      "description": {
+        "zhCN": "奥达曼：奥拉夫的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 8,
+          "spiritPoints": 4
+        },
+        "defense": {
+          "armorPoints": 907,
+          "blockValuePoints": 15
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9403",
+        "url": "https://www.wowhead.com/classic/cn/item=9403&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9389",
+      "name": {
+        "zhCN": "鲁恩乌的肩甲",
+        "enUS": "Revelosh's Spaulders"
+      },
+      "itemLevel": 41,
+      "requiredLevel": 36,
+      "quality": "uncommon",
+      "slot": "shoulder",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_25"
+      },
+      "description": {
+        "zhCN": "奥达曼：鲁维罗什的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 84
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9389",
+        "url": "https://www.wowhead.com/classic/cn/item=9389&xml",
+        "verifiedAt": "2026-09-09"
+      },
+      "randomSuffixIds": [
+        "uldaman_9389_monkey",
+        "uldaman_9389_owl",
+        "uldaman_9389_agility",
+        "uldaman_9389_eagle",
+        "uldaman_9389_whale",
+        "uldaman_9389_stamina",
+        "uldaman_9389_bear",
+        "uldaman_9389_intellect",
+        "uldaman_9389_defense",
+        "uldaman_9389_wolf",
+        "uldaman_9389_boar",
+        "uldaman_9389_natures_wrath"
+      ]
+    },
+    {
+      "id": "9388",
+      "name": {
+        "zhCN": "鲁恩乌的臂甲",
+        "enUS": "Revelosh's Armguards"
+      },
+      "itemLevel": 40,
+      "requiredLevel": 35,
+      "quality": "uncommon",
+      "slot": "wrist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_16"
+      },
+      "description": {
+        "zhCN": "奥达曼：鲁维罗什的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 101
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9388",
+        "url": "https://www.wowhead.com/classic/cn/item=9388&xml",
+        "verifiedAt": "2026-09-09"
+      },
+      "randomSuffixIds": [
+        "uldaman_9388_monkey",
+        "uldaman_9388_falcon",
+        "uldaman_9388_wolf",
+        "uldaman_9388_eagle",
+        "uldaman_9388_whale",
+        "uldaman_9388_owl",
+        "uldaman_9388_agility",
+        "uldaman_9388_power",
+        "uldaman_9388_intellect",
+        "uldaman_9388_stamina",
+        "uldaman_9388_spirit",
+        "uldaman_9388_natures_wrath",
+        "uldaman_9388_arcane_wrath",
+        "uldaman_9388_healing"
+      ]
+    },
+    {
+      "id": "9390",
+      "name": {
+        "zhCN": "鲁恩乌的手套",
+        "enUS": "Revelosh's Gloves"
+      },
+      "itemLevel": 40,
+      "requiredLevel": 35,
+      "quality": "uncommon",
+      "slot": "hands",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_17"
+      },
+      "description": {
+        "zhCN": "奥达曼：鲁维罗什的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 33
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9390",
+        "url": "https://www.wowhead.com/classic/cn/item=9390&xml",
+        "verifiedAt": "2026-09-09"
+      },
+      "randomSuffixIds": [
+        "uldaman_9390_owl",
+        "uldaman_9390_eagle",
+        "uldaman_9390_whale",
+        "uldaman_9390_spirit",
+        "uldaman_9390_healing",
+        "uldaman_9390_fiery_wrath",
+        "uldaman_9390_monkey",
+        "uldaman_9390_falcon"
+      ]
+    },
+    {
+      "id": "9387",
+      "name": {
+        "zhCN": "鲁恩乌的长靴",
+        "enUS": "Revelosh's Boots"
+      },
+      "itemLevel": 41,
+      "requiredLevel": 40,
+      "quality": "uncommon",
+      "slot": "feet",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_plate_06"
+      },
+      "description": {
+        "zhCN": "奥达曼：鲁维罗什的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 206
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9387",
+        "url": "https://www.wowhead.com/classic/cn/item=9387&xml",
+        "verifiedAt": "2026-09-09"
+      },
+      "randomSuffixIds": [
+        "uldaman_9387_bear",
+        "uldaman_9387_boar",
+        "uldaman_9387_stamina",
+        "uldaman_9387_gorilla",
+        "uldaman_9387_defense",
+        "uldaman_9387_whale",
+        "uldaman_9387_tiger",
+        "uldaman_9387_eagle",
+        "uldaman_9387_monkey"
+      ]
+    },
+    {
+      "id": "9409",
+      "name": {
+        "zhCN": "艾隆纳亚的护腕",
+        "enUS": "Ironaya's Bracers"
+      },
+      "itemLevel": 42,
+      "requiredLevel": 37,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_19"
+      },
+      "description": {
+        "zhCN": "奥达曼：艾隆纳亚的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 165
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9409",
+        "url": "https://www.wowhead.com/classic/cn/item=9409&xml",
+        "verifiedAt": "2026-09-09"
+      },
+      "randomSuffixIds": [
+        "uldaman_9409_monkey",
+        "uldaman_9409_wolf",
+        "uldaman_9409_falcon",
+        "uldaman_9409_eagle",
+        "uldaman_9409_whale",
+        "uldaman_9409_owl",
+        "uldaman_9409_power",
+        "uldaman_9409_agility",
+        "uldaman_9409_intellect",
+        "uldaman_9409_spirit",
+        "uldaman_9409_stamina",
+        "uldaman_9409_natures_wrath",
+        "uldaman_9409_healing",
+        "uldaman_9409_arcane_wrath"
+      ]
+    },
+    {
+      "id": "9407",
+      "name": {
+        "zhCN": "石纹护腿",
+        "enUS": "Stoneweaver Leggings"
+      },
+      "itemLevel": 40,
+      "requiredLevel": 35,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_01"
+      },
+      "description": {
+        "zhCN": "奥达曼：艾隆纳亚的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 9,
+          "intellectPoints": 8,
+          "spiritPoints": 15
+        },
+        "defense": {
+          "armorPoints": 51
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9407",
+        "url": "https://www.wowhead.com/classic/cn/item=9407&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9408",
+      "name": {
+        "zhCN": "铁头棒",
+        "enUS": "Ironshod Bludgeon"
+      },
+      "itemLevel": 42,
+      "requiredLevel": 37,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "priest", "shaman", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_staff_28"
+      },
+      "description": {
+        "zhCN": "奥达曼：艾隆纳亚的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 8,
+          "staminaPoints": 20
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 74,
+            "maximumPoints": 112
+          },
+          "speedSeconds": 2.5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9408",
+        "url": "https://www.wowhead.com/classic/cn/item=9408&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9410",
+      "name": {
+        "zhCN": "山壁之拳",
+        "enUS": "Cragfists"
+      },
+      "itemLevel": 45,
+      "requiredLevel": 40,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_12"
+      },
+      "description": {
+        "zhCN": "奥达曼：古代的石头看守者的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 300,
+          "defenseSkillPoints": 5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9410",
+        "url": "https://www.wowhead.com/classic/cn/item=9410&xml",
+        "verifiedAt": "2026-09-09"
+      },
+      "randomSuffixIds": [
+        "uldaman_9410_bear",
+        "uldaman_9410_whale",
+        "uldaman_9410_strength",
+        "uldaman_9410_eagle",
+        "uldaman_9410_boar",
+        "uldaman_9410_power",
+        "uldaman_9410_monkey",
+        "uldaman_9410_gorilla",
+        "uldaman_9410_tiger",
+        "uldaman_9410_healing"
+      ]
+    },
+    {
+      "id": "9411",
+      "name": {
+        "zhCN": "石片肩铠",
+        "enUS": "Rockshard Pauldrons"
+      },
+      "itemLevel": 45,
+      "requiredLevel": 40,
+      "quality": "uncommon",
+      "slot": "shoulder",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_02"
+      },
+      "description": {
+        "zhCN": "奥达曼：古代的石头看守者的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 2,
+          "intellectPoints": 9,
+          "spiritPoints": 9
+        },
+        "defense": {
+          "armorPoints": 186
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9411",
+        "url": "https://www.wowhead.com/classic/cn/item=9411&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "11310",
+      "name": {
+        "zhCN": "烈焰先知衬肩",
+        "enUS": "Flameseer Mantle"
+      },
+      "itemLevel": 47,
+      "requiredLevel": 42,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_05"
+      },
+      "description": {
+        "zhCN": "奥达曼：加加恩·火锤的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "spiritPoints": 10
+        },
+        "defense": {
+          "armorPoints": 51
+        },
+        "spell": {
+          "fireSpellPowerPoints": 14
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11310",
+        "url": "https://www.wowhead.com/classic/cn/item=11310&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9412",
+      "name": {
+        "zhCN": "加加恩的火枪",
+        "enUS": "Galgann's Fireblaster"
+      },
+      "itemLevel": 47,
+      "requiredLevel": 42,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "warrior", "rogue"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_rifle_07"
+      },
+      "description": {
+        "zhCN": "奥达曼：加加恩·火锤的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 44,
+            "maximumPoints": 84
+          },
+          "speedSeconds": 2.6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9412",
+        "url": "https://www.wowhead.com/classic/cn/item=9412&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "11311",
+      "name": {
+        "zhCN": "灰烬之鳞",
+        "enUS": "Emberscale Cape"
+      },
+      "itemLevel": 46,
+      "requiredLevel": 41,
+      "quality": "uncommon",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_08"
+      },
+      "description": {
+        "zhCN": "奥达曼：加加恩·火锤的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "spiritPoints": 3
+        },
+        "defense": {
+          "armorPoints": 30
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11311",
+        "url": "https://www.wowhead.com/classic/cn/item=11311&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9419",
+      "name": {
+        "zhCN": "加加恩的火锤",
+        "enUS": "Galgann's Firehammer"
+      },
+      "itemLevel": 46,
+      "requiredLevel": 41,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "rogue", "priest", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_hammer_17"
+      },
+      "description": {
+        "zhCN": "奥达曼：加加恩·火锤的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 42,
+            "maximumPoints": 79
+          },
+          "speedSeconds": 2.2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9419",
+        "url": "https://www.wowhead.com/classic/cn/item=9419&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9415",
+      "name": {
+        "zhCN": "格瑞姆洛克的部族法衣",
+        "enUS": "Grimlok's Tribal Vestments"
+      },
+      "itemLevel": 47,
+      "requiredLevel": 42,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shirt_05"
+      },
+      "description": {
+        "zhCN": "奥达曼：格瑞姆洛克的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 5,
+          "spiritPoints": 20
+        },
+        "defense": {
+          "armorPoints": 68
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9415",
+        "url": "https://www.wowhead.com/classic/cn/item=9415&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9416",
+      "name": {
+        "zhCN": "格瑞姆洛克之矛",
+        "enUS": "Grimlok's Charge"
+      },
+      "itemLevel": 47,
+      "requiredLevel": 42,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_spear_08"
+      },
+      "description": {
+        "zhCN": "奥达曼：格瑞姆洛克的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 10,
+          "agilityPoints": 15,
+          "staminaPoints": 15
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 88,
+            "maximumPoints": 133
+          },
+          "speedSeconds": 2.7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9416",
+        "url": "https://www.wowhead.com/classic/cn/item=9416&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9414",
+      "name": {
+        "zhCN": "油腻的护腿",
+        "enUS": "Oilskin Leggings"
+      },
+      "itemLevel": 46,
+      "requiredLevel": 41,
+      "quality": "uncommon",
+      "slot": "legs",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_06"
+      },
+      "description": {
+        "zhCN": "奥达曼：格瑞姆洛克的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 13,
+          "spiritPoints": 12
+        },
+        "defense": {
+          "armorPoints": 108
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9414",
+        "url": "https://www.wowhead.com/classic/cn/item=9414&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "11118",
+      "name": {
+        "zhCN": "阿扎达斯之石",
+        "enUS": "Archaedic Stone"
+      },
+      "itemLevel": 47,
+      "requiredLevel": 42,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_stone_15"
+      },
+      "description": {
+        "zhCN": "奥达曼：阿扎达斯的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 50
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11118",
+        "url": "https://www.wowhead.com/classic/cn/item=11118&xml",
+        "verifiedAt": "2026-09-09"
+      },
+      "randomSuffixIds": [
+        "uldaman_11118_owl",
+        "uldaman_11118_bear",
+        "uldaman_11118_monkey",
+        "uldaman_11118_wolf",
+        "uldaman_11118_tiger",
+        "uldaman_11118_eagle",
+        "uldaman_11118_whale",
+        "uldaman_11118_boar",
+        "uldaman_11118_gorilla",
+        "uldaman_11118_agility",
+        "uldaman_11118_stamina",
+        "uldaman_11118_strength",
+        "uldaman_11118_falcon",
+        "uldaman_11118_intellect",
+        "uldaman_11118_spirit",
+        "uldaman_11118_eluding",
+        "uldaman_11118_regeneration",
+        "uldaman_11118_concentration",
+        "uldaman_11118_nature_resistance",
+        "uldaman_11118_fire_resistance",
+        "uldaman_11118_arcane_resistance",
+        "uldaman_11118_frost_resistance",
+        "uldaman_11118_shadow_resistance"
+      ]
+    },
+    {
+      "id": "9413",
+      "name": {
+        "zhCN": "轰石之锤",
+        "enUS": "The Rockpounder"
+      },
+      "itemLevel": 49,
+      "requiredLevel": 44,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_hammer_12"
+      },
+      "description": {
+        "zhCN": "奥达曼：阿扎达斯的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 5
+        },
+        "physical": {
+          "criticalStrikePercent": 2
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 126,
+            "maximumPoints": 190
+          },
+          "speedSeconds": 3.7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9413",
+        "url": "https://www.wowhead.com/classic/cn/item=9413&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9418",
+      "name": {
+        "zhCN": "斩石者",
+        "enUS": "Stoneslayer"
+      },
+      "itemLevel": 49,
+      "requiredLevel": 44,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_47"
+      },
+      "description": {
+        "zhCN": "奥达曼：阿扎达斯的专属掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 133,
+            "maximumPoints": 200
+          },
+          "speedSeconds": 3.9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9418",
+        "url": "https://www.wowhead.com/classic/cn/item=9418&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    }
+  ]
+}

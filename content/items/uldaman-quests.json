@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/classic-wow-uldaman-dungeon-quests",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对密室、意志石板及联盟/部落修复项链任务奖励，并以中文 XML 核对装备属性。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].restrictions", "items[].description"],
+        "reason": "阵营系统暂不模拟；两条同属性修复项链奖励作为中立外观选择保留。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "9626",
+      "name": {
+        "zhCN": "矮人冲锋斧",
+        "enUS": "Dwarven Charge"
+      },
+      "itemLevel": 42,
+      "requiredLevel": 35,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_axe_09"
+      },
+      "description": {
+        "zhCN": "奥达曼成员任务“密室”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 12,
+          "staminaPoints": 11
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 72,
+            "maximumPoints": 109
+          },
+          "speedSeconds": 2.9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9626",
+        "url": "https://www.wowhead.com/classic/cn/item=9626&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "9627",
+      "name": {
+        "zhCN": "探险者联盟徽章",
+        "enUS": "Explorer's League Lodestar"
+      },
+      "itemLevel": 42,
+      "requiredLevel": 35,
+      "quality": "uncommon",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["priest", "shaman", "mage", "warlock", "druid", "paladin"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_lantern_01"
+      },
+      "description": {
+        "zhCN": "奥达曼成员任务“密室”可选奖励。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 7,
+          "spiritPoints": 6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "9627",
+        "url": "https://www.wowhead.com/classic/cn/item=9627&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6723",
+      "name": {
+        "zhCN": "勇气勋章",
+        "enUS": "Medal of Courage"
+      },
+      "itemLevel": 45,
+      "requiredLevel": 35,
+      "quality": "uncommon",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_amulet_03"
+      },
+      "description": {
+        "zhCN": "奥达曼成员任务“意志石板”固定奖励。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 9,
+          "spiritPoints": 3
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6723",
+        "url": "https://www.wowhead.com/classic/cn/item=6723&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7673",
+      "name": {
+        "zhCN": "塔瓦斯德的魔法项链",
+        "enUS": "Talvash's Enhancing Necklace"
+      },
+      "itemLevel": 47,
+      "requiredLevel": 37,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_necklace_02"
+      },
+      "description": {
+        "zhCN": "奥达曼联盟任务“修复项链”奖励；本游戏与部落版本并列为中立外观选择。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 1,
+          "spiritPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7673",
+        "url": "https://www.wowhead.com/classic/cn/item=7673&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7888",
+      "name": {
+        "zhCN": "加卡尔的强化项链",
+        "enUS": "Jarkal's Enhancing Necklace"
+      },
+      "itemLevel": 47,
+      "requiredLevel": 37,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_necklace_02"
+      },
+      "description": {
+        "zhCN": "奥达曼部落任务“项链任务的终结”奖励；本游戏与联盟版本并列为中立外观选择。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 1,
+          "spiritPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7888",
+        "url": "https://www.wowhead.com/classic/cn/item=7888&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    }
+  ]
+}

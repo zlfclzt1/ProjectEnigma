@@ -38,9 +38,10 @@ describe("member wishlist rules", () => {
     );
 
     expect(result.allowed).toBe(false);
-    expect(result.failures.map((failure) => failure.code)).toEqual(
-      expect.arrayContaining(["class-restricted", "armor-type-mismatch"]),
-    );
+    expect(result.failures.map((failure) => failure.code)).toEqual([
+      "class-restricted",
+      "role-restricted",
+    ]);
   });
 
   it("rejects items outside the current specialization's primary role", () => {

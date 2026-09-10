@@ -6,12 +6,12 @@
 
 ## 汇总
 
-- 路线 Encounter：74。
-- 掉落表：64。
-- 掉落表分类：Boss 专属掉落 64，任务奖励 0，世界掉落 0，设计占位 0。
-- Encounter 引用分类：Boss 专属掉落 64，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 10。
-- 不同装备分类：Boss 专属掉落 166，任务奖励 0，世界掉落 0，设计占位 0。
-- 成员副本任务：21，不同任务奖励装备：49。
+- 路线 Encounter：82。
+- 掉落表：71。
+- 掉落表分类：Boss 专属掉落 71，任务奖励 0，世界掉落 0，设计占位 0。
+- Encounter 引用分类：Boss 专属掉落 71，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 11。
+- 不同装备分类：Boss 专属掉落 191，任务奖励 0，世界掉落 0，设计占位 0。
+- 成员副本任务：24，不同任务奖励装备：54。
 - Boss 掉落与任务奖励重复：0。
 - 未显式填写 `sourceType` 的 Boss 掉落表：0。
 - 未被路线 Encounter 引用的掉落表：0。
@@ -148,6 +148,19 @@
 | 迪克斯特·瓦德（stockade_dextren_ward） | — | 无装备掉落 | 0 | — |
 | 布鲁高·铁拳（stockade_bruegal_ironknuckle） | stockade_bruegal_ironknuckle | Boss 专属掉落 | 1 | 2941 监狱骨片、2942 铁指虎、3228 弯曲护腕 |
 
+### 奥达曼（uldaman）
+
+| Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
+|---|---|---|---:|---|
+| 失踪的矮人（uldaman_lost_dwarves） | uldaman_lost_dwarves | Boss 专属掉落 | 3 | 9394 海盗角盔、9398 穿旧的跑鞋、9401 盗匪长剑、9400 巴尔洛戈的短弓、9404 奥拉夫之盾、9403 破碎的海盗之盾 |
+| 鲁维罗什（uldaman_revelosh） | uldaman_revelosh | Boss 专属掉落 | 1 | 9389 鲁恩乌的肩甲、9388 鲁恩乌的臂甲、9390 鲁恩乌的手套、9387 鲁恩乌的长靴 |
+| 艾隆纳亚（uldaman_ironaya） | uldaman_ironaya | Boss 专属掉落 | 1 | 9409 艾隆纳亚的护腕、9407 石纹护腿、9408 铁头棒 |
+| 黑曜石哨兵（uldaman_obsidian_sentinel） | — | 无装备掉落 | 0 | — |
+| 古代的石头看守者（uldaman_ancient_stone_keeper） | uldaman_ancient_stone_keeper | Boss 专属掉落 | 1 | 9410 山壁之拳、9411 石片肩铠 |
+| 加加恩·火锤（uldaman_galgann_firehammer） | uldaman_galgann_firehammer | Boss 专属掉落 | 1 | 11310 烈焰先知衬肩、9412 加加恩的火枪、11311 灰烬之鳞、9419 加加恩的火锤 |
+| 格瑞姆洛克（uldaman_grimlok） | uldaman_grimlok | Boss 专属掉落 | 1 | 9415 格瑞姆洛克的部族法衣、9416 格瑞姆洛克之矛、9414 油腻的护腿 |
+| 阿扎达斯（uldaman_archaedas） | uldaman_archaedas | Boss 专属掉落 | 1 | 11118 阿扎达斯之石、9413 轰石之锤、9418 斩石者 |
+
 ### 哀嚎洞穴（wailing_caverns）
 
 | Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
@@ -186,6 +199,9 @@
 | 暴风城监狱（the_stockade） | 伸张正义（stockade_what_comes_around） | 3400 磷铝长剑、1317 硬根法杖 |
 | 暴风城监狱（the_stockade） | 卡姆·深怒（stockade_fury_runs_deep） | 3562 辩护腰带、1264 碎头者 |
 | 暴风城监狱（the_stockade） | 罪与罚（stockade_crime_and_punishment） | 2033 大使之靴、2906 夜色郡锁甲护腿 |
+| 奥达曼（uldaman） | 密室（uldaman_the_hidden_chamber） | 9626 矮人冲锋斧、9627 探险者联盟徽章 |
+| 奥达曼（uldaman） | 意志石板（uldaman_lost_tablets_of_will） | 6723 勇气勋章 |
+| 奥达曼（uldaman） | 修复项链 / 项链任务的终结（uldaman_restoring_the_necklace） | 7673 塔瓦斯德的魔法项链、7888 加卡尔的强化项链 |
 
 ## 审计结论
 

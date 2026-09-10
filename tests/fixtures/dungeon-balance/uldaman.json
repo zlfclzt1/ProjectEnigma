@@ -1,0 +1,286 @@
+{
+  "dungeonId": "uldaman",
+  "samplesPerScenario": 100000,
+  "scenarios": {
+    "standard": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.8609,
+        "previewClearProbability": 0.8624103824175646,
+        "durationSeconds": 1382.6,
+        "wipeCounts": {
+          "uldaman_lost_dwarves": 2052,
+          "uldaman_ancient_stone_keeper": 2000,
+          "uldaman_archaedas": 4139,
+          "uldaman_grimlok": 1881,
+          "uldaman_revelosh": 1955,
+          "uldaman_galgann_firehammer": 1883
+        }
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.84067,
+        "previewClearProbability": 0.8411934156962623,
+        "durationSeconds": 1775.6,
+        "wipeCounts": {
+          "uldaman_archaedas": 2757,
+          "uldaman_ironaya": 1887,
+          "uldaman_galgann_firehammer": 1858,
+          "uldaman_ancient_stone_keeper": 1795,
+          "uldaman_revelosh": 1975,
+          "uldaman_lost_dwarves": 2013,
+          "uldaman_grimlok": 1756,
+          "uldaman_obsidian_sentinel": 1892
+        }
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.86244,
+        "previewClearProbability": 0.8639183646668961,
+        "durationSeconds": 1391.6,
+        "wipeCounts": {
+          "uldaman_revelosh": 2014,
+          "uldaman_ancient_stone_keeper": 1969,
+          "uldaman_archaedas": 3917,
+          "uldaman_grimlok": 2007,
+          "uldaman_lost_dwarves": 1987,
+          "uldaman_galgann_firehammer": 1862
+        }
+      }
+    },
+    "no-tank": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.5625000000000006e-8,
+        "durationSeconds": 1565.4,
+        "wipeCounts": {
+          "uldaman_lost_dwarves": 94996,
+          "uldaman_ancient_stone_keeper": 266,
+          "uldaman_revelosh": 4726,
+          "uldaman_galgann_firehammer": 12
+        }
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 3.906250000000002e-11,
+        "durationSeconds": 1990.8,
+        "wipeCounts": {
+          "uldaman_lost_dwarves": 95011,
+          "uldaman_revelosh": 4751,
+          "uldaman_ironaya": 226,
+          "uldaman_obsidian_sentinel": 12
+        }
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.5625000000000006e-8,
+        "durationSeconds": 1532.2,
+        "wipeCounts": {
+          "uldaman_lost_dwarves": 94979,
+          "uldaman_revelosh": 4769,
+          "uldaman_ancient_stone_keeper": 237,
+          "uldaman_galgann_firehammer": 15
+        }
+      }
+    },
+    "no-healing": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.5625000000000006e-8,
+        "durationSeconds": 1521.8,
+        "wipeCounts": {
+          "uldaman_lost_dwarves": 95056,
+          "uldaman_revelosh": 4710,
+          "uldaman_ancient_stone_keeper": 223,
+          "uldaman_galgann_firehammer": 10,
+          "uldaman_archaedas": 1
+        }
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 3.906250000000002e-11,
+        "durationSeconds": 1963.8,
+        "wipeCounts": {
+          "uldaman_lost_dwarves": 94965,
+          "uldaman_revelosh": 4748,
+          "uldaman_ironaya": 274,
+          "uldaman_obsidian_sentinel": 13
+        }
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.5625000000000006e-8,
+        "durationSeconds": 1522.8,
+        "wipeCounts": {
+          "uldaman_lost_dwarves": 95024,
+          "uldaman_revelosh": 4712,
+          "uldaman_ancient_stone_keeper": 249,
+          "uldaman_galgann_firehammer": 14,
+          "uldaman_grimlok": 1
+        }
+      }
+    },
+    "overlevel": {
+      "required": {
+        "level": 42,
+        "simulatedRuns": 100000,
+        "clearRate": 0.81607,
+        "previewClearProbability": 0.814784617142877,
+        "durationSeconds": 1440.6,
+        "wipeCounts": {
+          "uldaman_revelosh": 1973,
+          "uldaman_lost_dwarves": 1912,
+          "uldaman_archaedas": 6776,
+          "uldaman_grimlok": 3924,
+          "uldaman_galgann_firehammer": 1854,
+          "uldaman_ancient_stone_keeper": 1954
+        }
+      },
+      "with-optional": {
+        "level": 42,
+        "simulatedRuns": 100000,
+        "clearRate": 0.75717,
+        "previewClearProbability": 0.7566125169062374,
+        "durationSeconds": 1868.4,
+        "wipeCounts": {
+          "uldaman_archaedas": 7651,
+          "uldaman_grimlok": 4614,
+          "uldaman_lost_dwarves": 1951,
+          "uldaman_revelosh": 1998,
+          "uldaman_obsidian_sentinel": 2002,
+          "uldaman_galgann_firehammer": 2343,
+          "uldaman_ironaya": 1857,
+          "uldaman_ancient_stone_keeper": 1867
+        }
+      },
+      "with-rare": {
+        "level": 42,
+        "simulatedRuns": 100000,
+        "clearRate": 0.84567,
+        "previewClearProbability": 0.8482880253405944,
+        "durationSeconds": 1406.8,
+        "wipeCounts": {
+          "uldaman_lost_dwarves": 1990,
+          "uldaman_archaedas": 5289,
+          "uldaman_galgann_firehammer": 1867,
+          "uldaman_ancient_stone_keeper": 1976,
+          "uldaman_grimlok": 2340,
+          "uldaman_revelosh": 1971
+        }
+      }
+    },
+    "max-level": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.84233,
+        "previewClearProbability": 0.8455896906620719,
+        "durationSeconds": 1410.8,
+        "wipeCounts": {
+          "uldaman_archaedas": 5134,
+          "uldaman_galgann_firehammer": 1997,
+          "uldaman_grimlok": 2687,
+          "uldaman_lost_dwarves": 2046,
+          "uldaman_revelosh": 1985,
+          "uldaman_ancient_stone_keeper": 1918
+        }
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.83075,
+        "previewClearProbability": 0.8325442202992044,
+        "durationSeconds": 1781.6,
+        "wipeCounts": {
+          "uldaman_revelosh": 1923,
+          "uldaman_lost_dwarves": 2065,
+          "uldaman_ironaya": 1917,
+          "uldaman_ancient_stone_keeper": 1939,
+          "uldaman_grimlok": 1748,
+          "uldaman_galgann_firehammer": 1836,
+          "uldaman_obsidian_sentinel": 1937,
+          "uldaman_archaedas": 3560
+        }
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.86778,
+        "previewClearProbability": 0.8665106393464559,
+        "durationSeconds": 1390.2,
+        "wipeCounts": {
+          "uldaman_ancient_stone_keeper": 1859,
+          "uldaman_galgann_firehammer": 1880,
+          "uldaman_lost_dwarves": 2059,
+          "uldaman_archaedas": 3597,
+          "uldaman_revelosh": 1924,
+          "uldaman_grimlok": 1903
+        }
+      }
+    },
+    "speed-run": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.84736,
+        "previewClearProbability": 0.8486321255391294,
+        "durationSeconds": 1389.6,
+        "wipeCounts": {
+          "uldaman_grimlok": 2304,
+          "uldaman_archaedas": 5096,
+          "uldaman_revelosh": 2044,
+          "uldaman_lost_dwarves": 2007,
+          "uldaman_ancient_stone_keeper": 1918,
+          "uldaman_galgann_firehammer": 1895
+        }
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.83251,
+        "previewClearProbability": 0.8325398026851936,
+        "durationSeconds": 1773.4,
+        "wipeCounts": {
+          "uldaman_archaedas": 3600,
+          "uldaman_ancient_stone_keeper": 1832,
+          "uldaman_grimlok": 1727,
+          "uldaman_revelosh": 1941,
+          "uldaman_lost_dwarves": 2055,
+          "uldaman_galgann_firehammer": 1751,
+          "uldaman_obsidian_sentinel": 1943,
+          "uldaman_ironaya": 1900
+        }
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.81207,
+        "previewClearProbability": 0.8129235106748235,
+        "durationSeconds": 1435.8,
+        "wipeCounts": {
+          "uldaman_archaedas": 6950,
+          "uldaman_galgann_firehammer": 2143,
+          "uldaman_grimlok": 3895,
+          "uldaman_ancient_stone_keeper": 1913,
+          "uldaman_lost_dwarves": 1959,
+          "uldaman_revelosh": 1933
+        }
+      }
+    }
+  }
+}

@@ -53,7 +53,6 @@ describe("V2 equipment rules", () => {
       "member-busy",
       "class-restricted",
       "role-restricted",
-      "armor-type-mismatch",
     ]);
     expect(result.failures.map((failure) => failure.code)).not.toContain("level-too-low");
 
@@ -64,6 +63,45 @@ describe("V2 equipment rules", () => {
         itemInstances: {},
       }).failures.map((failure) => failure.code),
     ).toContain("owned-by-another-member");
+  });
+
+  it("allows lighter armor and unlocks the Classic level-40 armor promotions", () => {
+    const warrior = createMemberFixture({
+      progression: {
+        level: 40,
+        experience: 0,
+        specId: asBrandedId<"SpecId">("warrior_protection"),
+      },
+    });
+    const plate = {
+      ...definition("10775"),
+      restrictions: { allowedClassIds: [], allowedRoles: [] },
+    };
+    const plateInstance = instance("plate", "10775");
+
+    expect(
+      evaluateEquipEligibility(warrior, plateInstance, plate, { content, itemInstances: {} })
+        .allowed,
+    ).toBe(true);
+    expect(
+      evaluateEquipEligibility(
+        { ...warrior, progression: { ...warrior.progression, level: 39 } },
+        plateInstance,
+        plate,
+        { content, itemInstances: {} },
+      ).failures.map((failure) => failure.code),
+    ).toContain("armor-type-mismatch");
+
+    const cloth = {
+      ...definition("14148"),
+      restrictions: { allowedClassIds: [], allowedRoles: [] },
+    };
+    expect(
+      evaluateEquipEligibility(warrior, instance("cloth", "14148"), cloth, {
+        content,
+        itemInstances: {},
+      }).allowed,
+    ).toBe(true);
   });
 
   it("treats both ring and trinket slots as interchangeable and replaces the weaker slot", () => {

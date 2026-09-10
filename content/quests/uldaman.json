@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/classic-wow-uldaman-dungeon-quests",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对密室、意志石板与两条阵营修复项链任务的实例内目标和装备奖励。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "阵营与任务物品背包不模拟；以已建模遭遇胜利表达钥匙、石板和宝石收集，并把同属性阵营项链作为外观二选一。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": [
+          "quests[].dungeonId",
+          "quests[].completion",
+          "quests[].rewards.experienceFraction"
+        ],
+        "reason": "使用可确定结算的 Encounter 胜利表达实例内任务步骤，并保持原版装备奖励方式。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "uldaman_the_hidden_chamber",
+      "name": {
+        "zhCN": "密室"
+      },
+      "description": {
+        "zhCN": "取得两个史前法杖组件，击败艾隆纳亚并进入密室。"
+      },
+      "dungeonId": "uldaman",
+      "eligibility": {
+        "minimumLevel": 35,
+        "allowedClassIds": []
+      },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["uldaman_lost_dwarves", "uldaman_revelosh", "uldaman_ironaya"]
+      },
+      "rewards": {
+        "experienceFraction": 0.9,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["9626", "9627"]
+      }
+    },
+    {
+      "id": "uldaman_lost_tablets_of_will",
+      "name": {
+        "zhCN": "意志石板"
+      },
+      "description": {
+        "zhCN": "击败加加恩·火锤并取得他房间内的意志石板。"
+      },
+      "dungeonId": "uldaman",
+      "eligibility": {
+        "minimumLevel": 35,
+        "allowedClassIds": []
+      },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["uldaman_galgann_firehammer"]
+      },
+      "rewards": {
+        "experienceFraction": 1,
+        "funds": 0,
+        "fixedItemIds": ["6723"],
+        "itemChoiceIds": []
+      }
+    },
+    {
+      "id": "uldaman_restoring_the_necklace",
+      "name": {
+        "zhCN": "修复项链 / 项链任务的终结"
+      },
+      "description": {
+        "zhCN": "走完整条宝石路线并击败阿扎达斯，修复破碎的项链。"
+      },
+      "dungeonId": "uldaman",
+      "eligibility": {
+        "minimumLevel": 37,
+        "allowedClassIds": []
+      },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": [
+          "uldaman_lost_dwarves",
+          "uldaman_revelosh",
+          "uldaman_galgann_firehammer",
+          "uldaman_grimlok",
+          "uldaman_archaedas"
+        ]
+      },
+      "rewards": {
+        "experienceFraction": 1.2,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["7673", "7888"]
+      }
+    }
+  ]
+}

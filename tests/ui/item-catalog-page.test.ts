@@ -56,7 +56,7 @@ describe("item catalog page", () => {
     await flushPromises();
 
     expect(wrapper.text()).toContain("装备图鉴");
-    expect(wrapper.findAll(".dungeon-catalog")).toHaveLength(13);
+    expect(wrapper.findAll(".dungeon-catalog")).toHaveLength(14);
     expect(wrapper.text()).not.toContain("狼王斗篷");
     expect(wrapper.text()).toContain("哀嚎洞穴收藏原型");
     expect(wrapper.text()).toContain("2 / 2 · 100.0%");

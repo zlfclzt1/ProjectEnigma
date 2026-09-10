@@ -41,6 +41,9 @@ describe("collection reward rules", () => {
       "19507",
       "10776",
       "10775",
+      "9389",
+      "9388",
+      "9390",
     );
 
     expect(
@@ -70,7 +73,7 @@ describe("collection reward rules", () => {
         content,
         asBrandedId<"CollectionRewardId">("prototype_global_catalog_ten_percent"),
       ),
-    ).toMatchObject({ acquiredItemCount: 17, totalItemCount: 166, conditionMet: true });
+    ).toMatchObject({ acquiredItemCount: 20, totalItemCount: 191, conditionMet: true });
   });
 
   it("derives management and display unlocks only from claimed reward ids", () => {

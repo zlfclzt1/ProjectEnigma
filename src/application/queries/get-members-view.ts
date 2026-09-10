@@ -261,6 +261,7 @@ const STAT_LABELS: Readonly<Record<string, string>> = {
   frostSpellPowerPoints: "冰霜法术强度",
   natureSpellPowerPoints: "自然法术强度",
   shadowSpellPowerPoints: "暗影法术强度",
+  healthRegenPer5Seconds: "每 5 秒生命回复",
   manaRegenPer5Seconds: "每 5 秒法力回复",
   arcanePoints: "奥术抗性",
   firePoints: "火焰抗性",
@@ -383,6 +384,9 @@ export function getItemStatLines(stats: ClassicItemStats): ItemStatLineView[] {
           ...(stats.spell.shadowSpellPowerPoints === undefined
             ? {}
             : { shadowSpellPowerPoints: stats.spell.shadowSpellPowerPoints }),
+          ...(stats.spell.healthRegenPer5Seconds === undefined
+            ? {}
+            : { healthRegenPer5Seconds: stats.spell.healthRegenPer5Seconds }),
           ...(stats.spell.manaRegenPer5Seconds === undefined
             ? {}
             : { manaRegenPer5Seconds: stats.spell.manaRegenPer5Seconds }),

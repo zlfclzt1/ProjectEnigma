@@ -30,6 +30,7 @@ export interface SpellCombatStats {
   readonly frostSpellPowerPoints?: number;
   readonly natureSpellPowerPoints?: number;
   readonly shadowSpellPowerPoints?: number;
+  readonly healthRegenPer5Seconds?: number;
   readonly manaRegenPer5Seconds?: number;
   readonly hitPercent?: number;
   readonly criticalStrikePercent?: number;

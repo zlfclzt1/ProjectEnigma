@@ -115,6 +115,7 @@ export const hiddenCharacterDefinitionFileSchema = contentFileBaseSchema.safeExt
 
 export type RoleDefinition = z.infer<typeof roleDefinitionSchema>;
 export type ClassDefinition = z.infer<typeof classDefinitionSchema>;
+export type ArmorType = z.infer<typeof armorTypeSchema>;
 export type RaceDefinition = z.infer<typeof raceDefinitionSchema>;
 export type SpecDefinition = z.infer<typeof specDefinitionSchema>;
 export type PersonalityDefinition = z.infer<typeof personalityDefinitionSchema>;

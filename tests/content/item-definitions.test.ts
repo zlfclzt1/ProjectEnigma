@@ -24,16 +24,21 @@ const itemFiles = fs
 const migratedItems = itemFiles.flatMap((file) => file.content.items);
 
 describe("item definitions", () => {
-  it("loads all 215 current dungeon and quest items with stable IDs and database icons", () => {
+  it("loads all 245 current dungeon and quest items with stable IDs and database icons", () => {
     const dungeonItems = migratedItems.filter((item) => !item.isStarter);
 
-    expect(dungeonItems).toHaveLength(215);
+    expect(dungeonItems).toHaveLength(245);
     expect(dungeonItems.map((item) => item.id)).toEqual(
       expect.arrayContaining(["14149", "15451", "15452", "6324"]),
     );
     expect(dungeonItems.every((item) => item.icon.kind === "database")).toBe(true);
     expect(dungeonItems.every((item) => item.name.zhCN.length > 0)).toBe(true);
-    expect(migratedItems.every((item) => item.randomSuffixIds === undefined)).toBe(true);
+    expect(
+      migratedItems
+        .filter((item) => item.randomSuffixIds !== undefined)
+        .map((item) => item.id)
+        .sort((left, right) => Number(left) - Number(right)),
+    ).toEqual(["9387", "9388", "9389", "9390", "9409", "9410", "11118"]);
   });
 
   it("replaces dynamic starter definitions with stable IDs for every slot and armor type", () => {

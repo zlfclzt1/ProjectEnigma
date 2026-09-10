@@ -45,14 +45,20 @@ function contentWithPrototypeSuffix(itemId: string): ContentRegistry {
 }
 
 describe("member view queries", () => {
-  it("renders stat penalties and mana regeneration with authentic signs and units", () => {
+  it("renders stat penalties and regeneration with authentic signs and units", () => {
     expect(
       getItemStatLines({
         primary: { spiritPoints: -3 },
-        spell: { manaRegenPer5Seconds: 3 },
+        spell: { healthRegenPer5Seconds: 3, manaRegenPer5Seconds: 3 },
       }),
     ).toEqual([
       { id: "spiritPoints", label: "精神", value: "-3", numericValue: -3 },
+      {
+        id: "healthRegenPer5Seconds",
+        label: "每 5 秒生命回复",
+        value: "+3",
+        numericValue: 3,
+      },
       {
         id: "manaRegenPer5Seconds",
         label: "每 5 秒法力回复",

@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "奥达曼副本日志；只描述已经结算的路线与战斗事实。"
+      }
+    ]
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "uldaman_lost_dwarves_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "uldaman_lost_dwarves"
+      },
+      "availableParameters": ["tank", "member"],
+      "templates": [
+        "埃瑞克停止冲锋后，{tank}终于有空确认巴尔洛戈和奥拉夫也已倒下。",
+        "三名矮人的房间恢复安静，{member}抱走徽记时郑重承诺会记得它的用途。"
+      ]
+    },
+    {
+      "id": "uldaman_revelosh_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "uldaman_revelosh"
+      },
+      "availableParameters": ["healer", "member"],
+      "templates": [
+        "最后一道闪电链被打断，{healer}批准队伍继续深入。",
+        "鲁维罗什倒下，{member}把索尔之杖交给了刚才拿徽记的人。"
+      ]
+    },
+    {
+      "id": "uldaman_ironaya_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "uldaman_ironaya"
+      },
+      "availableParameters": ["tank", "member"],
+      "templates": [
+        "模型城市开启，{tank}在艾隆纳亚的践踏中守住了密室入口。",
+        "艾隆纳亚停止挥拳，{member}确认这趟支路足以写进任务报告。"
+      ]
+    },
+    {
+      "id": "uldaman_obsidian_sentinel_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "uldaman_obsidian_sentinel"
+      },
+      "availableParameters": ["member", "healer"],
+      "templates": [
+        "黑曜石碎片散落一地，{member}只找到任务能量源，没有虚构的装备。",
+        "黑曜石哨兵停止分裂，{healer}提醒大家这条支路从来不是刷装点。"
+      ]
+    },
+    {
+      "id": "uldaman_ancient_stone_keeper_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "uldaman_ancient_stone_keeper"
+      },
+      "availableParameters": ["healer", "member"],
+      "templates": [
+        "沙暴沉寂，{healer}终于能听见自己的施法声。",
+        "古代的石头看守者碎裂后，{member}抖掉了装备上的最后一层沙。"
+      ]
+    },
+    {
+      "id": "uldaman_galgann_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "uldaman_galgann_firehammer"
+      },
+      "availableParameters": ["tank", "member"],
+      "templates": [
+        "火焰增幅被解除，{tank}把加加恩留在了他的锻锤旁。",
+        "地质学家和加加恩先后倒下，{member}在房间里找到了意志石板。"
+      ]
+    },
+    {
+      "id": "uldaman_grimlok_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "uldaman_grimlok"
+      },
+      "availableParameters": ["member", "healer"],
+      "templates": [
+        "随从被逐个控制，{member}在格瑞姆洛克完成缩小前结束了战斗。",
+        "格瑞姆洛克倒下，{healer}从战利品旁找回了项链蓝宝石。"
+      ]
+    },
+    {
+      "id": "uldaman_archaedas_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "uldaman_archaedas"
+      },
+      "availableParameters": ["tank", "member"],
+      "templates": [
+        "最后一批土灵守卫苏醒时，{tank}已经把阿扎达斯逼到了终点。",
+        "阿扎达斯倒下，{member}穿过宝库去听诺甘农圆盘讲完那段很长的故事。"
+      ]
+    }
+  ]
+}

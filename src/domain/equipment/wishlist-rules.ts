@@ -1,6 +1,7 @@
 import type { ContentRegistry } from "../../content/registry";
 import type { ItemDefinitionId, RandomSuffixId } from "../shared/ids";
 import type { Member, MemberWishlistEntry } from "../member/member";
+import { canEquipArmorType } from "./armor-proficiency";
 
 export interface WishlistTargetInput {
   readonly itemDefinitionId: ItemDefinitionId;
@@ -63,7 +64,15 @@ export function evaluateWishlistTarget(
   ) {
     failures.push({ code: "role-restricted", message: "这件物品不适合当前专精的主职责。" });
   }
-  if (item.armorType && item.armorType !== classDefinition?.armorType) {
+  if (
+    item.armorType &&
+    !canEquipArmorType(
+      member.identity.classId,
+      member.progression.level,
+      classDefinition?.armorType,
+      item.armorType,
+    )
+  ) {
     failures.push({ code: "armor-type-mismatch", message: "护甲类型与当前职业不匹配。" });
   }
 

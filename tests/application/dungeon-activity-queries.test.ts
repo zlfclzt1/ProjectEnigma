@@ -148,7 +148,7 @@ function contentWithOptionalQuestBoss() {
 }
 
 describe("dungeon and activity queries", () => {
-  it("projects four dungeons, filter metadata, and exact party probabilities", () => {
+  it("projects all dungeons, filter metadata, and exact party probabilities", () => {
     const game = state();
     const memberIds = Object.values(game.members).map((member) => member.id);
     const view = getDungeonPlanningView(
@@ -159,7 +159,7 @@ describe("dungeon and activity queries", () => {
       2,
     );
 
-    expect(view.dungeons).toHaveLength(13);
+    expect(view.dungeons).toHaveLength(14);
     expect(view.classOptions).toHaveLength(9);
     expect(view.roleOptions.map((role) => role.id)).toEqual(["tank", "healer", "dps"]);
     expect(view.selectedDungeon).toMatchObject({

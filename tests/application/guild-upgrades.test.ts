@@ -15,9 +15,11 @@ const content = loadBrowserContentRegistry();
 const firstUpgradeId = asBrandedId<"GuildUpgradeId">("guild_roster_15");
 const secondUpgradeId = asBrandedId<"GuildUpgradeId">("guild_roster_20");
 const thirdUpgradeId = asBrandedId<"GuildUpgradeId">("guild_roster_25");
+const fourthUpgradeId = asBrandedId<"GuildUpgradeId">("guild_roster_30");
 const deadminesId = asBrandedId<"DungeonId">("deadmines");
 const shadowfangId = asBrandedId<"DungeonId">("shadowfang_keep");
 const cathedralId = asBrandedId<"DungeonId">("scarlet_monastery_cathedral");
+const uldamanId = asBrandedId<"DungeonId">("uldaman");
 const queueUpgradeId = asBrandedId<"GuildUpgradeId">("expedition_queue_5");
 
 async function sessionFor(state = createGameStateFixture()) {
@@ -83,6 +85,22 @@ describe("guild upgrades", () => {
     expect(result.status).toBe("committed");
     expect(getMemberCapacity(session.snapshot(), content)).toBe(25);
     expect(session.snapshot().guild.funds).toBe(2_000);
+    expect(getGuildUpgradeView(session.snapshot(), content).atCurrentMaximum).toBe(false);
+    expect(getGuildUpgradeView(session.snapshot(), content).nextUpgrade?.id).toBe(fourthUpgradeId);
+  });
+
+  it("unlocks the final 30-member expansion after an Uldaman clear", async () => {
+    const state = createGameStateFixture();
+    state.guild.funds = 10_000;
+    state.guild.purchasedUpgradeIds = [firstUpgradeId, secondUpgradeId, thirdUpgradeId];
+    state.history.dungeonClearCounts[uldamanId] = 1;
+    const session = await sessionFor(state);
+
+    const result = await session.execute(purchaseGuildUpgradeCommand(content, fourthUpgradeId));
+
+    expect(result.status).toBe("committed");
+    expect(getMemberCapacity(session.snapshot(), content)).toBe(30);
+    expect(session.snapshot().guild.funds).toBe(0);
     expect(getGuildUpgradeView(session.snapshot(), content).atCurrentMaximum).toBe(true);
   });
 

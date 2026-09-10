@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/uldaman-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对奥达曼八个路线节点、双入口、密室开门与主要路线。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "将双入口与岔路压缩为正门到圆盘的线性放置路线；艾隆纳亚和黑曜石哨兵为玩家主动选择的普通可选节点。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["minimumLevel", "recommendedLevel", "duration", "probability", "route"],
+        "reason": "按 45 级前长副本、30 分钟完整路线与剃刀高地后续进度定位设置初始参数。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "dungeons": [
+    {
+      "id": "uldaman",
+      "name": {
+        "zhCN": "奥达曼",
+        "enUS": "Uldaman"
+      },
+      "minimumLevel": 40,
+      "recommendedLevel": 45,
+      "defaultUnlocked": false,
+      "unlock": {
+        "requiredDungeonIds": ["razorfen_downs"]
+      },
+      "members": {
+        "minimum": 1,
+        "maximum": 5,
+        "recommended": 5
+      },
+      "duration": {
+        "baseSeconds": 1800,
+        "minimumRatio": 0.5,
+        "maximumRatio": 1.8
+      },
+      "probability": {
+        "minimum": 0.05,
+        "maximum": 0.99,
+        "base": 0.05,
+        "readinessMultiplier": 0.95,
+        "surplusEffect": 0.5,
+        "geometricWeight": 0.7,
+        "bottleneckWeight": 0.3,
+        "overpowerThreshold": 1.5
+      },
+      "combatTuning": {
+        "bossProbabilityMaximum": 0.98,
+        "requirementMultipliers": {
+          "tank": 0.73,
+          "healing": 0.73,
+          "damage": 0.73
+        }
+      },
+      "route": [
+        {
+          "id": "uldaman_lost_dwarves",
+          "type": "required",
+          "encounterId": "uldaman_lost_dwarves"
+        },
+        {
+          "id": "uldaman_revelosh",
+          "type": "required",
+          "encounterId": "uldaman_revelosh"
+        },
+        {
+          "id": "uldaman_ironaya",
+          "type": "optional",
+          "encounterId": "uldaman_ironaya",
+          "description": {
+            "zhCN": "组合史前法杖，开启模型城市后的密室并挑战艾隆纳亚。"
+          }
+        },
+        {
+          "id": "uldaman_obsidian_sentinel",
+          "type": "optional",
+          "encounterId": "uldaman_obsidian_sentinel",
+          "description": {
+            "zhCN": "前往后门支路挑战黑曜石哨兵；它只提供任务目标，没有装备池。"
+          }
+        },
+        {
+          "id": "uldaman_ancient_stone_keeper",
+          "type": "required",
+          "encounterId": "uldaman_ancient_stone_keeper"
+        },
+        {
+          "id": "uldaman_galgann_firehammer",
+          "type": "required",
+          "encounterId": "uldaman_galgann_firehammer"
+        },
+        {
+          "id": "uldaman_grimlok",
+          "type": "required",
+          "encounterId": "uldaman_grimlok"
+        },
+        {
+          "id": "uldaman_archaedas",
+          "type": "required",
+          "encounterId": "uldaman_archaedas"
+        }
+      ]
+    }
+  ]
+}

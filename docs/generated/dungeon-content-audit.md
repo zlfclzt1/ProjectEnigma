@@ -74,6 +74,14 @@
 | 暴风城监狱（the_stockade） | stockade_bazil_thredd | required | 巴基尔·斯瑞德（stockade_bazil_thredd） | 无装备掉落 | 0 | — |
 | 暴风城监狱（the_stockade） | stockade_dextren_ward | required | 迪克斯特·瓦德（stockade_dextren_ward） | 无装备掉落 | 0 | — |
 | 暴风城监狱（the_stockade） | stockade_bruegal_ironknuckle | rare（0.22） | 布鲁高·铁拳（stockade_bruegal_ironknuckle） | boss_drop:stockade_bruegal_ironknuckle | 1 | 2941 监狱骨片、2942 铁指虎、3228 弯曲护腕 |
+| 奥达曼（uldaman） | uldaman_lost_dwarves | required | 失踪的矮人（uldaman_lost_dwarves） | boss_drop:uldaman_lost_dwarves | 3 | 9394 海盗角盔、9398 穿旧的跑鞋、9401 盗匪长剑、9400 巴尔洛戈的短弓、9404 奥拉夫之盾、9403 破碎的海盗之盾 |
+| 奥达曼（uldaman） | uldaman_revelosh | required | 鲁维罗什（uldaman_revelosh） | boss_drop:uldaman_revelosh | 1 | 9389 鲁恩乌的肩甲〔词缀〕、9388 鲁恩乌的臂甲〔词缀〕、9390 鲁恩乌的手套〔词缀〕、9387 鲁恩乌的长靴〔词缀〕 |
+| 奥达曼（uldaman） | uldaman_ironaya | optional | 艾隆纳亚（uldaman_ironaya） | boss_drop:uldaman_ironaya | 1 | 9409 艾隆纳亚的护腕〔词缀〕、9407 石纹护腿、9408 铁头棒 |
+| 奥达曼（uldaman） | uldaman_obsidian_sentinel | optional | 黑曜石哨兵（uldaman_obsidian_sentinel） | 无装备掉落 | 0 | — |
+| 奥达曼（uldaman） | uldaman_ancient_stone_keeper | required | 古代的石头看守者（uldaman_ancient_stone_keeper） | boss_drop:uldaman_ancient_stone_keeper | 1 | 9410 山壁之拳〔词缀〕、9411 石片肩铠 |
+| 奥达曼（uldaman） | uldaman_galgann_firehammer | required | 加加恩·火锤（uldaman_galgann_firehammer） | boss_drop:uldaman_galgann_firehammer | 1 | 11310 烈焰先知衬肩、9412 加加恩的火枪、11311 灰烬之鳞、9419 加加恩的火锤 |
+| 奥达曼（uldaman） | uldaman_grimlok | required | 格瑞姆洛克（uldaman_grimlok） | boss_drop:uldaman_grimlok | 1 | 9415 格瑞姆洛克的部族法衣、9416 格瑞姆洛克之矛、9414 油腻的护腿 |
+| 奥达曼（uldaman） | uldaman_archaedas | required | 阿扎达斯（uldaman_archaedas） | boss_drop:uldaman_archaedas | 1 | 11118 阿扎达斯之石〔词缀〕、9413 轰石之锤、9418 斩石者 |
 | 哀嚎洞穴（wailing_caverns） | wc_lady_anacondra | required | 安娜科德拉（wc_lady_anacondra） | boss_drop:wc_lady_anacondra | 1 | 10412 尖牙腰带、5404 坚硬的肩垫 |
 | 哀嚎洞穴（wailing_caverns） | wc_lord_cobrahn | required | 考布莱恩领主（wc_lord_cobrahn） | boss_drop:wc_lord_cobrahn | 1 | 6460 考布莱恩的腰带、10410 尖牙护腿、6465 水蛇法袍 |
 | 哀嚎洞穴（wailing_caverns） | wc_kresh | required | 克雷什（wc_kresh） | boss_drop:wc_kresh | 1 | 6447 破旧的龟壳盾牌、13245 克雷什之背 |
@@ -85,8 +93,8 @@
 
 ## 引用完整度
 
-- 副本路线节点：74。
-- 副本任务：21。
+- 副本路线节点：82。
+- 副本任务：24。
 - 套装：1。
 - 未被路线引用的掉落表：0。
 - 未被掉落、任务或套装引用的非初始装备：0。

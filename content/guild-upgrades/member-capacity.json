@@ -6,7 +6,7 @@
         "kind": "design-decision",
         "provider": "manual",
         "verifiedAt": "2026-09-08",
-        "notes": "公会成员容量扩建采用严格顺序；当前版本随死亡矿井、影牙城堡和血色大教堂开放到 25 人。"
+        "notes": "公会成员容量扩建采用严格顺序；当前版本随死亡矿井、影牙城堡、血色大教堂和奥达曼开放到 30 人。"
       }
     ]
   },
@@ -48,6 +48,18 @@
         }
       ],
       "effects": [{ "type": "member-capacity", "value": 25 }]
+    },
+    {
+      "id": "guild_roster_30",
+      "trackId": "member-capacity",
+      "order": 40,
+      "name": { "zhCN": "第四次公会扩建" },
+      "description": {
+        "zhCN": "从奥达曼带回一张古代结构图，照着它把宿舍和会议桌一起扩到了三十人。"
+      },
+      "cost": 10000,
+      "requirements": [{ "type": "dungeon-clear-count", "dungeonId": "uldaman", "count": 1 }],
+      "effects": [{ "type": "member-capacity", "value": 30 }]
     }
   ]
 }
