@@ -6,7 +6,7 @@
         "kind": "design-decision",
         "provider": "manual",
         "verifiedAt": "2026-09-08",
-        "notes": "公会成员容量扩建采用严格顺序；当前版本随死亡矿井和影牙城堡开放到 20 人。"
+        "notes": "公会成员容量扩建采用严格顺序；当前版本随死亡矿井、影牙城堡和血色大教堂开放到 25 人。"
       }
     ]
   },
@@ -32,6 +32,22 @@
         { "type": "dungeon-clear-count", "dungeonId": "shadowfang_keep", "count": 1 }
       ],
       "effects": [{ "type": "member-capacity", "value": 20 }]
+    },
+    {
+      "id": "guild_roster_25",
+      "trackId": "member-capacity",
+      "order": 30,
+      "name": { "zhCN": "第三次公会扩建" },
+      "description": { "zhCN": "拿下大教堂后扩租整层，让二十五人的排班表终于有地方挂。" },
+      "cost": 4000,
+      "requirements": [
+        {
+          "type": "dungeon-clear-count",
+          "dungeonId": "scarlet_monastery_cathedral",
+          "count": 1
+        }
+      ],
+      "effects": [{ "type": "member-capacity", "value": 25 }]
     }
   ]
 }

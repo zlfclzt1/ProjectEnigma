@@ -589,14 +589,7 @@ export class ContentRegistry {
     issues: ContentValidationIssue[],
   ): void {
     for (const owner of loaded.quests) {
-      const dungeonExists = requireReference(
-        dungeonById,
-        owner.value.dungeonId,
-        owner,
-        "dungeonId",
-        "副本",
-        issues,
-      );
+      requireReference(dungeonById, owner.value.dungeonId, owner, "dungeonId", "副本", issues);
       owner.value.eligibility.allowedClassIds.forEach((classId, index) =>
         requireReference(
           classById,
@@ -628,17 +621,9 @@ export class ContentRegistry {
           issues,
         );
         const encounter = encounterById.get(encounterId);
-        if (encounterExists && encounter?.dungeonId !== owner.value.dungeonId) {
-          issues.push({
-            filePath: owner.filePath,
-            fieldPath: `${owner.fieldPath}.completion.encounterIds[${index}]`,
-            message: `任务首领不属于副本 ${owner.value.dungeonId}`,
-            invalidReferenceId: encounterId,
-          });
-        }
-        const routeNode = dungeonExists
+        const routeNode = encounterExists
           ? dungeonById
-              .get(owner.value.dungeonId)
+              .get(encounter!.dungeonId)
               ?.route.find((node) => node.encounterId === encounterId)
           : undefined;
         if (routeNode?.type === "rare") {

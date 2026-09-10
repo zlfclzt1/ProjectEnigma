@@ -65,7 +65,7 @@ describe("overview page guild expansion", () => {
     expect(wrapper.get(".purchase-button").attributes("disabled")).toBeDefined();
   });
 
-  it("shows the current-version maximum after both expansions are owned", async () => {
+  it("shows the Cathedral-locked third expansion after the first two are owned", async () => {
     const game = await initializeGame();
     await game.execute({
       type: "prepare-maximum-guild-capacity-ui-test",
@@ -80,7 +80,9 @@ describe("overview page guild expansion", () => {
 
     await wrapper.find(".member-capacity-card").trigger("click");
 
-    expect(wrapper.get('[role="dialog"]').text()).toContain("当前版本已达最大容量：20 人");
-    expect(wrapper.find(".purchase-button").exists()).toBe(false);
+    expect(wrapper.get('[role="dialog"]').text()).toContain("第三次公会扩建");
+    expect(wrapper.get('[role="dialog"]').text()).toContain("20 → 25 人");
+    expect(wrapper.get('[role="dialog"]').text()).toContain("血色修道院：大教堂完整通关");
+    expect(wrapper.find(".purchase-button").attributes("disabled")).toBeDefined();
   });
 });

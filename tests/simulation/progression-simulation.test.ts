@@ -38,7 +38,7 @@ describe("progression simulation", () => {
       expect(scenario.minimumCoreLevel.p50).toBe(45);
     }
     expect(baseline.scenarios[0]!.daysToTarget!.p50).toBe(8);
-    expect(baseline.scenarios[1]!.daysToTarget!.p50).toBe(6);
+    expect(baseline.scenarios[1]!.daysToTarget!.p50).toBe(7);
     expect(baseline.scenarios[2]!.daysToTarget!.p50).toBe(6);
   });
 });

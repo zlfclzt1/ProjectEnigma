@@ -124,6 +124,22 @@ describe("validated automatic content registry", () => {
     expect(registry.getLootTableForEncounter(encounterId)).toBeUndefined();
   });
 
+  it("allows one member quest to track encounter victories across dungeons", () => {
+    const modules = clonedModules();
+    const questFile = moduleAt(modules, "/content/quests/ragefire-chasm.json");
+    const quest = (
+      questFile.quests as Array<{
+        completion: { type: string; encounterIds?: string[] };
+      }>
+    )[0]!;
+    quest.completion = {
+      type: "encounter-victories",
+      encounterIds: ["oggleflint", "dm_rhahkzor"],
+    };
+
+    expect(() => loadContentRegistry(modules)).not.toThrow();
+  });
+
   it("indexes optional item suffix pools and validates references and item-level tiers", () => {
     const validModules = clonedModules();
     const validItemFile = moduleAt(validModules, "/content/items/ragefire-chasm.json");

@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/quest=1053/in-the-name-of-the-light",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对以圣光之名的洛克希、赫洛德、莫格莱尼、怀特迈恩目标与四选一装备奖励。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/quest=1048/into-the-scarlet-monastery",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对深入血色修道院的四名 Boss 目标与三选一装备奖励。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "阵营与世界前置不模拟；任务随图书馆解锁后可接，并由成员亲自参加三个分区累计进度。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["dungeonId", "completion", "rewards.experienceFraction", "rewards.funds"],
+        "reason": "以图书馆作为任务可接取门槛，保留真实跨分区 Boss 目标和装备选择。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "scarlet_crosswing_in_the_name_of_the_light",
+      "name": { "zhCN": "以圣光之名" },
+      "description": { "zhCN": "击败洛克希、赫洛德、莫格莱尼和怀特迈恩。" },
+      "dungeonId": "scarlet_monastery_library",
+      "eligibility": { "minimumLevel": 34, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": [
+          "scarlet_library_houndmaster_loksey",
+          "scarlet_armory_herod",
+          "scarlet_cathedral_commander_mograine",
+          "scarlet_cathedral_high_inquisitor_whitemane"
+        ]
+      },
+      "rewards": {
+        "experienceFraction": 1,
+        "funds": 0,
+        "itemChoiceIds": ["6829", "6830", "6831", "11262"]
+      }
+    },
+    {
+      "id": "scarlet_crosswing_into_the_scarlet_monastery",
+      "name": { "zhCN": "深入血色修道院" },
+      "description": { "zhCN": "击败洛克希、赫洛德、莫格莱尼和怀特迈恩。" },
+      "dungeonId": "scarlet_monastery_library",
+      "eligibility": { "minimumLevel": 33, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": [
+          "scarlet_library_houndmaster_loksey",
+          "scarlet_armory_herod",
+          "scarlet_cathedral_commander_mograine",
+          "scarlet_cathedral_high_inquisitor_whitemane"
+        ]
+      },
+      "rewards": {
+        "experienceFraction": 1,
+        "funds": 0,
+        "itemChoiceIds": ["6802", "6803", "10711"]
+      }
+    }
+  ]
+}

@@ -37,7 +37,7 @@ Classic Wowhead 与 AtlasLootClassic 均列出赫洛德的 4 件专属可装备�
 
 ## 分区任务
 
-军械库没有需要在 D11 独立录入的分区装备奖励任务。跨四分区的 `In the Name of the Light` 与 `Into The Scarlet Monastery` 继续延后到 D12，在大教堂阶段统一实现；这样不会因军械库首通提前发放阶段终点奖励，也不会重复记录同一任务来源。
+军械库没有需要在 D11 独立录入的分区装备奖励任务。跨图书馆、军械库和大教堂三个分区的 `In the Name of the Light` 与 `Into The Scarlet Monastery` 继续延后到 D12，在大教堂阶段统一实现；这样不会因军械库首通提前发放阶段终点奖励，也不会重复记录同一任务来源。
 
 ## 机制候选
 
@@ -58,6 +58,6 @@ Classic Wowhead 与 AtlasLootClassic 均列出赫洛德的 4 件专属可装备�
 - [x] 赫洛德确认为唯一 required 路线节点。
 - [x] 4 件 Boss 专属装备完成 ID、来源与属性交叉核对。
 - [x] Scarlet Trainee 战袍、普通怪 BoE、世界掉落和非装备物品明确排除。
-- [x] 军械库无独立装备任务；跨四分区任务延后至 D12。
+- [x] 军械库无独立装备任务；跨三个分区任务延后至 D12。
 - [x] 图书馆首通作为钥匙门禁的等价表达已确认。
 - [x] 所有来源标记为 `classic-2019-phase-6`，没有探索赛季或重制数据。

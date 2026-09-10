@@ -45,6 +45,26 @@ function contentWithOptionalBazzalan(): ContentRegistry {
   } as unknown as ContentRegistry;
 }
 
+function contentWithCrossDungeonQuest(): ContentRegistry {
+  const questId = asBrandedId<"QuestId">("rfc_returning_lost_satchel");
+  const original = content.questById.get(questId)!;
+  const quest = {
+    ...original,
+    completion: {
+      type: "encounter-victories" as const,
+      encounterIds: [
+        asBrandedId<"EncounterId">("oggleflint"),
+        asBrandedId<"EncounterId">("dm_rhahkzor"),
+      ],
+    },
+  };
+  return {
+    ...content,
+    quests: content.quests.map((entry) => (entry.id === questId ? quest : entry)),
+    questById: new Map([...content.questById, [questId, quest]]),
+  } as unknown as ContentRegistry;
+}
+
 function newState(seed = "expedition-test") {
   return createNewGame({
     slotId: asBrandedId<"SaveSlotId">("slot_1"),
@@ -461,6 +481,45 @@ describe("V2 expedition creation", () => {
       encounterVictoryIds: [],
     };
     expect(result.result.questSnapshots).toHaveLength(1);
+  });
+
+  it("freezes an accepted cross-dungeon quest whenever this route contains one of its targets", async () => {
+    const crossDungeonContent = contentWithCrossDungeonQuest();
+    const state = createNewGame({
+      slotId: asBrandedId<"SaveSlotId">("cross-dungeon-quest"),
+      content: crossDungeonContent,
+      contentVersion: asBrandedId<"ContentVersion">("classic-v1"),
+      clock: new FakeClock(1_000),
+      ids: new LocalIdGenerator(),
+      random: new SeededRandomSource("cross-dungeon-quest"),
+    });
+    const participant = Object.values(state.members)[0]!;
+    const questId = asBrandedId<"QuestId">("rfc_returning_lost_satchel");
+    participant.quests.entries[questId] = {
+      questId,
+      status: "accepted",
+      acceptedAt: 1_000,
+      encounterVictoryIds: [asBrandedId<"EncounterId">("oggleflint")],
+    };
+    const deadminesId = asBrandedId<"DungeonId">("deadmines");
+    state.guild.unlockedDungeonIds.push(deadminesId);
+
+    const activity = await startExpeditionCommand(
+      { content: crossDungeonContent, clock: new FakeClock(2_000) },
+      { dungeonId: deadminesId, participantIds: [participant.id], requestedRuns: 1 },
+    ).execute(state);
+
+    expect(activity.questSnapshots).toEqual([
+      {
+        memberId: participant.id,
+        questId,
+        completion: {
+          type: "encounter-victories",
+          encounterIds: ["oggleflint", "dm_rhahkzor"],
+        },
+        requiredOptionalNodeIds: [],
+      },
+    ]);
   });
 
   it("replays activity IDs, rolls, and plans deterministically from saved runtime state", async () => {

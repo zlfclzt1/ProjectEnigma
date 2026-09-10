@@ -47,7 +47,7 @@ Classic Wowhead 与 AtlasLootClassic 在图书馆列出 7 件 Boss 专属物品�
 
 任务 1049 的 Classic 数据实际引用 17508 Forcestone Buckler；7748 是另一条无任务来源的同名旧记录，不应录入。四件任务奖励只通过成员任务领取，不进入洛克希或杜安的掉落表。
 
-跨四分区的 `In the Name of the Light` 与 `Into The Scarlet Monastery` 继续延后到 D12，在大教堂阶段统一实现，避免图书馆首通提前发放阶段终点奖励。
+跨图书馆、军械库和大教堂三个分区的 `In the Name of the Light` 与 `Into The Scarlet Monastery` 继续延后到 D12，在大教堂阶段统一实现，避免图书馆首通提前发放阶段终点奖励。
 
 ## 机制候选
 
@@ -72,5 +72,5 @@ Classic Wowhead 与 AtlasLootClassic 在图书馆列出 7 件 Boss 专属物品�
 - [x] Dog Whistle、Scarlet Key、普通怪 BoE 和世界掉落明确排除。
 - [x] 两条分区任务及 4 件真实奖励完成 ID 和选择关系核对。
 - [x] 17508 与无来源同名记录 7748 的边界已确认。
-- [x] 跨四分区任务延后至 D12，不在图书馆重复发放。
+- [x] 跨三个分区任务延后至 D12，不在图书馆重复发放。
 - [x] 所有来源标记为 `classic-2019-phase-6`，没有探索赛季或重制数据。

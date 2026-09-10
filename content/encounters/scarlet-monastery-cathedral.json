@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/scarlet-monastery-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对法尔班克斯、莫格莱尼与怀特迈恩的机制主题和装备归属。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "需求值作为 D12.D 固定种子模拟的初始基线。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "encounters": [
+    {
+      "id": "scarlet_cathedral_high_inquisitor_fairbanks",
+      "dungeonId": "scarlet_monastery_cathedral",
+      "name": { "zhCN": "大检察官法尔班克斯" },
+      "stageSeconds": 220,
+      "requirements": { "tank": 42, "healing": 45, "damage": 130 },
+      "weights": { "tank": 0.28, "healing": 0.4, "damage": 0.32 },
+      "experienceShare": 0.18,
+      "funds": 66,
+      "firstKillBonus": 132,
+      "lootTableId": "scarlet_cathedral_high_inquisitor_fairbanks",
+      "mechanicIds": ["scarlet_cathedral_fairbanks_control"]
+    },
+    {
+      "id": "scarlet_cathedral_commander_mograine",
+      "dungeonId": "scarlet_monastery_cathedral",
+      "name": { "zhCN": "血色十字军指挥官莫格莱尼" },
+      "stageSeconds": 380,
+      "requirements": { "tank": 43, "healing": 42, "damage": 132 },
+      "weights": { "tank": 0.4, "healing": 0.27, "damage": 0.33 },
+      "experienceShare": 0.36,
+      "funds": 78,
+      "firstKillBonus": 156,
+      "lootTableId": "scarlet_cathedral_commander_mograine",
+      "mechanicIds": ["scarlet_cathedral_mograine_shield"]
+    },
+    {
+      "id": "scarlet_cathedral_high_inquisitor_whitemane",
+      "dungeonId": "scarlet_monastery_cathedral",
+      "name": { "zhCN": "大检察官怀特迈恩" },
+      "stageSeconds": 480,
+      "requirements": { "tank": 42, "healing": 46, "damage": 136 },
+      "weights": { "tank": 0.27, "healing": 0.39, "damage": 0.34 },
+      "experienceShare": 0.46,
+      "funds": 92,
+      "firstKillBonus": 184,
+      "lootTableId": "scarlet_cathedral_high_inquisitor_whitemane",
+      "mechanicIds": ["scarlet_cathedral_resurrection"]
+    }
+  ]
+}

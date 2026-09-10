@@ -317,9 +317,19 @@ export function getDungeonPlanningView(
       return Object.values(member.quests.entries).flatMap((progress) => {
         if (!progress || progress.status !== "accepted") return [];
         const quest = content.questById.get(progress.questId);
-        if (!quest || quest.dungeonId !== selectedDungeon.id) return [];
+        if (!quest) return [];
         const encounterIds =
           quest.completion.type === "encounter-victories" ? quest.completion.encounterIds : [];
+        if (
+          quest.completion.type === "dungeon-clear"
+            ? quest.dungeonId !== selectedDungeon.id
+            : !encounterIds.some(
+                (encounterId) =>
+                  content.encounterById.get(encounterId)?.dungeonId === selectedDungeon.id,
+              )
+        ) {
+          return [];
+        }
         const missingNodes = dungeonDefinition.route.filter(
           (node) =>
             node.type === "optional" &&

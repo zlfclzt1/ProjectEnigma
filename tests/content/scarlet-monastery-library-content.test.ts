@@ -50,7 +50,7 @@ describe("Scarlet Monastery Library content", () => {
     ).toHaveLength(2);
   });
 
-  it("keeps the two book quests separate from boss drops and cross-wing quests", () => {
+  it("keeps the two book quests separate from boss drops while exposing cross-wing quests", () => {
     const compendium = content.questById.get(
       asBrandedId<"QuestId">("scarlet_library_compendium_of_the_fallen"),
     )!;
@@ -68,7 +68,7 @@ describe("Scarlet Monastery Library content", () => {
       rewards: { itemChoiceIds: ["7746"] },
     });
     expect(content.quests.some((quest) => quest.id.includes("in_the_name_of_the_light"))).toBe(
-      false,
+      true,
     );
   });
 });

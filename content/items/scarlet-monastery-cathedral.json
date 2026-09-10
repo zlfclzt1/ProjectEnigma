@@ -1,0 +1,291 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/scarlet-monastery-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对血色修道院大教堂三名 Boss 的专属装备 ID、图标、栏位与常驻属性。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-09",
+        "notes": "交叉核对法尔班克斯、莫格莱尼、怀特迈恩与装备归属。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].restrictions", "items[].description"],
+        "reason": "按当前职业与定位装备规则补齐可装备性，并标记大教堂 Boss 来源。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "19507",
+      "name": { "zhCN": "审讯者披肩", "enUS": "Inquisitor's Shawl" },
+      "itemLevel": 41,
+      "requiredLevel": 36,
+      "quality": "uncommon",
+      "slot": "shoulder",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_shoulder_27" },
+      "description": { "zhCN": "血色修道院大教堂：大检察官法尔班克斯的专属掉落。" },
+      "stats": {
+        "primary": { "intellectPoints": 8 },
+        "defense": { "armorPoints": 40 },
+        "spell": { "spellPowerPoints": 9, "healingPowerPoints": 9 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "19507",
+        "url": "https://www.wowhead.com/classic/cn/item=19507&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "19508",
+      "name": { "zhCN": "烙印皮护腕", "enUS": "Branded Leather Bracers" },
+      "itemLevel": 41,
+      "requiredLevel": 36,
+      "quality": "uncommon",
+      "slot": "wrist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["rogue", "druid"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_bracer_11" },
+      "description": { "zhCN": "血色修道院大教堂：大检察官法尔班克斯的专属掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 4 },
+        "defense": { "armorPoints": 49 },
+        "physical": { "attackPowerPoints": 14, "rangedAttackPowerPoints": 14 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "19508",
+        "url": "https://www.wowhead.com/classic/cn/item=19508&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "19509",
+      "name": { "zhCN": "生锈的锁甲战靴", "enUS": "Dusty Mail Boots" },
+      "itemLevel": 41,
+      "requiredLevel": 36,
+      "quality": "uncommon",
+      "slot": "feet",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_boots_chain_02" },
+      "description": { "zhCN": "血色修道院大教堂：大检察官法尔班克斯的专属掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 9 },
+        "defense": { "armorPoints": 221 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "19509",
+        "url": "https://www.wowhead.com/classic/cn/item=19509&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7724",
+      "name": { "zhCN": "神圣护手", "enUS": "Gauntlets of Divinity" },
+      "itemLevel": 44,
+      "requiredLevel": 39,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_gauntlets_19" },
+      "description": { "zhCN": "血色修道院大教堂：血色十字军指挥官莫格莱尼的专属掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 7 },
+        "defense": { "armorPoints": 168 },
+        "physical": { "attackPowerPoints": 32, "rangedAttackPowerPoints": 32 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7724",
+        "url": "https://www.wowhead.com/classic/cn/item=7724&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7726",
+      "name": { "zhCN": "血色指挥官之盾", "enUS": "Aegis of the Scarlet Commander" },
+      "itemLevel": 44,
+      "requiredLevel": 39,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank"]
+      },
+      "icon": { "kind": "database", "name": "inv_shield_05" },
+      "description": { "zhCN": "血色修道院大教堂：血色十字军指挥官莫格莱尼的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 7, "staminaPoints": 8, "spiritPoints": 7 },
+        "defense": { "armorPoints": 1548, "blockValuePoints": 23 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7726",
+        "url": "https://www.wowhead.com/classic/cn/item=7726&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7723",
+      "name": { "zhCN": "莫格莱尼的力量", "enUS": "Mograine's Might" },
+      "itemLevel": 44,
+      "requiredLevel": 39,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_mace_13" },
+      "description": { "zhCN": "血色修道院大教堂：血色十字军指挥官莫格莱尼的专属掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 17, "spiritPoints": 16 },
+        "weapon": {
+          "damage": { "minimumPoints": 87, "maximumPoints": 131 },
+          "speedSeconds": 2.8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7723",
+        "url": "https://www.wowhead.com/classic/cn/item=7723&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7720",
+      "name": { "zhCN": "主教之冠", "enUS": "Whitemane's Chapeau" },
+      "itemLevel": 44,
+      "requiredLevel": 39,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_helmet_12" },
+      "description": { "zhCN": "血色修道院大教堂：大检察官怀特迈恩的专属掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 9, "intellectPoints": 14, "spiritPoints": 14 },
+        "defense": { "armorPoints": 52 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7720",
+        "url": "https://www.wowhead.com/classic/cn/item=7720&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7722",
+      "name": { "zhCN": "圣使护符", "enUS": "Triune Amulet" },
+      "itemLevel": 44,
+      "requiredLevel": 39,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": [
+          "warrior",
+          "paladin",
+          "hunter",
+          "rogue",
+          "priest",
+          "shaman",
+          "mage",
+          "warlock",
+          "druid"
+        ],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_jewelry_amulet_01" },
+      "description": { "zhCN": "血色修道院大教堂：大检察官怀特迈恩的专属掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 7, "intellectPoints": 7, "spiritPoints": 7 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7722",
+        "url": "https://www.wowhead.com/classic/cn/item=7722&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7721",
+      "name": { "zhCN": "公正之手", "enUS": "Hand of Righteousness" },
+      "itemLevel": 44,
+      "requiredLevel": 39,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "priest", "shaman", "druid"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_hammer_02" },
+      "description": { "zhCN": "血色修道院大教堂：大检察官怀特迈恩的专属掉落。" },
+      "stats": {
+        "primary": { "spiritPoints": 8 },
+        "spell": { "healingPowerPoints": 15 },
+        "weapon": {
+          "damage": { "minimumPoints": 56, "maximumPoints": 105 },
+          "speedSeconds": 2.7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7721",
+        "url": "https://www.wowhead.com/classic/cn/item=7721&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    }
+  ]
+}

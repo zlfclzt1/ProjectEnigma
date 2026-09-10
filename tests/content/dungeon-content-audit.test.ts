@@ -8,8 +8,8 @@ import {
 describe("dungeon content audit", () => {
   it("lists every route node and preserves optional/rare semantics", () => {
     const audit = auditDungeonContent(loadBrowserContentRegistry());
-    expect(audit.routes).toHaveLength(64);
-    expect(audit.routes.filter((row) => row.nodeType === "optional")).toHaveLength(4);
+    expect(audit.routes).toHaveLength(67);
+    expect(audit.routes.filter((row) => row.nodeType === "optional")).toHaveLength(5);
     expect(audit.routes.filter((row) => row.nodeType === "rare")).toHaveLength(7);
     expect(
       audit.routes.some(
@@ -18,7 +18,7 @@ describe("dungeon content audit", () => {
     ).toBe(true);
   });
 
-  it("finds no orphan Armory content or quest reward overlap", () => {
+  it("finds no orphan Cathedral content or quest reward overlap", () => {
     const audit = auditDungeonContent(loadBrowserContentRegistry());
     expect(audit.unusedLootTableIds).toEqual([]);
     expect(audit.unreferencedItemIds).toEqual([]);

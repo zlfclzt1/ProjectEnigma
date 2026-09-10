@@ -157,7 +157,7 @@ export function createExpeditionActivityHandler(
         return Object.values(member.quests.entries).flatMap((progress) => {
           if (!progress || progress.status !== "accepted") return [];
           const quest = content.questById.get(progress.questId);
-          if (!quest || quest.dungeonId !== request.dungeonId) return [];
+          if (!quest || !questProgressesInDungeon(quest, request.dungeonId, content)) return [];
           const encounterIds =
             quest.completion.type === "encounter-victories" ? quest.completion.encounterIds : [];
           return [
@@ -211,6 +211,17 @@ export function createExpeditionActivityHandler(
       };
     },
   };
+}
+
+function questProgressesInDungeon(
+  quest: ContentRegistry["quests"][number],
+  dungeonId: StartExpeditionRequest["dungeonId"],
+  content: ContentRegistry,
+): boolean {
+  if (quest.completion.type === "dungeon-clear") return quest.dungeonId === dungeonId;
+  return quest.completion.encounterIds.some(
+    (encounterId) => content.encounterById.get(encounterId)?.dungeonId === dungeonId,
+  );
 }
 
 export function experienceFractions(

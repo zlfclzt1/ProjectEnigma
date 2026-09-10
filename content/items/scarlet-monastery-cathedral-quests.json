@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/quest=1053/in-the-name-of-the-light",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对以圣光之名与深入血色修道院的 7 件任务奖励 ID、图标、栏位与常驻属性。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].restrictions", "items[].description"],
+        "reason": "按当前职业与定位装备规则补齐可装备性，并标记跨分区任务来源。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "6829",
+      "name": { "zhCN": "平静之剑", "enUS": "Sword of Serenity" },
+      "itemLevel": 44,
+      "requiredLevel": 34,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_sword_27" },
+      "description": { "zhCN": "血色修道院跨分区成员任务“以圣光之名”奖励。" },
+      "stats": {
+        "primary": { "staminaPoints": 9, "spiritPoints": 4 },
+        "weapon": {
+          "damage": { "minimumPoints": 46, "maximumPoints": 86 },
+          "speedSeconds": 2.2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6829",
+        "url": "https://www.wowhead.com/classic/cn/item=6829&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6830",
+      "name": { "zhCN": "咬骨之斧", "enUS": "Bonebiter" },
+      "itemLevel": 44,
+      "requiredLevel": 34,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_axe_04" },
+      "description": { "zhCN": "血色修道院跨分区成员任务“以圣光之名”奖励。" },
+      "stats": {
+        "primary": { "strengthPoints": 20, "staminaPoints": 10 },
+        "weapon": {
+          "damage": { "minimumPoints": 105, "maximumPoints": 159 },
+          "speedSeconds": 3.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6830",
+        "url": "https://www.wowhead.com/classic/cn/item=6830&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6831",
+      "name": { "zhCN": "黑暗威胁", "enUS": "Black Menace" },
+      "itemLevel": 44,
+      "requiredLevel": 34,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": [
+          "warrior",
+          "hunter",
+          "rogue",
+          "priest",
+          "shaman",
+          "mage",
+          "warlock",
+          "druid"
+        ],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_sword_13" },
+      "description": { "zhCN": "血色修道院跨分区成员任务“以圣光之名”奖励。" },
+      "stats": {
+        "weapon": {
+          "damage": { "minimumPoints": 31, "maximumPoints": 58 },
+          "speedSeconds": 1.5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6831",
+        "url": "https://www.wowhead.com/classic/cn/item=6831&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "11262",
+      "name": { "zhCN": "洛瑞卡宝珠", "enUS": "Orb of Lorica" },
+      "itemLevel": 44,
+      "requiredLevel": 34,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["priest", "shaman", "mage", "warlock", "druid"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_misc_orb_01" },
+      "description": { "zhCN": "血色修道院跨分区成员任务“以圣光之名”奖励。" },
+      "stats": {
+        "primary": { "intellectPoints": 6, "spiritPoints": 11 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11262",
+        "url": "https://www.wowhead.com/classic/cn/item=11262&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6802",
+      "name": { "zhCN": "预兆之剑", "enUS": "Sword of Omen" },
+      "itemLevel": 44,
+      "requiredLevel": 33,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_sword_19" },
+      "description": { "zhCN": "血色修道院跨分区成员任务“深入血色修道院”奖励。" },
+      "stats": {
+        "primary": { "strengthPoints": 9, "agilityPoints": 3, "staminaPoints": 4 },
+        "weapon": {
+          "damage": { "minimumPoints": 39, "maximumPoints": 74 },
+          "speedSeconds": 1.9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6802",
+        "url": "https://www.wowhead.com/classic/cn/item=6802&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "6803",
+      "name": { "zhCN": "预言藤杖", "enUS": "Prophetic Cane" },
+      "itemLevel": 44,
+      "requiredLevel": 33,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["priest", "shaman", "mage", "warlock", "druid"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_staff_01" },
+      "description": { "zhCN": "血色修道院跨分区成员任务“深入血色修道院”奖励。" },
+      "stats": {
+        "primary": { "staminaPoints": 5, "intellectPoints": 12 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6803",
+        "url": "https://www.wowhead.com/classic/cn/item=6803&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "10711",
+      "name": { "zhCN": "龙血项链", "enUS": "Dragon's Blood Necklace" },
+      "itemLevel": 44,
+      "requiredLevel": 33,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": [
+          "warrior",
+          "paladin",
+          "hunter",
+          "rogue",
+          "priest",
+          "shaman",
+          "mage",
+          "warlock",
+          "druid"
+        ],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_jewelry_necklace_02" },
+      "description": { "zhCN": "血色修道院跨分区成员任务“深入血色修道院”奖励。" },
+      "stats": {
+        "primary": { "staminaPoints": 12, "spiritPoints": 5 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10711",
+        "url": "https://www.wowhead.com/classic/cn/item=10711&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    }
+  ]
+}

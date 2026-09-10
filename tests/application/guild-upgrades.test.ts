@@ -14,8 +14,10 @@ import { createGameStateFixture } from "../helpers/game-state-v2-factory";
 const content = loadBrowserContentRegistry();
 const firstUpgradeId = asBrandedId<"GuildUpgradeId">("guild_roster_15");
 const secondUpgradeId = asBrandedId<"GuildUpgradeId">("guild_roster_20");
+const thirdUpgradeId = asBrandedId<"GuildUpgradeId">("guild_roster_25");
 const deadminesId = asBrandedId<"DungeonId">("deadmines");
 const shadowfangId = asBrandedId<"DungeonId">("shadowfang_keep");
+const cathedralId = asBrandedId<"DungeonId">("scarlet_monastery_cathedral");
 const queueUpgradeId = asBrandedId<"GuildUpgradeId">("expedition_queue_5");
 
 async function sessionFor(state = createGameStateFixture()) {
@@ -66,6 +68,21 @@ describe("guild upgrades", () => {
     expect(second.status).toBe("committed");
     expect(session.snapshot().guild.funds).toBe(500);
     expect(getMemberCapacity(session.snapshot(), content)).toBe(20);
+    expect(getGuildUpgradeView(session.snapshot(), content).nextUpgrade?.id).toBe(thirdUpgradeId);
+  });
+
+  it("unlocks the 25-member expansion after a Cathedral clear and still requires funds", async () => {
+    const state = createGameStateFixture();
+    state.guild.funds = 6_000;
+    state.guild.purchasedUpgradeIds = [firstUpgradeId, secondUpgradeId];
+    state.history.dungeonClearCounts[cathedralId] = 1;
+    const session = await sessionFor(state);
+
+    const result = await session.execute(purchaseGuildUpgradeCommand(content, thirdUpgradeId));
+
+    expect(result.status).toBe("committed");
+    expect(getMemberCapacity(session.snapshot(), content)).toBe(25);
+    expect(session.snapshot().guild.funds).toBe(2_000);
     expect(getGuildUpgradeView(session.snapshot(), content).atCurrentMaximum).toBe(true);
   });
 

@@ -19,6 +19,8 @@ describe("guild upgrade rules", () => {
     expect(getMemberCapacity(state, content)).toBe(15);
     state.guild.purchasedUpgradeIds.push(asBrandedId<"GuildUpgradeId">("guild_roster_20"));
     expect(getMemberCapacity(state, content)).toBe(20);
+    state.guild.purchasedUpgradeIds.push(asBrandedId<"GuildUpgradeId">("guild_roster_25"));
+    expect(getMemberCapacity(state, content)).toBe(25);
   });
 
   it("derives the expedition queue limit only from purchased upgrade content", () => {

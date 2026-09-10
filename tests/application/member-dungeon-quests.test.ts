@@ -127,6 +127,45 @@ describe("member dungeon quests", () => {
     );
   });
 
+  it("offers both cross-wing Scarlet quests at Library unlock with Loksey route warnings", () => {
+    const game = state();
+    game.guild.unlockedDungeonIds.push(asBrandedId<"DungeonId">("scarlet_monastery_library"));
+    const member = Object.values(game.members)[0]!;
+    member.progression.level = 40;
+
+    const view = getMemberDungeonQuestsView(game, content, member.id)!;
+    expect(view.quests).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          id: "scarlet_crosswing_in_the_name_of_the_light",
+          status: "available",
+          objective: expect.objectContaining({
+            requiredOptionalNodeIds: ["scarlet_library_houndmaster_loksey"],
+          }),
+          rewards: expect.objectContaining({
+            itemChoices: [
+              expect.objectContaining({ id: "6829", name: "平静之剑" }),
+              expect.objectContaining({ id: "6830", name: "咬骨之斧" }),
+              expect.objectContaining({ id: "6831", name: "黑暗威胁" }),
+              expect.objectContaining({ id: "11262", name: "洛瑞卡宝珠" }),
+            ],
+          }),
+        }),
+        expect.objectContaining({
+          id: "scarlet_crosswing_into_the_scarlet_monastery",
+          status: "available",
+          rewards: expect.objectContaining({
+            itemChoices: [
+              expect.objectContaining({ id: "6802", name: "预兆之剑" }),
+              expect.objectContaining({ id: "6803", name: "预言藤杖" }),
+              expect.objectContaining({ id: "10711", name: "龙血项链" }),
+            ],
+          }),
+        }),
+      ]),
+    );
+  });
+
   it("rejects locked dungeons, insufficient levels, and disallowed classes", () => {
     const locked = state();
     const member = Object.values(locked.members)[0]!;

@@ -53,10 +53,10 @@
 | 经典任务 | 轻量完成条件 | 奖励 | 录入建议 |
 |---|---|---|---|
 | Vorrel's Revenge | 参与击败 Interrogator Vishas | 7751 Vorrel's Boots；7750 Mantle of Woe / 4643 Grimsteel Cape 二选一 | D09.C 优先录入 |
-| In the Name of the Light | 跨墓地、图书馆、军械库和大教堂击败指定 Boss | 6829 Sword of Serenity、6830 Bonebiter、6948? Black Menace、? Orb of Lorica | 延后至 D12，不能在墓地分区单独结算 |
-| Into The Scarlet Monastery | 跨四个分区击败主要 Boss | Sword of Omen、Prophetic Cane、Dragon's Blood Necklace | 延后至 D12，作为阶段任务 |
+| In the Name of the Light | 跨图书馆、军械库和大教堂击败指定 Boss | 6829 Sword of Serenity、6830 Bonebiter、6831 Black Menace、11262 Orb of Lorica | 延后至 D12，不能在墓地分区单独结算 |
+| Into The Scarlet Monastery | 跨图书馆、军械库和大教堂击败指定 Boss | 6802 Sword of Omen、6803 Prophetic Cane、10711 Dragon's Blood Necklace | 延后至 D12，作为阶段任务 |
 
-`In the Name of the Light` 与 `Into The Scarlet Monastery` 的完整奖励 ID 需在正式录入前逐件 XML 核对；D09 只录入 Vorrel's Revenge，避免把跨分区奖励错误归入墓地。
+`In the Name of the Light` 与 `Into The Scarlet Monastery` 的目标实际不包含墓地 Boss。D12 已逐件核对完整奖励 ID；D09 只录入 Vorrel's Revenge，避免把跨分区奖励错误归入墓地。
 
 ## 机制候选
 

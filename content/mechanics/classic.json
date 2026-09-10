@@ -424,6 +424,55 @@
         "enUS": "Area damage quickly clears the Scarlet Trainees that rush in after Herod falls."
       },
       "reportTag": "scarlet_armory_trainee_wave"
+    },
+    {
+      "id": "scarlet_cathedral_fairbanks_control",
+      "name": { "zhCN": "鲜血诅咒", "enUS": "Curse of Blood" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "curse_dispel", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.13,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "解除诅咒可以降低法尔班克斯的鲜血诅咒、恐惧和治疗压力。",
+        "enUS": "Curse removal reduces the pressure from Fairbanks's Curse of Blood, fear, and healing."
+      },
+      "reportTag": "scarlet_cathedral_fairbanks_control"
+    },
+    {
+      "id": "scarlet_cathedral_mograine_shield",
+      "name": { "zhCN": "圣盾制裁", "enUS": "Shield and Judgment" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "ranged_damage", "minimumValue": 1 }],
+      "missingEffects": {
+        "tankMultiplier": 1.1,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.05
+      },
+      "description": {
+        "zhCN": "远程火力可以在莫格莱尼使用制裁与圣盾时保持安全输出。",
+        "enUS": "Ranged pressure maintains safer damage through Mograine's stun and divine shield."
+      },
+      "reportTag": "scarlet_cathedral_mograine_shield"
+    },
+    {
+      "id": "scarlet_cathedral_resurrection",
+      "name": { "zhCN": "血色复活", "enUS": "Scarlet Resurrection" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "interrupt", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.15,
+        "damageMultiplier": 1.06,
+        "probabilityModifier": -0.05,
+        "durationMultiplier": 1.07
+      },
+      "description": {
+        "zhCN": "可靠打断可以限制怀特迈恩复活莫格莱尼后的治疗与护盾。",
+        "enUS": "Reliable interrupts limit Whitemane's healing and shielding after resurrecting Mograine."
+      },
+      "reportTag": "scarlet_cathedral_resurrection"
     }
   ]
 }

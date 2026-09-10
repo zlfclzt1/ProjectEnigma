@@ -42,13 +42,13 @@ describe("Scarlet Monastery Armory content", () => {
     ).toHaveLength(1);
   });
 
-  it("keeps trainee tabard and cross-wing quests out of Armory content", () => {
+  it("keeps the trainee tabard and Armory-only quests out while retaining cross-wing quests", () => {
     expect(content.itemById.has(asBrandedId<"ItemDefinitionId">("23192"))).toBe(false);
     expect(content.quests.some((quest) => quest.dungeonId === "scarlet_monastery_armory")).toBe(
       false,
     );
     expect(content.quests.some((quest) => quest.id.includes("in_the_name_of_the_light"))).toBe(
-      false,
+      true,
     );
   });
 });

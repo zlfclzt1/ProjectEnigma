@@ -78,8 +78,10 @@ function projectQuest(
   const encounterNames = encounterIds.map(
     (encounterId) => content.encounterById.get(encounterId)?.name.zhCN ?? encounterId,
   );
-  const requiredOptionalNodeIds = dungeon.route.flatMap((node) =>
-    node.type === "optional" && encounterIds.includes(node.encounterId) ? [node.id] : [],
+  const requiredOptionalNodeIds = content.dungeons.flatMap((candidateDungeon) =>
+    candidateDungeon.route.flatMap((node) =>
+      node.type === "optional" && encounterIds.includes(node.encounterId) ? [node.id] : [],
+    ),
   );
   return {
     id: quest.id,

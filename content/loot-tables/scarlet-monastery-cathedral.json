@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对血色修道院大教堂三名 Boss 与 10 个可装备掉落条目。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["lootTables[].guaranteedEquipmentDrops", "lootTables[].items[].weight"],
+        "reason": "拥有专属装备池的 Boss 保证掉落一件；首轮使用池内等权基线。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "lootTables": [
+    {
+      "id": "scarlet_cathedral_high_inquisitor_fairbanks",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "19507", "weight": 0.3333333333333333 },
+        { "itemId": "19508", "weight": 0.3333333333333333 },
+        { "itemId": "19509", "weight": 0.3333333333333334 }
+      ]
+    },
+    {
+      "id": "scarlet_cathedral_commander_mograine",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "7724", "weight": 0.25 },
+        { "itemId": "10330", "weight": 0.25 },
+        { "itemId": "7726", "weight": 0.25 },
+        { "itemId": "7723", "weight": 0.25 }
+      ]
+    },
+    {
+      "id": "scarlet_cathedral_high_inquisitor_whitemane",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "7720", "weight": 0.3333333333333333 },
+        { "itemId": "7722", "weight": 0.3333333333333333 },
+        { "itemId": "7721", "weight": 0.3333333333333334 }
+      ]
+    }
+  ]
+}

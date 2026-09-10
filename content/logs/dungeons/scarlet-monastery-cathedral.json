@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "血色修道院大教堂副本日志；只描述已经结算的战斗事实。"
+      }
+    ]
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "scarlet_cathedral_fairbanks_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "scarlet_cathedral_high_inquisitor_fairbanks"
+      },
+      "availableParameters": ["healer", "member"],
+      "templates": [
+        "隐藏房间的法尔班克斯倒下，{healer} 终于不用继续数诅咒层数。",
+        "侧室重新安静，{member} 确信这趟绕路值得写进分配记录。"
+      ]
+    },
+    {
+      "id": "scarlet_cathedral_mograine_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "scarlet_cathedral_commander_mograine"
+      },
+      "availableParameters": ["tank", "member"],
+      "templates": [
+        "莫格莱尼暂时倒下，{tank} 提醒所有人战斗显然还没有结束。",
+        "圣盾的光芒散去，{member} 已经听见祭坛后方传来的脚步。"
+      ]
+    },
+    {
+      "id": "scarlet_cathedral_whitemane_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "scarlet_cathedral_high_inquisitor_whitemane"
+      },
+      "availableParameters": ["healer", "member"],
+      "templates": [
+        "怀特迈恩的复活仪式被终结，{healer} 宣布今天不再接受第二阶段。",
+        "大教堂归于寂静，{member} 把跨分区任务清单上的最后一个名字划掉。"
+      ]
+    }
+  ]
+}

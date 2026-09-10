@@ -6,12 +6,12 @@
 
 ## 汇总
 
-- 路线 Encounter：64。
-- 掉落表：54。
-- 掉落表分类：Boss 专属掉落 54，任务奖励 0，世界掉落 0，设计占位 0。
-- Encounter 引用分类：Boss 专属掉落 54，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 10。
-- 不同装备分类：Boss 专属掉落 137，任务奖励 0，世界掉落 0，设计占位 0。
-- 成员副本任务：17，不同任务奖励装备：39。
+- 路线 Encounter：67。
+- 掉落表：57。
+- 掉落表分类：Boss 专属掉落 57，任务奖励 0，世界掉落 0，设计占位 0。
+- Encounter 引用分类：Boss 专属掉落 57，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 10。
+- 不同装备分类：Boss 专属掉落 146，任务奖励 0，世界掉落 0，设计占位 0。
+- 成员副本任务：19，不同任务奖励装备：46。
 - Boss 掉落与任务奖励重复：0。
 - 未显式填写 `sourceType` 的 Boss 掉落表：0。
 - 未被路线 Encounter 引用的掉落表：0。
@@ -87,6 +87,14 @@
 |---|---|---|---:|---|
 | 赫洛德（scarlet_armory_herod） | scarlet_armory_herod | Boss 专属掉落 | 1 | 7719 狂暴者头盔、7718 赫洛德的护肩、10330 血色十字军护腿、7717 破坏者 |
 
+### 血色修道院：大教堂（scarlet_monastery_cathedral）
+
+| Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
+|---|---|---|---:|---|
+| 大检察官法尔班克斯（scarlet_cathedral_high_inquisitor_fairbanks） | scarlet_cathedral_high_inquisitor_fairbanks | Boss 专属掉落 | 1 | 19507 审讯者披肩、19508 烙印皮护腕、19509 生锈的锁甲战靴 |
+| 血色十字军指挥官莫格莱尼（scarlet_cathedral_commander_mograine） | scarlet_cathedral_commander_mograine | Boss 专属掉落 | 1 | 7724 神圣护手、10330 血色十字军护腿、7726 血色指挥官之盾、7723 莫格莱尼的力量 |
+| 大检察官怀特迈恩（scarlet_cathedral_high_inquisitor_whitemane） | scarlet_cathedral_high_inquisitor_whitemane | Boss 专属掉落 | 1 | 7720 主教之冠、7722 圣使护符、7721 公正之手 |
+
 ### 血色修道院：墓地（scarlet_monastery_graveyard）
 
 | Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
@@ -156,6 +164,8 @@
 | 剃刀沼泽（razorfen_kraul） | 剃刀沼泽的巫婆（razorfen_kraul_crone_of_the_kraul） | 4197 绿宝石护肩、6742 石拳束带、6725 石饰圆盾 |
 | 剃刀沼泽（razorfen_kraul） | 进口商威利克斯（razorfen_kraul_willix_the_importer） | 6748 猴子戒指、6749 猛虎指环、6750 蛇环 |
 | 剃刀沼泽（razorfen_kraul） | 生命渐逝（razorfen_kraul_mortality_wanes） | 6751 悲伤披风、6752 枪骑兵战靴 |
+| 血色修道院：图书馆（scarlet_monastery_library） | 以圣光之名（scarlet_crosswing_in_the_name_of_the_light） | 6829 平静之剑、6830 咬骨之斧、6831 黑暗威胁、11262 洛瑞卡宝珠 |
+| 血色修道院：图书馆（scarlet_monastery_library） | 深入血色修道院（scarlet_crosswing_into_the_scarlet_monastery） | 6802 预兆之剑、6803 预言藤杖、10711 龙血项链 |
 | 血色修道院：墓地（scarlet_monastery_graveyard） | 沃瑞尔的复仇（scarlet_gy_vorrels_revenge） | 7751 沃瑞尔的靴子、7750 悲哀衬肩、4643 十字军斗篷 |
 | 血色修道院：图书馆（scarlet_monastery_library） | 堕落者纲要（scarlet_library_compendium_of_the_fallen） | 7747 邪恶防护者、17508 力石圆盾、7749 终结宝珠 |
 | 血色修道院：图书馆（scarlet_monastery_library） | 泰坦神话（scarlet_library_mythology_of_the_titans） | 7746 探险者协会的奖状 |

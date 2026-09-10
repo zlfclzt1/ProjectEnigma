@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/scarlet-monastery-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对大教堂 Boss 顺序、法尔班克斯隐藏房间与莫格莱尼至怀特迈恩连续战斗。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "法尔班克斯作为普通可选节点；莫格莱尼与怀特迈恩作为连续必打节点。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["minimumLevel", "recommendedLevel", "duration", "probability", "route"],
+        "reason": "按 18 分钟完整路线和血色修道院阶段终点定位设置初始参数。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "dungeons": [
+    {
+      "id": "scarlet_monastery_cathedral",
+      "name": { "zhCN": "血色修道院：大教堂", "enUS": "Scarlet Monastery: Cathedral" },
+      "minimumLevel": 35,
+      "recommendedLevel": 44,
+      "defaultUnlocked": false,
+      "unlock": { "requiredDungeonIds": ["scarlet_monastery_armory"] },
+      "members": { "minimum": 1, "maximum": 5, "recommended": 5 },
+      "duration": { "baseSeconds": 1080, "minimumRatio": 0.5, "maximumRatio": 1.8 },
+      "probability": {
+        "minimum": 0.05,
+        "maximum": 0.99,
+        "base": 0.05,
+        "readinessMultiplier": 0.9,
+        "surplusEffect": 0.5,
+        "geometricWeight": 0.7,
+        "bottleneckWeight": 0.3,
+        "overpowerThreshold": 1.5
+      },
+      "combatTuning": {
+        "bossProbabilityMaximum": 0.98,
+        "requirementMultipliers": { "tank": 0.94, "healing": 0.94, "damage": 0.94 }
+      },
+      "route": [
+        {
+          "id": "scarlet_cathedral_high_inquisitor_fairbanks",
+          "type": "optional",
+          "encounterId": "scarlet_cathedral_high_inquisitor_fairbanks",
+          "description": { "zhCN": "搜索侧室，揭开隐藏房间并挑战大检察官法尔班克斯。" }
+        },
+        {
+          "id": "scarlet_cathedral_commander_mograine",
+          "type": "required",
+          "encounterId": "scarlet_cathedral_commander_mograine"
+        },
+        {
+          "id": "scarlet_cathedral_high_inquisitor_whitemane",
+          "type": "required",
+          "encounterId": "scarlet_cathedral_high_inquisitor_whitemane"
+        }
+      ]
+    }
+  ]
+}
