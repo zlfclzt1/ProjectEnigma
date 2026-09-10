@@ -63,6 +63,7 @@ try {
     `日志模板组 ${registry.logTemplates.length}`,
     `首领机制 ${registry.mechanics.length}`,
     `专精能力成长 ${registry.specCapabilities.length}`,
+    `副本任务 ${registry.quests.length}`,
   ].join("，");
   console.log(`内容校验通过：发现 ${Object.keys(modules).length} 个文件；${counts}。`);
 } catch (error) {

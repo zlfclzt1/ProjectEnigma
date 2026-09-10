@@ -25,6 +25,8 @@ describe("loot source audit", () => {
       "design-placeholder": 0,
     });
     expect(audit.encounterCounts["no-equipment"]).toBe(2);
+    expect(audit.questRewards).toHaveLength(2);
+    expect(audit.bossQuestRewardOverlap).toEqual([]);
     expect(
       audit.rows.filter((row) => row.category === "no-equipment").map((row) => row.encounterId),
     ).toEqual(["oggleflint", "bazzalan"]);
@@ -32,6 +34,22 @@ describe("loot source audit", () => {
 
     const report = renderLootSourceAudit(audit);
     expect(report).toContain("无装备掉落 2");
+    expect(report).toContain("成员副本任务：2，不同任务奖励装备：5");
     expect(report).toContain("奥格弗林特（oggleflint） | — | 无装备掉落");
+    expect(report).toContain("毁灭之力（rfc_power_to_destroy）");
+  });
+
+  it("keeps member quest rewards out of every boss loot table", () => {
+    const registry = loadBrowserContentRegistry();
+    const questRewardIds = new Set(
+      registry.quests.flatMap((quest) => quest.rewards.itemChoiceIds.map(String)),
+    );
+    const bossDropIds = new Set(
+      registry.lootTables
+        .filter((table) => classifyLootSource(table) === "boss-drop")
+        .flatMap((table) => table.items.map(({ itemId }) => String(itemId))),
+    );
+
+    expect([...questRewardIds].filter((itemId) => bossDropIds.has(itemId))).toEqual([]);
   });
 });

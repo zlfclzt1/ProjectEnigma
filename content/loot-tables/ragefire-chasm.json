@@ -29,6 +29,7 @@
     {
       "id": "taragaman_the_hungerer",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "14145",
@@ -47,6 +48,7 @@
     {
       "id": "jergosh_the_invoker",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "14151",

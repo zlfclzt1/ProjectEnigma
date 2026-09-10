@@ -419,6 +419,50 @@ describe("V2 expedition creation", () => {
     expect(result.status === "committed" ? result.result.runPlans : []).toHaveLength(5);
   });
 
+  it("freezes only participating members' accepted quests for this dungeon at departure", async () => {
+    const state = newState();
+    const [participant, absentMember] = Object.values(state.members);
+    const questId = asBrandedId<"QuestId">("rfc_returning_lost_satchel");
+    const laterQuestId = asBrandedId<"QuestId">("rfc_power_to_destroy");
+    participant!.quests.entries[questId] = {
+      questId,
+      status: "accepted",
+      acceptedAt: 1_000,
+      encounterVictoryIds: [],
+    };
+    absentMember!.quests.entries[questId] = {
+      questId,
+      status: "accepted",
+      acceptedAt: 1_000,
+      encounterVictoryIds: [],
+    };
+    const { session } = await sessionFor(state);
+
+    const result = await session.execute(
+      startExpeditionCommand(
+        { content, clock: new FakeClock(2_000) },
+        { dungeonId, participantIds: [participant!.id], requestedRuns: 1 },
+      ),
+    );
+    if (result.status !== "committed") throw new Error("Expected committed expedition");
+
+    expect(result.result.questSnapshots).toEqual([
+      {
+        memberId: participant!.id,
+        questId,
+        completion: { type: "encounter-victories", encounterIds: ["oggleflint"] },
+        requiredOptionalNodeIds: [],
+      },
+    ]);
+    participant!.quests.entries[laterQuestId] = {
+      questId: laterQuestId,
+      status: "accepted",
+      acceptedAt: 2_001,
+      encounterVictoryIds: [],
+    };
+    expect(result.result.questSnapshots).toHaveLength(1);
+  });
+
   it("replays activity IDs, rolls, and plans deterministically from saved runtime state", async () => {
     async function start() {
       const state = newState("deterministic-expedition");

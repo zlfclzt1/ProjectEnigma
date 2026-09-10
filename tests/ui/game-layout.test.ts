@@ -15,7 +15,7 @@ describe("V2 game layout", () => {
         diagnostics: {
           origin: "loaded",
           slotId: "primary",
-          saveVersion: 9,
+          saveVersion: 11,
           revision: 4,
           contentVersion: "classic-v1",
           guildName: "夜班公会",

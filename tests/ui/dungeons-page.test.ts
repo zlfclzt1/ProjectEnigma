@@ -84,6 +84,17 @@ describe("dungeons page", () => {
         pending: false,
         optionalRoutes: [],
         rareRoutes: [],
+        questRouteWarnings: [
+          {
+            memberId: asBrandedId<"MemberId">("member_1"),
+            memberName: "铁锤",
+            questId: asBrandedId<"QuestId">("quest_1"),
+            questName: "寻找遗物",
+            optionalNodeIds: [asBrandedId<"DungeonRouteNodeId">("optional_1")],
+            bossNames: ["可选首领"],
+            message: "铁锤的任务“寻找遗物”需要挑战可选首领可选首领。",
+          },
+        ],
         mechanicReadiness: [
           {
             id: "test_recommended_magic_dispel",
@@ -111,6 +122,7 @@ describe("dungeons page", () => {
     expect(wrapper.text()).toContain("部分满足");
     expect(wrapper.text()).toContain("驱散魔法 1.0/2.0");
     expect(wrapper.text()).toContain("治疗压力 +15% · 胜率 -5 个百分点 · 耗时 +5%");
+    expect(wrapper.text()).toContain("请手动勾选后再出发");
     expect(wrapper.find("button").attributes("disabled")).toBeDefined();
   });
 

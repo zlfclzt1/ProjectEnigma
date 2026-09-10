@@ -6,6 +6,7 @@ import type {
   DungeonRouteNodeId,
   GuildUpgradeId,
   MemberId,
+  QuestId,
 } from "../../domain/shared/ids";
 import {
   evaluateGuildUpgrade,
@@ -127,6 +128,16 @@ export interface ExpeditionRunCapacityUpgradeView {
   readonly blockedReasons: readonly string[];
 }
 
+export interface QuestRouteWarningView {
+  readonly memberId: MemberId;
+  readonly memberName: string;
+  readonly questId: QuestId;
+  readonly questName: string;
+  readonly optionalNodeIds: readonly DungeonRouteNodeId[];
+  readonly bossNames: readonly string[];
+  readonly message: string;
+}
+
 export interface DungeonPlanningView {
   readonly dungeons: readonly DungeonOptionView[];
   readonly selectedDungeon: DungeonOptionView | null;
@@ -143,6 +154,7 @@ export interface DungeonPlanningView {
   readonly requestedRuns: number;
   readonly maximumRuns: number;
   readonly runCapacityUpgrade: ExpeditionRunCapacityUpgradeView | null;
+  readonly questRouteWarnings: readonly QuestRouteWarningView[];
   readonly selectedOptionalNodeIds: readonly DungeonRouteNodeId[];
   readonly optionalRoutes: readonly OptionalRouteNodeView[];
   readonly rareRoutes: readonly RareRouteNodeView[];
@@ -290,6 +302,7 @@ export function getDungeonPlanningView(
   let mechanicReadiness: PartyMechanicReadinessView[] = [];
   let optionalRoutes: OptionalRouteNodeView[] = [];
   let rareRoutes: RareRouteNodeView[] = [];
+  let questRouteWarnings: QuestRouteWarningView[] = [];
   const maximumRuns = getExpeditionRunCapacity(state, content);
   const nextRunUpgrade = getNextGuildUpgrade(state, content, EXPEDITION_RUN_CAPACITY_TRACK_ID);
   const runUpgradeEligibility = nextRunUpgrade ? evaluateGuildUpgrade(state, nextRunUpgrade) : null;
@@ -298,6 +311,38 @@ export function getDungeonPlanningView(
   else {
     const dungeonDefinition = content.dungeonById.get(selectedDungeon.id)!;
     const selectedOptionalIds = new Set(selectedOptionalNodeIds);
+    questRouteWarnings = selectedMemberIds.flatMap((memberId) => {
+      const member = state.members[memberId];
+      if (!member) return [];
+      return Object.values(member.quests.entries).flatMap((progress) => {
+        if (!progress || progress.status !== "accepted") return [];
+        const quest = content.questById.get(progress.questId);
+        if (!quest || quest.dungeonId !== selectedDungeon.id) return [];
+        const encounterIds =
+          quest.completion.type === "encounter-victories" ? quest.completion.encounterIds : [];
+        const missingNodes = dungeonDefinition.route.filter(
+          (node) =>
+            node.type === "optional" &&
+            encounterIds.includes(node.encounterId) &&
+            !selectedOptionalIds.has(node.id),
+        );
+        if (missingNodes.length === 0) return [];
+        const bossNames = missingNodes.map(
+          (node) => content.encounterById.get(node.encounterId)?.name.zhCN ?? node.encounterId,
+        );
+        return [
+          {
+            memberId,
+            memberName: member.identity.name,
+            questId: quest.id,
+            questName: quest.name.zhCN,
+            optionalNodeIds: missingNodes.map((node) => node.id),
+            bossNames,
+            message: `${member.identity.name}的任务“${quest.name.zhCN}”需要挑战可选首领${bossNames.join("、")}。`,
+          },
+        ];
+      });
+    });
     optionalRoutes = dungeonDefinition.route.flatMap((node) => {
       if (node.type !== "optional") return [];
       const encounter = content.encounterById.get(node.encounterId)!;
@@ -453,6 +498,7 @@ export function getDungeonPlanningView(
       nextRunUpgrade && runUpgradeEligibility
         ? projectRunCapacityUpgrade(state, content, nextRunUpgrade, runUpgradeEligibility)
         : null,
+    questRouteWarnings,
     selectedOptionalNodeIds: [...selectedOptionalNodeIds],
     optionalRoutes,
     rareRoutes,

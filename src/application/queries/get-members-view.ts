@@ -400,6 +400,8 @@ function acquisitionSource(instance: ItemInstance, content: ContentRegistry): st
       return `专业制造 · 配方 ${instance.source.recipeId}`;
     case "grant":
       return `系统发放 · ${instance.source.reasonId}`;
+    case "quest":
+      return `成员任务 · ${content.questById.get(instance.source.questId)?.name.zhCN ?? instance.source.questId}`;
   }
 }
 

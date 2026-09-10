@@ -16,12 +16,22 @@ export interface LootSourceAuditRow {
   readonly items: readonly { readonly id: string; readonly name: string }[];
 }
 
+export interface QuestRewardAuditRow {
+  readonly dungeonId: string;
+  readonly dungeonName: string;
+  readonly questId: string;
+  readonly questName: string;
+  readonly items: readonly { readonly id: string; readonly name: string }[];
+}
+
 export interface LootSourceAudit {
   readonly rows: readonly LootSourceAuditRow[];
   readonly lootTableCounts: Readonly<Record<LootSourceCategory, number>>;
   readonly encounterCounts: Readonly<Record<EncounterLootCategory, number>>;
   readonly distinctItemCounts: Readonly<Record<LootSourceCategory, number>>;
   readonly unusedLootTableIds: readonly string[];
+  readonly questRewards: readonly QuestRewardAuditRow[];
+  readonly bossQuestRewardOverlap: readonly string[];
 }
 
 const SOURCE_TYPE_CATEGORIES: Readonly<Record<string, LootSourceCategory>> = {
@@ -123,6 +133,34 @@ export function auditLootSources(registry: ContentRegistry): LootSourceAudit {
     for (const item of row.items) distinctItems.get(row.category)!.add(item.id);
   }
 
+  const questRewards = registry.quests.map((quest) => {
+    const dungeon = registry.dungeonById.get(quest.dungeonId);
+    if (!dungeon) throw new Error(`任务 ${quest.id} 缺少副本 ${quest.dungeonId}`);
+    return {
+      dungeonId: dungeon.id,
+      dungeonName: dungeon.name.zhCN,
+      questId: quest.id,
+      questName: quest.name.zhCN,
+      items: quest.rewards.itemChoiceIds.map((itemId) => {
+        const item = registry.itemById.get(itemId);
+        if (!item) throw new Error(`任务 ${quest.id} 缺少奖励装备 ${itemId}`);
+        return { id: item.id, name: item.name.zhCN };
+      }),
+    };
+  });
+  const bossDropItemIds = new Set(
+    registry.lootTables
+      .filter((table) => classifyLootSource(table) === "boss-drop")
+      .flatMap((table) => table.items.map(({ itemId }) => String(itemId))),
+  );
+  const bossQuestRewardOverlap = [
+    ...new Set(
+      questRewards.flatMap((quest) =>
+        quest.items.filter((item) => bossDropItemIds.has(item.id)).map((item) => item.id),
+      ),
+    ),
+  ].sort();
+
   return {
     rows,
     lootTableCounts,
@@ -134,6 +172,8 @@ export function auditLootSources(registry: ContentRegistry): LootSourceAudit {
       .filter((table) => !referencedLootTableIds.has(table.id))
       .map((table) => table.id)
       .sort(),
+    questRewards,
+    bossQuestRewardOverlap,
   };
 }
 
@@ -177,7 +217,7 @@ export function renderLootSourceAudit(audit: LootSourceAudit): string {
   const lines = [
     "# 当前四副本掉落来源审计",
     "",
-    "生成日期：2026-09-08",
+    "生成日期：2026-09-09",
     "",
     "本报告只描述当前内容元数据和引用关系，不修改掉落、概率或装备属性。分类规则以掉落表 `sourceType` 为准；未填写时按现有兼容规则视为 Boss 专属掉落。",
     "",
@@ -188,6 +228,8 @@ export function renderLootSourceAudit(audit: LootSourceAudit): string {
     categorySummary("掉落表分类", audit.lootTableCounts),
     encounterCategorySummary(audit.encounterCounts),
     categorySummary("不同装备分类", audit.distinctItemCounts),
+    `- 成员副本任务：${audit.questRewards.length}，不同任务奖励装备：${new Set(audit.questRewards.flatMap((quest) => quest.items.map((item) => item.id))).size}。`,
+    `- Boss 掉落与任务奖励重复：${audit.bossQuestRewardOverlap.length === 0 ? "0" : audit.bossQuestRewardOverlap.join("、")}。`,
     `- 未显式填写 \`sourceType\` 的 Boss 掉落表：${implicitBossTables.size}。`,
     `- 未被路线 Encounter 引用的掉落表：${audit.unusedLootTableIds.length === 0 ? "0" : audit.unusedLootTableIds.join("、")}。`,
     "",
@@ -225,11 +267,24 @@ export function renderLootSourceAudit(audit: LootSourceAudit): string {
   }
 
   lines.push(
+    "## 成员任务奖励",
+    "",
+    "| 副本 | 任务 | 奖励选择 |",
+    "|---|---|---|",
+    ...audit.questRewards.map(
+      (quest) =>
+        `| ${quest.dungeonName}（${quest.dungeonId}） | ${quest.questName}（${quest.questId}） | ${quest.items.map((item) => `${item.id} ${item.name}`).join("、")} |`,
+    ),
+    "",
+  );
+
+  lines.push(
     "## 审计结论",
     "",
     "- 当前没有任务奖励或世界掉落被路线 Encounter 当作 Boss 掉落引用。",
-    "- 未标记 `sourceType` 的表暂按 Boss 专属掉落处理；后续完整度审计应要求新内容显式填写来源类型。",
-    "- 本报告不能替代外部资料核对。任务 7.8 迁移前仍需按经典内容来源政策确认每件装备的真实来源。",
+    "- 当前四副本 Boss 掉落表均已显式标记为 `boss_drop`，不再依赖兼容推断。",
+    "- 当前五件真实任务奖励仅由成员副本任务引用，与所有 Boss 掉落池无重复。",
+    "- 本报告不能替代外部资料核对；新增内容仍须按经典内容来源政策保存物品与任务来源。",
     "",
   );
   return lines.join("\n");

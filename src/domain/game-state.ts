@@ -15,7 +15,7 @@ import type {
 } from "./shared/ids";
 import type { IdGeneratorState, RandomState } from "./shared/runtime-state";
 
-export const GAME_STATE_SAVE_VERSION = 9 as const;
+export const GAME_STATE_SAVE_VERSION = 11 as const;
 
 export interface GameState {
   slotId: SaveSlotId;
@@ -40,7 +40,23 @@ export interface GameState {
 
 export type LegacyItemInstanceV3 = Omit<ItemInstance, "randomSuffixId">;
 
-export type LegacyMemberV5 = Omit<Member, "wishlist">;
+export type LegacyMemberV9 = Omit<Member, "quests">;
+
+export type LegacyExpeditionActivityV10 = Omit<ExpeditionActivity, "questSnapshots">;
+
+export type LegacyActivityV10 = Exclude<Activity, ExpeditionActivity> | LegacyExpeditionActivityV10;
+
+export interface LegacyGameStateV10 extends Omit<GameState, "saveVersion" | "activities"> {
+  saveVersion: 10;
+  activities: Record<ActivityId, LegacyActivityV10>;
+}
+
+export interface LegacyGameStateV9 extends Omit<LegacyGameStateV10, "saveVersion" | "members"> {
+  saveVersion: 9;
+  members: Record<MemberId, LegacyMemberV9>;
+}
+
+export type LegacyMemberV5 = Omit<LegacyMemberV9, "wishlist">;
 
 export type LegacyExpeditionRunPlanV8 = Omit<ExpeditionRunPlan, "rareNodeReveals">;
 
@@ -50,7 +66,7 @@ export type LegacyExpeditionActivityV8 = Omit<ExpeditionActivity, "runPlans"> & 
 
 export type LegacyActivityV8 = Exclude<Activity, ExpeditionActivity> | LegacyExpeditionActivityV8;
 
-export interface LegacyGameStateV8 extends Omit<GameState, "saveVersion" | "activities"> {
+export interface LegacyGameStateV8 extends Omit<LegacyGameStateV9, "saveVersion" | "activities"> {
   saveVersion: 8;
   activities: Record<ActivityId, LegacyActivityV8>;
 }
@@ -112,6 +128,8 @@ export interface LegacyGameStateV2 extends Omit<
 
 export type PersistedGameState =
   | GameState
+  | LegacyGameStateV10
+  | LegacyGameStateV9
   | LegacyGameStateV8
   | LegacyGameStateV7
   | LegacyGameStateV6

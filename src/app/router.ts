@@ -10,6 +10,7 @@ const ActivitiesPage = () => import("../ui/pages/ActivitiesPage.vue");
 const LootPage = () => import("../ui/pages/LootPage.vue");
 const ItemCatalogPage = () => import("../ui/pages/ItemCatalogPage.vue");
 const CombatReportPage = () => import("../ui/pages/CombatReportPage.vue");
+const QuestsPage = () => import("../ui/pages/QuestsPage.vue");
 
 export const router = createRouter({
   history: createWebHashHistory(),
@@ -23,6 +24,7 @@ export const router = createRouter({
         { path: "recruitment", name: "recruitment", component: RecruitmentPage },
         { path: "members", name: "members", component: MembersPage },
         { path: "members/:memberId", name: "member-detail", component: MemberDetailPage },
+        { path: "quests", name: "quests", component: QuestsPage },
         { path: "dungeons", name: "dungeons", component: DungeonsPage },
         { path: "activities", name: "activities", component: ActivitiesPage },
         { path: "loot", name: "loot", component: LootPage },

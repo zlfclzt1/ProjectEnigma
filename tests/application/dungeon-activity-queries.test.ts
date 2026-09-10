@@ -124,6 +124,29 @@ function contentWithConfigurableRoutes() {
   return loadContentRegistry(modules);
 }
 
+function contentWithOptionalQuestBoss() {
+  const modules = structuredClone(browserContentModules) as Record<string, unknown>;
+  const dungeonKey = Object.keys(modules).find((path) =>
+    path.endsWith("/content/dungeons/ragefire-chasm.json"),
+  )!;
+  const route = (
+    modules[dungeonKey] as {
+      dungeons: Array<{
+        route: Array<{
+          id: string;
+          type: string;
+          encounterId: string;
+          description?: { zhCN: string };
+        }>;
+      }>;
+    }
+  ).dungeons[0]!.route;
+  const oggleflint = route.find((node) => node.encounterId === "oggleflint")!;
+  oggleflint.type = "optional";
+  oggleflint.description = { zhCN: "搜索守卫尸体附近的侧路。" };
+  return loadContentRegistry(modules);
+}
+
 describe("dungeon and activity queries", () => {
   it("projects four dungeons, filter metadata, and exact party probabilities", () => {
     const game = state();
@@ -400,5 +423,50 @@ describe("dungeon and activity queries", () => {
       "taragaman_the_hungerer",
     );
     expect(selected.preview!.durationSeconds).toBeGreaterThan(unselected.preview!.durationSeconds);
+  });
+
+  it("warns about an accepted quest's unselected optional Boss without selecting it", () => {
+    const questContent = contentWithOptionalQuestBoss();
+    const game = createNewGame({
+      slotId: asBrandedId<"SaveSlotId">("quest-route-warning"),
+      content: questContent,
+      contentVersion: asBrandedId<"ContentVersion">("classic-v1"),
+      clock: new FakeClock(1_000),
+      ids: new LocalIdGenerator(),
+      random: new SeededRandomSource("quest-route-warning"),
+    });
+    const member = Object.values(game.members)[0]!;
+    const questId = asBrandedId<"QuestId">("rfc_returning_lost_satchel");
+    member.quests.entries[questId] = {
+      questId,
+      status: "accepted",
+      acceptedAt: 1_000,
+      encounterVictoryIds: [],
+    };
+
+    const unselected = getDungeonPlanningView(
+      game,
+      questContent,
+      asBrandedId<"DungeonId">("ragefire_chasm"),
+      [member.id],
+      1,
+    );
+    expect(unselected.optionalRoutes[0]!.selected).toBe(false);
+    expect(unselected.questRouteWarnings[0]).toMatchObject({
+      memberId: member.id,
+      questId,
+      optionalNodeIds: ["oggleflint"],
+      bossNames: ["奥格弗林特"],
+    });
+
+    const selected = getDungeonPlanningView(
+      game,
+      questContent,
+      asBrandedId<"DungeonId">("ragefire_chasm"),
+      [member.id],
+      1,
+      [asBrandedId<"DungeonRouteNodeId">("oggleflint")],
+    );
+    expect(selected.questRouteWarnings).toEqual([]);
   });
 });

@@ -33,6 +33,9 @@ import { getItemCatalogView } from "../application/queries/get-item-catalog-view
 import { purchaseGuildUpgradeCommand } from "../application/commands/purchase-guild-upgrade";
 import { claimCollectionRewardCommand } from "../application/commands/claim-collection-reward";
 import { removeMemberWishlistTargetCommand } from "../application/commands/remove-member-wishlist-target";
+import { acceptMemberDungeonQuestCommand } from "../application/commands/accept-member-dungeon-quest";
+import { claimMemberDungeonQuestCommand } from "../application/commands/claim-member-dungeon-quest";
+import { getMemberDungeonQuestsView } from "../application/queries/get-member-dungeon-quests-view";
 import {
   setMemberWishlistTargetCommand,
   type SetMemberWishlistTargetInput,
@@ -49,6 +52,7 @@ import type {
   ItemDefinitionId,
   MemberId,
   PendingLootId,
+  QuestId,
   SpecId,
 } from "../domain/shared/ids";
 
@@ -357,6 +361,31 @@ export const useGameStore = defineStore("game", () => {
       : null;
   }
 
+  function memberDungeonQuests(memberId: MemberId) {
+    return stateSnapshot.value && content
+      ? getMemberDungeonQuestsView(stateSnapshot.value, content, memberId)
+      : null;
+  }
+
+  async function acceptMemberDungeonQuest(
+    memberId: MemberId,
+    questId: QuestId,
+  ): Promise<GameCommandOutcome<unknown>> {
+    if (!content || !clock) return unavailableOutcome("accept-member-dungeon-quest");
+    return execute(acceptMemberDungeonQuestCommand({ content, clock }, memberId, questId));
+  }
+
+  async function claimMemberDungeonQuest(
+    memberId: MemberId,
+    questId: QuestId,
+    itemDefinitionId: ItemDefinitionId,
+  ): Promise<GameCommandOutcome<unknown>> {
+    if (!content || !clock) return unavailableOutcome("claim-member-dungeon-quest");
+    return execute(
+      claimMemberDungeonQuestCommand({ content, clock }, memberId, questId, itemDefinitionId),
+    );
+  }
+
   async function startExpedition(
     dungeonId: DungeonId,
     participantIds: readonly MemberId[],
@@ -439,6 +468,9 @@ export const useGameStore = defineStore("game", () => {
     removeMemberWishlistTarget,
     purchaseGuildUpgrade,
     claimCollectionReward,
+    memberDungeonQuests,
+    acceptMemberDungeonQuest,
+    claimMemberDungeonQuest,
     dungeonPlanning,
     startExpedition,
     assignLoot,

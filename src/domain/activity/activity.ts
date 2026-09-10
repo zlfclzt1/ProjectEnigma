@@ -22,6 +22,7 @@ import type { PartyCapabilitySnapshot } from "../combat/party-capabilities";
 import type { CombatReport } from "../combat/combat-report";
 import type { EncounterMechanicEvaluation } from "../dungeon/mechanic-evaluation";
 import type { RareRouteReveals, RareRouteSpawnLocks } from "../dungeon/rare-route";
+import type { DungeonQuestCompletion } from "../../content/schemas/quest";
 
 export type ActivityType = "expedition" | "gathering" | "crafting" | "training";
 export type ActivityStatus = "scheduled" | "active" | "completed" | "failed" | "cancelled";
@@ -48,6 +49,14 @@ export interface ExpeditionActivity extends ActivityBase<"expedition"> {
   activeEncounterIndex: number;
   partySnapshot: ExpeditionPartySnapshot;
   runPlans: ExpeditionRunPlan[];
+  questSnapshots: ExpeditionMemberQuestSnapshot[];
+}
+
+export interface ExpeditionMemberQuestSnapshot {
+  memberId: MemberId;
+  questId: import("../shared/ids").QuestId;
+  completion: DungeonQuestCompletion;
+  requiredOptionalNodeIds: DungeonRouteNodeId[];
 }
 
 export interface ExpeditionEquipmentSnapshot {

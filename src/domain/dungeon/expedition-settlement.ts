@@ -11,6 +11,10 @@ import { generateCombatReport } from "../combat/report-generator";
 import { experienceFractions } from "./expedition-activity";
 import { generateGuaranteedLoot } from "./loot-generation";
 import { revealRareRouteNodes } from "./rare-route";
+import {
+  completeExpeditionDungeonClearQuests,
+  progressExpeditionQuestsAfterEncounterVictory,
+} from "./expedition-quest-progress";
 
 export type ExpeditionSettlementResult =
   | {
@@ -99,6 +103,7 @@ export function settleNextExpeditionStage(
   if (firstKill) state.guild.firstKillEncounterIds.push(encounter.id);
   state.history.encounterVictoryCounts[encounter.id] =
     (state.history.encounterVictoryCounts[encounter.id] ?? 0) + 1;
+  progressExpeditionQuestsAfterEncounterVictory(state, activity, encounter.id, settledAt);
   for (const { instance, pending } of generatedLoot) {
     state.itemInstances[instance.id] = instance;
     state.pendingLoot[pending.id] = pending;
@@ -122,6 +127,7 @@ export function settleNextExpeditionStage(
     run.mainRouteCompleted = true;
     state.history.dungeonClearCounts[activity.dungeonId] =
       (state.history.dungeonClearCounts[activity.dungeonId] ?? 0) + 1;
+    completeExpeditionDungeonClearQuests(state, activity, settledAt);
   }
   unlockEligibleDungeons(state, content);
 

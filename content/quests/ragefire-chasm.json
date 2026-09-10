@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "5724",
+        "url": "https://www.wowhead.com/classic/quest=5724",
+        "verifiedAt": "2026-09-09",
+        "notes": "Returning the Lost Satchel，奖励二选一为 Featherbead Bracers 与 Savannah Bracers。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "5725",
+        "url": "https://www.wowhead.com/classic/quest=5725",
+        "verifiedAt": "2026-09-09",
+        "notes": "The Power to Destroy...，奖励三选一为 Ghastly Trousers、Dredgemire Leggings 与 Gargoyle Leggings。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "当前轻量任务系统不模拟拾取书籍、尸体交互、阵营与任务链；失落背包抽象为击败守卫尸体区域的奥格弗林特，毁灭之力抽象为完整通关怒焰裂谷。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["completion", "rewards.experienceFraction", "rewards.funds"],
+        "reason": "将原版跑腿、随机任务物品和声望奖励压缩为可确定结算的成员级副本任务；真实装备选择保持不变。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "rfc_returning_lost_satchel",
+      "name": { "zhCN": "归还背包" },
+      "description": { "zhCN": "找到玛尔·恐怖图腾的遗物，并安全带出怒焰裂谷。" },
+      "dungeonId": "ragefire_chasm",
+      "eligibility": { "minimumLevel": 9, "allowedClassIds": [] },
+      "completion": { "type": "encounter-victories", "encounterIds": ["oggleflint"] },
+      "rewards": {
+        "experienceFraction": 0.75,
+        "funds": 0,
+        "itemChoiceIds": ["15452", "15453"]
+      }
+    },
+    {
+      "id": "rfc_power_to_destroy",
+      "name": { "zhCN": "毁灭之力" },
+      "description": { "zhCN": "清理怒焰裂谷中的灼刃教徒并带回两本法术书。" },
+      "dungeonId": "ragefire_chasm",
+      "eligibility": { "minimumLevel": 9, "allowedClassIds": [] },
+      "completion": { "type": "dungeon-clear" },
+      "rewards": {
+        "experienceFraction": 0.75,
+        "funds": 0,
+        "itemChoiceIds": ["15449", "15450", "15451"]
+      }
+    }
+  ]
+}

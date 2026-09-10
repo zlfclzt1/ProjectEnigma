@@ -5,6 +5,7 @@ import type {
   PartyMechanicReadinessView,
   OptionalRouteNodeView,
   RareRouteNodeView,
+  QuestRouteWarningView,
 } from "../../application/queries/get-dungeons-view";
 import BossRoute from "./BossRoute.vue";
 
@@ -14,6 +15,7 @@ defineProps<{
   mechanicReadiness: readonly PartyMechanicReadinessView[];
   optionalRoutes: readonly OptionalRouteNodeView[];
   rareRoutes: readonly RareRouteNodeView[];
+  questRouteWarnings?: readonly QuestRouteWarningView[];
   issues: readonly string[];
   requestedRuns: number;
   canStart: boolean;
@@ -143,6 +145,11 @@ function durationLabel(seconds: number): string {
     <ul v-if="issues.length" class="issues">
       <li v-for="issue in issues" :key="issue">{{ issue }}</li>
     </ul>
+    <ul v-if="questRouteWarnings?.length" class="quest-warnings">
+      <li v-for="warning in questRouteWarnings" :key="`${warning.memberId}:${warning.questId}`">
+        {{ warning.message }}请手动勾选后再出发。
+      </li>
+    </ul>
     <button type="button" :disabled="!canStart || pending" @click="$emit('start')">
       {{ pending ? "正在登记队伍……" : `出发：${dungeon?.name ?? "副本"}` }}
     </button>
@@ -222,6 +229,15 @@ dd {
   color: #c97569;
   font-size: 0.68rem;
   list-style: none;
+}
+.quest-warnings {
+  padding: 10px 12px 10px 28px;
+  margin: 12px 0;
+  border: 1px solid #725d35;
+  border-radius: 6px;
+  color: #d3b77c;
+  background: #211b10;
+  font-size: 0.68rem;
 }
 .mechanics {
   display: grid;

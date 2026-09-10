@@ -7,6 +7,7 @@ import type {
   ItemInstanceId,
   MemberId,
   PendingLootId,
+  QuestId,
   RandomSuffixId,
   RecipeId,
 } from "../shared/ids";
@@ -20,7 +21,8 @@ export type ItemAcquisitionSource =
       encounterId: EncounterId;
     }
   | { type: "crafting"; activityId: ActivityId; recipeId: RecipeId }
-  | { type: "grant"; reasonId: string };
+  | { type: "grant"; reasonId: string }
+  | { type: "quest"; questId: QuestId; memberId: MemberId };
 
 export interface ItemInstance {
   id: ItemInstanceId;

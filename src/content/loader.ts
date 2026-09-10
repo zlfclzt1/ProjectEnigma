@@ -45,6 +45,7 @@ import {
   type RoleDefinition,
   type SpecDefinition,
 } from "./schemas/member-definitions";
+import { dungeonQuestDefinitionFileSchema, type DungeonQuestDefinition } from "./schemas/quest";
 
 export type RawContentModules = Readonly<Record<string, unknown>>;
 
@@ -107,6 +108,7 @@ export interface LoadedContent {
   readonly logTemplates: readonly LocatedContent<LogTemplateGroup>[];
   readonly mechanics: readonly LocatedContent<MechanicDefinition>[];
   readonly specCapabilities: readonly LocatedContent<SpecCapabilityProgression>[];
+  readonly quests: readonly LocatedContent<DungeonQuestDefinition>[];
 }
 
 type MutableLoadedContent = {
@@ -190,6 +192,11 @@ const DIRECTORY_DESCRIPTORS: Readonly<Record<string, FileDescriptor>> = {
     collection: "specCapabilities",
     property: "specCapabilities",
   },
+  quests: {
+    schema: dungeonQuestDefinitionFileSchema,
+    collection: "quests",
+    property: "quests",
+  },
 };
 
 function emptyLoadedContent(): MutableLoadedContent {
@@ -214,6 +221,7 @@ function emptyLoadedContent(): MutableLoadedContent {
     logTemplates: [],
     mechanics: [],
     specCapabilities: [],
+    quests: [],
   };
 }
 

@@ -9,6 +9,7 @@ import { asBrandedId } from "../shared/ids";
 import type { HiddenCharacterId, MemberId, RaceId } from "../shared/ids";
 import type { EquipmentSlot } from "../equipment/equipment-slot";
 import type { Candidate, Member, MemberIdentity, MemberProgression } from "./member";
+import { createEmptyMemberQuestState } from "./member-quest-state";
 
 export interface MemberFactoryContext {
   readonly content: ContentRegistry;
@@ -159,6 +160,7 @@ function createMemberFromProfile(
       professionIds: [],
       riding: { skillRank: 0, learnedMountIds: [] },
       wishlist: { entries: [] },
+      quests: createEmptyMemberQuestState(),
       joinedAt: context.clock.now(),
     },
     itemInstances,

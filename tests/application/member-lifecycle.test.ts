@@ -123,6 +123,7 @@ describe("member recruitment and dismissal", () => {
     expect(result.result.member.identity).toEqual(candidateIdentity);
     expect(result.result.member.joinedAt).toBe(3_000);
     expect(result.result.member.wishlist).toEqual({ entries: [] });
+    expect(result.result.member.quests).toEqual({ entries: {} });
     expect(Object.keys(result.result.member.equipment)).toHaveLength(EQUIPMENT_SLOTS.length);
     expect(result.result.itemInstances).toHaveLength(EQUIPMENT_SLOTS.length);
     expect(Object.values(session.snapshot().members)).toHaveLength(6);

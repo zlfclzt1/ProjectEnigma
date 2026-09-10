@@ -13,6 +13,8 @@ import {
   createLegacyGameStateV6Fixture,
   createLegacyGameStateV7Fixture,
   createLegacyGameStateV8Fixture,
+  createLegacyGameStateV9Fixture,
+  createLegacyGameStateV10Fixture,
   createItemInstanceFixture,
 } from "../helpers/game-state-v2-factory";
 
@@ -31,7 +33,7 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(9);
+    expect(result.state.saveVersion).toBe(11);
     expect(
       Object.values(result.state.members).every((member) => member.wishlist.entries.length === 0),
     ).toBe(true);
@@ -46,7 +48,7 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(9);
+    expect(result.state.saveVersion).toBe(11);
     expect(
       Object.values(result.state.itemInstances).every(
         (instance) => instance.randomSuffixId === undefined,
@@ -75,7 +77,7 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(9);
+    expect(result.state.saveVersion).toBe(11);
     expect(result.state.collection).toEqual({
       items: {
         "14148": {
@@ -94,7 +96,7 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(9);
+    expect(result.state.saveVersion).toBe(11);
     expect(
       Object.values(result.state.members).every((member) => member.wishlist.entries.length === 0),
     ).toBe(true);
@@ -123,7 +125,7 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(9);
+    expect(result.state.saveVersion).toBe(11);
     const migrated = Object.values(result.state.activities)[0]!;
     if (migrated.type !== "expedition") throw new Error("Expected expedition fixture");
     expect(migrated.partySnapshot.capabilities.values.tanking).toBeGreaterThan(0);
@@ -136,7 +138,7 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(9);
+    expect(result.state.saveVersion).toBe(11);
     const activity = Object.values(result.state.activities)[0]!;
     if (activity.type !== "expedition") throw new Error("Expected expedition fixture");
     expect(activity.selectedOptionalNodeIds).toEqual([]);
@@ -148,10 +150,41 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(9);
+    expect(result.state.saveVersion).toBe(11);
     const activity = Object.values(result.state.activities)[0]!;
     if (activity.type !== "expedition") throw new Error("Expected expedition fixture");
     expect(activity.runPlans[0]!.rareNodeReveals).toEqual({});
+  });
+
+  it("migrates V9 members with empty independent quest progress", () => {
+    const legacy = createLegacyGameStateV9Fixture();
+
+    const result = migrateSave(legacy, content);
+
+    expect(result.migrated).toBe(true);
+    expect(result.state.saveVersion).toBe(11);
+    expect(
+      Object.values(result.state.members).every(
+        (member) => Object.keys(member.quests.entries).length === 0,
+      ),
+    ).toBe(true);
+    expect(
+      Object.values(result.state.members).every(
+        (member) => !("quests" in legacy.members[member.id]!),
+      ),
+    ).toBe(true);
+  });
+
+  it("migrates V10 expeditions with an empty member quest snapshot", () => {
+    const legacy = createLegacyGameStateV10Fixture();
+
+    const result = migrateSave(legacy, content);
+
+    expect(result.migrated).toBe(true);
+    expect(result.state.saveVersion).toBe(11);
+    const activity = Object.values(result.state.activities)[0]!;
+    if (activity.type !== "expedition") throw new Error("Expected expedition fixture");
+    expect(activity.questSnapshots).toEqual([]);
   });
 
   it("keeps current collection state without reporting a migration", () => {
@@ -185,8 +218,8 @@ describe("save migrations", () => {
     });
 
     expect(loaded.origin).toBe("loaded");
-    expect(loaded.session.snapshot()).toMatchObject({ saveVersion: 9, revision: 1 });
+    expect(loaded.session.snapshot()).toMatchObject({ saveVersion: 11, revision: 1 });
     const persisted = await saves.load(legacy.slotId);
-    expect(persisted?.saveVersion).toBe(9);
+    expect(persisted?.saveVersion).toBe(11);
   });
 });

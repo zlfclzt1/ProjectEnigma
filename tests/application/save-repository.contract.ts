@@ -86,7 +86,7 @@ export function runSaveRepositoryContract(
       const loadedInstance = loaded?.itemInstances[instance.id] as
         { randomSuffixId?: unknown } | undefined;
 
-      expect(loaded?.saveVersion).toBe(9);
+      expect(loaded?.saveVersion).toBe(11);
       expect(loadedInstance?.randomSuffixId).toBe("prototype_of_readiness");
     } finally {
       await harness.dispose();
@@ -118,6 +118,32 @@ export function runSaveRepositoryContract(
           ],
         },
       });
+    } finally {
+      await harness.dispose();
+    }
+  });
+
+  it("persists independent member quest progress unchanged", async () => {
+    const harness = await createHarness();
+    try {
+      const state = createGameStateFixture();
+      const member = Object.values(state.members)[0]!;
+      const questId = asBrandedId<"QuestId">("rfc_power_to_destroy");
+      member.quests.entries[questId] = {
+        questId,
+        status: "completed",
+        acceptedAt: 1_000,
+        completedAt: 2_000,
+        encounterVictoryIds: [asBrandedId<"EncounterId">("oggleflint")],
+      };
+      await harness.repository.create(state);
+
+      const loaded = await harness.repository.load(state.slotId);
+      if (!loaded || loaded.saveVersion !== 11) throw new Error("Expected current save");
+
+      expect(loaded.members[member.id]?.quests.entries[questId]).toEqual(
+        member.quests.entries[questId],
+      );
     } finally {
       await harness.dispose();
     }

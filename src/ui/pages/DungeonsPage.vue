@@ -116,6 +116,7 @@ async function purchaseRunCapacity(): Promise<void> {
         :mechanic-readiness="planning.mechanicReadiness"
         :optional-routes="planning.optionalRoutes"
         :rare-routes="planning.rareRoutes"
+        :quest-route-warnings="planning.questRouteWarnings"
         :issues="planning.issues"
         :requested-runs="ui.requestedExpeditionRuns"
         :can-start="planning.canStart"

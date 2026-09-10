@@ -29,6 +29,7 @@
     {
       "id": "sfk_rethilgore",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "5254",
@@ -39,6 +40,7 @@
     {
       "id": "sfk_razorclaw",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "1292",
@@ -57,6 +59,7 @@
     {
       "id": "sfk_baron_silverlaine",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "6321",
@@ -71,6 +74,7 @@
     {
       "id": "sfk_commander_springvale",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "6320",
@@ -85,6 +89,7 @@
     {
       "id": "sfk_odo",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "6318",
@@ -99,6 +104,7 @@
     {
       "id": "sfk_fenrus",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "6340",
@@ -113,6 +119,7 @@
     {
       "id": "sfk_wolf_master_nandos",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "3748",
@@ -127,6 +134,7 @@
     {
       "id": "sfk_archmage_arugal",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "6324",

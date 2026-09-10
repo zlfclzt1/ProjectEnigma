@@ -29,6 +29,7 @@
     {
       "id": "wc_lady_anacondra",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "10412",
@@ -43,6 +44,7 @@
     {
       "id": "wc_lord_cobrahn",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "6460",
@@ -61,6 +63,7 @@
     {
       "id": "wc_kresh",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "6447",
@@ -75,6 +78,7 @@
     {
       "id": "wc_lord_pythas",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "6472",
@@ -89,6 +93,7 @@
     {
       "id": "wc_skum",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "6449",
@@ -103,6 +108,7 @@
     {
       "id": "wc_lord_serpentis",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "6469",
@@ -125,6 +131,7 @@
     {
       "id": "wc_verdan",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "6630",
@@ -143,6 +150,7 @@
     {
       "id": "wc_mutanus",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "6461",

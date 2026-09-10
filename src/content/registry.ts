@@ -26,6 +26,7 @@ import type { CombatProfileDefinition } from "./schemas/combat-profile";
 import type { CapabilityDefinition } from "./schemas/capability";
 import type { MechanicDefinition } from "./schemas/mechanic";
 import type { SpecCapabilityProgression } from "./schemas/spec-capability";
+import type { DungeonQuestDefinition } from "./schemas/quest";
 
 class ReadonlyMapView<Key, Value> implements ReadonlyMap<Key, Value> {
   readonly #source: Map<Key, Value>;
@@ -183,6 +184,7 @@ function validateDisplayNames(loaded: LoadedContent, issues: ContentValidationIs
     ...loaded.encounters,
     ...loaded.capabilities,
     ...loaded.mechanics,
+    ...loaded.quests,
   ];
   for (const entry of named) {
     if (entry.value.name.zhCN.includes("测试装备")) {
@@ -216,6 +218,7 @@ export class ContentRegistry {
   readonly logTemplates: readonly LogTemplateGroup[];
   readonly mechanics: readonly MechanicDefinition[];
   readonly specCapabilities: readonly SpecCapabilityProgression[];
+  readonly quests: readonly DungeonQuestDefinition[];
 
   readonly roleById: ReadonlyMap<RoleDefinition["id"], RoleDefinition>;
   readonly capabilityById: ReadonlyMap<CapabilityDefinition["id"], CapabilityDefinition>;
@@ -246,6 +249,7 @@ export class ContentRegistry {
     SpecCapabilityProgression
   >;
   readonly namePoolByLocale: ReadonlyMap<NamePoolFile["locale"], NamePoolFile>;
+  readonly questById: ReadonlyMap<DungeonQuestDefinition["id"], DungeonQuestDefinition>;
 
   constructor(loaded: LoadedContent) {
     const issues: ContentValidationIssue[] = [];
@@ -268,6 +272,7 @@ export class ContentRegistry {
     const logTemplateById = buildIndex(loaded.logTemplates, issues, "日志模板");
     const mechanicById = buildIndex(loaded.mechanics, issues, "首领机制");
     const specCapabilityById = buildIndex(loaded.specCapabilities, issues, "专精能力成长");
+    const questById = buildIndex(loaded.quests, issues, "副本任务");
     const namePoolByLocale = new Map<NamePoolFile["locale"], NamePoolFile>();
     for (const entry of loaded.namePools) {
       if (namePoolByLocale.has(entry.value.locale)) {
@@ -310,6 +315,7 @@ export class ContentRegistry {
       issues,
     );
     this.validateGuildUpgradeReferences(loaded, dungeonById, issues);
+    this.validateQuestReferences(loaded, dungeonById, encounterById, itemById, classById, issues);
     this.validateLogReferences(loaded, dungeonById, encounterById, issues);
     validateUnlockCycles(loaded.dungeons, dungeonById, issues);
     validateDisplayNames(loaded, issues);
@@ -335,6 +341,7 @@ export class ContentRegistry {
     this.logTemplates = Object.freeze(loaded.logTemplates.map(({ value }) => value));
     this.mechanics = Object.freeze(loaded.mechanics.map(({ value }) => value));
     this.specCapabilities = Object.freeze(loaded.specCapabilities.map(({ value }) => value));
+    this.quests = Object.freeze(loaded.quests.map(({ value }) => value));
     this.capabilityById = readonlyMap(capabilityById);
     this.roleById = readonlyMap(roleById);
     this.classById = readonlyMap(classById);
@@ -355,6 +362,7 @@ export class ContentRegistry {
     this.mechanicById = readonlyMap(mechanicById);
     this.specCapabilityById = readonlyMap(specCapabilityById);
     this.namePoolByLocale = readonlyMap(namePoolByLocale);
+    this.questById = readonlyMap(questById);
     Object.freeze(this);
   }
 
@@ -568,6 +576,79 @@ export class ContentRegistry {
           });
         }
         if (runCapacityEffect) previousRunCapacity = runCapacityEffect.value;
+      }
+    }
+  }
+
+  private validateQuestReferences(
+    loaded: LoadedContent,
+    dungeonById: ReadonlyMap<DungeonDefinition["id"], DungeonDefinition>,
+    encounterById: ReadonlyMap<EncounterDefinition["id"], EncounterDefinition>,
+    itemById: ReadonlyMap<ItemDefinition["id"], ItemDefinition>,
+    classById: ReadonlyMap<ClassDefinition["id"], ClassDefinition>,
+    issues: ContentValidationIssue[],
+  ): void {
+    for (const owner of loaded.quests) {
+      const dungeonExists = requireReference(
+        dungeonById,
+        owner.value.dungeonId,
+        owner,
+        "dungeonId",
+        "副本",
+        issues,
+      );
+      owner.value.eligibility.allowedClassIds.forEach((classId, index) =>
+        requireReference(
+          classById,
+          classId,
+          owner,
+          `eligibility.allowedClassIds[${index}]`,
+          "职业",
+          issues,
+        ),
+      );
+      owner.value.rewards.itemChoiceIds.forEach((itemId, index) =>
+        requireReference(
+          itemById,
+          itemId,
+          owner,
+          `rewards.itemChoiceIds[${index}]`,
+          "装备",
+          issues,
+        ),
+      );
+      if (owner.value.completion.type !== "encounter-victories") continue;
+      for (const [index, encounterId] of owner.value.completion.encounterIds.entries()) {
+        const encounterExists = requireReference(
+          encounterById,
+          encounterId,
+          owner,
+          `completion.encounterIds[${index}]`,
+          "首领战",
+          issues,
+        );
+        const encounter = encounterById.get(encounterId);
+        if (encounterExists && encounter?.dungeonId !== owner.value.dungeonId) {
+          issues.push({
+            filePath: owner.filePath,
+            fieldPath: `${owner.fieldPath}.completion.encounterIds[${index}]`,
+            message: `任务首领不属于副本 ${owner.value.dungeonId}`,
+            invalidReferenceId: encounterId,
+          });
+        }
+        const routeNode = dungeonExists
+          ? dungeonById
+              .get(owner.value.dungeonId)
+              ?.route.find((node) => node.encounterId === encounterId)
+          : undefined;
+        if (routeNode?.type === "rare") {
+          issues.push({
+            filePath: owner.filePath,
+            fieldPath: `${owner.fieldPath}.completion.encounterIds[${index}]`,
+            message: "第一阶段副本任务不能要求随机稀有首领",
+            invalidReferenceId: encounterId,
+          });
+        }
       }
     }
   }

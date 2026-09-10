@@ -3,6 +3,7 @@ import type {
   ActivityId,
   CandidateId,
   ClassId,
+  EncounterId,
   HiddenCharacterId,
   ItemDefinitionId,
   ItemInstanceId,
@@ -10,6 +11,7 @@ import type {
   MemberProfessionId,
   MountId,
   PersonalityId,
+  QuestId,
   RaceId,
   RandomSuffixId,
   SpecId,
@@ -45,6 +47,21 @@ export interface MemberWishlistState {
   entries: MemberWishlistEntry[];
 }
 
+export type MemberQuestStatus = "accepted" | "completed" | "claimed";
+
+export interface MemberQuestProgress {
+  questId: QuestId;
+  status: MemberQuestStatus;
+  acceptedAt: number;
+  completedAt?: number;
+  claimedAt?: number;
+  encounterVictoryIds: EncounterId[];
+}
+
+export interface MemberQuestState {
+  entries: Partial<Record<QuestId, MemberQuestProgress>>;
+}
+
 export interface Member {
   id: MemberId;
   identity: MemberIdentity;
@@ -53,6 +70,7 @@ export interface Member {
   professionIds: MemberProfessionId[];
   riding: MemberRidingState;
   wishlist: MemberWishlistState;
+  quests: MemberQuestState;
   activeActivityId?: ActivityId;
   joinedAt: number;
 }

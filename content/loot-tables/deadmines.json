@@ -29,6 +29,7 @@
     {
       "id": "dm_rhahkzor",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "872",
@@ -43,6 +44,7 @@
     {
       "id": "dm_sneeds_shredder",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "1937",
@@ -57,6 +59,7 @@
     {
       "id": "dm_sneed",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "5194",
@@ -71,6 +74,7 @@
     {
       "id": "dm_gilnid",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "1156",
@@ -85,6 +89,7 @@
     {
       "id": "dm_mr_smite",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "7230",
@@ -103,6 +108,7 @@
     {
       "id": "dm_captain_greenskin",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "5201",
@@ -121,6 +127,7 @@
     {
       "id": "dm_edwin_vancleef",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "5193",
@@ -143,6 +150,7 @@
     {
       "id": "dm_cookie",
       "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
       "items": [
         {
           "itemId": "5198",

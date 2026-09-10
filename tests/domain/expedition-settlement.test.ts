@@ -105,6 +105,66 @@ function forceAll(activity: ExpeditionActivity, outcome: "victory" | "defeat"): 
 }
 
 describe("expedition settlement", () => {
+  it("keeps completed Boss quest progress when the party wipes later", async () => {
+    const state = newState("quest-progress-before-wipe");
+    const participant = Object.values(state.members)[0]!;
+    const bossQuestId = asBrandedId<"QuestId">("rfc_returning_lost_satchel");
+    const clearQuestId = asBrandedId<"QuestId">("rfc_power_to_destroy");
+    for (const questId of [bossQuestId, clearQuestId]) {
+      participant.quests.entries[questId] = {
+        questId,
+        status: "accepted",
+        acceptedAt: 1_000,
+        encounterVictoryIds: [],
+      };
+    }
+    const activity = await startExpedition(state, [participant.id]);
+    forceAll(activity, "victory");
+    activity.runPlans[0]!.stages[1]!.successRoll = 0.99;
+    const service = new SettlementService(content);
+
+    service.settleDueActivities(state, activity.nextSettlementAt);
+    expect(participant.quests.entries[bossQuestId]).toMatchObject({
+      status: "completed",
+      encounterVictoryIds: ["oggleflint"],
+    });
+    const completedAt = participant.quests.entries[bossQuestId]!.completedAt;
+
+    service.settleDueActivities(state, activity.nextSettlementAt);
+    expect(activity.status).toBe("failed");
+    expect(participant.quests.entries[bossQuestId]!.completedAt).toBe(completedAt);
+    expect(participant.quests.entries[clearQuestId]!.status).toBe("accepted");
+  });
+
+  it("completes a dungeon-clear quest once across repeated runs and excludes nonparticipants", async () => {
+    const state = newState("quest-clear-repeat");
+    const [participant, absentMember] = Object.values(state.members);
+    const questId = asBrandedId<"QuestId">("rfc_power_to_destroy");
+    for (const member of [participant!, absentMember!]) {
+      member.quests.entries[questId] = {
+        questId,
+        status: "accepted",
+        acceptedAt: 1_000,
+        encounterVictoryIds: [],
+      };
+    }
+    const activity = await startExpedition(state, [participant!.id], 2);
+    forceAll(activity, "victory");
+    const service = new SettlementService(content);
+
+    for (let index = 0; index < 4; index += 1) {
+      service.settleDueActivities(state, activity.nextSettlementAt);
+    }
+    expect(participant!.quests.entries[questId]).toMatchObject({ status: "completed" });
+    const firstCompletedAt = participant!.quests.entries[questId]!.completedAt;
+    expect(absentMember!.quests.entries[questId]!.status).toBe("accepted");
+
+    service.settleDueActivities(state, Number.MAX_SAFE_INTEGER);
+    expect(activity.status).toBe("completed");
+    expect(participant!.quests.entries[questId]!.completedAt).toBe(firstCompletedAt);
+    expect(absentMember!.quests.entries[questId]!.status).toBe("accepted");
+  });
+
   it("skips absent rare nodes without rewards and settles spawned rare loot normally", async () => {
     const absentContent = contentWithRareTaragaman(0);
     const absentState = newState("absent-rare", absentContent);

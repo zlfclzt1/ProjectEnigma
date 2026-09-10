@@ -152,6 +152,28 @@ export function createExpeditionActivityHandler(
         runPlans.push(runPlan);
       }
       const firstStage = runPlans[0]!.stages[0]!;
+      const questSnapshots = request.participantIds.flatMap((memberId) => {
+        const member = context.state.members[memberId]!;
+        return Object.values(member.quests.entries).flatMap((progress) => {
+          if (!progress || progress.status !== "accepted") return [];
+          const quest = content.questById.get(progress.questId);
+          if (!quest || quest.dungeonId !== request.dungeonId) return [];
+          const encounterIds =
+            quest.completion.type === "encounter-victories" ? quest.completion.encounterIds : [];
+          return [
+            {
+              memberId,
+              questId: quest.id,
+              completion: structuredClone(quest.completion),
+              requiredOptionalNodeIds: dungeon.route.flatMap((node) =>
+                node.type === "optional" && encounterIds.includes(node.encounterId)
+                  ? [node.id]
+                  : [],
+              ),
+            },
+          ];
+        });
+      });
       return {
         id: activityId,
         type: "expedition",
@@ -185,6 +207,7 @@ export function createExpeditionActivityHandler(
           capabilities: previewResult.preview.capabilities,
         },
         runPlans,
+        questSnapshots,
       };
     },
   };

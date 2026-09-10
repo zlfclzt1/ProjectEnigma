@@ -10,6 +10,8 @@ import {
   type LegacyGameStateV6,
   type LegacyGameStateV7,
   type LegacyGameStateV8,
+  type LegacyGameStateV9,
+  type LegacyGameStateV10,
 } from "../../src/domain/game-state";
 import type { Member } from "../../src/domain/member/member";
 import { asBrandedId } from "../../src/domain/shared/ids";
@@ -33,6 +35,7 @@ export function createMemberFixture(overrides: Partial<Member> = {}): Member {
     riding: { skillRank: 0, learnedMountIds: [] },
     ...overrides,
     wishlist: overrides.wishlist ?? { entries: [] },
+    quests: overrides.quests ?? { entries: {} },
     joinedAt: overrides.joinedAt ?? 1_000,
   };
 }
@@ -97,6 +100,7 @@ export function createExpeditionActivityFixture(
         ],
       },
     ],
+    questSnapshots: [],
     ...overrides,
   };
 }
@@ -237,7 +241,7 @@ export function createLegacyGameStateV7Fixture(
 export function createLegacyGameStateV8Fixture(
   overrides: Partial<LegacyGameStateV8> = {},
 ): LegacyGameStateV8 {
-  const current = createGameStateFixture();
+  const current = createLegacyGameStateV9Fixture();
   const activities = Object.fromEntries(
     Object.entries(current.activities).map(([id, activity]) => {
       if (activity.type !== "expedition") return [id, activity];
@@ -257,6 +261,45 @@ export function createLegacyGameStateV8Fixture(
   return {
     ...current,
     saveVersion: 8,
+    activities,
+    ...overrides,
+  };
+}
+
+export function createLegacyGameStateV9Fixture(
+  overrides: Partial<LegacyGameStateV9> = {},
+): LegacyGameStateV9 {
+  const current = createLegacyGameStateV10Fixture();
+  const members = Object.fromEntries(
+    Object.entries(current.members).map(([id, member]) => {
+      const { quests: _quests, ...legacyMember } = member;
+      void _quests;
+      return [id, legacyMember];
+    }),
+  ) as LegacyGameStateV9["members"];
+  return {
+    ...current,
+    saveVersion: 9,
+    members,
+    ...overrides,
+  };
+}
+
+export function createLegacyGameStateV10Fixture(
+  overrides: Partial<LegacyGameStateV10> = {},
+): LegacyGameStateV10 {
+  const current = createGameStateFixture();
+  const activities = Object.fromEntries(
+    Object.entries(current.activities).map(([id, activity]) => {
+      if (activity.type !== "expedition") return [id, activity];
+      const { questSnapshots: _questSnapshots, ...legacyActivity } = activity;
+      void _questSnapshots;
+      return [id, legacyActivity];
+    }),
+  ) as LegacyGameStateV10["activities"];
+  return {
+    ...current,
+    saveVersion: 10,
     activities,
     ...overrides,
   };
