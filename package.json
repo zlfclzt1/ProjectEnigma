@@ -29,6 +29,9 @@
     "progression:simulate": "node --import tsx scripts/simulate-progression.ts",
     "progression:baseline:check": "node --import tsx scripts/simulate-progression.ts --check",
     "progression:baseline:write": "node --import tsx scripts/simulate-progression.ts --write",
+    "post-zulfarrak:simulate": "node --import tsx scripts/simulate-post-zulfarrak-progression.ts",
+    "post-zulfarrak:baseline:check": "node --import tsx scripts/simulate-post-zulfarrak-progression.ts --check",
+    "post-zulfarrak:baseline:write": "node --import tsx scripts/simulate-post-zulfarrak-progression.ts --write",
     "simulate:dungeons": "node --import tsx scripts/simulate-dungeons.ts 100000",
     "simulate:dungeon": "node --import tsx scripts/simulate-dungeon.ts"
   },
