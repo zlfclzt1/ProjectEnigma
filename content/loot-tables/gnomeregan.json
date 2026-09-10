@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对诺莫瑞根五个常规 Boss 与一个随机稀有 Boss 的专属装备池。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["lootTables[].guaranteedEquipmentDrops", "lootTables[].items[].weight"],
+        "reason": "拥有专属装备池的 Boss 保证掉落一件；首轮使用池内等权基线。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "lootTables": [
+    {
+      "id": "gnomeregan_grubbis",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [{ "itemId": "9445", "weight": 1 }]
+    },
+    {
+      "id": "gnomeregan_viscous_fallout",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "9454", "weight": 0.3333333333 },
+        { "itemId": "9452", "weight": 0.3333333333 },
+        { "itemId": "9453", "weight": 0.3333333334 }
+      ]
+    },
+    {
+      "id": "gnomeregan_electrocutioner_6000",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "9447", "weight": 0.3333333333 },
+        { "itemId": "9446", "weight": 0.3333333333 },
+        { "itemId": "9448", "weight": 0.3333333334 }
+      ]
+    },
+    {
+      "id": "gnomeregan_crowd_pummeler_9_60",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "9449", "weight": 0.5 },
+        { "itemId": "9450", "weight": 0.5 }
+      ]
+    },
+    {
+      "id": "gnomeregan_dark_iron_ambassador",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "9456", "weight": 0.3333333333 },
+        { "itemId": "9457", "weight": 0.3333333333 },
+        { "itemId": "9455", "weight": 0.3333333334 }
+      ]
+    },
+    {
+      "id": "gnomeregan_mekgineer_thermaplugg",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        { "itemId": "9458", "weight": 0.25 },
+        { "itemId": "9459", "weight": 0.25 },
+        { "itemId": "9461", "weight": 0.25 },
+        { "itemId": "9492", "weight": 0.25 }
+      ]
+    }
+  ]
+}

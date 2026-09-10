@@ -24,6 +24,12 @@
 | 死亡矿井（deadmines） | dm_captain_greenskin | required | 绿皮队长（dm_captain_greenskin） | boss_drop:dm_captain_greenskin | 1 | 5201 火石法杖、10403 黑暗迪菲亚腰带、5200 穿刺鱼叉 |
 | 死亡矿井（deadmines） | dm_edwin_vancleef | required | 艾德温·范克里夫（dm_edwin_vancleef） | boss_drop:dm_edwin_vancleef | 1 | 5193 兄弟会斗篷、5202 海盗的罩衫、10399 黑暗迪菲亚护甲、5191 残酷倒钩 |
 | 死亡矿井（deadmines） | dm_cookie | required | 曲奇（dm_cookie） | boss_drop:dm_cookie | 1 | 5198 曲奇的搅汤棒、5197 曲奇的吹火棍 |
+| 诺莫瑞根（gnomeregan） | gnomeregan_grubbis | required | 格鲁比斯（gnomeregan_grubbis） | boss_drop:gnomeregan_grubbis | 1 | 9445 格鲁比斯的爪子 |
+| 诺莫瑞根（gnomeregan） | gnomeregan_viscous_fallout | required | 粘性辐射尘（gnomeregan_viscous_fallout） | boss_drop:gnomeregan_viscous_fallout | 1 | 9454 酸性长靴、9452 水藤、9453 剧毒复仇者 |
+| 诺莫瑞根（gnomeregan） | gnomeregan_electrocutioner_6000 | required | 电刑器6000型（gnomeregan_electrocutioner_6000） | boss_drop:gnomeregan_electrocutioner_6000 | 1 | 9447 电刑器腿杆、9446 电刑器的腿、9448 蜘蛛坦克油布 |
+| 诺莫瑞根（gnomeregan） | gnomeregan_crowd_pummeler_9_60 | required | 群体打击者9-60（gnomeregan_crowd_pummeler_9_60） | boss_drop:gnomeregan_crowd_pummeler_9_60 | 1 | 9449 手动惩戒器、9450 侏儒机械人操作靴 |
+| 诺莫瑞根（gnomeregan） | gnomeregan_dark_iron_ambassador | rare（0.18） | 黑铁大师（gnomeregan_dark_iron_ambassador） | boss_drop:gnomeregan_dark_iron_ambassador | 1 | 9456 玻璃枪、9457 皇家外交官节杖、9455 使者腕轮 |
+| 诺莫瑞根（gnomeregan） | gnomeregan_mekgineer_thermaplugg | required | 麦克尼尔·瑟玛普拉格（gnomeregan_mekgineer_thermaplugg） | boss_drop:gnomeregan_mekgineer_thermaplugg | 1 | 9458 瑟玛普拉格的中央模组、9459 瑟玛普拉格的左臂、9461 充能齿轮、9492 电磁熔合激活器 |
 | 怒焰裂谷（ragefire_chasm） | oggleflint | required | 奥格弗林特（oggleflint） | 无装备掉落 | 0 | — |
 | 怒焰裂谷（ragefire_chasm） | taragaman_the_hungerer | required | 饥饿者塔拉加曼（taragaman_the_hungerer） | boss_drop:taragaman_the_hungerer | 1 | 14145 被诅咒的魔刃、14148 水晶腕轮、14149 地下斗篷 |
 | 怒焰裂谷（ragefire_chasm） | jergosh_the_invoker | required | 祈求者耶戈什（jergosh_the_invoker） | boss_drop:jergosh_the_invoker | 1 | 14151 咏唱之刃、14150 唤魔者长袍、14147 洞穴护腕 |
@@ -53,8 +59,8 @@
 
 ## 引用完整度
 
-- 副本路线节点：42。
-- 副本任务：8。
+- 副本路线节点：48。
+- 副本任务：11。
 - 套装：1。
 - 未被路线引用的掉落表：0。
 - 未被掉落、任务或套装引用的非初始装备：0。

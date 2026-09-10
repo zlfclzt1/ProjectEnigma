@@ -42,7 +42,7 @@ if (mode === "--write") {
     report,
     "掉落来源审计报告已变化；请显式运行 npm run loot-sources:audit:write。",
   );
-  console.log("掉落来源审计通过：当前四副本的 Boss、任务与占位来源已分类。");
+  console.log("掉落来源审计通过：当前副本的 Boss、任务与占位来源已分类。");
 } else {
   throw new Error(`未知参数：${mode}`);
 }

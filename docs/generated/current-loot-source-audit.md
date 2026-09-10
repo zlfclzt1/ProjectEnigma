@@ -1,4 +1,4 @@
-# 当前四副本掉落来源审计
+# 当前副本掉落来源审计
 
 生成日期：2026-09-09
 
@@ -6,12 +6,12 @@
 
 ## 汇总
 
-- 路线 Encounter：42。
-- 掉落表：33。
-- 掉落表分类：Boss 专属掉落 33，任务奖励 0，世界掉落 0，设计占位 0。
-- Encounter 引用分类：Boss 专属掉落 33，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 9。
-- 不同装备分类：Boss 专属掉落 82，任务奖励 0，世界掉落 0，设计占位 0。
-- 成员副本任务：8，不同任务奖励装备：17。
+- 路线 Encounter：48。
+- 掉落表：39。
+- 掉落表分类：Boss 专属掉落 39，任务奖励 0，世界掉落 0，设计占位 0。
+- Encounter 引用分类：Boss 专属掉落 39，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 9。
+- 不同装备分类：Boss 专属掉落 98，任务奖励 0，世界掉落 0，设计占位 0。
+- 成员副本任务：11，不同任务奖励装备：24。
 - Boss 掉落与任务奖励重复：0。
 - 未显式填写 `sourceType` 的 Boss 掉落表：0。
 - 未被路线 Encounter 引用的掉落表：0。
@@ -47,6 +47,17 @@
 | 绿皮队长（dm_captain_greenskin） | dm_captain_greenskin | Boss 专属掉落 | 1 | 5201 火石法杖、10403 黑暗迪菲亚腰带、5200 穿刺鱼叉 |
 | 艾德温·范克里夫（dm_edwin_vancleef） | dm_edwin_vancleef | Boss 专属掉落 | 1 | 5193 兄弟会斗篷、5202 海盗的罩衫、10399 黑暗迪菲亚护甲、5191 残酷倒钩 |
 | 曲奇（dm_cookie） | dm_cookie | Boss 专属掉落 | 1 | 5198 曲奇的搅汤棒、5197 曲奇的吹火棍 |
+
+### 诺莫瑞根（gnomeregan）
+
+| Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
+|---|---|---|---:|---|
+| 格鲁比斯（gnomeregan_grubbis） | gnomeregan_grubbis | Boss 专属掉落 | 1 | 9445 格鲁比斯的爪子 |
+| 粘性辐射尘（gnomeregan_viscous_fallout） | gnomeregan_viscous_fallout | Boss 专属掉落 | 1 | 9454 酸性长靴、9452 水藤、9453 剧毒复仇者 |
+| 电刑器6000型（gnomeregan_electrocutioner_6000） | gnomeregan_electrocutioner_6000 | Boss 专属掉落 | 1 | 9447 电刑器腿杆、9446 电刑器的腿、9448 蜘蛛坦克油布 |
+| 群体打击者9-60（gnomeregan_crowd_pummeler_9_60） | gnomeregan_crowd_pummeler_9_60 | Boss 专属掉落 | 1 | 9449 手动惩戒器、9450 侏儒机械人操作靴 |
+| 黑铁大师（gnomeregan_dark_iron_ambassador） | gnomeregan_dark_iron_ambassador | Boss 专属掉落 | 1 | 9456 玻璃枪、9457 皇家外交官节杖、9455 使者腕轮 |
+| 麦克尼尔·瑟玛普拉格（gnomeregan_mekgineer_thermaplugg） | gnomeregan_mekgineer_thermaplugg | Boss 专属掉落 | 1 | 9458 瑟玛普拉格的中央模组、9459 瑟玛普拉格的左臂、9461 充能齿轮、9492 电磁熔合激活器 |
 
 ### 怒焰裂谷（ragefire_chasm）
 
@@ -101,6 +112,9 @@
 | 黑暗深渊（blackfathom_deeps） | 黑暗深渊的罪恶（bfd_blackfathom_villainy） | 7001 墓碑节杖、7002 极光圆盾 |
 | 黑暗深渊（blackfathom_deeps） | 暮光之锤的末日（bfd_twilight_falls） | 6998 云光长靴、7000 赤木束带 |
 | 黑暗深渊（blackfathom_deeps） | 阿奎尼斯男爵（bfd_baron_aquanis） | 16886 逃犯弯刀、16887 女巫之指 |
+| 诺莫瑞根（gnomeregan） | 大叛乱（gnomeregan_the_grand_betrayal） | 9623 西维纳德长袍、9624 疾跑者工装裤、9625 双重加固护腿 |
+| 诺莫瑞根（gnomeregan） | 数据救援（gnomeregan_data_rescue） | 9605 修理工的斗篷、9604 机械师的管钳 |
+| 诺莫瑞根（gnomeregan） | 陀螺钻挖掘器（gnomeregan_gyrodrillmatic_excavationators） | 9608 肖尼的拆卸工具、9609 希里的手套 |
 | 怒焰裂谷（ragefire_chasm） | 归还背包（rfc_returning_lost_satchel） | 15452 羽珠护腕、15453 草原狮护腕 |
 | 怒焰裂谷（ragefire_chasm） | 毁灭之力（rfc_power_to_destroy） | 15449 苍白长裤、15450 泥泞护腿、15451 石像鬼护腿 |
 | 暴风城监狱（the_stockade） | 伸张正义（stockade_what_comes_around） | 3400 磷铝长剑、1317 硬根法杖 |
@@ -110,6 +124,6 @@
 ## 审计结论
 
 - 当前没有任务奖励或世界掉落被路线 Encounter 当作 Boss 掉落引用。
-- 当前四副本 Boss 掉落表均已显式标记为 `boss_drop`，不再依赖兼容推断。
+- 当前副本 Boss 掉落表均已显式标记为 `boss_drop`，不再依赖兼容推断。
 - 当前五件真实任务奖励仅由成员副本任务引用，与所有 Boss 掉落池无重复。
 - 本报告不能替代外部资料核对；新增内容仍须按经典内容来源政策保存物品与任务来源。

@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/gnomeregan-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对诺莫瑞根五个常规 Boss、黑铁大师随机稀有 Boss 与完整路线。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "将原版机械区与辐射区路线压缩为单条可安排的放置路线，保留随机稀有 Boss。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["minimumLevel", "recommendedLevel", "duration", "probability", "route"],
+        "reason": "按 34 级阶段的长路线副本校准首通与重复刷装备节奏。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "dungeons": [
+    {
+      "id": "gnomeregan",
+      "name": { "zhCN": "诺莫瑞根", "enUS": "Gnomeregan" },
+      "minimumLevel": 24,
+      "recommendedLevel": 34,
+      "defaultUnlocked": false,
+      "unlock": { "requiredDungeonIds": ["the_stockade"] },
+      "members": { "minimum": 1, "maximum": 5, "recommended": 5 },
+      "duration": { "baseSeconds": 1660, "minimumRatio": 0.5, "maximumRatio": 1.8 },
+      "probability": {
+        "minimum": 0.05,
+        "maximum": 0.99,
+        "base": 0.05,
+        "readinessMultiplier": 0.96,
+        "surplusEffect": 0.5,
+        "geometricWeight": 0.7,
+        "bottleneckWeight": 0.3,
+        "overpowerThreshold": 1.5
+      },
+      "combatTuning": {
+        "bossProbabilityMaximum": 0.98,
+        "requirementMultipliers": { "tank": 0.94, "healing": 0.95, "damage": 0.94 }
+      },
+      "route": [
+        { "id": "gnomeregan_grubbis", "type": "required", "encounterId": "gnomeregan_grubbis" },
+        {
+          "id": "gnomeregan_viscous_fallout",
+          "type": "required",
+          "encounterId": "gnomeregan_viscous_fallout"
+        },
+        {
+          "id": "gnomeregan_electrocutioner_6000",
+          "type": "required",
+          "encounterId": "gnomeregan_electrocutioner_6000"
+        },
+        {
+          "id": "gnomeregan_crowd_pummeler_9_60",
+          "type": "required",
+          "encounterId": "gnomeregan_crowd_pummeler_9_60"
+        },
+        {
+          "id": "gnomeregan_dark_iron_ambassador",
+          "type": "rare",
+          "encounterId": "gnomeregan_dark_iron_ambassador",
+          "spawnProbability": 0.18
+        },
+        {
+          "id": "gnomeregan_mekgineer_thermaplugg",
+          "type": "required",
+          "encounterId": "gnomeregan_mekgineer_thermaplugg"
+        }
+      ]
+    }
+  ]
+}

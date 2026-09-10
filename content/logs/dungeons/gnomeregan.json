@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "诺莫瑞根副本日志；只描述结算事实与机制反馈。"
+      }
+    ]
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "gnomeregan_grubbis_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "gnomeregan_grubbis" },
+      "availableParameters": ["member", "tank"],
+      "templates": [
+        "格鲁比斯带来的小怪潮退去，{tank} 终于能把盾牌放下几秒。",
+        "钻机停转，{member} 开始清点这次战斗有没有把自己的眉毛一起掉下来。"
+      ]
+    },
+    {
+      "id": "gnomeregan_electrocutioner_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "gnomeregan_electrocutioner_6000" },
+      "availableParameters": ["healer", "member"],
+      "templates": [
+        "电刑器6000型熄火，{healer} 宣布今天暂时不再接受电疗。",
+        "所有人都躲过了最后一跳，{member} 仍然坚持那是预判而不是运气。"
+      ]
+    },
+    {
+      "id": "gnomeregan_thermaplugg_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "gnomeregan_mekgineer_thermaplugg" },
+      "availableParameters": ["tank", "member"],
+      "templates": [
+        "瑟玛普拉格倒下，{tank} 把最后一枚炸弹从公会仓库里划掉。",
+        "控制台终于安静，{member} 立即开始询问谁拿到了中央模组。"
+      ]
+    }
+  ]
+}

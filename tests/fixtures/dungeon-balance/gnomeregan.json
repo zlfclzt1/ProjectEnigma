@@ -1,0 +1,270 @@
+{
+  "dungeonId": "gnomeregan",
+  "samplesPerScenario": 100000,
+  "scenarios": {
+    "standard": {
+      "required": {
+        "level": 34,
+        "simulatedRuns": 100000,
+        "clearRate": 0.83124,
+        "previewClearProbability": 0.8313149677338487,
+        "durationSeconds": 1314.8,
+        "wipeCounts": {
+          "gnomeregan_viscous_fallout": 1994,
+          "gnomeregan_mekgineer_thermaplugg": 7581,
+          "gnomeregan_crowd_pummeler_9_60": 3301,
+          "gnomeregan_electrocutioner_6000": 1971,
+          "gnomeregan_grubbis": 2029
+        }
+      },
+      "with-optional": {
+        "level": 34,
+        "simulatedRuns": 100000,
+        "clearRate": 0.83903,
+        "previewClearProbability": 0.8400627860775393,
+        "durationSeconds": 1328.2,
+        "wipeCounts": {
+          "gnomeregan_mekgineer_thermaplugg": 6560,
+          "gnomeregan_electrocutioner_6000": 2193,
+          "gnomeregan_crowd_pummeler_9_60": 2248,
+          "gnomeregan_viscous_fallout": 3020,
+          "gnomeregan_grubbis": 2076
+        }
+      },
+      "with-rare": {
+        "level": 34,
+        "simulatedRuns": 100000,
+        "clearRate": 0.81053,
+        "previewClearProbability": 0.8098039184286338,
+        "durationSeconds": 1548.4,
+        "wipeCounts": {
+          "gnomeregan_viscous_fallout": 1944,
+          "gnomeregan_electrocutioner_6000": 1881,
+          "gnomeregan_dark_iron_ambassador": 1816,
+          "gnomeregan_mekgineer_thermaplugg": 8322,
+          "gnomeregan_crowd_pummeler_9_60": 2924,
+          "gnomeregan_grubbis": 2060
+        }
+      }
+    },
+    "no-tank": {
+      "required": {
+        "level": 34,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 3.1250000000000013e-7,
+        "durationSeconds": 1470.2,
+        "wipeCounts": {
+          "gnomeregan_grubbis": 94935,
+          "gnomeregan_viscous_fallout": 4823,
+          "gnomeregan_electrocutioner_6000": 231,
+          "gnomeregan_crowd_pummeler_9_60": 11
+        }
+      },
+      "with-optional": {
+        "level": 34,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 3.1250000000000013e-7,
+        "durationSeconds": 1473.4,
+        "wipeCounts": {
+          "gnomeregan_grubbis": 95023,
+          "gnomeregan_viscous_fallout": 4715,
+          "gnomeregan_electrocutioner_6000": 253,
+          "gnomeregan_crowd_pummeler_9_60": 9
+        }
+      },
+      "with-rare": {
+        "level": 34,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.5625000000000006e-8,
+        "durationSeconds": 1666.2,
+        "wipeCounts": {
+          "gnomeregan_grubbis": 95037,
+          "gnomeregan_viscous_fallout": 4719,
+          "gnomeregan_electrocutioner_6000": 234,
+          "gnomeregan_dark_iron_ambassador": 1,
+          "gnomeregan_crowd_pummeler_9_60": 9
+        }
+      }
+    },
+    "no-healing": {
+      "required": {
+        "level": 34,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 3.1250000000000013e-7,
+        "durationSeconds": 1444.8,
+        "wipeCounts": {
+          "gnomeregan_grubbis": 94919,
+          "gnomeregan_electrocutioner_6000": 259,
+          "gnomeregan_viscous_fallout": 4814,
+          "gnomeregan_crowd_pummeler_9_60": 8
+        }
+      },
+      "with-optional": {
+        "level": 34,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 3.1250000000000013e-7,
+        "durationSeconds": 1458.4,
+        "wipeCounts": {
+          "gnomeregan_grubbis": 94912,
+          "gnomeregan_viscous_fallout": 4837,
+          "gnomeregan_electrocutioner_6000": 237,
+          "gnomeregan_crowd_pummeler_9_60": 13,
+          "gnomeregan_mekgineer_thermaplugg": 1
+        }
+      },
+      "with-rare": {
+        "level": 34,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.5625000000000006e-8,
+        "durationSeconds": 1679.2,
+        "wipeCounts": {
+          "gnomeregan_grubbis": 95014,
+          "gnomeregan_viscous_fallout": 4740,
+          "gnomeregan_electrocutioner_6000": 234,
+          "gnomeregan_crowd_pummeler_9_60": 12
+        }
+      }
+    },
+    "overlevel": {
+      "required": {
+        "level": 31,
+        "simulatedRuns": 100000,
+        "clearRate": 0.79256,
+        "previewClearProbability": 0.7903808940258206,
+        "durationSeconds": 1403.6,
+        "wipeCounts": {
+          "gnomeregan_viscous_fallout": 3924,
+          "gnomeregan_mekgineer_thermaplugg": 9039,
+          "gnomeregan_electrocutioner_6000": 2501,
+          "gnomeregan_crowd_pummeler_9_60": 3264,
+          "gnomeregan_grubbis": 2016
+        }
+      },
+      "with-optional": {
+        "level": 31,
+        "simulatedRuns": 100000,
+        "clearRate": 0.69977,
+        "previewClearProbability": 0.7014222326227115,
+        "durationSeconds": 1437.2,
+        "wipeCounts": {
+          "gnomeregan_crowd_pummeler_9_60": 4911,
+          "gnomeregan_mekgineer_thermaplugg": 12157,
+          "gnomeregan_viscous_fallout": 6038,
+          "gnomeregan_electrocutioner_6000": 4762,
+          "gnomeregan_grubbis": 2155
+        }
+      },
+      "with-rare": {
+        "level": 31,
+        "simulatedRuns": 100000,
+        "clearRate": 0.76414,
+        "previewClearProbability": 0.7657293511265426,
+        "durationSeconds": 1588.4,
+        "wipeCounts": {
+          "gnomeregan_dark_iron_ambassador": 2357,
+          "gnomeregan_crowd_pummeler_9_60": 4205,
+          "gnomeregan_mekgineer_thermaplugg": 8267,
+          "gnomeregan_electrocutioner_6000": 2976,
+          "gnomeregan_viscous_fallout": 3773,
+          "gnomeregan_grubbis": 2008
+        }
+      }
+    },
+    "max-level": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.90623,
+        "previewClearProbability": 0.9076102694399999,
+        "durationSeconds": 1116.8,
+        "wipeCounts": {
+          "gnomeregan_crowd_pummeler_9_60": 1907,
+          "gnomeregan_electrocutioner_6000": 1938,
+          "gnomeregan_grubbis": 1649,
+          "gnomeregan_mekgineer_thermaplugg": 1858,
+          "gnomeregan_viscous_fallout": 2025
+        }
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.90775,
+        "previewClearProbability": 0.9076102694399998,
+        "durationSeconds": 1100.6,
+        "wipeCounts": {
+          "gnomeregan_mekgineer_thermaplugg": 1812,
+          "gnomeregan_crowd_pummeler_9_60": 1897,
+          "gnomeregan_viscous_fallout": 2059,
+          "gnomeregan_grubbis": 1551,
+          "gnomeregan_electrocutioner_6000": 1906
+        }
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.88911,
+        "previewClearProbability": 0.8894580640511999,
+        "durationSeconds": 1296,
+        "wipeCounts": {
+          "gnomeregan_dark_iron_ambassador": 1854,
+          "gnomeregan_electrocutioner_6000": 1882,
+          "gnomeregan_crowd_pummeler_9_60": 1899,
+          "gnomeregan_viscous_fallout": 2016,
+          "gnomeregan_grubbis": 1570,
+          "gnomeregan_mekgineer_thermaplugg": 1868
+        }
+      }
+    },
+    "speed-run": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.90688,
+        "previewClearProbability": 0.9076102694399998,
+        "durationSeconds": 1116.4,
+        "wipeCounts": {
+          "gnomeregan_electrocutioner_6000": 1991,
+          "gnomeregan_viscous_fallout": 1978,
+          "gnomeregan_grubbis": 1578,
+          "gnomeregan_crowd_pummeler_9_60": 1869,
+          "gnomeregan_mekgineer_thermaplugg": 1896
+        }
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.91424,
+        "previewClearProbability": 0.9150645100799999,
+        "durationSeconds": 1105.4,
+        "wipeCounts": {
+          "gnomeregan_mekgineer_thermaplugg": 1908,
+          "gnomeregan_grubbis": 1226,
+          "gnomeregan_viscous_fallout": 1604,
+          "gnomeregan_crowd_pummeler_9_60": 1926,
+          "gnomeregan_electrocutioner_6000": 1912
+        }
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.8906,
+        "previewClearProbability": 0.8894580640511999,
+        "durationSeconds": 1335.6,
+        "wipeCounts": {
+          "gnomeregan_grubbis": 1584,
+          "gnomeregan_mekgineer_thermaplugg": 1760,
+          "gnomeregan_dark_iron_ambassador": 1813,
+          "gnomeregan_electrocutioner_6000": 1938,
+          "gnomeregan_viscous_fallout": 1922,
+          "gnomeregan_crowd_pummeler_9_60": 1923
+        }
+      }
+    }
+  }
+}

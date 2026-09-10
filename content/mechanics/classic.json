@@ -102,6 +102,86 @@
         "enUS": "Without a magic dispel, Hamhock's chain lightning adds healing pressure."
       },
       "reportTag": "stockade_chain_lightning"
+    },
+    {
+      "id": "gnomeregan_cave_swarm",
+      "name": { "zhCN": "洞穴虫群", "enUS": "Cave Swarm" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "crowd_control", "minimumValue": 1 }],
+      "missingEffects": {
+        "tankMultiplier": 1.1,
+        "probabilityModifier": -0.03,
+        "durationMultiplier": 1.05
+      },
+      "description": {
+        "zhCN": "缺少群体控制会让格鲁比斯事件中的小怪持续增加坦克压力。",
+        "enUS": "Without crowd control, Grubbis's event keeps adding pressure to the tank."
+      },
+      "reportTag": "gnomeregan_cave_swarm"
+    },
+    {
+      "id": "gnomeregan_radiation_poison",
+      "name": { "zhCN": "辐射毒素", "enUS": "Radiation Poison" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "magic_dispel", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.14,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.05
+      },
+      "description": {
+        "zhCN": "缺少驱散会让粘性辐射尘的毒性效果持续更久。",
+        "enUS": "Without a dispel, Viscous Fallout's toxic effects linger longer."
+      },
+      "reportTag": "gnomeregan_radiation_poison"
+    },
+    {
+      "id": "gnomeregan_electrical_overload",
+      "name": { "zhCN": "电荷过载", "enUS": "Electrical Overload" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "magic_dispel", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.12,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.05
+      },
+      "description": {
+        "zhCN": "缺少魔法驱散会放大电刑器的链式电击压力。",
+        "enUS": "Without a magic dispel, Electrocutioner's chain shock hits harder."
+      },
+      "reportTag": "gnomeregan_electrical_overload"
+    },
+    {
+      "id": "gnomeregan_pummeler_impact",
+      "name": { "zhCN": "机械重击", "enUS": "Pummeler Impact" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "crowd_control", "minimumValue": 1 }],
+      "missingEffects": {
+        "tankMultiplier": 1.14,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "缺少控制与稳定承伤能力会放大群体打击者的重击压力。",
+        "enUS": "Without control and stable mitigation, Crowd Pummeler's impacts hit harder."
+      },
+      "reportTag": "gnomeregan_pummeler_impact"
+    },
+    {
+      "id": "gnomeregan_thermaplugg_bombs",
+      "name": { "zhCN": "炸弹与打断", "enUS": "Bombs and Interrupts" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "interrupt", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.13,
+        "probabilityModifier": -0.05,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "缺少打断会让瑟玛普拉格的炸弹与范围伤害更难处理。",
+        "enUS": "Without interrupts, Thermaplugg's bombs and area damage are harder to control."
+      },
+      "reportTag": "gnomeregan_thermaplugg_bombs"
     }
   ]
 }

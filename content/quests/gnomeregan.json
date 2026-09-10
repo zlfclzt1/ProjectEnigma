@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/classic-wow-gnomeregan-dungeon-quests",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对 The Grand Betrayal、Data Rescue、Gyrodrillmatic Excavationators 的任务目标与装备奖励。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "将阵营分支、护送和材料收集压缩为 Boss 胜利或完整通关条件。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["completion", "rewards.experienceFraction", "rewards.funds"],
+        "reason": "只保留能够由副本活动确定结算的任务目标，装备奖励仍与真实任务奖励对应。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "gnomeregan_the_grand_betrayal",
+      "name": { "zhCN": "大叛乱" },
+      "description": { "zhCN": "击败麦克尼尔·瑟玛普拉格，结束诺莫瑞根的机械叛乱。" },
+      "dungeonId": "gnomeregan",
+      "eligibility": { "minimumLevel": 30, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["gnomeregan_mekgineer_thermaplugg"]
+      },
+      "rewards": {
+        "experienceFraction": 0.8,
+        "funds": 0,
+        "itemChoiceIds": ["9623", "9624", "9625"]
+      }
+    },
+    {
+      "id": "gnomeregan_data_rescue",
+      "name": { "zhCN": "数据救援" },
+      "description": { "zhCN": "完整通关诺莫瑞根，带回机械区的数据记录。" },
+      "dungeonId": "gnomeregan",
+      "eligibility": { "minimumLevel": 29, "allowedClassIds": [] },
+      "completion": { "type": "dungeon-clear" },
+      "rewards": { "experienceFraction": 0.75, "funds": 0, "itemChoiceIds": ["9605", "9604"] }
+    },
+    {
+      "id": "gnomeregan_gyrodrillmatic_excavationators",
+      "name": { "zhCN": "陀螺钻挖掘器" },
+      "description": { "zhCN": "击败机械区的主要守卫，回收可用的挖掘工具。" },
+      "dungeonId": "gnomeregan",
+      "eligibility": { "minimumLevel": 29, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["gnomeregan_crowd_pummeler_9_60", "gnomeregan_mekgineer_thermaplugg"]
+      },
+      "rewards": { "experienceFraction": 0.75, "funds": 0, "itemChoiceIds": ["9608", "9609"] }
+    }
+  ]
+}
