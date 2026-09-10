@@ -27,12 +27,15 @@ import { sellLootCommand } from "../application/commands/sell-loot";
 import { getLootView } from "../application/queries/get-loot-view";
 import { getCombatReportsView } from "../application/queries/get-combat-reports-view";
 import { getGuildUpgradeView } from "../application/queries/get-guild-upgrade-view";
+import { getItemCatalogView } from "../application/queries/get-item-catalog-view";
 import { purchaseGuildUpgradeCommand } from "../application/commands/purchase-guild-upgrade";
+import { claimCollectionRewardCommand } from "../application/commands/claim-collection-reward";
 import type { GameCommand, GameSession } from "../application/services/game-session";
 import type { ContentRegistry } from "../content/registry";
 import type { GameState } from "../domain/game-state";
 import type {
   CandidateId,
+  CollectionRewardId,
   CombatReportId,
   DungeonId,
   GuildUpgradeId,
@@ -132,6 +135,9 @@ export const useGameStore = defineStore("game", () => {
   );
   const guildUpgrades = computed(() =>
     stateSnapshot.value && content ? getGuildUpgradeView(stateSnapshot.value, content) : null,
+  );
+  const itemCatalog = computed(() =>
+    stateSnapshot.value && content ? getItemCatalogView(stateSnapshot.value, content) : null,
   );
 
   function refreshSnapshot(): void {
@@ -294,6 +300,13 @@ export const useGameStore = defineStore("game", () => {
     return execute(purchaseGuildUpgradeCommand(content, upgradeId));
   }
 
+  async function claimCollectionReward(
+    rewardId: CollectionRewardId,
+  ): Promise<GameCommandOutcome<unknown>> {
+    if (!content) return unavailableOutcome("claim-collection-reward");
+    return execute(claimCollectionRewardCommand(content, rewardId));
+  }
+
   function dungeonPlanning(
     dungeonId: DungeonId | null,
     memberIds: readonly MemberId[],
@@ -364,6 +377,7 @@ export const useGameStore = defineStore("game", () => {
     loot,
     combatReports,
     guildUpgrades,
+    itemCatalog,
     initialize,
     execute,
     tick,
@@ -374,6 +388,7 @@ export const useGameStore = defineStore("game", () => {
     respecMember,
     dismissMember,
     purchaseGuildUpgrade,
+    claimCollectionReward,
     dungeonPlanning,
     startExpedition,
     assignLoot,

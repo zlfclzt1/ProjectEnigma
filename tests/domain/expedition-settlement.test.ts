@@ -106,6 +106,11 @@ describe("expedition settlement", () => {
     expect(state.guild.funds).toBe(fundsBefore + 10 + 20);
     expect(Object.values(state.pendingLoot)).toHaveLength(1);
     expect(Object.values(state.itemInstances)).toHaveLength(86);
+    const acquiredInstance = state.itemInstances[first.settled[0]!.itemInstanceIds[0]!]!;
+    expect(state.collection.items[acquiredInstance.definitionId]).toEqual({
+      acquisitionCount: 1,
+      seenRandomSuffixIds: acquiredInstance.randomSuffixId ? [acquiredInstance.randomSuffixId] : [],
+    });
     expect(
       Object.values(state.members).some(
         (member, index) => member.progression.experience > experienceBefore[index]!,
@@ -118,6 +123,7 @@ describe("expedition settlement", () => {
       items: structuredClone(state.itemInstances),
       victories: structuredClone(state.history.encounterVictoryCounts),
       report: structuredClone(firstReport),
+      collection: structuredClone(state.collection),
     };
     expect(service.settleDueActivities(state, first.settled[0]!.settledAt).settled).toEqual([]);
     expect(state.guild.funds).toBe(rewardSnapshot.funds);
@@ -125,6 +131,7 @@ describe("expedition settlement", () => {
     expect(state.itemInstances).toEqual(rewardSnapshot.items);
     expect(state.history.encounterVictoryCounts).toEqual(rewardSnapshot.victories);
     expect(activity.runPlans[0]!.stages[0]!.report).toEqual(rewardSnapshot.report);
+    expect(state.collection).toEqual(rewardSnapshot.collection);
   });
 
   it("keeps earlier boss experience, funds, and loot when the party wipes later", async () => {
@@ -242,6 +249,7 @@ describe("expedition settlement", () => {
     expect(summary.settled.every((event) => event.itemInstanceIds.length === 0)).toBe(true);
     expect(Object.values(state.itemInstances)).toHaveLength(initialItemCount);
     expect(Object.values(state.pendingLoot)).toHaveLength(0);
+    expect(state.collection.items).toEqual({});
     expect(state.guild.funds).toBeGreaterThan(initialFunds);
     expect(
       members.every(

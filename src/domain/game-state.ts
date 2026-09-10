@@ -1,4 +1,5 @@
 import type { Activity } from "./activity/activity";
+import type { CollectionState } from "./collection/item-collection";
 import type { ItemInstance, PendingLoot } from "./equipment/item-instance";
 import type { GuildState, HistorySummary, RecruitmentState } from "./guild/guild";
 import type { GuildBank } from "./inventory/guild-bank";
@@ -14,7 +15,7 @@ import type {
 } from "./shared/ids";
 import type { IdGeneratorState, RandomState } from "./shared/runtime-state";
 
-export const GAME_STATE_SAVE_VERSION = 4 as const;
+export const GAME_STATE_SAVE_VERSION = 5 as const;
 
 export interface GameState {
   slotId: SaveSlotId;
@@ -28,6 +29,7 @@ export interface GameState {
   itemInstances: Record<ItemInstanceId, ItemInstance>;
   activities: Record<ActivityId, Activity>;
   pendingLoot: Record<PendingLootId, PendingLoot>;
+  collection: CollectionState;
   guildBank: GuildBank;
   history: HistorySummary;
   random: RandomState;
@@ -38,7 +40,14 @@ export interface GameState {
 
 export type LegacyItemInstanceV3 = Omit<ItemInstance, "randomSuffixId">;
 
-export interface LegacyGameStateV3 extends Omit<GameState, "saveVersion" | "itemInstances"> {
+export interface LegacyGameStateV4 extends Omit<GameState, "saveVersion" | "collection"> {
+  saveVersion: 4;
+}
+
+export interface LegacyGameStateV3 extends Omit<
+  LegacyGameStateV4,
+  "saveVersion" | "itemInstances"
+> {
   saveVersion: 3;
   itemInstances: Record<ItemInstanceId, LegacyItemInstanceV3>;
 }
@@ -58,4 +67,5 @@ export interface LegacyGameStateV2 extends Omit<
   history: LegacyHistorySummaryV2;
 }
 
-export type PersistedGameState = GameState | LegacyGameStateV3 | LegacyGameStateV2;
+export type PersistedGameState =
+  GameState | LegacyGameStateV4 | LegacyGameStateV3 | LegacyGameStateV2;

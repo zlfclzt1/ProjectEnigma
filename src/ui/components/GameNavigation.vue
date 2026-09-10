@@ -10,6 +10,7 @@ import { RouterLink } from "vue-router";
     <RouterLink to="/dungeons">副本组队</RouterLink>
     <RouterLink to="/activities">活动进度</RouterLink>
     <RouterLink to="/loot">装备分配</RouterLink>
+    <RouterLink to="/catalog">装备图鉴</RouterLink>
     <RouterLink to="/reports">战斗记录</RouterLink>
   </nav>
 </template>

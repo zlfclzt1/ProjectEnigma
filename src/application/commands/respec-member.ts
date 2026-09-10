@@ -1,6 +1,7 @@
 import type { Clock } from "../ports/clock";
 import type { GameCommand } from "../services/game-session";
 import type { ContentRegistry } from "../../content/registry";
+import { recordAcquiredItem, type CollectionState } from "../../domain/collection/item-collection";
 import { evaluateEquipEligibility } from "../../domain/equipment/equip-rules";
 import { EQUIPMENT_SLOTS, type EquipmentSlot } from "../../domain/equipment/equipment-slot";
 import type { ItemInstance } from "../../domain/equipment/item-instance";
@@ -77,7 +78,13 @@ export function respecMemberCommand(
         delete draft.itemInstances[instance.id];
       }
 
-      fillMissingStarterEquipment(member, draft.itemInstances, dependencies.content, context);
+      fillMissingStarterEquipment(
+        member,
+        draft.itemInstances,
+        draft.collection,
+        dependencies.content,
+        context,
+      );
       draft.guild.funds = draft.guild.funds - RESPEC_COST + saleProceeds;
       draft.ids = ids.snapshot();
       return { changed: true, soldItemInstanceIds, saleProceeds };
@@ -88,6 +95,7 @@ export function respecMemberCommand(
 function fillMissingStarterEquipment(
   member: Member,
   itemInstances: GameState["itemInstances"] & Record<ItemInstanceId, ItemInstance>,
+  collection: CollectionState,
   content: ContentRegistry,
   context: MemberFactoryContext,
 ): void {
@@ -100,6 +108,7 @@ function fillMissingStarterEquipment(
     }
     const starter = createStarterItemForMember(context, member.id, member.identity.classId, slot);
     itemInstances[starter.id] = starter;
+    recordAcquiredItem(collection, starter, content);
     member.equipment[slot] = starter.id;
   }
 }

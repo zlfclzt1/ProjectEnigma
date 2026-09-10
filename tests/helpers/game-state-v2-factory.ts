@@ -5,6 +5,7 @@ import {
   type GameState,
   type LegacyGameStateV2,
   type LegacyGameStateV3,
+  type LegacyGameStateV4,
 } from "../../src/domain/game-state";
 import type { Member } from "../../src/domain/member/member";
 import { asBrandedId } from "../../src/domain/shared/ids";
@@ -117,6 +118,7 @@ export function createGameStateFixture(overrides: Partial<GameState> = {}): Game
     itemInstances: { [item.id]: item },
     activities: { [activity.id]: activity },
     pendingLoot: {},
+    collection: { items: {}, claimedRewardIds: [] },
     guildBank: { stackCounts: {}, equipmentInstanceIds: [] },
     history: {
       completedActivityCount: 0,
@@ -151,10 +153,23 @@ export function createLegacyGameStateV2Fixture(
   };
 }
 
+export function createLegacyGameStateV4Fixture(
+  overrides: Partial<LegacyGameStateV4> = {},
+): LegacyGameStateV4 {
+  const current = createGameStateFixture();
+  const { collection: _collection, ...legacy } = current;
+  void _collection;
+  return {
+    ...legacy,
+    saveVersion: 4,
+    ...overrides,
+  };
+}
+
 export function createLegacyGameStateV3Fixture(
   overrides: Partial<LegacyGameStateV3> = {},
 ): LegacyGameStateV3 {
-  const current = createGameStateFixture();
+  const current = createLegacyGameStateV4Fixture();
   const itemInstances = Object.fromEntries(
     Object.entries(current.itemInstances).map(([id, instance]) => {
       const { randomSuffixId: _randomSuffixId, ...legacyInstance } = instance;

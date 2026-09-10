@@ -2,6 +2,7 @@ import type { Clock } from "../../application/ports/clock";
 import type { IdGenerator } from "../../application/ports/id-generator";
 import type { RandomSource } from "../../application/ports/random-source";
 import type { ContentRegistry } from "../../content/registry";
+import { createEmptyCollectionState, recordAcquiredItem } from "../collection/item-collection";
 import type { ItemInstance } from "../equipment/item-instance";
 import { GAME_STATE_SAVE_VERSION, type GameState } from "../game-state";
 import { createCandidate, createMember, type MemberFactoryContext } from "../member/member-factory";
@@ -46,11 +47,15 @@ export function createNewGame(
   const members: Record<MemberId, Member> = {};
   const candidates: Record<CandidateId, Candidate> = {};
   const itemInstances: Record<ItemInstanceId, ItemInstance> = {};
+  const collection = createEmptyCollectionState();
 
   for (const forcedRole of INITIAL_ROLES) {
     const generated = createMember(factoryContext, { forcedRole, allowHidden: false });
     members[generated.member.id] = generated.member;
-    for (const item of generated.itemInstances) itemInstances[item.id] = item;
+    for (const item of generated.itemInstances) {
+      itemInstances[item.id] = item;
+      recordAcquiredItem(collection, item, dependencies.content);
+    }
   }
   for (let index = 0; index < 3; index += 1) {
     const candidate = createCandidate(factoryContext);
@@ -78,6 +83,7 @@ export function createNewGame(
     itemInstances,
     activities: {},
     pendingLoot: {},
+    collection,
     guildBank: { stackCounts: {}, equipmentInstanceIds: [] },
     history: {
       completedActivityCount: 0,

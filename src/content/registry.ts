@@ -7,7 +7,9 @@ import {
   type RawContentModules,
 } from "./loader";
 import type { DungeonDefinition, EncounterDefinition, LootTable } from "./schemas/dungeon";
+import type { CollectionRewardDefinition } from "./schemas/collection-reward";
 import type { ItemDefinition } from "./schemas/item";
+import type { ItemSetDefinition } from "./schemas/item-set";
 import type { ItemSuffixDefinition } from "./schemas/item-suffix";
 import type { GuildUpgradeDefinition } from "./schemas/guild-upgrade";
 import type { LogTemplateGroup } from "./schemas/log-template";
@@ -172,6 +174,8 @@ function validateDisplayNames(loaded: LoadedContent, issues: ContentValidationIs
     ...loaded.hiddenCharacters,
     ...loaded.guildUpgrades,
     ...loaded.items,
+    ...loaded.itemSets,
+    ...loaded.collectionRewards,
     ...loaded.dungeons,
     ...loaded.encounters,
   ];
@@ -197,7 +201,9 @@ export class ContentRegistry {
   readonly hiddenCharacters: readonly HiddenCharacterDefinition[];
   readonly guildUpgrades: readonly GuildUpgradeDefinition[];
   readonly items: readonly ItemDefinition[];
+  readonly itemSets: readonly ItemSetDefinition[];
   readonly itemSuffixes: readonly ItemSuffixDefinition[];
+  readonly collectionRewards: readonly CollectionRewardDefinition[];
   readonly dungeons: readonly DungeonDefinition[];
   readonly encounters: readonly EncounterDefinition[];
   readonly lootTables: readonly LootTable[];
@@ -215,7 +221,12 @@ export class ContentRegistry {
   >;
   readonly guildUpgradeById: ReadonlyMap<GuildUpgradeDefinition["id"], GuildUpgradeDefinition>;
   readonly itemById: ReadonlyMap<ItemDefinition["id"], ItemDefinition>;
+  readonly itemSetById: ReadonlyMap<ItemSetDefinition["id"], ItemSetDefinition>;
   readonly itemSuffixById: ReadonlyMap<ItemSuffixDefinition["id"], ItemSuffixDefinition>;
+  readonly collectionRewardById: ReadonlyMap<
+    CollectionRewardDefinition["id"],
+    CollectionRewardDefinition
+  >;
   readonly dungeonById: ReadonlyMap<DungeonDefinition["id"], DungeonDefinition>;
   readonly encounterById: ReadonlyMap<EncounterDefinition["id"], EncounterDefinition>;
   readonly lootTableById: ReadonlyMap<LootTable["id"], LootTable>;
@@ -233,7 +244,9 @@ export class ContentRegistry {
     const hiddenCharacterById = buildIndex(loaded.hiddenCharacters, issues, "隐藏角色");
     const guildUpgradeById = buildIndex(loaded.guildUpgrades, issues, "公会升级");
     const itemById = buildIndex(loaded.items, issues, "物品");
+    const itemSetById = buildIndex(loaded.itemSets, issues, "套装");
     const itemSuffixById = buildIndex(loaded.itemSuffixes, issues, "随机词缀");
+    const collectionRewardById = buildIndex(loaded.collectionRewards, issues, "收藏奖励");
     const dungeonById = buildIndex(loaded.dungeons, issues, "副本");
     const encounterById = buildIndex(loaded.encounters, issues, "首领战");
     const lootTableById = buildIndex(loaded.lootTables, issues, "掉落表");
@@ -261,6 +274,7 @@ export class ContentRegistry {
       issues,
     );
     this.validateItemReferences(loaded, roleById, classById, itemSuffixById, issues);
+    this.validateCollectionReferences(loaded, itemById, itemSetById, dungeonById, issues);
     this.validateDungeonReferences(
       loaded,
       dungeonById,
@@ -285,7 +299,9 @@ export class ContentRegistry {
     this.hiddenCharacters = Object.freeze(loaded.hiddenCharacters.map(({ value }) => value));
     this.guildUpgrades = Object.freeze(loaded.guildUpgrades.map(({ value }) => value));
     this.items = Object.freeze(loaded.items.map(({ value }) => value));
+    this.itemSets = Object.freeze(loaded.itemSets.map(({ value }) => value));
     this.itemSuffixes = Object.freeze(loaded.itemSuffixes.map(({ value }) => value));
+    this.collectionRewards = Object.freeze(loaded.collectionRewards.map(({ value }) => value));
     this.dungeons = Object.freeze(loaded.dungeons.map(({ value }) => value));
     this.encounters = Object.freeze(loaded.encounters.map(({ value }) => value));
     this.lootTables = Object.freeze(loaded.lootTables.map(({ value }) => value));
@@ -299,7 +315,9 @@ export class ContentRegistry {
     this.hiddenCharacterById = readonlyMap(hiddenCharacterById);
     this.guildUpgradeById = readonlyMap(guildUpgradeById);
     this.itemById = readonlyMap(itemById);
+    this.itemSetById = readonlyMap(itemSetById);
     this.itemSuffixById = readonlyMap(itemSuffixById);
+    this.collectionRewardById = readonlyMap(collectionRewardById);
     this.dungeonById = readonlyMap(dungeonById);
     this.encounterById = readonlyMap(encounterById);
     this.lootTableById = readonlyMap(lootTableById);
@@ -506,6 +524,42 @@ export class ContentRegistry {
           });
         }
         if (capacityEffect) previousCapacity = capacityEffect.value;
+      }
+    }
+  }
+
+  private validateCollectionReferences(
+    loaded: LoadedContent,
+    itemById: ReadonlyMap<ItemDefinition["id"], ItemDefinition>,
+    itemSetById: ReadonlyMap<ItemSetDefinition["id"], ItemSetDefinition>,
+    dungeonById: ReadonlyMap<DungeonDefinition["id"], DungeonDefinition>,
+    issues: ContentValidationIssue[],
+  ): void {
+    for (const owner of loaded.itemSets) {
+      owner.value.itemIds.forEach((id, index) =>
+        requireReference(itemById, id, owner, `itemIds[${index}]`, "基础物品", issues),
+      );
+    }
+    for (const owner of loaded.collectionRewards) {
+      const condition = owner.value.condition;
+      if (condition.type === "dungeon-completion") {
+        requireReference(
+          dungeonById,
+          condition.dungeonId,
+          owner,
+          "condition.dungeonId",
+          "副本",
+          issues,
+        );
+      } else if (condition.type === "item-set-completion") {
+        requireReference(
+          itemSetById,
+          condition.itemSetId,
+          owner,
+          "condition.itemSetId",
+          "套装",
+          issues,
+        );
       }
     }
   }

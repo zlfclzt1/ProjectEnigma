@@ -2,6 +2,7 @@ import type { IdGenerator } from "../../application/ports/id-generator";
 import type { ContentRegistry } from "../../content/registry";
 import type { ActivityScheduler } from "../activity/activity-scheduler";
 import type { ExpeditionActivity, ExpeditionEncounterPlan } from "../activity/activity";
+import { recordAcquiredItem } from "../collection/item-collection";
 import type { ItemInstance } from "../equipment/item-instance";
 import type { GameState } from "../game-state";
 import type { CombatReportId, MemberId } from "../shared/ids";
@@ -99,6 +100,7 @@ export function settleNextExpeditionStage(
   for (const { instance, pending } of generatedLoot) {
     state.itemInstances[instance.id] = instance;
     state.pendingLoot[pending.id] = pending;
+    recordAcquiredItem(state.collection, instance, content);
   }
   stage.report = generateCombatReport({
     activity,

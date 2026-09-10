@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "用于验证副本、套装和全局收藏里程碑的最小原型；具体数值将在收藏流程与阶段平衡任务中确认。"
+      }
+    ]
+  },
+  "collectionRewards": [
+    {
+      "id": "prototype_wailing_caverns_half_catalog",
+      "name": { "zhCN": "洞穴寻踪" },
+      "description": { "zhCN": "收录哀嚎洞穴一半的基础装备。" },
+      "condition": {
+        "type": "dungeon-completion",
+        "dungeonId": "wailing_caverns",
+        "minimumPercent": 50
+      },
+      "effects": [{ "type": "guild-funds", "amount": 250 }],
+      "source": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "原型资金奖励，不代表最终平衡数值。"
+      }
+    },
+    {
+      "id": "prototype_wailing_collection_set",
+      "name": { "zhCN": "成套归档" },
+      "description": { "zhCN": "完成一组套装收藏后解锁套装筛选。" },
+      "condition": {
+        "type": "item-set-completion",
+        "itemSetId": "prototype_wailing_caverns_collection",
+        "minimumPercent": 100
+      },
+      "effects": [{ "type": "management-unlock", "featureId": "catalog_set_filter" }],
+      "source": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "管理功能解锁原型；领取与持久化由后续任务实现。"
+      }
+    },
+    {
+      "id": "prototype_global_catalog_ten_percent",
+      "name": { "zhCN": "初露锋芒的收藏家" },
+      "description": { "zhCN": "全局基础装备收藏完成度达到百分之十。" },
+      "condition": { "type": "global-completion", "minimumPercent": 10 },
+      "effects": [{ "type": "display-record", "recordId": "collector_first_steps" }],
+      "source": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "展示记录原型；不提供战斗装备或被动收益。"
+      }
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import { sellLootCommand } from "../../src/application/commands/sell-loot";
 import { GameSession } from "../../src/application/services/game-session";
 import { loadBrowserContentRegistry } from "../../src/content/manifest";
 import type { ActivityStatus } from "../../src/domain/activity/activity";
+import { recordAcquiredItem } from "../../src/domain/collection/item-collection";
 import type { GameState } from "../../src/domain/game-state";
 import { asBrandedId, type MemberId } from "../../src/domain/shared/ids";
 import { MemorySaveRepository } from "../../src/infrastructure/persistence/memory-save-repository";
@@ -45,6 +46,7 @@ function addPendingLoot(
   });
   const pendingId = asBrandedId<"PendingLootId">(`pending_${sequence}`);
   state.itemInstances[item.id] = item;
+  recordAcquiredItem(state.collection, item, content);
   state.pendingLoot[pendingId] = {
     id: pendingId,
     itemInstanceId: item.id,
@@ -107,6 +109,7 @@ describe("manual loot commands", () => {
       bound: true,
     });
     expect(assigned.members[eligible.id]!.equipment.back).toBe(loot.item.id);
+    expect(assigned.collection.items[loot.item.definitionId]?.acquisitionCount).toBe(1);
   });
 
   it("sells unlocked pending loot and removes its instance", async () => {
@@ -124,6 +127,10 @@ describe("manual loot commands", () => {
     expect(session.snapshot().guild.funds).toBe(fundsBefore + 9);
     expect(session.snapshot().pendingLoot[loot.pendingId]).toBeUndefined();
     expect(session.snapshot().itemInstances[loot.item.id]).toBeUndefined();
+    expect(session.snapshot().collection.items[loot.item.definitionId]).toEqual({
+      acquisitionCount: 1,
+      seenRandomSuffixIds: [],
+    });
   });
 });
 

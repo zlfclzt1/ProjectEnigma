@@ -23,8 +23,12 @@ describe("validated automatic content registry", () => {
     expect(discoveredPaths.every((path) => path.endsWith(".json"))).toBe(true);
     expect(discoveredPaths.some((path) => path.endsWith("/content/logs/common.json"))).toBe(true);
     expect(registry.itemById.size).toBe(registry.items.length);
+    expect(registry.itemSetById.size).toBe(registry.itemSets.length);
     expect(registry.itemSuffixById.size).toBe(registry.itemSuffixes.length);
+    expect(registry.collectionRewardById.size).toBe(registry.collectionRewards.length);
+    expect(registry.itemSetById.size).toBe(1);
     expect(registry.itemSuffixById.size).toBe(1);
+    expect(registry.collectionRewardById.size).toBe(3);
     expect(registry.combatProfileById.size).toBe(28);
     expect(registry.dungeonById.size).toBe(registry.dungeons.length);
     expect(registry.encounterById.size).toBe(registry.encounters.length);
@@ -36,9 +40,13 @@ describe("validated automatic content registry", () => {
         ?.items,
     ).toHaveLength(3);
     expect("set" in registry.itemById).toBe(false);
+    expect("set" in registry.itemSetById).toBe(false);
     expect("set" in registry.itemSuffixById).toBe(false);
+    expect("set" in registry.collectionRewardById).toBe(false);
     expect(Object.isFrozen(registry.items)).toBe(true);
+    expect(Object.isFrozen(registry.itemSets)).toBe(true);
     expect(Object.isFrozen(registry.itemSuffixes)).toBe(true);
+    expect(Object.isFrozen(registry.collectionRewards)).toBe(true);
   });
 
   it("rejects missing, mismatched, and malformed combat profile configuration", () => {

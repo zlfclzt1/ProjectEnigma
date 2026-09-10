@@ -1,6 +1,7 @@
 import type { Clock } from "../ports/clock";
 import type { GameCommand } from "../services/game-session";
 import type { ContentRegistry } from "../../content/registry";
+import { recordAcquiredItem } from "../../domain/collection/item-collection";
 import {
   ensureCandidateReferencesValid,
   memberCount,
@@ -37,7 +38,10 @@ export function recruitMemberCommand(
       );
       removeCandidate(draft, candidateId);
       draft.members[generated.member.id] = generated.member;
-      for (const item of generated.itemInstances) draft.itemInstances[item.id] = item;
+      for (const item of generated.itemInstances) {
+        draft.itemInstances[item.id] = item;
+        recordAcquiredItem(draft.collection, item, dependencies.content);
+      }
       draft.ids = ids.snapshot();
       resumeRecruitmentTimer(draft, dependencies.clock.now());
       return structuredClone(generated);

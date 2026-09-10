@@ -194,7 +194,7 @@ export function getMemberDirectoryView(
   };
 }
 
-function statLines(stats: ClassicItemStats): ItemStatLineView[] {
+export function getItemStatLines(stats: ClassicItemStats): ItemStatLineView[] {
   const lines: ItemStatLineView[] = [];
   const appendGroup = (group: Record<string, number> | undefined, prefix = ""): void => {
     if (!group) return;
@@ -320,12 +320,12 @@ export function getEquippedItemView(
         }
       : {}),
     description: definition.description.zhCN,
-    stats: statLines(definition.stats),
+    stats: getItemStatLines(definition.stats),
     ...(resolved.randomSuffix && resolved.suffixTier
       ? {
           randomSuffix: {
             name: resolved.randomSuffix.nameTemplate.zhCN.replace("{base}", "").trim(),
-            stats: statLines(resolved.suffixTier.stats),
+            stats: getItemStatLines(resolved.suffixTier.stats),
           },
         }
       : {}),

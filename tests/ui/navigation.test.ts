@@ -21,6 +21,7 @@ describe("game navigation", () => {
         { path: "/dungeons", component: { template: "<div />" } },
         { path: "/activities", component: { template: "<div />" } },
         { path: "/loot", component: { template: "<div />" } },
+        { path: "/catalog", component: { template: "<div />" } },
         { path: "/reports", component: { template: "<div />" } },
       ],
     });
@@ -49,6 +50,10 @@ describe("game navigation", () => {
     expect(router.currentRoute.value.path).toBe("/loot");
 
     await wrapper.findAll("a")[6]!.trigger("click");
+    await flushPromises();
+    expect(router.currentRoute.value.path).toBe("/catalog");
+
+    await wrapper.findAll("a")[7]!.trigger("click");
     await flushPromises();
     expect(router.currentRoute.value.path).toBe("/reports");
   });

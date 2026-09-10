@@ -8,6 +8,7 @@ const MemberDetailPage = () => import("../ui/pages/MemberDetailPage.vue");
 const DungeonsPage = () => import("../ui/pages/DungeonsPage.vue");
 const ActivitiesPage = () => import("../ui/pages/ActivitiesPage.vue");
 const LootPage = () => import("../ui/pages/LootPage.vue");
+const ItemCatalogPage = () => import("../ui/pages/ItemCatalogPage.vue");
 const CombatReportPage = () => import("../ui/pages/CombatReportPage.vue");
 
 export const router = createRouter({
@@ -25,6 +26,7 @@ export const router = createRouter({
         { path: "dungeons", name: "dungeons", component: DungeonsPage },
         { path: "activities", name: "activities", component: ActivitiesPage },
         { path: "loot", name: "loot", component: LootPage },
+        { path: "catalog", name: "catalog", component: ItemCatalogPage },
         { path: "reports", name: "reports", component: CombatReportPage },
         { path: "reports/:reportId", name: "combat-report", component: CombatReportPage },
       ],

@@ -51,6 +51,7 @@ describe("V2 new game factory", () => {
     expect(first.createdAt).toBe(1_000_000);
     expect(first.updatedAt).toBe(1_000_000);
     expect(first.recruitment.nextCandidateAt).toBe(2_800_000);
+    expect(first.collection).toEqual({ items: {}, claimedRewardIds: [] });
     expect(first.random.counter).toBeGreaterThan(0);
     expect(first.ids.counter).toBeGreaterThan(0);
   });

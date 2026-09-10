@@ -9,6 +9,7 @@ import { rejectCandidateCommand } from "../../src/application/commands/reject-ca
 import { respecMemberCommand } from "../../src/application/commands/respec-member";
 import { GameSession } from "../../src/application/services/game-session";
 import { loadBrowserContentRegistry } from "../../src/content/manifest";
+import { recordAcquiredItem } from "../../src/domain/collection/item-collection";
 import { EQUIPMENT_SLOTS } from "../../src/domain/equipment/equipment-slot";
 import { createNewGame } from "../../src/domain/guild/new-game";
 import {
@@ -130,6 +131,7 @@ describe("member recruitment and dismissal", () => {
         (item) => item.ownerMemberId === result.result.member.id && item.bound,
       ),
     ).toBe(true);
+    expect(session.snapshot().collection.items).toEqual({});
   });
 
   it("enforces member capacity and restarts a stopped recruitment timer after hiring", async () => {
@@ -206,6 +208,7 @@ describe("member respec", () => {
       bound: true,
     });
     state.itemInstances[weapon.id] = weapon;
+    recordAcquiredItem(state.collection, weapon, content);
     member.equipment.mainHand = weapon.id;
     const { session } = await createSession(state);
 
@@ -227,6 +230,10 @@ describe("member respec", () => {
     expect(changed.guild.funds).toBe(400 - RESPEC_COST + 6);
     expect(changedMember.progression.specId).toBe("warrior_protection");
     expect(changed.itemInstances[weapon.id]).toBeUndefined();
+    expect(changed.collection.items[weapon.definitionId]).toEqual({
+      acquisitionCount: 1,
+      seenRandomSuffixIds: [],
+    });
     expect(Object.keys(changedMember.equipment)).toHaveLength(EQUIPMENT_SLOTS.length);
     expect(
       Object.values(changedMember.equipment).every(

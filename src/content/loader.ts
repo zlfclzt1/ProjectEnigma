@@ -4,6 +4,10 @@ import {
   type CombatProfileDefinition,
 } from "./schemas/combat-profile";
 import {
+  collectionRewardDefinitionFileSchema,
+  type CollectionRewardDefinition,
+} from "./schemas/collection-reward";
+import {
   dungeonDefinitionFileSchema,
   encounterDefinitionFileSchema,
   lootTableFileSchema,
@@ -12,6 +16,7 @@ import {
   type LootTable,
 } from "./schemas/dungeon";
 import { itemDefinitionFileSchema, type ItemDefinition } from "./schemas/item";
+import { itemSetDefinitionFileSchema, type ItemSetDefinition } from "./schemas/item-set";
 import { itemSuffixDefinitionFileSchema, type ItemSuffixDefinition } from "./schemas/item-suffix";
 import {
   guildUpgradeDefinitionFileSchema,
@@ -86,7 +91,9 @@ export interface LoadedContent {
   readonly hiddenCharacters: readonly LocatedContent<HiddenCharacterDefinition>[];
   readonly guildUpgrades: readonly LocatedContent<GuildUpgradeDefinition>[];
   readonly items: readonly LocatedContent<ItemDefinition>[];
+  readonly itemSets: readonly LocatedContent<ItemSetDefinition>[];
   readonly itemSuffixes: readonly LocatedContent<ItemSuffixDefinition>[];
+  readonly collectionRewards: readonly LocatedContent<CollectionRewardDefinition>[];
   readonly dungeons: readonly LocatedContent<DungeonDefinition>[];
   readonly encounters: readonly LocatedContent<EncounterDefinition>[];
   readonly lootTables: readonly LocatedContent<LootTable>[];
@@ -128,10 +135,20 @@ const DIRECTORY_DESCRIPTORS: Readonly<Record<string, FileDescriptor>> = {
     property: "guildUpgrades",
   },
   items: { schema: itemDefinitionFileSchema, collection: "items", property: "items" },
+  "item-sets": {
+    schema: itemSetDefinitionFileSchema,
+    collection: "itemSets",
+    property: "itemSets",
+  },
   "item-suffixes": {
     schema: itemSuffixDefinitionFileSchema,
     collection: "itemSuffixes",
     property: "itemSuffixes",
+  },
+  "collection-rewards": {
+    schema: collectionRewardDefinitionFileSchema,
+    collection: "collectionRewards",
+    property: "collectionRewards",
   },
   dungeons: {
     schema: dungeonDefinitionFileSchema,
@@ -163,7 +180,9 @@ function emptyLoadedContent(): MutableLoadedContent {
     hiddenCharacters: [],
     guildUpgrades: [],
     items: [],
+    itemSets: [],
     itemSuffixes: [],
+    collectionRewards: [],
     dungeons: [],
     encounters: [],
     lootTables: [],
