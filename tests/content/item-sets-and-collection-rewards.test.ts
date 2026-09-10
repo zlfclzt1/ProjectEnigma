@@ -21,7 +21,9 @@ import type {
 
 const projectRoot = fileURLToPath(new URL("../../", import.meta.url));
 const itemSetFile = itemSetDefinitionFileSchema.parse(
-  JSON.parse(fs.readFileSync(path.join(projectRoot, "content/item-sets/prototype.json"), "utf8")),
+  JSON.parse(
+    fs.readFileSync(path.join(projectRoot, "content/item-sets/dungeon-set-1.json"), "utf8"),
+  ),
 );
 const rewardFile = collectionRewardDefinitionFileSchema.parse(
   JSON.parse(
@@ -40,11 +42,23 @@ function moduleAt(modules: Record<string, unknown>, suffix: string): Record<stri
 }
 
 describe("item sets and collection reward content", () => {
-  it("loads branded base-item sets and the three supported milestone conditions", () => {
-    const set = itemSetFile.itemSets[0]!;
+  it("loads all nine planned Dungeon Set 1 collections and the supported milestones", () => {
+    expect(itemSetFile.itemSets).toHaveLength(9);
+    const set = itemSetFile.itemSets.find((entry) => entry.id === "dungeon_set_1_valor")!;
     const setId: ItemSetId = set.id;
-    expect(setId).toBe("prototype_wailing_caverns_collection");
-    expect(set.itemIds).toEqual(["10412", "6460"]);
+    expect(setId).toBe("dungeon_set_1_valor");
+    expect(set.status).toBe("planned");
+    expect(set.itemIds).toEqual([
+      "16730",
+      "16731",
+      "16732",
+      "16733",
+      "16734",
+      "16735",
+      "16736",
+      "16737",
+    ]);
+    expect(new Set(itemSetFile.itemSets.flatMap((entry) => entry.itemIds))).toHaveLength(72);
 
     expect(rewardFile.collectionRewards.map((reward) => reward.condition.type)).toEqual([
       "dungeon-completion",
@@ -70,7 +84,7 @@ describe("item sets and collection reward content", () => {
   it("registers sets and rewards with validated item, dungeon, and set references", () => {
     const registry = loadContentRegistry(browserContentModules);
 
-    expect(registry.itemSetById.size).toBe(1);
+    expect(registry.itemSetById.size).toBe(9);
     expect(registry.collectionRewardById.size).toBe(4);
     expect(
       registry.collectionRewardById.get("zulfarrak_level_45_graduation" as CollectionRewardId),
@@ -86,9 +100,15 @@ describe("item sets and collection reward content", () => {
         { type: "display-record", recordId: "level_45_era_graduate" },
       ],
     });
-    expect(registry.itemSetById.get(itemSetFile.itemSets[0]!.id)?.itemIds).toEqual([
-      "10412",
-      "6460",
+    expect(registry.itemSetById.get("dungeon_set_1_elements" as ItemSetId)?.itemIds).toEqual([
+      "16666",
+      "16667",
+      "16668",
+      "16669",
+      "16670",
+      "16671",
+      "16672",
+      "16673",
     ]);
     expect("set" in registry.itemSetById).toBe(false);
     expect("set" in registry.collectionRewardById).toBe(false);
@@ -128,12 +148,22 @@ describe("item sets and collection reward content", () => {
 
   it("reports missing base items, dungeons, and item sets with precise references", () => {
     const missingItemModules = clonedModules();
-    const missingItemFile = moduleAt(missingItemModules, "/content/item-sets/prototype.json");
-    const missingItemSets = missingItemFile.itemSets as Array<{ itemIds: string[] }>;
+    const missingItemFile = moduleAt(missingItemModules, "/content/item-sets/dungeon-set-1.json");
+    const missingItemSets = missingItemFile.itemSets as Array<{
+      status: "planned" | "active";
+      itemIds: string[];
+    }>;
+    missingItemSets[0]!.status = "active";
     missingItemSets[0]!.itemIds[0] = "missing_item";
     expect(() => loadContentRegistry(missingItemModules)).toThrowError(
       /itemSets\[0\]\.itemIds\[0\].*不存在的基础物品.*missing_item/s,
     );
+
+    const plannedItemModules = clonedModules();
+    const plannedItemFile = moduleAt(plannedItemModules, "/content/item-sets/dungeon-set-1.json");
+    const plannedItemSets = plannedItemFile.itemSets as Array<{ itemIds: string[] }>;
+    plannedItemSets[0]!.itemIds[0] = "future_item";
+    expect(() => loadContentRegistry(plannedItemModules)).not.toThrow();
 
     const missingDungeonModules = clonedModules();
     const missingDungeonFile = moduleAt(

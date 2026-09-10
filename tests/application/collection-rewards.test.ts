@@ -10,6 +10,7 @@ import { createGameStateFixture } from "../helpers/game-state-v2-factory";
 const content = loadBrowserContentRegistry();
 const fundsRewardId = asBrandedId<"CollectionRewardId">("prototype_wailing_caverns_half_catalog");
 const managementRewardId = asBrandedId<"CollectionRewardId">("prototype_wailing_collection_set");
+const valorItemIds = ["16730", "16731", "16732", "16733", "16734", "16735", "16736", "16737"];
 
 function acquire(state: ReturnType<typeof createGameStateFixture>, ...itemIds: string[]): void {
   for (const itemId of itemIds) {
@@ -72,8 +73,7 @@ describe("collection reward commands", () => {
 
   it("persists management unlocks and preserves GameSession save conflicts", async () => {
     const state = createGameStateFixture();
-    state.guild.unlockedDungeonIds.push(asBrandedId<"DungeonId">("wailing_caverns"));
-    acquire(state, "10412", "6460");
+    acquire(state, ...valorItemIds);
     const saves = new MemorySaveRepository([state]);
     const first = GameSession.fromState(saves, state);
     const stale = GameSession.fromState(saves, state);

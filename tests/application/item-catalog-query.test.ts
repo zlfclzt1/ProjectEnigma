@@ -31,6 +31,21 @@ function contentWithPrototypeSuffix(itemId: string): ContentRegistry {
   return loadContentRegistry(modules);
 }
 
+function contentWithSecondSource(itemId: string): ContentRegistry {
+  const modules = structuredClone(browserContentModules) as Record<string, unknown>;
+  const key = Object.keys(modules).find((path) =>
+    path.endsWith("/content/loot-tables/deadmines.json"),
+  );
+  if (!key) throw new Error("Expected Deadmines loot content");
+  const file = modules[key] as {
+    lootTables: Array<{ id: string; items: Array<{ itemId: string; weight: number }> }>;
+  };
+  const table = file.lootTables.find((entry) => entry.id === "dm_rhahkzor");
+  if (!table) throw new Error("Expected Rhahk'Zor loot table");
+  table.items.push({ itemId, weight: 100 });
+  return loadContentRegistry(modules);
+}
+
 function acquire(
   game: GameState,
   registry: ContentRegistry,
@@ -140,6 +155,33 @@ describe("item collection catalog query", () => {
     ]);
   });
 
+  it("lists every unlocked boss source while counting a base item only once", () => {
+    const registry = contentWithSecondSource("14148");
+    const game = state();
+    game.guild.unlockedDungeonIds.push(asBrandedId<"DungeonId">("deadmines"));
+    acquire(game, registry, "14148", 1);
+
+    const view = getItemCatalogView(game, registry);
+    const ragefire = view.dungeons.find((dungeon) => dungeon.id === "ragefire_chasm")!;
+    if (!ragefire.unlocked) throw new Error("Expected unlocked Ragefire Chasm");
+    const item = ragefire.encounters
+      .flatMap((encounter) => encounter.items)
+      .find((candidate) => candidate.id === "14148")!;
+
+    expect(item.sources).toHaveLength(2);
+    expect(item.sources).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          dungeonId: "ragefire_chasm",
+          encounterId: "taragaman_the_hungerer",
+        }),
+        expect.objectContaining({ dungeonId: "deadmines", encounterId: "dm_rhahkzor" }),
+      ]),
+    );
+    expect(item.acquisitionCount).toBe(1);
+    expect(view.globalProgress).toMatchObject({ acquiredItemCount: 1, totalItemCount: 210 });
+  });
+
   it("reveals all four Herod drops after Armory is unlocked", () => {
     const game = state();
     game.guild.unlockedDungeonIds.push(asBrandedId<"DungeonId">("scarlet_monastery_armory"));
@@ -197,33 +239,11 @@ describe("item collection catalog query", () => {
       totalItemCount: 21,
       completionPercent: (11 / 21) * 100,
     });
-    expect(view.itemSets).toEqual([
-      expect.objectContaining({
-        id: "prototype_wailing_caverns_collection",
-        acquiredItemCount: 2,
-        totalItemCount: 2,
-        completionPercent: 100,
-      }),
-    ]);
+    expect(view.itemSets).toEqual([]);
     expect(view.globalProgress).toMatchObject({ acquiredItemCount: 21, totalItemCount: 210 });
     expect(view.globalProgress.completionPercent).toBeCloseTo((21 / 210) * 100);
-    expect(view.rewards).toHaveLength(3);
+    expect(view.rewards).toHaveLength(2);
     expect(view.rewards.every((reward) => reward.claimable)).toBe(true);
     expect(view.rewards.every((reward) => !reward.claimed)).toBe(true);
-
-    game.collection.claimedRewardIds.push(
-      asBrandedId<"CollectionRewardId">("prototype_wailing_collection_set"),
-    );
-    const claimed = getItemCatalogView(game, content).rewards.find(
-      (reward) => reward.id === "prototype_wailing_collection_set",
-    )!;
-    expect(claimed.claimed).toBe(true);
-    expect(claimed.claimable).toBe(false);
-    expect(claimed.condition).toMatchObject({
-      type: "item-set-completion",
-      scopeName: "哀嚎洞穴收藏原型",
-      minimumPercent: 100,
-      completionPercent: 100,
-    });
   });
 });

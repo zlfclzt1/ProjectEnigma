@@ -107,11 +107,11 @@
 
 - 副本路线节点：94。
 - 副本任务：26。
-- 套装：1。
+- 套装：9。
 - 未被路线引用的掉落表：0。
 - 未被掉落、任务或套装引用的非初始装备：0。
 - 未关联有效副本的任务：0。
-- 未被收藏奖励引用的套装：0。
+- 未被收藏奖励引用的套装：dungeon_set_1_beaststalker、dungeon_set_1_devout、dungeon_set_1_dreadmist、dungeon_set_1_elements、dungeon_set_1_lightforge、dungeon_set_1_magister、dungeon_set_1_shadowcraft、dungeon_set_1_wildheart。
 - 任务奖励与 Boss 掉落重复：0。
 
 ## 结论

@@ -66,6 +66,13 @@ function percent(value: number): string {
           {{ item.seenRandomSuffixes.some((seen) => seen.id === suffix.id) ? "· 已见" : "" }}
         </span>
       </section>
+      <section v-if="item.sources.length > 1" class="sources">
+        <strong>全部已公开来源</strong>
+        <span v-for="source in item.sources" :key="`${source.dungeonId}:${source.encounterId}`">
+          {{ source.dungeonName }} · {{ source.encounterName }} · 本场
+          {{ percent(source.encounterDropChance) }}
+        </span>
+      </section>
       <footer>
         <span>
           权重 {{ item.source.relativeWeight }} · 每场保证
@@ -181,6 +188,7 @@ function percent(value: number): string {
 .catalog-tooltip header,
 .catalog-tooltip footer,
 .suffixes,
+.sources,
 .requirements {
   display: grid;
   gap: 3px;
@@ -212,14 +220,16 @@ function percent(value: number): string {
   color: #d6b768;
   line-height: 1.45;
 }
-.suffixes {
+.suffixes,
+.sources {
   padding: 8px;
   border-left: 2px solid #806c48;
   color: #887f71;
   background: #17140f;
 }
 .suffixes strong,
-.suffixes .seen {
+.suffixes .seen,
+.sources strong {
   color: #cbb786;
 }
 .catalog-tooltip footer {

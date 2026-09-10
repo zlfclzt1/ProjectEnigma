@@ -61,6 +61,7 @@ export interface CatalogItemView {
   readonly requirements: readonly string[];
   readonly statsSource: string;
   readonly source: CatalogItemSourceView;
+  readonly sources: readonly CatalogItemSourceView[];
   readonly itemSetIds: readonly ItemSetId[];
   readonly acquired: boolean;
   readonly acquisitionCount: number;
@@ -182,7 +183,15 @@ export function getItemCatalogView(state: GameState, content: ContentRegistry): 
               const source = (index.sourcesByItemId.get(entry.itemId) ?? []).find(
                 (candidate) => candidate.encounterId === encounter.id,
               )!;
-              return projectItem(state, content, index, visibleSetIds, definition, source);
+              return projectItem(
+                state,
+                content,
+                index,
+                visibleSetIds,
+                unlockedDungeonIds,
+                definition,
+                source,
+              );
             }),
           };
         }),
@@ -303,12 +312,11 @@ function projectItem(
   content: ContentRegistry,
   index: CatalogIndex,
   visibleSetIds: ReadonlySet<ItemSetId>,
+  unlockedDungeonIds: ReadonlySet<DungeonId>,
   definition: ItemDefinition,
   source: CatalogSource,
 ): CatalogItemView {
   const record = state.collection.items[definition.id];
-  const encounter = content.encounterById.get(source.encounterId)!;
-  const dungeon = content.dungeonById.get(source.dungeonId)!;
   const requirements = [`需要等级 ${definition.requiredLevel ?? 1}`];
   if (definition.armorType) requirements.push(`护甲类型：${definition.armorType}`);
   if (definition.restrictions.allowedClassIds.length > 0) {
@@ -348,17 +356,10 @@ function projectItem(
       definition.statsSource.provider === "wowhead-classic"
         ? `Wowhead Classic · ${definition.statsSource.verifiedAt}`
         : `游戏设计数据 · ${definition.statsSource.verifiedAt}`,
-    source: {
-      dungeonId: dungeon.id,
-      dungeonName: dungeon.name.zhCN,
-      encounterId: encounter.id,
-      encounterName: encounter.name.zhCN,
-      lootTableId: source.lootTableId,
-      guaranteedEquipmentDrops: source.guaranteedEquipmentDrops,
-      relativeWeight: source.relativeWeight,
-      perDropChance: source.perDropChance,
-      encounterDropChance: source.encounterDropChance,
-    },
+    source: projectCatalogSource(content, source),
+    sources: (index.sourcesByItemId.get(definition.id) ?? [])
+      .filter((candidate) => unlockedDungeonIds.has(candidate.dungeonId))
+      .map((candidate) => projectCatalogSource(content, candidate)),
     itemSetIds: (index.itemSetIdsByItemId.get(definition.id) ?? []).filter((setId) =>
       visibleSetIds.has(setId),
     ),
@@ -369,6 +370,25 @@ function projectItem(
       const suffix = content.itemSuffixById.get(suffixId);
       return suffix ? projectSuffix(suffix) : { id: suffixId, name: suffixId };
     }),
+  };
+}
+
+function projectCatalogSource(
+  content: ContentRegistry,
+  source: CatalogSource,
+): CatalogItemSourceView {
+  const dungeon = content.dungeonById.get(source.dungeonId)!;
+  const encounter = content.encounterById.get(source.encounterId)!;
+  return {
+    dungeonId: dungeon.id,
+    dungeonName: dungeon.name.zhCN,
+    encounterId: encounter.id,
+    encounterName: encounter.name.zhCN,
+    lootTableId: source.lootTableId,
+    guaranteedEquipmentDrops: source.guaranteedEquipmentDrops,
+    relativeWeight: source.relativeWeight,
+    perDropChance: source.perDropChance,
+    encounterDropChance: source.encounterDropChance,
   };
 }
 

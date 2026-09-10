@@ -332,9 +332,7 @@ test("completes the playable zulfarrak stage and keeps the guild running", async
     await expect(randomItem).toContainText("已获得");
     await randomItem.locator(".item-summary").click();
     await expect(randomItem.locator(".catalog-tooltip")).toContainText("野熊之");
-    await expect(page.locator(".set-card", { hasText: "哀嚎洞穴收藏原型" })).toContainText(
-      "2 / 2 · 100.0%",
-    );
+    await expect(page.locator(".set-card")).toHaveCount(0);
     const graduation = page.locator(".reward-card", { hasText: "45 级时代毕业" });
     await expect(graduation).toContainText("已领取");
 

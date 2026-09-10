@@ -657,6 +657,7 @@ export class ContentRegistry {
     issues: ContentValidationIssue[],
   ): void {
     for (const owner of loaded.itemSets) {
+      if (owner.value.status === "planned") continue;
       owner.value.itemIds.forEach((id, index) =>
         requireReference(itemById, id, owner, `itemIds[${index}]`, "基础物品", issues),
       );

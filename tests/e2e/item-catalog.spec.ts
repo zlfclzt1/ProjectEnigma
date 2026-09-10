@@ -50,7 +50,9 @@ test("claims collection rewards once and persists their effects", async ({ page 
     }
     const collection = state.collection as {
       items: Record<string, { acquisitionCount: number; seenRandomSuffixIds: string[] }>;
+      claimedRewardIds: string[];
     };
+    collection.claimedRewardIds.push("prototype_wailing_collection_set");
     for (const itemId of [
       "10412",
       "6460",
@@ -78,11 +80,8 @@ test("claims collection rewards once and persists their effects", async ({ page 
   await page.getByRole("link", { name: "装备图鉴" }).click();
 
   const setFilter = page.locator(".catalog-filters select").nth(2);
-  await expect(setFilter).toBeDisabled();
-  const managementReward = page.locator(".reward-card", { hasText: "成套归档" });
-  await managementReward.getByRole("button", { name: "领取奖励" }).click();
-  await expect(managementReward).toContainText("奖励效果已生效");
   await expect(setFilter).toBeEnabled();
+  await expect(page.locator(".reward-card", { hasText: "成套归档" })).toContainText("已领取");
 
   const fundsReward = page.locator(".reward-card", { hasText: "洞穴寻踪" });
   await fundsReward.getByRole("button", { name: "领取奖励" }).click();

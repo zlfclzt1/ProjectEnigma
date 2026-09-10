@@ -31,10 +31,10 @@
     {
       "id": "prototype_wailing_collection_set",
       "name": { "zhCN": "成套归档" },
-      "description": { "zhCN": "完成一组套装收藏后解锁套装筛选。" },
+      "description": { "zhCN": "完成一套 Dungeon Set 1 收藏后解锁套装筛选。" },
       "condition": {
         "type": "item-set-completion",
-        "itemSetId": "prototype_wailing_caverns_collection",
+        "itemSetId": "dungeon_set_1_valor",
         "minimumPercent": 100
       },
       "effects": [{ "type": "management-unlock", "featureId": "catalog_set_filter" }],
@@ -42,7 +42,7 @@
         "kind": "design-decision",
         "provider": "manual",
         "verifiedAt": "2026-09-08",
-        "notes": "管理功能解锁原型；领取与持久化由后续任务实现。"
+        "notes": "保留旧奖励 ID 兼容已经领取的存档；正式条件改为完成勇气套装。"
       }
     },
     {

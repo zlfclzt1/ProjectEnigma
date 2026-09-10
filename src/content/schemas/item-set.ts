@@ -7,6 +7,7 @@ export const itemSetDefinitionSchema = z
     id: brandedContentIdSchema<"ItemSetId">(),
     name: localizedTextSchema,
     description: localizedTextSchema,
+    status: z.enum(["planned", "active"]).default("active"),
     itemIds: z
       .array(brandedContentIdSchema<"ItemDefinitionId">())
       .min(2, "套装至少需要两个基础物品")

@@ -19,6 +19,8 @@ function acquire(state: ReturnType<typeof createGameStateFixture>, ...itemIds: s
   }
 }
 
+const valorItemIds = ["16730", "16731", "16732", "16733", "16734", "16735", "16736", "16737"];
+
 describe("collection reward rules", () => {
   it("evaluates dungeon, set, and global progress from permanent discovery history", () => {
     const state = createGameStateFixture();
@@ -45,6 +47,7 @@ describe("collection reward rules", () => {
       "9388",
       "9390",
       "9640",
+      ...valorItemIds,
     );
 
     expect(
@@ -67,7 +70,7 @@ describe("collection reward rules", () => {
         content,
         asBrandedId<"CollectionRewardId">("prototype_wailing_collection_set"),
       ),
-    ).toMatchObject({ totalItemCount: 2, completionPercent: 100, conditionMet: true });
+    ).toMatchObject({ totalItemCount: 8, completionPercent: 100, conditionMet: true });
     expect(
       evaluateCollectionReward(
         state,
