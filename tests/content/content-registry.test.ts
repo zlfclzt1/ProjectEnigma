@@ -100,6 +100,18 @@ describe("validated automatic content registry", () => {
     }
   });
 
+  it("allows encounters without equipment loot tables", () => {
+    const modules = clonedModules();
+    const encounterFile = moduleAt(modules, "/content/encounters/ragefire-chasm.json");
+    const encounters = encounterFile.encounters as Array<{ id: string; lootTableId?: string }>;
+    delete encounters[0].lootTableId;
+
+    const registry = loadContentRegistry(modules);
+    const encounterId = asBrandedId<"EncounterId">(encounters[0].id);
+    expect(registry.encounterById.get(encounterId)?.lootTableId).toBeUndefined();
+    expect(registry.getLootTableForEncounter(encounterId)).toBeUndefined();
+  });
+
   it("rejects route duration drift, unlock cycles and placeholder equipment names", () => {
     const modules = clonedModules();
     const dungeonFile = moduleAt(modules, "/content/dungeons/ragefire-chasm.json");

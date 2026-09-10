@@ -66,6 +66,9 @@ export function auditLootSources(registry: ContentRegistry): LootSourceAudit {
     for (const encounterId of dungeon.route) {
       const encounter = registry.encounterById.get(encounterId);
       if (!encounter) throw new Error(`副本 ${dungeon.id} 路线缺少首领 ${encounterId}`);
+      if (!encounter.lootTableId) {
+        throw new Error(`首领 ${encounter.id} 没有装备掉落表，无法列出掉落来源`);
+      }
       const lootTable = registry.lootTableById.get(encounter.lootTableId);
       if (!lootTable) throw new Error(`首领 ${encounter.id} 缺少掉落表 ${encounter.lootTableId}`);
       referencedLootTableIds.add(lootTable.id);

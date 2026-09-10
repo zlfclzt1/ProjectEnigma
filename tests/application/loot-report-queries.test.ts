@@ -3,7 +3,8 @@ import { startExpeditionCommand } from "../../src/application/commands/start-exp
 import { getCombatReportsView } from "../../src/application/queries/get-combat-reports-view";
 import { getLootView } from "../../src/application/queries/get-loot-view";
 import { settleDueActivitiesCommand } from "../../src/application/services/settlement-service";
-import { loadBrowserContentRegistry } from "../../src/content/manifest";
+import { browserContentModules, loadBrowserContentRegistry } from "../../src/content/manifest";
+import { loadContentRegistry, type ContentRegistry } from "../../src/content/registry";
 import { createNewGame } from "../../src/domain/guild/new-game";
 import { asBrandedId } from "../../src/domain/shared/ids";
 import { LocalIdGenerator } from "../../src/infrastructure/ids/local-id-generator";
@@ -12,11 +13,11 @@ import { FakeClock } from "../helpers/runtime-fakes";
 
 const content = loadBrowserContentRegistry();
 
-async function setup() {
+async function setup(registry: ContentRegistry = content) {
   const clock = new FakeClock(1_000);
   const state = createNewGame({
     slotId: asBrandedId<"SaveSlotId">("loot-report-query"),
-    content,
+    content: registry,
     contentVersion: asBrandedId<"ContentVersion">("classic-v1"),
     clock,
     ids: new LocalIdGenerator(),
@@ -25,7 +26,7 @@ async function setup() {
   for (const member of Object.values(state.members)) member.progression.level = 45;
   const memberIds = Object.values(state.members).map((member) => member.id);
   const activity = await startExpeditionCommand(
-    { content, clock },
+    { content: registry, clock },
     {
       dungeonId: asBrandedId<"DungeonId">("ragefire_chasm"),
       participantIds: memberIds,
@@ -34,6 +35,21 @@ async function setup() {
   ).execute(state);
   for (const run of activity.runPlans) for (const stage of run.stages) stage.successRoll = 0;
   return { clock, state, activity, memberIds };
+}
+
+function contentWithTwoRagefireDrops(): ContentRegistry {
+  const modules = structuredClone(browserContentModules) as Record<string, unknown>;
+  const key = Object.keys(modules).find((path) =>
+    path.endsWith("/content/loot-tables/ragefire-chasm.json"),
+  );
+  if (!key) throw new Error("Expected ragefire loot content");
+  const file = modules[key] as {
+    lootTables: Array<{ id: string; guaranteedEquipmentDrops: number }>;
+  };
+  const table = file.lootTables.find((entry) => entry.id === "ragefire_chasm_common_equipment");
+  if (!table) throw new Error("Expected ragefire common equipment table");
+  table.guaranteedEquipmentDrops = 2;
+  return loadContentRegistry(modules);
 }
 
 describe("loot and combat report queries", () => {
@@ -86,5 +102,20 @@ describe("loot and combat report queries", () => {
     expect(reports[0]!.logs.length).toBeGreaterThan(0);
     expect(reports[0]!.totals.damage).toBeGreaterThan(0);
     expect(reports[0]!.rewards.itemNames).toHaveLength(1);
+  });
+
+  it("projects every item from a multi-drop settlement into loot and reports", async () => {
+    const multiDropContent = contentWithTwoRagefireDrops();
+    const { clock, state, activity } = await setup(multiDropContent);
+    clock.set(activity.nextSettlementAt);
+    await settleDueActivitiesCommand({ content: multiDropContent, clock }).execute(state);
+
+    const loot = getLootView(state, multiDropContent);
+    const reports = getCombatReportsView(state, multiDropContent).reports;
+
+    expect(loot.pending).toHaveLength(2);
+    expect(loot.lockedCount).toBe(2);
+    expect(reports).toHaveLength(1);
+    expect(reports[0]!.rewards.itemNames).toHaveLength(2);
   });
 });

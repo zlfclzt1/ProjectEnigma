@@ -115,7 +115,7 @@ export const encounterDefinitionSchema = z
     experienceShare: probabilitySchema,
     funds: nonNegativeIntegerSchema,
     firstKillBonus: nonNegativeIntegerSchema,
-    lootTableId: lootTableIdSchema,
+    lootTableId: lootTableIdSchema.optional(),
     mechanicIds: z.array(mechanicIdSchema).default([]),
   })
   .strict();

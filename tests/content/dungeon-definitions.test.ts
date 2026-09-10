@@ -85,7 +85,7 @@ describe("dungeon content", () => {
       );
       for (const encounter of route) {
         expect(encounter?.dungeonId).toBe(dungeon.id);
-        expect(lootTableIds.has(encounter!.lootTableId)).toBe(true);
+        if (encounter?.lootTableId) expect(lootTableIds.has(encounter.lootTableId)).toBe(true);
         expect(encounter?.mechanicIds).toEqual([]);
       }
     }

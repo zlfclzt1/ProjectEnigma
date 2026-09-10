@@ -535,14 +535,16 @@ export class ContentRegistry {
     }
     for (const owner of loaded.encounters) {
       requireReference(dungeonById, owner.value.dungeonId, owner, "dungeonId", "副本", issues);
-      requireReference(
-        lootTableById,
-        owner.value.lootTableId,
-        owner,
-        "lootTableId",
-        "掉落表",
-        issues,
-      );
+      if (owner.value.lootTableId) {
+        requireReference(
+          lootTableById,
+          owner.value.lootTableId,
+          owner,
+          "lootTableId",
+          "掉落表",
+          issues,
+        );
+      }
       const owners = routeOwners.get(owner.value.id) ?? [];
       if (owners.length !== 1) {
         issues.push({
@@ -600,7 +602,7 @@ export class ContentRegistry {
 
   getLootTableForEncounter(id: EncounterDefinition["id"]): LootTable | undefined {
     const encounter = this.encounterById.get(id);
-    return encounter ? this.lootTableById.get(encounter.lootTableId) : undefined;
+    return encounter?.lootTableId ? this.lootTableById.get(encounter.lootTableId) : undefined;
   }
 }
 

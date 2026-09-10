@@ -75,9 +75,13 @@ export function settleNextExpeditionStage(
     };
   }
 
-  const lootTable = content.lootTableById.get(encounter.lootTableId);
-  if (!lootTable) throw new Error(`首领 ${encounter.id} 缺少掉落表。`);
-  const generatedLoot = generateGuaranteedLoot(activity, stage, lootTable, settledAt, ids);
+  const lootTable = encounter.lootTableId
+    ? content.lootTableById.get(encounter.lootTableId)
+    : undefined;
+  if (encounter.lootTableId && !lootTable) throw new Error(`首领 ${encounter.id} 缺少掉落表。`);
+  const generatedLoot = lootTable
+    ? generateGuaranteedLoot(activity, stage, lootTable, settledAt, ids)
+    : [];
 
   stage.status = "victory";
   stage.settledAt = settledAt;

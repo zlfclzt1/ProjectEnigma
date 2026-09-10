@@ -5,7 +5,8 @@ import {
   settleDueActivitiesCommand,
 } from "../../src/application/services/settlement-service";
 import { GameSession } from "../../src/application/services/game-session";
-import { loadBrowserContentRegistry } from "../../src/content/manifest";
+import { browserContentModules, loadBrowserContentRegistry } from "../../src/content/manifest";
+import { loadContentRegistry, type ContentRegistry } from "../../src/content/registry";
 import type { ExpeditionActivity } from "../../src/domain/activity/activity";
 import { createNewGame } from "../../src/domain/guild/new-game";
 import { asBrandedId } from "../../src/domain/shared/ids";
@@ -17,10 +18,10 @@ import { FakeClock } from "../helpers/runtime-fakes";
 const content = loadBrowserContentRegistry();
 const dungeonId = asBrandedId<"DungeonId">("ragefire_chasm");
 
-function newState(seed = "settlement-test") {
+function newState(seed = "settlement-test", registry: ContentRegistry = content) {
   return createNewGame({
     slotId: asBrandedId<"SaveSlotId">("slot_1"),
-    content,
+    content: registry,
     contentVersion: asBrandedId<"ContentVersion">("classic-v1"),
     clock: new FakeClock(1_000),
     ids: new LocalIdGenerator(),
@@ -33,12 +34,39 @@ async function startExpedition(
   participantIds = Object.values(state.members).map((member) => member.id),
   requestedRuns = 1,
   startedAt = 2_000,
+  registry: ContentRegistry = content,
 ): Promise<ExpeditionActivity> {
   const created = await startExpeditionCommand(
-    { content, clock: new FakeClock(startedAt) },
+    { content: registry, clock: new FakeClock(startedAt) },
     { dungeonId, participantIds, requestedRuns },
   ).execute(state);
   return state.activities[created.id] as ExpeditionActivity;
+}
+
+function contentWithoutRagefireLoot(): ContentRegistry {
+  const modules = structuredClone(browserContentModules) as Record<string, unknown>;
+  const key = Object.keys(modules).find((path) =>
+    path.endsWith("/content/encounters/ragefire-chasm.json"),
+  );
+  if (!key) throw new Error("Expected ragefire encounter content");
+  const file = modules[key] as { encounters: Array<{ lootTableId?: string }> };
+  for (const encounter of file.encounters) delete encounter.lootTableId;
+  return loadContentRegistry(modules);
+}
+
+function contentWithRagefireDropCount(count: number): ContentRegistry {
+  const modules = structuredClone(browserContentModules) as Record<string, unknown>;
+  const key = Object.keys(modules).find((path) =>
+    path.endsWith("/content/loot-tables/ragefire-chasm.json"),
+  );
+  if (!key) throw new Error("Expected ragefire loot content");
+  const file = modules[key] as {
+    lootTables: Array<{ id: string; guaranteedEquipmentDrops: number }>;
+  };
+  const table = file.lootTables.find((entry) => entry.id === "ragefire_chasm_common_equipment");
+  if (!table) throw new Error("Expected ragefire common equipment table");
+  table.guaranteedEquipmentDrops = count;
+  return loadContentRegistry(modules);
 }
 
 function forceAll(activity: ExpeditionActivity, outcome: "victory" | "defeat"): void {
@@ -183,6 +211,78 @@ describe("expedition settlement", () => {
     );
     expect(Object.keys(restored.snapshot().pendingLoot)).toEqual(lootIds);
     expect(restored.snapshot().history.dungeonClearCounts[dungeonId]).toBe(2);
+  });
+
+  it("settles victorious bosses without equipment loot while preserving all other rewards", async () => {
+    const noLootContent = contentWithoutRagefireLoot();
+    const state = newState("no-equipment-loot", noLootContent);
+    const members = Object.values(state.members);
+    const initialItemCount = Object.values(state.itemInstances).length;
+    const initialFunds = state.guild.funds;
+    const initialProgress = members.map(
+      (member) => member.progression.level + member.progression.experience,
+    );
+    const activity = await startExpedition(
+      state,
+      members.map((member) => member.id),
+      1,
+      2_000,
+      noLootContent,
+    );
+    forceAll(activity, "victory");
+
+    const summary = new SettlementService(noLootContent).settleDueActivities(
+      state,
+      Number.MAX_SAFE_INTEGER,
+    );
+
+    expect(activity.status).toBe("completed");
+    expect(summary.settled).toHaveLength(4);
+    expect(summary.settled.every((event) => event.outcome === "victory")).toBe(true);
+    expect(summary.settled.every((event) => event.itemInstanceIds.length === 0)).toBe(true);
+    expect(Object.values(state.itemInstances)).toHaveLength(initialItemCount);
+    expect(Object.values(state.pendingLoot)).toHaveLength(0);
+    expect(state.guild.funds).toBeGreaterThan(initialFunds);
+    expect(
+      members.every(
+        (member, index) =>
+          member.progression.level + member.progression.experience > initialProgress[index]!,
+      ),
+    ).toBe(true);
+    expect(state.guild.firstKillEncounterIds).toEqual(
+      noLootContent.dungeonById.get(dungeonId)!.route,
+    );
+    expect(state.history.dungeonClearCounts[dungeonId]).toBe(1);
+    expect(
+      activity.runPlans[0]!.stages.every(
+        (stage) => stage.report?.rewards.itemInstanceIds.length === 0,
+      ),
+    ).toBe(true);
+  });
+
+  it("settles every guaranteed equipment drop from a multi-drop table", async () => {
+    const multiDropContent = contentWithRagefireDropCount(2);
+    const state = newState("multi-equipment-loot", multiDropContent);
+    const activity = await startExpedition(
+      state,
+      Object.values(state.members).map((member) => member.id),
+      1,
+      2_000,
+      multiDropContent,
+    );
+    forceAll(activity, "victory");
+
+    const result = new SettlementService(multiDropContent).settleDueActivities(
+      state,
+      activity.nextSettlementAt,
+    );
+
+    expect(result.settled).toHaveLength(1);
+    expect(result.settled[0]!.itemInstanceIds).toHaveLength(2);
+    expect(Object.values(state.pendingLoot)).toHaveLength(2);
+    expect(activity.runPlans[0]!.stages[0]!.report?.rewards.itemInstanceIds).toEqual(
+      result.settled[0]!.itemInstanceIds,
+    );
   });
 
   it("keeps completed run counts when a later repeated run wipes", async () => {
