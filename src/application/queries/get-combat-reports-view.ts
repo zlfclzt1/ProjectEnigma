@@ -3,6 +3,7 @@ import type { CombatReport } from "../../domain/combat/combat-report";
 import type { GameState } from "../../domain/game-state";
 import type { CombatReportId } from "../../domain/shared/ids";
 import { renderCombatLog } from "./render-combat-log";
+import { resolveItemInstance } from "../../domain/equipment/resolve-item-instance";
 
 export interface MemberCombatRowView {
   readonly memberId: string;
@@ -85,9 +86,9 @@ function projectReport(
       funds: report.rewards.funds,
       firstKillBonus: report.rewards.firstKillBonus,
       itemNames: report.rewards.itemInstanceIds.map((id) => {
-        const definitionId = state.itemInstances[id]?.definitionId;
-        return definitionId
-          ? (content.itemById.get(definitionId)?.name.zhCN ?? definitionId)
+        const instance = state.itemInstances[id];
+        return instance
+          ? resolveItemInstance(instance, content).definition.name.zhCN
           : "已分配装备";
       }),
       experience: Object.entries(report.rewards.experienceFractionByMember).map(

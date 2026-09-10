@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "用于验证随机词缀内容模型的最小原型；不代表已经导入任何正式经典旧世词缀数据。"
+      }
+    ]
+  },
+  "itemSuffixes": [
+    {
+      "id": "prototype_of_readiness",
+      "nameTemplate": {
+        "zhCN": "整备之{base}",
+        "enUS": "{base} of Readiness"
+      },
+      "tiers": [
+        {
+          "minimumItemLevel": 1,
+          "maximumItemLevel": 20,
+          "stats": {
+            "primary": {
+              "staminaPoints": 1
+            }
+          }
+        },
+        {
+          "minimumItemLevel": 21,
+          "maximumItemLevel": 45,
+          "stats": {
+            "primary": {
+              "staminaPoints": 2
+            }
+          }
+        }
+      ],
+      "relativeWeight": 1,
+      "source": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-08",
+        "notes": "仅作为 Schema 与加载流程测试数据；正式装备不得引用此原型词缀。"
+      }
+    }
+  ]
+}

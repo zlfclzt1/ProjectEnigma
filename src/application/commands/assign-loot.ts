@@ -5,6 +5,7 @@ import { equipmentSellValue } from "../../domain/equipment/item-value";
 import type { ItemInstance } from "../../domain/equipment/item-instance";
 import type { EquipmentSlot } from "../../domain/equipment/equipment-slot";
 import type { GameState } from "../../domain/game-state";
+import { resolveItemInstance } from "../../domain/equipment/resolve-item-instance";
 import type { ActivityId, ItemInstanceId, MemberId, PendingLootId } from "../../domain/shared/ids";
 
 export interface AssignLootResult {
@@ -59,8 +60,8 @@ export function assignLoot(
   let saleProceeds = 0;
   for (const displacedId of equipped.displacedItemInstanceIds) {
     const displaced = state.itemInstances[displacedId];
-    const definition = displaced ? content.itemById.get(displaced.definitionId) : undefined;
-    if (!displaced || !definition) throw new Error("被替换的装备数据不完整。");
+    if (!displaced) throw new Error("被替换的装备数据不完整。");
+    const definition = resolveItemInstance(displaced, content).definition;
     saleProceeds += equipmentSellValue(definition);
     delete state.itemInstances[displacedId];
   }

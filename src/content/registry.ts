@@ -8,6 +8,7 @@ import {
 } from "./loader";
 import type { DungeonDefinition, EncounterDefinition, LootTable } from "./schemas/dungeon";
 import type { ItemDefinition } from "./schemas/item";
+import type { ItemSuffixDefinition } from "./schemas/item-suffix";
 import type { GuildUpgradeDefinition } from "./schemas/guild-upgrade";
 import type { LogTemplateGroup } from "./schemas/log-template";
 import type {
@@ -196,6 +197,7 @@ export class ContentRegistry {
   readonly hiddenCharacters: readonly HiddenCharacterDefinition[];
   readonly guildUpgrades: readonly GuildUpgradeDefinition[];
   readonly items: readonly ItemDefinition[];
+  readonly itemSuffixes: readonly ItemSuffixDefinition[];
   readonly dungeons: readonly DungeonDefinition[];
   readonly encounters: readonly EncounterDefinition[];
   readonly lootTables: readonly LootTable[];
@@ -213,6 +215,7 @@ export class ContentRegistry {
   >;
   readonly guildUpgradeById: ReadonlyMap<GuildUpgradeDefinition["id"], GuildUpgradeDefinition>;
   readonly itemById: ReadonlyMap<ItemDefinition["id"], ItemDefinition>;
+  readonly itemSuffixById: ReadonlyMap<ItemSuffixDefinition["id"], ItemSuffixDefinition>;
   readonly dungeonById: ReadonlyMap<DungeonDefinition["id"], DungeonDefinition>;
   readonly encounterById: ReadonlyMap<EncounterDefinition["id"], EncounterDefinition>;
   readonly lootTableById: ReadonlyMap<LootTable["id"], LootTable>;
@@ -230,6 +233,7 @@ export class ContentRegistry {
     const hiddenCharacterById = buildIndex(loaded.hiddenCharacters, issues, "隐藏角色");
     const guildUpgradeById = buildIndex(loaded.guildUpgrades, issues, "公会升级");
     const itemById = buildIndex(loaded.items, issues, "物品");
+    const itemSuffixById = buildIndex(loaded.itemSuffixes, issues, "随机词缀");
     const dungeonById = buildIndex(loaded.dungeons, issues, "副本");
     const encounterById = buildIndex(loaded.encounters, issues, "首领战");
     const lootTableById = buildIndex(loaded.lootTables, issues, "掉落表");
@@ -256,7 +260,7 @@ export class ContentRegistry {
       personalityById,
       issues,
     );
-    this.validateItemReferences(loaded, roleById, classById, issues);
+    this.validateItemReferences(loaded, roleById, classById, itemSuffixById, issues);
     this.validateDungeonReferences(
       loaded,
       dungeonById,
@@ -281,6 +285,7 @@ export class ContentRegistry {
     this.hiddenCharacters = Object.freeze(loaded.hiddenCharacters.map(({ value }) => value));
     this.guildUpgrades = Object.freeze(loaded.guildUpgrades.map(({ value }) => value));
     this.items = Object.freeze(loaded.items.map(({ value }) => value));
+    this.itemSuffixes = Object.freeze(loaded.itemSuffixes.map(({ value }) => value));
     this.dungeons = Object.freeze(loaded.dungeons.map(({ value }) => value));
     this.encounters = Object.freeze(loaded.encounters.map(({ value }) => value));
     this.lootTables = Object.freeze(loaded.lootTables.map(({ value }) => value));
@@ -294,6 +299,7 @@ export class ContentRegistry {
     this.hiddenCharacterById = readonlyMap(hiddenCharacterById);
     this.guildUpgradeById = readonlyMap(guildUpgradeById);
     this.itemById = readonlyMap(itemById);
+    this.itemSuffixById = readonlyMap(itemSuffixById);
     this.dungeonById = readonlyMap(dungeonById);
     this.encounterById = readonlyMap(encounterById);
     this.lootTableById = readonlyMap(lootTableById);
@@ -397,6 +403,7 @@ export class ContentRegistry {
     loaded: LoadedContent,
     roleById: ReadonlyMap<RoleDefinition["id"], RoleDefinition>,
     classById: ReadonlyMap<ClassDefinition["id"], ClassDefinition>,
+    itemSuffixById: ReadonlyMap<ItemSuffixDefinition["id"], ItemSuffixDefinition>,
     issues: ContentValidationIssue[],
   ): void {
     for (const owner of loaded.items) {
@@ -420,6 +427,33 @@ export class ContentRegistry {
           issues,
         ),
       );
+      owner.value.randomSuffixIds?.forEach((id, index) => {
+        const exists = requireReference(
+          itemSuffixById,
+          id,
+          owner,
+          `randomSuffixIds[${index}]`,
+          "随机词缀",
+          issues,
+        );
+        const suffix = itemSuffixById.get(id);
+        if (
+          exists &&
+          suffix &&
+          !suffix.tiers.some(
+            (tier) =>
+              tier.minimumItemLevel <= owner.value.itemLevel &&
+              owner.value.itemLevel <= tier.maximumItemLevel,
+          )
+        ) {
+          issues.push({
+            filePath: owner.filePath,
+            fieldPath: `${owner.fieldPath}.randomSuffixIds[${index}]`,
+            message: `随机词缀 ${id} 没有覆盖物品等级 ${owner.value.itemLevel} 的档位`,
+            invalidReferenceId: id,
+          });
+        }
+      });
     }
   }
 
@@ -603,6 +637,13 @@ export class ContentRegistry {
   getLootTableForEncounter(id: EncounterDefinition["id"]): LootTable | undefined {
     const encounter = this.encounterById.get(id);
     return encounter?.lootTableId ? this.lootTableById.get(encounter.lootTableId) : undefined;
+  }
+
+  getRandomSuffixesForItem(id: ItemDefinition["id"]): readonly ItemSuffixDefinition[] {
+    const item = this.itemById.get(id);
+    return Object.freeze(
+      (item?.randomSuffixIds ?? []).map((suffixId) => this.itemSuffixById.get(suffixId)!),
+    );
   }
 }
 

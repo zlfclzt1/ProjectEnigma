@@ -2,6 +2,7 @@ import type { ContentRegistry } from "../../content/registry";
 import type { ItemDefinition } from "../../content/schemas/item";
 import type { Member } from "../member/member";
 import type { ItemInstance } from "./item-instance";
+import { resolveItemInstance } from "./resolve-item-instance";
 
 export type EquipFailureCode =
   | "definition-mismatch"
@@ -32,7 +33,7 @@ function currentMainHandDefinition(member: Member, context: EquipRuleContext) {
   const instanceId = member.equipment.mainHand;
   if (!instanceId) return undefined;
   const instance = context.itemInstances[instanceId];
-  return instance ? context.content.itemById.get(instance.definitionId) : undefined;
+  return instance ? resolveItemInstance(instance, context.content).definition : undefined;
 }
 
 export function evaluateEquipEligibility(

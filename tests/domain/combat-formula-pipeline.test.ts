@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { loadBrowserContentRegistry } from "../../src/content/manifest";
+import { browserContentModules, loadBrowserContentRegistry } from "../../src/content/manifest";
+import { loadContentRegistry } from "../../src/content/registry";
 import { buildCombatProfile } from "../../src/domain/combat/formula-pipeline";
 import type { CombatFormulaConfig } from "../../src/domain/combat/formula-context";
 import { CombatStrategyNotFoundError } from "../../src/domain/combat/strategies/strategy-registry";
@@ -225,5 +226,63 @@ describe("extensible combat formula pipeline", () => {
         },
       ),
     ).toThrow(CombatStrategyNotFoundError);
+  });
+
+  it("uses random suffix stats in combat diagnostics and capabilities", () => {
+    const modules = structuredClone(browserContentModules) as Record<string, unknown>;
+    const key = Object.keys(modules).find((path) =>
+      path.endsWith("/content/items/ragefire-chasm.json"),
+    );
+    if (!key) throw new Error("Expected ragefire item content");
+    const file = modules[key] as {
+      items: Array<{ id: string; randomSuffixIds?: string[] }>;
+    };
+    file.items.find((item) => item.id === "14148")!.randomSuffixIds = ["prototype_of_readiness"];
+    const suffixContent = loadContentRegistry(modules);
+    const member = createMemberFixture({
+      identity: {
+        ...createMemberFixture().identity,
+        classId: asBrandedId<"ClassId">("mage"),
+      },
+      progression: {
+        level: 18,
+        experience: 0,
+        specId: asBrandedId<"SpecId">("mage_arcane"),
+      },
+      equipment: { wrist: asBrandedId<"ItemInstanceId">("suffix_wrist") },
+    });
+    const instance = createItemInstanceFixture({
+      id: member.equipment.wrist,
+      definitionId: asBrandedId<"ItemDefinitionId">("14148"),
+      randomSuffixId: asBrandedId<"RandomSuffixId">("prototype_of_readiness"),
+      ownerMemberId: member.id,
+    });
+    const formula = suffixContent.combatProfileById.get(
+      suffixContent.specById.get(member.progression.specId)!.combatProfileId,
+    )!;
+    const withSuffix = buildCombatProfile(
+      { member, content: suffixContent, itemInstances: { [instance.id]: instance } },
+      formula,
+    );
+    const withoutSuffix = buildCombatProfile(
+      {
+        member,
+        content: suffixContent,
+        itemInstances: { [instance.id]: { ...instance, randomSuffixId: undefined } },
+      },
+      formula,
+    );
+
+    expect(withSuffix.diagnostics).toContainEqual(
+      expect.objectContaining({
+        stage: "equipment",
+        statId: "staminaPoints",
+        sourceId: "item:14148",
+        amount: 1,
+      }),
+    );
+    expect(withSuffix.capabilities.survivability).toBeGreaterThan(
+      withoutSuffix.capabilities.survivability,
+    );
   });
 });

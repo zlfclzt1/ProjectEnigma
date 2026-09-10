@@ -3,7 +3,8 @@ import {
   getMemberDetailView,
   getMemberDirectoryView,
 } from "../../src/application/queries/get-members-view";
-import { loadBrowserContentRegistry } from "../../src/content/manifest";
+import { browserContentModules, loadBrowserContentRegistry } from "../../src/content/manifest";
+import { loadContentRegistry, type ContentRegistry } from "../../src/content/registry";
 import { evaluateEquipEligibility } from "../../src/domain/equipment/equip-rules";
 import { equipItem } from "../../src/domain/equipment/equipment";
 import type { ItemInstance } from "../../src/domain/equipment/item-instance";
@@ -15,15 +16,30 @@ import { FakeClock } from "../helpers/runtime-fakes";
 
 const content = loadBrowserContentRegistry();
 
-function state() {
+function state(registry: ContentRegistry = content) {
   return createNewGame({
     slotId: asBrandedId<"SaveSlotId">("member-view"),
-    content,
+    content: registry,
     contentVersion: asBrandedId<"ContentVersion">("classic-v1"),
     clock: new FakeClock(1_000),
     ids: new LocalIdGenerator(),
     random: new SeededRandomSource("member-view"),
   });
+}
+
+function contentWithPrototypeSuffix(itemId: string): ContentRegistry {
+  const modules = structuredClone(browserContentModules) as Record<string, unknown>;
+  const key = Object.keys(modules).find((path) =>
+    path.endsWith("/content/items/ragefire-chasm.json"),
+  );
+  if (!key) throw new Error("Expected ragefire item content");
+  const file = modules[key] as {
+    items: Array<{ id: string; randomSuffixIds?: string[] }>;
+  };
+  const item = file.items.find((entry) => entry.id === itemId);
+  if (!item) throw new Error(`Expected item ${itemId}`);
+  item.randomSuffixIds = ["prototype_of_readiness"];
+  return loadContentRegistry(modules);
 }
 
 describe("member view queries", () => {
@@ -102,5 +118,45 @@ describe("member view queries", () => {
     expect(item.acquisitionSource).toContain("怒焰裂谷");
     expect(item.acquisitionSource).toContain("奥格弗林特");
     expect(item.requirements[0]).toMatch(/^需要等级 /);
+  });
+
+  it("projects the resolved suffix name, total stats, and explicit suffix bonus", () => {
+    const suffixContent = contentWithPrototypeSuffix("14148");
+    const game = state(suffixContent);
+    const member = Object.values(game.members)[0]!;
+    member.identity.classId = asBrandedId<"ClassId">("mage");
+    member.progression.specId = asBrandedId<"SpecId">("mage_arcane");
+    const replacedId = member.equipment.wrist!;
+    delete game.itemInstances[replacedId];
+    const instance: ItemInstance = {
+      id: asBrandedId<"ItemInstanceId">("suffix-item"),
+      definitionId: asBrandedId<"ItemDefinitionId">("14148"),
+      randomSuffixId: asBrandedId<"RandomSuffixId">("prototype_of_readiness"),
+      ownerMemberId: member.id,
+      bound: true,
+      acquiredAt: 2_000,
+      source: { type: "grant", reasonId: "suffix-view-test" },
+      enchantmentIds: [],
+    };
+    member.equipment.wrist = instance.id;
+    game.itemInstances[instance.id] = instance;
+
+    const detail = getMemberDetailView(game, suffixContent, member.id)!;
+    const item = detail.equipment.find((slot) => slot.id === "wrist")!.item!;
+
+    expect(item.name).toBe("整备之水晶腕轮");
+    expect(item.stats).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ id: "staminaPoints", value: "+1" }),
+        expect.objectContaining({ id: "intellectPoints", value: "+1" }),
+      ]),
+    );
+    expect(item.randomSuffix).toEqual({
+      name: "整备之",
+      stats: [expect.objectContaining({ id: "staminaPoints", value: "+1" })],
+    });
+    expect(detail.aggregateStats).toEqual(
+      expect.arrayContaining([expect.objectContaining({ id: "staminaPoints" })]),
+    );
   });
 });

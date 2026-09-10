@@ -4,6 +4,7 @@ import {
   GAME_STATE_SAVE_VERSION,
   type GameState,
   type LegacyGameStateV2,
+  type LegacyGameStateV3,
 } from "../../src/domain/game-state";
 import type { Member } from "../../src/domain/member/member";
 import { asBrandedId } from "../../src/domain/shared/ids";
@@ -136,7 +137,7 @@ export function createGameStateFixture(overrides: Partial<GameState> = {}): Game
 export function createLegacyGameStateV2Fixture(
   overrides: Partial<LegacyGameStateV2> = {},
 ): LegacyGameStateV2 {
-  const current = createGameStateFixture();
+  const current = createLegacyGameStateV3Fixture();
   const { purchasedUpgradeIds: _purchasedUpgradeIds, ...guild } = current.guild;
   const { dungeonClearCounts: _dungeonClearCounts, ...history } = current.history;
   void _purchasedUpgradeIds;
@@ -146,6 +147,25 @@ export function createLegacyGameStateV2Fixture(
     saveVersion: 2,
     guild: { ...guild, memberCapacity: 10 },
     history,
+    ...overrides,
+  };
+}
+
+export function createLegacyGameStateV3Fixture(
+  overrides: Partial<LegacyGameStateV3> = {},
+): LegacyGameStateV3 {
+  const current = createGameStateFixture();
+  const itemInstances = Object.fromEntries(
+    Object.entries(current.itemInstances).map(([id, instance]) => {
+      const { randomSuffixId: _randomSuffixId, ...legacyInstance } = instance;
+      void _randomSuffixId;
+      return [id, legacyInstance];
+    }),
+  ) as LegacyGameStateV3["itemInstances"];
+  return {
+    ...current,
+    saveVersion: 3,
+    itemInstances,
     ...overrides,
   };
 }

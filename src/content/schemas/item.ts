@@ -47,6 +47,11 @@ export const itemDefinitionSchema = z
     stats: classicItemStatsSchema,
     statsSource: contentSourceSchema,
     statsBalanceOverride: balanceOverrideSchema.optional(),
+    randomSuffixIds: z
+      .array(brandedContentIdSchema<"RandomSuffixId">())
+      .min(1)
+      .refine((ids) => new Set(ids).size === ids.length, "随机词缀池不能重复引用同一词缀")
+      .optional(),
   })
   .strict()
   .superRefine((item, context) => {

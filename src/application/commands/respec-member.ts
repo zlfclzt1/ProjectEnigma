@@ -13,6 +13,7 @@ import {
 import type { Member } from "../../domain/member/member";
 import { RESPEC_COST } from "../../domain/guild/recruitment";
 import type { ItemInstanceId, MemberId, SpecId } from "../../domain/shared/ids";
+import { resolveItemInstance } from "../../domain/equipment/resolve-item-instance";
 import { LocalIdGenerator } from "../../infrastructure/ids/local-id-generator";
 import { SeededRandomSource } from "../../infrastructure/random/seeded-random-source";
 import { memberFactoryContext } from "./member-factory-context";
@@ -63,10 +64,8 @@ export function respecMemberCommand(
         ItemInstanceId,
       ][]) {
         const instance = draft.itemInstances[instanceId];
-        const definition = instance
-          ? dependencies.content.itemById.get(instance.definitionId)
-          : undefined;
-        if (!instance || !definition) throw new Error("成员装备数据不完整。");
+        if (!instance) throw new Error("成员装备数据不完整。");
+        const definition = resolveItemInstance(instance, dependencies.content).definition;
         const eligibility = evaluateEquipEligibility(member, instance, definition, {
           content: dependencies.content,
           itemInstances: draft.itemInstances,
@@ -97,7 +96,7 @@ function fillMissingStarterEquipment(
     if (slot === "offHand") {
       const mainHandId = member.equipment.mainHand;
       const mainHand = mainHandId ? itemInstances[mainHandId] : undefined;
-      if (mainHand && content.itemById.get(mainHand.definitionId)?.twoHanded) continue;
+      if (mainHand && resolveItemInstance(mainHand, content).definition.twoHanded) continue;
     }
     const starter = createStarterItemForMember(context, member.id, member.identity.classId, slot);
     itemInstances[starter.id] = starter;

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { loadBrowserContentRegistry } from "../../src/content/manifest";
+import { browserContentModules, loadBrowserContentRegistry } from "../../src/content/manifest";
+import { loadContentRegistry } from "../../src/content/registry";
 import type { ContentRegistry } from "../../src/content/registry";
 import type { ItemDefinition } from "../../src/content/schemas/item";
 import { evaluateUpgrade } from "../../src/domain/equipment/upgrade-evaluation";
@@ -201,5 +202,62 @@ describe("combat-stat upgrade evaluation", () => {
     );
     expect(strongResult.primaryResponsibilityDelta).toBeGreaterThan(0);
     expect(weakResult.primaryResponsibilityDelta).toBe(0);
+  });
+
+  it("includes random suffix stats in upgrade deltas and recommendation scores", () => {
+    const modules = structuredClone(browserContentModules) as Record<string, unknown>;
+    const key = Object.keys(modules).find((path) =>
+      path.endsWith("/content/items/ragefire-chasm.json"),
+    );
+    if (!key) throw new Error("Expected ragefire item content");
+    const file = modules[key] as {
+      items: Array<{ id: string; randomSuffixIds?: string[] }>;
+    };
+    file.items.find((entry) => entry.id === "14148")!.randomSuffixIds = ["prototype_of_readiness"];
+    const suffixContent = loadContentRegistry(modules);
+    const member = createMemberFixture({
+      identity: {
+        ...createMemberFixture().identity,
+        classId: asBrandedId<"ClassId">("mage"),
+      },
+      progression: {
+        level: 18,
+        experience: 0,
+        specId: asBrandedId<"SpecId">("mage_arcane"),
+      },
+      equipment: {},
+    });
+    const plain = createItemInstanceFixture({
+      id: asBrandedId<"ItemInstanceId">("plain_wrist"),
+      definitionId: asBrandedId<"ItemDefinitionId">("14148"),
+      ownerMemberId: undefined,
+      bound: false,
+    });
+    const suffixed = createItemInstanceFixture({
+      ...plain,
+      id: asBrandedId<"ItemInstanceId">("suffixed_wrist"),
+      randomSuffixId: asBrandedId<"RandomSuffixId">("prototype_of_readiness"),
+    });
+    const instances = { [plain.id]: plain, [suffixed.id]: suffixed };
+
+    const plainResult = evaluateUpgrade(member, plain, { itemInstances: instances }, suffixContent);
+    const suffixResult = evaluateUpgrade(
+      member,
+      suffixed,
+      { itemInstances: instances },
+      suffixContent,
+    );
+
+    expect(plainResult.equippable && suffixResult.equippable).toBe(true);
+    if (!plainResult.equippable || !suffixResult.equippable) {
+      throw new Error("Expected both wrist variants to be equippable");
+    }
+    expect(suffixResult.statChanges).toContainEqual(
+      expect.objectContaining({ statId: "staminaPoints", delta: 1 }),
+    );
+    expect(suffixResult.capabilityChanges.survivability).toBeGreaterThan(
+      plainResult.capabilityChanges.survivability,
+    );
+    expect(suffixResult.recommendationScore).toBeGreaterThan(plainResult.recommendationScore);
   });
 });

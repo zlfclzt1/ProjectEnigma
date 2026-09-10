@@ -7,6 +7,7 @@ import type {
   ItemInstanceId,
   MemberId,
   PendingLootId,
+  RandomSuffixId,
   RecipeId,
 } from "../shared/ids";
 
@@ -24,6 +25,7 @@ export type ItemAcquisitionSource =
 export interface ItemInstance {
   id: ItemInstanceId;
   definitionId: ItemDefinitionId;
+  randomSuffixId?: RandomSuffixId;
   ownerMemberId?: MemberId;
   bound: boolean;
   acquiredAt: number;

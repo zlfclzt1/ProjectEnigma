@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import { browserContentModules, loadBrowserContentRegistry } from "../../src/content/manifest";
+import { loadContentRegistry, type ContentRegistry } from "../../src/content/registry";
 import type { LootTable } from "../../src/content/schemas/dungeon";
 import { generateGuaranteedLoot } from "../../src/domain/dungeon/loot-generation";
 import { asBrandedId } from "../../src/domain/shared/ids";
@@ -18,6 +20,7 @@ function lootTable(guaranteedEquipmentDrops: number): LootTable {
 
 describe("guaranteed equipment loot generation", () => {
   it("keeps one-drop and multi-drop rolls independent, stable, and reproducible", () => {
+    const content = loadBrowserContentRegistry();
     const activity = createExpeditionActivityFixture();
     const stage = activity.runPlans[0]!.stages[0]!;
     stage.lootSeed = "loot-2";
@@ -26,6 +29,7 @@ describe("guaranteed equipment loot generation", () => {
       activity,
       stage,
       lootTable(1),
+      content,
       10_000,
       new LocalIdGenerator(),
     );
@@ -33,6 +37,7 @@ describe("guaranteed equipment loot generation", () => {
       activity,
       stage,
       lootTable(2),
+      content,
       10_000,
       new LocalIdGenerator(),
     );
@@ -40,6 +45,7 @@ describe("guaranteed equipment loot generation", () => {
       activity,
       stage,
       lootTable(2),
+      content,
       10_000,
       new LocalIdGenerator(),
     );
@@ -60,4 +66,82 @@ describe("guaranteed equipment loot generation", () => {
       activity.participantIds,
     ]);
   });
+
+  it("rolls item suffixes deterministically per drop and leaves items without pools untouched", () => {
+    const suffixContent = contentWithTwoPrototypeSuffixes();
+    const activity = createExpeditionActivityFixture();
+    const stage = activity.runPlans[0]!.stages[0]!;
+    stage.lootSeed = "suffix-seed-3";
+    const table: LootTable = {
+      id: asBrandedId<"LootTableId">("suffix_test_loot"),
+      guaranteedEquipmentDrops: 2,
+      items: [{ itemId: asBrandedId<"ItemDefinitionId">("15452"), weight: 1 }],
+    };
+
+    const first = generateGuaranteedLoot(
+      activity,
+      stage,
+      table,
+      suffixContent,
+      10_000,
+      new LocalIdGenerator(),
+    );
+    const repeated = generateGuaranteedLoot(
+      activity,
+      stage,
+      table,
+      suffixContent,
+      10_000,
+      new LocalIdGenerator(),
+    );
+    const withoutPool = generateGuaranteedLoot(
+      activity,
+      stage,
+      table,
+      loadBrowserContentRegistry(),
+      10_000,
+      new LocalIdGenerator(),
+    );
+
+    expect(first).toEqual(repeated);
+    expect(first.map((drop) => drop.instance.randomSuffixId)).toEqual([
+      "prototype_of_readiness",
+      "prototype_of_focus",
+    ]);
+    expect(withoutPool.every((drop) => drop.instance.randomSuffixId === undefined)).toBe(true);
+    expect(withoutPool.map((drop) => drop.instance.definitionId)).toEqual(
+      first.map((drop) => drop.instance.definitionId),
+    );
+  });
 });
+
+function contentWithTwoPrototypeSuffixes(): ContentRegistry {
+  const modules = structuredClone(browserContentModules) as Record<string, unknown>;
+  const itemKey = Object.keys(modules).find((path) =>
+    path.endsWith("/content/items/ragefire-chasm.json"),
+  );
+  const suffixKey = Object.keys(modules).find((path) =>
+    path.endsWith("/content/item-suffixes/prototype.json"),
+  );
+  if (!itemKey || !suffixKey) throw new Error("Expected suffix test content");
+  const itemFile = modules[itemKey] as {
+    items: Array<{ id: string; randomSuffixIds?: string[] }>;
+  };
+  const suffixFile = modules[suffixKey] as {
+    itemSuffixes: Array<{
+      id: string;
+      nameTemplate: { zhCN: string; enUS?: string };
+      relativeWeight: number;
+    }>;
+  };
+  const item = itemFile.items.find((entry) => entry.id === "15452");
+  const sourceSuffix = suffixFile.itemSuffixes[0];
+  if (!item || !sourceSuffix) throw new Error("Expected prototype suffix and test item");
+  suffixFile.itemSuffixes.push({
+    ...structuredClone(sourceSuffix),
+    id: "prototype_of_focus",
+    nameTemplate: { zhCN: "专注之{base}", enUS: "{base} of Focus" },
+  });
+  item.randomSuffixIds = ["prototype_of_readiness", "prototype_of_focus"];
+  return loadContentRegistry(modules);
+}

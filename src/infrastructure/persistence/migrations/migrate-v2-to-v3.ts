@@ -1,11 +1,10 @@
 import type { ContentRegistry } from "../../../content/registry";
-import {
-  GAME_STATE_SAVE_VERSION,
-  type GameState,
-  type LegacyGameStateV2,
-} from "../../../domain/game-state";
+import { type LegacyGameStateV2, type LegacyGameStateV3 } from "../../../domain/game-state";
 
-export function migrateV2ToV3(legacy: LegacyGameStateV2, content: ContentRegistry): GameState {
+export function migrateV2ToV3(
+  legacy: LegacyGameStateV2,
+  content: ContentRegistry,
+): LegacyGameStateV3 {
   const { memberCapacity, ...legacyGuild } = legacy.guild;
   const purchasedUpgradeIds = content.guildUpgrades
     .filter((upgrade) =>
@@ -29,7 +28,7 @@ export function migrateV2ToV3(legacy: LegacyGameStateV2, content: ContentRegistr
 
   return {
     ...structuredClone(legacy),
-    saveVersion: GAME_STATE_SAVE_VERSION,
+    saveVersion: 3,
     guild: {
       ...structuredClone(legacyGuild),
       purchasedUpgradeIds,

@@ -4,6 +4,7 @@ import type { Member } from "../member/member";
 import type { EquipmentSlot } from "./equipment-slot";
 import { equipItem } from "./equipment";
 import type { ItemInstance } from "./item-instance";
+import { resolveItemInstance } from "./resolve-item-instance";
 
 export const EQUIPMENT_SLOT_WEIGHTS: Readonly<Record<EquipmentSlot, number>> = {
   head: 1.2,
@@ -39,7 +40,7 @@ export function averageEquippedItemLevel(
     totalWeight += weight;
     const instanceId = member.equipment[slot];
     const instance = instanceId ? itemInstances[instanceId] : undefined;
-    const definition = instance ? content.itemById.get(instance.definitionId) : undefined;
+    const definition = instance ? resolveItemInstance(instance, content).definition : undefined;
     if (definition) weightedLevels += definition.itemLevel * weight;
   }
   return totalWeight > 0 ? weightedLevels / totalWeight : 0;

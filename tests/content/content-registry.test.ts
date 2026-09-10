@@ -23,6 +23,8 @@ describe("validated automatic content registry", () => {
     expect(discoveredPaths.every((path) => path.endsWith(".json"))).toBe(true);
     expect(discoveredPaths.some((path) => path.endsWith("/content/logs/common.json"))).toBe(true);
     expect(registry.itemById.size).toBe(registry.items.length);
+    expect(registry.itemSuffixById.size).toBe(registry.itemSuffixes.length);
+    expect(registry.itemSuffixById.size).toBe(1);
     expect(registry.combatProfileById.size).toBe(28);
     expect(registry.dungeonById.size).toBe(registry.dungeons.length);
     expect(registry.encounterById.size).toBe(registry.encounters.length);
@@ -34,7 +36,9 @@ describe("validated automatic content registry", () => {
         ?.items,
     ).toHaveLength(3);
     expect("set" in registry.itemById).toBe(false);
+    expect("set" in registry.itemSuffixById).toBe(false);
     expect(Object.isFrozen(registry.items)).toBe(true);
+    expect(Object.isFrozen(registry.itemSuffixes)).toBe(true);
   });
 
   it("rejects missing, mismatched, and malformed combat profile configuration", () => {
@@ -110,6 +114,43 @@ describe("validated automatic content registry", () => {
     const encounterId = asBrandedId<"EncounterId">(encounters[0].id);
     expect(registry.encounterById.get(encounterId)?.lootTableId).toBeUndefined();
     expect(registry.getLootTableForEncounter(encounterId)).toBeUndefined();
+  });
+
+  it("indexes optional item suffix pools and validates references and item-level tiers", () => {
+    const validModules = clonedModules();
+    const validItemFile = moduleAt(validModules, "/content/items/ragefire-chasm.json");
+    const validItems = validItemFile.items as Array<{
+      id: string;
+      randomSuffixIds?: string[];
+    }>;
+    validItems[0].randomSuffixIds = ["prototype_of_readiness"];
+    const validRegistry = loadContentRegistry(validModules);
+    const itemId = asBrandedId<"ItemDefinitionId">(validItems[0].id);
+    expect(validRegistry.getRandomSuffixesForItem(itemId).map((suffix) => suffix.id)).toEqual([
+      "prototype_of_readiness",
+    ]);
+
+    const missingModules = clonedModules();
+    const missingItemFile = moduleAt(missingModules, "/content/items/ragefire-chasm.json");
+    const missingItems = missingItemFile.items as Array<{ randomSuffixIds?: string[] }>;
+    missingItems[0].randomSuffixIds = ["missing_suffix"];
+    expect(() => loadContentRegistry(missingModules)).toThrowError(
+      /items\[0\]\.randomSuffixIds\[0\].*不存在的随机词缀.*missing_suffix/s,
+    );
+
+    const uncoveredModules = clonedModules();
+    const uncoveredItemFile = moduleAt(uncoveredModules, "/content/items/ragefire-chasm.json");
+    const uncoveredItems = uncoveredItemFile.items as Array<{ randomSuffixIds?: string[] }>;
+    uncoveredItems[0].randomSuffixIds = ["prototype_of_readiness"];
+    const suffixFile = moduleAt(uncoveredModules, "/content/item-suffixes/prototype.json");
+    const suffixes = suffixFile.itemSuffixes as Array<{
+      tiers: Array<{ minimumItemLevel: number; maximumItemLevel: number }>;
+    }>;
+    suffixes[0].tiers = [
+      { ...suffixes[0].tiers[0]!, maximumItemLevel: 17 },
+      { ...suffixes[0].tiers[1]!, minimumItemLevel: 19 },
+    ];
+    expect(() => loadContentRegistry(uncoveredModules)).toThrowError(/没有覆盖物品等级 18 的档位/);
   });
 
   it("rejects route duration drift, unlock cycles and placeholder equipment names", () => {

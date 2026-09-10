@@ -53,6 +53,7 @@ try {
     `隐藏角色 ${registry.hiddenCharacters.length}`,
     `公会升级 ${registry.guildUpgrades.length}`,
     `物品 ${registry.items.length}`,
+    `随机词缀 ${registry.itemSuffixes.length}`,
     `副本 ${registry.dungeons.length}`,
     `首领战 ${registry.encounters.length}`,
     `掉落表 ${registry.lootTables.length}`,

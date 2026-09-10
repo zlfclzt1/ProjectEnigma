@@ -4,6 +4,7 @@ import { equipmentSellValue } from "../../domain/equipment/item-value";
 import type { GameState } from "../../domain/game-state";
 import type { MemberId, PendingLootId } from "../../domain/shared/ids";
 import { getEquippedItemView, type EquippedItemView } from "./get-members-view";
+import { resolveItemInstance } from "../../domain/equipment/resolve-item-instance";
 
 export interface LootCandidateView {
   readonly memberId: MemberId;
@@ -48,8 +49,8 @@ export function getLootView(state: GameState, content: ContentRegistry): LootVie
     .sort((left, right) => left.acquiredAt - right.acquiredAt || left.id.localeCompare(right.id))
     .flatMap((entry): PendingLootView[] => {
       const instance = state.itemInstances[entry.itemInstanceId];
-      const definition = instance ? content.itemById.get(instance.definitionId) : undefined;
-      if (!instance || !definition) return [];
+      if (!instance) return [];
+      const definition = resolveItemInstance(instance, content).definition;
       const activity = state.activities[entry.sourceActivityId];
       const source = instance.source.type === "encounter" ? instance.source : undefined;
       const locked = activity?.status === "active" || activity?.status === "scheduled";
@@ -83,7 +84,7 @@ export function getLootView(state: GameState, content: ContentRegistry): LootVie
       return [
         {
           id: entry.id,
-          item: getEquippedItemView(instance, definition, content),
+          item: getEquippedItemView(instance, content),
           dungeonName: source
             ? (content.dungeonById.get(source.dungeonId)?.name.zhCN ?? source.dungeonId)
             : "其他来源",

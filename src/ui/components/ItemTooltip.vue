@@ -15,6 +15,12 @@ defineProps<{ item: EquippedItemView }>();
       <span>{{ stat.label }}</span
       ><b>{{ stat.value }}</b>
     </p>
+    <section v-if="item.randomSuffix" class="suffix-details">
+      <span>随机词缀：{{ item.randomSuffix.name }}</span>
+      <small v-for="stat in item.randomSuffix.stats" :key="stat.id">
+        {{ stat.label }} {{ stat.value }}
+      </small>
+    </section>
     <p v-if="item.stats.length === 0" class="muted">无额外属性</p>
     <div class="requirements">
       <span v-for="requirement in item.requirements" :key="requirement">{{ requirement }}</span>
@@ -81,6 +87,18 @@ defineProps<{ item: EquippedItemView }>();
   gap: 3px;
   margin-top: 9px;
   color: #d3cab8;
+}
+.suffix-details {
+  display: grid;
+  gap: 3px;
+  padding: 7px;
+  margin-top: 8px;
+  border-left: 2px solid #8d7650;
+  color: #cbb786;
+  background: #17140f;
+}
+.suffix-details small {
+  color: #73c879;
 }
 .description {
   color: #d6b768;

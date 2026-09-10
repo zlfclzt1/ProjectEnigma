@@ -12,6 +12,7 @@ import {
   type LootTable,
 } from "./schemas/dungeon";
 import { itemDefinitionFileSchema, type ItemDefinition } from "./schemas/item";
+import { itemSuffixDefinitionFileSchema, type ItemSuffixDefinition } from "./schemas/item-suffix";
 import {
   guildUpgradeDefinitionFileSchema,
   type GuildUpgradeDefinition,
@@ -85,6 +86,7 @@ export interface LoadedContent {
   readonly hiddenCharacters: readonly LocatedContent<HiddenCharacterDefinition>[];
   readonly guildUpgrades: readonly LocatedContent<GuildUpgradeDefinition>[];
   readonly items: readonly LocatedContent<ItemDefinition>[];
+  readonly itemSuffixes: readonly LocatedContent<ItemSuffixDefinition>[];
   readonly dungeons: readonly LocatedContent<DungeonDefinition>[];
   readonly encounters: readonly LocatedContent<EncounterDefinition>[];
   readonly lootTables: readonly LocatedContent<LootTable>[];
@@ -126,6 +128,11 @@ const DIRECTORY_DESCRIPTORS: Readonly<Record<string, FileDescriptor>> = {
     property: "guildUpgrades",
   },
   items: { schema: itemDefinitionFileSchema, collection: "items", property: "items" },
+  "item-suffixes": {
+    schema: itemSuffixDefinitionFileSchema,
+    collection: "itemSuffixes",
+    property: "itemSuffixes",
+  },
   dungeons: {
     schema: dungeonDefinitionFileSchema,
     collection: "dungeons",
@@ -156,6 +163,7 @@ function emptyLoadedContent(): MutableLoadedContent {
     hiddenCharacters: [],
     guildUpgrades: [],
     items: [],
+    itemSuffixes: [],
     dungeons: [],
     encounters: [],
     lootTables: [],

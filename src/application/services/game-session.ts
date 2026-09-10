@@ -1,5 +1,5 @@
 import type { SaveRepository } from "../ports/save-repository";
-import type { GameState } from "../../domain/game-state";
+import { GAME_STATE_SAVE_VERSION, type GameState } from "../../domain/game-state";
 import type { SaveSlotId } from "../../domain/shared/ids";
 
 export interface GameCommand<Result> {
@@ -35,7 +35,9 @@ export class GameSession {
   static async load(saves: SaveRepository, slotId: SaveSlotId): Promise<GameSession | null> {
     const state = await saves.load(slotId);
     if (!state) return null;
-    if (state.saveVersion !== 3) throw new Error("旧版存档必须先经过迁移才能创建游戏会话。");
+    if (state.saveVersion !== GAME_STATE_SAVE_VERSION) {
+      throw new Error("旧版存档必须先经过迁移才能创建游戏会话。");
+    }
     return new GameSession(saves, state);
   }
 

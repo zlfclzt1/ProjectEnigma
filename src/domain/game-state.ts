@@ -14,7 +14,7 @@ import type {
 } from "./shared/ids";
 import type { IdGeneratorState, RandomState } from "./shared/runtime-state";
 
-export const GAME_STATE_SAVE_VERSION = 3 as const;
+export const GAME_STATE_SAVE_VERSION = 4 as const;
 
 export interface GameState {
   slotId: SaveSlotId;
@@ -36,16 +36,26 @@ export interface GameState {
   updatedAt: number;
 }
 
+export type LegacyItemInstanceV3 = Omit<ItemInstance, "randomSuffixId">;
+
+export interface LegacyGameStateV3 extends Omit<GameState, "saveVersion" | "itemInstances"> {
+  saveVersion: 3;
+  itemInstances: Record<ItemInstanceId, LegacyItemInstanceV3>;
+}
+
 export interface LegacyGuildStateV2 extends Omit<GuildState, "purchasedUpgradeIds"> {
   memberCapacity: number;
 }
 
 export type LegacyHistorySummaryV2 = Omit<HistorySummary, "dungeonClearCounts">;
 
-export interface LegacyGameStateV2 extends Omit<GameState, "saveVersion" | "guild" | "history"> {
+export interface LegacyGameStateV2 extends Omit<
+  LegacyGameStateV3,
+  "saveVersion" | "guild" | "history"
+> {
   saveVersion: 2;
   guild: LegacyGuildStateV2;
   history: LegacyHistorySummaryV2;
 }
 
-export type PersistedGameState = GameState | LegacyGameStateV2;
+export type PersistedGameState = GameState | LegacyGameStateV3 | LegacyGameStateV2;

@@ -9,6 +9,7 @@ import {
   type EquipRuleContext,
 } from "./equip-rules";
 import type { ItemInstance } from "./item-instance";
+import { resolveItemInstance } from "./resolve-item-instance";
 
 const INTERCHANGEABLE_SLOTS: Partial<Record<EquipmentSlot, readonly EquipmentSlot[]>> = {
   ring1: ["ring1", "ring2"],
@@ -45,7 +46,7 @@ export function candidateEquipmentSlots(definition: ItemDefinition): readonly Eq
 function equippedItemLevel(member: Member, slot: EquipmentSlot, context: EquipItemContext): number {
   const instanceId = member.equipment[slot];
   const instance = instanceId ? context.itemInstances[instanceId] : undefined;
-  return instance ? (context.content.itemById.get(instance.definitionId)?.itemLevel ?? 0) : -1;
+  return instance ? resolveItemInstance(instance, context.content).definition.itemLevel : -1;
 }
 
 export function chooseEquipmentSlot(
@@ -74,8 +75,12 @@ export function equipItem(
   context: EquipItemContext,
   preferredSlot?: EquipmentSlot,
 ): EquipItemResult {
-  const definition = context.content.itemById.get(instance.definitionId);
-  if (!definition) throw new EquipmentRuleError(["missing-definition"]);
+  let definition;
+  try {
+    definition = resolveItemInstance(instance, context.content).definition;
+  } catch {
+    throw new EquipmentRuleError(["missing-definition"]);
+  }
   const eligibility = evaluateEquipEligibility(member, instance, definition, context);
   if (!eligibility.allowed) {
     throw new EquipmentRuleError(eligibility.failures.map((failure) => failure.code));

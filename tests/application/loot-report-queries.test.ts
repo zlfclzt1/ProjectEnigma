@@ -52,6 +52,21 @@ function contentWithTwoRagefireDrops(): ContentRegistry {
   return loadContentRegistry(modules);
 }
 
+function contentWithRagefireSuffixes(): ContentRegistry {
+  const modules = structuredClone(browserContentModules) as Record<string, unknown>;
+  const key = Object.keys(modules).find((path) =>
+    path.endsWith("/content/items/ragefire-chasm.json"),
+  );
+  if (!key) throw new Error("Expected ragefire item content");
+  const file = modules[key] as {
+    items: Array<{ id: string; randomSuffixIds?: string[] }>;
+  };
+  for (const item of file.items.filter((entry) => entry.id.startsWith("154"))) {
+    item.randomSuffixIds = ["prototype_of_readiness"];
+  }
+  return loadContentRegistry(modules);
+}
+
 describe("loot and combat report queries", () => {
   it("locks mid-run loot and unlocks it with participant-only upgrade comparisons", async () => {
     const { clock, state, activity, memberIds } = await setup();
@@ -117,5 +132,22 @@ describe("loot and combat report queries", () => {
     expect(loot.lockedCount).toBe(2);
     expect(reports).toHaveLength(1);
     expect(reports[0]!.rewards.itemNames).toHaveLength(2);
+  });
+
+  it("uses the same resolved suffix name in loot and combat reports", async () => {
+    const suffixContent = contentWithRagefireSuffixes();
+    const { clock, state, activity } = await setup(suffixContent);
+    clock.set(activity.nextSettlementAt);
+    await settleDueActivitiesCommand({ content: suffixContent, clock }).execute(state);
+
+    const loot = getLootView(state, suffixContent);
+    const reports = getCombatReportsView(state, suffixContent).reports;
+
+    expect(loot.pending).toHaveLength(1);
+    expect(loot.pending[0]!.item.name).toMatch(/^整备之/);
+    expect(loot.pending[0]!.item.randomSuffix?.stats).toEqual([
+      expect.objectContaining({ id: "staminaPoints", value: "+1" }),
+    ]);
+    expect(reports[0]!.rewards.itemNames).toEqual([loot.pending[0]!.item.name]);
   });
 });

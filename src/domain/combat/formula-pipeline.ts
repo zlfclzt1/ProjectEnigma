@@ -10,6 +10,7 @@ import {
   type ResolvedCombatFormulaContext,
 } from "./formula-context";
 import type { StatContribution } from "./stat-contribution";
+import { resolveItemInstance } from "../equipment/resolve-item-instance";
 import { CombatStrategyRegistry } from "./strategies/strategy-registry";
 
 type MutableCombatCapabilityValues = Record<(typeof COMBAT_CAPABILITIES)[number], number>;
@@ -110,14 +111,13 @@ export function buildCombatProfile(
 function resolveContext(context: CombatFormulaContext): ResolvedCombatFormulaContext {
   const equippedDefinitions = Object.values(context.member.equipment).map((instanceId) => {
     const instance = context.itemInstances[instanceId];
-    const definition = instance ? context.content.itemById.get(instance.definitionId) : undefined;
-    if (!definition) throw new Error(`成员 ${context.member.id} 装备数据不完整。`);
-    return definition;
+    if (!instance) throw new Error(`成员 ${context.member.id} 装备数据不完整。`);
+    return resolveItemInstance(instance, context.content).definition;
   });
   const offHandId = context.member.equipment.offHand;
   const offHandInstance = offHandId ? context.itemInstances[offHandId] : undefined;
   const offHand = offHandInstance
-    ? context.content.itemById.get(offHandInstance.definitionId)
+    ? resolveItemInstance(offHandInstance, context.content).definition
     : undefined;
   return {
     ...context,

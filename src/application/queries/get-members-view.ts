@@ -1,9 +1,10 @@
 import type { ContentRegistry } from "../../content/registry";
-import type { ItemDefinition } from "../../content/schemas/item";
+import type { ClassicItemStats } from "../../domain/equipment/stats";
 import { buildCombatProfile } from "../../domain/combat/formula-pipeline";
 import { EQUIPMENT_SLOTS, type EquipmentSlot } from "../../domain/equipment/equipment-slot";
 import { averageEquippedItemLevel } from "../../domain/equipment/item-level";
 import type { ItemInstance } from "../../domain/equipment/item-instance";
+import { resolveItemInstance } from "../../domain/equipment/resolve-item-instance";
 import type { GameState } from "../../domain/game-state";
 import { RESPEC_COST } from "../../domain/guild/recruitment";
 import type { ClassId, MemberId, SpecId } from "../../domain/shared/ids";
@@ -52,6 +53,10 @@ export interface EquippedItemView {
   readonly acquisitionSource: string;
   readonly statsSource: string;
   readonly requirements: readonly string[];
+  readonly randomSuffix?: {
+    readonly name: string;
+    readonly stats: readonly ItemStatLineView[];
+  };
 }
 
 export interface EquipmentSlotView {
@@ -189,7 +194,7 @@ export function getMemberDirectoryView(
   };
 }
 
-function statLines(definition: ItemDefinition): ItemStatLineView[] {
+function statLines(stats: ClassicItemStats): ItemStatLineView[] {
   const lines: ItemStatLineView[] = [];
   const appendGroup = (group: Record<string, number> | undefined, prefix = ""): void => {
     if (!group) return;
@@ -208,55 +213,55 @@ function statLines(definition: ItemDefinition): ItemStatLineView[] {
       });
     }
   };
-  appendGroup(definition.stats.primary as Record<string, number> | undefined);
-  appendGroup(definition.stats.defense as Record<string, number> | undefined);
+  appendGroup(stats.primary as Record<string, number> | undefined);
+  appendGroup(stats.defense as Record<string, number> | undefined);
   appendGroup(
-    definition.stats.physical
+    stats.physical
       ? {
-          ...(definition.stats.physical.attackPowerPoints === undefined
+          ...(stats.physical.attackPowerPoints === undefined
             ? {}
-            : { attackPowerPoints: definition.stats.physical.attackPowerPoints }),
-          ...(definition.stats.physical.rangedAttackPowerPoints === undefined
+            : { attackPowerPoints: stats.physical.attackPowerPoints }),
+          ...(stats.physical.rangedAttackPowerPoints === undefined
             ? {}
-            : { rangedAttackPowerPoints: definition.stats.physical.rangedAttackPowerPoints }),
-          ...(definition.stats.physical.hitPercent === undefined
+            : { rangedAttackPowerPoints: stats.physical.rangedAttackPowerPoints }),
+          ...(stats.physical.hitPercent === undefined
             ? {}
-            : { physicalHitPercent: definition.stats.physical.hitPercent }),
-          ...(definition.stats.physical.criticalStrikePercent === undefined
+            : { physicalHitPercent: stats.physical.hitPercent }),
+          ...(stats.physical.criticalStrikePercent === undefined
             ? {}
-            : { physicalCriticalStrikePercent: definition.stats.physical.criticalStrikePercent }),
+            : { physicalCriticalStrikePercent: stats.physical.criticalStrikePercent }),
         }
       : undefined,
   );
   appendGroup(
-    definition.stats.spell
+    stats.spell
       ? {
-          ...(definition.stats.spell.spellPowerPoints === undefined
+          ...(stats.spell.spellPowerPoints === undefined
             ? {}
-            : { spellPowerPoints: definition.stats.spell.spellPowerPoints }),
-          ...(definition.stats.spell.healingPowerPoints === undefined
+            : { spellPowerPoints: stats.spell.spellPowerPoints }),
+          ...(stats.spell.healingPowerPoints === undefined
             ? {}
-            : { healingPowerPoints: definition.stats.spell.healingPowerPoints }),
-          ...(definition.stats.spell.hitPercent === undefined
+            : { healingPowerPoints: stats.spell.healingPowerPoints }),
+          ...(stats.spell.hitPercent === undefined
             ? {}
-            : { spellHitPercent: definition.stats.spell.hitPercent }),
-          ...(definition.stats.spell.criticalStrikePercent === undefined
+            : { spellHitPercent: stats.spell.hitPercent }),
+          ...(stats.spell.criticalStrikePercent === undefined
             ? {}
-            : { spellCriticalStrikePercent: definition.stats.spell.criticalStrikePercent }),
+            : { spellCriticalStrikePercent: stats.spell.criticalStrikePercent }),
         }
       : undefined,
   );
-  appendGroup(definition.stats.resistances as Record<string, number> | undefined);
-  if (definition.stats.weapon) {
+  appendGroup(stats.resistances as Record<string, number> | undefined);
+  if (stats.weapon) {
     lines.push({
       id: "weaponDamage",
       label: "武器伤害",
-      value: `${definition.stats.weapon.damage.minimumPoints}–${definition.stats.weapon.damage.maximumPoints}`,
+      value: `${stats.weapon.damage.minimumPoints}–${stats.weapon.damage.maximumPoints}`,
     });
     lines.push({
       id: "weaponSpeed",
       label: "攻击速度",
-      value: definition.stats.weapon.speedSeconds.toFixed(2),
+      value: stats.weapon.speedSeconds.toFixed(2),
     });
   }
   return lines;
@@ -280,9 +285,10 @@ function acquisitionSource(instance: ItemInstance, content: ContentRegistry): st
 
 export function getEquippedItemView(
   instance: ItemInstance,
-  definition: ItemDefinition,
   content: ContentRegistry,
 ): EquippedItemView {
+  const resolved = resolveItemInstance(instance, content);
+  const definition = resolved.definition;
   const requirements: string[] = [`需要等级 ${definition.requiredLevel ?? 1}`];
   if (definition.armorType) requirements.push(`护甲类型：${definition.armorType}`);
   if (definition.restrictions.allowedClassIds.length > 0) {
@@ -314,7 +320,15 @@ export function getEquippedItemView(
         }
       : {}),
     description: definition.description.zhCN,
-    stats: statLines(definition),
+    stats: statLines(definition.stats),
+    ...(resolved.randomSuffix && resolved.suffixTier
+      ? {
+          randomSuffix: {
+            name: resolved.randomSuffix.nameTemplate.zhCN.replace("{base}", "").trim(),
+            stats: statLines(resolved.suffixTier.stats),
+          },
+        }
+      : {}),
     acquisitionSource: acquisitionSource(instance, content),
     statsSource:
       definition.statsSource.provider === "wowhead-classic"
@@ -366,13 +380,10 @@ export function getMemberDetailView(
   const equipment = EQUIPMENT_SLOTS.map((slot): EquipmentSlotView => {
     const instanceId = member.equipment[slot];
     const instance = instanceId ? state.itemInstances[instanceId] : undefined;
-    const definition = instance ? content.itemById.get(instance.definitionId) : undefined;
     return {
       id: slot,
       name: EQUIPMENT_SLOT_NAMES[slot],
-      ...(instance && definition
-        ? { item: getEquippedItemView(instance, definition, content) }
-        : {}),
+      ...(instance ? { item: getEquippedItemView(instance, content) } : {}),
     };
   });
   return {

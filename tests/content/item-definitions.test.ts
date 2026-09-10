@@ -33,6 +33,7 @@ describe("item definitions", () => {
     );
     expect(dungeonItems.every((item) => item.icon.kind === "database")).toBe(true);
     expect(dungeonItems.every((item) => item.name.zhCN.length > 0)).toBe(true);
+    expect(migratedItems.every((item) => item.randomSuffixIds === undefined)).toBe(true);
   });
 
   it("replaces dynamic starter definitions with stable IDs for every slot and armor type", () => {
@@ -93,5 +94,20 @@ describe("item definitions", () => {
     expect(() => itemDefinitionSchema.parse({ ...starterOffHand, twoHanded: true })).toThrow(
       /双手武器必须使用主手栏位/,
     );
+  });
+
+  it("allows an optional non-empty suffix pool with unique references", () => {
+    const item = migratedItems.find((entry) => entry.id === "14149")!;
+    expect(
+      itemDefinitionSchema.parse({ ...item, randomSuffixIds: ["prototype_of_readiness"] })
+        .randomSuffixIds,
+    ).toEqual(["prototype_of_readiness"]);
+    expect(() => itemDefinitionSchema.parse({ ...item, randomSuffixIds: [] })).toThrow();
+    expect(() =>
+      itemDefinitionSchema.parse({
+        ...item,
+        randomSuffixIds: ["prototype_of_readiness", "prototype_of_readiness"],
+      }),
+    ).toThrow(/不能重复/);
   });
 });

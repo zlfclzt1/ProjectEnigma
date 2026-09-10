@@ -31,6 +31,7 @@ export type PersonalityId = BrandedId<"PersonalityId">;
 export type ProfessionDefinitionId = BrandedId<"ProfessionDefinitionId">;
 export type RaceId = BrandedId<"RaceId">;
 export type RecipeId = BrandedId<"RecipeId">;
+export type RandomSuffixId = BrandedId<"RandomSuffixId">;
 export type SaveSlotId = BrandedId<"SaveSlotId">;
 export type SpecId = BrandedId<"SpecId">;
 export type TrainingDefinitionId = BrandedId<"TrainingDefinitionId">;

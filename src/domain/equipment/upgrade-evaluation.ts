@@ -9,6 +9,7 @@ import type { ItemInstanceId } from "../shared/ids";
 import { candidateEquipmentSlots, equipItem, EquipmentRuleError } from "./equipment";
 import type { EquipmentSlot } from "./equipment-slot";
 import type { ItemInstance } from "./item-instance";
+import { resolveItemInstance } from "./resolve-item-instance";
 
 export interface UpgradeEvaluationContext {
   readonly modifiers?: readonly FormulaModifier[];
@@ -48,8 +49,12 @@ export function evaluateUpgrade(
   content: ContentRegistry,
   context: UpgradeEvaluationContext = {},
 ): UpgradeEvaluation {
-  const definition = content.itemById.get(candidate.definitionId);
-  if (!definition) return { equippable: false, reasons: ["找不到候选装备定义。"] };
+  let definition;
+  try {
+    definition = resolveItemInstance(candidate, content).definition;
+  } catch {
+    return { equippable: false, reasons: ["找不到候选装备定义或随机词缀。"] };
+  }
   const spec = content.specById.get(member.progression.specId);
   const formula = spec ? content.combatProfileById.get(spec.combatProfileId) : undefined;
   if (!spec || !formula) return { equippable: false, reasons: ["成员缺少有效战斗配置。"] };

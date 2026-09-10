@@ -74,6 +74,25 @@ export function runSaveRepositoryContract(
     }
   });
 
+  it("persists an item instance random suffix unchanged", async () => {
+    const harness = await createHarness();
+    try {
+      const state = createGameStateFixture();
+      const instance = Object.values(state.itemInstances)[0]!;
+      instance.randomSuffixId = asBrandedId<"RandomSuffixId">("prototype_of_readiness");
+      await harness.repository.create(state);
+
+      const loaded = await harness.repository.load(state.slotId);
+      const loadedInstance = loaded?.itemInstances[instance.id] as
+        { randomSuffixId?: unknown } | undefined;
+
+      expect(loaded?.saveVersion).toBe(4);
+      expect(loadedInstance?.randomSuffixId).toBe("prototype_of_readiness");
+    } finally {
+      await harness.dispose();
+    }
+  });
+
   it("reports stale revisions without overwriting the current save", async () => {
     const harness = await createHarness();
     try {
