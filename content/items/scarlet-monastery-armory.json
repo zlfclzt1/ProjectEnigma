@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/scarlet-monastery-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对血色修道院军械库赫洛德专属装备 ID、图标、栏位与常驻属性。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-09",
+        "notes": "交叉核对赫洛德与 4 件专属装备归属，并排除 Scarlet Trainee 战袍。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["items[].restrictions", "items[].description"],
+        "reason": "按当前职业与定位装备规则补齐可装备性，并标记军械库 Boss 来源。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "7719",
+      "name": { "zhCN": "狂暴者头盔", "enUS": "Raging Berserker's Helm" },
+      "itemLevel": 42,
+      "requiredLevel": 37,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_helmet_25" },
+      "description": { "zhCN": "血色修道院军械库：赫洛德的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 13, "staminaPoints": 8 },
+        "defense": { "armorPoints": 213 },
+        "physical": { "criticalStrikePercent": 1 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7719",
+        "url": "https://www.wowhead.com/classic/cn/item=7719&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7718",
+      "name": { "zhCN": "赫洛德的护肩", "enUS": "Herod's Shoulder" },
+      "itemLevel": 42,
+      "requiredLevel": 37,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_shoulder_01" },
+      "description": { "zhCN": "血色修道院军械库：赫洛德的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 6, "staminaPoints": 15 },
+        "defense": { "armorPoints": 196 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7718",
+        "url": "https://www.wowhead.com/classic/cn/item=7718&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "10330",
+      "name": { "zhCN": "血色十字军护腿", "enUS": "Scarlet Leggings" },
+      "itemLevel": 43,
+      "requiredLevel": 38,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_pants_03" },
+      "description": { "zhCN": "血色修道院军械库：赫洛德的专属掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 20, "staminaPoints": 10 },
+        "defense": { "armorPoints": 233 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10330",
+        "url": "https://www.wowhead.com/classic/cn/item=10330&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    },
+    {
+      "id": "7717",
+      "name": { "zhCN": "破坏者", "enUS": "Ravager" },
+      "itemLevel": 42,
+      "requiredLevel": 37,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": { "kind": "database", "name": "inv_weapon_halberd_05" },
+      "description": { "zhCN": "血色修道院军械库：赫洛德的专属掉落。" },
+      "stats": {
+        "weapon": {
+          "damage": { "minimumPoints": 104, "maximumPoints": 157 },
+          "speedSeconds": 3.5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7717",
+        "url": "https://www.wowhead.com/classic/cn/item=7717&xml",
+        "verifiedAt": "2026-09-09"
+      }
+    }
+  ]
+}

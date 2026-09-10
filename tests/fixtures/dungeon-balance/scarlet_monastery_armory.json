@@ -1,0 +1,198 @@
+{
+  "dungeonId": "scarlet_monastery_armory",
+  "samplesPerScenario": 100000,
+  "scenarios": {
+    "standard": {
+      "required": {
+        "level": 42,
+        "simulatedRuns": 100000,
+        "clearRate": 0.8385,
+        "previewClearProbability": 0.8383771263328322,
+        "durationSeconds": 1031.6,
+        "wipeCounts": {
+          "scarlet_armory_herod": 16150
+        }
+      },
+      "with-optional": {
+        "level": 42,
+        "simulatedRuns": 100000,
+        "clearRate": 0.84612,
+        "previewClearProbability": 0.8438855328005929,
+        "durationSeconds": 1030.2,
+        "wipeCounts": {
+          "scarlet_armory_herod": 15388
+        }
+      },
+      "with-rare": {
+        "level": 42,
+        "simulatedRuns": 100000,
+        "clearRate": 0.82615,
+        "previewClearProbability": 0.8237727635758038,
+        "durationSeconds": 1040.8,
+        "wipeCounts": {
+          "scarlet_armory_herod": 17385
+        }
+      }
+    },
+    "no-tank": {
+      "required": {
+        "level": 42,
+        "simulatedRuns": 100000,
+        "clearRate": 0.04947,
+        "previewClearProbability": 0.05,
+        "durationSeconds": 1114.6,
+        "wipeCounts": {
+          "scarlet_armory_herod": 95053
+        }
+      },
+      "with-optional": {
+        "level": 42,
+        "simulatedRuns": 100000,
+        "clearRate": 0.05006,
+        "previewClearProbability": 0.05,
+        "durationSeconds": 1105.8,
+        "wipeCounts": {
+          "scarlet_armory_herod": 94994
+        }
+      },
+      "with-rare": {
+        "level": 42,
+        "simulatedRuns": 100000,
+        "clearRate": 0.05079,
+        "previewClearProbability": 0.05,
+        "durationSeconds": 1099.6,
+        "wipeCounts": {
+          "scarlet_armory_herod": 94921
+        }
+      }
+    },
+    "no-healing": {
+      "required": {
+        "level": 42,
+        "simulatedRuns": 100000,
+        "clearRate": 0.05047,
+        "previewClearProbability": 0.05,
+        "durationSeconds": 1115.2,
+        "wipeCounts": {
+          "scarlet_armory_herod": 94953
+        }
+      },
+      "with-optional": {
+        "level": 42,
+        "simulatedRuns": 100000,
+        "clearRate": 0.05072,
+        "previewClearProbability": 0.05,
+        "durationSeconds": 1127.2,
+        "wipeCounts": {
+          "scarlet_armory_herod": 94928
+        }
+      },
+      "with-rare": {
+        "level": 42,
+        "simulatedRuns": 100000,
+        "clearRate": 0.04985,
+        "previewClearProbability": 0.05,
+        "durationSeconds": 1120.6,
+        "wipeCounts": {
+          "scarlet_armory_herod": 95015
+        }
+      }
+    },
+    "overlevel": {
+      "required": {
+        "level": 39,
+        "simulatedRuns": 100000,
+        "clearRate": 0.81974,
+        "previewClearProbability": 0.8200418619978038,
+        "durationSeconds": 1083,
+        "wipeCounts": {
+          "scarlet_armory_herod": 18026
+        }
+      },
+      "with-optional": {
+        "level": 39,
+        "simulatedRuns": 100000,
+        "clearRate": 0.78183,
+        "previewClearProbability": 0.7833311657728338,
+        "durationSeconds": 1126,
+        "wipeCounts": {
+          "scarlet_armory_herod": 21817
+        }
+      },
+      "with-rare": {
+        "level": 39,
+        "simulatedRuns": 100000,
+        "clearRate": 0.80692,
+        "previewClearProbability": 0.8073528999604763,
+        "durationSeconds": 1076.6,
+        "wipeCounts": {
+          "scarlet_armory_herod": 19308
+        }
+      }
+    },
+    "max-level": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.85902,
+        "previewClearProbability": 0.8582207032355139,
+        "durationSeconds": 1009,
+        "wipeCounts": {
+          "scarlet_armory_herod": 14098
+        }
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.88722,
+        "previewClearProbability": 0.8879929801845435,
+        "durationSeconds": 983.6,
+        "wipeCounts": {
+          "scarlet_armory_herod": 11278
+        }
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.8821,
+        "previewClearProbability": 0.8804580569397766,
+        "durationSeconds": 976.2,
+        "wipeCounts": {
+          "scarlet_armory_herod": 11790
+        }
+      }
+    },
+    "speed-run": {
+      "required": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.87586,
+        "previewClearProbability": 0.8750787883611183,
+        "durationSeconds": 977.8,
+        "wipeCounts": {
+          "scarlet_armory_herod": 12414
+        }
+      },
+      "with-optional": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.89302,
+        "previewClearProbability": 0.8939265704949346,
+        "durationSeconds": 969.6,
+        "wipeCounts": {
+          "scarlet_armory_herod": 10698
+        }
+      },
+      "with-rare": {
+        "level": 45,
+        "simulatedRuns": 100000,
+        "clearRate": 0.84839,
+        "previewClearProbability": 0.847096474269722,
+        "durationSeconds": 1018.6,
+        "wipeCounts": {
+          "scarlet_armory_herod": 15161
+        }
+      }
+    }
+  }
+}

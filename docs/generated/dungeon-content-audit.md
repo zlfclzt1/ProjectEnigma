@@ -42,6 +42,7 @@
 | 剃刀沼泽（razorfen_kraul） | razorfen_kraul_blind_hunter | rare（0.16） | 盲眼猎手（razorfen_kraul_blind_hunter） | boss_drop:razorfen_kraul_blind_hunter | 1 | 6695 冥骨护符、6696 夜行者之弓、6697 蝙蝠之翼 |
 | 剃刀沼泽（razorfen_kraul） | razorfen_kraul_charlga_razorflank | required | 卡尔加·刺肋（razorfen_kraul_charlga_razorflank） | boss_drop:razorfen_kraul_charlga_razorflank | 1 | 6693 阿迦玛甘之握、6692 分叉斧、6694 阿迦玛甘之心 |
 | 剃刀沼泽（razorfen_kraul） | razorfen_kraul_earthcaller_halmgar | rare（0.12） | 召地者哈穆加（razorfen_kraul_earthcaller_halmgar） | boss_drop:razorfen_kraul_earthcaller_halmgar | 1 | 6688 轻风头饰、6689 风灵法杖 |
+| 血色修道院：军械库（scarlet_monastery_armory） | scarlet_armory_herod | required | 赫洛德（scarlet_armory_herod） | boss_drop:scarlet_armory_herod | 1 | 7719 狂暴者头盔、7718 赫洛德的护肩、10330 血色十字军护腿、7717 破坏者 |
 | 血色修道院：墓地（scarlet_monastery_graveyard） | scarlet_gy_interrogator_vishas | required | 审讯官维萨斯（scarlet_gy_interrogator_vishas） | boss_drop:scarlet_gy_interrogator_vishas | 1 | 7683 染血的手指虎、7682 烙铁棍 |
 | 血色修道院：墓地（scarlet_monastery_graveyard） | scarlet_gy_azshir_the_sleepless | rare（0.33） | 不眠的阿齐尔（scarlet_gy_azshir_the_sleepless） | boss_drop:scarlet_gy_azshir_the_sleepless | 1 | 7708 腐坏魔杖、7731 鬼魅碎片护符、7709 荒芜护腿 |
 | 血色修道院：墓地（scarlet_monastery_graveyard） | scarlet_gy_fallen_champion | rare（0.33） | 堕落的勇士（scarlet_gy_fallen_champion） | boss_drop:scarlet_gy_fallen_champion | 1 | 7690 乌木钳、7691 裹尸布、7689 恐怖黎明 |
@@ -74,7 +75,7 @@
 
 ## 引用完整度
 
-- 副本路线节点：63。
+- 副本路线节点：64。
 - 副本任务：17。
 - 套装：1。
 - 未被路线引用的掉落表：0。

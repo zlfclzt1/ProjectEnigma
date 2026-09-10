@@ -6,11 +6,11 @@
 
 ## 汇总
 
-- 路线 Encounter：63。
-- 掉落表：53。
-- 掉落表分类：Boss 专属掉落 53，任务奖励 0，世界掉落 0，设计占位 0。
-- Encounter 引用分类：Boss 专属掉落 53，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 10。
-- 不同装备分类：Boss 专属掉落 133，任务奖励 0，世界掉落 0，设计占位 0。
+- 路线 Encounter：64。
+- 掉落表：54。
+- 掉落表分类：Boss 专属掉落 54，任务奖励 0，世界掉落 0，设计占位 0。
+- Encounter 引用分类：Boss 专属掉落 54，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 10。
+- 不同装备分类：Boss 专属掉落 137，任务奖励 0，世界掉落 0，设计占位 0。
 - 成员副本任务：17，不同任务奖励装备：39。
 - Boss 掉落与任务奖励重复：0。
 - 未显式填写 `sourceType` 的 Boss 掉落表：0。
@@ -80,6 +80,12 @@
 | 盲眼猎手（razorfen_kraul_blind_hunter） | razorfen_kraul_blind_hunter | Boss 专属掉落 | 1 | 6695 冥骨护符、6696 夜行者之弓、6697 蝙蝠之翼 |
 | 卡尔加·刺肋（razorfen_kraul_charlga_razorflank） | razorfen_kraul_charlga_razorflank | Boss 专属掉落 | 1 | 6693 阿迦玛甘之握、6692 分叉斧、6694 阿迦玛甘之心 |
 | 召地者哈穆加（razorfen_kraul_earthcaller_halmgar） | razorfen_kraul_earthcaller_halmgar | Boss 专属掉落 | 1 | 6688 轻风头饰、6689 风灵法杖 |
+
+### 血色修道院：军械库（scarlet_monastery_armory）
+
+| Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
+|---|---|---|---:|---|
+| 赫洛德（scarlet_armory_herod） | scarlet_armory_herod | Boss 专属掉落 | 1 | 7719 狂暴者头盔、7718 赫洛德的护肩、10330 血色十字军护腿、7717 破坏者 |
 
 ### 血色修道院：墓地（scarlet_monastery_graveyard）
 

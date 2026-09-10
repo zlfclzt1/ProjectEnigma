@@ -127,6 +127,26 @@ describe("member view queries", () => {
     );
   });
 
+  it("offers unlocked Armory drops as wishlist targets for a compatible member", () => {
+    const game = state();
+    game.guild.unlockedDungeonIds.push(asBrandedId<"DungeonId">("scarlet_monastery_armory"));
+    const member = Object.values(game.members)[0]!;
+    member.identity.classId = asBrandedId<"ClassId">("warrior");
+    member.progression.specId = asBrandedId<"SpecId">("warrior_arms");
+
+    const detail = getMemberDetailView(game, content, member.id)!;
+    expect(detail.wishlist.itemOptions).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          id: "7717",
+          name: "破坏者",
+          dungeonName: "血色修道院：军械库",
+          encounterName: "赫洛德",
+        }),
+      ]),
+    );
+  });
+
   it("previews wishlist targets removed by a role-changing respec", () => {
     const game = state();
     const member = Object.values(game.members)[0]!;

@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/scarlet-monastery-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对军械库等级区间、单 Boss 路线、图书馆钥匙门禁与赫洛德战斗。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "使用图书馆首通等价表达钥匙门禁；军械库保持单个必打路线节点。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["minimumLevel", "recommendedLevel", "duration", "probability", "route"],
+        "reason": "按 16 分钟单线分区和高价值装备连续挑战定位设置初始参数。",
+        "decidedAt": "2026-09-09"
+      }
+    ]
+  },
+  "dungeons": [
+    {
+      "id": "scarlet_monastery_armory",
+      "name": { "zhCN": "血色修道院：军械库", "enUS": "Scarlet Monastery: Armory" },
+      "minimumLevel": 32,
+      "recommendedLevel": 42,
+      "defaultUnlocked": false,
+      "unlock": { "requiredDungeonIds": ["scarlet_monastery_library"] },
+      "members": { "minimum": 1, "maximum": 5, "recommended": 5 },
+      "duration": { "baseSeconds": 960, "minimumRatio": 0.5, "maximumRatio": 1.8 },
+      "probability": {
+        "minimum": 0.05,
+        "maximum": 0.99,
+        "base": 0.05,
+        "readinessMultiplier": 0.9,
+        "surplusEffect": 0.5,
+        "geometricWeight": 0.7,
+        "bottleneckWeight": 0.3,
+        "overpowerThreshold": 1.5
+      },
+      "combatTuning": {
+        "bossProbabilityMaximum": 0.98,
+        "requirementMultipliers": { "tank": 0.94, "healing": 0.94, "damage": 0.94 }
+      },
+      "route": [
+        {
+          "id": "scarlet_armory_herod",
+          "type": "required",
+          "encounterId": "scarlet_armory_herod"
+        }
+      ]
+    }
+  ]
+}

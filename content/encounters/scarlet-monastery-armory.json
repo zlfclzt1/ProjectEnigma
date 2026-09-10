@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/scarlet-monastery-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-09",
+        "notes": "核对赫洛德的旋风斩、魔法免疫、冲锋、顺劈与死亡后预备兵。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "需求值作为 D11.D 固定种子模拟的初始基线。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "encounters": [
+    {
+      "id": "scarlet_armory_herod",
+      "dungeonId": "scarlet_monastery_armory",
+      "name": { "zhCN": "赫洛德" },
+      "stageSeconds": 960,
+      "requirements": { "tank": 42, "healing": 43, "damage": 130 },
+      "weights": { "tank": 0.36, "healing": 0.31, "damage": 0.33 },
+      "experienceShare": 1,
+      "funds": 84,
+      "firstKillBonus": 168,
+      "lootTableId": "scarlet_armory_herod",
+      "mechanicIds": ["scarlet_armory_whirlwind", "scarlet_armory_trainee_wave"]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "血色修道院军械库副本日志；只描述已经结算的战斗事实。"
+      }
+    ]
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "scarlet_armory_herod_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "scarlet_armory_herod" },
+      "availableParameters": ["tank", "member"],
+      "templates": [
+        "赫洛德停止旋转，{tank} 终于允许大家重新靠近战利品。",
+        "预备兵的冲锋被压下，{member} 开始认真研究破坏者该分给谁。"
+      ]
+    }
+  ]
+}

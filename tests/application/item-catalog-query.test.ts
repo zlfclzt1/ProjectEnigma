@@ -82,7 +82,7 @@ describe("item collection catalog query", () => {
     ]);
     expect(view.globalProgress).toEqual({
       acquiredItemCount: 0,
-      totalItemCount: 133,
+      totalItemCount: 137,
       completionPercent: 0,
     });
     expect(JSON.stringify(view)).not.toContain("尖牙腰带");
@@ -140,6 +140,28 @@ describe("item collection catalog query", () => {
     ]);
   });
 
+  it("reveals all four Herod drops after Armory is unlocked", () => {
+    const game = state();
+    game.guild.unlockedDungeonIds.push(asBrandedId<"DungeonId">("scarlet_monastery_armory"));
+
+    const view = getItemCatalogView(game, content);
+    const armory = view.dungeons.find((dungeon) => dungeon.id === "scarlet_monastery_armory")!;
+    if (!armory.unlocked) throw new Error("Expected unlocked Scarlet Monastery Armory");
+
+    expect(armory.totalItemCount).toBe(4);
+    expect(armory.encounters).toEqual([
+      expect.objectContaining({
+        id: "scarlet_armory_herod",
+        items: expect.arrayContaining([
+          expect.objectContaining({ id: "7719" }),
+          expect.objectContaining({ id: "7718" }),
+          expect.objectContaining({ id: "10330" }),
+          expect.objectContaining({ id: "7717" }),
+        ]),
+      }),
+    ]);
+  });
+
   it("computes dungeon, set, global, claimable, and claimed progress without Vue", () => {
     const game = state();
     game.guild.unlockedDungeonIds.push(asBrandedId<"DungeonId">("wailing_caverns"));
@@ -176,8 +198,8 @@ describe("item collection catalog query", () => {
         completionPercent: 100,
       }),
     ]);
-    expect(view.globalProgress).toMatchObject({ acquiredItemCount: 14, totalItemCount: 133 });
-    expect(view.globalProgress.completionPercent).toBeCloseTo((14 / 133) * 100);
+    expect(view.globalProgress).toMatchObject({ acquiredItemCount: 14, totalItemCount: 137 });
+    expect(view.globalProgress.completionPercent).toBeCloseTo((14 / 137) * 100);
     expect(view.rewards).toHaveLength(3);
     expect(view.rewards.every((reward) => reward.claimable)).toBe(true);
     expect(view.rewards.every((reward) => !reward.claimed)).toBe(true);

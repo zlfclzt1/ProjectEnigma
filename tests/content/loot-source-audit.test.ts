@@ -17,9 +17,9 @@ describe("loot source audit", () => {
 
   it("reports explicit no-equipment encounters without inventing loot", () => {
     const audit = auditLootSources(loadBrowserContentRegistry());
-    expect(audit.rows).toHaveLength(63);
+    expect(audit.rows).toHaveLength(64);
     expect(audit.lootTableCounts).toEqual({
-      "boss-drop": 53,
+      "boss-drop": 54,
       "quest-reward": 0,
       "world-drop": 0,
       "design-placeholder": 0,

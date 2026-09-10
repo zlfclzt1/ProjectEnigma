@@ -391,6 +391,39 @@
         "enUS": "Ranged pressure and spreading reduce the healing burden of Doan's detonation."
       },
       "reportTag": "scarlet_library_arcane_detonation"
+    },
+    {
+      "id": "scarlet_armory_whirlwind",
+      "name": { "zhCN": "圣光之刃", "enUS": "Blades of Light" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "ranged_damage", "minimumValue": 1 }],
+      "missingEffects": {
+        "healingMultiplier": 1.12,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.05
+      },
+      "description": {
+        "zhCN": "远离旋风范围并保持远程火力，可以降低赫洛德魔法免疫阶段的承伤。",
+        "enUS": "Keeping distance and ranged pressure reduces damage during Herod's magic-immune whirlwind."
+      },
+      "reportTag": "scarlet_armory_whirlwind"
+    },
+    {
+      "id": "scarlet_armory_trainee_wave",
+      "name": { "zhCN": "预备兵浪潮", "enUS": "Trainee Wave" },
+      "type": "recommended",
+      "requirements": [{ "capabilityId": "area_damage", "minimumValue": 1 }],
+      "missingEffects": {
+        "tankMultiplier": 1.08,
+        "damageMultiplier": 1.05,
+        "probabilityModifier": -0.03,
+        "durationMultiplier": 1.05
+      },
+      "description": {
+        "zhCN": "范围伤害可以快速处理赫洛德死亡后冲入房间的血色预备兵。",
+        "enUS": "Area damage quickly clears the Scarlet Trainees that rush in after Herod falls."
+      },
+      "reportTag": "scarlet_armory_trainee_wave"
     }
   ]
 }
