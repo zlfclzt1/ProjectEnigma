@@ -22,18 +22,33 @@
   "items": [
     {
       "id": "7751",
-      "name": { "zhCN": "沃瑞尔的靴子", "enUS": "Vorrel's Boots" },
-      "itemLevel": 33,
-      "requiredLevel": 28,
-      "quality": "rare",
+      "name": {
+        "zhCN": "沃瑞尔的靴子",
+        "enUS": "Vorrel's Boots"
+      },
+      "itemLevel": 30,
+      "quality": "uncommon",
       "slot": "feet",
       "armorType": "leather",
-      "restrictions": { "allowedClassIds": ["rogue", "druid"], "allowedRoles": ["dps", "healer"] },
-      "icon": { "kind": "database", "name": "inv_boots_05" },
-      "description": { "zhCN": "血色修道院任务奖励：Vorrel's Revenge。" },
+      "restrictions": {
+        "allowedClassIds": ["rogue", "druid"],
+        "allowedRoles": ["dps", "healer"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_03"
+      },
+      "description": {
+        "zhCN": "血色修道院任务奖励：Vorrel's Revenge。"
+      },
       "stats": {
-        "primary": { "agilityPoints": 7, "staminaPoints": 5 },
-        "defense": { "armorPoints": 76 }
+        "primary": {
+          "agilityPoints": 8,
+          "staminaPoints": 2
+        },
+        "defense": {
+          "armorPoints": 64
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -46,15 +61,33 @@
     },
     {
       "id": "7750",
-      "name": { "zhCN": "哀伤披风", "enUS": "Mantle of Woe" },
+      "name": {
+        "zhCN": "悲哀衬肩",
+        "enUS": "Mantle of Woe"
+      },
       "itemLevel": 33,
-      "requiredLevel": 28,
-      "quality": "rare",
-      "slot": "back",
-      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
-      "icon": { "kind": "database", "name": "inv_misc_cape_08" },
-      "description": { "zhCN": "血色修道院任务奖励：Vorrel's Revenge。" },
-      "stats": { "primary": { "staminaPoints": 6, "spiritPoints": 6 } },
+      "quality": "uncommon",
+      "slot": "shoulder",
+      "restrictions": {
+        "allowedClassIds": ["mage", "priest", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_23"
+      },
+      "description": {
+        "zhCN": "血色修道院任务奖励：Vorrel's Revenge。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 7,
+          "spiritPoints": 4
+        },
+        "defense": {
+          "armorPoints": 34
+        }
+      },
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
@@ -62,19 +95,38 @@
         "externalId": "7750",
         "url": "https://www.wowhead.com/classic/cn/item=7750&xml",
         "verifiedAt": "2026-09-09"
-      }
+      },
+      "armorType": "cloth"
     },
     {
       "id": "4643",
-      "name": { "zhCN": "灰钢披风", "enUS": "Grimsteel Cape" },
+      "name": {
+        "zhCN": "十字军斗篷",
+        "enUS": "Grimsteel Cape"
+      },
       "itemLevel": 33,
-      "requiredLevel": 28,
-      "quality": "rare",
+      "quality": "uncommon",
       "slot": "back",
-      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
-      "icon": { "kind": "database", "name": "inv_misc_cape_05" },
-      "description": { "zhCN": "血色修道院任务奖励：Vorrel's Revenge。" },
-      "stats": { "primary": { "strengthPoints": 4, "staminaPoints": 5 } },
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_05"
+      },
+      "description": {
+        "zhCN": "血色修道院任务奖励：Vorrel's Revenge。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 2,
+          "staminaPoints": 6
+        },
+        "defense": {
+          "armorPoints": 23
+        }
+      },
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  getItemStatLines,
   getMemberDetailView,
   getMemberDirectoryView,
 } from "../../src/application/queries/get-members-view";
@@ -44,6 +45,23 @@ function contentWithPrototypeSuffix(itemId: string): ContentRegistry {
 }
 
 describe("member view queries", () => {
+  it("renders stat penalties and mana regeneration with authentic signs and units", () => {
+    expect(
+      getItemStatLines({
+        primary: { spiritPoints: -3 },
+        spell: { manaRegenPer5Seconds: 3 },
+      }),
+    ).toEqual([
+      { id: "spiritPoints", label: "精神", value: "-3", numericValue: -3 },
+      {
+        id: "manaRegenPer5Seconds",
+        label: "每 5 秒法力回复",
+        value: "+3",
+        numericValue: 3,
+      },
+    ]);
+  });
+
   it("projects the directory and a complete explainable character sheet", () => {
     const game = state();
     const directory = getMemberDirectoryView(game, content);

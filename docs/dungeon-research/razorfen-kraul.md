@@ -34,8 +34,8 @@ Wowhead 的 Classic 攻略将 Roogug 标为 optional，并将 Blind Hunter 标�
 | Boss | 物品 ID | 装备 |
 |---|---:|---|
 | Aggem Thorncurse | 6681 | Thornspike |
-| Death Speaker Jargba | 6682 | Death Speaker Mantle |
-| Death Speaker Jargba | 6685 | Death Speaker Robes |
+| Death Speaker Jargba | 6682 | Death Speaker Robes |
+| Death Speaker Jargba | 6685 | Death Speaker Mantle |
 | Death Speaker Jargba | 2816 | Death Speaker Scepter |
 | Overlord Ramtusk | 6686 | Tusken Helm |
 | Overlord Ramtusk | 6687 | Corpsemaker |
@@ -47,8 +47,8 @@ Wowhead 的 Classic 攻略将 Roogug 标为 optional，并将 Blind Hunter 标�
 | Earthcaller Halmgar | 6688 | Whisperwind Headdress |
 | Earthcaller Halmgar | 6689 | Wind Spirit Staff |
 | Charlga Razorflank | 6693 | Agamaggan's Clutch |
-| Charlga Razorflank | 6692 | Heart of Agamaggan |
-| Charlga Razorflank | 6694 | Pronged Reaver |
+| Charlga Razorflank | 6692 | Pronged Reaver |
+| Charlga Razorflank | 6694 | Heart of Agamaggan |
 
 Roogug 没有进入 Boss 专属装备池；6841 等职业任务物品在当前装备库边界外。普通怪/BoE 装备（例如 Staff of the Shade、Mantle of Thieves、Avenger's Armor、Pugilist Bracers、Plains Ring 等）同样不进入本阶段 Boss 掉落表。
 
@@ -60,9 +60,9 @@ Classic 资料列出 7 条副本任务，包含阵营、护送、任务物品和
 
 | 经典任务 | 轻量完成条件 | 奖励 | 录入建议 |
 |---|---|---|---|
-| The Crone of the Kraul / A Vengeful Fate | 击败 Charlga Razorflank | 6684 Berylline Pads、6692 Stonefist Girdle、6693 Marbled Buckler（需进一步 XML 核对） | 优先录入；联盟/部落版本合并为中立任务 |
-| Mortality Wanes | 完成副本并取得任务目标 | 6750 Snake Hoop、6751 Mourning Shawl、6752 Lancer Boots（需进一步 XML 核对） | 可录入；任务奖励不进入 Boss 池 |
-| Willix the Importer | 完成 Willix 护送 | 6753 Monkey Ring、6754 Tiger Band、6755 Snake Hoop（需进一步 XML 核对） | 备选；当前不支持护送，若录入则压缩为全通目标 |
+| The Crone of the Kraul / A Vengeful Fate | 击败 Charlga Razorflank | 4197 Berylline Pads、6742 Stonefist Girdle、6725 Marbled Buckler | 已录入；联盟/部落版本合并为中立任务 |
+| Willix the Importer | 完整通关并压缩护送过程 | 6748 Monkey Ring、6749 Tiger Band、6750 Snake Hoop | 已录入；不增加实时护送系统 |
+| Mortality Wanes | 完成副本并取得任务目标 | 6751 Mourning Shawl、6752 Lancer Boots | 已录入；任务奖励不进入 Boss 池 |
 | Blueleaf Tubers | 普通怪/场景收集 | 容器奖励 | 当前排除，不模拟收集和容器随机内容 |
 | Going, Going, Guano! | 收集 Kraul Guano | 经验与资金 | 当前排除，任务 Schema 需要装备奖励 |
 | An Unholy Alliance | 副本内任务物品 | 后续任务链 | 当前排除，保留为未来任务链入口 |
@@ -91,9 +91,9 @@ Classic 资料列出 7 条副本任务，包含阵营、护送、任务物品和
 
 ## D08.A 验收清单
 
-- [ ] 8 个路线节点完成 required/optional/rare 分类。
-- [ ] 16 件 Boss 专属装备完成 Classic XML 核对。
-- [ ] 计划录入的任务奖励逐件完成 Classic XML 核对。
-- [ ] Roogug 职业任务物品、普通怪 BoE、容器和材料已排除。
-- [ ] 两个随机稀有 Boss 的装备不出现在其他 Boss 池。
-- [ ] 所有来源标记为 `classic-2019-phase-6`，没有探索赛季或重制数据。
+- [x] 8 个路线节点完成 required/optional/rare 分类。
+- [x] 16 件 Boss 专属装备完成 Classic XML 核对。
+- [x] 8 件已录入任务奖励逐件完成 Classic XML 核对。
+- [x] 6684 地鼠指挥棒、Roogug 职业任务物品、普通怪 BoE、容器和材料已排除。
+- [x] 两个随机稀有 Boss 的装备不出现在其他 Boss 池。
+- [x] 所有来源标记为 `classic-2019-phase-6`，没有探索赛季或重制数据。

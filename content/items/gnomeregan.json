@@ -30,7 +30,10 @@
   "items": [
     {
       "id": "9445",
-      "name": { "zhCN": "格鲁比斯的爪子", "enUS": "Grubbis Paws" },
+      "name": {
+        "zhCN": "格鲁比斯的爪子",
+        "enUS": "Grubbis Paws"
+      },
       "itemLevel": 34,
       "requiredLevel": 29,
       "quality": "rare",
@@ -40,11 +43,22 @@
         "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
         "allowedRoles": ["tank", "dps"]
       },
-      "icon": { "kind": "database", "name": "inv_gauntlets_17" },
-      "description": { "zhCN": "诺莫瑞根：格鲁比斯的专属掉落。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_17"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根：格鲁比斯的专属掉落。"
+      },
       "stats": {
-        "primary": { "agilityPoints": 5, "strengthPoints": 6, "spiritPoints": 9 },
-        "defense": { "armorPoints": 144 }
+        "primary": {
+          "agilityPoints": 5,
+          "strengthPoints": 6,
+          "spiritPoints": 9
+        },
+        "defense": {
+          "armorPoints": 144
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -57,7 +71,10 @@
     },
     {
       "id": "9454",
-      "name": { "zhCN": "酸性长靴", "enUS": "Acidic Walkers" },
+      "name": {
+        "zhCN": "酸性长靴",
+        "enUS": "Acidic Walkers"
+      },
       "itemLevel": 32,
       "requiredLevel": 27,
       "quality": "rare",
@@ -67,13 +84,24 @@
         "allowedClassIds": ["mage", "priest", "warlock"],
         "allowedRoles": ["healer", "dps"]
       },
-      "icon": { "kind": "database", "name": "inv_boots_05" },
-      "description": { "zhCN": "诺莫瑞根：粘性辐射尘的专属掉落。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_05"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根：粘性辐射尘的专属掉落。"
+      },
       "stats": {
-        "primary": { "intellectPoints": 8, "spiritPoints": 4 },
-        "spell": { "spellPowerPoints": 5, "healingPowerPoints": 5 },
-        "defense": { "armorPoints": 34 },
-        "resistances": { "naturePoints": 5 }
+        "primary": {
+          "intellectPoints": 8,
+          "spiritPoints": 4
+        },
+        "defense": {
+          "armorPoints": 34
+        },
+        "resistances": {
+          "naturePoints": 5
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -86,7 +114,10 @@
     },
     {
       "id": "9452",
-      "name": { "zhCN": "水藤", "enUS": "Hydrocane" },
+      "name": {
+        "zhCN": "水藤",
+        "enUS": "Hydrocane"
+      },
       "itemLevel": 32,
       "requiredLevel": 27,
       "quality": "rare",
@@ -96,11 +127,24 @@
         "allowedClassIds": ["priest", "mage", "warlock", "druid"],
         "allowedRoles": ["healer", "dps"]
       },
-      "icon": { "kind": "database", "name": "inv_staff_15" },
-      "description": { "zhCN": "诺莫瑞根：粘性辐射尘的专属掉落。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_staff_15"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根：粘性辐射尘的专属掉落。"
+      },
       "stats": {
-        "weapon": { "damage": { "minimumPoints": 48, "maximumPoints": 73 }, "speedSeconds": 2.8 },
-        "resistances": { "frostPoints": 15 }
+        "weapon": {
+          "damage": {
+            "minimumPoints": 48,
+            "maximumPoints": 73
+          },
+          "speedSeconds": 2.8
+        },
+        "resistances": {
+          "frostPoints": 15
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -113,7 +157,10 @@
     },
     {
       "id": "9453",
-      "name": { "zhCN": "剧毒复仇者", "enUS": "Toxic Revenger" },
+      "name": {
+        "zhCN": "剧毒复仇者",
+        "enUS": "Toxic Revenger"
+      },
       "itemLevel": 32,
       "requiredLevel": 27,
       "quality": "rare",
@@ -122,10 +169,21 @@
         "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "shaman", "druid"],
         "allowedRoles": ["dps"]
       },
-      "icon": { "kind": "database", "name": "inv_weapon_shortblade_02" },
-      "description": { "zhCN": "诺莫瑞根：粘性辐射尘的专属掉落。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_shortblade_02"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根：粘性辐射尘的专属掉落。"
+      },
       "stats": {
-        "weapon": { "damage": { "minimumPoints": 27, "maximumPoints": 51 }, "speedSeconds": 1.9 }
+        "weapon": {
+          "damage": {
+            "minimumPoints": 27,
+            "maximumPoints": 51
+          },
+          "speedSeconds": 1.9
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -138,15 +196,31 @@
     },
     {
       "id": "9447",
-      "name": { "zhCN": "电刑器腿杆", "enUS": "Electrocutioner Lagnut" },
+      "name": {
+        "zhCN": "电刑器腿杆",
+        "enUS": "Electrocutioner Lagnut"
+      },
       "itemLevel": 34,
       "requiredLevel": 29,
       "quality": "rare",
       "slot": "ring1",
-      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
-      "icon": { "kind": "database", "name": "inv_misc_gear_04" },
-      "description": { "zhCN": "诺莫瑞根：电刑器6000型的专属掉落。" },
-      "stats": { "primary": { "staminaPoints": 4, "spiritPoints": 9 } },
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_gear_04"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根：电刑器6000型的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 4,
+          "spiritPoints": 9
+        }
+      },
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
@@ -158,7 +232,10 @@
     },
     {
       "id": "9446",
-      "name": { "zhCN": "电刑器的腿", "enUS": "Electrocutioner Leg" },
+      "name": {
+        "zhCN": "电刑器的腿",
+        "enUS": "Electrocutioner Leg"
+      },
       "itemLevel": 34,
       "requiredLevel": 29,
       "quality": "rare",
@@ -167,10 +244,21 @@
         "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "shaman"],
         "allowedRoles": ["dps"]
       },
-      "icon": { "kind": "database", "name": "inv_sword_30" },
-      "description": { "zhCN": "诺莫瑞根：电刑器6000型的专属掉落。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_30"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根：电刑器6000型的专属掉落。"
+      },
       "stats": {
-        "weapon": { "damage": { "minimumPoints": 26, "maximumPoints": 49 }, "speedSeconds": 1.7 }
+        "weapon": {
+          "damage": {
+            "minimumPoints": 26,
+            "maximumPoints": 49
+          },
+          "speedSeconds": 1.7
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -183,7 +271,10 @@
     },
     {
       "id": "9448",
-      "name": { "zhCN": "蜘蛛坦克油布", "enUS": "Spidertank Oilrag" },
+      "name": {
+        "zhCN": "蜘蛛坦克油布",
+        "enUS": "Spidertank Oilrag"
+      },
       "itemLevel": 33,
       "requiredLevel": 28,
       "quality": "uncommon",
@@ -193,9 +284,21 @@
         "allowedClassIds": ["mage", "priest", "warlock"],
         "allowedRoles": ["healer", "dps"]
       },
-      "icon": { "kind": "database", "name": "inv_misc_bandage_09" },
-      "description": { "zhCN": "诺莫瑞根：电刑器6000型的专属掉落。" },
-      "stats": { "defense": { "armorPoints": 20 }, "spell": { "spellPowerPoints": 3 } },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_bandage_09"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根：电刑器6000型的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 20
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 3
+        }
+      },
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
@@ -207,7 +310,10 @@
     },
     {
       "id": "9449",
-      "name": { "zhCN": "手动惩戒器", "enUS": "Manual Crowd Pummeler" },
+      "name": {
+        "zhCN": "手动惩戒器",
+        "enUS": "Manual Crowd Pummeler"
+      },
       "itemLevel": 34,
       "requiredLevel": 29,
       "quality": "rare",
@@ -217,11 +323,25 @@
         "allowedClassIds": ["warrior", "paladin", "shaman", "druid"],
         "allowedRoles": ["tank", "dps"]
       },
-      "icon": { "kind": "database", "name": "inv_mace_14" },
-      "description": { "zhCN": "诺莫瑞根：群体打击者9-60的专属掉落。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_mace_14"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根：群体打击者9-60的专属掉落。"
+      },
       "stats": {
-        "primary": { "agilityPoints": 5, "strengthPoints": 16 },
-        "weapon": { "damage": { "minimumPoints": 46, "maximumPoints": 70 }, "speedSeconds": 2.0 }
+        "primary": {
+          "agilityPoints": 5,
+          "strengthPoints": 16
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 46,
+            "maximumPoints": 70
+          },
+          "speedSeconds": 2
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -234,18 +354,34 @@
     },
     {
       "id": "9450",
-      "name": { "zhCN": "侏儒机械人操作靴", "enUS": "Gnomebot Operating Boots" },
+      "name": {
+        "zhCN": "侏儒机械人操作靴",
+        "enUS": "Gnomebot Operating Boots"
+      },
       "itemLevel": 33,
       "requiredLevel": 28,
       "quality": "uncommon",
       "slot": "feet",
       "armorType": "leather",
-      "restrictions": { "allowedClassIds": ["rogue", "druid"], "allowedRoles": ["dps", "healer"] },
-      "icon": { "kind": "database", "name": "inv_boots_03" },
-      "description": { "zhCN": "诺莫瑞根：群体打击者9-60的专属掉落。" },
+      "restrictions": {
+        "allowedClassIds": ["rogue", "druid"],
+        "allowedRoles": ["dps", "healer"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_03"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根：群体打击者9-60的专属掉落。"
+      },
       "stats": {
-        "primary": { "staminaPoints": 8, "spiritPoints": 3 },
-        "defense": { "armorPoints": 68 }
+        "primary": {
+          "staminaPoints": 8,
+          "spiritPoints": 3
+        },
+        "defense": {
+          "armorPoints": 68
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -258,16 +394,33 @@
     },
     {
       "id": "9456",
-      "name": { "zhCN": "玻璃枪", "enUS": "Glass Shooter" },
+      "name": {
+        "zhCN": "玻璃枪",
+        "enUS": "Glass Shooter"
+      },
       "itemLevel": 35,
       "requiredLevel": 30,
       "quality": "rare",
       "slot": "ranged",
-      "restrictions": { "allowedClassIds": ["hunter"], "allowedRoles": ["dps"] },
-      "icon": { "kind": "database", "name": "inv_weapon_rifle_02" },
-      "description": { "zhCN": "诺莫瑞根：黑铁大师的专属掉落。" },
+      "restrictions": {
+        "allowedClassIds": ["hunter"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_rifle_02"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根：黑铁大师的专属掉落。"
+      },
       "stats": {
-        "weapon": { "damage": { "minimumPoints": 36, "maximumPoints": 68 }, "speedSeconds": 2.9 }
+        "weapon": {
+          "damage": {
+            "minimumPoints": 36,
+            "maximumPoints": 68
+          },
+          "speedSeconds": 2.9
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -280,7 +433,10 @@
     },
     {
       "id": "9457",
-      "name": { "zhCN": "皇家外交官节杖", "enUS": "Royal Diplomatic Scepter" },
+      "name": {
+        "zhCN": "皇家外交官节杖",
+        "enUS": "Royal Diplomatic Scepter"
+      },
       "itemLevel": 35,
       "requiredLevel": 30,
       "quality": "rare",
@@ -289,11 +445,25 @@
         "allowedClassIds": ["warrior", "paladin", "shaman"],
         "allowedRoles": ["tank", "dps"]
       },
-      "icon": { "kind": "database", "name": "inv_mace_08" },
-      "description": { "zhCN": "诺莫瑞根：黑铁大师的专属掉落。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_mace_08"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根：黑铁大师的专属掉落。"
+      },
       "stats": {
-        "primary": { "staminaPoints": 2, "spiritPoints": 7 },
-        "weapon": { "damage": { "minimumPoints": 37, "maximumPoints": 69 }, "speedSeconds": 2.3 }
+        "primary": {
+          "staminaPoints": 2,
+          "spiritPoints": 7
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 37,
+            "maximumPoints": 69
+          },
+          "speedSeconds": 2.3
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -306,16 +476,34 @@
     },
     {
       "id": "9455",
-      "name": { "zhCN": "使者腕轮", "enUS": "Emissary Cuffs" },
+      "name": {
+        "zhCN": "使者腕轮",
+        "enUS": "Emissary Cuffs"
+      },
       "itemLevel": 33,
       "requiredLevel": 28,
       "quality": "rare",
       "slot": "wrist",
       "armorType": "leather",
-      "restrictions": { "allowedClassIds": ["rogue", "druid"], "allowedRoles": ["dps", "healer"] },
-      "icon": { "kind": "database", "name": "inv_bracer_09" },
-      "description": { "zhCN": "诺莫瑞根：黑铁大师的专属掉落。" },
-      "stats": { "defense": { "armorPoints": 47 }, "resistances": { "arcanePoints": 5 } },
+      "restrictions": {
+        "allowedClassIds": ["rogue", "druid"],
+        "allowedRoles": ["dps", "healer"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_09"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根：黑铁大师的专属掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 47
+        },
+        "resistances": {
+          "arcanePoints": 5
+        }
+      },
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
@@ -327,7 +515,10 @@
     },
     {
       "id": "9458",
-      "name": { "zhCN": "瑟玛普拉格的中央模组", "enUS": "Thermaplugg's Central Core" },
+      "name": {
+        "zhCN": "瑟玛普拉格的中央模组",
+        "enUS": "Thermaplugg's Central Core"
+      },
       "itemLevel": 37,
       "requiredLevel": 32,
       "quality": "rare",
@@ -336,11 +527,21 @@
         "allowedClassIds": ["warrior", "paladin", "shaman"],
         "allowedRoles": ["tank", "dps"]
       },
-      "icon": { "kind": "database", "name": "inv_shield_10" },
-      "description": { "zhCN": "诺莫瑞根：麦克尼尔·瑟玛普拉格的专属掉落。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shield_10"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根：麦克尼尔·瑟玛普拉格的专属掉落。"
+      },
       "stats": {
-        "primary": { "spiritPoints": 3 },
-        "defense": { "armorPoints": 795, "blockValuePoints": 18 }
+        "primary": {
+          "spiritPoints": 3
+        },
+        "defense": {
+          "armorPoints": 795,
+          "blockValuePoints": 18
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -353,7 +554,10 @@
     },
     {
       "id": "9459",
-      "name": { "zhCN": "瑟玛普拉格的左臂", "enUS": "Thermaplugg's Left Arm" },
+      "name": {
+        "zhCN": "瑟玛普拉格的左臂",
+        "enUS": "Thermaplugg's Left Arm"
+      },
       "itemLevel": 37,
       "requiredLevel": 32,
       "quality": "rare",
@@ -363,11 +567,25 @@
         "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
         "allowedRoles": ["tank", "dps"]
       },
-      "icon": { "kind": "database", "name": "inv_axe_03" },
-      "description": { "zhCN": "诺莫瑞根：麦克尼尔·瑟玛普拉格的专属掉落。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_axe_03"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根：麦克尼尔·瑟玛普拉格的专属掉落。"
+      },
       "stats": {
-        "primary": { "strengthPoints": 18, "staminaPoints": 7 },
-        "weapon": { "damage": { "minimumPoints": 70, "maximumPoints": 106 }, "speedSeconds": 2.7 }
+        "primary": {
+          "strengthPoints": 18,
+          "staminaPoints": 7
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 70,
+            "maximumPoints": 106
+          },
+          "speedSeconds": 2.7
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -380,15 +598,31 @@
     },
     {
       "id": "9461",
-      "name": { "zhCN": "充能齿轮", "enUS": "Charged Gear" },
+      "name": {
+        "zhCN": "充能齿轮",
+        "enUS": "Charged Gear"
+      },
       "itemLevel": 37,
       "requiredLevel": 32,
       "quality": "rare",
       "slot": "ring1",
-      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
-      "icon": { "kind": "database", "name": "inv_misc_gear_01" },
-      "description": { "zhCN": "诺莫瑞根：麦克尼尔·瑟玛普拉格的专属掉落。" },
-      "stats": { "resistances": { "arcanePoints": 5, "naturePoints": 5 } },
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_gear_01"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根：麦克尼尔·瑟玛普拉格的专属掉落。"
+      },
+      "stats": {
+        "resistances": {
+          "arcanePoints": 5,
+          "naturePoints": 5
+        }
+      },
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
@@ -400,7 +634,10 @@
     },
     {
       "id": "9492",
-      "name": { "zhCN": "电磁熔合激活器", "enUS": "Electromagnetic Gigaflux Reactivator" },
+      "name": {
+        "zhCN": "电磁熔合激活器",
+        "enUS": "Electromagnetic Gigaflux Reactivator"
+      },
       "itemLevel": 37,
       "requiredLevel": 32,
       "quality": "rare",
@@ -410,11 +647,21 @@
         "allowedClassIds": ["mage", "priest", "warlock"],
         "allowedRoles": ["healer", "dps"]
       },
-      "icon": { "kind": "database", "name": "inv_gizmo_01" },
-      "description": { "zhCN": "诺莫瑞根：麦克尼尔·瑟玛普拉格的专属掉落。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gizmo_01"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根：麦克尼尔·瑟玛普拉格的专属掉落。"
+      },
       "stats": {
-        "primary": { "intellectPoints": 15, "spiritPoints": 12 },
-        "defense": { "armorPoints": 44 }
+        "primary": {
+          "intellectPoints": 15,
+          "spiritPoints": 12
+        },
+        "defense": {
+          "armorPoints": 44
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -427,9 +674,11 @@
     },
     {
       "id": "9623",
-      "name": { "zhCN": "西维纳德长袍", "enUS": "Civinad Robes" },
-      "itemLevel": 35,
-      "requiredLevel": 30,
+      "name": {
+        "zhCN": "公民长袍",
+        "enUS": "Civinad Robes"
+      },
+      "itemLevel": 37,
       "quality": "rare",
       "slot": "chest",
       "armorType": "cloth",
@@ -437,11 +686,21 @@
         "allowedClassIds": ["mage", "priest", "warlock"],
         "allowedRoles": ["healer", "dps"]
       },
-      "icon": { "kind": "database", "name": "inv_chest_cloth_08" },
-      "description": { "zhCN": "诺莫瑞根任务奖励：The Grand Betrayal / Rig Wars。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_18"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根任务奖励：The Grand Betrayal / Rig Wars。"
+      },
       "stats": {
-        "primary": { "intellectPoints": 15, "spiritPoints": 10 },
-        "defense": { "armorPoints": 58 }
+        "primary": {
+          "staminaPoints": 7,
+          "spiritPoints": 18
+        },
+        "defense": {
+          "armorPoints": 54
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -454,9 +713,11 @@
     },
     {
       "id": "9624",
-      "name": { "zhCN": "疾跑者工装裤", "enUS": "Triprunner Dungarees" },
-      "itemLevel": 35,
-      "requiredLevel": 30,
+      "name": {
+        "zhCN": "旅行皮裤",
+        "enUS": "Triprunner Dungarees"
+      },
+      "itemLevel": 37,
       "quality": "rare",
       "slot": "legs",
       "armorType": "leather",
@@ -464,11 +725,22 @@
         "allowedClassIds": ["rogue", "druid"],
         "allowedRoles": ["dps", "healer"]
       },
-      "icon": { "kind": "database", "name": "inv_pants_06" },
-      "description": { "zhCN": "诺莫瑞根任务奖励：The Grand Betrayal / Rig Wars。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_08"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根任务奖励：The Grand Betrayal / Rig Wars。"
+      },
       "stats": {
-        "primary": { "agilityPoints": 12, "staminaPoints": 8 },
-        "defense": { "armorPoints": 123 }
+        "primary": {
+          "strengthPoints": 3,
+          "agilityPoints": 18,
+          "staminaPoints": 6
+        },
+        "defense": {
+          "armorPoints": 101
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -481,21 +753,30 @@
     },
     {
       "id": "9625",
-      "name": { "zhCN": "双重加固护腿", "enUS": "Dual Reinforced Leggings" },
-      "itemLevel": 35,
-      "requiredLevel": 30,
+      "name": {
+        "zhCN": "双链护腿",
+        "enUS": "Dual Reinforced Leggings"
+      },
+      "itemLevel": 37,
       "quality": "rare",
       "slot": "legs",
-      "armorType": "plate",
+      "armorType": "mail",
       "restrictions": {
-        "allowedClassIds": ["warrior", "paladin"],
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
         "allowedRoles": ["tank", "dps"]
       },
-      "icon": { "kind": "database", "name": "inv_pants_04" },
-      "description": { "zhCN": "诺莫瑞根任务奖励：The Grand Betrayal / Rig Wars。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_03"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根任务奖励：The Grand Betrayal / Rig Wars。"
+      },
       "stats": {
-        "primary": { "strengthPoints": 12, "staminaPoints": 9 },
-        "defense": { "armorPoints": 282 }
+        "defense": {
+          "armorPoints": 391,
+          "defenseSkillPoints": 5
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -508,15 +789,33 @@
     },
     {
       "id": "9605",
-      "name": { "zhCN": "修理工的斗篷", "enUS": "Repairman's Cape" },
-      "itemLevel": 34,
-      "requiredLevel": 29,
-      "quality": "rare",
+      "name": {
+        "zhCN": "修理工的斗篷",
+        "enUS": "Repairman's Cape"
+      },
+      "itemLevel": 30,
+      "quality": "uncommon",
       "slot": "back",
-      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
-      "icon": { "kind": "database", "name": "inv_misc_cape_10" },
-      "description": { "zhCN": "诺莫瑞根任务奖励：Data Rescue。" },
-      "stats": { "primary": { "staminaPoints": 6, "spiritPoints": 5 } },
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_06"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根任务奖励：Data Rescue。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 1,
+          "spiritPoints": 6
+        },
+        "defense": {
+          "armorPoints": 21
+        }
+      },
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
@@ -528,20 +827,36 @@
     },
     {
       "id": "9604",
-      "name": { "zhCN": "机械师的管钳", "enUS": "Mechanic's Pipehammer" },
-      "itemLevel": 34,
-      "requiredLevel": 29,
-      "quality": "rare",
+      "name": {
+        "zhCN": "蒸汽锤",
+        "enUS": "Mechanic's Pipehammer"
+      },
+      "itemLevel": 30,
+      "quality": "uncommon",
       "slot": "mainHand",
       "restrictions": {
-        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedClassIds": ["warrior", "paladin", "shaman", "druid"],
         "allowedRoles": ["tank", "dps"]
       },
-      "icon": { "kind": "database", "name": "inv_mace_09" },
-      "description": { "zhCN": "诺莫瑞根任务奖励：Data Rescue。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_mace_04"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根任务奖励：Data Rescue。"
+      },
       "stats": {
-        "primary": { "strengthPoints": 7, "staminaPoints": 5 },
-        "weapon": { "damage": { "minimumPoints": 39, "maximumPoints": 73 }, "speedSeconds": 2.6 }
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 3
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 45,
+            "maximumPoints": 69
+          },
+          "speedSeconds": 2.8
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -550,24 +865,37 @@
         "externalId": "9604",
         "url": "https://www.wowhead.com/classic/cn/item=9604&xml",
         "verifiedAt": "2026-09-09"
-      }
+      },
+      "twoHanded": true
     },
     {
       "id": "9608",
-      "name": { "zhCN": "肖尼的拆卸工具", "enUS": "Shoni's Disarming Tool" },
-      "itemLevel": 34,
-      "requiredLevel": 29,
-      "quality": "rare",
-      "slot": "mainHand",
-      "restrictions": {
-        "allowedClassIds": ["rogue"],
-        "allowedRoles": ["dps"]
+      "name": {
+        "zhCN": "舒尼的扳手",
+        "enUS": "Shoni's Disarming Tool"
       },
-      "icon": { "kind": "database", "name": "inv_weapon_shortblade_03" },
-      "description": { "zhCN": "诺莫瑞根任务奖励：Gyrodrillmatic Excavationators。" },
+      "itemLevel": 31,
+      "quality": "uncommon",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_wrench_01"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根任务奖励：Gyrodrillmatic Excavationators。"
+      },
       "stats": {
-        "primary": { "agilityPoints": 6, "staminaPoints": 4 },
-        "weapon": { "damage": { "minimumPoints": 27, "maximumPoints": 51 }, "speedSeconds": 1.8 }
+        "weapon": {
+          "damage": {
+            "minimumPoints": 21,
+            "maximumPoints": 40
+          },
+          "speedSeconds": 1.9
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -580,21 +908,33 @@
     },
     {
       "id": "9609",
-      "name": { "zhCN": "希里的手套", "enUS": "Shilly Mitts" },
-      "itemLevel": 34,
-      "requiredLevel": 29,
-      "quality": "rare",
-      "slot": "hands",
-      "armorType": "leather",
-      "restrictions": {
-        "allowedClassIds": ["rogue", "druid"],
-        "allowedRoles": ["dps", "healer"]
+      "name": {
+        "zhCN": "欺诈手套",
+        "enUS": "Shilly Mitts"
       },
-      "icon": { "kind": "database", "name": "inv_gauntlets_14" },
-      "description": { "zhCN": "诺莫瑞根任务奖励：Gyrodrillmatic Excavationators。" },
+      "itemLevel": 31,
+      "quality": "uncommon",
+      "slot": "hands",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["mage", "priest", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_27"
+      },
+      "description": {
+        "zhCN": "诺莫瑞根任务奖励：Gyrodrillmatic Excavationators。"
+      },
       "stats": {
-        "primary": { "agilityPoints": 7, "staminaPoints": 5 },
-        "defense": { "armorPoints": 72 }
+        "primary": {
+          "intellectPoints": 6,
+          "spiritPoints": 6
+        },
+        "defense": {
+          "armorPoints": 27
+        }
       },
       "statsSource": {
         "kind": "source-fact",

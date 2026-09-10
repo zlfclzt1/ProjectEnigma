@@ -22,6 +22,7 @@ const representativeStats: ClassicItemStats = {
   spell: {
     spellPowerPoints: 18,
     healingPowerPoints: 24,
+    manaRegenPer5Seconds: 3,
     hitPercent: 1,
     criticalStrikePercent: 2,
   },
@@ -77,6 +78,19 @@ describe("typed Classic item stats", () => {
       resistances: { firePoints: 10, shadowPoints: 5 },
     });
     expect(JSON.parse(JSON.stringify(stats))).toEqual(stats);
+  });
+
+  it("supports authentic stat penalties and mana regeneration", () => {
+    expect(
+      classicItemStatsSchema.parse({
+        primary: { spiritPoints: -3 },
+        spell: { manaRegenPer5Seconds: 3 },
+      }),
+    ).toEqual({
+      primary: { spiritPoints: -3 },
+      spell: { manaRegenPer5Seconds: 3 },
+    });
+    expect(() => classicItemStatsSchema.parse({ primary: { staminaPoints: -1 } })).toThrow();
   });
 
   it("only permits weapon data on weapon equipment slots", () => {

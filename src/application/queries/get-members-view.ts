@@ -256,6 +256,7 @@ const STAT_LABELS: Readonly<Record<string, string>> = {
   rangedAttackPowerPoints: "远程攻击强度",
   spellPowerPoints: "法术强度",
   healingPowerPoints: "治疗强度",
+  manaRegenPer5Seconds: "每 5 秒法力回复",
   arcanePoints: "奥术抗性",
   firePoints: "火焰抗性",
   frostPoints: "冰霜抗性",
@@ -362,6 +363,9 @@ export function getItemStatLines(stats: ClassicItemStats): ItemStatLineView[] {
           ...(stats.spell.healingPowerPoints === undefined
             ? {}
             : { healingPowerPoints: stats.spell.healingPowerPoints }),
+          ...(stats.spell.manaRegenPer5Seconds === undefined
+            ? {}
+            : { manaRegenPer5Seconds: stats.spell.manaRegenPer5Seconds }),
           ...(stats.spell.hitPercent === undefined
             ? {}
             : { spellHitPercent: stats.spell.hitPercent }),

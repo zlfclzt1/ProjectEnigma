@@ -28,27 +28,69 @@
   "quests": [
     {
       "id": "razorfen_kraul_crone_of_the_kraul",
-      "name": { "zhCN": "剃刀沼泽的巫婆" },
-      "description": { "zhCN": "击败卡尔加·刺肋，结束剃刀沼泽的邪恶统治。" },
+      "name": {
+        "zhCN": "剃刀沼泽的巫婆"
+      },
+      "description": {
+        "zhCN": "击败卡尔加·刺肋，结束剃刀沼泽的邪恶统治。"
+      },
       "dungeonId": "razorfen_kraul",
-      "eligibility": { "minimumLevel": 30, "allowedClassIds": [] },
+      "eligibility": {
+        "minimumLevel": 30,
+        "allowedClassIds": []
+      },
       "completion": {
         "type": "encounter-victories",
         "encounterIds": ["razorfen_kraul_charlga_razorflank"]
       },
-      "rewards": { "experienceFraction": 0.8, "funds": 0, "itemChoiceIds": ["6684"] }
+      "rewards": {
+        "experienceFraction": 0.8,
+        "funds": 0,
+        "itemChoiceIds": ["4197", "6742", "6725"]
+      }
     },
     {
-      "id": "razorfen_kraul_mortality_wanes",
-      "name": { "zhCN": "生命渐逝" },
-      "description": { "zhCN": "完成剃刀沼泽远征并带回任务目标。" },
+      "id": "razorfen_kraul_willix_the_importer",
+      "name": {
+        "zhCN": "进口商威利克斯"
+      },
+      "description": {
+        "zhCN": "完成剃刀沼泽远征，护送威利克斯离开荆棘迷宫。"
+      },
       "dungeonId": "razorfen_kraul",
-      "eligibility": { "minimumLevel": 30, "allowedClassIds": [] },
-      "completion": { "type": "dungeon-clear" },
+      "eligibility": {
+        "minimumLevel": 30,
+        "allowedClassIds": []
+      },
+      "completion": {
+        "type": "dungeon-clear"
+      },
       "rewards": {
         "experienceFraction": 0.75,
         "funds": 0,
-        "itemChoiceIds": ["6750", "6751", "6752"]
+        "itemChoiceIds": ["6748", "6749", "6750"]
+      }
+    },
+    {
+      "id": "razorfen_kraul_mortality_wanes",
+      "name": {
+        "zhCN": "生命渐逝"
+      },
+      "description": {
+        "zhCN": "完成剃刀沼泽远征并带回任务目标。"
+      },
+      "dungeonId": "razorfen_kraul",
+      "eligibility": {
+        "minimumLevel": 30,
+        "allowedClassIds": []
+      },
+      "completion": {
+        "type": "dungeon-clear"
+      },
+      "rewards": {
+        "experienceFraction": 0.75,
+        "funds": 0,
+        "itemChoiceIds": ["6751", "6752"]
       }
     }
   ]

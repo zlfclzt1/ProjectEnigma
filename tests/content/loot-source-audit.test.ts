@@ -25,7 +25,7 @@ describe("loot source audit", () => {
       "design-placeholder": 0,
     });
     expect(audit.encounterCounts["no-equipment"]).toBe(10);
-    expect(audit.questRewards).toHaveLength(14);
+    expect(audit.questRewards).toHaveLength(15);
     expect(audit.bossQuestRewardOverlap).toEqual([]);
     expect(
       audit.rows.filter((row) => row.category === "no-equipment").map((row) => row.encounterId),
@@ -45,7 +45,7 @@ describe("loot source audit", () => {
 
     const report = renderLootSourceAudit(audit);
     expect(report).toContain("无装备掉落 10");
-    expect(report).toContain("成员副本任务：14，不同任务奖励装备：31");
+    expect(report).toContain("成员副本任务：15，不同任务奖励装备：35");
     expect(report).toContain("奥格弗林特（oggleflint） | — | 无装备掉落");
     expect(report).toContain("毁灭之力（rfc_power_to_destroy）");
   });

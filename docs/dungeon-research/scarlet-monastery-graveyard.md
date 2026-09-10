@@ -76,9 +76,9 @@
 
 ## D09.A 验收清单
 
-- [ ] 2 个必经 Boss 与 3 个互斥随机稀有 Boss 完成路线分类。
-- [ ] 13 件 Boss 专属装备完成 Classic XML 核对。
-- [ ] Vorrel's Revenge 奖励完成 XML 核对并保持任务/Boss 来源分离。
-- [ ] 跨四分区任务延后至 D12，不在墓地重复发放。
-- [ ] Scorn、无头骑士、普通怪 BoE、节日与世界掉落已排除。
-- [ ] 所有来源标记为 `classic-2019-phase-6`，没有探索赛季或重制数据。
+- [x] 2 个必经 Boss 与 3 个互斥随机稀有 Boss 完成路线分类。
+- [x] 13 件 Boss 专属装备完成 Classic XML 核对。
+- [x] Vorrel's Revenge 奖励完成 XML 核对并保持任务/Boss 来源分离。
+- [x] 跨四分区任务延后至 D12，不在墓地重复发放。
+- [x] Scorn、无头骑士、普通怪 BoE、节日与世界掉落已排除。
+- [x] 所有来源标记为 `classic-2019-phase-6`，没有探索赛季或重制数据。

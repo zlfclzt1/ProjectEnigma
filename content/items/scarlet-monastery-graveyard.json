@@ -30,20 +30,33 @@
   "items": [
     {
       "id": "7683",
-      "name": { "zhCN": "血腥黄铜指虎", "enUS": "Bloody Brass Knuckles" },
-      "itemLevel": 30,
-      "requiredLevel": 25,
-      "quality": "rare",
+      "name": {
+        "zhCN": "染血的手指虎",
+        "enUS": "Bloody Brass Knuckles"
+      },
+      "itemLevel": 34,
+      "requiredLevel": 29,
+      "quality": "common",
       "slot": "mainHand",
       "restrictions": {
         "allowedClassIds": ["rogue", "warrior", "shaman"],
         "allowedRoles": ["dps", "tank"]
       },
-      "icon": { "kind": "database", "name": "inv_weapon_hand_01" },
-      "description": { "zhCN": "血色修道院：审讯官维萨斯的专属掉落。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_11"
+      },
+      "description": {
+        "zhCN": "血色修道院：审讯官维萨斯的专属掉落。"
+      },
       "stats": {
-        "primary": { "agilityPoints": 5, "staminaPoints": 3 },
-        "weapon": { "damage": { "minimumPoints": 25, "maximumPoints": 47 }, "speedSeconds": 1.7 }
+        "weapon": {
+          "damage": {
+            "minimumPoints": 18,
+            "maximumPoints": 35
+          },
+          "speedSeconds": 1.6
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -56,20 +69,33 @@
     },
     {
       "id": "7682",
-      "name": { "zhCN": "折磨之刺", "enUS": "Torturing Poker" },
-      "itemLevel": 30,
-      "requiredLevel": 25,
+      "name": {
+        "zhCN": "烙铁棍",
+        "enUS": "Torturing Poker"
+      },
+      "itemLevel": 34,
+      "requiredLevel": 29,
       "quality": "rare",
       "slot": "mainHand",
       "restrictions": {
         "allowedClassIds": ["rogue", "warrior", "hunter", "shaman"],
         "allowedRoles": ["dps"]
       },
-      "icon": { "kind": "database", "name": "inv_weapon_shortblade_05" },
-      "description": { "zhCN": "血色修道院：审讯官维萨斯的专属掉落。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_spear_01"
+      },
+      "description": {
+        "zhCN": "血色修道院：审讯官维萨斯的专属掉落。"
+      },
       "stats": {
-        "primary": { "agilityPoints": 6 },
-        "weapon": { "damage": { "minimumPoints": 28, "maximumPoints": 52 }, "speedSeconds": 1.9 }
+        "weapon": {
+          "damage": {
+            "minimumPoints": 21,
+            "maximumPoints": 39
+          },
+          "speedSeconds": 1.7
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -82,21 +108,34 @@
     },
     {
       "id": "7684",
-      "name": { "zhCN": "血法师肩饰", "enUS": "Bloodmage Mantle" },
-      "itemLevel": 31,
-      "requiredLevel": 26,
-      "quality": "rare",
+      "name": {
+        "zhCN": "血法师衬肩",
+        "enUS": "Bloodmage Mantle"
+      },
+      "itemLevel": 35,
+      "requiredLevel": 30,
+      "quality": "uncommon",
       "slot": "shoulder",
       "armorType": "cloth",
       "restrictions": {
         "allowedClassIds": ["mage", "priest", "warlock"],
         "allowedRoles": ["healer", "dps"]
       },
-      "icon": { "kind": "database", "name": "inv_shoulder_02" },
-      "description": { "zhCN": "血色修道院：血法师萨尔诺斯的专属掉落。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_05"
+      },
+      "description": {
+        "zhCN": "血色修道院：血法师萨尔诺斯的专属掉落。"
+      },
       "stats": {
-        "primary": { "intellectPoints": 10, "spiritPoints": 7 },
-        "defense": { "armorPoints": 39 }
+        "primary": {
+          "intellectPoints": 8,
+          "spiritPoints": 4
+        },
+        "defense": {
+          "armorPoints": 35
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -109,20 +148,30 @@
     },
     {
       "id": "7685",
-      "name": { "zhCN": "被遗忘先知宝珠", "enUS": "Orb of the Forgotten Seer" },
-      "itemLevel": 31,
-      "requiredLevel": 26,
+      "name": {
+        "zhCN": "遗忘先知宝珠",
+        "enUS": "Orb of the Forgotten Seer"
+      },
+      "itemLevel": 38,
+      "requiredLevel": 33,
       "quality": "rare",
       "slot": "offHand",
       "restrictions": {
         "allowedClassIds": ["mage", "priest", "warlock"],
         "allowedRoles": ["healer", "dps"]
       },
-      "icon": { "kind": "database", "name": "inv_misc_orb_02" },
-      "description": { "zhCN": "血色修道院：血法师萨尔诺斯的专属掉落。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_orb_02"
+      },
+      "description": {
+        "zhCN": "血色修道院：血法师萨尔诺斯的专属掉落。"
+      },
       "stats": {
-        "primary": { "intellectPoints": 7, "spiritPoints": 6 },
-        "spell": { "spellPowerPoints": 4 }
+        "spell": {
+          "spellPowerPoints": 12,
+          "healingPowerPoints": 12
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -135,20 +184,33 @@
     },
     {
       "id": "7708",
-      "name": { "zhCN": "死灵魔杖", "enUS": "Necrotic Wand" },
-      "itemLevel": 32,
-      "requiredLevel": 27,
+      "name": {
+        "zhCN": "腐坏魔杖",
+        "enUS": "Necrotic Wand"
+      },
+      "itemLevel": 35,
+      "requiredLevel": 30,
       "quality": "rare",
       "slot": "ranged",
       "restrictions": {
         "allowedClassIds": ["mage", "priest", "warlock"],
         "allowedRoles": ["healer", "dps"]
       },
-      "icon": { "kind": "database", "name": "inv_wand_04" },
-      "description": { "zhCN": "血色修道院：不眠的阿齐尔的专属掉落。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_wand_04"
+      },
+      "description": {
+        "zhCN": "血色修道院：不眠的阿齐尔的专属掉落。"
+      },
       "stats": {
-        "primary": { "intellectPoints": 8, "spiritPoints": 5 },
-        "weapon": { "damage": { "minimumPoints": 28, "maximumPoints": 52 }, "speedSeconds": 1.8 }
+        "weapon": {
+          "damage": {
+            "minimumPoints": 32,
+            "maximumPoints": 61
+          },
+          "speedSeconds": 1.4
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -161,15 +223,31 @@
     },
     {
       "id": "7731",
-      "name": { "zhCN": "鬼骨护符", "enUS": "Ghostshard Talisman" },
-      "itemLevel": 32,
-      "requiredLevel": 27,
+      "name": {
+        "zhCN": "鬼魅碎片护符",
+        "enUS": "Ghostshard Talisman"
+      },
+      "itemLevel": 35,
+      "requiredLevel": 30,
       "quality": "rare",
       "slot": "neck",
-      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
-      "icon": { "kind": "database", "name": "inv_jewelry_amulet_04" },
-      "description": { "zhCN": "血色修道院：不眠的阿齐尔的专属掉落。" },
-      "stats": { "primary": { "staminaPoints": 7, "spiritPoints": 5 } },
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_necklace_06"
+      },
+      "description": {
+        "zhCN": "血色修道院：不眠的阿齐尔的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 9,
+          "spiritPoints": 4
+        }
+      },
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
@@ -181,9 +259,12 @@
     },
     {
       "id": "7709",
-      "name": { "zhCN": "凋零护腿", "enUS": "Blighted Leggings" },
-      "itemLevel": 32,
-      "requiredLevel": 27,
+      "name": {
+        "zhCN": "荒芜护腿",
+        "enUS": "Blighted Leggings"
+      },
+      "itemLevel": 35,
+      "requiredLevel": 30,
       "quality": "rare",
       "slot": "legs",
       "armorType": "cloth",
@@ -191,11 +272,20 @@
         "allowedClassIds": ["mage", "priest", "warlock"],
         "allowedRoles": ["healer", "dps"]
       },
-      "icon": { "kind": "database", "name": "inv_pants_08" },
-      "description": { "zhCN": "血色修道院：不眠的阿齐尔的专属掉落。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_07"
+      },
+      "description": {
+        "zhCN": "血色修道院：不眠的阿齐尔的专属掉落。"
+      },
       "stats": {
-        "primary": { "intellectPoints": 9, "spiritPoints": 8 },
-        "defense": { "armorPoints": 43 }
+        "primary": {
+          "spiritPoints": 17
+        },
+        "defense": {
+          "armorPoints": 45
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -208,21 +298,35 @@
     },
     {
       "id": "7690",
-      "name": { "zhCN": "乌木护腕", "enUS": "Ebon Vise" },
-      "itemLevel": 32,
-      "requiredLevel": 27,
-      "quality": "rare",
-      "slot": "wrist",
-      "armorType": "mail",
-      "restrictions": {
-        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
-        "allowedRoles": ["tank", "dps"]
+      "name": {
+        "zhCN": "乌木钳",
+        "enUS": "Ebon Vise"
       },
-      "icon": { "kind": "database", "name": "inv_bracer_07" },
-      "description": { "zhCN": "血色修道院：堕落的勇士的专属掉落。" },
+      "itemLevel": 35,
+      "requiredLevel": 30,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["rogue", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_32"
+      },
+      "description": {
+        "zhCN": "血色修道院：堕落的勇士的专属掉落。"
+      },
       "stats": {
-        "primary": { "strengthPoints": 5, "staminaPoints": 4 },
-        "defense": { "armorPoints": 72 }
+        "primary": {
+          "strengthPoints": 4,
+          "agilityPoints": 6,
+          "staminaPoints": 8
+        },
+        "defense": {
+          "armorPoints": 70
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -235,21 +339,35 @@
     },
     {
       "id": "7691",
-      "name": { "zhCN": "防腐外衣", "enUS": "Embalmed Shroud" },
-      "itemLevel": 32,
-      "requiredLevel": 27,
+      "name": {
+        "zhCN": "裹尸布",
+        "enUS": "Embalmed Shroud"
+      },
+      "itemLevel": 35,
+      "requiredLevel": 30,
       "quality": "rare",
-      "slot": "chest",
+      "slot": "head",
       "armorType": "cloth",
       "restrictions": {
         "allowedClassIds": ["mage", "priest", "warlock"],
         "allowedRoles": ["healer", "dps"]
       },
-      "icon": { "kind": "database", "name": "inv_chest_cloth_08" },
-      "description": { "zhCN": "血色修道院：堕落的勇士的专属掉落。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_28"
+      },
+      "description": {
+        "zhCN": "血色修道院：堕落的勇士的专属掉落。"
+      },
       "stats": {
-        "primary": { "intellectPoints": 11, "spiritPoints": 8 },
-        "defense": { "armorPoints": 54 }
+        "primary": {
+          "staminaPoints": 7,
+          "intellectPoints": 11,
+          "spiritPoints": 12
+        },
+        "defense": {
+          "armorPoints": 42
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -262,20 +380,37 @@
     },
     {
       "id": "7689",
-      "name": { "zhCN": "阴森黎明", "enUS": "Morbid Dawn" },
-      "itemLevel": 32,
-      "requiredLevel": 27,
+      "name": {
+        "zhCN": "恐怖黎明",
+        "enUS": "Morbid Dawn"
+      },
+      "itemLevel": 35,
+      "requiredLevel": 30,
       "quality": "rare",
       "slot": "mainHand",
       "restrictions": {
         "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
         "allowedRoles": ["tank", "dps"]
       },
-      "icon": { "kind": "database", "name": "inv_sword_07" },
-      "description": { "zhCN": "血色修道院：堕落的勇士的专属掉落。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_12"
+      },
+      "description": {
+        "zhCN": "血色修道院：堕落的勇士的专属掉落。"
+      },
       "stats": {
-        "primary": { "strengthPoints": 8, "staminaPoints": 4 },
-        "weapon": { "damage": { "minimumPoints": 35, "maximumPoints": 66 }, "speedSeconds": 2.5 }
+        "primary": {
+          "strengthPoints": 10,
+          "staminaPoints": 15
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 70,
+            "maximumPoints": 105
+          },
+          "speedSeconds": 2.9
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -284,19 +419,36 @@
         "externalId": "7689",
         "url": "https://www.wowhead.com/classic/cn/item=7689&xml",
         "verifiedAt": "2026-09-09"
-      }
+      },
+      "twoHanded": true
     },
     {
       "id": "7686",
-      "name": { "zhCN": "铁脊之眼", "enUS": "Ironspine's Eye" },
-      "itemLevel": 33,
-      "requiredLevel": 28,
+      "name": {
+        "zhCN": "铁脊死灵之眼",
+        "enUS": "Ironspine's Eye"
+      },
+      "itemLevel": 35,
+      "requiredLevel": 30,
       "quality": "rare",
-      "slot": "neck",
-      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
-      "icon": { "kind": "database", "name": "inv_jewelry_amulet_01" },
-      "description": { "zhCN": "血色修道院：铁脊的专属掉落。" },
-      "stats": { "primary": { "staminaPoints": 8, "spiritPoints": 6 } },
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_04"
+      },
+      "description": {
+        "zhCN": "血色修道院：铁脊的专属掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 4,
+          "agilityPoints": 9
+        }
+      },
       "statsSource": {
         "kind": "source-fact",
         "provider": "wowhead-classic",
@@ -308,21 +460,35 @@
     },
     {
       "id": "7688",
-      "name": { "zhCN": "铁脊胸甲", "enUS": "Ironspine's Ribcage" },
-      "itemLevel": 33,
-      "requiredLevel": 28,
+      "name": {
+        "zhCN": "铁脊死灵之肋",
+        "enUS": "Ironspine's Ribcage"
+      },
+      "itemLevel": 35,
+      "requiredLevel": 30,
       "quality": "rare",
       "slot": "chest",
-      "armorType": "plate",
+      "armorType": "mail",
       "restrictions": {
-        "allowedClassIds": ["warrior", "paladin"],
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
         "allowedRoles": ["tank", "dps"]
       },
-      "icon": { "kind": "database", "name": "inv_chest_plate06" },
-      "description": { "zhCN": "血色修道院：铁脊的专属掉落。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_plate15"
+      },
+      "description": {
+        "zhCN": "血色修道院：铁脊的专属掉落。"
+      },
       "stats": {
-        "primary": { "strengthPoints": 8, "staminaPoints": 7 },
-        "defense": { "armorPoints": 310 }
+        "primary": {
+          "strengthPoints": 6,
+          "agilityPoints": 3,
+          "staminaPoints": 17
+        },
+        "defense": {
+          "armorPoints": 235
+        }
       },
       "statsSource": {
         "kind": "source-fact",
@@ -335,21 +501,36 @@
     },
     {
       "id": "7687",
-      "name": { "zhCN": "铁脊之拳", "enUS": "Ironspine's Fist" },
-      "itemLevel": 33,
-      "requiredLevel": 28,
+      "name": {
+        "zhCN": "铁脊死灵之拳",
+        "enUS": "Ironspine's Fist"
+      },
+      "itemLevel": 35,
+      "requiredLevel": 30,
       "quality": "rare",
-      "slot": "hands",
-      "armorType": "mail",
+      "slot": "mainHand",
       "restrictions": {
-        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedClassIds": ["warrior", "paladin", "shaman", "druid"],
         "allowedRoles": ["tank", "dps"]
       },
-      "icon": { "kind": "database", "name": "inv_gauntlets_09" },
-      "description": { "zhCN": "血色修道院：铁脊的专属掉落。" },
+      "icon": {
+        "kind": "database",
+        "name": "inv_hammer_19"
+      },
+      "description": {
+        "zhCN": "血色修道院：铁脊的专属掉落。"
+      },
       "stats": {
-        "primary": { "strengthPoints": 6, "staminaPoints": 5 },
-        "defense": { "armorPoints": 129 }
+        "primary": {
+          "strengthPoints": 7
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 38,
+            "maximumPoints": 72
+          },
+          "speedSeconds": 2.4
+        }
       },
       "statsSource": {
         "kind": "source-fact",

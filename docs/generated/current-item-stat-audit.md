@@ -4,7 +4,7 @@
 
 ## 结论
 
-- 真实副本与任务装备：158 / 158 已录入有单位属性并引用 Wowhead Classic XML。
+- 真实副本与任务装备：162 / 162 已录入有单位属性并引用 Wowhead Classic XML。
 - 初始装备：41 / 41 已录入本游戏平衡属性，并标记 manual 与 stats balance override。
 - 未确认而猜测的真实属性：0 项。
 - 触发效果和套装效果不作为单件常驻属性写入；相关排除项记录在物品来源说明中。
@@ -24,7 +24,7 @@
 | 1937 | 电锯 | 16 | mainHand | 力量 2、敏捷 2、伤害 17–33 / 2.40 秒 | wowhead-classic | 2026-09-08 |
 | 2033 | 大使之靴 | 22 | feet | 敏捷 4、耐力 4、护甲 59 | wowhead-classic | 2026-09-09 |
 | 2169 | 蜂鸣之刃 | 16 | mainHand | 伤害 10–19 / 1.50 秒 | wowhead-classic | 2026-09-08 |
-| 2816 | 死亡之语者节杖 | 25 | mainHand | 智力 8、精神 6、伤害 33–62 / 2.40 秒 | wowhead-classic | 2026-09-09 |
+| 2816 | 死亡之语者节杖 | 28 | mainHand | 精神 1、伤害 33–63 / 2.80 秒 | wowhead-classic | 2026-09-09 |
 | 2906 | 夜色郡锁甲护腿 | 22 | legs | 力量 6、精神 6、护甲 163 | wowhead-classic | 2026-09-09 |
 | 2941 | 监狱骨片 | 21 | mainHand | 敏捷 5、耐力 2、伤害 21–39 / 1.80 秒 | wowhead-classic | 2026-09-09 |
 | 2942 | 铁指虎 | 21 | mainHand | 伤害 19–37 / 1.70 秒 | wowhead-classic | 2026-09-09 |
@@ -35,7 +35,8 @@
 | 3400 | 磷铝长剑 | 22 | mainHand | 耐力 4、伤害 22–42 / 2.50 秒 | wowhead-classic | 2026-09-09 |
 | 3562 | 辩护腰带 | 22 | waist | 敏捷 4、耐力 2、护甲 50 | wowhead-classic | 2026-09-09 |
 | 3748 | 猎豹衬肩 | 23 | shoulder | 敏捷 2、智力 10、精神 3、护甲 34 | wowhead-classic | 2026-09-08 |
-| 4643 | 灰钢披风 | 28 | back | 力量 4、耐力 5 | wowhead-classic | 2026-09-09 |
+| 4197 | 绿宝石护肩 | — | shoulder | 耐力 5、智力 10、精神 6、护甲 39 | wowhead-classic | 2026-09-09 |
+| 4643 | 十字军斗篷 | — | back | 敏捷 2、耐力 6、护甲 23 | wowhead-classic | 2026-09-09 |
 | 5187 | 拉克佐之锤 | 15 | mainHand | 伤害 30–46 / 3.20 秒 | wowhead-classic | 2026-09-08 |
 | 5191 | 残酷倒钩 | 19 | mainHand | 攻击强度 12、远程攻击强度 12、伤害 30–57 / 2.80 秒 | wowhead-classic | 2026-09-08 |
 | 5192 | 潜行者之刃 | 17 | mainHand | 敏捷 3、伤害 13–25 / 1.70 秒 | wowhead-classic | 2026-09-08 |
@@ -79,25 +80,28 @@
 | 6630 | 淡云圆盾 | 20 | offHand | 智力 6、精神 3、护甲 566、格挡值 11 | wowhead-classic | 2026-09-08 |
 | 6631 | 生命之根 | 20 | mainHand | 耐力 2、精神 12、伤害 49–74 / 2.90 秒、自然抗性 5 | wowhead-classic | 2026-09-08 |
 | 6633 | 屠夫的剔骨刀 | 18 | mainHand | 力量 2、耐力 2、伤害 23–44 / 2.90 秒 | wowhead-classic | 2026-09-08 |
-| 6681 | 荆棘刺 | 25 | mainHand | 力量 5、敏捷 4、伤害 25–47 / 2.00 秒 | wowhead-classic | 2026-09-09 |
-| 6682 | 死亡之语者肩饰 | 25 | shoulder | 智力 8、精神 7、护甲 35 | wowhead-classic | 2026-09-09 |
-| 6684 | 苍白肩垫 | 29 | shoulder | 敏捷 8、耐力 6、护甲 91 | wowhead-classic | 2026-09-09 |
-| 6685 | 死亡之语者长袍 | 25 | chest | 智力 12、精神 9、护甲 51 | wowhead-classic | 2026-09-09 |
-| 6686 | 图斯克头盔 | 26 | head | 耐力 9、精神 4、护甲 177 | wowhead-classic | 2026-09-09 |
-| 6687 | 尸体制造者 | 27 | mainHand | 力量 15、耐力 5、伤害 58–88 / 2.90 秒 | wowhead-classic | 2026-09-09 |
-| 6688 | 低语风帽 | 27 | head | 智力 9、精神 8、护甲 94 | wowhead-classic | 2026-09-09 |
-| 6689 | 风灵法杖 | 27 | mainHand | 智力 10、精神 9、伤害 46–70 / 2.80 秒 | wowhead-classic | 2026-09-09 |
-| 6690 | 野兽护腿 | 26 | legs | 敏捷 12、耐力 7、护甲 117 | wowhead-classic | 2026-09-09 |
-| 6691 | 野猪獠牙匕首 | 26 | mainHand | 敏捷 6、伤害 27–51 / 1.80 秒 | wowhead-classic | 2026-09-09 |
-| 6692 | 阿迦玛甘之心 | 29 | neck | 耐力 8、精神 8 | wowhead-classic | 2026-09-09 |
-| 6693 | 阿迦玛甘之握 | 29 | hands | 力量 7、耐力 6、护甲 195 | wowhead-classic | 2026-09-09 |
-| 6694 | 尖刺收割者 | 29 | mainHand | 力量 10、耐力 4、伤害 41–77 / 2.50 秒 | wowhead-classic | 2026-09-09 |
-| 6695 | 冥骨护符 | 27 | neck | 耐力 7、精神 5 | wowhead-classic | 2026-09-09 |
-| 6696 | 暗夜追猎者之弓 | 27 | ranged | 伤害 38–71 / 2.80 秒 | wowhead-classic | 2026-09-09 |
-| 6697 | 蝠翼披风 | 27 | back | 敏捷 5、耐力 5 | wowhead-classic | 2026-09-09 |
-| 6750 | 蛇环 | 30 | ring1 | 耐力 6、精神 5 | wowhead-classic | 2026-09-09 |
-| 6751 | 哀悼披肩 | 30 | back | 智力 8、精神 7 | wowhead-classic | 2026-09-09 |
-| 6752 | 枪骑兵长靴 | 30 | feet | 耐力 8、精神 3、护甲 151 | wowhead-classic | 2026-09-09 |
+| 6681 | 棘刺 | 27 | mainHand | 伤害 18–35 / 1.70 秒 | wowhead-classic | 2026-09-09 |
+| 6682 | 亡语者长袍 | 26 | chest | 耐力 3、智力 8、精神 6、护甲 44 | wowhead-classic | 2026-09-09 |
+| 6685 | 亡语者衬肩 | 25 | shoulder | 智力 7、精神 3、护甲 32 | wowhead-classic | 2026-09-09 |
+| 6686 | 长牙头盔 | 28 | head | 力量 9、敏捷 8、护甲 168 | wowhead-classic | 2026-09-09 |
+| 6687 | 尸体制造者 | 29 | mainHand | 力量 15、耐力 8、伤害 88–132 / 3.80 秒 | wowhead-classic | 2026-09-09 |
+| 6688 | 轻风头饰 | 27 | head | 耐力 3、智力 7、精神 7、护甲 79 | wowhead-classic | 2026-09-09 |
+| 6689 | 风灵法杖 | 27 | mainHand | 耐力 3、智力 5、精神 15、伤害 70–106 / 3.30 秒 | wowhead-classic | 2026-09-09 |
+| 6690 | 野兽护腿 | 29 | legs | 力量 9、敏捷 8、护甲 87 | wowhead-classic | 2026-09-09 |
+| 6691 | 猪牙匕首 | 30 | mainHand | 耐力 6、精神 4、伤害 24–45 / 1.50 秒 | wowhead-classic | 2026-09-09 |
+| 6692 | 分叉斧 | 31 | mainHand | 力量 6、精神 5、伤害 40–75 / 2.40 秒 | wowhead-classic | 2026-09-09 |
+| 6693 | 阿迦玛甘之握 | 31 | ring1 | 耐力 5、精神 9 | wowhead-classic | 2026-09-09 |
+| 6694 | 阿迦玛甘之心 | 31 | offHand | 耐力 7、精神 8、护甲 776、格挡值 17 | wowhead-classic | 2026-09-09 |
+| 6695 | 冥骨护符 | 27 | neck | 耐力 4、精神 8 | wowhead-classic | 2026-09-09 |
+| 6696 | 夜行者之弓 | 27 | ranged | 敏捷 3、伤害 19–36 / 1.70 秒 | wowhead-classic | 2026-09-09 |
+| 6697 | 蝙蝠之翼 | 27 | shoulder | 敏捷 3、智力 10、精神 5、护甲 37 | wowhead-classic | 2026-09-09 |
+| 6725 | 石饰圆盾 | — | offHand | 力量 5、敏捷 5、耐力 5、精神 5、护甲 775、格挡值 17 | wowhead-classic | 2026-09-09 |
+| 6742 | 石拳束带 | — | waist | 力量 6、耐力 5、护甲 234 | wowhead-classic | 2026-09-09 |
+| 6748 | 猴子戒指 | — | ring1 | 敏捷 6 | wowhead-classic | 2026-09-09 |
+| 6749 | 猛虎指环 | — | ring1 | 力量 6 | wowhead-classic | 2026-09-09 |
+| 6750 | 蛇环 | — | ring1 | 智力 6 | wowhead-classic | 2026-09-09 |
+| 6751 | 悲伤披风 | — | back | 耐力 7、精神 -3、护甲 21 | wowhead-classic | 2026-09-09 |
+| 6752 | 枪骑兵战靴 | — | feet | 敏捷 6、耐力 5、护甲 64 | wowhead-classic | 2026-09-09 |
 | 6901 | 发光的蛇颈龙斗篷 | 24 | back | 力量 3、精神 8、护甲 23 | wowhead-classic | 2026-09-09 |
 | 6902 | 瑟拉吉斯指环 | 22 | wrist | 力量 4、耐力 2、护甲 39 | wowhead-classic | 2026-09-09 |
 | 6903 | 凝望短裤 | 23 | legs | 智力 7、精神 6、护甲 36 | wowhead-classic | 2026-09-09 |
@@ -114,30 +118,30 @@
 | 7001 | 墓碑节杖 | 18 | ranged | 伤害 30–57 / 1.50 秒 | wowhead-classic | 2026-09-09 |
 | 7002 | 极光圆盾 | 18 | offHand | 耐力 3、精神 8、护甲 642、格挡值 13、冰霜抗性 5 | wowhead-classic | 2026-09-09 |
 | 7230 | 重拳先生的大锤 | 18 | mainHand | 力量 11、敏捷 4、伤害 55–83 / 3.50 秒 | wowhead-classic | 2026-09-08 |
-| 7682 | 折磨之刺 | 25 | mainHand | 敏捷 6、伤害 28–52 / 1.90 秒 | wowhead-classic | 2026-09-09 |
-| 7683 | 血腥黄铜指虎 | 25 | mainHand | 敏捷 5、耐力 3、伤害 25–47 / 1.70 秒 | wowhead-classic | 2026-09-09 |
-| 7684 | 血法师肩饰 | 26 | shoulder | 智力 10、精神 7、护甲 39 | wowhead-classic | 2026-09-09 |
-| 7685 | 被遗忘先知宝珠 | 26 | offHand | 智力 7、精神 6、法术强度 4 | wowhead-classic | 2026-09-09 |
-| 7686 | 铁脊之眼 | 28 | neck | 耐力 8、精神 6 | wowhead-classic | 2026-09-09 |
-| 7687 | 铁脊之拳 | 28 | hands | 力量 6、耐力 5、护甲 129 | wowhead-classic | 2026-09-09 |
-| 7688 | 铁脊胸甲 | 28 | chest | 力量 8、耐力 7、护甲 310 | wowhead-classic | 2026-09-09 |
-| 7689 | 阴森黎明 | 27 | mainHand | 力量 8、耐力 4、伤害 35–66 / 2.50 秒 | wowhead-classic | 2026-09-09 |
-| 7690 | 乌木护腕 | 27 | wrist | 力量 5、耐力 4、护甲 72 | wowhead-classic | 2026-09-09 |
-| 7691 | 防腐外衣 | 27 | chest | 智力 11、精神 8、护甲 54 | wowhead-classic | 2026-09-09 |
-| 7708 | 死灵魔杖 | 27 | ranged | 智力 8、精神 5、伤害 28–52 / 1.80 秒 | wowhead-classic | 2026-09-09 |
-| 7709 | 凋零护腿 | 27 | legs | 智力 9、精神 8、护甲 43 | wowhead-classic | 2026-09-09 |
-| 7731 | 鬼骨护符 | 27 | neck | 耐力 7、精神 5 | wowhead-classic | 2026-09-09 |
-| 7750 | 哀伤披风 | 28 | back | 耐力 6、精神 6 | wowhead-classic | 2026-09-09 |
-| 7751 | 沃瑞尔的靴子 | 28 | feet | 敏捷 7、耐力 5、护甲 76 | wowhead-classic | 2026-09-09 |
+| 7682 | 烙铁棍 | 29 | mainHand | 伤害 21–39 / 1.70 秒 | wowhead-classic | 2026-09-09 |
+| 7683 | 染血的手指虎 | 29 | mainHand | 伤害 18–35 / 1.60 秒 | wowhead-classic | 2026-09-09 |
+| 7684 | 血法师衬肩 | 30 | shoulder | 智力 8、精神 4、护甲 35 | wowhead-classic | 2026-09-09 |
+| 7685 | 遗忘先知宝珠 | 33 | offHand | 法术强度 12、治疗强度 12 | wowhead-classic | 2026-09-09 |
+| 7686 | 铁脊死灵之眼 | 30 | ring1 | 力量 4、敏捷 9 | wowhead-classic | 2026-09-09 |
+| 7687 | 铁脊死灵之拳 | 30 | mainHand | 力量 7、伤害 38–72 / 2.40 秒 | wowhead-classic | 2026-09-09 |
+| 7688 | 铁脊死灵之肋 | 30 | chest | 力量 6、敏捷 3、耐力 17、护甲 235 | wowhead-classic | 2026-09-09 |
+| 7689 | 恐怖黎明 | 30 | mainHand | 力量 10、耐力 15、伤害 70–105 / 2.90 秒 | wowhead-classic | 2026-09-09 |
+| 7690 | 乌木钳 | 30 | hands | 力量 4、敏捷 6、耐力 8、护甲 70 | wowhead-classic | 2026-09-09 |
+| 7691 | 裹尸布 | 30 | head | 耐力 7、智力 11、精神 12、护甲 42 | wowhead-classic | 2026-09-09 |
+| 7708 | 腐坏魔杖 | 30 | ranged | 伤害 32–61 / 1.40 秒 | wowhead-classic | 2026-09-09 |
+| 7709 | 荒芜护腿 | 30 | legs | 精神 17、护甲 45 | wowhead-classic | 2026-09-09 |
+| 7731 | 鬼魅碎片护符 | 30 | neck | 耐力 9、精神 4 | wowhead-classic | 2026-09-09 |
+| 7750 | 悲哀衬肩 | — | shoulder | 智力 7、精神 4、护甲 34 | wowhead-classic | 2026-09-09 |
+| 7751 | 沃瑞尔的靴子 | — | feet | 敏捷 8、耐力 2、护甲 64 | wowhead-classic | 2026-09-09 |
 | 9445 | 格鲁比斯的爪子 | 29 | hands | 力量 6、敏捷 5、精神 9、护甲 144 | wowhead-classic | 2026-09-09 |
 | 9446 | 电刑器的腿 | 29 | mainHand | 伤害 26–49 / 1.70 秒 | wowhead-classic | 2026-09-09 |
 | 9447 | 电刑器腿杆 | 29 | ring1 | 耐力 4、精神 9 | wowhead-classic | 2026-09-09 |
-| 9448 | 蜘蛛坦克油布 | 28 | wrist | 护甲 20、法术强度 3 | wowhead-classic | 2026-09-09 |
+| 9448 | 蜘蛛坦克油布 | 28 | wrist | 护甲 20、每 5 秒法力回复 3 | wowhead-classic | 2026-09-09 |
 | 9449 | 手动惩戒器 | 29 | mainHand | 力量 16、敏捷 5、伤害 46–70 / 2.00 秒 | wowhead-classic | 2026-09-09 |
 | 9450 | 侏儒机械人操作靴 | 28 | feet | 耐力 8、精神 3、护甲 68 | wowhead-classic | 2026-09-09 |
 | 9452 | 水藤 | 27 | mainHand | 伤害 48–73 / 2.80 秒、冰霜抗性 15 | wowhead-classic | 2026-09-09 |
 | 9453 | 剧毒复仇者 | 27 | mainHand | 伤害 27–51 / 1.90 秒 | wowhead-classic | 2026-09-09 |
-| 9454 | 酸性长靴 | 27 | feet | 智力 8、精神 4、护甲 34、法术强度 5、治疗强度 5、自然抗性 5 | wowhead-classic | 2026-09-09 |
+| 9454 | 酸性长靴 | 27 | feet | 智力 8、精神 4、护甲 34、自然抗性 5 | wowhead-classic | 2026-09-09 |
 | 9455 | 使者腕轮 | 28 | wrist | 护甲 47、奥术抗性 5 | wowhead-classic | 2026-09-09 |
 | 9456 | 玻璃枪 | 30 | ranged | 伤害 36–68 / 2.90 秒 | wowhead-classic | 2026-09-09 |
 | 9457 | 皇家外交官节杖 | 30 | mainHand | 耐力 2、精神 7、伤害 37–69 / 2.30 秒 | wowhead-classic | 2026-09-09 |
@@ -145,13 +149,13 @@
 | 9459 | 瑟玛普拉格的左臂 | 32 | mainHand | 力量 18、耐力 7、伤害 70–106 / 2.70 秒 | wowhead-classic | 2026-09-09 |
 | 9461 | 充能齿轮 | 32 | ring1 | 奥术抗性 5、自然抗性 5 | wowhead-classic | 2026-09-09 |
 | 9492 | 电磁熔合激活器 | 32 | head | 智力 15、精神 12、护甲 44 | wowhead-classic | 2026-09-09 |
-| 9604 | 机械师的管钳 | 29 | mainHand | 力量 7、耐力 5、伤害 39–73 / 2.60 秒 | wowhead-classic | 2026-09-09 |
-| 9605 | 修理工的斗篷 | 29 | back | 耐力 6、精神 5 | wowhead-classic | 2026-09-09 |
-| 9608 | 肖尼的拆卸工具 | 29 | mainHand | 敏捷 6、耐力 4、伤害 27–51 / 1.80 秒 | wowhead-classic | 2026-09-09 |
-| 9609 | 希里的手套 | 29 | hands | 敏捷 7、耐力 5、护甲 72 | wowhead-classic | 2026-09-09 |
-| 9623 | 西维纳德长袍 | 30 | chest | 智力 15、精神 10、护甲 58 | wowhead-classic | 2026-09-09 |
-| 9624 | 疾跑者工装裤 | 30 | legs | 敏捷 12、耐力 8、护甲 123 | wowhead-classic | 2026-09-09 |
-| 9625 | 双重加固护腿 | 30 | legs | 力量 12、耐力 9、护甲 282 | wowhead-classic | 2026-09-09 |
+| 9604 | 蒸汽锤 | — | mainHand | 耐力 10、智力 3、伤害 45–69 / 2.80 秒 | wowhead-classic | 2026-09-09 |
+| 9605 | 修理工的斗篷 | — | back | 智力 1、精神 6、护甲 21 | wowhead-classic | 2026-09-09 |
+| 9608 | 舒尼的扳手 | — | offHand | 伤害 21–40 / 1.90 秒 | wowhead-classic | 2026-09-09 |
+| 9609 | 欺诈手套 | — | hands | 智力 6、精神 6、护甲 27 | wowhead-classic | 2026-09-09 |
+| 9623 | 公民长袍 | — | chest | 耐力 7、精神 18、护甲 54 | wowhead-classic | 2026-09-09 |
+| 9624 | 旅行皮裤 | — | legs | 力量 3、敏捷 18、耐力 6、护甲 101 | wowhead-classic | 2026-09-09 |
+| 9625 | 双链护腿 | — | legs | 护甲 391、防御技能 5 | wowhead-classic | 2026-09-09 |
 | 10399 | 黑暗迪菲亚护甲 | 19 | chest | 力量 4、敏捷 3、耐力 11、护甲 92 | wowhead-classic | 2026-09-08 |
 | 10403 | 黑暗迪菲亚腰带 | 17 | waist | 力量 5、护甲 45 | wowhead-classic | 2026-09-08 |
 | 10410 | 尖牙护腿 | 18 | legs | 力量 5、敏捷 9、耐力 4、护甲 79 | wowhead-classic | 2026-09-08 |

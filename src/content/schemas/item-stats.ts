@@ -2,6 +2,7 @@ import { z } from "zod";
 import type { ClassicItemStats } from "../../domain/equipment/stats";
 
 const pointsSchema = z.number().finite().nonnegative();
+const signedPointsSchema = z.number().finite();
 const percentSchema = z.number().finite().min(0).max(100);
 
 export const primaryStatPointsSchema = z
@@ -10,7 +11,7 @@ export const primaryStatPointsSchema = z
     agilityPoints: pointsSchema.optional(),
     staminaPoints: pointsSchema.optional(),
     intellectPoints: pointsSchema.optional(),
-    spiritPoints: pointsSchema.optional(),
+    spiritPoints: signedPointsSchema.optional(),
   })
   .strict();
 
@@ -38,6 +39,7 @@ export const spellCombatStatsSchema = z
   .object({
     spellPowerPoints: pointsSchema.optional(),
     healingPowerPoints: pointsSchema.optional(),
+    manaRegenPer5Seconds: pointsSchema.optional(),
     hitPercent: percentSchema.optional(),
     criticalStrikePercent: percentSchema.optional(),
   })

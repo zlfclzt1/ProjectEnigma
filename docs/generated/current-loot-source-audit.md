@@ -11,7 +11,7 @@
 - 掉落表分类：Boss 专属掉落 51，任务奖励 0，世界掉落 0，设计占位 0。
 - Encounter 引用分类：Boss 专属掉落 51，任务奖励 0，世界掉落 0，设计占位 0，无装备掉落 10。
 - 不同装备分类：Boss 专属掉落 127，任务奖励 0，世界掉落 0，设计占位 0。
-- 成员副本任务：14，不同任务奖励装备：31。
+- 成员副本任务：15，不同任务奖励装备：35。
 - Boss 掉落与任务奖励重复：0。
 - 未显式填写 `sourceType` 的 Boss 掉落表：0。
 - 未被路线 Encounter 引用的掉落表：0。
@@ -73,23 +73,23 @@
 | Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
 |---|---|---|---:|---|
 | 鲁古格（razorfen_kraul_roogug） | — | 无装备掉落 | 0 | — |
-| 阿格姆·荆棘诅咒（razorfen_kraul_aggem_thorncurse） | razorfen_kraul_aggem_thorncurse | Boss 专属掉落 | 1 | 6681 荆棘刺 |
-| 死亡之语者·贾格巴（razorfen_kraul_death_speaker_jargba） | razorfen_kraul_death_speaker_jargba | Boss 专属掉落 | 1 | 6682 死亡之语者肩饰、6685 死亡之语者长袍、2816 死亡之语者节杖 |
-| 主宰拉姆塔斯（razorfen_kraul_overlord_ramtusk） | razorfen_kraul_overlord_ramtusk | Boss 专属掉落 | 1 | 6686 图斯克头盔、6687 尸体制造者 |
-| 暴怒的阿迦赛罗斯（razorfen_kraul_agathelos_the_raging） | razorfen_kraul_agathelos_the_raging | Boss 专属掉落 | 1 | 6690 野兽护腿、6691 野猪獠牙匕首 |
-| 盲眼猎手（razorfen_kraul_blind_hunter） | razorfen_kraul_blind_hunter | Boss 专属掉落 | 1 | 6695 冥骨护符、6696 暗夜追猎者之弓、6697 蝠翼披风 |
-| 卡尔加·刺肋（razorfen_kraul_charlga_razorflank） | razorfen_kraul_charlga_razorflank | Boss 专属掉落 | 1 | 6693 阿迦玛甘之握、6692 阿迦玛甘之心、6694 尖刺收割者 |
-| 召地者哈穆加（razorfen_kraul_earthcaller_halmgar） | razorfen_kraul_earthcaller_halmgar | Boss 专属掉落 | 1 | 6688 低语风帽、6689 风灵法杖 |
+| 阿格姆·荆棘诅咒（razorfen_kraul_aggem_thorncurse） | razorfen_kraul_aggem_thorncurse | Boss 专属掉落 | 1 | 6681 棘刺 |
+| 死亡之语者·贾格巴（razorfen_kraul_death_speaker_jargba） | razorfen_kraul_death_speaker_jargba | Boss 专属掉落 | 1 | 6682 亡语者长袍、6685 亡语者衬肩、2816 死亡之语者节杖 |
+| 主宰拉姆塔斯（razorfen_kraul_overlord_ramtusk） | razorfen_kraul_overlord_ramtusk | Boss 专属掉落 | 1 | 6686 长牙头盔、6687 尸体制造者 |
+| 暴怒的阿迦赛罗斯（razorfen_kraul_agathelos_the_raging） | razorfen_kraul_agathelos_the_raging | Boss 专属掉落 | 1 | 6690 野兽护腿、6691 猪牙匕首 |
+| 盲眼猎手（razorfen_kraul_blind_hunter） | razorfen_kraul_blind_hunter | Boss 专属掉落 | 1 | 6695 冥骨护符、6696 夜行者之弓、6697 蝙蝠之翼 |
+| 卡尔加·刺肋（razorfen_kraul_charlga_razorflank） | razorfen_kraul_charlga_razorflank | Boss 专属掉落 | 1 | 6693 阿迦玛甘之握、6692 分叉斧、6694 阿迦玛甘之心 |
+| 召地者哈穆加（razorfen_kraul_earthcaller_halmgar） | razorfen_kraul_earthcaller_halmgar | Boss 专属掉落 | 1 | 6688 轻风头饰、6689 风灵法杖 |
 
 ### 血色修道院：墓地（scarlet_monastery_graveyard）
 
 | Encounter | 掉落表 | 分类 | 保证数量 | 装备 |
 |---|---|---|---:|---|
-| 审讯官维萨斯（scarlet_gy_interrogator_vishas） | scarlet_gy_interrogator_vishas | Boss 专属掉落 | 1 | 7683 血腥黄铜指虎、7682 折磨之刺 |
-| 不眠的阿齐尔（scarlet_gy_azshir_the_sleepless） | scarlet_gy_azshir_the_sleepless | Boss 专属掉落 | 1 | 7708 死灵魔杖、7731 鬼骨护符、7709 凋零护腿 |
-| 堕落的勇士（scarlet_gy_fallen_champion） | scarlet_gy_fallen_champion | Boss 专属掉落 | 1 | 7690 乌木护腕、7691 防腐外衣、7689 阴森黎明 |
-| 铁脊（scarlet_gy_ironspine） | scarlet_gy_ironspine | Boss 专属掉落 | 1 | 7686 铁脊之眼、7688 铁脊胸甲、7687 铁脊之拳 |
-| 血法师萨尔诺斯（scarlet_gy_bloodmage_thalnos） | scarlet_gy_bloodmage_thalnos | Boss 专属掉落 | 1 | 7684 血法师肩饰、7685 被遗忘先知宝珠 |
+| 审讯官维萨斯（scarlet_gy_interrogator_vishas） | scarlet_gy_interrogator_vishas | Boss 专属掉落 | 1 | 7683 染血的手指虎、7682 烙铁棍 |
+| 不眠的阿齐尔（scarlet_gy_azshir_the_sleepless） | scarlet_gy_azshir_the_sleepless | Boss 专属掉落 | 1 | 7708 腐坏魔杖、7731 鬼魅碎片护符、7709 荒芜护腿 |
+| 堕落的勇士（scarlet_gy_fallen_champion） | scarlet_gy_fallen_champion | Boss 专属掉落 | 1 | 7690 乌木钳、7691 裹尸布、7689 恐怖黎明 |
+| 铁脊（scarlet_gy_ironspine） | scarlet_gy_ironspine | Boss 专属掉落 | 1 | 7686 铁脊死灵之眼、7688 铁脊死灵之肋、7687 铁脊死灵之拳 |
+| 血法师萨尔诺斯（scarlet_gy_bloodmage_thalnos） | scarlet_gy_bloodmage_thalnos | Boss 专属掉落 | 1 | 7684 血法师衬肩、7685 遗忘先知宝珠 |
 
 ### 影牙城堡（shadowfang_keep）
 
@@ -135,14 +135,15 @@
 | 黑暗深渊（blackfathom_deeps） | 黑暗深渊的罪恶（bfd_blackfathom_villainy） | 7001 墓碑节杖、7002 极光圆盾 |
 | 黑暗深渊（blackfathom_deeps） | 暮光之锤的末日（bfd_twilight_falls） | 6998 云光长靴、7000 赤木束带 |
 | 黑暗深渊（blackfathom_deeps） | 阿奎尼斯男爵（bfd_baron_aquanis） | 16886 逃犯弯刀、16887 女巫之指 |
-| 诺莫瑞根（gnomeregan） | 大叛乱（gnomeregan_the_grand_betrayal） | 9623 西维纳德长袍、9624 疾跑者工装裤、9625 双重加固护腿 |
-| 诺莫瑞根（gnomeregan） | 数据救援（gnomeregan_data_rescue） | 9605 修理工的斗篷、9604 机械师的管钳 |
-| 诺莫瑞根（gnomeregan） | 陀螺钻挖掘器（gnomeregan_gyrodrillmatic_excavationators） | 9608 肖尼的拆卸工具、9609 希里的手套 |
+| 诺莫瑞根（gnomeregan） | 大叛乱（gnomeregan_the_grand_betrayal） | 9623 公民长袍、9624 旅行皮裤、9625 双链护腿 |
+| 诺莫瑞根（gnomeregan） | 数据救援（gnomeregan_data_rescue） | 9605 修理工的斗篷、9604 蒸汽锤 |
+| 诺莫瑞根（gnomeregan） | 陀螺钻挖掘器（gnomeregan_gyrodrillmatic_excavationators） | 9608 舒尼的扳手、9609 欺诈手套 |
 | 怒焰裂谷（ragefire_chasm） | 归还背包（rfc_returning_lost_satchel） | 15452 羽珠护腕、15453 草原狮护腕 |
 | 怒焰裂谷（ragefire_chasm） | 毁灭之力（rfc_power_to_destroy） | 15449 苍白长裤、15450 泥泞护腿、15451 石像鬼护腿 |
-| 剃刀沼泽（razorfen_kraul） | 剃刀沼泽的巫婆（razorfen_kraul_crone_of_the_kraul） | 6684 苍白肩垫 |
-| 剃刀沼泽（razorfen_kraul） | 生命渐逝（razorfen_kraul_mortality_wanes） | 6750 蛇环、6751 哀悼披肩、6752 枪骑兵长靴 |
-| 血色修道院：墓地（scarlet_monastery_graveyard） | 沃瑞尔的复仇（scarlet_gy_vorrels_revenge） | 7751 沃瑞尔的靴子、7750 哀伤披风、4643 灰钢披风 |
+| 剃刀沼泽（razorfen_kraul） | 剃刀沼泽的巫婆（razorfen_kraul_crone_of_the_kraul） | 4197 绿宝石护肩、6742 石拳束带、6725 石饰圆盾 |
+| 剃刀沼泽（razorfen_kraul） | 进口商威利克斯（razorfen_kraul_willix_the_importer） | 6748 猴子戒指、6749 猛虎指环、6750 蛇环 |
+| 剃刀沼泽（razorfen_kraul） | 生命渐逝（razorfen_kraul_mortality_wanes） | 6751 悲伤披风、6752 枪骑兵战靴 |
+| 血色修道院：墓地（scarlet_monastery_graveyard） | 沃瑞尔的复仇（scarlet_gy_vorrels_revenge） | 7751 沃瑞尔的靴子、7750 悲哀衬肩、4643 十字军斗篷 |
 | 暴风城监狱（the_stockade） | 伸张正义（stockade_what_comes_around） | 3400 磷铝长剑、1317 硬根法杖 |
 | 暴风城监狱（the_stockade） | 卡姆·深怒（stockade_fury_runs_deep） | 3562 辩护腰带、1264 碎头者 |
 | 暴风城监狱（the_stockade） | 罪与罚（stockade_crime_and_punishment） | 2033 大使之靴、2906 夜色郡锁甲护腿 |
