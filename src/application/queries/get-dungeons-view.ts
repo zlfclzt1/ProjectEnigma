@@ -1,7 +1,18 @@
 import type { ContentRegistry } from "../../content/registry";
 import type { GameState } from "../../domain/game-state";
 import { averageEquippedItemLevel } from "../../domain/equipment/item-level";
-import type { DungeonId, DungeonRouteNodeId, MemberId } from "../../domain/shared/ids";
+import type {
+  DungeonId,
+  DungeonRouteNodeId,
+  GuildUpgradeId,
+  MemberId,
+} from "../../domain/shared/ids";
+import {
+  evaluateGuildUpgrade,
+  EXPEDITION_RUN_CAPACITY_TRACK_ID,
+  getExpeditionRunCapacity,
+  getNextGuildUpgrade,
+} from "../../domain/guild/guild-upgrade-rules";
 import { getPartyPreview } from "./get-party-preview";
 
 export interface DungeonOptionView {
@@ -99,6 +110,23 @@ export interface RareRouteNodeView {
   readonly lootItemCount: number;
 }
 
+export interface ExpeditionRunCapacityUpgradeView {
+  readonly id: GuildUpgradeId;
+  readonly name: string;
+  readonly description: string;
+  readonly cost: number;
+  readonly targetCapacity: number;
+  readonly requirements: readonly {
+    readonly label: string;
+    readonly current: number;
+    readonly target: number;
+    readonly met: boolean;
+  }[];
+  readonly fundsAvailable: boolean;
+  readonly canPurchase: boolean;
+  readonly blockedReasons: readonly string[];
+}
+
 export interface DungeonPlanningView {
   readonly dungeons: readonly DungeonOptionView[];
   readonly selectedDungeon: DungeonOptionView | null;
@@ -113,6 +141,8 @@ export interface DungeonPlanningView {
   }[];
   readonly selectedMemberIds: readonly MemberId[];
   readonly requestedRuns: number;
+  readonly maximumRuns: number;
+  readonly runCapacityUpgrade: ExpeditionRunCapacityUpgradeView | null;
   readonly selectedOptionalNodeIds: readonly DungeonRouteNodeId[];
   readonly optionalRoutes: readonly OptionalRouteNodeView[];
   readonly rareRoutes: readonly RareRouteNodeView[];
@@ -260,6 +290,9 @@ export function getDungeonPlanningView(
   let mechanicReadiness: PartyMechanicReadinessView[] = [];
   let optionalRoutes: OptionalRouteNodeView[] = [];
   let rareRoutes: RareRouteNodeView[] = [];
+  const maximumRuns = getExpeditionRunCapacity(state, content);
+  const nextRunUpgrade = getNextGuildUpgrade(state, content, EXPEDITION_RUN_CAPACITY_TRACK_ID);
+  const runUpgradeEligibility = nextRunUpgrade ? evaluateGuildUpgrade(state, nextRunUpgrade) : null;
 
   if (!selectedDungeon) issues.push("没有可用的副本内容。");
   else {
@@ -309,8 +342,8 @@ export function getDungeonPlanningView(
     if (selectedMembers.some((member) => !member)) issues.push("队伍中存在已经离开公会的成员。");
     if (selectedMembers.some((member) => member?.active))
       issues.push("队伍中有成员正在参加其他活动。");
-    if (!Number.isInteger(requestedRuns) || requestedRuns < 1 || requestedRuns > 3) {
-      issues.push("连续副本次数必须为 1–3 次。");
+    if (!Number.isInteger(requestedRuns) || requestedRuns < 1 || requestedRuns > maximumRuns) {
+      issues.push(`连续副本次数必须为 1–${maximumRuns} 次。`);
     }
 
     if (selectedMemberIds.length > 0 && !selectedMembers.some((member) => !member)) {
@@ -415,6 +448,11 @@ export function getDungeonPlanningView(
     })),
     selectedMemberIds: [...selectedMemberIds],
     requestedRuns,
+    maximumRuns,
+    runCapacityUpgrade:
+      nextRunUpgrade && runUpgradeEligibility
+        ? projectRunCapacityUpgrade(state, content, nextRunUpgrade, runUpgradeEligibility)
+        : null,
     selectedOptionalNodeIds: [...selectedOptionalNodeIds],
     optionalRoutes,
     rareRoutes,
@@ -422,5 +460,42 @@ export function getDungeonPlanningView(
     mechanicReadiness,
     issues: [...new Set(issues)],
     canStart: issues.length === 0 && preview !== null,
+  };
+}
+
+function projectRunCapacityUpgrade(
+  state: GameState,
+  content: ContentRegistry,
+  upgrade: ContentRegistry["guildUpgrades"][number],
+  eligibility: ReturnType<typeof evaluateGuildUpgrade>,
+): ExpeditionRunCapacityUpgradeView {
+  const requirements = eligibility.requirements.map(({ requirement, current, target, met }) => {
+    const dungeonName =
+      content.dungeonById.get(requirement.dungeonId)?.name.zhCN ?? requirement.dungeonId;
+    return {
+      label: `${dungeonName}完整通关`,
+      current,
+      target,
+      met,
+    };
+  });
+  const blockedReasons = requirements
+    .filter((requirement) => !requirement.met)
+    .map((requirement) => `${requirement.label} ${requirement.current}/${requirement.target}`);
+  if (!eligibility.fundsAvailable) {
+    blockedReasons.push(`公会资金还缺 ${upgrade.cost - state.guild.funds} G`);
+  }
+  return {
+    id: upgrade.id,
+    name: upgrade.name.zhCN,
+    description: upgrade.description.zhCN,
+    cost: upgrade.cost,
+    targetCapacity:
+      upgrade.effects.find((effect) => effect.type === "expedition-run-capacity")?.value ??
+      getExpeditionRunCapacity(state, content),
+    requirements,
+    fundsAvailable: eligibility.fundsAvailable,
+    canPurchase: eligibility.canPurchase,
+    blockedReasons,
   };
 }

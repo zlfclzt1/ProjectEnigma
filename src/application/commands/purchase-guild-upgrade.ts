@@ -1,6 +1,7 @@
 import type { ContentRegistry } from "../../content/registry";
 import {
   evaluateGuildUpgrade,
+  getExpeditionRunCapacity,
   getMemberCapacity,
   getNextGuildUpgrade,
 } from "../../domain/guild/guild-upgrade-rules";
@@ -11,6 +12,7 @@ export interface PurchaseGuildUpgradeResult {
   readonly upgradeId: GuildUpgradeId;
   readonly remainingFunds: number;
   readonly memberCapacity: number;
+  readonly expeditionRunCapacity: number;
 }
 
 export function purchaseGuildUpgradeCommand(
@@ -38,6 +40,7 @@ export function purchaseGuildUpgradeCommand(
         upgradeId: upgrade.id,
         remainingFunds: draft.guild.funds,
         memberCapacity: getMemberCapacity(draft, content),
+        expeditionRunCapacity: getExpeditionRunCapacity(draft, content),
       };
     },
   };

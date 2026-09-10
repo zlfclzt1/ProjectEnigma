@@ -12,6 +12,7 @@ import { asBrandedId, type DungeonId, type DungeonRouteNodeId } from "../shared/
 import { SeededRandomSource } from "../../infrastructure/random/seeded-random-source";
 import { evaluateExpeditionParty } from "./party-evaluation";
 import { lockRareRouteSpawns, revealRareRouteNodes } from "./rare-route";
+import { getExpeditionRunCapacity } from "../guild/guild-upgrade-rules";
 
 export interface StartExpeditionRequest extends ActivityStartRequest {
   readonly type: "expedition";
@@ -53,12 +54,16 @@ export function createExpeditionActivityHandler(
       if (!context.state.guild.unlockedDungeonIds.includes(request.dungeonId)) {
         issues.push({ code: "dungeon.locked", message: `${dungeon.name.zhCN}尚未解锁。` });
       }
+      const maximumRuns = getExpeditionRunCapacity(context.state, content);
       if (
         !Number.isInteger(request.requestedRuns) ||
         request.requestedRuns < 1 ||
-        request.requestedRuns > 3
+        request.requestedRuns > maximumRuns
       ) {
-        issues.push({ code: "runs.invalid", message: "连续副本次数必须为 1–3 次。" });
+        issues.push({
+          code: "runs.invalid",
+          message: `连续副本次数必须为 1–${maximumRuns} 次。`,
+        });
       }
       if (request.participantIds.length < dungeon.members.minimum) {
         issues.push({

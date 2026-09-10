@@ -163,4 +163,38 @@ describe("dungeons page", () => {
     await wrapper.find('.route-options input[type="checkbox"]').setValue(true);
     expect(wrapper.emitted("toggleOptional")?.[0]).toEqual(["optional_taragaman"]);
   });
+
+  it("unlocks the fourth and fifth run options through the visible guild upgrade", async () => {
+    const game = useGameStore();
+    await game.initialize(() =>
+      loadOrCreateV2Client({
+        saves: new MemorySaveRepository(),
+        content: loadBrowserContentRegistry(),
+        clock: new FakeClock(1_000),
+        slotId: asBrandedId<"SaveSlotId">("five-run-upgrade-page"),
+        seed: "five-run-upgrade-page",
+      }),
+    );
+    await game.execute({
+      type: "prepare-five-run-upgrade",
+      execute(draft) {
+        draft.guild.funds = 1_000;
+        draft.history.dungeonClearCounts[asBrandedId<"DungeonId">("shadowfang_keep")] = 1;
+      },
+    });
+    const wrapper = mount(DungeonsPage);
+    await flushPromises();
+
+    expect(wrapper.findAll(".page-heading select option")).toHaveLength(3);
+    expect(wrapper.get(".run-upgrade").text()).toContain("远征补给车");
+    expect(wrapper.get(".run-upgrade button").attributes("disabled")).toBeUndefined();
+
+    await wrapper.get(".run-upgrade button").trigger("click");
+    await flushPromises();
+
+    expect(wrapper.findAll(".page-heading select option")).toHaveLength(5);
+    expect(wrapper.find(".run-upgrade").exists()).toBe(false);
+    await wrapper.get(".page-heading select").setValue("5");
+    expect(useUiStore().requestedExpeditionRuns).toBe(5);
+  });
 });

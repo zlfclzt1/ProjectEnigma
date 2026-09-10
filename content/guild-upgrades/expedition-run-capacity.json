@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-09",
+        "notes": "首次完整通关影牙城堡后可购买远征补给升级，将玩家主动安排的单支队伍连续挑战上限从三次提高到五次；不改变经验曲线。"
+      }
+    ]
+  },
+  "guildUpgrades": [
+    {
+      "id": "expedition_queue_5",
+      "trackId": "expedition-run-capacity",
+      "order": 10,
+      "name": { "zhCN": "远征补给车" },
+      "description": { "zhCN": "整理药水、口粮和备用炉石，让同一支队伍可以一次安排五轮副本。" },
+      "cost": 1000,
+      "requirements": [
+        { "type": "dungeon-clear-count", "dungeonId": "shadowfang_keep", "count": 1 }
+      ],
+      "effects": [{ "type": "expedition-run-capacity", "value": 5 }]
+    }
+  ]
+}

@@ -37,6 +37,14 @@ async function start(): Promise<void> {
   notice.value = `${dungeon.name}队伍已经出发，可以继续组织另一支队伍。`;
   ui.clearParty();
 }
+
+async function purchaseRunCapacity(): Promise<void> {
+  const upgrade = planning.value?.runCapacityUpgrade;
+  if (!upgrade) return;
+  notice.value = "";
+  const outcome = await game.purchaseGuildUpgrade(upgrade.id);
+  if (outcome.ok) notice.value = "远征补给已经备齐，现在可以一次安排五轮副本。";
+}
 </script>
 
 <template>
@@ -54,9 +62,9 @@ async function start(): Promise<void> {
             ui.setRequestedExpeditionRuns(Number(($event.target as HTMLSelectElement).value))
           "
         >
-          <option :value="1">1 次</option>
-          <option :value="2">2 次</option>
-          <option :value="3">3 次</option>
+          <option v-for="runs in planning.maximumRuns" :key="runs" :value="runs">
+            {{ runs }} 次
+          </option>
         </select>
       </label>
     </header>
@@ -67,6 +75,25 @@ async function start(): Promise<void> {
       @select="ui.selectDungeon"
     />
     <p v-if="notice" class="notice">{{ notice }}</p>
+    <aside v-if="planning.runCapacityUpgrade" class="run-upgrade">
+      <div>
+        <strong>{{ planning.runCapacityUpgrade.name }}</strong>
+        <p>{{ planning.runCapacityUpgrade.description }}</p>
+        <small v-if="planning.runCapacityUpgrade.blockedReasons.length">
+          解锁五连刷尚需：{{ planning.runCapacityUpgrade.blockedReasons.join("；") }}
+        </small>
+        <small v-else>里程碑与资金均已满足，可以扩充连续挑战上限。</small>
+      </div>
+      <button
+        type="button"
+        :disabled="game.commandPending || !planning.runCapacityUpgrade.canPurchase"
+        @click="purchaseRunCapacity"
+      >
+        {{
+          `升级至 ${planning.runCapacityUpgrade.targetCapacity} 次 · ${planning.runCapacityUpgrade.cost} G`
+        }}
+      </button>
+    </aside>
 
     <div class="planning-grid">
       <PartyBuilder
@@ -146,6 +173,42 @@ select {
   color: #91cc96;
   background: #112016;
   font-size: 0.72rem;
+}
+.run-upgrade {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 14px;
+  border: 1px solid #4a4133;
+  border-radius: 7px;
+  background: #141411;
+}
+.run-upgrade strong {
+  color: #d9c396;
+}
+.run-upgrade p {
+  margin: 3px 0;
+  color: #918777;
+  font-size: 0.72rem;
+}
+.run-upgrade small {
+  color: #b08e67;
+}
+.run-upgrade button {
+  flex: 0 0 auto;
+  padding: 9px 12px;
+  border: 1px solid #9b793f;
+  border-radius: 6px;
+  color: #1b160f;
+  background: #c99b4d;
+  font-weight: 800;
+  cursor: pointer;
+}
+.run-upgrade button:disabled {
+  color: #777066;
+  background: #282620;
+  cursor: not-allowed;
 }
 .planning-grid {
   display: grid;

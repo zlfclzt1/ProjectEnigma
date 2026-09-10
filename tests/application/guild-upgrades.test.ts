@@ -3,7 +3,10 @@ import { purchaseGuildUpgradeCommand } from "../../src/application/commands/purc
 import { getGuildUpgradeView } from "../../src/application/queries/get-guild-upgrade-view";
 import { GameSession } from "../../src/application/services/game-session";
 import { loadBrowserContentRegistry } from "../../src/content/manifest";
-import { getMemberCapacity } from "../../src/domain/guild/guild-upgrade-rules";
+import {
+  getExpeditionRunCapacity,
+  getMemberCapacity,
+} from "../../src/domain/guild/guild-upgrade-rules";
 import { asBrandedId } from "../../src/domain/shared/ids";
 import { MemorySaveRepository } from "../../src/infrastructure/persistence/memory-save-repository";
 import { createGameStateFixture } from "../helpers/game-state-v2-factory";
@@ -13,6 +16,7 @@ const firstUpgradeId = asBrandedId<"GuildUpgradeId">("guild_roster_15");
 const secondUpgradeId = asBrandedId<"GuildUpgradeId">("guild_roster_20");
 const deadminesId = asBrandedId<"DungeonId">("deadmines");
 const shadowfangId = asBrandedId<"DungeonId">("shadowfang_keep");
+const queueUpgradeId = asBrandedId<"GuildUpgradeId">("expedition_queue_5");
 
 async function sessionFor(state = createGameStateFixture()) {
   const saves = new MemorySaveRepository();
@@ -78,5 +82,19 @@ describe("guild upgrades", () => {
     expect(results.filter((result) => result.status === "rejected")).toHaveLength(1);
     expect(session.snapshot().guild.funds).toBe(500);
     expect(session.snapshot().guild.purchasedUpgradeIds).toEqual([firstUpgradeId]);
+  });
+
+  it("purchases the five-run queue independently after the Shadowfang milestone", async () => {
+    const state = createGameStateFixture();
+    state.guild.funds = 1_000;
+    state.history.dungeonClearCounts[shadowfangId] = 1;
+    const session = await sessionFor(state);
+
+    const result = await session.execute(purchaseGuildUpgradeCommand(content, queueUpgradeId));
+
+    expect(result.status).toBe("committed");
+    expect(result.status === "committed" ? result.result.expeditionRunCapacity : 0).toBe(5);
+    expect(getExpeditionRunCapacity(session.snapshot(), content)).toBe(5);
+    expect(session.snapshot().guild.funds).toBe(0);
   });
 });

@@ -534,6 +534,7 @@ export class ContentRegistry {
     for (const upgrades of tracks.values()) {
       const orders = new Set<number>();
       let previousCapacity = 0;
+      let previousRunCapacity = 0;
       for (const owner of [...upgrades].sort(
         (left, right) => left.value.order - right.value.order,
       )) {
@@ -556,6 +557,17 @@ export class ContentRegistry {
           });
         }
         if (capacityEffect) previousCapacity = capacityEffect.value;
+        const runCapacityEffect = owner.value.effects.find(
+          (effect) => effect.type === "expedition-run-capacity",
+        );
+        if (runCapacityEffect && runCapacityEffect.value <= previousRunCapacity) {
+          issues.push({
+            filePath: owner.filePath,
+            fieldPath: `${owner.fieldPath}.effects`,
+            message: `升级路线 ${owner.value.trackId} 的连续挑战上限必须严格递增`,
+          });
+        }
+        if (runCapacityEffect) previousRunCapacity = runCapacityEffect.value;
       }
     }
   }

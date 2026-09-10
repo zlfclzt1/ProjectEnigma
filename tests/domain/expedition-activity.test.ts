@@ -402,6 +402,23 @@ describe("V2 expedition creation", () => {
     expect(await saves.load(state.slotId)).toEqual(beforeSnapshot);
   });
 
+  it("accepts four and five runs only after the expedition queue upgrade", async () => {
+    const state = newState();
+    const memberIds = Object.values(state.members).map((member) => member.id);
+    state.guild.purchasedUpgradeIds.push(asBrandedId<"GuildUpgradeId">("expedition_queue_5"));
+    const { session } = await sessionFor(state);
+
+    const result = await session.execute(
+      startExpeditionCommand(
+        { content, clock: new FakeClock(2_000) },
+        { dungeonId, participantIds: memberIds, requestedRuns: 5 },
+      ),
+    );
+
+    expect(result.status).toBe("committed");
+    expect(result.status === "committed" ? result.result.runPlans : []).toHaveLength(5);
+  });
+
   it("replays activity IDs, rolls, and plans deterministically from saved runtime state", async () => {
     async function start() {
       const state = newState("deterministic-expedition");

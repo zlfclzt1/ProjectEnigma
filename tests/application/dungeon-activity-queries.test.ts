@@ -151,6 +151,30 @@ describe("dungeon and activity queries", () => {
     expect(view.preview?.clearProbability).toBeLessThanOrEqual(1);
     expect(view.preview?.encounters.every((boss) => boss.probability > 0)).toBe(true);
     expect(view.canStart).toBe(true);
+    expect(view.maximumRuns).toBe(3);
+    expect(view.runCapacityUpgrade).toMatchObject({
+      id: "expedition_queue_5",
+      targetCapacity: 5,
+      canPurchase: false,
+      requirements: [{ label: "影牙城堡完整通关", current: 0, target: 1, met: false }],
+    });
+  });
+
+  it("projects a purchased five-run queue and validates the expanded selection", () => {
+    const game = state();
+    game.guild.purchasedUpgradeIds.push(asBrandedId<"GuildUpgradeId">("expedition_queue_5"));
+    const view = getDungeonPlanningView(
+      game,
+      content,
+      asBrandedId<"DungeonId">("ragefire_chasm"),
+      Object.values(game.members).map((member) => member.id),
+      5,
+    );
+
+    expect(view.maximumRuns).toBe(5);
+    expect(view.runCapacityUpgrade).toBeNull();
+    expect(view.canStart).toBe(true);
+    expect(view.issues).not.toContain("连续副本次数必须为 1–3 次。");
   });
 
   it("projects route progress without exposing the mutable activity", () => {

@@ -23,6 +23,12 @@ export const guildUpgradeEffectSchema = z.discriminatedUnion("type", [
       value: z.number().int().positive(),
     })
     .strict(),
+  z
+    .object({
+      type: z.literal("expedition-run-capacity"),
+      value: z.number().int().min(1).max(5),
+    })
+    .strict(),
 ]);
 
 export const guildUpgradeDefinitionSchema = z

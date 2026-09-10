@@ -7,7 +7,10 @@ import type { GameState } from "../game-state";
 import { asBrandedId, type GuildUpgradeTrackId } from "../shared/ids";
 
 export const BASE_MEMBER_CAPACITY = 10;
+export const BASE_EXPEDITION_RUN_CAPACITY = 3;
 export const MEMBER_CAPACITY_TRACK_ID = asBrandedId<"GuildUpgradeTrackId">("member-capacity");
+export const EXPEDITION_RUN_CAPACITY_TRACK_ID =
+  asBrandedId<"GuildUpgradeTrackId">("expedition-run-capacity");
 
 export interface GuildUpgradeRequirementEvaluation {
   readonly requirement: GuildUpgradeRequirement;
@@ -75,6 +78,18 @@ export function getMemberCapacity(state: GameState, content: ContentRegistry): n
     if (!upgrade) continue;
     for (const effect of upgrade.effects) {
       if (effect.type === "member-capacity") capacity = Math.max(capacity, effect.value);
+    }
+  }
+  return capacity;
+}
+
+export function getExpeditionRunCapacity(state: GameState, content: ContentRegistry): number {
+  let capacity = BASE_EXPEDITION_RUN_CAPACITY;
+  for (const upgradeId of state.guild.purchasedUpgradeIds) {
+    const upgrade = content.guildUpgradeById.get(upgradeId);
+    if (!upgrade) continue;
+    for (const effect of upgrade.effects) {
+      if (effect.type === "expedition-run-capacity") capacity = Math.max(capacity, effect.value);
     }
   }
   return capacity;
