@@ -266,9 +266,10 @@ test("completes the playable zulfarrak stage and keeps the guild running", async
 
   await test.step("accept the member quest and plan its optional boss", async () => {
     await page.getByRole("link", { name: "副本任务" }).click();
+    await page.getByRole("searchbox", { name: "搜索任务或副本" }).fill("探水棒");
     const quest = page.locator(".quest-card", { hasText: "探水棒" });
-    await quest.getByRole("button", { name: "接取任务" }).click();
-    await expect(quest).toContainText("已接取");
+    await quest.getByRole("button", { name: "批准此委托的成员申请" }).click();
+    await expect(page.getByText(/已批准 5 项成员任务/)).toBeVisible();
 
     await page.getByRole("link", { name: "副本组队" }).click();
     await page.getByRole("button", { name: "切换副本" }).click();
@@ -289,6 +290,9 @@ test("completes the playable zulfarrak stage and keeps the guild running", async
     await optionalBoss.locator('input[type="checkbox"]').check();
     await expect(page.getByText(/探水棒/).last()).not.toContainText("请手动勾选");
     await page.getByRole("button", { name: "出发：祖尔法拉克" }).click();
+    await expect(page.getByRole("dialog", { name: /祖尔法拉克 · 行动审批/ })).toBeVisible();
+    await page.getByRole("button", { name: /只接任务并出发|按当前路线出发/ }).click();
+    await expect(page.getByText("祖尔法拉克队伍已经出发，可以继续组织另一支队伍。")).toBeVisible();
   });
 
   await test.step("settle offline with a deterministic rare boss encounter", async () => {
@@ -302,6 +306,7 @@ test("completes the playable zulfarrak stage and keeps the guild running", async
     });
     await expect(completed).toBeVisible({ timeout: 15_000 });
     await expect(completed).toContainText("已完成");
+    await expect(completed.getByRole("link", { name: "前往任务结算会" })).toBeVisible();
   });
 
   await test.step("manually award one item and use wishlists for the rest", async () => {

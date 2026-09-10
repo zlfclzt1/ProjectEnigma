@@ -15,6 +15,7 @@ export interface MemberDungeonQuestView {
   readonly status: "available" | "accepted" | "completed" | "claimed" | "locked";
   readonly statusLabel: string;
   readonly canAccept: boolean;
+  readonly trackingPaused: boolean;
   readonly blockedReasons: readonly string[];
   readonly objective: {
     readonly type: DungeonQuestDefinition["completion"]["type"];
@@ -79,6 +80,7 @@ function projectQuest(
   if (!classReady) blockedReasons.push("职业不符合任务要求");
   if (progress) blockedReasons.push("该成员已经接取或完成过此任务");
   const status = progress?.status ?? (blockedReasons.length > 0 ? "locked" : "available");
+  const trackingPaused = status === "accepted" && progress?.trackingPausedAt !== undefined;
   const encounterIds =
     quest.completion.type === "encounter-victories" ? quest.completion.encounterIds : [];
   const encounterNames = encounterIds.map(
@@ -101,14 +103,17 @@ function projectQuest(
       (classId) => content.classById.get(classId)?.name.zhCN ?? classId,
     ),
     status,
-    statusLabel: {
-      available: "可接取",
-      accepted: "进行中",
-      completed: "可领取",
-      claimed: "已领取",
-      locked: "未满足",
-    }[status],
+    statusLabel: trackingPaused
+      ? "暂缓跟踪"
+      : {
+          available: "可接取",
+          accepted: "进行中",
+          completed: "可领取",
+          claimed: "已领取",
+          locked: "未满足",
+        }[status],
     canAccept: status === "available",
+    trackingPaused,
     blockedReasons,
     objective: {
       type: quest.completion.type,

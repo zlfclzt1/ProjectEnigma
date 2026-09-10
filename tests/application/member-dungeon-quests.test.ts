@@ -1,7 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { acceptMemberDungeonQuestCommand } from "../../src/application/commands/accept-member-dungeon-quest";
+import { acceptMemberDungeonQuestsCommand } from "../../src/application/commands/accept-member-dungeon-quests";
 import { claimMemberDungeonQuestCommand } from "../../src/application/commands/claim-member-dungeon-quest";
 import { getMemberDungeonQuestsView } from "../../src/application/queries/get-member-dungeon-quests-view";
+import { getDungeonQuestHallView } from "../../src/application/queries/get-dungeon-quest-hall-view";
+import { getExpeditionQuestBriefView } from "../../src/application/queries/get-expedition-quest-brief-view";
 import { GameSession } from "../../src/application/services/game-session";
 import { browserContentModules, loadBrowserContentRegistry } from "../../src/content/manifest";
 import { loadContentRegistry } from "../../src/content/registry";
@@ -95,6 +98,92 @@ describe("member dungeon quests", () => {
     });
     expect(session.snapshot().members[second!.id]!.quests.entries[questId]).toBeUndefined();
     await expect(session.execute(command)).rejects.toThrow(/已经接取或完成过/);
+  });
+
+  it("aggregates one quest across members and accepts a batch atomically", async () => {
+    const game = state();
+    const [first, second] = Object.values(game.members);
+    const hall = getDungeonQuestHallView(game, content, [first!.id, second!.id]);
+    expect(hall.quests.find((quest) => quest.id === questId)?.counts).toMatchObject({
+      available: 2,
+      accepted: 0,
+    });
+
+    const accepted = await acceptMemberDungeonQuestsCommand(
+      { content, clock: new FakeClock(2_000) },
+      [
+        { memberId: first!.id, questId },
+        { memberId: second!.id, questId },
+      ],
+    ).execute(game);
+
+    expect(accepted).toHaveLength(2);
+    expect(game.members[first!.id]!.quests.entries[questId]?.status).toBe("accepted");
+    expect(game.members[second!.id]!.quests.entries[questId]?.status).toBe("accepted");
+
+    const invalid = structuredClone(state());
+    const [validMember] = Object.values(invalid.members);
+    const before = structuredClone(invalid);
+    expect(() =>
+      acceptMemberDungeonQuestsCommand({ content, clock: new FakeClock(3_000) }, [
+        { memberId: validMember!.id, questId },
+        { memberId: asBrandedId<"MemberId">("missing"), questId },
+      ]).execute(invalid),
+    ).toThrow("成员不存在");
+    expect(invalid).toEqual(before);
+  });
+
+  it("keeps the complete quest catalog available for an empty guild roster", () => {
+    const game = state();
+    game.members = {};
+
+    const hall = getDungeonQuestHallView(game, content, []);
+
+    expect(hall.memberCount).toBe(0);
+    expect(hall.quests).toHaveLength(content.quests.length);
+    expect(hall.quests.find((quest) => quest.id === questId)).toMatchObject({
+      name: "归还背包",
+      members: [],
+      counts: { available: 0, accepted: 0, completed: 0, claimed: 0, locked: 0 },
+    });
+  });
+
+  it("builds an expedition brief for available and accepted cross-route tasks", () => {
+    const registry = contentWithOptionalQuestBoss();
+    const game = state(registry);
+    const [first, second] = Object.values(game.members);
+    first!.quests.entries[questId] = {
+      questId,
+      status: "accepted",
+      acceptedAt: 1_500,
+      encounterVictoryIds: [],
+    };
+
+    const brief = getExpeditionQuestBriefView(
+      game,
+      registry,
+      asBrandedId<"DungeonId">("ragefire_chasm"),
+      [first!.id, second!.id],
+    )!;
+    const returningSatchel = brief.entries.find((entry) => entry.questId === questId)!;
+    expect(returningSatchel).toMatchObject({
+      applicantMemberIds: [second!.id],
+      acceptedMemberIds: [first!.id],
+      requiredOptionalNodeIds: ["oggleflint"],
+      requiredOptionalBossNames: ["奥格弗林特"],
+    });
+
+    first!.quests.entries[questId]!.trackingPausedAt = 2_000;
+    const pausedBrief = getExpeditionQuestBriefView(
+      game,
+      registry,
+      asBrandedId<"DungeonId">("ragefire_chasm"),
+      [first!.id, second!.id],
+    )!;
+    expect(pausedBrief.entries.find((entry) => entry.questId === questId)).toMatchObject({
+      applicantMemberIds: [second!.id],
+      acceptedMemberIds: [],
+    });
   });
 
   it("uses the graduation level-cap unlock when claiming quest experience", async () => {

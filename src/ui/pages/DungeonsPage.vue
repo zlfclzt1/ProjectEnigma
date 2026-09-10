@@ -9,7 +9,13 @@ import RosterPresetBar from "../components/RosterPresetBar.vue";
 import RosterPresetManager from "../components/RosterPresetManager.vue";
 import RosterPresetNameDialog from "../components/RosterPresetNameDialog.vue";
 import RosterPresetReductionDialog from "../components/RosterPresetReductionDialog.vue";
-import type { MemberId, RosterPresetId } from "../../domain/shared/ids";
+import ExpeditionQuestBrief from "../components/ExpeditionQuestBrief.vue";
+import type {
+  DungeonRouteNodeId,
+  MemberId,
+  QuestId,
+  RosterPresetId,
+} from "../../domain/shared/ids";
 
 const game = useGameStore();
 const ui = useUiStore();
@@ -18,6 +24,8 @@ const selectedPresetId = ref<RosterPresetId | null>(null);
 const namingOpen = ref(false);
 const managerOpen = ref(false);
 const reductionOpen = ref(false);
+const questBriefOpen = ref(false);
+const selectedBriefQuestIds = ref<QuestId[]>([]);
 const planning = computed(() =>
   game.dungeonPlanning(
     ui.selectedDungeonId,
@@ -30,6 +38,47 @@ const planning = computed(() =>
 const selectedPreset = computed(
   () => game.rosterPresets?.presets.find((preset) => preset.id === selectedPresetId.value) ?? null,
 );
+const questBrief = computed(() => {
+  const dungeonId = planning.value?.selectedDungeon?.id;
+  return dungeonId ? game.expeditionQuestBrief(dungeonId, ui.selectedPartyMemberIds) : null;
+});
+const plannedBriefOptionalNodeIds = computed<readonly DungeonRouteNodeId[]>(() => {
+  const applicableEntries = (questBrief.value?.entries ?? []).filter(
+    (entry) =>
+      entry.acceptedMemberIds.length > 0 || selectedBriefQuestIds.value.includes(entry.questId),
+  );
+  return [
+    ...new Set([
+      ...ui.selectedOptionalNodeIds,
+      ...applicableEntries.flatMap((entry) => entry.requiredOptionalNodeIds),
+    ]),
+  ];
+});
+const briefRoutePlanning = computed(() =>
+  game.dungeonPlanning(
+    ui.selectedDungeonId,
+    ui.selectedPartyMemberIds,
+    ui.requestedExpeditionRuns,
+    plannedBriefOptionalNodeIds.value,
+    ui.selectedRouteVariantId,
+  ),
+);
+const addedBriefRouteBossNames = computed(() => {
+  const selectedNodeIds = new Set(ui.selectedOptionalNodeIds);
+  const applicableEntries = (questBrief.value?.entries ?? []).filter(
+    (entry) =>
+      entry.acceptedMemberIds.length > 0 || selectedBriefQuestIds.value.includes(entry.questId),
+  );
+  return [
+    ...new Set(
+      applicableEntries.flatMap((entry) =>
+        entry.requiredOptionalNodeIds.flatMap((nodeId, index) =>
+          selectedNodeIds.has(nodeId) ? [] : [entry.requiredOptionalBossNames[index]!],
+        ),
+      ),
+    ),
+  ];
+});
 
 watchEffect(() => {
   const selected = planning.value?.selectedDungeon;
@@ -42,7 +91,23 @@ watchEffect(() => {
   }
 });
 
+function openQuestBrief(): void {
+  selectedBriefQuestIds.value =
+    questBrief.value?.entries
+      .filter((entry) => entry.applicantMemberIds.length > 0)
+      .map((entry) => entry.questId) ?? [];
+  questBriefOpen.value = true;
+}
+
 async function start(): Promise<void> {
+  if (questBrief.value?.entries.length) {
+    openQuestBrief();
+    return;
+  }
+  await depart(ui.selectedOptionalNodeIds);
+}
+
+async function depart(optionalNodeIds: readonly DungeonRouteNodeId[]): Promise<void> {
   const dungeon = planning.value?.selectedDungeon;
   if (!dungeon) return;
   notice.value = "";
@@ -50,12 +115,48 @@ async function start(): Promise<void> {
     dungeon.id,
     ui.selectedPartyMemberIds,
     ui.requestedExpeditionRuns,
-    ui.selectedOptionalNodeIds,
+    optionalNodeIds,
     ui.selectedRouteVariantId ?? undefined,
   );
   if (!outcome.ok) return;
   notice.value = `${dungeon.name}队伍已经出发，可以继续组织另一支队伍。`;
   ui.clearParty();
+}
+
+function toggleBriefQuest(questId: QuestId): void {
+  selectedBriefQuestIds.value = selectedBriefQuestIds.value.includes(questId)
+    ? selectedBriefQuestIds.value.filter((id) => id !== questId)
+    : [...selectedBriefQuestIds.value, questId];
+}
+
+async function acceptBriefApplications(): Promise<boolean> {
+  const acceptances = (questBrief.value?.entries ?? []).flatMap((entry) =>
+    selectedBriefQuestIds.value.includes(entry.questId)
+      ? entry.applicantMemberIds.map((memberId) => ({ memberId, questId: entry.questId }))
+      : [],
+  );
+  if (acceptances.length === 0) return true;
+  const outcome = await game.acceptMemberDungeonQuests(acceptances);
+  if (!outcome.ok) {
+    notice.value = outcome.error.message;
+    return false;
+  }
+  return true;
+}
+
+async function approveBrief(includeRoute: boolean): Promise<void> {
+  const optionalNodeIds = includeRoute
+    ? plannedBriefOptionalNodeIds.value
+    : ui.selectedOptionalNodeIds;
+  if (!(await acceptBriefApplications())) return;
+  if (includeRoute) ui.setOptionalNodes(optionalNodeIds);
+  questBriefOpen.value = false;
+  await depart(optionalNodeIds);
+}
+
+async function skipBrief(): Promise<void> {
+  questBriefOpen.value = false;
+  await depart(ui.selectedOptionalNodeIds);
 }
 
 async function purchaseRunCapacity(): Promise<void> {
@@ -174,6 +275,16 @@ async function deletePreset(presetId: RosterPresetId): Promise<void> {
       @select="ui.selectDungeon"
     />
     <p v-if="notice" class="notice">{{ notice }}</p>
+    <aside v-if="questBrief?.entries.length" class="quest-summary">
+      <div>
+        <strong>出征任务待处理</strong>
+        <p>
+          当前队伍有 {{ questBrief.applicationCount }} 项待批准申请、
+          {{ questBrief.acceptedCount }} 项进行中任务可在本次行动推进。
+        </p>
+      </div>
+      <button type="button" @click="openQuestBrief">查看任务简报</button>
+    </aside>
     <aside v-if="planning.runCapacityUpgrade" class="run-upgrade">
       <div>
         <strong>{{ planning.runCapacityUpgrade.name }}</strong>
@@ -271,6 +382,22 @@ async function deletePreset(presetId: RosterPresetId): Promise<void> {
       @apply="applyMembers"
       @close="reductionOpen = false"
     />
+    <ExpeditionQuestBrief
+      :open="questBriefOpen"
+      :brief="questBrief"
+      :selected-quest-ids="selectedBriefQuestIds"
+      :current-probability="planning.preview?.clearProbability ?? null"
+      :current-duration-seconds="planning.preview?.durationSeconds ?? null"
+      :planned-probability="briefRoutePlanning?.preview?.clearProbability ?? null"
+      :planned-duration-seconds="briefRoutePlanning?.preview?.durationSeconds ?? null"
+      :added-route-boss-names="addedBriefRouteBossNames"
+      :pending="game.commandPending"
+      @toggle-quest="toggleBriefQuest"
+      @approve-route="approveBrief(true)"
+      @approve-only="approveBrief(false)"
+      @skip="skipBrief"
+      @close="questBriefOpen = false"
+    />
   </section>
 </template>
 
@@ -320,6 +447,34 @@ select {
   color: #91cc96;
   background: #112016;
   font-size: 0.72rem;
+}
+.quest-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 11px 13px;
+  border: 1px solid #66502d;
+  border-radius: 7px;
+  background: #1a170f;
+}
+.quest-summary strong {
+  color: #d7bd87;
+}
+.quest-summary p {
+  margin: 3px 0 0;
+  color: #958877;
+  font-size: 0.7rem;
+}
+.quest-summary button {
+  flex: 0 0 auto;
+  padding: 8px 10px;
+  border: 1px solid #9b793f;
+  border-radius: 6px;
+  color: #1b160f;
+  background: #c99b4d;
+  font-weight: 800;
+  cursor: pointer;
 }
 .run-upgrade {
   display: flex;
@@ -371,6 +526,10 @@ select {
 @media (max-width: 820px) {
   .planning-grid {
     grid-template-columns: 1fr;
+  }
+  .quest-summary {
+    align-items: stretch;
+    flex-direction: column;
   }
 }
 </style>

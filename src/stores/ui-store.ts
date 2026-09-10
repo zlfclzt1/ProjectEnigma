@@ -62,6 +62,10 @@ export const useUiStore = defineStore("ui", () => {
       : [...selectedOptionalNodeIds.value, nodeId];
   }
 
+  function setOptionalNodes(nodeIds: readonly DungeonRouteNodeId[]): void {
+    selectedOptionalNodeIds.value = [...new Set(nodeIds)];
+  }
+
   function togglePartyMember(memberId: MemberId): void {
     selectedPartyMemberIds.value = selectedPartyMemberIds.value.includes(memberId)
       ? selectedPartyMemberIds.value.filter((id) => id !== memberId)
@@ -117,6 +121,7 @@ export const useUiStore = defineStore("ui", () => {
     setPartyFilters,
     selectDungeon,
     toggleOptionalNode,
+    setOptionalNodes,
     selectRouteVariant,
     togglePartyMember,
     setPartyMembers,

@@ -2,7 +2,7 @@
 import type { ExpeditionActivityView } from "../../application/queries/get-activities-view";
 import BossRoute from "./BossRoute.vue";
 
-defineProps<{ activity: ExpeditionActivityView }>();
+defineProps<{ activity: ExpeditionActivityView; showSettlementLink?: boolean }>();
 
 function remainingLabel(milliseconds: number | undefined): string {
   if (milliseconds === undefined) return "已结算";
@@ -37,8 +37,13 @@ function remainingLabel(milliseconds: number | undefined): string {
       </li>
     </ul>
     <footer>
-      <span>全通率 {{ (activity.clearProbability * 100).toFixed(2) }}%</span>
-      <span>公式 {{ activity.formulaVersion }}</span>
+      <div>
+        <span>全通率 {{ (activity.clearProbability * 100).toFixed(2) }}%</span>
+        <span>公式 {{ activity.formulaVersion }}</span>
+      </div>
+      <a v-if="activity.status === 'completed' && showSettlementLink" href="#/quests?settlement=1">
+        前往任务结算会
+      </a>
     </footer>
   </article>
 </template>
@@ -56,6 +61,15 @@ footer {
   align-items: end;
   justify-content: space-between;
   gap: 12px;
+}
+footer > div {
+  display: flex;
+  gap: 12px;
+}
+footer a {
+  color: #d2a653;
+  font-weight: 800;
+  text-decoration: none;
 }
 header span {
   color: #d19f48;

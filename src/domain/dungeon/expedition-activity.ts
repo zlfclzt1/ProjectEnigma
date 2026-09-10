@@ -203,7 +203,12 @@ export function createExpeditionActivityHandler(
       const questSnapshots = request.participantIds.flatMap((memberId) => {
         const member = context.state.members[memberId]!;
         return Object.values(member.quests.entries).flatMap((progress) => {
-          if (!progress || progress.status !== "accepted") return [];
+          if (
+            !progress ||
+            progress.status !== "accepted" ||
+            progress.trackingPausedAt !== undefined
+          )
+            return [];
           const quest = content.questById.get(progress.questId);
           if (!quest || !questProgressesInDungeon(quest, request.dungeonId, content)) return [];
           const encounterIds =

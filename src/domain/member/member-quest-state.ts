@@ -59,6 +59,26 @@ export function claimMemberQuest(
   return progress;
 }
 
+export function setMemberQuestTrackingPaused(
+  state: MemberQuestState,
+  questId: QuestId,
+  paused: boolean,
+  changedAt: number,
+): MemberQuestProgress {
+  const progress = requiredProgress(state, questId);
+  if (progress.status !== "accepted") throw new Error("只有进行中的任务可以调整跟踪状态。");
+  if (paused) progress.trackingPausedAt = changedAt;
+  else delete progress.trackingPausedAt;
+  return progress;
+}
+
+export function abandonMemberQuest(state: MemberQuestState, questId: QuestId): MemberQuestProgress {
+  const progress = requiredProgress(state, questId);
+  if (progress.status === "claimed") throw new Error("已领取奖励的任务不能放弃。");
+  delete state.entries[questId];
+  return progress;
+}
+
 function requiredProgress(state: MemberQuestState, questId: QuestId): MemberQuestProgress {
   const progress = state.entries[questId];
   if (!progress) throw new Error("这名成员尚未接取该任务。");

@@ -408,7 +408,8 @@ export function getDungeonPlanningView(
       const member = state.members[memberId];
       if (!member) return [];
       return Object.values(member.quests.entries).flatMap((progress) => {
-        if (!progress || progress.status !== "accepted") return [];
+        if (!progress || progress.status !== "accepted" || progress.trackingPausedAt !== undefined)
+          return [];
         const quest = content.questById.get(progress.questId);
         if (!quest) return [];
         const encounterIds =

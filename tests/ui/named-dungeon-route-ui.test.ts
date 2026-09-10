@@ -78,6 +78,8 @@ describe("named dungeon route UI", () => {
 
     await wrapper.get(".party-preview > button").trigger("click");
     await flushPromises();
+    await wrapper.findAll(".quest-brief footer button")[1]!.trigger("click");
+    await flushPromises();
     expect(game.activities!.active[0]).toMatchObject({
       routeVariantName: "捷径路线",
       totalEncounterCount: 2,

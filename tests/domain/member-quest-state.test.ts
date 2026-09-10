@@ -1,10 +1,12 @@
 import { describe, expect, it } from "vitest";
 import {
+  abandonMemberQuest,
   acceptMemberQuest,
   claimMemberQuest,
   completeMemberQuest,
   createEmptyMemberQuestState,
   recordMemberQuestEncounterVictory,
+  setMemberQuestTrackingPaused,
 } from "../../src/domain/member/member-quest-state";
 import { asBrandedId } from "../../src/domain/shared/ids";
 
@@ -43,5 +45,24 @@ describe("member quest state", () => {
     expect(second.entries[questId]).toBeUndefined();
     acceptMemberQuest(second, questId, 3_000);
     expect(second.entries[questId]?.status).toBe("accepted");
+  });
+
+  it("pauses tracking without losing progress and can abandon for a fresh restart", () => {
+    const state = createEmptyMemberQuestState();
+    acceptMemberQuest(state, questId, 1_000);
+    recordMemberQuestEncounterVictory(state, questId, asBrandedId<"EncounterId">("oggleflint"));
+
+    setMemberQuestTrackingPaused(state, questId, true, 1_500);
+    expect(state.entries[questId]).toMatchObject({
+      trackingPausedAt: 1_500,
+      encounterVictoryIds: ["oggleflint"],
+    });
+    setMemberQuestTrackingPaused(state, questId, false, 1_600);
+    expect(state.entries[questId]?.trackingPausedAt).toBeUndefined();
+
+    const abandoned = abandonMemberQuest(state, questId);
+    expect(abandoned.encounterVictoryIds).toEqual(["oggleflint"]);
+    expect(state.entries[questId]).toBeUndefined();
+    expect(() => acceptMemberQuest(state, questId, 2_000)).not.toThrow();
   });
 });

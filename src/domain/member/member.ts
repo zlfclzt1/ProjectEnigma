@@ -55,6 +55,7 @@ export interface MemberQuestProgress {
   acceptedAt: number;
   completedAt?: number;
   claimedAt?: number;
+  trackingPausedAt?: number;
   encounterVictoryIds: EncounterId[];
 }
 
