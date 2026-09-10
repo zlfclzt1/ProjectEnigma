@@ -13,13 +13,13 @@ import { SeededRandomSource } from "../../infrastructure/random/seeded-random-so
 import { evaluateExpeditionParty } from "./party-evaluation";
 import { lockRareRouteSpawns, revealRareRouteNodes } from "./rare-route";
 import { getExpeditionRunCapacity } from "../guild/guild-upgrade-rules";
+import { applyMemberExperience, getMemberLevelCap } from "../member/member-level-cap";
 
 export interface DungeonExperienceConfig {
   readonly baseFraction: number;
   readonly recommendedLevelBonusPerLevel: number;
   readonly overlevelZeroThreshold: number;
   readonly maximumFractionPerRun: number;
-  readonly levelCap: number;
   readonly boost: {
     readonly graceLevelSpread: number;
     readonly penaltyPerExcessLevel: number;
@@ -32,7 +32,6 @@ export const DEFAULT_DUNGEON_EXPERIENCE_CONFIG: DungeonExperienceConfig = {
   recommendedLevelBonusPerLevel: 0.08,
   overlevelZeroThreshold: 8,
   maximumFractionPerRun: 2,
-  levelCap: 45,
   boost: {
     graceLevelSpread: 15,
     penaltyPerExcessLevel: 0.015,
@@ -274,11 +273,12 @@ export function experienceFractions(
   });
   const levelSpread = levels.length > 1 ? Math.max(...levels) - Math.min(...levels) : 0;
   const boostMultiplier = boostExperienceMultiplier(levelSpread, config);
+  const levelCap = getMemberLevelCap(state, content);
   return Object.fromEntries(
     memberIds.map((memberId) => {
       const member = state.members[memberId]!;
       if (
-        member.progression.level >= config.levelCap ||
+        member.progression.level >= levelCap ||
         dungeon.recommendedLevel <= member.progression.level - config.overlevelZeroThreshold
       ) {
         return [memberId, 0];
@@ -325,15 +325,16 @@ export function projectExpeditionExperience(
   );
   const initialSpread = levelSpread(projectedState, memberIds);
   const boostMultiplier = boostExperienceMultiplier(initialSpread, config);
+  const levelCap = getMemberLevelCap(projectedState, content);
 
   for (let run = 0; run < requestedRuns; run += 1) {
     const fractions = experienceFractions(projectedState, content, dungeonId, memberIds, config);
     for (const memberId of memberIds) {
       const member = projectedState.members[memberId]!;
-      applyProjectedExperience(
+      applyMemberExperience(
         member,
         Math.min(config.maximumFractionPerRun, (fractions[memberId] ?? 0) * routeExperienceShare),
-        config.levelCap,
+        levelCap,
       );
     }
   }
@@ -368,20 +369,6 @@ function boostExperienceMultiplier(levelSpread: number, config: DungeonExperienc
     config.boost.minimumMultiplier,
     1 - excessLevels * config.boost.penaltyPerExcessLevel,
   );
-}
-
-function applyProjectedExperience(
-  member: GameState["members"][ExpeditionMemberSnapshot["memberId"]],
-  fraction: number,
-  levelCap: number,
-): void {
-  if (member.progression.level >= levelCap || fraction <= 0) return;
-  let experience = member.progression.experience + fraction;
-  while (experience >= 1 && member.progression.level < levelCap) {
-    member.progression.level += 1;
-    experience -= 1;
-  }
-  member.progression.experience = member.progression.level >= levelCap ? 0 : experience;
 }
 
 function snapshotMember(

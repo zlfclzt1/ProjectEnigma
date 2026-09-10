@@ -17,7 +17,8 @@ describe("progression simulation", () => {
     expect(first.status).toBe("target-reached");
     expect(first.daysToTarget).not.toBeNull();
     expect(first.targetDungeonId).toBe("zulfarrak");
-    expect(first.minimumCoreLevel).toBe(45);
+    expect(first.minimumCoreLevel).toBeGreaterThanOrEqual(45);
+    expect(first.minimumCoreLevel).toBeLessThanOrEqual(60);
     expect(first.minimumRosterLevel).toBeLessThan(45);
     expect(first.maximumRunsUsed).toBe(5);
     expect(first.queueUpgradePurchased).toBe(true);

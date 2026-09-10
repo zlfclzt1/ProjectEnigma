@@ -114,7 +114,11 @@ function effectLabel(
   effect: NonNullable<typeof game.itemCatalog>["rewards"][number]["effects"][number],
 ): string {
   if (effect.type === "guild-funds") return `公会资金 ${effect.amount} G`;
-  if (effect.type === "management-unlock") return `管理功能：${effect.featureId}`;
+  if (effect.type === "management-unlock") {
+    return effect.featureId === "level_cap_60"
+      ? "成员等级上限提高至 60 级"
+      : `管理功能：${effect.featureId}`;
+  }
   return `展示记录：${effect.recordId}`;
 }
 

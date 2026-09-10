@@ -16,6 +16,7 @@ import {
 } from "../../domain/guild/guild-upgrade-rules";
 import { getPartyPreview } from "./get-party-preview";
 import { projectExpeditionExperience } from "../../domain/dungeon/expedition-activity";
+import { getMemberLevelCap } from "../../domain/member/member-level-cap";
 
 export interface DungeonOptionView {
   readonly id: DungeonId;
@@ -77,6 +78,7 @@ export interface PartyMechanicReadinessView {
 
 export interface PartyPreviewView {
   readonly formulaVersion: string;
+  readonly levelCap: number;
   readonly contribution: {
     readonly tank: number;
     readonly healing: number;
@@ -468,6 +470,7 @@ export function getDungeonPlanningView(
         );
         preview = {
           formulaVersion: result.preview.formulaVersion,
+          levelCap: getMemberLevelCap(state, content),
           contribution: { ...result.preview.contribution },
           encounters: result.preview.encounters.map((encounter) => ({
             id: encounter.encounterId,

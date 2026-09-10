@@ -127,7 +127,7 @@ function durationLabel(seconds: number): string {
             <strong>+{{ member.experienceFraction.toFixed(2) }} 级</strong>
             <small>
               {{ member.currentLevel }} 级 → {{ member.projectedLevel }} 级
-              <template v-if="member.projectedLevel < 45">
+              <template v-if="member.projectedLevel < preview.levelCap">
                 {{ Math.round(member.projectedExperience * 100) }}%
               </template>
             </small>

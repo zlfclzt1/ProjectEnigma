@@ -132,6 +132,7 @@ describe("dungeons page", () => {
         dungeon: null,
         preview: {
           formulaVersion: "classic-light-v1",
+          levelCap: 45,
           contribution: { tank: 1, healing: 1, damage: 3 },
           encounters: [],
           clearProbability: 0.8,

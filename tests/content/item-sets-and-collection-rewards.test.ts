@@ -82,6 +82,7 @@ describe("item sets and collection reward content", () => {
       },
       effects: [
         { type: "guild-funds", amount: 1000 },
+        { type: "management-unlock", featureId: "level_cap_60" },
         { type: "display-record", recordId: "level_45_era_graduate" },
       ],
     });

@@ -5,7 +5,7 @@ import { equipItem } from "../../domain/equipment/equipment";
 import { equipmentSellValue } from "../../domain/equipment/item-value";
 import { resolveItemInstance } from "../../domain/equipment/resolve-item-instance";
 import { claimMemberQuest } from "../../domain/member/member-quest-state";
-import type { GameState } from "../../domain/game-state";
+import { applyMemberExperience, getMemberLevelCap } from "../../domain/member/member-level-cap";
 import type { ItemInstance } from "../../domain/equipment/item-instance";
 import type { ItemDefinitionId, ItemInstanceId, MemberId, QuestId } from "../../domain/shared/ids";
 import { LocalIdGenerator } from "../../infrastructure/ids/local-id-generator";
@@ -99,9 +99,10 @@ export function claimMemberDungeonQuestCommand(
           saleProceeds += equipmentSellValue(definition);
         }
       }
-      const experienceGained = applyQuestExperience(
+      const experienceGained = applyMemberExperience(
         updatedMember,
         quest.rewards.experienceFraction,
+        getMemberLevelCap(draft, dependencies.content),
       );
       claimMemberQuest(updatedMember.quests, questId, acquiredAt);
       draft.members[memberId] = updatedMember;
@@ -118,16 +119,4 @@ export function claimMemberDungeonQuestCommand(
       };
     },
   };
-}
-
-function applyQuestExperience(member: GameState["members"][MemberId], fraction: number): number {
-  if (member.progression.level >= 45 || fraction <= 0) return 0;
-  const before = member.progression.level + member.progression.experience;
-  let experience = member.progression.experience + fraction;
-  while (experience >= 1 && member.progression.level < 45) {
-    member.progression.level += 1;
-    experience -= 1;
-  }
-  member.progression.experience = member.progression.level >= 45 ? 0 : experience;
-  return member.progression.level + member.progression.experience - before;
 }

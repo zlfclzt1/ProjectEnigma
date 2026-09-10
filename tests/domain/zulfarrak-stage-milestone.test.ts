@@ -9,6 +9,7 @@ import { asBrandedId } from "../../src/domain/shared/ids";
 import { LocalIdGenerator } from "../../src/infrastructure/ids/local-id-generator";
 import { SeededRandomSource } from "../../src/infrastructure/random/seeded-random-source";
 import { FakeClock } from "../helpers/runtime-fakes";
+import { getMemberLevelCap } from "../../src/domain/member/member-level-cap";
 
 const content = loadBrowserContentRegistry();
 const dungeonId = asBrandedId<"DungeonId">("zulfarrak");
@@ -55,6 +56,7 @@ async function startAndComplete(
 describe("Zul'Farrak stage milestone", () => {
   it("awards the level-45 graduation record and funds exactly once while play continues", async () => {
     const state = newStageEndState();
+    expect(getMemberLevelCap(state, content)).toBe(45);
     const initialFunds = state.guild.funds;
     const first = await startAndComplete(state, 2_000);
     const firstEncounterRewards = first.runPlans[0]!.stages.reduce((sum, stage) => {
@@ -75,6 +77,10 @@ describe("Zul'Farrak stage milestone", () => {
     expect(getItemCatalogView(state, content).unlockedDisplayRecordIds).toContain(
       "level_45_era_graduate",
     );
+    expect(getItemCatalogView(state, content).unlockedManagementFeatureIds).toContain(
+      "level_cap_60",
+    );
+    expect(getMemberLevelCap(state, content)).toBe(60);
     expect(
       Object.values(state.members).every((member) => member.progression.experience === 0),
     ).toBe(true);
@@ -92,5 +98,10 @@ describe("Zul'Farrak stage milestone", () => {
     expect(state.history.dungeonClearCounts[dungeonId]).toBe(2);
     expect(state.guild.unlockedDungeonIds).toContain(dungeonId);
     expect(Object.keys(state.candidates).length).toBeGreaterThan(0);
+    expect(
+      Object.values(state.members).some(
+        (member) => member.progression.level > 45 || member.progression.experience > 0,
+      ),
+    ).toBe(true);
   });
 });

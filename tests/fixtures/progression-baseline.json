@@ -69,10 +69,10 @@
         "p90": 31.071
       },
       "minimumCoreLevel": {
-        "mean": 45,
-        "p10": 45,
-        "p50": 45,
-        "p90": 45
+        "mean": 47.438,
+        "p10": 46,
+        "p50": 48,
+        "p90": 48
       },
       "minimumRosterLevel": {
         "mean": 13.438,
@@ -179,10 +179,10 @@
         "p90": 30.303
       },
       "minimumCoreLevel": {
-        "mean": 45,
-        "p10": 45,
-        "p50": 45,
-        "p90": 45
+        "mean": 47.438,
+        "p10": 46,
+        "p50": 48,
+        "p90": 48
       },
       "minimumRosterLevel": {
         "mean": 13.188,
@@ -289,10 +289,10 @@
         "p90": 30.553
       },
       "minimumCoreLevel": {
-        "mean": 45,
-        "p10": 45,
-        "p50": 45,
-        "p90": 45
+        "mean": 47.281,
+        "p10": 46,
+        "p50": 48,
+        "p90": 48
       },
       "minimumRosterLevel": {
         "mean": 13.125,
@@ -399,10 +399,10 @@
         "p90": 30.774
       },
       "minimumCoreLevel": {
-        "mean": 45,
-        "p10": 45,
-        "p50": 45,
-        "p90": 45
+        "mean": 46.938,
+        "p10": 46,
+        "p50": 47,
+        "p90": 48
       },
       "minimumRosterLevel": {
         "mean": 13.188,

@@ -179,6 +179,35 @@ describe("dungeon and activity queries", () => {
     );
   });
 
+  it("previews post-graduation experience against the unlocked level-60 cap", () => {
+    const game = state();
+    const members = Object.values(game.members);
+    for (const member of members) {
+      member.progression.level = 45;
+      member.progression.experience = 0;
+    }
+    game.guild.unlockedDungeonIds.push(asBrandedId<"DungeonId">("zulfarrak"));
+    game.collection.claimedRewardIds.push(
+      asBrandedId<"CollectionRewardId">("zulfarrak_level_45_graduation"),
+    );
+
+    const view = getDungeonPlanningView(
+      game,
+      content,
+      asBrandedId<"DungeonId">("zulfarrak"),
+      members.map((member) => member.id),
+      3,
+    );
+
+    expect(view.preview?.levelCap).toBe(60);
+    expect(view.preview?.experience).toHaveLength(5);
+    expect(
+      view.preview?.experience.every(
+        (member) => member.experienceFraction > 0 && member.projectedLevel > 45,
+      ),
+    ).toBe(true);
+  });
+
   it("projects all dungeons, filter metadata, and exact party probabilities", () => {
     const game = state();
     const memberIds = Object.values(game.members).map((member) => member.id);

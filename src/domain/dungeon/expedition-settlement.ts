@@ -19,6 +19,7 @@ import {
   completeExpeditionDungeonClearQuests,
   progressExpeditionQuestsAfterEncounterVictory,
 } from "./expedition-quest-progress";
+import { applyMemberExperience, getMemberLevelCap } from "../member/member-level-cap";
 
 export type ExpeditionSettlementResult =
   | {
@@ -98,6 +99,7 @@ export function settleNextExpeditionStage(
   stage.settledAt = settledAt;
   const experienceFractionByMember = applyEncounterExperience(
     state,
+    content,
     activity,
     encounter.experienceShare,
   );
@@ -186,6 +188,7 @@ function requiredStagesCleared(
 
 function applyEncounterExperience(
   state: GameState,
+  content: ContentRegistry,
   activity: ExpeditionActivity,
   experienceShare: number,
 ): Partial<Record<MemberId, number>> {
@@ -201,12 +204,13 @@ function applyEncounterExperience(
       0,
       maximumExperience - (run.experienceAwardedByMember[memberId] ?? 0),
     );
-    const gained = applyExperience(
+    const gained = applyMemberExperience(
       member,
       Math.min(
         remainingExperience,
         (run.experienceFractionByMember[memberId] ?? 0) * experienceShare,
       ),
+      getMemberLevelCap(state, content),
     );
     if (gained > 0) {
       awarded[memberId] = gained;
@@ -215,18 +219,6 @@ function applyEncounterExperience(
     }
   }
   return awarded;
-}
-
-function applyExperience(member: GameState["members"][MemberId], fraction: number): number {
-  if (member.progression.level >= 45 || fraction <= 0) return 0;
-  const before = member.progression.level + member.progression.experience;
-  let experience = member.progression.experience + fraction;
-  while (experience >= 1 && member.progression.level < 45) {
-    member.progression.level += 1;
-    experience -= 1;
-  }
-  member.progression.experience = member.progression.level >= 45 ? 0 : experience;
-  return member.progression.level + member.progression.experience - before;
 }
 
 function advanceAfterVictory(

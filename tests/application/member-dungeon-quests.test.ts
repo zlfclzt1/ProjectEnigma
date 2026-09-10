@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { acceptMemberDungeonQuestCommand } from "../../src/application/commands/accept-member-dungeon-quest";
+import { claimMemberDungeonQuestCommand } from "../../src/application/commands/claim-member-dungeon-quest";
 import { getMemberDungeonQuestsView } from "../../src/application/queries/get-member-dungeon-quests-view";
 import { GameSession } from "../../src/application/services/game-session";
 import { browserContentModules, loadBrowserContentRegistry } from "../../src/content/manifest";
@@ -94,6 +95,45 @@ describe("member dungeon quests", () => {
     });
     expect(session.snapshot().members[second!.id]!.quests.entries[questId]).toBeUndefined();
     await expect(session.execute(command)).rejects.toThrow(/已经接取或完成过/);
+  });
+
+  it("uses the graduation level-cap unlock when claiming quest experience", async () => {
+    const game = state();
+    const member = Object.values(game.members)[0]!;
+    member.progression.level = 45;
+    member.progression.experience = 0;
+    member.quests.entries[questId] = {
+      questId,
+      status: "completed",
+      acceptedAt: 1_000,
+      completedAt: 2_000,
+      encounterVictoryIds: [asBrandedId<"EncounterId">("oggleflint")],
+    };
+
+    const capped = structuredClone(game);
+    const cappedResult = await claimMemberDungeonQuestCommand(
+      { content, clock: new FakeClock(3_000) },
+      member.id,
+      questId,
+      asBrandedId<"ItemDefinitionId">("15452"),
+    ).execute(capped);
+    expect(cappedResult.experienceGained).toBe(0);
+    expect(capped.members[member.id]!.progression).toMatchObject({ level: 45, experience: 0 });
+
+    game.collection.claimedRewardIds.push(
+      asBrandedId<"CollectionRewardId">("zulfarrak_level_45_graduation"),
+    );
+    const unlockedResult = await claimMemberDungeonQuestCommand(
+      { content, clock: new FakeClock(3_000) },
+      member.id,
+      questId,
+      asBrandedId<"ItemDefinitionId">("15452"),
+    ).execute(game);
+    expect(unlockedResult.experienceGained).toBe(0.75);
+    expect(game.members[member.id]!.progression).toMatchObject({
+      level: 45,
+      experience: 0.75,
+    });
   });
 
   it("projects both unlocked Library book quests with their authentic rewards", () => {
