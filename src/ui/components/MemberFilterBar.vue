@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import type { MemberRole } from "../../application/queries/get-members-view";
 import type { ClassId } from "../../domain/shared/ids";
+import { MEMBER_SORT_OPTIONS, type MemberSortKey } from "../member-list-sorting";
 
 const props = defineProps<{
   classId: ClassId | null;
   role: MemberRole | null;
+  sortBy: MemberSortKey;
   classOptions: readonly { readonly id: ClassId; readonly name: string }[];
   roleOptions: readonly { readonly id: MemberRole; readonly name: string }[];
 }>();
@@ -12,6 +14,7 @@ const props = defineProps<{
 const emit = defineEmits<{
   "update:classId": [value: ClassId | null];
   "update:role": [value: MemberRole | null];
+  "update:sortBy": [value: MemberSortKey];
 }>();
 
 function updateClass(event: Event): void {
@@ -22,6 +25,11 @@ function updateClass(event: Event): void {
 function updateRole(event: Event): void {
   const value = (event.target as HTMLSelectElement).value;
   emit("update:role", props.roleOptions.find((option) => option.id === value)?.id ?? null);
+}
+
+function updateSort(event: Event): void {
+  const value = (event.target as HTMLSelectElement).value;
+  emit("update:sortBy", MEMBER_SORT_OPTIONS.find((option) => option.id === value)?.id ?? "default");
 }
 </script>
 
@@ -45,12 +53,21 @@ function updateRole(event: Event): void {
         </option>
       </select>
     </label>
+    <label>
+      <span>排序</span>
+      <select :value="sortBy" @change="updateSort">
+        <option v-for="option in MEMBER_SORT_OPTIONS" :key="option.id" :value="option.id">
+          {{ option.name }}
+        </option>
+      </select>
+    </label>
   </div>
 </template>
 
 <style scoped>
 .filter-bar {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   padding: 12px;
   border: 1px solid #343129;

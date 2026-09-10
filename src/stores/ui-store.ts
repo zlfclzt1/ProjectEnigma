@@ -1,12 +1,14 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
 import type { ClassId, DungeonId, MemberId } from "../domain/shared/ids";
+import type { MemberSortKey } from "../ui/member-list-sorting";
 
 export type RoleFilter = "tank" | "healer" | "dps" | null;
 
 export interface MemberFilters {
   readonly classId: ClassId | null;
   readonly role: RoleFilter;
+  readonly sortBy: MemberSortKey;
 }
 
 export interface UiModal {
@@ -14,7 +16,7 @@ export interface UiModal {
   readonly entityId?: string;
 }
 
-const EMPTY_FILTERS: MemberFilters = { classId: null, role: null };
+const EMPTY_FILTERS: MemberFilters = { classId: null, role: null, sortBy: "default" };
 
 export const useUiStore = defineStore("ui", () => {
   const memberFilters = ref<MemberFilters>({ ...EMPTY_FILTERS });

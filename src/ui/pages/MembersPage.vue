@@ -4,14 +4,18 @@ import { RouterLink } from "vue-router";
 import { useGameStore } from "../../stores/game-store";
 import { useUiStore } from "../../stores/ui-store";
 import MemberFilterBar from "../components/MemberFilterBar.vue";
+import { sortMembers } from "../member-list-sorting";
 
 const game = useGameStore();
 const ui = useUiStore();
 const filteredMembers = computed(() =>
-  (game.members?.members ?? []).filter(
-    (member) =>
-      (!ui.memberFilters.classId || member.classId === ui.memberFilters.classId) &&
-      (!ui.memberFilters.role || member.role === ui.memberFilters.role),
+  sortMembers(
+    (game.members?.members ?? []).filter(
+      (member) =>
+        (!ui.memberFilters.classId || member.classId === ui.memberFilters.classId) &&
+        (!ui.memberFilters.role || member.role === ui.memberFilters.role),
+    ),
+    ui.memberFilters.sortBy,
   ),
 );
 </script>
@@ -29,10 +33,12 @@ const filteredMembers = computed(() =>
     <MemberFilterBar
       :class-id="ui.memberFilters.classId"
       :role="ui.memberFilters.role"
+      :sort-by="ui.memberFilters.sortBy"
       :class-options="game.members.classOptions"
       :role-options="game.members.roleOptions"
       @update:class-id="ui.setMemberFilters({ classId: $event })"
       @update:role="ui.setMemberFilters({ role: $event })"
+      @update:sort-by="ui.setMemberFilters({ sortBy: $event })"
     />
 
     <div class="member-grid">

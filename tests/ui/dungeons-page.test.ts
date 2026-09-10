@@ -38,12 +38,14 @@ describe("dungeons page", () => {
     const filterSelects = wrapper.findAll(".party-builder .filter-bar select");
     await filterSelects[0]!.setValue(target.classId);
     await filterSelects[1]!.setValue(target.role);
+    await filterSelects[2]!.setValue("role");
     const expectedFiltered = game
       .dungeonPlanning(useUiStore().selectedDungeonId, [], 1)!
       .members.filter(
         (member) => member.classId === target.classId && member.role === target.role,
       ).length;
     expect(wrapper.findAll(".member-options > label")).toHaveLength(expectedFiltered);
+    expect(useUiStore().partyFilters.sortBy).toBe("role");
 
     await filterSelects[0]!.setValue("");
     await filterSelects[1]!.setValue("");

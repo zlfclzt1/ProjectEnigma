@@ -4,6 +4,7 @@ import type { PartyMemberOptionView } from "../../application/queries/get-dungeo
 import type { ClassId, MemberId } from "../../domain/shared/ids";
 import type { MemberRole } from "../../application/queries/get-members-view";
 import MemberFilterBar from "./MemberFilterBar.vue";
+import { sortMembers, type MemberSortKey } from "../member-list-sorting";
 
 const props = defineProps<{
   members: readonly PartyMemberOptionView[];
@@ -11,6 +12,7 @@ const props = defineProps<{
   maximumMembers: number;
   classId: ClassId | null;
   role: MemberRole | null;
+  sortBy: MemberSortKey;
   classOptions: readonly { readonly id: ClassId; readonly name: string }[];
   roleOptions: readonly { readonly id: MemberRole; readonly name: string }[];
 }>();
@@ -19,13 +21,17 @@ const emit = defineEmits<{
   toggle: [memberId: MemberId];
   "update:classId": [classId: ClassId | null];
   "update:role": [role: MemberRole | null];
+  "update:sortBy": [sortBy: MemberSortKey];
 }>();
 
 const filteredMembers = computed(() =>
-  props.members.filter(
-    (member) =>
-      (!props.classId || member.classId === props.classId) &&
-      (!props.role || member.role === props.role),
+  sortMembers(
+    props.members.filter(
+      (member) =>
+        (!props.classId || member.classId === props.classId) &&
+        (!props.role || member.role === props.role),
+    ),
+    props.sortBy,
   ),
 );
 
@@ -53,10 +59,12 @@ function disabled(member: PartyMemberOptionView): boolean {
     <MemberFilterBar
       :class-id="classId"
       :role="role"
+      :sort-by="sortBy"
       :class-options="classOptions"
       :role-options="roleOptions"
       @update:class-id="emit('update:classId', $event)"
       @update:role="emit('update:role', $event)"
+      @update:sort-by="emit('update:sortBy', $event)"
     />
     <div class="member-options">
       <label

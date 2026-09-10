@@ -45,13 +45,20 @@ describe("members page", () => {
     await selects[1]!.setValue(target.role);
 
     expect(wrapper.findAll(".member-card")).toHaveLength(expectedCount);
-    expect(useUiStore().memberFilters).toEqual({ classId: target.classId, role: target.role });
+    await selects[2]!.setValue("itemLevel");
+
+    expect(useUiStore().memberFilters).toEqual({
+      classId: target.classId,
+      role: target.role,
+      sortBy: "itemLevel",
+    });
 
     wrapper.unmount();
     wrapper = mountPage();
     const remountedSelects = wrapper.findAll("select");
     expect(remountedSelects[0]!.element.value).toBe(target.classId);
     expect(remountedSelects[1]!.element.value).toBe(target.role);
+    expect(remountedSelects[2]!.element.value).toBe("itemLevel");
     expect(wrapper.findAll(".member-card")).toHaveLength(expectedCount);
   });
 });

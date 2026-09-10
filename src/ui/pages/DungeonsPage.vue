@@ -69,11 +69,13 @@ async function start(): Promise<void> {
         :maximum-members="planning.selectedDungeon?.maximumMembers ?? 0"
         :class-id="ui.partyFilters.classId"
         :role="ui.partyFilters.role"
+        :sort-by="ui.partyFilters.sortBy"
         :class-options="planning.classOptions"
         :role-options="planning.roleOptions"
         @toggle="ui.togglePartyMember"
         @update:class-id="ui.setPartyFilters({ classId: $event })"
         @update:role="ui.setPartyFilters({ role: $event })"
+        @update:sort-by="ui.setPartyFilters({ sortBy: $event })"
       />
       <PartyPreview
         :dungeon="planning.selectedDungeon"
