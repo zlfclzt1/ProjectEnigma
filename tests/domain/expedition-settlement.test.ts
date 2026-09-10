@@ -63,8 +63,8 @@ function contentWithRagefireDropCount(count: number): ContentRegistry {
   const file = modules[key] as {
     lootTables: Array<{ id: string; guaranteedEquipmentDrops: number }>;
   };
-  const table = file.lootTables.find((entry) => entry.id === "ragefire_chasm_common_equipment");
-  if (!table) throw new Error("Expected ragefire common equipment table");
+  const table = file.lootTables.find((entry) => entry.id === "taragaman_the_hungerer");
+  if (!table) throw new Error("Expected Taragaman equipment table");
   table.guaranteedEquipmentDrops = count;
   return loadContentRegistry(modules);
 }
@@ -104,9 +104,16 @@ describe("expedition settlement", () => {
     expect(firstReport.rewards.itemInstanceIds).toEqual(first.settled[0]!.itemInstanceIds);
     expect(activity.activeEncounterIndex).toBe(1);
     expect(state.guild.funds).toBe(fundsBefore + 10 + 20);
+    expect(first.settled[0]!.itemInstanceIds).toEqual([]);
+    expect(Object.values(state.pendingLoot)).toHaveLength(0);
+    expect(Object.values(state.itemInstances)).toHaveLength(85);
+    const second = service.settleDueActivities(state, activity.nextSettlementAt);
+    expect(second.settled[0]).toMatchObject({
+      encounterId: "taragaman_the_hungerer",
+      outcome: "victory",
+    });
     expect(Object.values(state.pendingLoot)).toHaveLength(1);
-    expect(Object.values(state.itemInstances)).toHaveLength(86);
-    const acquiredInstance = state.itemInstances[first.settled[0]!.itemInstanceIds[0]!]!;
+    const acquiredInstance = state.itemInstances[second.settled[0]!.itemInstanceIds[0]!]!;
     expect(state.collection.items[acquiredInstance.definitionId]).toEqual({
       acquisitionCount: 1,
       seenRandomSuffixIds: acquiredInstance.randomSuffixId ? [acquiredInstance.randomSuffixId] : [],
@@ -197,8 +204,17 @@ describe("expedition settlement", () => {
     const settledActivity = settledState.activities[activity.id] as ExpeditionActivity;
     expect(settledActivity.status).toBe("completed");
     expect(settledActivity.completedRuns).toBe(2);
-    expect(Object.values(settledState.pendingLoot)).toHaveLength(8);
-    expect(result.result.settled.every((event) => event.itemInstanceIds.length >= 1)).toBe(true);
+    expect(Object.values(settledState.pendingLoot)).toHaveLength(4);
+    expect(
+      result.result.settled
+        .filter((event) => event.itemInstanceIds.length > 0)
+        .map((event) => event.encounterId),
+    ).toEqual([
+      "taragaman_the_hungerer",
+      "jergosh_the_invoker",
+      "taragaman_the_hungerer",
+      "jergosh_the_invoker",
+    ]);
     expect(
       settledActivity.runPlans
         .flatMap((run) => run.stages)
@@ -282,14 +298,16 @@ describe("expedition settlement", () => {
 
     const result = new SettlementService(multiDropContent).settleDueActivities(
       state,
-      activity.nextSettlementAt,
+      Number.MAX_SAFE_INTEGER,
     );
 
-    expect(result.settled).toHaveLength(1);
-    expect(result.settled[0]!.itemInstanceIds).toHaveLength(2);
-    expect(Object.values(state.pendingLoot)).toHaveLength(2);
-    expect(activity.runPlans[0]!.stages[0]!.report?.rewards.itemInstanceIds).toEqual(
-      result.settled[0]!.itemInstanceIds,
+    const taragaman = result.settled.find(
+      (event) => event.encounterId === "taragaman_the_hungerer",
+    )!;
+    expect(taragaman.itemInstanceIds).toHaveLength(2);
+    expect(Object.values(state.pendingLoot)).toHaveLength(3);
+    expect(activity.runPlans[0]!.stages[1]!.report?.rewards.itemInstanceIds).toEqual(
+      taragaman.itemInstanceIds,
     );
   });
 
@@ -332,7 +350,7 @@ describe("expedition settlement", () => {
     const activity = await startExpedition(state, [participant.id]);
     forceAll(activity, "victory");
 
-    new SettlementService(content).settleDueActivities(state, activity.nextSettlementAt);
+    new SettlementService(content).settleDueActivities(state, Number.MAX_SAFE_INTEGER);
 
     const pending = Object.values(state.pendingLoot)[0]!;
     const item = state.itemInstances[pending.itemInstanceId]!;
@@ -344,7 +362,7 @@ describe("expedition settlement", () => {
       type: "encounter",
       activityId: activity.id,
       dungeonId,
-      encounterId: "oggleflint",
+      encounterId: "taragaman_the_hungerer",
     });
   });
 });

@@ -8,7 +8,7 @@
         "gameVersion": "classic-2019-phase-6",
         "url": "https://raw.githubusercontent.com/Hoizame/AtlasLootClassic/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
         "verifiedAt": "2026-09-08",
-        "notes": "核对死亡矿井路线 Boss 与所选经典旧世装备掉落关系。"
+        "notes": "核对死亡矿井当前正式路线 Boss 的全部可穿戴专属装备及样本掉落权重，并区分斯尼德的伐木机与斯尼德。"
       },
       {
         "kind": "design-decision",
@@ -31,8 +31,26 @@
       "guaranteedEquipmentDrops": 1,
       "items": [
         {
+          "itemId": "872",
+          "weight": 415
+        },
+        {
           "itemId": "5187",
-          "weight": 1
+          "weight": 7404
+        }
+      ]
+    },
+    {
+      "id": "dm_sneeds_shredder",
+      "guaranteedEquipmentDrops": 1,
+      "items": [
+        {
+          "itemId": "1937",
+          "weight": 1214
+        },
+        {
+          "itemId": "2169",
+          "weight": 6317
         }
       ]
     },
@@ -42,7 +60,11 @@
       "items": [
         {
           "itemId": "5194",
-          "weight": 1
+          "weight": 3962
+        },
+        {
+          "itemId": "5195",
+          "weight": 9795
         }
       ]
     },
@@ -51,8 +73,12 @@
       "guaranteedEquipmentDrops": 1,
       "items": [
         {
+          "itemId": "1156",
+          "weight": 5240
+        },
+        {
           "itemId": "5199",
-          "weight": 1
+          "weight": 7801
         }
       ]
     },
@@ -62,7 +88,15 @@
       "items": [
         {
           "itemId": "7230",
-          "weight": 1
+          "weight": 2720
+        },
+        {
+          "itemId": "5192",
+          "weight": 5700
+        },
+        {
+          "itemId": "5196",
+          "weight": 5516
         }
       ]
     },
@@ -72,7 +106,15 @@
       "items": [
         {
           "itemId": "5201",
-          "weight": 1
+          "weight": 5251
+        },
+        {
+          "itemId": "10403",
+          "weight": 3628
+        },
+        {
+          "itemId": "5200",
+          "weight": 3884
         }
       ]
     },
@@ -81,8 +123,20 @@
       "guaranteedEquipmentDrops": 1,
       "items": [
         {
+          "itemId": "5193",
+          "weight": 4151
+        },
+        {
+          "itemId": "5202",
+          "weight": 4253
+        },
+        {
+          "itemId": "10399",
+          "weight": 2731
+        },
+        {
           "itemId": "5191",
-          "weight": 1
+          "weight": 2833
         }
       ]
     },
@@ -92,7 +146,11 @@
       "items": [
         {
           "itemId": "5198",
-          "weight": 1
+          "weight": 4795
+        },
+        {
+          "itemId": "5197",
+          "weight": 7681
         }
       ]
     }

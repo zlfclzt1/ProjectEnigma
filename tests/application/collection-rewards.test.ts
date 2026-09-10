@@ -42,7 +42,20 @@ describe("collection reward commands", () => {
 
   it("commits funds and claimed state once even when the same claim is queued twice", async () => {
     const state = createGameStateFixture();
-    acquire(state, "10412", "6460", "13245", "6472");
+    acquire(
+      state,
+      "10412",
+      "6460",
+      "13245",
+      "6472",
+      "6449",
+      "6469",
+      "6631",
+      "6627",
+      "5404",
+      "10410",
+      "6465",
+    );
     const saves = new MemorySaveRepository([state]);
     const session = GameSession.fromState(saves, state);
     const command = claimCollectionRewardCommand(content, fundsRewardId);

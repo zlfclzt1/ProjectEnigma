@@ -8,7 +8,7 @@
         "gameVersion": "classic-2019-phase-6",
         "url": "https://raw.githubusercontent.com/Hoizame/AtlasLootClassic/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
         "verifiedAt": "2026-09-08",
-        "notes": "核对影牙城堡路线 Boss 与所选经典旧世装备掉落关系。"
+        "notes": "核对影牙城堡当前正式路线 Boss 的全部可穿戴专属装备及样本掉落权重。"
       },
       {
         "kind": "design-decision",
@@ -32,7 +32,7 @@
       "items": [
         {
           "itemId": "5254",
-          "weight": 1
+          "weight": 9095
         }
       ]
     },
@@ -42,7 +42,15 @@
       "items": [
         {
           "itemId": "1292",
-          "weight": 1
+          "weight": 1426
+        },
+        {
+          "itemId": "6226",
+          "weight": 6853
+        },
+        {
+          "itemId": "6633",
+          "weight": 6465
         }
       ]
     },
@@ -52,7 +60,11 @@
       "items": [
         {
           "itemId": "6321",
-          "weight": 1
+          "weight": 3003
+        },
+        {
+          "itemId": "6323",
+          "weight": 6150
         }
       ]
     },
@@ -62,7 +74,11 @@
       "items": [
         {
           "itemId": "6320",
-          "weight": 1
+          "weight": 4439
+        },
+        {
+          "itemId": "3191",
+          "weight": 5174
         }
       ]
     },
@@ -72,7 +88,11 @@
       "items": [
         {
           "itemId": "6318",
-          "weight": 1
+          "weight": 4959
+        },
+        {
+          "itemId": "6319",
+          "weight": 8668
         }
       ]
     },
@@ -82,7 +102,11 @@
       "items": [
         {
           "itemId": "6340",
-          "weight": 1
+          "weight": 10106
+        },
+        {
+          "itemId": "3230",
+          "weight": 2418
         }
       ]
     },
@@ -91,8 +115,12 @@
       "guaranteedEquipmentDrops": 1,
       "items": [
         {
+          "itemId": "3748",
+          "weight": 6725
+        },
+        {
           "itemId": "6314",
-          "weight": 1
+          "weight": 4414
         }
       ]
     },
@@ -102,7 +130,15 @@
       "items": [
         {
           "itemId": "6324",
-          "weight": 1
+          "weight": 4957
+        },
+        {
+          "itemId": "6392",
+          "weight": 4828
+        },
+        {
+          "itemId": "6220",
+          "weight": 2492
         }
       ]
     }

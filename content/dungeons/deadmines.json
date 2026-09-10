@@ -6,7 +6,7 @@
         "kind": "design-decision",
         "provider": "manual",
         "verifiedAt": "2026-09-07",
-        "notes": "从 V1 死亡矿井副本定义原样迁移。"
+        "notes": "从 V1 死亡矿井副本定义迁移；2026-09-08 将斯尼德的伐木机与斯尼德拆为连续路线节点。"
       }
     ]
   },
@@ -48,6 +48,7 @@
       },
       "route": [
         "dm_rhahkzor",
+        "dm_sneeds_shredder",
         "dm_sneed",
         "dm_gilnid",
         "dm_mr_smite",

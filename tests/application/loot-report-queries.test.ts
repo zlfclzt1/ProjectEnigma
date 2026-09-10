@@ -46,8 +46,8 @@ function contentWithTwoRagefireDrops(): ContentRegistry {
   const file = modules[key] as {
     lootTables: Array<{ id: string; guaranteedEquipmentDrops: number }>;
   };
-  const table = file.lootTables.find((entry) => entry.id === "ragefire_chasm_common_equipment");
-  if (!table) throw new Error("Expected ragefire common equipment table");
+  const table = file.lootTables.find((entry) => entry.id === "taragaman_the_hungerer");
+  if (!table) throw new Error("Expected Taragaman equipment table");
   table.guaranteedEquipmentDrops = 2;
   return loadContentRegistry(modules);
 }
@@ -61,7 +61,7 @@ function contentWithRagefireSuffixes(): ContentRegistry {
   const file = modules[key] as {
     items: Array<{ id: string; randomSuffixIds?: string[] }>;
   };
-  for (const item of file.items.filter((entry) => entry.id.startsWith("154"))) {
+  for (const item of file.items.filter((entry) => entry.id.startsWith("141"))) {
     item.randomSuffixIds = ["prototype_of_readiness"];
   }
   return loadContentRegistry(modules);
@@ -70,7 +70,7 @@ function contentWithRagefireSuffixes(): ContentRegistry {
 describe("loot and combat report queries", () => {
   it("locks mid-run loot and unlocks it with participant-only upgrade comparisons", async () => {
     const { clock, state, activity, memberIds } = await setup();
-    clock.set(activity.nextSettlementAt);
+    clock.set(activity.nextSettlementAt + activity.runPlans[0]!.stages[1]!.durationSeconds * 1_000);
     await settleDueActivitiesCommand({ content, clock }).execute(state);
 
     const locked = getLootView(state, content);
@@ -85,7 +85,7 @@ describe("loot and combat report queries", () => {
     await settleDueActivitiesCommand({ content, clock }).execute(state);
     const unlocked = getLootView(state, content);
 
-    expect(unlocked.pending).toHaveLength(8);
+    expect(unlocked.pending).toHaveLength(4);
     expect(unlocked.lockedCount).toBe(0);
     expect(unlocked.pending.every((entry) => entry.candidates.length === memberIds.length)).toBe(
       true,
@@ -116,13 +116,13 @@ describe("loot and combat report queries", () => {
     expect(reports[0]!.members).toHaveLength(5);
     expect(reports[0]!.logs.length).toBeGreaterThan(0);
     expect(reports[0]!.totals.damage).toBeGreaterThan(0);
-    expect(reports[0]!.rewards.itemNames).toHaveLength(1);
+    expect(reports.some((report) => report.rewards.itemNames.length === 1)).toBe(true);
   });
 
   it("projects every item from a multi-drop settlement into loot and reports", async () => {
     const multiDropContent = contentWithTwoRagefireDrops();
     const { clock, state, activity } = await setup(multiDropContent);
-    clock.set(activity.nextSettlementAt);
+    clock.set(activity.nextSettlementAt + activity.runPlans[0]!.stages[1]!.durationSeconds * 1_000);
     await settleDueActivitiesCommand({ content: multiDropContent, clock }).execute(state);
 
     const loot = getLootView(state, multiDropContent);
@@ -130,14 +130,16 @@ describe("loot and combat report queries", () => {
 
     expect(loot.pending).toHaveLength(2);
     expect(loot.lockedCount).toBe(2);
-    expect(reports).toHaveLength(1);
-    expect(reports[0]!.rewards.itemNames).toHaveLength(2);
+    expect(reports).toHaveLength(2);
+    expect(
+      reports.find((report) => report.rewards.itemNames.length > 0)!.rewards.itemNames,
+    ).toHaveLength(2);
   });
 
   it("uses the same resolved suffix name in loot and combat reports", async () => {
     const suffixContent = contentWithRagefireSuffixes();
     const { clock, state, activity } = await setup(suffixContent);
-    clock.set(activity.nextSettlementAt);
+    clock.set(activity.nextSettlementAt + activity.runPlans[0]!.stages[1]!.durationSeconds * 1_000);
     await settleDueActivitiesCommand({ content: suffixContent, clock }).execute(state);
 
     const loot = getLootView(state, suffixContent);
@@ -148,6 +150,8 @@ describe("loot and combat report queries", () => {
     expect(loot.pending[0]!.item.randomSuffix?.stats).toEqual([
       expect.objectContaining({ id: "staminaPoints", value: "+1" }),
     ]);
-    expect(reports[0]!.rewards.itemNames).toEqual([loot.pending[0]!.item.name]);
+    expect(
+      reports.find((report) => report.rewards.itemNames.length > 0)!.rewards.itemNames,
+    ).toEqual([loot.pending[0]!.item.name]);
   });
 });

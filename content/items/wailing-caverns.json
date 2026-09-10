@@ -3,10 +3,12 @@
   "attribution": {
     "sources": [
       {
-        "kind": "design-decision",
-        "provider": "manual",
-        "verifiedAt": "2026-09-07",
-        "notes": "从 V1 wailing_caverns 装备定义原样迁移；真实属性将在阶段 5 导入。"
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/cn/items",
+        "verifiedAt": "2026-09-08",
+        "notes": "补齐当前正式路线 Boss 的全部可穿戴专属装备；属性、中文名与图标逐件核对 Wowhead Classic XML。"
       }
     ]
   },
@@ -332,6 +334,527 @@
         "gameVersion": "classic-2019-phase-6",
         "externalId": "6627",
         "url": "https://www.wowhead.com/classic/cn/item=6627&xml",
+        "verifiedAt": "2026-09-08"
+      }
+    },
+    {
+      "id": "5404",
+      "name": {
+        "zhCN": "坚硬的肩垫",
+        "enUS": "Serpent's Shoulders"
+      },
+      "itemLevel": 23,
+      "quality": "common",
+      "slot": "shoulder",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_08"
+      },
+      "description": {
+        "zhCN": "安娜科德拉的掉落。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 59
+        }
+      },
+      "requiredLevel": 18,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "5404",
+        "url": "https://www.wowhead.com/classic/cn/item=5404&xml",
+        "verifiedAt": "2026-09-08"
+      }
+    },
+    {
+      "id": "10410",
+      "name": {
+        "zhCN": "尖牙护腿",
+        "enUS": "Leggings of the Fang"
+      },
+      "itemLevel": 23,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_11"
+      },
+      "description": {
+        "zhCN": "考布莱恩领主的掉落。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 5,
+          "agilityPoints": 9,
+          "staminaPoints": 4
+        },
+        "defense": {
+          "armorPoints": 79
+        }
+      },
+      "requiredLevel": 18,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10410",
+        "url": "https://www.wowhead.com/classic/cn/item=10410&xml",
+        "verifiedAt": "2026-09-08",
+        "notes": "套装奖励不是单件常驻属性，未写入 stats。"
+      }
+    },
+    {
+      "id": "6465",
+      "name": {
+        "zhCN": "水蛇法袍",
+        "enUS": "Robe of the Moccasin"
+      },
+      "itemLevel": 22,
+      "quality": "uncommon",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_36"
+      },
+      "description": {
+        "zhCN": "考布莱恩领主的掉落。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 2,
+          "staminaPoints": 2,
+          "spiritPoints": 6
+        },
+        "defense": {
+          "armorPoints": 36
+        }
+      },
+      "requiredLevel": 17,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6465",
+        "url": "https://www.wowhead.com/classic/cn/item=6465&xml",
+        "verifiedAt": "2026-09-08"
+      }
+    },
+    {
+      "id": "6447",
+      "name": {
+        "zhCN": "破旧的龟壳盾牌",
+        "enUS": "Worn Turtle Shell Shield"
+      },
+      "itemLevel": 20,
+      "quality": "common",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shield_21"
+      },
+      "description": {
+        "zhCN": "克雷什的盾牌。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 412,
+          "blockValuePoints": 6
+        }
+      },
+      "requiredLevel": 15,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6447",
+        "url": "https://www.wowhead.com/classic/cn/item=6447&xml",
+        "verifiedAt": "2026-09-08"
+      }
+    },
+    {
+      "id": "6473",
+      "name": {
+        "zhCN": "尖牙铠甲",
+        "enUS": "Armor of the Fang"
+      },
+      "itemLevel": 23,
+      "quality": "uncommon",
+      "slot": "chest",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shirt_16"
+      },
+      "description": {
+        "zhCN": "皮萨斯领主的掉落。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 2,
+          "spiritPoints": 7
+        },
+        "defense": {
+          "armorPoints": 82
+        }
+      },
+      "requiredLevel": 18,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6473",
+        "url": "https://www.wowhead.com/classic/cn/item=6473&xml",
+        "verifiedAt": "2026-09-08",
+        "notes": "套装奖励不是单件常驻属性，未写入 stats。"
+      }
+    },
+    {
+      "id": "6448",
+      "name": {
+        "zhCN": "尾钉",
+        "enUS": "Tail Spike"
+      },
+      "itemLevel": 22,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": [
+          "warrior",
+          "hunter",
+          "rogue",
+          "priest",
+          "shaman",
+          "mage",
+          "warlock",
+          "druid"
+        ],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_shortblade_10"
+      },
+      "description": {
+        "zhCN": "斯卡姆的匕首。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 2,
+          "agilityPoints": 2
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 14,
+            "maximumPoints": 26
+          },
+          "speedSeconds": 1.8
+        }
+      },
+      "requiredLevel": 17,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6448",
+        "url": "https://www.wowhead.com/classic/cn/item=6448&xml",
+        "verifiedAt": "2026-09-08"
+      }
+    },
+    {
+      "id": "5970",
+      "name": {
+        "zhCN": "毒蛇手套",
+        "enUS": "Serpent Gloves"
+      },
+      "itemLevel": 23,
+      "quality": "uncommon",
+      "slot": "hands",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_19"
+      },
+      "description": {
+        "zhCN": "瑟芬迪斯领主的掉落。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 4,
+          "intellectPoints": 4
+        },
+        "defense": {
+          "armorPoints": 23
+        }
+      },
+      "requiredLevel": 18,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "5970",
+        "url": "https://www.wowhead.com/classic/cn/item=5970&xml",
+        "verifiedAt": "2026-09-08"
+      }
+    },
+    {
+      "id": "10411",
+      "name": {
+        "zhCN": "尖牙足垫",
+        "enUS": "Footpads of the Fang"
+      },
+      "itemLevel": 23,
+      "quality": "uncommon",
+      "slot": "feet",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_04"
+      },
+      "description": {
+        "zhCN": "瑟芬迪斯领主的掉落。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 4,
+          "staminaPoints": 4
+        },
+        "defense": {
+          "armorPoints": 57
+        }
+      },
+      "requiredLevel": 18,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10411",
+        "url": "https://www.wowhead.com/classic/cn/item=10411&xml",
+        "verifiedAt": "2026-09-08",
+        "notes": "套装奖励不是单件常驻属性，未写入 stats。"
+      }
+    },
+    {
+      "id": "6459",
+      "name": {
+        "zhCN": "野蛮锁靴",
+        "enUS": "Savage Trodders"
+      },
+      "itemLevel": 23,
+      "quality": "uncommon",
+      "slot": "feet",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_01"
+      },
+      "description": {
+        "zhCN": "瑟芬迪斯领主的掉落。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 6
+        },
+        "defense": {
+          "armorPoints": 122
+        }
+      },
+      "requiredLevel": 18,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6459",
+        "url": "https://www.wowhead.com/classic/cn/item=6459&xml",
+        "verifiedAt": "2026-09-08"
+      }
+    },
+    {
+      "id": "6630",
+      "name": {
+        "zhCN": "淡云圆盾",
+        "enUS": "Seedcloud Buckler"
+      },
+      "itemLevel": 25,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shield_10"
+      },
+      "description": {
+        "zhCN": "永生者沃尔丹的盾牌。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 6,
+          "spiritPoints": 3
+        },
+        "defense": {
+          "armorPoints": 566,
+          "blockValuePoints": 11
+        }
+      },
+      "requiredLevel": 20,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6630",
+        "url": "https://www.wowhead.com/classic/cn/item=6630&xml",
+        "verifiedAt": "2026-09-08"
+      }
+    },
+    {
+      "id": "6629",
+      "name": {
+        "zhCN": "蜘蛛斗篷",
+        "enUS": "Sporid Cape"
+      },
+      "itemLevel": 23,
+      "quality": "uncommon",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_17"
+      },
+      "description": {
+        "zhCN": "永生者沃尔丹的掉落。通用披风，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 3,
+          "spiritPoints": 2
+        },
+        "defense": {
+          "armorPoints": 18
+        }
+      },
+      "requiredLevel": 18,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6629",
+        "url": "https://www.wowhead.com/classic/cn/item=6629&xml",
+        "verifiedAt": "2026-09-08"
+      }
+    },
+    {
+      "id": "6461",
+      "name": {
+        "zhCN": "粘液覆盖的垫肩",
+        "enUS": "Slime-encrusted Pads"
+      },
+      "itemLevel": 27,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_05"
+      },
+      "description": {
+        "zhCN": "吞噬者穆坦努斯的掉落。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 34
+        }
+      },
+      "requiredLevel": 22,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6461",
+        "url": "https://www.wowhead.com/classic/cn/item=6461&xml",
+        "verifiedAt": "2026-09-08",
+        "notes": "每 5 秒恢复生命值的效果不属于当前常驻属性模型，未写入 stats。"
+      }
+    },
+    {
+      "id": "6463",
+      "name": {
+        "zhCN": "深渊之戒",
+        "enUS": "Deep Fathom Ring"
+      },
+      "itemLevel": 26,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_15"
+      },
+      "description": {
+        "zhCN": "吞噬者穆坦努斯的掉落。通用戒指，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 3,
+          "intellectPoints": 3,
+          "spiritPoints": 6
+        }
+      },
+      "requiredLevel": 21,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "6463",
+        "url": "https://www.wowhead.com/classic/cn/item=6463&xml",
         "verifiedAt": "2026-09-08"
       }
     }

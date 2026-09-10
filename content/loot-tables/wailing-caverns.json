@@ -8,7 +8,7 @@
         "gameVersion": "classic-2019-phase-6",
         "url": "https://raw.githubusercontent.com/Hoizame/AtlasLootClassic/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
         "verifiedAt": "2026-09-08",
-        "notes": "核对哀嚎洞穴路线 Boss 与所选经典旧世装备掉落关系。"
+        "notes": "核对哀嚎洞穴当前正式路线 Boss 的全部可穿戴专属装备及样本掉落权重。"
       },
       {
         "kind": "design-decision",
@@ -32,7 +32,11 @@
       "items": [
         {
           "itemId": "10412",
-          "weight": 1
+          "weight": 758
+        },
+        {
+          "itemId": "5404",
+          "weight": 3299
         }
       ]
     },
@@ -42,7 +46,15 @@
       "items": [
         {
           "itemId": "6460",
-          "weight": 1
+          "weight": 1814
+        },
+        {
+          "itemId": "10410",
+          "weight": 1824
+        },
+        {
+          "itemId": "6465",
+          "weight": 5520
         }
       ]
     },
@@ -51,8 +63,12 @@
       "guaranteedEquipmentDrops": 1,
       "items": [
         {
+          "itemId": "6447",
+          "weight": 4240
+        },
+        {
           "itemId": "13245",
-          "weight": 1
+          "weight": 865
         }
       ]
     },
@@ -62,7 +78,11 @@
       "items": [
         {
           "itemId": "6472",
-          "weight": 1
+          "weight": 2567
+        },
+        {
+          "itemId": "6473",
+          "weight": 4784
         }
       ]
     },
@@ -72,7 +92,11 @@
       "items": [
         {
           "itemId": "6449",
-          "weight": 1
+          "weight": 3742
+        },
+        {
+          "itemId": "6448",
+          "weight": 3731
         }
       ]
     },
@@ -82,7 +106,19 @@
       "items": [
         {
           "itemId": "6469",
-          "weight": 1
+          "weight": 1513
+        },
+        {
+          "itemId": "5970",
+          "weight": 1728
+        },
+        {
+          "itemId": "10411",
+          "weight": 1889
+        },
+        {
+          "itemId": "6459",
+          "weight": 2051
         }
       ]
     },
@@ -91,8 +127,16 @@
       "guaranteedEquipmentDrops": 1,
       "items": [
         {
+          "itemId": "6630",
+          "weight": 3147
+        },
+        {
           "itemId": "6631",
-          "weight": 1
+          "weight": 3115
+        },
+        {
+          "itemId": "6629",
+          "weight": 1602
         }
       ]
     },
@@ -101,8 +145,16 @@
       "guaranteedEquipmentDrops": 1,
       "items": [
         {
+          "itemId": "6461",
+          "weight": 2621
+        },
+        {
           "itemId": "6627",
-          "weight": 1
+          "weight": 2052
+        },
+        {
+          "itemId": "6463",
+          "weight": 2693
         }
       ]
     }

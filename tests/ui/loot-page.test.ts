@@ -56,7 +56,7 @@ describe("loot page", () => {
 
     const wrapper = mount(LootPage);
     const firstCard = wrapper.findAll(".loot-card")[0]!;
-    expect(wrapper.findAll(".loot-card")).toHaveLength(4);
+    expect(wrapper.findAll(".loot-card")).toHaveLength(2);
     for (const [index, loot] of game.loot!.pending.entries()) {
       expect(wrapper.findAll(".loot-card")[index]!.find(".item-icon").classes()).toContain(
         `quality-${loot.item.quality}`,
@@ -69,7 +69,7 @@ describe("loot page", () => {
 
     await firstCard.find("footer button").trigger("click");
     await flushPromises();
-    expect(game.loot?.pending).toHaveLength(3);
+    expect(game.loot?.pending).toHaveLength(1);
     expect(wrapper.text()).toContain("立即穿上");
 
     await wrapper.find(".page-heading button").trigger("click");

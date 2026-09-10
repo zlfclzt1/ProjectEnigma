@@ -2,14 +2,15 @@ import type { ContentRegistry } from "../src/content/registry";
 import type { LootTable } from "../src/content/schemas/dungeon";
 
 export type LootSourceCategory = "boss-drop" | "quest-reward" | "world-drop" | "design-placeholder";
+export type EncounterLootCategory = LootSourceCategory | "no-equipment";
 
 export interface LootSourceAuditRow {
   readonly dungeonId: string;
   readonly dungeonName: string;
   readonly encounterId: string;
   readonly encounterName: string;
-  readonly lootTableId: string;
-  readonly category: LootSourceCategory;
+  readonly lootTableId?: string;
+  readonly category: EncounterLootCategory;
   readonly explicitSourceType: boolean;
   readonly guaranteedEquipmentDrops: number;
   readonly items: readonly { readonly id: string; readonly name: string }[];
@@ -18,7 +19,7 @@ export interface LootSourceAuditRow {
 export interface LootSourceAudit {
   readonly rows: readonly LootSourceAuditRow[];
   readonly lootTableCounts: Readonly<Record<LootSourceCategory, number>>;
-  readonly encounterCounts: Readonly<Record<LootSourceCategory, number>>;
+  readonly encounterCounts: Readonly<Record<EncounterLootCategory, number>>;
   readonly distinctItemCounts: Readonly<Record<LootSourceCategory, number>>;
   readonly unusedLootTableIds: readonly string[];
 }
@@ -35,6 +36,11 @@ const CATEGORY_LABELS: Readonly<Record<LootSourceCategory, string>> = {
   "quest-reward": "任务奖励",
   "world-drop": "世界掉落",
   "design-placeholder": "设计占位",
+};
+
+const ENCOUNTER_CATEGORY_LABELS: Readonly<Record<EncounterLootCategory, string>> = {
+  ...CATEGORY_LABELS,
+  "no-equipment": "无装备掉落",
 };
 
 const CATEGORIES: readonly LootSourceCategory[] = [
@@ -58,6 +64,10 @@ function emptyCounts(): Record<LootSourceCategory, number> {
   };
 }
 
+function emptyEncounterCounts(): Record<EncounterLootCategory, number> {
+  return { ...emptyCounts(), "no-equipment": 0 };
+}
+
 export function auditLootSources(registry: ContentRegistry): LootSourceAudit {
   const rows: LootSourceAuditRow[] = [];
   const referencedLootTableIds = new Set<string>();
@@ -67,7 +77,17 @@ export function auditLootSources(registry: ContentRegistry): LootSourceAudit {
       const encounter = registry.encounterById.get(encounterId);
       if (!encounter) throw new Error(`副本 ${dungeon.id} 路线缺少首领 ${encounterId}`);
       if (!encounter.lootTableId) {
-        throw new Error(`首领 ${encounter.id} 没有装备掉落表，无法列出掉落来源`);
+        rows.push({
+          dungeonId: dungeon.id,
+          dungeonName: dungeon.name.zhCN,
+          encounterId: encounter.id,
+          encounterName: encounter.name.zhCN,
+          category: "no-equipment",
+          explicitSourceType: true,
+          guaranteedEquipmentDrops: 0,
+          items: [],
+        });
+        continue;
       }
       const lootTable = registry.lootTableById.get(encounter.lootTableId);
       if (!lootTable) throw new Error(`首领 ${encounter.id} 缺少掉落表 ${encounter.lootTableId}`);
@@ -91,13 +111,14 @@ export function auditLootSources(registry: ContentRegistry): LootSourceAudit {
   }
 
   const lootTableCounts = emptyCounts();
-  const encounterCounts = emptyCounts();
+  const encounterCounts = emptyEncounterCounts();
   const distinctItems = new Map<LootSourceCategory, Set<string>>(
     CATEGORIES.map((category) => [category, new Set<string>()]),
   );
   for (const table of registry.lootTables) lootTableCounts[classifyLootSource(table)] += 1;
   for (const row of rows) {
     encounterCounts[row.category] += 1;
+    if (row.category === "no-equipment") continue;
     for (const item of row.items) distinctItems.get(row.category)!.add(item.id);
   }
 
@@ -122,12 +143,20 @@ function categorySummary(
   return `- ${label}：${CATEGORIES.map((category) => `${CATEGORY_LABELS[category]} ${counts[category]}`).join("，")}。`;
 }
 
+function encounterCategorySummary(counts: Readonly<Record<EncounterLootCategory, number>>): string {
+  return `- Encounter 引用分类：${Object.entries(ENCOUNTER_CATEGORY_LABELS)
+    .map(([category, label]) => `${label} ${counts[category as EncounterLootCategory]}`)
+    .join("，")}。`;
+}
+
 function itemList(row: LootSourceAuditRow): string {
   return row.items.map((item) => `${item.id} ${item.name}`).join("、");
 }
 
 export function renderLootSourceAudit(audit: LootSourceAudit): string {
-  const migrationRows = audit.rows.filter((row) => row.category !== "boss-drop");
+  const migrationRows = audit.rows.filter(
+    (row) => row.category !== "boss-drop" && row.category !== "no-equipment",
+  );
   const migrationItems = new Map<string, string>();
   for (const row of migrationRows) {
     for (const item of row.items) migrationItems.set(item.id, item.name);
@@ -135,7 +164,7 @@ export function renderLootSourceAudit(audit: LootSourceAudit): string {
   const implicitBossTables = new Set(
     audit.rows
       .filter((row) => row.category === "boss-drop" && !row.explicitSourceType)
-      .map((row) => row.lootTableId),
+      .map((row) => row.lootTableId!),
   );
   const rowsByDungeon = new Map<string, LootSourceAuditRow[]>();
   for (const row of audit.rows) {
@@ -156,7 +185,7 @@ export function renderLootSourceAudit(audit: LootSourceAudit): string {
     `- 路线 Encounter：${audit.rows.length}。`,
     `- 掉落表：${Object.values(audit.lootTableCounts).reduce((sum, count) => sum + count, 0)}。`,
     categorySummary("掉落表分类", audit.lootTableCounts),
-    categorySummary("Encounter 引用分类", audit.encounterCounts),
+    encounterCategorySummary(audit.encounterCounts),
     categorySummary("不同装备分类", audit.distinctItemCounts),
     `- 未显式填写 \`sourceType\` 的 Boss 掉落表：${implicitBossTables.size}。`,
     `- 未被路线 Encounter 引用的掉落表：${audit.unusedLootTableIds.length === 0 ? "0" : audit.unusedLootTableIds.join("、")}。`,
@@ -170,7 +199,7 @@ export function renderLootSourceAudit(audit: LootSourceAudit): string {
           "",
           ...migrationRows.map(
             (row) =>
-              `- ${row.dungeonName} · ${row.encounterName}（${row.encounterId}）引用 ${CATEGORY_LABELS[row.category]}表 \`${row.lootTableId}\`。`,
+              `- ${row.dungeonName} · ${row.encounterName}（${row.encounterId}）引用 ${CATEGORY_LABELS[row.category as LootSourceCategory]}表 \`${row.lootTableId}\`。`,
           ),
           "",
           `待迁移装备：${[...migrationItems.entries()].map(([id, name]) => `${id} ${name}`).join("、")}。`,
@@ -188,7 +217,7 @@ export function renderLootSourceAudit(audit: LootSourceAudit): string {
       "|---|---|---|---:|---|",
       ...dungeonRows.map(
         (row) =>
-          `| ${row.encounterName}（${row.encounterId}） | ${row.lootTableId} | ${CATEGORY_LABELS[row.category]}${row.explicitSourceType ? "" : "（隐式）"} | ${row.guaranteedEquipmentDrops} | ${itemList(row)} |`,
+          `| ${row.encounterName}（${row.encounterId}） | ${row.lootTableId ?? "—"} | ${ENCOUNTER_CATEGORY_LABELS[row.category]}${row.category !== "no-equipment" && !row.explicitSourceType ? "（隐式）" : ""} | ${row.guaranteedEquipmentDrops} | ${itemList(row) || "—"} |`,
       ),
       "",
     );
@@ -197,7 +226,7 @@ export function renderLootSourceAudit(audit: LootSourceAudit): string {
   lines.push(
     "## 审计结论",
     "",
-    "- 当前只有 `dungeon_quest_rewards` 被显式标记为任务奖励来源。",
+    "- 当前没有任务奖励或世界掉落被路线 Encounter 当作 Boss 掉落引用。",
     "- 未标记 `sourceType` 的表暂按 Boss 专属掉落处理；后续完整度审计应要求新内容显式填写来源类型。",
     "- 本报告不能替代外部资料核对。任务 7.8 迁移前仍需按经典内容来源政策确认每件装备的真实来源。",
     "",

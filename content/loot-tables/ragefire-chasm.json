@@ -8,7 +8,7 @@
         "gameVersion": "classic-2019-phase-6",
         "url": "https://raw.githubusercontent.com/Hoizame/AtlasLootClassic/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
         "verifiedAt": "2026-09-08",
-        "notes": "核对饥饿者塔拉加曼与祈求者耶戈什的经典旧世装备掉落关系。"
+        "notes": "核对怒焰裂谷只有饥饿者塔拉加曼与祈求者耶戈什拥有专属装备池；奥格弗林特和巴扎兰没有专属装备池。"
       },
       {
         "kind": "design-decision",
@@ -19,8 +19,8 @@
     ],
     "balanceOverrides": [
       {
-        "fields": ["lootTables[].guaranteedEquipmentDrops", "ragefire_chasm_common_equipment"],
-        "reason": "放置玩法保证每个成功 Boss 至少掉落一件装备；没有专属池的路线节点使用任务奖励公共池。",
+        "fields": ["lootTables[].guaranteedEquipmentDrops"],
+        "reason": "放置玩法保证拥有专属装备池的成功 Boss 至少掉落一件装备。",
         "decidedAt": "2026-09-08"
       }
     ]
@@ -59,33 +59,6 @@
         {
           "itemId": "14147",
           "weight": 0.4085
-        }
-      ]
-    },
-    {
-      "id": "ragefire_chasm_common_equipment",
-      "guaranteedEquipmentDrops": 1,
-      "sourceType": "dungeon_quest_rewards",
-      "items": [
-        {
-          "itemId": "15452",
-          "weight": 1
-        },
-        {
-          "itemId": "15453",
-          "weight": 1
-        },
-        {
-          "itemId": "15449",
-          "weight": 1
-        },
-        {
-          "itemId": "15450",
-          "weight": 1
-        },
-        {
-          "itemId": "15451",
-          "weight": 1
         }
       ]
     }

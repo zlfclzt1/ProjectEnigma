@@ -22,7 +22,20 @@ function acquire(state: ReturnType<typeof createGameStateFixture>, ...itemIds: s
 describe("collection reward rules", () => {
   it("evaluates dungeon, set, and global progress from permanent discovery history", () => {
     const state = createGameStateFixture();
-    acquire(state, "10412", "6460", "13245", "6472");
+    acquire(
+      state,
+      "10412",
+      "6460",
+      "13245",
+      "6472",
+      "6449",
+      "6469",
+      "6631",
+      "6627",
+      "5404",
+      "10410",
+      "6465",
+    );
 
     expect(
       evaluateCollectionReward(
@@ -31,9 +44,9 @@ describe("collection reward rules", () => {
         asBrandedId<"CollectionRewardId">("prototype_wailing_caverns_half_catalog"),
       ),
     ).toMatchObject({
-      acquiredItemCount: 4,
-      totalItemCount: 8,
-      completionPercent: 50,
+      acquiredItemCount: 11,
+      totalItemCount: 21,
+      completionPercent: (11 / 21) * 100,
       conditionMet: true,
       claimed: false,
       claimable: true,
@@ -51,7 +64,7 @@ describe("collection reward rules", () => {
         content,
         asBrandedId<"CollectionRewardId">("prototype_global_catalog_ten_percent"),
       ),
-    ).toMatchObject({ acquiredItemCount: 4, totalItemCount: 34, conditionMet: true });
+    ).toMatchObject({ acquiredItemCount: 11, totalItemCount: 64, conditionMet: true });
   });
 
   it("derives management and display unlocks only from claimed reward ids", () => {

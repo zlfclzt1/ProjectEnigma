@@ -618,6 +618,52 @@ feat: add item collection catalog page
 feat: claim collection milestone rewards
 ```
 
+### 任务 3.7：修正怒焰裂谷 Boss 掉落语义
+
+目标：移除被错误挂到 Boss 身上的任务奖励，保留真实 Boss 专属装备池。
+
+验收：
+
+- 奥格弗林特和巴扎兰没有专属装备池。
+- 饥饿者塔拉加曼和祈求者耶戈什保留完整专属装备池与相对权重。
+- 任务奖励物品继续保留定义，但不通过 Boss 掉落。
+
+建议 commit：
+
+```text
+fix: correct ragefire chasm boss loot
+```
+
+### 任务 3.8：补齐哀嚎洞穴装备池
+
+目标：补齐当前正式路线 Boss 的全部可穿戴专属装备和相对权重。
+
+建议 commit：
+
+```text
+data: complete wailing caverns boss loot
+```
+
+### 任务 3.9：补齐死亡矿井装备池
+
+目标：补齐当前正式路线 Boss 的全部可穿戴专属装备，并正确区分斯尼德的伐木机与斯尼德。
+
+建议 commit：
+
+```text
+data: complete deadmines boss loot
+```
+
+### 任务 3.10：补齐影牙城堡装备池
+
+目标：补齐当前正式路线 Boss 的全部可穿戴专属装备和相对权重。
+
+建议 commit：
+
+```text
+data: complete shadowfang keep boss loot
+```
+
 阶段 3 门禁：
 
 - 玩家能在副本解锁后查看完整掉落规划。

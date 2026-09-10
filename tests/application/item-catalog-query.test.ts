@@ -58,21 +58,18 @@ describe("item collection catalog query", () => {
     expect(ragefire.unlocked).toBe(true);
     if (!ragefire.unlocked) throw new Error("Expected unlocked Ragefire Chasm");
     expect(ragefire.encounters).toHaveLength(4);
-    expect(ragefire.totalItemCount).toBe(11);
+    expect(ragefire.totalItemCount).toBe(6);
     expect(ragefire.acquiredItemCount).toBe(0);
     const oggleflint = ragefire.encounters.find((encounter) => encounter.id === "oggleflint")!;
-    expect(oggleflint.items).toHaveLength(5);
-    expect(oggleflint.items.map((item) => item.source.encounterName)).toEqual(
-      Array.from({ length: 5 }, () => "奥格弗林特"),
-    );
-    expect(oggleflint.items.map((item) => item.source.relativeWeight)).toEqual([1, 1, 1, 1, 1]);
-    expect(oggleflint.items.reduce((sum, item) => sum + item.source.perDropChance, 0)).toBeCloseTo(
+    expect(oggleflint.items).toEqual([]);
+    const taragaman = ragefire.encounters.find(
+      (encounter) => encounter.id === "taragaman_the_hungerer",
+    )!;
+    expect(taragaman.items).toHaveLength(3);
+    expect(taragaman.items.reduce((sum, item) => sum + item.source.perDropChance, 0)).toBeCloseTo(
       1,
     );
-    expect(
-      oggleflint.items.every((item) => Math.abs(item.source.encounterDropChance - 0.2) < 1e-9),
-    ).toBe(true);
-    expect(oggleflint.items.every((item) => item.acquisitionCount === 0)).toBe(true);
+    expect(taragaman.items.every((item) => item.acquisitionCount === 0)).toBe(true);
 
     expect(wailing).toEqual({
       id: "wailing_caverns",
@@ -85,7 +82,7 @@ describe("item collection catalog query", () => {
     ]);
     expect(view.globalProgress).toEqual({
       acquiredItemCount: 0,
-      totalItemCount: 34,
+      totalItemCount: 64,
       completionPercent: 0,
     });
     expect(JSON.stringify(view)).not.toContain("尖牙腰带");
@@ -93,41 +90,51 @@ describe("item collection catalog query", () => {
   });
 
   it("projects base-item discovery counts and possible and seen suffixes consistently", () => {
-    const suffixContent = contentWithPrototypeSuffix("15452");
+    const suffixContent = contentWithPrototypeSuffix("14148");
     const game = state();
-    acquire(game, suffixContent, "15452", 1);
-    acquire(game, suffixContent, "15452", 2, "prototype_of_readiness");
+    acquire(game, suffixContent, "14148", 1);
+    acquire(game, suffixContent, "14148", 2, "prototype_of_readiness");
 
     const view = getItemCatalogView(game, suffixContent);
     const ragefire = view.dungeons.find((dungeon) => dungeon.id === "ragefire_chasm")!;
     if (!ragefire.unlocked) throw new Error("Expected unlocked Ragefire Chasm");
     const item = ragefire.encounters
       .flatMap((encounter) => encounter.items)
-      .find((candidate) => candidate.id === "15452")!;
+      .find((candidate) => candidate.id === "14148")!;
 
-    expect(item.name).toBe("羽珠护腕");
+    expect(item.name).toBe("水晶腕轮");
     expect(item.acquired).toBe(true);
     expect(item.acquisitionCount).toBe(2);
     expect(item.possibleRandomSuffixes).toEqual([{ id: "prototype_of_readiness", name: "整备之" }]);
     expect(item.seenRandomSuffixes).toEqual([{ id: "prototype_of_readiness", name: "整备之" }]);
     expect(ragefire.acquiredItemCount).toBe(1);
-    expect(ragefire.completionPercent).toBeCloseTo(100 / 11);
+    expect(ragefire.completionPercent).toBeCloseTo(100 / 6);
   });
 
   it("computes dungeon, set, global, claimable, and claimed progress without Vue", () => {
     const game = state();
     game.guild.unlockedDungeonIds.push(asBrandedId<"DungeonId">("wailing_caverns"));
-    ["10412", "6460", "13245", "6472"].forEach((itemId, index) =>
-      acquire(game, content, itemId, index + 1),
-    );
+    [
+      "10412",
+      "6460",
+      "13245",
+      "6472",
+      "6449",
+      "6469",
+      "6631",
+      "6627",
+      "5404",
+      "10410",
+      "6465",
+    ].forEach((itemId, index) => acquire(game, content, itemId, index + 1));
 
     const view = getItemCatalogView(game, content);
     const wailing = view.dungeons.find((dungeon) => dungeon.id === "wailing_caverns")!;
     if (!wailing.unlocked) throw new Error("Expected unlocked Wailing Caverns");
     expect(wailing).toMatchObject({
-      acquiredItemCount: 4,
-      totalItemCount: 8,
-      completionPercent: 50,
+      acquiredItemCount: 11,
+      totalItemCount: 21,
+      completionPercent: (11 / 21) * 100,
     });
     expect(view.itemSets).toEqual([
       expect.objectContaining({
@@ -137,8 +144,8 @@ describe("item collection catalog query", () => {
         completionPercent: 100,
       }),
     ]);
-    expect(view.globalProgress).toMatchObject({ acquiredItemCount: 4, totalItemCount: 34 });
-    expect(view.globalProgress.completionPercent).toBeCloseTo((4 / 34) * 100);
+    expect(view.globalProgress).toMatchObject({ acquiredItemCount: 11, totalItemCount: 64 });
+    expect(view.globalProgress.completionPercent).toBeCloseTo((11 / 64) * 100);
     expect(view.rewards).toHaveLength(3);
     expect(view.rewards.every((reward) => reward.claimable)).toBe(true);
     expect(view.rewards.every((reward) => !reward.claimed)).toBe(true);

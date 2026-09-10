@@ -3,10 +3,12 @@
   "attribution": {
     "sources": [
       {
-        "kind": "design-decision",
-        "provider": "manual",
-        "verifiedAt": "2026-09-07",
-        "notes": "从 V1 deadmines 装备定义原样迁移；真实属性将在阶段 5 导入。"
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/cn/items",
+        "verifiedAt": "2026-09-08",
+        "notes": "补齐当前正式路线 Boss 的全部可穿戴专属装备；属性、中文名与图标逐件核对 Wowhead Classic XML。"
       }
     ]
   },
@@ -303,6 +305,548 @@
         "gameVersion": "classic-2019-phase-6",
         "externalId": "5198",
         "url": "https://www.wowhead.com/classic/cn/item=5198&xml",
+        "verifiedAt": "2026-09-08"
+      }
+    },
+    {
+      "id": "872",
+      "name": {
+        "zhCN": "切石者",
+        "enUS": "Rockslicer"
+      },
+      "itemLevel": 21,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_throwingaxe_01"
+      },
+      "description": {
+        "zhCN": "拉克佐的双手斧。双手武器统一占用主手栏位。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 7
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 36,
+            "maximumPoints": 55
+          },
+          "speedSeconds": 3.3
+        }
+      },
+      "requiredLevel": 16,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "872",
+        "url": "https://www.wowhead.com/classic/cn/item=872&xml",
+        "verifiedAt": "2026-09-08"
+      }
+    },
+    {
+      "id": "5195",
+      "name": {
+        "zhCN": "金斑手套",
+        "enUS": "Gold-flecked Gloves"
+      },
+      "itemLevel": 22,
+      "quality": "uncommon",
+      "slot": "hands",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_23"
+      },
+      "description": {
+        "zhCN": "斯尼德的掉落。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 4,
+          "intellectPoints": 3
+        },
+        "defense": {
+          "armorPoints": 22
+        }
+      },
+      "requiredLevel": 17,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "5195",
+        "url": "https://www.wowhead.com/classic/cn/item=5195&xml",
+        "verifiedAt": "2026-09-08"
+      }
+    },
+    {
+      "id": "1937",
+      "name": {
+        "zhCN": "电锯",
+        "enUS": "Buzz Saw"
+      },
+      "itemLevel": 21,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "mage", "warlock"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_24"
+      },
+      "description": {
+        "zhCN": "斯尼德的伐木机掉落的单手剑。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 2,
+          "agilityPoints": 2
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 17,
+            "maximumPoints": 33
+          },
+          "speedSeconds": 2.4
+        }
+      },
+      "requiredLevel": 16,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "1937",
+        "url": "https://www.wowhead.com/classic/cn/item=1937&xml",
+        "verifiedAt": "2026-09-08"
+      }
+    },
+    {
+      "id": "2169",
+      "name": {
+        "zhCN": "蜂鸣之刃",
+        "enUS": "Buzzer Blade"
+      },
+      "itemLevel": 21,
+      "quality": "common",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": [
+          "warrior",
+          "hunter",
+          "rogue",
+          "priest",
+          "shaman",
+          "mage",
+          "warlock",
+          "druid"
+        ],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_shortblade_05"
+      },
+      "description": {
+        "zhCN": "斯尼德的伐木机掉落的匕首。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 10,
+            "maximumPoints": 19
+          },
+          "speedSeconds": 1.5
+        }
+      },
+      "requiredLevel": 16,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "2169",
+        "url": "https://www.wowhead.com/classic/cn/item=2169&xml",
+        "verifiedAt": "2026-09-08"
+      }
+    },
+    {
+      "id": "1156",
+      "name": {
+        "zhCN": "豪华珠宝戒指",
+        "enUS": "Lavishly Jeweled Ring"
+      },
+      "itemLevel": 22,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_09"
+      },
+      "description": {
+        "zhCN": "基尔尼格的掉落。通用戒指，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 2,
+          "intellectPoints": 6
+        }
+      },
+      "requiredLevel": 17,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "1156",
+        "url": "https://www.wowhead.com/classic/cn/item=1156&xml",
+        "verifiedAt": "2026-09-08"
+      }
+    },
+    {
+      "id": "5192",
+      "name": {
+        "zhCN": "潜行者之刃",
+        "enUS": "Thief's Blade"
+      },
+      "itemLevel": 22,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "mage", "warlock"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_24"
+      },
+      "description": {
+        "zhCN": "重拳先生的单手剑。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 3
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 13,
+            "maximumPoints": 25
+          },
+          "speedSeconds": 1.7
+        }
+      },
+      "requiredLevel": 17,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "5192",
+        "url": "https://www.wowhead.com/classic/cn/item=5192&xml",
+        "verifiedAt": "2026-09-08"
+      }
+    },
+    {
+      "id": "5196",
+      "name": {
+        "zhCN": "重拳先生的战斧",
+        "enUS": "Smite's Reaver"
+      },
+      "itemLevel": 22,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_axe_22"
+      },
+      "description": {
+        "zhCN": "重拳先生的单手斧。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 2,
+          "staminaPoints": 1,
+          "spiritPoints": 1
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 14,
+            "maximumPoints": 28
+          },
+          "speedSeconds": 1.9
+        }
+      },
+      "requiredLevel": 17,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "5196",
+        "url": "https://www.wowhead.com/classic/cn/item=5196&xml",
+        "verifiedAt": "2026-09-08"
+      }
+    },
+    {
+      "id": "10403",
+      "name": {
+        "zhCN": "黑暗迪菲亚腰带",
+        "enUS": "Blackened Defias Belt"
+      },
+      "itemLevel": 22,
+      "quality": "uncommon",
+      "slot": "waist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_26"
+      },
+      "description": {
+        "zhCN": "绿皮队长的掉落。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 5
+        },
+        "defense": {
+          "armorPoints": 45
+        }
+      },
+      "requiredLevel": 17,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10403",
+        "url": "https://www.wowhead.com/classic/cn/item=10403&xml",
+        "verifiedAt": "2026-09-08",
+        "notes": "套装奖励不是单件常驻属性，未写入 stats。"
+      }
+    },
+    {
+      "id": "5200",
+      "name": {
+        "zhCN": "穿刺鱼叉",
+        "enUS": "Impaling Harpoon"
+      },
+      "itemLevel": 22,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter"],
+        "allowedRoles": ["dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_spear_07"
+      },
+      "description": {
+        "zhCN": "绿皮队长的长柄武器。双手武器统一占用主手栏位。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 7
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 27,
+            "maximumPoints": 42
+          },
+          "speedSeconds": 2.4
+        }
+      },
+      "requiredLevel": 20,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "5200",
+        "url": "https://www.wowhead.com/classic/cn/item=5200&xml",
+        "verifiedAt": "2026-09-08"
+      }
+    },
+    {
+      "id": "5193",
+      "name": {
+        "zhCN": "兄弟会斗篷",
+        "enUS": "Cape of the Brotherhood"
+      },
+      "itemLevel": 25,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_08"
+      },
+      "description": {
+        "zhCN": "艾德温·范克里夫的掉落。通用披风，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 6,
+          "staminaPoints": 3
+        },
+        "defense": {
+          "armorPoints": 21
+        }
+      },
+      "requiredLevel": 20,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "5193",
+        "url": "https://www.wowhead.com/classic/cn/item=5193&xml",
+        "verifiedAt": "2026-09-08"
+      }
+    },
+    {
+      "id": "5202",
+      "name": {
+        "zhCN": "海盗的罩衫",
+        "enUS": "Corsair's Overshirt"
+      },
+      "itemLevel": 24,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shirt_08"
+      },
+      "description": {
+        "zhCN": "艾德温·范克里夫的掉落。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 5,
+          "spiritPoints": 11
+        },
+        "defense": {
+          "armorPoints": 42
+        }
+      },
+      "requiredLevel": 19,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "5202",
+        "url": "https://www.wowhead.com/classic/cn/item=5202&xml",
+        "verifiedAt": "2026-09-08"
+      }
+    },
+    {
+      "id": "10399",
+      "name": {
+        "zhCN": "黑暗迪菲亚护甲",
+        "enUS": "Blackened Defias Armor"
+      },
+      "itemLevel": 24,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_leather_08"
+      },
+      "description": {
+        "zhCN": "艾德温·范克里夫的掉落。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 4,
+          "agilityPoints": 3,
+          "staminaPoints": 11
+        },
+        "defense": {
+          "armorPoints": 92
+        }
+      },
+      "requiredLevel": 19,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10399",
+        "url": "https://www.wowhead.com/classic/cn/item=10399&xml",
+        "verifiedAt": "2026-09-08",
+        "notes": "套装奖励不是单件常驻属性，未写入 stats。"
+      }
+    },
+    {
+      "id": "5197",
+      "name": {
+        "zhCN": "曲奇的吹火棍",
+        "enUS": "Cookie's Tenderizer"
+      },
+      "itemLevel": 21,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "priest", "shaman", "druid"],
+        "allowedRoles": ["tank", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_fabric_silk_02"
+      },
+      "description": {
+        "zhCN": "曲奇的单手锤。原始属性仅展示，战斗效果只使用物品等级。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 3
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 20,
+            "maximumPoints": 39
+          },
+          "speedSeconds": 2.8
+        }
+      },
+      "requiredLevel": 16,
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "5197",
+        "url": "https://www.wowhead.com/classic/cn/item=5197&xml",
         "verifiedAt": "2026-09-08"
       }
     }

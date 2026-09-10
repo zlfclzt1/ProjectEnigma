@@ -44,7 +44,7 @@ const itemIds = new Set(
 describe("dungeon content", () => {
   it("defines the current four dungeons and all route encounters", () => {
     expect(dungeons).toHaveLength(4);
-    expect(encounters).toHaveLength(27);
+    expect(encounters).toHaveLength(28);
     expect(dungeons.map((dungeon) => dungeon.id)).toEqual(
       expect.arrayContaining(["ragefire_chasm", "deadmines", "wailing_caverns", "shadowfang_keep"]),
     );

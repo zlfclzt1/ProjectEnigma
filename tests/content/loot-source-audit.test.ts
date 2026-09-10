@@ -8,36 +8,30 @@ import {
 } from "../../scripts/loot-source-audit";
 
 describe("loot source audit", () => {
-  it("classifies explicit source types and keeps legacy boss tables compatible", () => {
+  it("keeps legacy boss tables compatible", () => {
     const registry = loadBrowserContentRegistry();
     expect(
       classifyLootSource(registry.lootTableById.get(asBrandedId("taragaman_the_hungerer"))!),
     ).toBe("boss-drop");
-    expect(
-      classifyLootSource(
-        registry.lootTableById.get(asBrandedId("ragefire_chasm_common_equipment"))!,
-      ),
-    ).toBe("quest-reward");
   });
 
-  it("reports the current quest rewards assigned to two ragefire encounters", () => {
+  it("reports explicit no-equipment encounters without inventing loot", () => {
     const audit = auditLootSources(loadBrowserContentRegistry());
-    expect(audit.rows).toHaveLength(27);
+    expect(audit.rows).toHaveLength(28);
     expect(audit.lootTableCounts).toEqual({
-      "boss-drop": 25,
-      "quest-reward": 1,
+      "boss-drop": 26,
+      "quest-reward": 0,
       "world-drop": 0,
       "design-placeholder": 0,
     });
-    expect(audit.encounterCounts["quest-reward"]).toBe(2);
-    expect(audit.distinctItemCounts["quest-reward"]).toBe(5);
+    expect(audit.encounterCounts["no-equipment"]).toBe(2);
     expect(
-      audit.rows.filter((row) => row.category === "quest-reward").map((row) => row.encounterId),
+      audit.rows.filter((row) => row.category === "no-equipment").map((row) => row.encounterId),
     ).toEqual(["oggleflint", "bazzalan"]);
     expect(audit.unusedLootTableIds).toEqual([]);
 
     const report = renderLootSourceAudit(audit);
-    expect(report).toContain("15452 羽珠护腕");
-    expect(report).toContain("任务系统完成后，应移除这些掉落引用");
+    expect(report).toContain("无装备掉落 2");
+    expect(report).toContain("奥格弗林特（oggleflint） | — | 无装备掉落");
   });
 });

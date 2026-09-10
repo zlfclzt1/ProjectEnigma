@@ -83,7 +83,7 @@ describe("complete V2 gameplay flow", () => {
       ),
     ).toHaveLength(4);
     const lootBeforeDistribution = Object.keys(session.snapshot().pendingLoot).length;
-    expect(lootBeforeDistribution).toBeGreaterThanOrEqual(4);
+    expect(lootBeforeDistribution).toBeGreaterThanOrEqual(2);
 
     const distribution = await session.execute(autoAssignLootCommand(content));
     expect(distribution.status).toBe("committed");

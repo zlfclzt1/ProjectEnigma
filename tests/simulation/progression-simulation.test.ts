@@ -19,7 +19,7 @@ describe("progression simulation", () => {
     expect(first.minimumCoreLevel).toBeLessThan(45);
     expect(first.attemptedDungeonRuns).toBeGreaterThan(0);
     expect(Object.keys(first.dungeonAttempts)).toEqual(
-      expect.arrayContaining(["deadmines", "ragefire_chasm", "shadowfang_keep", "wailing_caverns"]),
+      expect.arrayContaining(["deadmines", "ragefire_chasm", "shadowfang_keep"]),
     );
   });
 

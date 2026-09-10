@@ -31,7 +31,6 @@
       "experienceShare": 0.2,
       "funds": 10,
       "firstKillBonus": 20,
-      "lootTableId": "ragefire_chasm_common_equipment",
       "mechanicIds": []
     },
     {
@@ -100,7 +99,6 @@
       "experienceShare": 0.25,
       "funds": 20,
       "firstKillBonus": 40,
-      "lootTableId": "ragefire_chasm_common_equipment",
       "mechanicIds": []
     }
   ]

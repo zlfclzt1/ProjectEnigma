@@ -3,10 +3,28 @@
   "attribution": {
     "sources": [
       {
-        "kind": "design-decision",
-        "provider": "manual",
-        "verifiedAt": "2026-09-07",
-        "notes": "从 V1 死亡矿井 Boss 定义原样迁移。"
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://raw.githubusercontent.com/Hoizame/AtlasLootClassic/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-08",
+        "notes": "确认斯尼德的伐木机与斯尼德是两个连续且拥有独立装备池的 Boss 节点。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": [
+          "dm_sneeds_shredder.stageSeconds",
+          "dm_sneed.stageSeconds",
+          "dm_sneeds_shredder.experienceShare",
+          "dm_sneed.experienceShare",
+          "dm_sneeds_shredder.funds",
+          "dm_sneed.funds",
+          "dm_sneeds_shredder.firstKillBonus",
+          "dm_sneed.firstKillBonus"
+        ],
+        "reason": "把原合并节点平均拆分为两个连续结算点，同时保持该段总耗时、经验、资金与首杀奖励不变。",
+        "decidedAt": "2026-09-08"
       }
     ]
   },
@@ -35,12 +53,12 @@
       "mechanicIds": []
     },
     {
-      "id": "dm_sneed",
+      "id": "dm_sneeds_shredder",
       "dungeonId": "deadmines",
       "name": {
-        "zhCN": "斯尼德的伐木机与斯尼德"
+        "zhCN": "斯尼德的伐木机"
       },
-      "stageSeconds": 210,
+      "stageSeconds": 105,
       "requirements": {
         "tank": 17.5,
         "healing": 17,
@@ -51,9 +69,32 @@
         "healing": 0.3,
         "damage": 0.35
       },
-      "experienceShare": 0.15,
-      "funds": 16,
-      "firstKillBonus": 32,
+      "experienceShare": 0.075,
+      "funds": 8,
+      "firstKillBonus": 16,
+      "lootTableId": "dm_sneeds_shredder",
+      "mechanicIds": []
+    },
+    {
+      "id": "dm_sneed",
+      "dungeonId": "deadmines",
+      "name": {
+        "zhCN": "斯尼德"
+      },
+      "stageSeconds": 105,
+      "requirements": {
+        "tank": 17.5,
+        "healing": 17,
+        "damage": 62
+      },
+      "weights": {
+        "tank": 0.35,
+        "healing": 0.3,
+        "damage": 0.35
+      },
+      "experienceShare": 0.075,
+      "funds": 8,
+      "firstKillBonus": 16,
       "lootTableId": "dm_sneed",
       "mechanicIds": []
     },

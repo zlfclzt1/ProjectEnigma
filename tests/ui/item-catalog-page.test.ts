@@ -66,7 +66,7 @@ describe("item catalog page", () => {
     const dungeonSelect = wrapper.findAll(".catalog-filters select")[0]!;
     await dungeonSelect.setValue("wailing_caverns");
     expect(wrapper.findAll(".dungeon-catalog")).toHaveLength(1);
-    expect(wrapper.findAll(".catalog-item")).toHaveLength(8);
+    expect(wrapper.findAll(".catalog-item")).toHaveLength(21);
 
     const acquiredSelect = wrapper.findAll(".catalog-filters select")[6]!;
     await acquiredSelect.setValue("acquired");
