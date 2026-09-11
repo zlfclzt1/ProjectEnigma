@@ -72,6 +72,7 @@ describe("ten-player expedition UI", () => {
 
     const wrapper = mount(DungeonsPage);
     await flushPromises();
+    await wrapper.get(".party-summary button").trigger("click");
     const ui = useUiStore();
     const sortSelect = wrapper.findAll(".party-builder .filter-bar select")[2]!;
     await sortSelect.setValue("role");

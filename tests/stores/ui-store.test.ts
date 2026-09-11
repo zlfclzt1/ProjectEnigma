@@ -18,6 +18,12 @@ describe("UI store", () => {
     store.togglePartyMember(memberId);
     store.toggleOptionalNode(optionalNodeId);
     store.selectRouteVariant(routeVariantId);
+    store.selectDungeon(asBrandedId<"DungeonId">("wailing_caverns"));
+    expect(store.selectedOptionalNodeIds).toEqual([]);
+    expect(store.selectedRouteVariantId).toBeNull();
+    store.selectDungeon(dungeonId);
+    expect(store.selectedOptionalNodeIds).toEqual([optionalNodeId]);
+    expect(store.selectedRouteVariantId).toBe(routeVariantId);
     store.setRequestedExpeditionRuns(3);
     store.selectMember(memberId);
     store.setMemberFilters({ classId, role: "tank", sortBy: "level" });

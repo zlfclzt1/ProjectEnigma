@@ -53,6 +53,11 @@ export interface DungeonPartyPreviewSummary {
   readonly message: string;
 }
 
+export interface DungeonRouteSelectionInput {
+  readonly optionalNodeIds: readonly DungeonRouteNodeId[];
+  readonly routeVariantId: DungeonRouteVariantId | null;
+}
+
 export interface PartyMemberOptionView {
   readonly id: MemberId;
   readonly name: string;
@@ -296,6 +301,7 @@ function dungeonPartyPreview(
   content: ContentRegistry,
   dungeon: ContentRegistry["dungeons"][number],
   selectedMemberIds: readonly MemberId[],
+  routeSelection?: DungeonRouteSelectionInput,
 ): DungeonPartyPreviewSummary | null {
   if (selectedMemberIds.length === 0) return null;
   if (selectedMemberIds.length < dungeon.members.minimum) {
@@ -317,9 +323,9 @@ function dungeonPartyPreview(
     content,
     dungeon.id,
     selectedMemberIds,
+    routeSelection?.optionalNodeIds ?? [],
     [],
-    [],
-    dungeon.routeVariants?.[0]?.id,
+    routeSelection?.routeVariantId ?? dungeon.routeVariants?.[0]?.id,
   );
   if (!result.ok) {
     return {
@@ -341,6 +347,7 @@ function dungeonOptions(
   state: GameState,
   content: ContentRegistry,
   selectedMemberIds: readonly MemberId[],
+  routeSelections: Readonly<Record<string, DungeonRouteSelectionInput>> = {},
 ): DungeonOptionView[] {
   return content.dungeons
     .map((dungeon) => ({
@@ -356,7 +363,13 @@ function dungeonOptions(
       clearCount: state.history.dungeonClearCounts[dungeon.id] ?? 0,
       unlocked: state.guild.unlockedDungeonIds.includes(dungeon.id),
       unlockHint: unlockHint(state, content, dungeon),
-      partyPreview: dungeonPartyPreview(state, content, dungeon, selectedMemberIds),
+      partyPreview: dungeonPartyPreview(
+        state,
+        content,
+        dungeon,
+        selectedMemberIds,
+        routeSelections[dungeon.id],
+      ),
     }))
     .sort(
       (left, right) =>
@@ -399,8 +412,9 @@ export function getDungeonPlanningView(
   requestedRuns: number,
   selectedOptionalNodeIds: readonly DungeonRouteNodeId[] = [],
   routeVariantId: DungeonRouteVariantId | null = null,
+  routeSelections: Readonly<Record<string, DungeonRouteSelectionInput>> = {},
 ): DungeonPlanningView {
-  const dungeons = dungeonOptions(state, content, selectedMemberIds);
+  const dungeons = dungeonOptions(state, content, selectedMemberIds, routeSelections);
   const selectedDungeon =
     dungeons.find((dungeon) => dungeon.id === dungeonId) ??
     dungeons.find((dungeon) => dungeon.unlocked) ??

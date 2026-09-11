@@ -64,6 +64,7 @@ describe("named dungeon route UI", () => {
     });
     const wrapper = mount(DungeonsPage);
     await flushPromises();
+    await wrapper.get(".party-summary button").trigger("click");
     for (const checkbox of wrapper.findAll('.member-options input[type="checkbox"]')) {
       await checkbox.setValue(true);
     }

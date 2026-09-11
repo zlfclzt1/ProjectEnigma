@@ -8,7 +8,6 @@ import PartyPreview from "../components/PartyPreview.vue";
 import RosterPresetBar from "../components/RosterPresetBar.vue";
 import RosterPresetManager from "../components/RosterPresetManager.vue";
 import RosterPresetNameDialog from "../components/RosterPresetNameDialog.vue";
-import RosterPresetReductionDialog from "../components/RosterPresetReductionDialog.vue";
 import type { DungeonRouteNodeId, MemberId, RosterPresetId } from "../../domain/shared/ids";
 
 const game = useGameStore();
@@ -17,7 +16,7 @@ const notice = ref("");
 const selectedPresetId = ref<RosterPresetId | null>(null);
 const namingOpen = ref(false);
 const managerOpen = ref(false);
-const reductionOpen = ref(false);
+const partyEditorOpen = ref(false);
 const planning = computed(() =>
   game.dungeonPlanning(
     ui.selectedDungeonId,
@@ -25,6 +24,7 @@ const planning = computed(() =>
     ui.requestedExpeditionRuns,
     ui.selectedOptionalNodeIds,
     ui.selectedRouteVariantId,
+    ui.routeSelections,
   ),
 );
 const selectedPreset = computed(
@@ -85,29 +85,20 @@ function appliedNotice(
   preset: NonNullable<typeof selectedPreset.value>,
   memberIds: readonly MemberId[],
 ): string {
-  const messages = [`已套用“${preset.name}”的 ${memberIds.length} 名成员。`];
+  const messages = [`已切换至“${preset.name}”，当前队伍 ${memberIds.length} 人。`];
   if (preset.activeCount) messages.push(`${preset.activeCount} 名成员正在参加其他活动。`);
   if (preset.departedCount) messages.push(`${preset.departedCount} 名已离队成员已跳过。`);
   return messages.join(" ");
 }
 
-function applyMembers(memberIds: readonly MemberId[]): void {
-  const preset = selectedPreset.value;
+function selectPreset(presetId: RosterPresetId | null): void {
+  selectedPresetId.value = presetId;
+  partyEditorOpen.value = false;
+  if (!presetId) return;
+  const preset = game.rosterPresets?.presets.find((entry) => entry.id === presetId);
   if (!preset) return;
-  ui.setPartyMembers(memberIds);
-  notice.value = appliedNotice(preset, memberIds);
-  reductionOpen.value = false;
-}
-
-function applyPreset(): void {
-  const preset = selectedPreset.value;
-  const maximumMembers = planning.value?.selectedDungeon?.maximumMembers ?? 0;
-  if (!preset || maximumMembers < 1) return;
-  if (preset.currentMemberIds.length > maximumMembers) {
-    reductionOpen.value = true;
-    return;
-  }
-  applyMembers(preset.currentMemberIds);
+  ui.setPartyMembers(preset.currentMemberIds);
+  notice.value = appliedNotice(preset, preset.currentMemberIds);
 }
 
 async function saveCurrent(name: string): Promise<void> {
@@ -163,125 +154,111 @@ async function deletePreset(presetId: RosterPresetId): Promise<void> {
         <p class="kicker">副本作战室</p>
         <h2>组织副本</h2>
       </div>
-      <label>
-        <span>连续挑战</span>
-        <select
-          :value="ui.requestedExpeditionRuns"
-          @change="
-            ui.setRequestedExpeditionRuns(Number(($event.target as HTMLSelectElement).value))
-          "
-        >
-          <option v-for="runs in planning.maximumRuns" :key="runs" :value="runs">
-            {{ runs }} 次
-          </option>
-        </select>
-      </label>
+      <div class="page-tools">
+        <label>
+          <span>连续挑战</span>
+          <select
+            :value="ui.requestedExpeditionRuns"
+            @change="
+              ui.setRequestedExpeditionRuns(Number(($event.target as HTMLSelectElement).value))
+            "
+          >
+            <option v-for="runs in planning.maximumRuns" :key="runs" :value="runs">
+              {{ runs }} 次
+            </option>
+          </select>
+        </label>
+        <details v-if="planning.runCapacityUpgrade" class="run-upgrade">
+          <summary>
+            <span>连刷上限 {{ planning.maximumRuns }} 次</span>
+            <em>{{ planning.runCapacityUpgrade.canPurchase ? "可升级" : "查看条件" }}</em>
+          </summary>
+          <div class="run-upgrade-body">
+            <div>
+              <strong>{{ planning.runCapacityUpgrade.name }}</strong>
+              <p>{{ planning.runCapacityUpgrade.description }}</p>
+              <small v-if="planning.runCapacityUpgrade.blockedReasons.length">
+                {{ planning.runCapacityUpgrade.blockedReasons.join("；") }}
+              </small>
+              <small v-else>里程碑与资金均已满足，可以扩充连续挑战上限。</small>
+            </div>
+            <button
+              type="button"
+              :disabled="game.commandPending || !planning.runCapacityUpgrade.canPurchase"
+              @click="purchaseRunCapacity"
+            >
+              升级至 {{ planning.runCapacityUpgrade.targetCapacity }} 次 ·
+              {{ planning.runCapacityUpgrade.cost }} G
+            </button>
+          </div>
+        </details>
+      </div>
     </header>
 
-    <DungeonSelector
-      :dungeons="planning.dungeons"
-      :selected-id="planning.selectedDungeon?.id ?? null"
-      :selected-member-levels="
-        planning.members
-          .filter((member) => ui.selectedPartyMemberIds.includes(member.id))
-          .map((member) => member.level)
-      "
-      @select="ui.selectDungeon"
+    <RosterPresetBar
+      v-if="game.rosterPresets"
+      :presets="game.rosterPresets.presets"
+      :selected-preset-id="selectedPresetId"
+      :selected-member-count="ui.selectedPartyMemberIds.length"
+      :maximum-presets="game.rosterPresets.maximumPresets"
+      :pending="game.commandPending"
+      @select="selectPreset"
+      @save-current="namingOpen = true"
+      @update-current="updateCurrent()"
+      @manage="managerOpen = true"
     />
     <p v-if="notice" class="notice">{{ notice }}</p>
-    <details v-if="questBrief?.entries.length" class="quest-summary">
-      <summary>
-        <span>
-          <strong>可推进 {{ questBrief.advanceCount }} 项调查</strong>
-          <small v-if="questBrief.developmentCacheItemCount">
-            · 首次开发战利品 ×{{ questBrief.developmentCacheItemCount }}
-          </small>
-          <small v-else>· 当前路线不会产生首次开发箱</small>
-        </span>
-        <em>开发 {{ questBrief.currentLevel }} 级</em>
-      </summary>
-      <div class="development-benefits">
-        <span>当前副本经验 +{{ questBrief.currentExperienceBonusPercent }}%</span>
-        <span>额外普通掉落 +{{ questBrief.currentExtraLootPercent }}%</span>
-        <span v-if="questBrief.firstDevelopmentCount">
-          本次全通可完成 {{ questBrief.firstDevelopmentCount }} 项首次开发
-        </span>
-      </div>
-      <section class="commission-preview">
-        <article v-for="entry in questBrief.entries" :key="entry.questId">
-          <header>
-            <strong>{{ entry.name }}</strong>
-            <span :class="{ covered: entry.routeCovered }">
-              {{ entry.routeCovered ? (entry.willComplete ? "预计完成" : "可推进") : "路线未覆盖" }}
-            </span>
-          </header>
-          <p>{{ entry.description }}</p>
-          <small>{{ entry.objectiveLabel }} · {{ entry.progressLabel }}</small>
-          <small
-            v-if="!entry.routeCovered && entry.requiredOptionalBossNames.length"
-            class="route-hint"
-          >
-            勾选可选首领 {{ entry.requiredOptionalBossNames.join("、") }} 后可推进
-          </small>
-          <details v-if="entry.rewardItems.length" class="reward-pool">
-            <summary>查看开发装备池</summary>
-            <span v-for="item in entry.rewardItems" :key="item.id">
-              {{ item.name }} · 装等 {{ item.itemLevel }}
-            </span>
-          </details>
-        </article>
-      </section>
-    </details>
-    <aside v-if="planning.runCapacityUpgrade" class="run-upgrade">
+
+    <section class="party-summary panel">
       <div>
-        <strong>{{ planning.runCapacityUpgrade.name }}</strong>
-        <p>{{ planning.runCapacityUpgrade.description }}</p>
-        <small v-if="planning.runCapacityUpgrade.blockedReasons.length">
-          解锁五连刷尚需：{{ planning.runCapacityUpgrade.blockedReasons.join("；") }}
-        </small>
-        <small v-else>里程碑与资金均已满足，可以扩充连续挑战上限。</small>
+        <span class="summary-label">当前队伍</span>
+        <strong v-if="ui.selectedPartyMemberIds.length">
+          {{ ui.selectedPartyMemberIds.length }} 人
+        </strong>
+        <strong v-else class="muted">尚未选择成员</strong>
+        <div v-if="ui.selectedPartyMemberIds.length" class="member-chips">
+          <span
+            v-for="member in planning.members.filter((entry) =>
+              ui.selectedPartyMemberIds.includes(entry.id),
+            )"
+            :key="member.id"
+          >
+            {{ member.name }}
+          </span>
+        </div>
       </div>
-      <button
-        type="button"
-        :disabled="game.commandPending || !planning.runCapacityUpgrade.canPurchase"
-        @click="purchaseRunCapacity"
-      >
-        {{
-          `升级至 ${planning.runCapacityUpgrade.targetCapacity} 次 · ${planning.runCapacityUpgrade.cost} G`
-        }}
+      <button type="button" class="quiet" @click="partyEditorOpen = !partyEditorOpen">
+        {{ partyEditorOpen ? "收起成员编辑" : "调整成员" }}
       </button>
-    </aside>
+    </section>
+
+    <PartyBuilder
+      v-if="partyEditorOpen"
+      :members="planning.members"
+      :selected-member-ids="ui.selectedPartyMemberIds"
+      :maximum-members="planning.selectedDungeon?.maximumMembers ?? 0"
+      :class-id="ui.partyFilters.classId"
+      :role="ui.partyFilters.role"
+      :sort-by="ui.partyFilters.sortBy"
+      :class-options="planning.classOptions"
+      :role-options="planning.roleOptions"
+      @toggle="ui.togglePartyMember"
+      @update:class-id="ui.setPartyFilters({ classId: $event })"
+      @update:role="ui.setPartyFilters({ role: $event })"
+      @update:sort-by="ui.setPartyFilters({ sortBy: $event })"
+    />
 
     <div class="planning-grid">
-      <div class="party-column">
-        <RosterPresetBar
-          v-if="game.rosterPresets"
-          :presets="game.rosterPresets.presets"
-          :selected-preset-id="selectedPresetId"
-          :selected-member-count="ui.selectedPartyMemberIds.length"
-          :maximum-presets="game.rosterPresets.maximumPresets"
-          :pending="game.commandPending"
-          @select="selectedPresetId = $event"
-          @apply="applyPreset"
-          @save-current="namingOpen = true"
-          @update-current="updateCurrent()"
-          @manage="managerOpen = true"
-        />
-        <PartyBuilder
-          :members="planning.members"
-          :selected-member-ids="ui.selectedPartyMemberIds"
-          :maximum-members="planning.selectedDungeon?.maximumMembers ?? 0"
-          :class-id="ui.partyFilters.classId"
-          :role="ui.partyFilters.role"
-          :sort-by="ui.partyFilters.sortBy"
-          :class-options="planning.classOptions"
-          :role-options="planning.roleOptions"
-          @toggle="ui.togglePartyMember"
-          @update:class-id="ui.setPartyFilters({ classId: $event })"
-          @update:role="ui.setPartyFilters({ role: $event })"
-          @update:sort-by="ui.setPartyFilters({ sortBy: $event })"
-        />
-      </div>
+      <DungeonSelector
+        :dungeons="planning.dungeons"
+        :selected-id="planning.selectedDungeon?.id ?? null"
+        :selected-member-levels="
+          planning.members
+            .filter((member) => ui.selectedPartyMemberIds.includes(member.id))
+            .map((member) => member.level)
+        "
+        @select="ui.selectDungeon"
+      />
       <PartyPreview
         :dungeon="planning.selectedDungeon"
         :preview="planning.preview"
@@ -290,6 +267,7 @@ async function deletePreset(presetId: RosterPresetId): Promise<void> {
         :rare-routes="planning.rareRoutes"
         :route-variants="planning.routeVariants"
         :quest-route-warnings="planning.questRouteWarnings"
+        :quest-brief="questBrief"
         :issues="planning.issues"
         :requested-runs="ui.requestedExpeditionRuns"
         :can-start="planning.canStart"
@@ -321,13 +299,6 @@ async function deletePreset(presetId: RosterPresetId): Promise<void> {
       @update="updateFromManager"
       @rename="renamePreset"
       @delete="deletePreset"
-    />
-    <RosterPresetReductionDialog
-      :open="reductionOpen"
-      :preset="selectedPreset"
-      :maximum-members="planning.selectedDungeon?.maximumMembers ?? 0"
-      @apply="applyMembers"
-      @close="reductionOpen = false"
     />
   </section>
 </template>
@@ -379,146 +350,153 @@ select {
   background: #112016;
   font-size: 0.72rem;
 }
-.quest-summary {
-  padding: 11px 13px;
-  border: 1px solid #66502d;
-  border-radius: 7px;
-  background: #1a170f;
+.planning-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.86fr) minmax(0, 1.34fr);
+  align-items: start;
+  gap: 12px;
 }
-.quest-summary > summary {
+.page-tools {
+  display: flex;
+  align-items: end;
+  gap: 10px;
+}
+.page-tools > label {
+  display: grid;
+  gap: 4px;
+  color: #8f8575;
+  font-size: 0.68rem;
+}
+.run-upgrade {
+  min-width: 0;
+  padding: 0;
+  border-color: #51452f;
+  background: #141411;
+}
+.run-upgrade > summary {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 10px;
+  color: #c9b17b;
+  font-size: 0.63rem;
+  cursor: pointer;
+  list-style: none;
+}
+.run-upgrade > summary::-webkit-details-marker {
+  display: none;
+}
+.run-upgrade > summary em {
+  color: #8fb17c;
+  font-size: 0.56rem;
+  font-style: normal;
+}
+.run-upgrade-body {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  cursor: pointer;
+  padding: 10px;
+  border-top: 1px solid #3c3529;
 }
-.quest-summary > summary span {
-  color: #9e907c;
-}
-.quest-summary > summary small {
-  color: #b08d50;
-}
-.quest-summary > summary em {
-  color: #d1aa5b;
-  font-size: 0.68rem;
-  font-style: normal;
-}
-.quest-summary strong {
-  color: #d7bd87;
-}
-.quest-summary p {
-  margin: 3px 0 0;
-  color: #958877;
-  font-size: 0.7rem;
-}
-.development-benefits {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 10px;
-}
-.development-benefits span {
-  padding: 5px 7px;
-  border: 1px solid #4d432f;
-  color: #bba77f;
-  background: #11100c;
-  font-size: 0.64rem;
-}
-.commission-preview {
-  display: grid;
-  gap: 7px;
-  margin-top: 9px;
-}
-.commission-preview article {
-  padding: 9px 10px;
-  border: 1px solid #3c3529;
-  background: #0c0e0e;
-}
-.commission-preview header {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-.commission-preview header span {
-  color: #8f7f65;
-  font-size: 0.62rem;
-}
-.commission-preview header span.covered {
-  color: #8fb17c;
-}
-.commission-preview > article > small {
-  display: block;
-  margin-top: 4px;
-  color: #837969;
-  font-size: 0.62rem;
-}
-.commission-preview .route-hint {
-  color: #c0964c;
-}
-.reward-pool {
-  margin-top: 7px;
-  color: #ae8a4a;
-  font-size: 0.63rem;
-}
-.reward-pool span {
-  display: inline-block;
-  margin: 6px 6px 0 0;
-  padding: 4px 6px;
-  color: #bfb096;
-  background: #17140f;
-}
-.run-upgrade {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 12px 14px;
-  border: 1px solid #4a4133;
-  border-radius: 7px;
-  background: #141411;
-}
-.run-upgrade strong {
+.run-upgrade-body strong {
   color: #d9c396;
+  font-size: 0.68rem;
 }
-.run-upgrade p {
+.run-upgrade-body p {
   margin: 3px 0;
   color: #918777;
-  font-size: 0.72rem;
+  font-size: 0.63rem;
 }
-.run-upgrade small {
+.run-upgrade-body small {
   color: #b08e67;
+  font-size: 0.58rem;
 }
-.run-upgrade button {
+.run-upgrade-body button {
   flex: 0 0 auto;
-  padding: 9px 12px;
+  padding: 7px 9px;
   border: 1px solid #9b793f;
   border-radius: 6px;
   color: #1b160f;
   background: #c99b4d;
+  font-size: 0.62rem;
   font-weight: 800;
   cursor: pointer;
 }
-.run-upgrade button:disabled {
+.run-upgrade-body button:disabled {
   color: #777066;
   background: #282620;
   cursor: not-allowed;
 }
-.planning-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(300px, 0.8fr);
-  align-items: start;
+.panel {
+  min-width: 0;
+  padding: 14px 16px;
+  border: 1px solid #37332c;
+  border-radius: 8px;
+  background: #111416;
+}
+.party-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 12px;
 }
-.party-column {
-  display: grid;
-  gap: 12px;
-  min-width: 0;
+.summary-label {
+  display: block;
+  margin-bottom: 3px;
+  color: #8f8575;
+  font-size: 0.6rem;
+}
+.party-summary strong {
+  color: #e2c57f;
+  font-size: 0.8rem;
+}
+.party-summary strong.muted {
+  color: #8f8575;
+  font-weight: 500;
+}
+.member-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 7px;
+}
+.member-chips span {
+  padding: 3px 6px;
+  border: 1px solid #40382c;
+  border-radius: 4px;
+  color: #b7aa91;
+  background: #0b0e10;
+  font-size: 0.58rem;
+}
+.party-summary button.quiet {
+  flex: 0 0 auto;
+  padding: 8px 10px;
+  border: 1px solid #514a3d;
+  border-radius: 6px;
+  color: #cdbb98;
+  background: #1b1b18;
+  cursor: pointer;
 }
 @media (max-width: 820px) {
   .planning-grid {
     grid-template-columns: 1fr;
   }
-  .quest-summary {
+  .page-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .page-tools {
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+  .page-tools > label {
+    flex: 1 1 150px;
+  }
+  .run-upgrade {
+    flex: 1 1 100%;
+  }
+  .run-upgrade-body {
     align-items: stretch;
     flex-direction: column;
   }

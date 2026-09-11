@@ -371,6 +371,9 @@ export const useGameStore = defineStore("game", () => {
     requestedRuns: number,
     selectedOptionalNodeIds: readonly import("../domain/shared/ids").DungeonRouteNodeId[] = [],
     routeVariantId: import("../domain/shared/ids").DungeonRouteVariantId | null = null,
+    routeSelections: Readonly<
+      Record<string, import("../application/queries/get-dungeons-view").DungeonRouteSelectionInput>
+    > = {},
   ) {
     return stateSnapshot.value && content
       ? getDungeonPlanningView(
@@ -381,6 +384,7 @@ export const useGameStore = defineStore("game", () => {
           requestedRuns,
           selectedOptionalNodeIds,
           routeVariantId,
+          routeSelections,
         )
       : null;
   }

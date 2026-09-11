@@ -29,27 +29,21 @@ describe("dungeons page", () => {
     );
     const wrapper = mount(DungeonsPage);
     await flushPromises();
+    await wrapper.get(".party-summary button").trigger("click");
 
-    expect(wrapper.get(".current-dungeon").text()).toContain("怒焰裂谷");
-    expect(wrapper.findAll(".dungeon-selector .dungeon-option")).toHaveLength(0);
-    await wrapper.get(".switch-button").trigger("click");
-    expect(wrapper.get('[role="dialog"]').text()).toContain("选择副本");
+    expect(wrapper.get(".dungeon-selector").text()).toContain("怒焰裂谷");
+    expect(wrapper.findAll(".dungeon-selector .dungeon-option")).toHaveLength(1);
     expect(wrapper.findAll(".dungeon-option")).toHaveLength(1);
     await wrapper.get(".section-toggle").trigger("click");
     expect(wrapper.findAll(".dungeon-option")).toHaveLength(19);
     await wrapper.findAll(".dungeon-option")[1]!.trigger("click");
-    expect(wrapper.get(".dungeon-detail").text()).toContain("哀嚎洞穴");
-    await wrapper.get(".confirm-button").trigger("click");
     expect(useUiStore().selectedDungeonId).toBe("wailing_caverns");
-    expect(wrapper.get(".current-dungeon").text()).toContain("哀嚎洞穴");
 
-    await wrapper.get(".switch-button").trigger("click");
     await wrapper.get('.selector-filters input[type="search"]').setValue("黑石深渊");
-    expect(wrapper.get(".result-count").text()).toBe("2 个结果");
+    expect(wrapper.get(".selector-heading").text()).toContain("2 个副本");
     expect(wrapper.findAll(".dungeon-option")).toHaveLength(2);
     await wrapper.get('.selector-filters input[type="search"]').setValue("");
     await wrapper.get(".dungeon-section .dungeon-option").trigger("click");
-    await wrapper.get(".confirm-button").trigger("click");
     expect(useUiStore().selectedDungeonId).toBe("ragefire_chasm");
 
     const target = game.dungeonPlanning(useUiStore().selectedDungeonId, [], 1)!.members[0]!;
@@ -70,10 +64,8 @@ describe("dungeons page", () => {
     for (const checkbox of wrapper.findAll('.member-options input[type="checkbox"]')) {
       await checkbox.setValue(true);
     }
-    await wrapper.get(".switch-button").trigger("click");
-    expect(wrapper.get(".party-preview-badge.ready").text()).toMatch(/基础全通 \d+\.\d{2}%/);
-    expect(wrapper.get(".party-preview-detail").text()).toMatch(/当前阵容 · 基础全通\d+\.\d{2}%/);
-    await wrapper.get(".close-button").trigger("click");
+    expect(wrapper.get(".success-badge.ready").text()).toMatch(/\d+\.\d{2}%/);
+    expect(wrapper.get(".party-preview").text()).toMatch(/全通 \d+\.\d{2}%/);
     const runsSelect = wrapper.find(".page-heading select");
     await runsSelect.setValue("2");
 
@@ -83,7 +75,7 @@ describe("dungeons page", () => {
     expect(wrapper.findAll(".boss-route li")).toHaveLength(4);
     const startButton = wrapper.find(".party-preview > button");
     expect(startButton.attributes("disabled")).toBeUndefined();
-    expect(wrapper.get(".quest-summary").text()).toContain("可推进 2 项调查");
+    expect(wrapper.get(".quest-summary").text()).toContain("调查 2 项可推进");
     expect(wrapper.get(".quest-summary").text()).toContain("首次开发战利品");
 
     await startButton.trigger("click");
@@ -262,11 +254,12 @@ describe("dungeons page", () => {
     );
     const wrapper = mount(DungeonsPage);
     await flushPromises();
+    await wrapper.get(".party-summary button").trigger("click");
     const ui = useUiStore();
     const checkboxes = wrapper.findAll<HTMLInputElement>('.party-builder input[type="checkbox"]');
     for (const checkbox of checkboxes) await checkbox.setValue(true);
 
-    await wrapper.get(".preset-actions button:nth-of-type(2)").trigger("click");
+    await wrapper.get(".preset-actions button:nth-of-type(1)").trigger("click");
     const nameDialog = wrapper.get(".name-dialog");
     expect(nameDialog.get("input").element.value).toBe("固定队伍 1");
     await nameDialog.get("input").setValue("怒焰常驻队");
@@ -277,12 +270,11 @@ describe("dungeons page", () => {
     expect(game.rosterPresets?.presets[0]?.members).toHaveLength(5);
     ui.clearParty();
     await wrapper.get(".preset-actions select").setValue(game.rosterPresets!.presets[0]!.id);
-    await wrapper.get(".preset-actions button:nth-of-type(1)").trigger("click");
     expect(ui.selectedPartyMemberIds).toHaveLength(5);
-    expect(wrapper.text()).toContain("已套用“怒焰常驻队”");
+    expect(wrapper.text()).toContain("已切换至“怒焰常驻队”");
   });
 
-  it("opens a reduction picker instead of silently truncating an oversized fixed team", async () => {
+  it("keeps an oversized fixed team intact and surfaces the start issue", async () => {
     const game = useGameStore();
     await game.initialize(() =>
       loadOrCreateV2Client({
@@ -316,19 +308,9 @@ describe("dungeons page", () => {
     const wrapper = mount(DungeonsPage);
     await flushPromises();
     await wrapper.get(".preset-actions select").setValue(created.result.id);
-    await wrapper.get(".preset-actions button:nth-of-type(1)").trigger("click");
-
-    const reduction = wrapper.get(".reduction");
-    expect(reduction.text()).toContain("选择本次参战成员");
-    expect(reduction.findAll('.members input[type="checkbox"]')).toHaveLength(10);
-    for (const checkbox of reduction
-      .findAll<HTMLInputElement>('.members input[type="checkbox"]')
-      .slice(0, 5)) {
-      await checkbox.setValue(true);
-    }
-    expect(reduction.text()).toContain("5 / 5 人");
-    await reduction.findAll("footer button")[1]!.trigger("click");
-    expect(useUiStore().selectedPartyMemberIds).toHaveLength(5);
-    expect(wrapper.find(".reduction").exists()).toBe(false);
+    expect(useUiStore().selectedPartyMemberIds).toHaveLength(10);
+    expect(wrapper.get(".party-summary").text()).toContain("10 人");
+    expect(wrapper.get(".party-preview .issues").text()).toContain("最多选择 5 名成员");
+    expect(wrapper.get(".party-preview > button").attributes("disabled")).toBeDefined();
   });
 });

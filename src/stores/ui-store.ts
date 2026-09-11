@@ -22,6 +22,11 @@ export interface UiModal {
   readonly entityId?: string;
 }
 
+interface DungeonRouteSelection {
+  readonly optionalNodeIds: readonly DungeonRouteNodeId[];
+  readonly routeVariantId: DungeonRouteVariantId | null;
+}
+
 const EMPTY_FILTERS: MemberFilters = { classId: null, role: null, sortBy: "default" };
 
 export const useUiStore = defineStore("ui", () => {
@@ -31,6 +36,7 @@ export const useUiStore = defineStore("ui", () => {
   const selectedPartyMemberIds = ref<MemberId[]>([]);
   const selectedOptionalNodeIds = ref<DungeonRouteNodeId[]>([]);
   const selectedRouteVariantId = ref<DungeonRouteVariantId | null>(null);
+  const routeSelections = ref<Record<string, DungeonRouteSelection>>({});
   const requestedExpeditionRuns = ref(1);
   const selectedMemberId = ref<MemberId | null>(null);
   const activeModal = ref<UiModal | null>(null);
@@ -46,24 +52,40 @@ export const useUiStore = defineStore("ui", () => {
 
   function selectDungeon(dungeonId: DungeonId | null): void {
     if (selectedDungeonId.value !== dungeonId) {
-      selectedOptionalNodeIds.value = [];
-      selectedRouteVariantId.value = null;
+      const selection = dungeonId ? routeSelections.value[dungeonId] : undefined;
+      selectedOptionalNodeIds.value = [...(selection?.optionalNodeIds ?? [])];
+      selectedRouteVariantId.value = selection?.routeVariantId ?? null;
     }
     selectedDungeonId.value = dungeonId;
   }
 
+  function rememberRouteSelection(): void {
+    const dungeonId = selectedDungeonId.value;
+    if (!dungeonId) return;
+    routeSelections.value = {
+      ...routeSelections.value,
+      [dungeonId]: {
+        optionalNodeIds: [...selectedOptionalNodeIds.value],
+        routeVariantId: selectedRouteVariantId.value,
+      },
+    };
+  }
+
   function selectRouteVariant(routeVariantId: DungeonRouteVariantId | null): void {
     selectedRouteVariantId.value = routeVariantId;
+    rememberRouteSelection();
   }
 
   function toggleOptionalNode(nodeId: DungeonRouteNodeId): void {
     selectedOptionalNodeIds.value = selectedOptionalNodeIds.value.includes(nodeId)
       ? selectedOptionalNodeIds.value.filter((id) => id !== nodeId)
       : [...selectedOptionalNodeIds.value, nodeId];
+    rememberRouteSelection();
   }
 
   function setOptionalNodes(nodeIds: readonly DungeonRouteNodeId[]): void {
     selectedOptionalNodeIds.value = [...new Set(nodeIds)];
+    rememberRouteSelection();
   }
 
   function togglePartyMember(memberId: MemberId): void {
@@ -113,6 +135,7 @@ export const useUiStore = defineStore("ui", () => {
     selectedPartyMemberIds,
     selectedOptionalNodeIds,
     selectedRouteVariantId,
+    routeSelections,
     requestedExpeditionRuns,
     selectedMemberId,
     activeModal,

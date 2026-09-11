@@ -13,7 +13,6 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   select: [presetId: RosterPresetId | null];
-  apply: [];
   saveCurrent: [];
   updateCurrent: [];
   manage: [];
@@ -29,7 +28,7 @@ const selectedPreset = computed(
     <div class="preset-heading">
       <div>
         <h3>固定队伍</h3>
-        <p>快速套用常用阵容；完整编辑器支持 1–40 人。</p>
+        <p>点击队伍即可切换当前阵容。</p>
       </div>
       <button type="button" class="quiet" @click="emit('manage')">管理固定队伍</button>
     </div>
@@ -49,9 +48,6 @@ const selectedPreset = computed(
           {{ preset.name }}（{{ preset.members.length }} 人）
         </option>
       </select>
-      <button type="button" :disabled="pending || !selectedPreset" @click="emit('apply')">
-        套用
-      </button>
       <button
         type="button"
         :disabled="pending || selectedMemberCount === 0 || presets.length >= maximumPresets"
