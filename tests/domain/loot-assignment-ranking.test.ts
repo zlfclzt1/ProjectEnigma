@@ -8,10 +8,8 @@ import { asBrandedId } from "../../src/domain/shared/ids";
 function candidate(overrides: Partial<LootAssignmentCandidate> = {}): LootAssignmentCandidate {
   return {
     memberId: asBrandedId<"MemberId">("member_1"),
-    wishlistMatch: "none",
     primaryResponsibilityDelta: 1,
-    currentSlotItemLevel: 20,
-    joinedAt: 100,
+    primaryResponsibilityPercent: 5,
     replacementSlot: "back",
     displacedItemInstanceIds: [],
     reasons: [],
@@ -20,31 +18,12 @@ function candidate(overrides: Partial<LootAssignmentCandidate> = {}): LootAssign
 }
 
 describe("loot assignment ranking", () => {
-  it("applies each tie-break level in order", () => {
-    const base = candidate();
-    expect(
-      compareLootAssignmentCandidates(candidate({ wishlistMatch: "preferred" }), base),
-    ).toBeLessThan(0);
+  it("sorts by main-responsibility percentage and then stable member id", () => {
     expect(
       compareLootAssignmentCandidates(
-        candidate({ wishlistMatch: "acceptable" }),
-        candidate({ wishlistMatch: "none" }),
+        candidate({ primaryResponsibilityPercent: 8 }),
+        candidate({ primaryResponsibilityPercent: 5 }),
       ),
-    ).toBeLessThan(0);
-    expect(
-      compareLootAssignmentCandidates(
-        candidate({ primaryResponsibilityDelta: 2 }),
-        candidate({ primaryResponsibilityDelta: 1 }),
-      ),
-    ).toBeLessThan(0);
-    expect(
-      compareLootAssignmentCandidates(
-        candidate({ currentSlotItemLevel: 10 }),
-        candidate({ currentSlotItemLevel: 20 }),
-      ),
-    ).toBeLessThan(0);
-    expect(
-      compareLootAssignmentCandidates(candidate({ joinedAt: 50 }), candidate({ joinedAt: 100 })),
     ).toBeLessThan(0);
     expect(
       compareLootAssignmentCandidates(

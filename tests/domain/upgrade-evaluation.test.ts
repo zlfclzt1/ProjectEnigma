@@ -56,6 +56,7 @@ describe("combat-stat upgrade evaluation", () => {
       "damage",
     ]);
     expect(result.primaryResponsibilityDelta).toBeGreaterThan(0);
+    expect(result.primaryResponsibilityPercent).toBeGreaterThan(0);
     expect(result.recommendationScore).toBeGreaterThan(0);
     expect(result.statChanges).toEqual(
       expect.arrayContaining([

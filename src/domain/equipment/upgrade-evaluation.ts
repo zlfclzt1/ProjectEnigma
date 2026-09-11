@@ -38,6 +38,7 @@ export type UpgradeEvaluation =
       readonly primaryResponsibilityBefore: number;
       readonly primaryResponsibilityAfter: number;
       readonly primaryResponsibilityDelta: number;
+      readonly primaryResponsibilityPercent: number;
       readonly recommendationScore: number;
       readonly reasons: readonly string[];
     };
@@ -86,6 +87,10 @@ export function evaluateUpgrade(
       const primaryResponsibilityBefore = primaryResponsibility(before.capabilities, spec.role);
       const primaryResponsibilityAfter = primaryResponsibility(after.capabilities, spec.role);
       const primaryResponsibilityDelta = primaryResponsibilityAfter - primaryResponsibilityBefore;
+      const primaryResponsibilityPercent = relativePercent(
+        primaryResponsibilityBefore,
+        primaryResponsibilityAfter,
+      );
       const recommendationScore = recommendation(
         spec.role,
         primaryResponsibilityDelta,
@@ -103,6 +108,7 @@ export function evaluateUpgrade(
         primaryResponsibilityBefore,
         primaryResponsibilityAfter,
         primaryResponsibilityDelta,
+        primaryResponsibilityPercent,
         recommendationScore,
         reasons: describeUpgrade(
           spec.role,
@@ -119,8 +125,7 @@ export function evaluateUpgrade(
   if (candidates.length === 0) return { equippable: false, reasons: failureReasons };
   return candidates.sort(
     (left, right) =>
-      right.recommendationScore - left.recommendationScore ||
-      right.primaryResponsibilityDelta - left.primaryResponsibilityDelta ||
+      right.primaryResponsibilityPercent - left.primaryResponsibilityPercent ||
       left.replacementSlot.localeCompare(right.replacementSlot),
   )[0]!;
 }
@@ -212,4 +217,9 @@ function describeUpgrade(
 
 function signed(value: number): string {
   return `${value >= 0 ? "+" : ""}${value.toFixed(2)}`;
+}
+
+function relativePercent(before: number, after: number): number {
+  if (Math.abs(before) <= 1e-9) return after > before ? 100 : 0;
+  return ((after - before) / Math.abs(before)) * 100;
 }

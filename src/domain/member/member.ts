@@ -5,7 +5,6 @@ import type {
   ClassId,
   EncounterId,
   HiddenCharacterId,
-  ItemDefinitionId,
   ItemInstanceId,
   MemberId,
   MemberProfessionId,
@@ -13,7 +12,6 @@ import type {
   PersonalityId,
   QuestId,
   RaceId,
-  RandomSuffixId,
   SpecId,
 } from "../shared/ids";
 
@@ -35,16 +33,6 @@ export interface MemberRidingState {
   skillRank: number;
   learnedMountIds: MountId[];
   equippedMountId?: MountId;
-}
-
-export interface MemberWishlistEntry {
-  itemDefinitionId: ItemDefinitionId;
-  preferredRandomSuffixId?: RandomSuffixId;
-  acceptableRandomSuffixIds: RandomSuffixId[];
-}
-
-export interface MemberWishlistState {
-  entries: MemberWishlistEntry[];
 }
 
 export type MemberQuestStatus = "accepted" | "completed" | "claimed";
@@ -70,7 +58,6 @@ export interface Member {
   equipment: Partial<Record<EquipmentSlot, ItemInstanceId>>;
   professionIds: MemberProfessionId[];
   riding: MemberRidingState;
-  wishlist: MemberWishlistState;
   quests: MemberQuestState;
   activeActivityId?: ActivityId;
   joinedAt: number;

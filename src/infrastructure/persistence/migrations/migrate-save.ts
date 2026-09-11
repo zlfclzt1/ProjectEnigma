@@ -1,5 +1,10 @@
 import type { ContentRegistry } from "../../../content/registry";
-import type { GameState, LegacyGameStateV12, PersistedGameState } from "../../../domain/game-state";
+import type {
+  GameState,
+  LegacyGameStateV12,
+  LegacyGameStateV13,
+  PersistedGameState,
+} from "../../../domain/game-state";
 import { migrateV2ToV3 } from "./migrate-v2-to-v3";
 import { migrateV3ToV4 } from "./migrate-v3-to-v4";
 import { migrateV4ToV5 } from "./migrate-v4-to-v5";
@@ -11,6 +16,7 @@ import { migrateV9ToV10 } from "./migrate-v9-to-v10";
 import { migrateV10ToV11 } from "./migrate-v10-to-v11";
 import { migrateV11ToV12 } from "./migrate-v11-to-v12";
 import { migrateV12ToV13 } from "./migrate-v12-to-v13";
+import { migrateV13ToV14 } from "./migrate-v13-to-v14";
 
 export interface SaveMigrationResult {
   readonly state: GameState;
@@ -21,14 +27,22 @@ export function migrateSave(
   persisted: PersistedGameState,
   content: ContentRegistry,
 ): SaveMigrationResult {
-  if (persisted.saveVersion === 13) {
+  if (persisted.saveVersion === 14) {
     return { state: structuredClone(persisted), migrated: false };
   }
-  return { state: migrateV12ToV13(migrateToV12(persisted, content), content), migrated: true };
+  return { state: migrateV13ToV14(migrateToV13(persisted, content)), migrated: true };
+}
+
+function migrateToV13(
+  persisted: Exclude<PersistedGameState, GameState>,
+  content: ContentRegistry,
+): LegacyGameStateV13 {
+  if (persisted.saveVersion === 13) return persisted;
+  return migrateV12ToV13(migrateToV12(persisted, content), content) as LegacyGameStateV13;
 }
 
 function migrateToV12(
-  persisted: Exclude<PersistedGameState, GameState>,
+  persisted: Exclude<PersistedGameState, GameState | LegacyGameStateV13>,
   content: ContentRegistry,
 ): LegacyGameStateV12 {
   if (persisted.saveVersion === 12) return persisted;

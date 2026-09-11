@@ -4,7 +4,6 @@ import {
   getMemberDetailView,
   getMemberDirectoryView,
 } from "../../src/application/queries/get-members-view";
-import { getRespecPreview } from "../../src/application/queries/get-respec-preview";
 import { browserContentModules, loadBrowserContentRegistry } from "../../src/content/manifest";
 import { loadContentRegistry, type ContentRegistry } from "../../src/content/registry";
 import { evaluateEquipEligibility } from "../../src/domain/equipment/equip-rules";
@@ -84,97 +83,10 @@ describe("member view queries", () => {
     expect(detail.formulaVersion).toBe("classic-light-v1");
     expect(detail.contributions.length).toBeGreaterThan(0);
     expect(detail.availableSpecs.every((spec) => spec.id.startsWith(member.classId))).toBe(true);
-    expect(detail.wishlist.entries).toEqual([]);
-    expect(detail.wishlist.itemOptions.length).toBeGreaterThan(0);
-    expect(detail.wishlist.itemOptions.every((item) => item.dungeonName === "怒焰裂谷")).toBe(true);
     expect(detail.equipment[0]!.item).toMatchObject({
       acquisitionSource: "加入公会时携带",
       statsSource: "游戏设计数据 · 2026-09-08",
     });
-  });
-
-  it("projects wishlist targets with unlocked dungeon and boss sources", () => {
-    const game = state();
-    const member = Object.values(game.members)[0]!;
-    member.wishlist.entries.push({
-      itemDefinitionId: asBrandedId<"ItemDefinitionId">("14149"),
-      acceptableRandomSuffixIds: [],
-    });
-
-    const detail = getMemberDetailView(game, content, member.id)!;
-
-    expect(detail.wishlist.entries).toEqual([
-      expect.objectContaining({
-        id: "14149",
-        name: "地下斗篷",
-        dungeonName: "怒焰裂谷",
-        encounterName: "饥饿者塔拉加曼",
-        validForCurrentSpec: true,
-      }),
-    ]);
-    expect(detail.wishlist.itemOptions.some((item) => item.id === "10412")).toBe(false);
-  });
-
-  it("offers unlocked Library boss drops as wishlist targets", () => {
-    const game = state();
-    game.guild.unlockedDungeonIds.push(asBrandedId<"DungeonId">("scarlet_monastery_library"));
-    const member = Object.values(game.members)[0]!;
-
-    const detail = getMemberDetailView(game, content, member.id)!;
-    expect(detail.wishlist.itemOptions).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          id: "7713",
-          name: "幻影法杖",
-          dungeonName: "血色修道院：图书馆",
-          encounterName: "奥法师杜安",
-        }),
-      ]),
-    );
-  });
-
-  it("offers unlocked Armory drops as wishlist targets for a compatible member", () => {
-    const game = state();
-    game.guild.unlockedDungeonIds.push(asBrandedId<"DungeonId">("scarlet_monastery_armory"));
-    const member = Object.values(game.members)[0]!;
-    member.identity.classId = asBrandedId<"ClassId">("warrior");
-    member.progression.specId = asBrandedId<"SpecId">("warrior_arms");
-
-    const detail = getMemberDetailView(game, content, member.id)!;
-    expect(detail.wishlist.itemOptions).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          id: "7717",
-          name: "破坏者",
-          dungeonName: "血色修道院：军械库",
-          encounterName: "赫洛德",
-        }),
-      ]),
-    );
-  });
-
-  it("previews wishlist targets removed by a role-changing respec", () => {
-    const game = state();
-    const member = Object.values(game.members)[0]!;
-    member.identity.classId = asBrandedId<"ClassId">("warrior");
-    member.progression.specId = asBrandedId<"SpecId">("warrior_arms");
-    member.wishlist.entries.push({
-      itemDefinitionId: asBrandedId<"ItemDefinitionId">("872"),
-      acceptableRandomSuffixIds: [],
-    });
-
-    const preview = getRespecPreview(
-      game,
-      content,
-      member.id,
-      asBrandedId<"SpecId">("warrior_protection"),
-    );
-
-    expect(preview).toMatchObject({
-      targetSpecName: "防护",
-      invalidWishlistItems: [{ itemDefinitionId: "872", itemName: "切石者" }],
-    });
-    expect(member.wishlist.entries).toHaveLength(1);
   });
 
   it("resolves database icons, real attributes, restrictions, and encounter sources", () => {

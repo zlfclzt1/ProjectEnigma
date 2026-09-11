@@ -5,16 +5,9 @@ import { EQUIPMENT_SLOTS, type EquipmentSlot } from "../../domain/equipment/equi
 import { averageEquippedItemLevel } from "../../domain/equipment/item-level";
 import type { ItemInstance } from "../../domain/equipment/item-instance";
 import { resolveItemInstance } from "../../domain/equipment/resolve-item-instance";
-import { evaluateWishlistTarget } from "../../domain/equipment/wishlist-rules";
 import type { GameState } from "../../domain/game-state";
 import { RESPEC_COST } from "../../domain/guild/recruitment";
-import type {
-  ClassId,
-  ItemDefinitionId,
-  MemberId,
-  RandomSuffixId,
-  SpecId,
-} from "../../domain/shared/ids";
+import type { ClassId, MemberId, SpecId } from "../../domain/shared/ids";
 
 export type MemberRole = "tank" | "healer" | "dps";
 
@@ -80,32 +73,6 @@ export interface CombatContributionView {
   readonly description: string;
 }
 
-export interface WishlistSuffixOptionView {
-  readonly id: RandomSuffixId;
-  readonly name: string;
-}
-
-export interface WishlistItemOptionView {
-  readonly id: ItemDefinitionId;
-  readonly name: string;
-  readonly itemLevel: number;
-  readonly quality: "poor" | "common" | "uncommon" | "rare" | "epic";
-  readonly dungeonName: string;
-  readonly encounterName: string;
-  readonly suffixOptions: readonly WishlistSuffixOptionView[];
-}
-
-export interface MemberWishlistEntryView extends WishlistItemOptionView {
-  readonly preferredRandomSuffixId?: RandomSuffixId;
-  readonly acceptableRandomSuffixIds: readonly RandomSuffixId[];
-  readonly validForCurrentSpec: boolean;
-}
-
-export interface MemberWishlistView {
-  readonly entries: readonly MemberWishlistEntryView[];
-  readonly itemOptions: readonly WishlistItemOptionView[];
-}
-
 export interface MemberDetailView extends MemberDirectoryEntryView {
   readonly raceName: string;
   readonly personalityBenefit: string;
@@ -119,7 +86,6 @@ export interface MemberDetailView extends MemberDirectoryEntryView {
     readonly damage: number;
   };
   readonly contributions: readonly CombatContributionView[];
-  readonly wishlist: MemberWishlistView;
   readonly availableSpecs: readonly {
     readonly id: SpecId;
     readonly name: string;
@@ -132,92 +98,6 @@ export interface MemberDetailView extends MemberDirectoryEntryView {
   readonly canManage: boolean;
   readonly canAffordRespec: boolean;
   readonly respecCost: number;
-}
-
-function suffixOptions(
-  itemId: ItemDefinitionId,
-  content: ContentRegistry,
-): WishlistSuffixOptionView[] {
-  const item = content.itemById.get(itemId);
-  return (item?.randomSuffixIds ?? []).map((suffixId) => {
-    const suffix = content.itemSuffixById.get(suffixId)!;
-    return {
-      id: suffix.id,
-      name: suffix.nameTemplate.zhCN.replace("{base}", "").trim(),
-    };
-  });
-}
-
-function wishlistSourceOptions(
-  state: GameState,
-  content: ContentRegistry,
-): {
-  readonly all: ReadonlyMap<ItemDefinitionId, WishlistItemOptionView>;
-  readonly unlocked: ReadonlyMap<ItemDefinitionId, WishlistItemOptionView>;
-} {
-  const all = new Map<ItemDefinitionId, WishlistItemOptionView>();
-  const unlocked = new Map<ItemDefinitionId, WishlistItemOptionView>();
-  const unlockedDungeonIds = new Set(state.guild.unlockedDungeonIds);
-  for (const dungeon of content.dungeons) {
-    for (const { encounterId } of dungeon.route) {
-      const encounter = content.encounterById.get(encounterId)!;
-      for (const loot of content.getLootTableForEncounter(encounterId)?.items ?? []) {
-        if (all.has(loot.itemId)) continue;
-        const item = content.itemById.get(loot.itemId)!;
-        const option: WishlistItemOptionView = {
-          id: item.id,
-          name: item.name.zhCN,
-          itemLevel: item.itemLevel,
-          quality: item.quality,
-          dungeonName: dungeon.name.zhCN,
-          encounterName: encounter.name.zhCN,
-          suffixOptions: suffixOptions(item.id, content),
-        };
-        all.set(item.id, option);
-        if (unlockedDungeonIds.has(dungeon.id)) unlocked.set(item.id, option);
-      }
-    }
-  }
-  return { all, unlocked };
-}
-
-function memberWishlistView(
-  state: GameState,
-  content: ContentRegistry,
-  member: GameState["members"][MemberId],
-): MemberWishlistView {
-  const sources = wishlistSourceOptions(state, content);
-  const itemOptions = [...sources.unlocked.values()]
-    .filter(
-      (option) =>
-        evaluateWishlistTarget(
-          member,
-          { itemDefinitionId: option.id, acceptableRandomSuffixIds: [] },
-          content,
-        ).allowed,
-    )
-    .sort(
-      (left, right) =>
-        left.itemLevel - right.itemLevel ||
-        left.dungeonName.localeCompare(right.dungeonName) ||
-        left.encounterName.localeCompare(right.encounterName) ||
-        left.name.localeCompare(right.name),
-    );
-  const entries = member.wishlist.entries.flatMap((entry): MemberWishlistEntryView[] => {
-    const option = sources.all.get(entry.itemDefinitionId);
-    if (!option) return [];
-    return [
-      {
-        ...option,
-        ...(entry.preferredRandomSuffixId
-          ? { preferredRandomSuffixId: entry.preferredRandomSuffixId }
-          : {}),
-        acceptableRandomSuffixIds: [...entry.acceptableRandomSuffixIds],
-        validForCurrentSpec: evaluateWishlistTarget(member, entry, content).allowed,
-      },
-    ];
-  });
-  return { entries, itemOptions };
 }
 
 export const EQUIPMENT_SLOT_NAMES: Readonly<Record<EquipmentSlot, string>> = {
@@ -559,7 +439,6 @@ export function getMemberDetailView(
         amount: entry.amount,
         description: entry.description,
       })),
-    wishlist: memberWishlistView(state, content, member),
     availableSpecs: content.specs
       .filter((candidate) => candidate.classId === member.identity.classId)
       .map((candidate) => ({

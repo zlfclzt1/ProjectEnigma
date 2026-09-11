@@ -20,7 +20,7 @@
     "balanceOverrides": [
       {
         "fields": ["minimumLevel", "recommendedLevel", "duration", "probability", "route"],
-        "reason": "按 12 分钟完整路线和分区愿望单刷装定位设置初始参数。",
+        "reason": "按 12 分钟完整路线和分区刷装定位设置初始参数。",
         "decidedAt": "2026-09-09"
       }
     ]

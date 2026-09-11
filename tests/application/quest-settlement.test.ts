@@ -10,7 +10,6 @@ import { FakeClock } from "../helpers/runtime-fakes";
 
 const content = loadBrowserContentRegistry();
 const questId = asBrandedId<"QuestId">("rfc_returning_lost_satchel");
-const wishlistItemId = asBrandedId<"ItemDefinitionId">("15453");
 
 function completedState() {
   const state = createNewGame({
@@ -31,15 +30,11 @@ function completedState() {
       encounterVictoryIds: [],
     };
   }
-  members[0]!.wishlist.entries.push({
-    itemDefinitionId: wishlistItemId,
-    acceptableRandomSuffixIds: [],
-  });
   return { state, members };
 }
 
 describe("quest settlement", () => {
-  it("recommends rewards from wishlists and settles several member quests together", async () => {
+  it("recommends upgrade rewards and settles several member quests together", async () => {
     const { state, members } = completedState();
     const view = getQuestSettlementView(
       state,
@@ -48,16 +43,10 @@ describe("quest settlement", () => {
     );
 
     expect(view.entries).toHaveLength(2);
-    expect(view.entries.find((entry) => entry.memberId === members[0]!.id)).toMatchObject({
-      recommendedItemId: wishlistItemId,
-      choices: expect.arrayContaining([
-        expect.objectContaining({
-          id: wishlistItemId,
-          recommended: true,
-          reasons: expect.arrayContaining(["愿望单目标"]),
-        }),
-      ]),
-    });
+    expect(view.entries.every((entry) => entry.recommendedItemId)).toBe(true);
+    expect(
+      view.entries.flatMap((entry) => entry.choices).flatMap((choice) => choice.reasons),
+    ).not.toContain("愿望单目标");
 
     const results = await claimMemberDungeonQuestsCommand(
       { content, clock: new FakeClock(3_000) },

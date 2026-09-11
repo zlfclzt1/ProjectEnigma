@@ -14,7 +14,7 @@ import { FakeClock } from "../helpers/runtime-fakes";
 describe("loot page", () => {
   beforeEach(() => setActivePinia(createPinia()));
 
-  it("manually assigns to a participant and automatically resolves the remaining loot", async () => {
+  it("reviews a draft plan, changes one decision, and executes every unlocked item", async () => {
     const game = useGameStore();
     const clock = new FakeClock(1_000);
     await game.initialize(() =>
@@ -55,34 +55,28 @@ describe("loot page", () => {
     });
 
     const wrapper = mount(LootPage);
-    const firstCard = wrapper.findAll(".loot-card")[0]!;
-    expect(wrapper.findAll(".loot-card")).toHaveLength(4);
-    for (const [index, loot] of game.loot!.pending.entries()) {
-      expect(wrapper.findAll(".loot-card")[index]!.find(".item-icon").classes()).toContain(
-        `quality-${loot.item.quality}`,
-      );
-    }
-    expect(firstCard.findAll("select option")).toHaveLength(5);
-    expect(firstCard.text()).toContain("仅本次参战成员");
-    expect(firstCard.text()).toContain("主职责");
-    expect(firstCard.findAll(".upgrade-comparison")).toHaveLength(4);
-
-    await firstCard.find("footer button").trigger("click");
+    expect(wrapper.findAll(".queue-entry")).toHaveLength(4);
+    expect(wrapper.text()).toContain("审核队列");
+    const assignEntry = wrapper
+      .findAll(".queue-entry")
+      .find((entry) => !entry.text().includes("出售"))!;
+    await assignEntry.trigger("click");
     await flushPromises();
-    expect(game.loot?.pending).toHaveLength(3);
-    expect(wrapper.text()).toContain("立即穿上");
+    expect(wrapper.text()).toContain("主职责提升");
+    expect(wrapper.findAll(".candidate-row")).toHaveLength(5);
+    expect(wrapper.findAll(".upgrade-comparison")).toHaveLength(4);
 
-    await wrapper.find(".page-heading button").trigger("click");
-    expect(wrapper.find('[role="dialog"]').text()).toContain("自动处理预览");
-    expect(wrapper.find('[role="dialog"]').text()).toContain("分配给");
-    expect(game.loot?.pending).toHaveLength(3);
+    await wrapper.find(".sell-button").trigger("click");
+    await flushPromises();
+    expect(game.loot?.pending).toHaveLength(4);
+    expect(wrapper.text()).toContain("已改派");
+
     await wrapper
-      .findAll('[role="dialog"] button')
-      .find((button) => button.text().includes("确认自动处理"))!
+      .findAll(".heading-actions button")
+      .find((button) => button.text().includes("执行分配方案"))!
       .trigger("click");
     await flushPromises();
-    expect(wrapper.find('[role="dialog"]').exists()).toBe(false);
     expect(game.loot?.pending).toHaveLength(0);
-    expect(wrapper.text()).toContain("自动处理完成");
+    expect(wrapper.text()).toContain("方案已执行");
   });
 });

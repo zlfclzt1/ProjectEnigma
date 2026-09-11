@@ -91,44 +91,6 @@ describe("member detail page", () => {
     expect(router.currentRoute.value.path).toBe("/members");
   });
 
-  it("previews invalid wishlist removals and keeps them when respec is cancelled", async () => {
-    const { game, member, wrapper } = await setup("member-respec-wishlist-page");
-    await game.execute({
-      type: "prepare-respec-wishlist-ui-test",
-      execute(draft) {
-        const target = draft.members[member.id]!;
-        target.identity.classId = asBrandedId<"ClassId">("warrior");
-        target.progression.specId = asBrandedId<"SpecId">("warrior_arms");
-        target.wishlist.entries = [
-          {
-            itemDefinitionId: asBrandedId<"ItemDefinitionId">("872"),
-            acceptableRandomSuffixIds: [],
-          },
-        ];
-        draft.guild.funds = 1_000;
-      },
-    });
-    await flushPromises();
-
-    await wrapper.find(".management select").setValue("warrior_protection");
-    await wrapper.findAll(".management-row button")[0]!.trigger("click");
-    expect(wrapper.find('[role="dialog"]').text()).toContain("切石者");
-
-    await wrapper
-      .findAll('[role="dialog"] button')
-      .find((button) => button.text() === "取消")!
-      .trigger("click");
-    expect(game.memberDetail(member.id)?.wishlist.entries).toHaveLength(1);
-
-    await wrapper.findAll(".management-row button")[0]!.trigger("click");
-    await wrapper
-      .findAll('[role="dialog"] button')
-      .find((button) => button.text().includes("确认转专精"))!
-      .trigger("click");
-    await flushPromises();
-    expect(game.memberDetail(member.id)?.wishlist.entries).toEqual([]);
-  });
-
   it("disables member management while the member is active", async () => {
     const { game, member, wrapper } = await setup("active-member-detail-page");
     await game.execute({
@@ -146,25 +108,5 @@ describe("member detail page", () => {
         .every((button) => button.attributes("disabled") !== undefined),
     ).toBe(true);
     expect(wrapper.text()).toContain("活动中的成员不能更改专精或移出公会");
-  });
-
-  it("adds and removes wishlist targets from unlocked boss loot", async () => {
-    const { game, member, wrapper } = await setup("member-wishlist-page");
-    const itemSelect = wrapper.find(".wishlist-editor select");
-    const selectedItemId = (itemSelect.element as HTMLSelectElement).value;
-
-    await wrapper.find(".wishlist-editor button").trigger("click");
-    await flushPromises();
-
-    expect(game.memberDetail(member.id)?.wishlist.entries).toHaveLength(1);
-    expect(wrapper.text()).toContain("愿望目标已保存");
-    expect(wrapper.find(".wishlist-list").text()).toContain("怒焰裂谷");
-
-    await wrapper.find(".wishlist-list button").trigger("click");
-    await flushPromises();
-
-    expect(game.memberDetail(member.id)?.wishlist.entries).toEqual([]);
-    expect(wrapper.text()).toContain("愿望目标已移除");
-    expect(selectedItemId).not.toBe("");
   });
 });

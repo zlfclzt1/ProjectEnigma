@@ -11,8 +11,6 @@ test("starts an expedition, advances its route, and exposes a combat report", as
   await expect(page.getByText(/全通 \d+\.\d{2}%/)).toBeVisible();
   await expect(page.locator(".boss-route li")).toHaveCount(4);
   await page.getByRole("button", { name: /出发：怒焰裂谷/ }).click();
-  await expect(page.getByRole("dialog", { name: /怒焰裂谷 · 行动审批/ })).toBeVisible();
-  await page.getByRole("button", { name: "只接任务并出发" }).click();
 
   await page.getByRole("link", { name: "活动进度" }).click();
   await expect(page.locator(".expedition-card")).toHaveCount(1);

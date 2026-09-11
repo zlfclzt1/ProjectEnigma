@@ -14,6 +14,7 @@ import {
   type LegacyGameStateV10,
   type LegacyGameStateV11,
   type LegacyGameStateV12,
+  type LegacyGameStateV13,
 } from "../../src/domain/game-state";
 import type { Member } from "../../src/domain/member/member";
 import { asBrandedId } from "../../src/domain/shared/ids";
@@ -36,16 +37,28 @@ export function createMemberFixture(overrides: Partial<Member> = {}): Member {
     professionIds: [],
     riding: { skillRank: 0, learnedMountIds: [] },
     ...overrides,
-    wishlist: overrides.wishlist ?? { entries: [] },
     quests: overrides.quests ?? { entries: {} },
     joinedAt: overrides.joinedAt ?? 1_000,
   };
 }
 
+export function createLegacyGameStateV13Fixture(
+  overrides: Partial<LegacyGameStateV13> = {},
+): LegacyGameStateV13 {
+  const current = createGameStateFixture();
+  const members = Object.fromEntries(
+    Object.entries(current.members).map(([memberId, member]) => [
+      memberId,
+      { ...structuredClone(member), wishlist: { entries: [] } },
+    ]),
+  ) as LegacyGameStateV13["members"];
+  return { ...current, saveVersion: 13, members, ...overrides };
+}
+
 export function createLegacyGameStateV12Fixture(
   overrides: Partial<LegacyGameStateV12> = {},
 ): LegacyGameStateV12 {
-  const current = createGameStateFixture();
+  const current = createLegacyGameStateV13Fixture();
   const { dungeonDevelopment: _dungeonDevelopment, ...withoutDevelopment } = current;
   void _dungeonDevelopment;
   const activities = Object.fromEntries(
@@ -191,7 +204,7 @@ export function createGameStateFixture(overrides: Partial<GameState> = {}): Game
 export function createLegacyGameStateV11Fixture(
   overrides: Partial<LegacyGameStateV11> = {},
 ): LegacyGameStateV11 {
-  const current = createGameStateFixture();
+  const current = createLegacyGameStateV13Fixture();
   const { rosterPresets: _rosterPresets, ...legacy } = current;
   void _rosterPresets;
   return {

@@ -1,9 +1,6 @@
 import type { ContentRegistry } from "../../content/registry";
 import { equipmentSellValue } from "../../domain/equipment/item-value";
-import {
-  rankLootAssignment,
-  type WishlistMatch,
-} from "../../domain/equipment/loot-assignment-ranking";
+import { rankLootAssignment } from "../../domain/equipment/loot-assignment-ranking";
 import { resolveItemInstance } from "../../domain/equipment/resolve-item-instance";
 import type { GameState } from "../../domain/game-state";
 import type { MemberId, PendingLootId } from "../../domain/shared/ids";
@@ -16,7 +13,6 @@ export interface AutoLootPreviewEntry {
   readonly action: "assign" | "sell";
   readonly memberId?: MemberId;
   readonly memberName?: string;
-  readonly wishlistMatch: WishlistMatch;
   readonly replacedItemNames: readonly string[];
   readonly primaryResponsibilityDelta?: number;
   readonly saleValue: number;
@@ -56,7 +52,6 @@ export function getAutoLootPreview(state: GameState, content: ContentRegistry): 
         pendingLootId: pending.id,
         itemName: definition.name.zhCN,
         action: "sell",
-        wishlistMatch: "none",
         replacedItemNames: [],
         saleValue,
         reasons: [decision.reason],
@@ -84,7 +79,6 @@ export function getAutoLootPreview(state: GameState, content: ContentRegistry): 
       action: "assign",
       memberId: member.id,
       memberName: member.identity.name,
-      wishlistMatch: decision.candidate.wishlistMatch,
       replacedItemNames,
       primaryResponsibilityDelta: decision.candidate.primaryResponsibilityDelta,
       saleValue: result.saleProceeds,

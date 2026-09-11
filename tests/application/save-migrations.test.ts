@@ -17,6 +17,7 @@ import {
   createLegacyGameStateV10Fixture,
   createLegacyGameStateV11Fixture,
   createLegacyGameStateV12Fixture,
+  createLegacyGameStateV13Fixture,
   createItemInstanceFixture,
 } from "../helpers/game-state-v2-factory";
 
@@ -35,10 +36,10 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(13);
-    expect(
-      Object.values(result.state.members).every((member) => member.wishlist.entries.length === 0),
-    ).toBe(true);
+    expect(result.state.saveVersion).toBe(14);
+    expect(Object.values(result.state.members).every((member) => !("wishlist" in member))).toBe(
+      true,
+    );
     expect(result.state.guild).not.toHaveProperty("memberCapacity");
     expect(result.state.guild.purchasedUpgradeIds).toEqual(["guild_roster_15", "guild_roster_20"]);
     expect(result.state.history.dungeonClearCounts).toEqual({ deadmines: 1 });
@@ -50,7 +51,7 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(13);
+    expect(result.state.saveVersion).toBe(14);
     expect(
       Object.values(result.state.itemInstances).every(
         (instance) => instance.randomSuffixId === undefined,
@@ -79,7 +80,7 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(13);
+    expect(result.state.saveVersion).toBe(14);
     expect(result.state.collection).toEqual({
       items: {
         "14148": {
@@ -92,16 +93,16 @@ describe("save migrations", () => {
     expect(result.state.collection.items).not.toHaveProperty("starter_mail_head");
   });
 
-  it("migrates V5 members with empty wishlist state", () => {
+  it("migrates V5 members without restoring removed wishlist state", () => {
     const legacy = createLegacyGameStateV5Fixture();
 
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(13);
-    expect(
-      Object.values(result.state.members).every((member) => member.wishlist.entries.length === 0),
-    ).toBe(true);
+    expect(result.state.saveVersion).toBe(14);
+    expect(Object.values(result.state.members).every((member) => !("wishlist" in member))).toBe(
+      true,
+    );
   });
 
   it("migrates V6 expedition capability snapshots from frozen member combat data", () => {
@@ -127,7 +128,7 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(13);
+    expect(result.state.saveVersion).toBe(14);
     const migrated = Object.values(result.state.activities)[0]!;
     if (migrated.type !== "expedition") throw new Error("Expected expedition fixture");
     expect(migrated.partySnapshot.capabilities.values.tanking).toBeGreaterThan(0);
@@ -140,7 +141,7 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(13);
+    expect(result.state.saveVersion).toBe(14);
     const activity = Object.values(result.state.activities)[0]!;
     if (activity.type !== "expedition") throw new Error("Expected expedition fixture");
     expect(activity.selectedOptionalNodeIds).toEqual([]);
@@ -152,7 +153,7 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(13);
+    expect(result.state.saveVersion).toBe(14);
     const activity = Object.values(result.state.activities)[0]!;
     if (activity.type !== "expedition") throw new Error("Expected expedition fixture");
     expect(activity.runPlans[0]!.rareNodeReveals).toEqual({});
@@ -164,7 +165,7 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(13);
+    expect(result.state.saveVersion).toBe(14);
     expect(
       Object.values(result.state.members).every(
         (member) => Object.keys(member.quests.entries).length === 0,
@@ -183,7 +184,7 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(13);
+    expect(result.state.saveVersion).toBe(14);
     const activity = Object.values(result.state.activities)[0]!;
     if (activity.type !== "expedition") throw new Error("Expected expedition fixture");
     expect(activity.questSnapshots).toEqual([]);
@@ -195,12 +196,6 @@ describe("save migrations", () => {
     migrated.collection.claimedRewardIds.push(
       asBrandedId<"CollectionRewardId">("prototype_global_catalog_ten_percent"),
     );
-    Object.values(migrated.members)[0]!.wishlist.entries.push({
-      itemDefinitionId: asBrandedId<"ItemDefinitionId">("14148"),
-      preferredRandomSuffixId: asBrandedId<"RandomSuffixId">("prototype_of_readiness"),
-      acceptableRandomSuffixIds: [asBrandedId<"RandomSuffixId">("prototype_of_readiness")],
-    });
-
     const result = migrateSave(migrated, content);
 
     expect(result.migrated).toBe(false);
@@ -214,7 +209,7 @@ describe("save migrations", () => {
     const result = migrateSave(legacy, content);
 
     expect(result.migrated).toBe(true);
-    expect(result.state.saveVersion).toBe(13);
+    expect(result.state.saveVersion).toBe(14);
     expect(result.state.rosterPresets).toEqual({ presets: {} });
   });
 
@@ -262,6 +257,23 @@ describe("save migrations", () => {
     expect(activity.developmentEvents).toEqual([]);
   });
 
+  it("migrates V13 saves by removing persisted wishlist data", () => {
+    const legacy = createLegacyGameStateV13Fixture();
+    Object.values(legacy.members)[0]!.wishlist.entries.push({
+      itemDefinitionId: asBrandedId<"ItemDefinitionId">("14148"),
+      preferredRandomSuffixId: asBrandedId<"RandomSuffixId">("prototype_of_readiness"),
+      acceptableRandomSuffixIds: [asBrandedId<"RandomSuffixId">("prototype_of_readiness")],
+    });
+
+    const result = migrateSave(legacy, content);
+
+    expect(result.migrated).toBe(true);
+    expect(result.state.saveVersion).toBe(14);
+    expect(Object.values(result.state.members).every((member) => !("wishlist" in member))).toBe(
+      true,
+    );
+  });
+
   it("persists an automatic V2 migration during client bootstrap", async () => {
     const legacy = createLegacyGameStateV2Fixture();
     const saves = new MemorySaveRepository([legacy]);
@@ -274,8 +286,8 @@ describe("save migrations", () => {
     });
 
     expect(loaded.origin).toBe("loaded");
-    expect(loaded.session.snapshot()).toMatchObject({ saveVersion: 13, revision: 1 });
+    expect(loaded.session.snapshot()).toMatchObject({ saveVersion: 14, revision: 1 });
     const persisted = await saves.load(legacy.slotId);
-    expect(persisted?.saveVersion).toBe(13);
+    expect(persisted?.saveVersion).toBe(14);
   });
 });

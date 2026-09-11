@@ -7,7 +7,7 @@ const SAVE_KEY = "primary";
 
 async function updateSave(
   page: Page,
-  action: "prepare-stage" | "guarantee-stage-run" | "add-collection-loot" | "prepare-wishlists",
+  action: "prepare-stage" | "guarantee-stage-run" | "add-collection-loot",
 ): Promise<void> {
   await page.evaluate(
     async ({ databaseName, saveStore, saveKey, requestedAction }) => {
@@ -27,12 +27,6 @@ async function updateSave(
       type MemberState = {
         id: string;
         progression: { level: number; experience: number };
-        wishlist: {
-          entries: Array<{
-            itemDefinitionId: string;
-            acceptableRandomSuffixIds: string[];
-          }>;
-        };
       };
       type ExpeditionStage = {
         routeNodeId?: string;
@@ -211,17 +205,6 @@ async function updateSave(
         collection.items["6460"] ??= { acquisitionCount: 1, seenRandomSuffixIds: [] };
       }
 
-      if (requestedAction === "prepare-wishlists") {
-        const definitionIds = Object.values(pendingLoot).map(
-          (pending) => itemInstances[pending.itemInstanceId]?.definitionId,
-        );
-        for (const member of Object.values(members)) {
-          member.wishlist.entries = definitionIds.flatMap((definitionId) =>
-            definitionId ? [{ itemDefinitionId: definitionId, acceptableRandomSuffixIds: [] }] : [],
-          );
-        }
-      }
-
       store.put(state);
       await new Promise<void>((resolve, reject) => {
         transaction.oncomplete = () => resolve();
@@ -264,13 +247,7 @@ test("completes the playable zulfarrak stage and keeps the guild running", async
     await page.getByRole("button", { name: "关闭扩建面板" }).click();
   });
 
-  await test.step("accept the member quest and plan its optional boss", async () => {
-    await page.getByRole("link", { name: "副本任务" }).click();
-    await page.getByRole("searchbox", { name: "搜索任务或副本" }).fill("探水棒");
-    const quest = page.locator(".quest-card", { hasText: "探水棒" });
-    await quest.getByRole("button", { name: "批准此委托的成员申请" }).click();
-    await expect(page.getByText(/已批准 5 项成员任务/)).toBeVisible();
-
+  await test.step("plan the optional boss and start the stage run", async () => {
     await page.getByRole("link", { name: "副本组队" }).click();
     await page.getByRole("button", { name: "切换副本" }).click();
     const dungeonDialog = page.getByRole("dialog", { name: "选择副本" });
@@ -288,10 +265,7 @@ test("completes the playable zulfarrak stage and keeps the guild running", async
     for (let index = 0; index < 5; index += 1) await coreMembers.nth(index).check();
     const optionalBoss = page.locator(".route-options label", { hasText: "布莱中士" });
     await optionalBoss.locator('input[type="checkbox"]').check();
-    await expect(page.getByText(/探水棒/).last()).not.toContainText("请手动勾选");
     await page.getByRole("button", { name: "出发：祖尔法拉克" }).click();
-    await expect(page.getByRole("dialog", { name: /祖尔法拉克 · 行动审批/ })).toBeVisible();
-    await page.getByRole("button", { name: /只接任务并出发|按当前路线出发/ }).click();
     await expect(page.getByText("祖尔法拉克队伍已经出发，可以继续组织另一支队伍。")).toBeVisible();
   });
 
@@ -306,36 +280,24 @@ test("completes the playable zulfarrak stage and keeps the guild running", async
     });
     await expect(completed).toBeVisible({ timeout: 15_000 });
     await expect(completed).toContainText("已完成");
-    await expect(completed.getByRole("link", { name: "前往任务结算会" })).toBeVisible();
   });
 
-  await test.step("manually award one item and use wishlists for the rest", async () => {
+  await test.step("review the greedy loot plan and execute all decisions", async () => {
     await updateSave(page, "add-collection-loot");
     await page.reload();
     await page.getByRole("link", { name: "装备分配" }).click();
     await expect(page.getByRole("heading", { name: "野熊之鲁恩乌的肩甲" })).toBeVisible();
 
-    const manualButtons = page.getByRole("button", { name: "分配并装备", exact: true });
-    const buttonCount = await manualButtons.count();
-    let assigned = false;
-    for (let index = 0; index < buttonCount; index += 1) {
-      const button = manualButtons.nth(index);
-      if (!(await button.isEnabled())) continue;
-      await button.click();
-      assigned = true;
-      break;
+    await expect(page.getByText("审核队列")).toBeVisible();
+    await expect(page.getByText("主职责提升", { exact: true })).toBeVisible();
+    const alternative = page.locator(".candidate-row:not(.active):not(:disabled)").first();
+    if (await alternative.isVisible()) {
+      await alternative.click();
+      await expect(page.getByText("已改派").first()).toBeVisible();
     }
-    expect(assigned).toBe(true);
-    await expect(page.getByText(/装备已经分配并立即穿上/)).toBeVisible();
-
-    await updateSave(page, "prepare-wishlists");
-    await page.reload();
-    await page.getByRole("button", { name: "自动分配全部" }).click();
-    const dialog = page.getByRole("dialog", { name: "自动处理预览" });
-    await expect(dialog).toContainText("命中首选愿望");
-    await dialog.getByRole("button", { name: "确认自动处理" }).click();
-    await expect(page.getByText(/自动处理完成/)).toBeVisible();
-    await expect(page.locator(".loot-card")).toHaveCount(0);
+    await page.getByRole("button", { name: "执行分配方案" }).click();
+    await expect(page.getByText(/方案已执行/)).toBeVisible();
+    await expect(page.locator(".queue-entry")).toHaveCount(0);
   });
 
   await test.step("verify collection progress, graduation, and post-clear persistence", async () => {

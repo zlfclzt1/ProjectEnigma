@@ -122,7 +122,6 @@ describe("member recruitment and dismissal", () => {
     if (result.status !== "committed") throw new Error("Expected committed recruitment");
     expect(result.result.member.identity).toEqual(candidateIdentity);
     expect(result.result.member.joinedAt).toBe(3_000);
-    expect(result.result.member.wishlist).toEqual({ entries: [] });
     expect(result.result.member.quests).toEqual({ entries: {} });
     expect(Object.keys(result.result.member.equipment)).toHaveLength(EQUIPMENT_SLOTS.length);
     expect(result.result.itemInstances).toHaveLength(EQUIPMENT_SLOTS.length);
@@ -212,10 +211,6 @@ describe("member respec", () => {
     state.itemInstances[weapon.id] = weapon;
     recordAcquiredItem(state.collection, weapon, content);
     member.equipment.mainHand = weapon.id;
-    member.wishlist.entries.push({
-      itemDefinitionId: asBrandedId<"ItemDefinitionId">("872"),
-      acceptableRandomSuffixIds: [],
-    });
     const { session } = await createSession(state);
 
     const result = await session.execute(
@@ -230,13 +225,11 @@ describe("member respec", () => {
     if (result.status !== "committed") throw new Error("Expected committed respec");
     expect(result.result.changed).toBe(true);
     expect(result.result.soldItemInstanceIds).toEqual([weapon.id]);
-    expect(result.result.removedWishlistItemDefinitionIds).toEqual(["872"]);
     expect(result.result.saleProceeds).toBe(6);
     const changed = session.snapshot();
     const changedMember = changed.members[member.id]!;
     expect(changed.guild.funds).toBe(400 - RESPEC_COST + 6);
     expect(changedMember.progression.specId).toBe("warrior_protection");
-    expect(changedMember.wishlist.entries).toEqual([]);
     expect(changed.itemInstances[weapon.id]).toBeUndefined();
     expect(changed.collection.items[weapon.definitionId]).toEqual({
       acquisitionCount: 1,

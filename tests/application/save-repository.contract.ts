@@ -86,38 +86,8 @@ export function runSaveRepositoryContract(
       const loadedInstance = loaded?.itemInstances[instance.id] as
         { randomSuffixId?: unknown } | undefined;
 
-      expect(loaded?.saveVersion).toBe(13);
+      expect(loaded?.saveVersion).toBe(14);
       expect(loadedInstance?.randomSuffixId).toBe("prototype_of_readiness");
-    } finally {
-      await harness.dispose();
-    }
-  });
-
-  it("persists member wishlists unchanged", async () => {
-    const harness = await createHarness();
-    try {
-      const state = createGameStateFixture();
-      const member = Object.values(state.members)[0]!;
-      member.wishlist.entries.push({
-        itemDefinitionId: asBrandedId<"ItemDefinitionId">("14148"),
-        preferredRandomSuffixId: asBrandedId<"RandomSuffixId">("prototype_of_readiness"),
-        acceptableRandomSuffixIds: [asBrandedId<"RandomSuffixId">("prototype_of_readiness")],
-      });
-      await harness.repository.create(state);
-
-      const loaded = await harness.repository.load(state.slotId);
-
-      expect(loaded?.members[member.id]).toMatchObject({
-        wishlist: {
-          entries: [
-            {
-              itemDefinitionId: "14148",
-              preferredRandomSuffixId: "prototype_of_readiness",
-              acceptableRandomSuffixIds: ["prototype_of_readiness"],
-            },
-          ],
-        },
-      });
     } finally {
       await harness.dispose();
     }
@@ -139,7 +109,7 @@ export function runSaveRepositoryContract(
       await harness.repository.create(state);
 
       const loaded = await harness.repository.load(state.slotId);
-      if (!loaded || loaded.saveVersion !== 13) throw new Error("Expected current save");
+      if (!loaded || loaded.saveVersion !== 14) throw new Error("Expected current save");
 
       expect(loaded.members[member.id]?.quests.entries[questId]).toEqual(
         member.quests.entries[questId],

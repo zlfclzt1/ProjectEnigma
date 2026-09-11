@@ -19,7 +19,7 @@ describe("normalized GameState", () => {
     const item = state.itemInstances[asBrandedId<"ItemInstanceId">("item_1")];
     const activity = state.activities[asBrandedId<"ActivityId">("activity_1")];
 
-    expect(state.saveVersion).toBe(13);
+    expect(state.saveVersion).toBe(14);
     expect(state.collection).toEqual({ items: {}, claimedRewardIds: [] });
     expect(state.guild.purchasedUpgradeIds).toEqual([]);
     expect(state.history.dungeonClearCounts).toEqual({});
@@ -28,7 +28,6 @@ describe("normalized GameState", () => {
     expect(member.id).toBe("member_1");
     expect(member.equipment.head).toBe(item.id);
     expect(member.activeActivityId).toBe(activity.id);
-    expect(member.wishlist).toEqual({ entries: [] });
     expect(member.quests).toEqual({ entries: {} });
     expect(activity.participantIds).toContain(member.id);
   });

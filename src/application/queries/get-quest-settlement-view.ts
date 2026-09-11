@@ -110,12 +110,10 @@ function rankRewardChoice(
     { itemInstances: { ...state.itemInstances, [candidate.id]: candidate } },
     content,
   );
-  const wishlist = member.wishlist.entries.some((entry) => entry.itemDefinitionId === itemId);
   const upgradeScore = upgrade.equippable ? upgrade.recommendationScore : -200_000;
   const reasons: string[] = [];
-  if (wishlist) reasons.push("愿望单目标");
   if (upgrade.equippable && upgrade.primaryResponsibilityDelta > 0) {
-    reasons.push(`当前专精主职责 +${upgrade.primaryResponsibilityDelta.toFixed(2)}`);
+    reasons.push(`当前专精主职责 +${upgrade.primaryResponsibilityPercent.toFixed(1)}%`);
   } else if (upgrade.equippable) {
     reasons.push("当前专精可以使用，但不是即时提升");
   } else {
@@ -125,7 +123,7 @@ function rankRewardChoice(
     id: item.id,
     name: item.name.zhCN,
     itemLevel: item.itemLevel,
-    recommendationScore: (wishlist ? 100_000 : 0) + upgradeScore,
+    recommendationScore: upgradeScore,
     reasons,
   };
 }

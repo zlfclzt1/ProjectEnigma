@@ -757,16 +757,14 @@ function previewItemScore(
   for (const memberId of memberIds) {
     const member = state.members[memberId];
     if (!member) continue;
-    const wishlist = member.wishlist.entries.some((entry) => entry.itemDefinitionId === itemId);
     let evaluation;
     try {
       evaluation = evaluateUpgrade(member, synthetic, state, content);
     } catch {
       continue;
     }
-    if (wishlist) best = Math.max(best, 1_000_000);
     if (evaluation.equippable && evaluation.primaryResponsibilityDelta > 1e-9) {
-      best = Math.max(best, 1_000 + evaluation.recommendationScore);
+      best = Math.max(best, evaluation.recommendationScore);
     }
   }
   return best;

@@ -19,12 +19,14 @@ export interface LootCandidateView {
   readonly primaryBefore?: number;
   readonly primaryAfter?: number;
   readonly primaryDelta?: number;
+  readonly primaryPercent?: number;
   readonly capabilityChanges?: {
     readonly survivability: number;
     readonly threat: number;
     readonly healing: number;
     readonly damage: number;
   };
+  readonly replacedItemNames?: readonly string[];
 }
 
 export interface PendingLootView {
@@ -77,7 +79,14 @@ export function getLootView(state: GameState, content: ContentRegistry): LootVie
             primaryBefore: evaluation.primaryResponsibilityBefore,
             primaryAfter: evaluation.primaryResponsibilityAfter,
             primaryDelta: evaluation.primaryResponsibilityDelta,
+            primaryPercent: evaluation.primaryResponsibilityPercent,
             capabilityChanges: { ...evaluation.capabilityChanges },
+            replacedItemNames: evaluation.displacedItemInstanceIds.flatMap((instanceId) => {
+              const displaced = state.itemInstances[instanceId];
+              return displaced
+                ? [resolveItemInstance(displaced, content).definition.name.zhCN]
+                : [];
+            }),
           },
         ];
       });
@@ -97,8 +106,8 @@ export function getLootView(state: GameState, content: ContentRegistry): LootVie
           candidates: candidates.sort(
             (left, right) =>
               Number(right.equippable) - Number(left.equippable) ||
-              (right.recommendationScore ?? Number.NEGATIVE_INFINITY) -
-                (left.recommendationScore ?? Number.NEGATIVE_INFINITY) ||
+              (right.primaryPercent ?? Number.NEGATIVE_INFINITY) -
+                (left.primaryPercent ?? Number.NEGATIVE_INFINITY) ||
               left.name.localeCompare(right.name),
           ),
         },

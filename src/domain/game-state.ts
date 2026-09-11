@@ -10,14 +10,16 @@ import type {
   CandidateId,
   ContentVersion,
   ItemInstanceId,
+  ItemDefinitionId,
   MemberId,
   PendingLootId,
   SaveSlotId,
+  RandomSuffixId,
 } from "./shared/ids";
 import type { IdGeneratorState, RandomState } from "./shared/runtime-state";
 import type { DungeonDevelopmentState } from "./dungeon/dungeon-development";
 
-export const GAME_STATE_SAVE_VERSION = 13 as const;
+export const GAME_STATE_SAVE_VERSION = 14 as const;
 
 export interface GameState {
   slotId: SaveSlotId;
@@ -42,6 +44,21 @@ export interface GameState {
   updatedAt: number;
 }
 
+export interface LegacyMemberWishlistEntryV13 {
+  itemDefinitionId: ItemDefinitionId;
+  preferredRandomSuffixId?: RandomSuffixId;
+  acceptableRandomSuffixIds: RandomSuffixId[];
+}
+
+export type LegacyMemberV13 = Member & {
+  wishlist: { entries: LegacyMemberWishlistEntryV13[] };
+};
+
+export interface LegacyGameStateV13 extends Omit<GameState, "saveVersion" | "members"> {
+  saveVersion: 13;
+  members: Record<MemberId, LegacyMemberV13>;
+}
+
 export type LegacyExpeditionActivityV12 = Omit<
   ExpeditionActivity,
   "developmentSnapshot" | "developmentEvents"
@@ -50,7 +67,7 @@ export type LegacyExpeditionActivityV12 = Omit<
 export type LegacyActivityV12 = Exclude<Activity, ExpeditionActivity> | LegacyExpeditionActivityV12;
 
 export interface LegacyGameStateV12 extends Omit<
-  GameState,
+  LegacyGameStateV13,
   "saveVersion" | "dungeonDevelopment" | "activities"
 > {
   saveVersion: 12;
@@ -66,7 +83,7 @@ export interface LegacyGameStateV11 extends Omit<
 
 export type LegacyItemInstanceV3 = Omit<ItemInstance, "randomSuffixId">;
 
-export type LegacyMemberV9 = Omit<Member, "quests">;
+export type LegacyMemberV9 = Omit<LegacyMemberV13, "quests">;
 
 export type LegacyExpeditionActivityV10 = Omit<ExpeditionActivity, "questSnapshots">;
 
@@ -154,6 +171,7 @@ export interface LegacyGameStateV2 extends Omit<
 
 export type PersistedGameState =
   | GameState
+  | LegacyGameStateV13
   | LegacyGameStateV12
   | LegacyGameStateV11
   | LegacyGameStateV10

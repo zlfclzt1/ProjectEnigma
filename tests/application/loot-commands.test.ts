@@ -2,6 +2,9 @@ import { describe, expect, it } from "vitest";
 import { assignLootCommand } from "../../src/application/commands/assign-loot";
 import { autoAssignLootCommand } from "../../src/application/commands/auto-assign-loot";
 import { sellLootCommand } from "../../src/application/commands/sell-loot";
+import { executeLootPlanCommand } from "../../src/application/commands/execute-loot-plan";
+import { sellNoUpgradeLootCommand } from "../../src/application/commands/sell-no-upgrade-loot";
+import { getLootPlanView } from "../../src/application/queries/get-loot-plan";
 import { GameSession } from "../../src/application/services/game-session";
 import { loadBrowserContentRegistry } from "../../src/content/manifest";
 import type { ActivityStatus } from "../../src/domain/activity/activity";
@@ -214,37 +217,6 @@ describe("automatic loot assignment", () => {
     expect(session.snapshot().members[stronger.id]!.equipment.back).toBe(strongerBackId);
   });
 
-  it("prioritizes an exact wishlist target before ordinary upgrade ties", async () => {
-    const state = idleFixture();
-    const first = Object.values(state.members)[0]!;
-    first.progression.specId = asBrandedId<"SpecId">("warrior_arms");
-    first.joinedAt = 1_000;
-    const wished = createMemberFixture({
-      id: asBrandedId<"MemberId">("member_2"),
-      progression: {
-        level: first.progression.level,
-        experience: 0,
-        specId: asBrandedId<"SpecId">("warrior_arms"),
-      },
-      joinedAt: 2_000,
-      wishlist: {
-        entries: [
-          {
-            itemDefinitionId: asBrandedId<"ItemDefinitionId">("14149"),
-            acceptableRandomSuffixIds: [],
-          },
-        ],
-      },
-    });
-    state.members[wished.id] = wished;
-    const loot = addPendingLoot(state, 1, "14149", [first.id, wished.id]);
-    const session = await createSession(state);
-
-    await session.execute(autoAssignLootCommand(content));
-
-    expect(session.snapshot().members[wished.id]!.equipment.back).toBe(loot.item.id);
-  });
-
   it("leaves every item from an active continuous expedition untouched", async () => {
     const state = idleFixture();
     const member = Object.values(state.members)[0]!;
@@ -280,5 +252,66 @@ describe("automatic loot assignment", () => {
     );
 
     expect(session.snapshot()).toEqual(before);
+  });
+});
+
+describe("loot plan workflow", () => {
+  it("builds a greedy percentage plan without mutating the current state", () => {
+    const state = idleFixture();
+    const member = Object.values(state.members)[0]!;
+    const upgrade = addPendingLoot(state, 1, "14149", [member.id]);
+    const before = structuredClone(state);
+
+    const plan = getLootPlanView(state, content);
+
+    expect(plan.entries[0]).toMatchObject({
+      pendingLootId: upgrade.pendingId,
+      action: "assign",
+      memberId: member.id,
+    });
+    expect(plan.entries[0]!.selectedCandidate?.primaryPercent).toBeGreaterThan(0);
+    expect(state).toEqual(before);
+  });
+
+  it("requires a decision for every unlocked item and executes the plan atomically", async () => {
+    const state = idleFixture();
+    const member = Object.values(state.members)[0]!;
+    const first = addPendingLoot(state, 1, "14149", [member.id]);
+    const second = addPendingLoot(state, 2, "14148", [member.id]);
+    const session = await createSession(state);
+
+    await expect(
+      session.execute(
+        executeLootPlanCommand(content, [
+          { pendingLootId: first.pendingId, action: "assign", memberId: member.id },
+        ]),
+      ),
+    ).rejects.toThrow(/全部已解锁装备/);
+    expect(Object.keys(session.snapshot().pendingLoot)).toHaveLength(2);
+
+    const result = await session.execute(
+      executeLootPlanCommand(content, [
+        { pendingLootId: first.pendingId, action: "assign", memberId: member.id },
+        { pendingLootId: second.pendingId, action: "sell" },
+      ]),
+    );
+    if (result.status !== "committed") throw new Error("Expected committed plan");
+    expect(result.result).toMatchObject({ assigned: 1, sold: 1 });
+    expect(Object.keys(session.snapshot().pendingLoot)).toHaveLength(0);
+  });
+
+  it("sells only currently unlocked loot with no positive main-responsibility gain", async () => {
+    const state = idleFixture();
+    const member = Object.values(state.members)[0]!;
+    const upgrade = addPendingLoot(state, 1, "14149", [member.id]);
+    const noUpgrade = addPendingLoot(state, 2, "14148", [member.id]);
+    const session = await createSession(state);
+
+    const result = await session.execute(sellNoUpgradeLootCommand(content));
+
+    if (result.status !== "committed") throw new Error("Expected no-upgrade sale");
+    expect(result.result.sold).toBe(1);
+    expect(session.snapshot().pendingLoot[noUpgrade.pendingId]).toBeUndefined();
+    expect(session.snapshot().pendingLoot[upgrade.pendingId]).toBeDefined();
   });
 });

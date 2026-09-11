@@ -1,9 +1,5 @@
 import type { ContentRegistry } from "../../../content/registry";
-import {
-  GAME_STATE_SAVE_VERSION,
-  type GameState,
-  type LegacyGameStateV12,
-} from "../../../domain/game-state";
+import { type LegacyGameStateV13, type LegacyGameStateV12 } from "../../../domain/game-state";
 import {
   buildExpeditionDevelopmentSnapshot,
   createEmptyDungeonDevelopmentState,
@@ -11,7 +7,10 @@ import {
 } from "../../../domain/dungeon/dungeon-development";
 import type { EncounterId } from "../../../domain/shared/ids";
 
-export function migrateV12ToV13(legacy: LegacyGameStateV12, content: ContentRegistry): GameState {
+export function migrateV12ToV13(
+  legacy: LegacyGameStateV12,
+  content: ContentRegistry,
+): LegacyGameStateV13 {
   const cloned = structuredClone(legacy);
   const dungeonDevelopment = createEmptyDungeonDevelopmentState();
 
@@ -53,9 +52,9 @@ export function migrateV12ToV13(legacy: LegacyGameStateV12, content: ContentRegi
 
   const stateBase = {
     ...cloned,
-    saveVersion: GAME_STATE_SAVE_VERSION,
+    saveVersion: 13,
     dungeonDevelopment,
-  } as GameState;
+  } as LegacyGameStateV13;
   const activities = Object.fromEntries(
     Object.entries(cloned.activities).map(([activityId, activity]) => {
       if (activity.type !== "expedition") return [activityId, activity];
@@ -81,7 +80,7 @@ export function migrateV12ToV13(legacy: LegacyGameStateV12, content: ContentRegi
         },
       ];
     }),
-  ) as GameState["activities"];
+  ) as LegacyGameStateV13["activities"];
   return { ...stateBase, activities };
 }
 

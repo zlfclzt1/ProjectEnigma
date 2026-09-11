@@ -27,12 +27,17 @@ import { assignLootCommand } from "../application/commands/assign-loot";
 import { autoAssignLootCommand } from "../application/commands/auto-assign-loot";
 import { sellLootCommand } from "../application/commands/sell-loot";
 import { getLootView } from "../application/queries/get-loot-view";
+import { getLootPlanView, type LootPlanOverride } from "../application/queries/get-loot-plan";
+import {
+  executeLootPlanCommand,
+  type LootPlanDecision,
+} from "../application/commands/execute-loot-plan";
+import { sellNoUpgradeLootCommand } from "../application/commands/sell-no-upgrade-loot";
 import { getCombatReportsView } from "../application/queries/get-combat-reports-view";
 import { getGuildUpgradeView } from "../application/queries/get-guild-upgrade-view";
 import { getItemCatalogView } from "../application/queries/get-item-catalog-view";
 import { purchaseGuildUpgradeCommand } from "../application/commands/purchase-guild-upgrade";
 import { claimCollectionRewardCommand } from "../application/commands/claim-collection-reward";
-import { removeMemberWishlistTargetCommand } from "../application/commands/remove-member-wishlist-target";
 import { getExpeditionQuestBriefView } from "../application/queries/get-expedition-quest-brief-view";
 import { getRosterPresetsView } from "../application/queries/get-roster-presets-view";
 import { getDungeonDevelopmentView } from "../application/queries/get-dungeon-development-view";
@@ -42,10 +47,6 @@ import {
   renameRosterPresetCommand,
   updateRosterPresetCommand,
 } from "../application/commands/manage-roster-presets";
-import {
-  setMemberWishlistTargetCommand,
-  type SetMemberWishlistTargetInput,
-} from "../application/commands/set-member-wishlist-target";
 import type { GameCommand, GameSession } from "../application/services/game-session";
 import type { ContentRegistry } from "../content/registry";
 import type { GameState } from "../domain/game-state";
@@ -56,7 +57,6 @@ import type {
   CombatReportId,
   DungeonId,
   GuildUpgradeId,
-  ItemDefinitionId,
   MemberId,
   PendingLootId,
   RosterPresetId,
@@ -327,21 +327,6 @@ export const useGameStore = defineStore("game", () => {
     return execute(dismissMemberCommand(memberId));
   }
 
-  async function setMemberWishlistTarget(
-    memberId: MemberId,
-    input: SetMemberWishlistTargetInput,
-  ): Promise<GameCommandOutcome<unknown>> {
-    if (!content) return unavailableOutcome("set-member-wishlist-target");
-    return execute(setMemberWishlistTargetCommand(content, memberId, input));
-  }
-
-  async function removeMemberWishlistTarget(
-    memberId: MemberId,
-    itemDefinitionId: ItemDefinitionId,
-  ): Promise<GameCommandOutcome<boolean>> {
-    return execute(removeMemberWishlistTargetCommand(memberId, itemDefinitionId));
-  }
-
   async function purchaseGuildUpgrade(
     upgradeId: GuildUpgradeId,
   ): Promise<GameCommandOutcome<unknown>> {
@@ -464,6 +449,24 @@ export const useGameStore = defineStore("game", () => {
     return execute(autoAssignLootCommand(content));
   }
 
+  function lootPlan(overrides: readonly LootPlanOverride[] = []) {
+    return stateSnapshot.value && content
+      ? getLootPlanView(stateSnapshot.value, content, overrides)
+      : null;
+  }
+
+  async function executeLootPlan(
+    decisions: readonly LootPlanDecision[],
+  ): Promise<GameCommandOutcome<unknown>> {
+    if (!content) return unavailableOutcome("execute-loot-plan");
+    return execute(executeLootPlanCommand(content, decisions));
+  }
+
+  async function sellNoUpgradeLoot(): Promise<GameCommandOutcome<unknown>> {
+    if (!content) return unavailableOutcome("sell-no-upgrade-loot");
+    return execute(sellNoUpgradeLootCommand(content));
+  }
+
   function combatReport(reportId: CombatReportId) {
     return combatReports.value?.reports.find((report) => report.id === reportId) ?? null;
   }
@@ -490,6 +493,7 @@ export const useGameStore = defineStore("game", () => {
     members,
     activities,
     loot,
+    lootPlan,
     combatReports,
     guildUpgrades,
     itemCatalog,
@@ -506,8 +510,6 @@ export const useGameStore = defineStore("game", () => {
     respecPreview,
     respecMember,
     dismissMember,
-    setMemberWishlistTarget,
-    removeMemberWishlistTarget,
     purchaseGuildUpgrade,
     claimCollectionReward,
     expeditionQuestBrief,
@@ -520,6 +522,8 @@ export const useGameStore = defineStore("game", () => {
     assignLoot,
     sellLoot,
     autoAssignLoot,
+    executeLootPlan,
+    sellNoUpgradeLoot,
     combatReport,
     clearError,
   };

@@ -2,7 +2,7 @@
 import { computed, ref, watch } from "vue";
 import { RouterLink, useRoute, useRouter } from "vue-router";
 import type { MemberDetailView } from "../../application/queries/get-members-view";
-import type { ItemDefinitionId, RandomSuffixId, SpecId } from "../../domain/shared/ids";
+import type { SpecId } from "../../domain/shared/ids";
 import { useGameStore } from "../../stores/game-store";
 import { useUiStore } from "../../stores/ui-store";
 import CharacterSheet from "../components/CharacterSheet.vue";
@@ -17,13 +17,6 @@ const detail = computed<MemberDetailView | null>(() => {
   return entry ? game.memberDetail(entry.id) : null;
 });
 const selectedSpecId = ref<SpecId | null>(null);
-const selectedWishlistItemId = ref<ItemDefinitionId | null>(null);
-const preferredSuffixId = ref<RandomSuffixId | null>(null);
-const acceptableSuffixIds = ref<RandomSuffixId[]>([]);
-const wishlistNotice = ref("");
-const selectedWishlistOption = computed(() =>
-  detail.value?.wishlist.itemOptions.find((item) => item.id === selectedWishlistItemId.value),
-);
 const respecPreview = computed(() =>
   detail.value && selectedSpecId.value
     ? game.respecPreview(detail.value.id, selectedSpecId.value)
@@ -36,27 +29,6 @@ watch(
     if (!member) return;
     ui.selectMember(member.id);
     selectedSpecId.value = member.availableSpecs.find((spec) => spec.current)?.id ?? null;
-    if (
-      !selectedWishlistItemId.value ||
-      !member.wishlist.itemOptions.some((item) => item.id === selectedWishlistItemId.value)
-    ) {
-      selectedWishlistItemId.value = member.wishlist.itemOptions[0]?.id ?? null;
-    }
-  },
-  { immediate: true },
-);
-
-watch(
-  [selectedWishlistItemId, detail],
-  ([itemId, member]) => {
-    if (!itemId || !member) {
-      preferredSuffixId.value = null;
-      acceptableSuffixIds.value = [];
-      return;
-    }
-    const existing = member.wishlist.entries.find((entry) => entry.id === itemId);
-    preferredSuffixId.value = existing?.preferredRandomSuffixId ?? null;
-    acceptableSuffixIds.value = [...(existing?.acceptableRandomSuffixIds ?? [])];
   },
   { immediate: true },
 );
@@ -79,22 +51,6 @@ async function confirmDismiss(): Promise<void> {
   ui.closeModal();
   ui.selectMember(null);
   await router.push("/members");
-}
-
-async function saveWishlistTarget(): Promise<void> {
-  if (!detail.value || !selectedWishlistItemId.value) return;
-  const outcome = await game.setMemberWishlistTarget(detail.value.id, {
-    itemDefinitionId: selectedWishlistItemId.value,
-    ...(preferredSuffixId.value ? { preferredRandomSuffixId: preferredSuffixId.value } : {}),
-    acceptableRandomSuffixIds: acceptableSuffixIds.value,
-  });
-  wishlistNotice.value = outcome.ok ? "愿望目标已保存。" : outcome.error.message;
-}
-
-async function removeWishlistTarget(itemDefinitionId: ItemDefinitionId): Promise<void> {
-  if (!detail.value) return;
-  const outcome = await game.removeMemberWishlistTarget(detail.value.id, itemDefinitionId);
-  wishlistNotice.value = outcome.ok ? "愿望目标已移除。" : outcome.error.message;
 }
 
 function contributionName(capability: string | undefined): string {
@@ -139,87 +95,6 @@ function contributionName(capability: string | undefined): string {
             >{{ entry.amount >= 0 ? "+" : "" }}{{ entry.amount.toFixed(3) }}</strong
           >
         </div>
-      </div>
-    </section>
-
-    <section class="panel wishlist-panel">
-      <header>
-        <div>
-          <h3>装备愿望单</h3>
-          <p>仅可选择已解锁副本中适合当前专精主职责的 Boss 装备</p>
-        </div>
-      </header>
-      <div v-if="detail.wishlist.itemOptions.length > 0" class="wishlist-editor">
-        <label>
-          <span>基础装备</span>
-          <select v-model="selectedWishlistItemId" :disabled="game.commandPending">
-            <option v-for="item in detail.wishlist.itemOptions" :key="item.id" :value="item.id">
-              {{ item.name }} · {{ item.dungeonName }} / {{ item.encounterName }}
-            </option>
-          </select>
-        </label>
-        <label v-if="selectedWishlistOption?.suffixOptions.length">
-          <span>首选词缀</span>
-          <select v-model="preferredSuffixId" :disabled="game.commandPending">
-            <option :value="null">不限词缀</option>
-            <option
-              v-for="suffix in selectedWishlistOption.suffixOptions"
-              :key="suffix.id"
-              :value="suffix.id"
-            >
-              {{ suffix.name }}
-            </option>
-          </select>
-        </label>
-        <label v-if="selectedWishlistOption?.suffixOptions.length">
-          <span>可接受词缀（可多选）</span>
-          <select v-model="acceptableSuffixIds" multiple :disabled="game.commandPending">
-            <option
-              v-for="suffix in selectedWishlistOption.suffixOptions"
-              :key="suffix.id"
-              :value="suffix.id"
-            >
-              {{ suffix.name }}
-            </option>
-          </select>
-        </label>
-        <button type="button" :disabled="game.commandPending" @click="saveWishlistTarget">
-          保存愿望
-        </button>
-      </div>
-      <p v-else class="empty-wishlist">当前已解锁副本中没有适合该专精的愿望装备。</p>
-      <p v-if="wishlistNotice" class="wishlist-notice">{{ wishlistNotice }}</p>
-      <div v-if="detail.wishlist.entries.length > 0" class="wishlist-list">
-        <article v-for="entry in detail.wishlist.entries" :key="entry.id">
-          <div>
-            <strong :class="`quality-${entry.quality}`">{{ entry.name }}</strong>
-            <p>
-              {{ entry.dungeonName }} · {{ entry.encounterName }} · 物品等级 {{ entry.itemLevel }}
-            </p>
-            <p v-if="entry.preferredRandomSuffixId">
-              首选：{{
-                entry.suffixOptions.find((suffix) => suffix.id === entry.preferredRandomSuffixId)
-                  ?.name
-              }}
-            </p>
-            <p v-if="entry.acceptableRandomSuffixIds.length">
-              可接受：{{
-                entry.acceptableRandomSuffixIds
-                  .map((id) => entry.suffixOptions.find((suffix) => suffix.id === id)?.name ?? id)
-                  .join("、")
-              }}
-            </p>
-            <p v-if="!entry.validForCurrentSpec" class="warning">当前专精已不再适用。</p>
-          </div>
-          <button
-            class="danger"
-            type="button"
-            :disabled="game.commandPending"
-            @click="removeWishlistTarget(entry.id)"
-          >
-            移除
-          </button>
-        </article>
       </div>
     </section>
 
@@ -279,15 +154,6 @@ function contributionName(capability: string | undefined): string {
       <section class="modal" role="dialog" aria-modal="true" aria-labelledby="respec-title">
         <h3 id="respec-title">确认改为 {{ respecPreview.targetSpecName }}？</h3>
         <p>本次转专精需要 {{ detail.respecCost }} G，不兼容装备仍按现有规则出售并补齐初始装备。</p>
-        <template v-if="respecPreview.invalidWishlistItems.length > 0">
-          <p>以下愿望目标不再适合新专精，将在提交时一并移除：</p>
-          <ul class="respec-wishlist-removals">
-            <li v-for="item in respecPreview.invalidWishlistItems" :key="item.itemDefinitionId">
-              {{ item.itemName }}
-            </li>
-          </ul>
-        </template>
-        <p v-else>当前愿望单不会变化。</p>
         <footer>
           <button type="button" @click="ui.closeModal()">取消</button>
           <button type="button" :disabled="game.commandPending" @click="confirmRespec">
@@ -408,59 +274,6 @@ function contributionName(capability: string | undefined): string {
   gap: 10px;
   margin-top: 15px;
 }
-.wishlist-editor {
-  display: grid;
-  grid-template-columns: minmax(240px, 2fr) minmax(150px, 1fr) minmax(180px, 1fr) auto;
-  align-items: end;
-  gap: 10px;
-  margin-top: 15px;
-}
-.wishlist-editor label:only-of-type {
-  grid-column: span 3;
-}
-.wishlist-editor select[multiple] {
-  min-height: 74px;
-}
-.wishlist-list {
-  display: grid;
-  gap: 8px;
-  margin-top: 14px;
-}
-.wishlist-list article {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 11px;
-  border: 1px solid #302d27;
-  border-radius: 6px;
-  background: #0b0e10;
-}
-.wishlist-list strong {
-  color: #5f9bd4;
-}
-.wishlist-list strong.quality-common {
-  color: #eee;
-}
-.wishlist-list strong.quality-uncommon {
-  color: #63bf63;
-}
-.wishlist-list strong.quality-rare {
-  color: #5f9bd4;
-}
-.wishlist-list strong.quality-epic {
-  color: #a875db;
-}
-.wishlist-list p,
-.empty-wishlist,
-.wishlist-notice {
-  margin: 4px 0 0;
-  color: #8f8575;
-  font-size: 0.72rem;
-}
-.wishlist-notice {
-  color: #78ad7b;
-}
 label {
   display: grid;
   flex: 1;
@@ -523,11 +336,6 @@ button:disabled {
   color: #9f9584;
   line-height: 1.5;
 }
-.respec-wishlist-removals {
-  margin: 8px 0 14px;
-  padding-left: 22px;
-  color: #d6bd91;
-}
 .modal footer {
   display: flex;
   justify-content: flex-end;
@@ -542,13 +350,9 @@ button:disabled {
 }
 @media (max-width: 650px) {
   .management-row,
-  .wishlist-editor,
   .detail-heading {
     align-items: stretch;
     flex-direction: column;
-  }
-  .wishlist-editor label:only-of-type {
-    grid-column: auto;
   }
 }
 </style>

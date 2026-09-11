@@ -233,13 +233,11 @@ function developmentRewardScore(
     source: { type: "grant", reasonId: "development-preview" },
     enchantmentIds: [],
   };
-  let wishlist = 0;
   let equippable = 0;
   let bestUpgrade = 0;
   for (const memberId of activity.participantIds) {
     const member = state.members[memberId];
     if (!member) continue;
-    if (member.wishlist.entries.some((entry) => entry.itemDefinitionId === itemId)) wishlist = 1;
     let evaluation;
     try {
       evaluation = evaluateUpgrade(member, synthetic, state, content);
@@ -252,7 +250,6 @@ function developmentRewardScore(
   }
   const uncollected = state.collection.items[itemId] ? 0 : 1;
   return (
-    wishlist * 1_000_000_000 +
     equippable * 1_000_000 +
     Math.max(0, bestUpgrade) * 1_000 +
     uncollected * 100 +
