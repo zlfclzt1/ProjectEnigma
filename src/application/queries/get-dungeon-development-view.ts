@@ -144,7 +144,10 @@ export function getDungeonDevelopmentView(
     .filter((dungeon) => dungeon.totalCount > 0)
     .sort(
       (left, right) =>
-        Number(right.unlocked) - Number(left.unlocked) || left.name.localeCompare(right.name),
+        Number(right.unlocked) - Number(left.unlocked) ||
+        (content.dungeonById.get(left.id)?.recommendedLevel ?? 0) -
+          (content.dungeonById.get(right.id)?.recommendedLevel ?? 0) ||
+        left.id.localeCompare(right.id),
     );
   return {
     dungeons,

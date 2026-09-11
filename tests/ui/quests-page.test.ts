@@ -40,6 +40,23 @@ describe("dungeon development archive", () => {
     expect(wrapper.find(".approve-button").exists()).toBe(false);
   });
 
+  it("orders dungeon tabs by progression level instead of localized name", async () => {
+    await setup("development-archive-order");
+    const wrapper = mount(QuestsPage);
+    await flushPromises();
+
+    expect(
+      wrapper.findAll(".dungeon-tabs button").slice(0, 6).map((button) => button.text()),
+    ).toEqual([
+      expect.stringContaining("怒焰裂谷"),
+      expect.stringContaining("黑暗深渊"),
+      expect.stringContaining("暴风城监狱"),
+      expect.stringContaining("诺莫瑞根"),
+      expect.stringContaining("剃刀沼泽"),
+      expect.stringContaining("血色修道院：墓地"),
+    ]);
+  });
+
   it("reveals completed commissions, permanent bonuses, and Boss drop assignments", async () => {
     const game = await setup("development-archive-complete");
     await game.execute({
