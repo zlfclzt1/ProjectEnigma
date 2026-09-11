@@ -5,7 +5,7 @@ import { asBrandedId } from "../../src/domain/shared/ids";
 const content = loadBrowserContentRegistry();
 
 describe("Blackrock Depths Shadowforge City content", () => {
-  it("unlocks after the Detention Block and ends the current dungeon scope at the Emperor", () => {
+  it("unlocks after the Detention Block and opens the first level-60 branch at the Emperor", () => {
     const dungeon = content.dungeonById.get(
       asBrandedId<"DungeonId">("blackrock_depths_shadowforge_city"),
     )!;
@@ -29,12 +29,14 @@ describe("Blackrock Depths Shadowforge City content", () => {
       ),
     ).toBe(3300);
     expect(
-      content.dungeons.filter(
-        (candidate) =>
-          candidate.unlock?.requiredDungeonIds?.includes(dungeon.id) ||
-          candidate.unlock?.requiredAnyDungeonIds?.includes(dungeon.id),
-      ),
-    ).toEqual([]);
+      content.dungeons
+        .filter(
+          (candidate) =>
+            candidate.unlock?.requiredDungeonIds?.includes(dungeon.id) ||
+            candidate.unlock?.requiredAnyDungeonIds?.includes(dungeon.id),
+        )
+        .map((candidate) => candidate.id),
+    ).toEqual(["dire_maul_east"]);
   });
 
   it("keeps side bosses player-selected and Panzor seed-driven", () => {

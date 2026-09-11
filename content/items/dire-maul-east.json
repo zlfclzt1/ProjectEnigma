@@ -1,0 +1,1021 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/",
+        "verifiedAt": "2026-09-11",
+        "notes": "通过逐件中文 XML 核对厄运之槌东区装备属性、图标、品质与需求等级。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "items": [
+    {
+      "id": "18301",
+      "name": {
+        "zhCN": "蕾瑟塔蒂丝的魔杖"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "uncommon",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_wand_06"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：蕾瑟塔蒂丝的装备掉落。"
+      },
+      "stats": {
+        "spell": {
+          "spellPowerPoints": 9,
+          "healingPowerPoints": 9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18301",
+        "url": "https://www.wowhead.com/classic/cn/item=18301&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18302",
+      "name": {
+        "zhCN": "活力指环"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "uncommon",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_20"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：蕾瑟塔蒂丝的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 8,
+          "agilityPoints": 7,
+          "staminaPoints": 7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18302",
+        "url": "https://www.wowhead.com/classic/cn/item=18302&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18305",
+      "name": {
+        "zhCN": "破水护腿"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "uncommon",
+      "slot": "legs",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_04"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：海多斯博恩的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 12
+        },
+        "defense": {
+          "armorPoints": 483,
+          "parryPercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18305",
+        "url": "https://www.wowhead.com/classic/cn/item=18305&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18306",
+      "name": {
+        "zhCN": "暗影迷雾手套"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "uncommon",
+      "slot": "hands",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_22"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：瑟雷姆·刺蹄的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12
+        },
+        "defense": {
+          "armorPoints": 47
+        },
+        "spell": {
+          "shadowSpellPowerPoints": 19
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18306",
+        "url": "https://www.wowhead.com/classic/cn/item=18306&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18307",
+      "name": {
+        "zhCN": "破潮软鞋"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "uncommon",
+      "slot": "feet",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_05"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：海多斯博恩的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 12
+        },
+        "defense": {
+          "armorPoints": 52
+        },
+        "spell": {
+          "frostSpellPowerPoints": 19
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18307",
+        "url": "https://www.wowhead.com/classic/cn/item=18307&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18308",
+      "name": {
+        "zhCN": "聪明帽"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "uncommon",
+      "slot": "head",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_51"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：瑟雷姆·刺蹄的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 11
+        },
+        "defense": {
+          "armorPoints": 122
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18308",
+        "url": "https://www.wowhead.com/classic/cn/item=18308&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18309",
+      "name": {
+        "zhCN": "恢复手套"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_20"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：奥兹恩的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 9
+        },
+        "defense": {
+          "armorPoints": 105
+        },
+        "spell": {
+          "healingPowerPoints": 37
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18309",
+        "url": "https://www.wowhead.com/classic/cn/item=18309&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18310",
+      "name": {
+        "zhCN": "恶魔弯刀"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_18"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：奥兹恩的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 5
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 74,
+            "maximumPoints": 112
+          },
+          "speedSeconds": 2.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18310",
+        "url": "https://www.wowhead.com/classic/cn/item=18310&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18311",
+      "name": {
+        "zhCN": "奎尔多雷导能魔杖"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_staff_14"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：蕾瑟塔蒂丝的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 8,
+          "intellectPoints": 18,
+          "spiritPoints": 8
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 8
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 111,
+            "maximumPoints": 167
+          },
+          "speedSeconds": 2.8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18311",
+        "url": "https://www.wowhead.com/classic/cn/item=18311&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18312",
+      "name": {
+        "zhCN": "充能胸甲"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_plate11"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：奥兹恩的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 13,
+          "staminaPoints": 20,
+          "intellectPoints": 12
+        },
+        "defense": {
+          "armorPoints": 617
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18312",
+        "url": "https://www.wowhead.com/classic/cn/item=18312&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18313",
+      "name": {
+        "zhCN": "警觉头盔"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_19"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：瑟雷姆·刺蹄的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 17
+        },
+        "defense": {
+          "armorPoints": 493,
+          "dodgePercent": 2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18313",
+        "url": "https://www.wowhead.com/classic/cn/item=18313&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18314",
+      "name": {
+        "zhCN": "恶魔狡诈之戒"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_31"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：奥兹恩的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 10
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18314",
+        "url": "https://www.wowhead.com/classic/cn/item=18314&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18315",
+      "name": {
+        "zhCN": "恶魔力量之戒"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_28"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：奥兹恩的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10
+        },
+        "spell": {
+          "healthRegenPer5Seconds": 6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18315",
+        "url": "https://www.wowhead.com/classic/cn/item=18315&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18317",
+      "name": {
+        "zhCN": "暴雨护符"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_necklace_03"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：海多斯博恩的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 7,
+          "spiritPoints": 6
+        },
+        "spell": {
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18317",
+        "url": "https://www.wowhead.com/classic/cn/item=18317&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18318",
+      "name": {
+        "zhCN": "怜悯胫甲"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_01"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：奥兹恩的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 14,
+          "intellectPoints": 14
+        },
+        "defense": {
+          "armorPoints": 240
+        },
+        "spell": {
+          "healingPowerPoints": 20
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18318",
+        "url": "https://www.wowhead.com/classic/cn/item=18318&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18319",
+      "name": {
+        "zhCN": "炽热头盔"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_38"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：瑟雷姆·刺蹄的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 14
+        },
+        "defense": {
+          "armorPoints": 279
+        },
+        "spell": {
+          "healthRegenPer5Seconds": 7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18319",
+        "url": "https://www.wowhead.com/classic/cn/item=18319&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18321",
+      "name": {
+        "zhCN": "高能魔棒"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "rogue", "priest", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_mace_13"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：奥兹恩的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 5
+        },
+        "spell": {
+          "spellPowerPoints": 14,
+          "healingPowerPoints": 14
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 71,
+            "maximumPoints": 107
+          },
+          "speedSeconds": 2.3
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18321",
+        "url": "https://www.wowhead.com/classic/cn/item=18321&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18322",
+      "name": {
+        "zhCN": "海风长靴"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_08"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：海多斯博恩的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 6,
+          "spiritPoints": 6
+        },
+        "defense": {
+          "armorPoints": 114
+        },
+        "spell": {
+          "spellPowerPoints": 25,
+          "healingPowerPoints": 25
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18322",
+        "url": "https://www.wowhead.com/classic/cn/item=18322&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18323",
+      "name": {
+        "zhCN": "萨特强弓"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_bow_03"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：瑟雷姆·刺蹄的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 3
+        },
+        "physical": {
+          "hitPercent": 1
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 50,
+            "maximumPoints": 93
+          },
+          "speedSeconds": 2.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18323",
+        "url": "https://www.wowhead.com/classic/cn/item=18323&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18324",
+      "name": {
+        "zhCN": "削浪者"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_axe_17"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：海多斯博恩的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 26
+        },
+        "physical": {
+          "criticalStrikePercent": 1
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 123,
+            "maximumPoints": 185
+          },
+          "speedSeconds": 3.1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18324",
+        "url": "https://www.wowhead.com/classic/cn/item=18324&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18325",
+      "name": {
+        "zhCN": "魔皮软帽"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_31"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：蕾瑟塔蒂丝的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 21,
+          "staminaPoints": 14
+        },
+        "defense": {
+          "armorPoints": 134
+        },
+        "resistances": {
+          "firePoints": 8,
+          "shadowPoints": 8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18325",
+        "url": "https://www.wowhead.com/classic/cn/item=18325&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18326",
+      "name": {
+        "zhCN": "剃刀护手"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_31"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：奥兹恩的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 8
+        },
+        "defense": {
+          "armorPoints": 386
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18326",
+        "url": "https://www.wowhead.com/classic/cn/item=18326&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18327",
+      "name": {
+        "zhCN": "刺藤腰带"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_17"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：奥兹恩的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 9
+        },
+        "defense": {
+          "armorPoints": 47
+        },
+        "spell": {
+          "healingPowerPoints": 31,
+          "manaRegenPer5Seconds": 6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18327",
+        "url": "https://www.wowhead.com/classic/cn/item=18327&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18328",
+      "name": {
+        "zhCN": "影木披风"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_17"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区：奥兹恩的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 13,
+          "staminaPoints": 7
+        },
+        "defense": {
+          "armorPoints": 42
+        },
+        "resistances": {
+          "naturePoints": 7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18328",
+        "url": "https://www.wowhead.com/classic/cn/item=18328&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    }
+  ]
+}

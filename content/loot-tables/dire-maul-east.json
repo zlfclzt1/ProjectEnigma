@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-11",
+        "notes": "核对厄运之槌东区首领与受支持装备池；配方、材料、钥匙、任务物品、消耗品、卡牌、坐骑和法术书不进入装备掉落。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "lootTables": [
+    {
+      "id": "dire_maul_east_zevrim_thornhoof",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "18319",
+          "weight": 0.2
+        },
+        {
+          "itemId": "18313",
+          "weight": 0.2
+        },
+        {
+          "itemId": "18323",
+          "weight": 0.2
+        },
+        {
+          "itemId": "18308",
+          "weight": 0.2
+        },
+        {
+          "itemId": "18306",
+          "weight": 0.2
+        }
+      ]
+    },
+    {
+      "id": "dire_maul_east_hydro",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "18317",
+          "weight": 0.2
+        },
+        {
+          "itemId": "18322",
+          "weight": 0.2
+        },
+        {
+          "itemId": "18324",
+          "weight": 0.2
+        },
+        {
+          "itemId": "18305",
+          "weight": 0.2
+        },
+        {
+          "itemId": "18307",
+          "weight": 0.2
+        }
+      ]
+    },
+    {
+      "id": "dire_maul_east_lethtendris",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "18325",
+          "weight": 0.25
+        },
+        {
+          "itemId": "18311",
+          "weight": 0.25
+        },
+        {
+          "itemId": "18301",
+          "weight": 0.25
+        },
+        {
+          "itemId": "18302",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "dire_maul_east_alzzin",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "18328",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18312",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18309",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18326",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18327",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18318",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18321",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18310",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18314",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18315",
+          "weight": 0.1
+        }
+      ]
+    }
+  ]
+}

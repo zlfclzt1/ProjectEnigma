@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "source": "https://wow.zamimg.com/images/wow/icons/large/<icon-name>.jpg",
   "generatedAt": "2026-09-11",
-  "itemCount": 572,
-  "count": 338,
+  "itemCount": 601,
+  "count": 359,
   "icons": [
     {
       "name": "ability_mount_whitedirewolf",
@@ -64,6 +64,12 @@
       "file": "inv_axe_13.jpg",
       "bytes": 1772,
       "sha256": "673e5ab6c3bce8f1b402e41547898b2e69464e0b2897e6acc0846cda329f6b76"
+    },
+    {
+      "name": "inv_axe_17",
+      "file": "inv_axe_17.jpg",
+      "bytes": 1558,
+      "sha256": "699a79eb2c0dd810ea078b645a19f4ba09804e9855bda83c8e176702e4f0c110"
     },
     {
       "name": "inv_axe_18",
@@ -136,6 +142,12 @@
       "file": "inv_belt_16.jpg",
       "bytes": 1842,
       "sha256": "cd68f6cf45cceee236d32dc58baa5749a0074bf37d2c68ee3521f8d8153c9e47"
+    },
+    {
+      "name": "inv_belt_17",
+      "file": "inv_belt_17.jpg",
+      "bytes": 2003,
+      "sha256": "2a7d4ef5b7b8274b11e23b3bb28408ec3770fc3bf36a2c1fa741a10097444f27"
     },
     {
       "name": "inv_belt_18",
@@ -226,6 +238,12 @@
       "file": "inv_boots_05.jpg",
       "bytes": 1503,
       "sha256": "c9d34278cb5d624e7a055eafcb860131716eef03eb26be985fb5a62c1bbfda4e"
+    },
+    {
+      "name": "inv_boots_06",
+      "file": "inv_boots_06.jpg",
+      "bytes": 1608,
+      "sha256": "25a57d4acebc8f3d98d4b460b887b2ba9f69093828f9eba8208b29dc873258ad"
     },
     {
       "name": "inv_boots_07",
@@ -522,6 +540,12 @@
       "sha256": "49324f2885cc7f7eca9eb1e679c146f3dec5075203dbac594b294e4895bc79b2"
     },
     {
+      "name": "inv_chest_plate11",
+      "file": "inv_chest_plate11.jpg",
+      "bytes": 1787,
+      "sha256": "4486ec3b9bb15515ff05d0811191a57f50ead83ed07d799961a8aa075afdd8b9"
+    },
+    {
       "name": "inv_chest_plate12",
       "file": "inv_chest_plate12.jpg",
       "bytes": 1714,
@@ -624,6 +648,12 @@
       "sha256": "6142b63b46e281bd37c75b9485b3102db3e765ca9b27f7aee4d2dac1d71734ed"
     },
     {
+      "name": "inv_gauntlets_20",
+      "file": "inv_gauntlets_20.jpg",
+      "bytes": 1811,
+      "sha256": "4f221cbdea83742469c38fd81f0bfa96abb845009f9f1b50ca5fa9a64a78e614"
+    },
+    {
       "name": "inv_gauntlets_22",
       "file": "inv_gauntlets_22.jpg",
       "bytes": 1868,
@@ -658,6 +688,12 @@
       "file": "inv_gauntlets_30.jpg",
       "bytes": 2224,
       "sha256": "7833213bf3a51e48fb39b15f76da3e5805bc6175c18cc6448c57652c5bae22cf"
+    },
+    {
+      "name": "inv_gauntlets_31",
+      "file": "inv_gauntlets_31.jpg",
+      "bytes": 2025,
+      "sha256": "2c41d32e0068577b37ca72373e4e04e08a9c24f0b2d2e7c01f3e229818ab805f"
     },
     {
       "name": "inv_gauntlets_32",
@@ -756,6 +792,12 @@
       "sha256": "c7dbf358429469aacbda84de8a9490dd558120752503dc7021f109f711d4e5bd"
     },
     {
+      "name": "inv_helmet_19",
+      "file": "inv_helmet_19.jpg",
+      "bytes": 1904,
+      "sha256": "a560a053a12c9c9bd87aba0a41af936ce55175052f4cc5e7b47e3b2e6200bd6a"
+    },
+    {
       "name": "inv_helmet_20",
       "file": "inv_helmet_20.jpg",
       "bytes": 1808,
@@ -798,6 +840,12 @@
       "sha256": "6df11cddb97a735d2b8c71ada4bddc4336224f6d2e9da48d9aaa71287711a227"
     },
     {
+      "name": "inv_helmet_31",
+      "file": "inv_helmet_31.jpg",
+      "bytes": 1706,
+      "sha256": "2a72963040e41ad9459d4d459bb87c9c73310ff7fecfcf2f4883d9757477b208"
+    },
+    {
       "name": "inv_helmet_33",
       "file": "inv_helmet_33.jpg",
       "bytes": 1713,
@@ -808,6 +856,12 @@
       "file": "inv_helmet_35.jpg",
       "bytes": 1836,
       "sha256": "e77430753c95e2c02713a1dd2468ac4c8172ac6b394c9b58a1cec0a884479cfc"
+    },
+    {
+      "name": "inv_helmet_38",
+      "file": "inv_helmet_38.jpg",
+      "bytes": 1794,
+      "sha256": "af5bb3a47b9b62017ecf8e3c770fbe4f62eb8bc2d2aa48b98c5f339f94db494d"
     },
     {
       "name": "inv_helmet_41",
@@ -826,6 +880,12 @@
       "file": "inv_helmet_46.jpg",
       "bytes": 1358,
       "sha256": "4a1689d56569dd493dbc4ed49c9c6c28b1b0f6a8ffa37872e6d9e212f1dde3d6"
+    },
+    {
+      "name": "inv_helmet_51",
+      "file": "inv_helmet_51.jpg",
+      "bytes": 1468,
+      "sha256": "00d7138ac1e95f7178e37328882f78c5023c458a338142e971e357c45c3a396f"
     },
     {
       "name": "inv_jewelry_amulet_01",
@@ -856,6 +916,12 @@
       "file": "inv_jewelry_necklace_02.jpg",
       "bytes": 1627,
       "sha256": "cb427d4bf672acfef8be80aa2adf21c62b724719c04cda65bfb17b80858687a5"
+    },
+    {
+      "name": "inv_jewelry_necklace_03",
+      "file": "inv_jewelry_necklace_03.jpg",
+      "bytes": 1550,
+      "sha256": "279731acb78ef1c1b211e795d2fff5c3566f1f63f76884fe6e005d466a95db23"
     },
     {
       "name": "inv_jewelry_necklace_04",
@@ -948,10 +1014,28 @@
       "sha256": "03ccb9b70ffc79e5f9cbd893377dfd8d2f9285c61e4553f0c813f5ab7225530c"
     },
     {
+      "name": "inv_jewelry_ring_20",
+      "file": "inv_jewelry_ring_20.jpg",
+      "bytes": 1916,
+      "sha256": "deb105004a6fd91527e21d43c109ba7fb365d48d487f1f6ba489ca60cb823986"
+    },
+    {
       "name": "inv_jewelry_ring_24",
       "file": "inv_jewelry_ring_24.jpg",
       "bytes": 2055,
       "sha256": "6816475816fb968ca7427956ff57026f3fd71a3af5c5c88e7866d42105382b12"
+    },
+    {
+      "name": "inv_jewelry_ring_28",
+      "file": "inv_jewelry_ring_28.jpg",
+      "bytes": 2064,
+      "sha256": "44f238ee1d34e1bd8c1a40ce37bac74efdfef448c54890cb55b50b1132002bcf"
+    },
+    {
+      "name": "inv_jewelry_ring_31",
+      "file": "inv_jewelry_ring_31.jpg",
+      "bytes": 1488,
+      "sha256": "c7952061a98f5f762e2817849050bd61dc5a4325192de199f3c0a66a786d52e3"
     },
     {
       "name": "inv_jewelry_ring_32",
@@ -1072,6 +1156,12 @@
       "file": "inv_misc_bone_elfskull_01.jpg",
       "bytes": 1612,
       "sha256": "95527ab1c5d797f4583b193e47f12dd20b419fe2fba770b4c57d80841f17f406"
+    },
+    {
+      "name": "inv_misc_book_06",
+      "file": "inv_misc_book_06.jpg",
+      "bytes": 2139,
+      "sha256": "5352ccc604cd6cb6e6f393d779b4d29652c515f821773d17ea91e8b57f997630"
     },
     {
       "name": "inv_misc_cape_02",
@@ -1392,6 +1482,12 @@
       "sha256": "8c95e8ad9670b40c9164767cc37eaf0cfce412c2486142956017ea31da241bf0"
     },
     {
+      "name": "inv_shield_12",
+      "file": "inv_shield_12.jpg",
+      "bytes": 2014,
+      "sha256": "80701346112ca9dc553e93904b88879c4c85073b5f19ed395821d8aae788545f"
+    },
+    {
       "name": "inv_shield_17",
       "file": "inv_shield_17.jpg",
       "bytes": 1801,
@@ -1596,6 +1692,12 @@
       "sha256": "b0b73a5823fa031c4377d4b3a81657ce5a736ecbbbeef175ad77a8326cd175cc"
     },
     {
+      "name": "inv_staff_14",
+      "file": "inv_staff_14.jpg",
+      "bytes": 1887,
+      "sha256": "9baa63f81cb6c323cc90b2b59db5215a1d26a42d1250f08bc0cb4df9e8c1b1fc"
+    },
+    {
       "name": "inv_staff_15",
       "file": "inv_staff_15.jpg",
       "bytes": 2041,
@@ -1704,6 +1806,12 @@
       "sha256": "78275df868ff9e8ef75d732664b34a059c4a0e548cd4d95897efcd4943a5498e"
     },
     {
+      "name": "inv_sword_18",
+      "file": "inv_sword_18.jpg",
+      "bytes": 1276,
+      "sha256": "c03b3c9d8439b68a4411107e05345089dec3c22a62aee886c50a977c31774726"
+    },
+    {
       "name": "inv_sword_19",
       "file": "inv_sword_19.jpg",
       "bytes": 1719,
@@ -1744,6 +1852,12 @@
       "file": "inv_sword_27.jpg",
       "bytes": 1558,
       "sha256": "064dbd04978bb8db37983b9e53610f2f839c0ce69c5db992ff4d8c225a999a79"
+    },
+    {
+      "name": "inv_sword_28",
+      "file": "inv_sword_28.jpg",
+      "bytes": 1696,
+      "sha256": "10fd48f6b4d54a1cc8ce8fcd2d0b8d45919ab71377c536ce02a77941163b74ec"
     },
     {
       "name": "inv_sword_30",
@@ -1852,6 +1966,12 @@
       "file": "inv_wand_04.jpg",
       "bytes": 2117,
       "sha256": "49970a90076d5f1f79cebe6733a060270a417c161b0b22604b8a27a93c42301b"
+    },
+    {
+      "name": "inv_wand_06",
+      "file": "inv_wand_06.jpg",
+      "bytes": 2031,
+      "sha256": "bd26188df7727bbc4ecb0bfd1c9db5f95e9b13e67ad7da1d87803f788cd45c8c"
     },
     {
       "name": "inv_wand_09",
@@ -2014,6 +2134,12 @@
       "file": "inv_weapon_shortblade_18.jpg",
       "bytes": 1130,
       "sha256": "7b3e1cd42fff1e2a8f070496424f73753937a2c62467de14acce2e2202b4009c"
+    },
+    {
+      "name": "inv_weapon_shortblade_21",
+      "file": "inv_weapon_shortblade_21.jpg",
+      "bytes": 1260,
+      "sha256": "18ae9010379f0a715dd2e5aeb65d7af3a823b52cb3545d2a6256919feb1b4a23"
     },
     {
       "name": "inv_weapon_shortblade_25",

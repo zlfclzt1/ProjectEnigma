@@ -98,7 +98,7 @@ describe("item collection catalog query", () => {
     ]);
     expect(view.globalProgress).toEqual({
       acquiredItemCount: 0,
-      totalItemCount: 404,
+      totalItemCount: 428,
       completionPercent: 0,
     });
     expect(JSON.stringify(view)).not.toContain("尖牙腰带");
@@ -192,7 +192,7 @@ describe("item collection catalog query", () => {
     expect(baseItem.source.encounterDropChance).toBeGreaterThan(
       baseItem.source.baseEncounterDropChance,
     );
-    expect(view.globalProgress.totalItemCount).toBe(404);
+    expect(view.globalProgress.totalItemCount).toBe(428);
   });
 
   it("projects base-item discovery counts and possible and seen suffixes consistently", () => {
@@ -270,7 +270,7 @@ describe("item collection catalog query", () => {
       ]),
     );
     expect(item.acquisitionCount).toBe(1);
-    expect(view.globalProgress).toMatchObject({ acquiredItemCount: 1, totalItemCount: 404 });
+    expect(view.globalProgress).toMatchObject({ acquiredItemCount: 1, totalItemCount: 428 });
   });
 
   it("reveals all four Herod drops after Armory is unlocked", () => {
@@ -363,6 +363,8 @@ describe("item collection catalog query", () => {
       "11817",
       "11816",
       "11823",
+      "18319",
+      "18313",
     ].forEach((itemId, index) => acquire(game, content, itemId, index + 1));
 
     const view = getItemCatalogView(game, content);
@@ -374,8 +376,8 @@ describe("item collection catalog query", () => {
       completionPercent: (11 / 21) * 100,
     });
     expect(view.itemSets).toEqual([]);
-    expect(view.globalProgress).toMatchObject({ acquiredItemCount: 41, totalItemCount: 404 });
-    expect(view.globalProgress.completionPercent).toBeCloseTo((41 / 404) * 100);
+    expect(view.globalProgress).toMatchObject({ acquiredItemCount: 43, totalItemCount: 428 });
+    expect(view.globalProgress.completionPercent).toBeCloseTo((43 / 428) * 100);
     expect(view.rewards).toHaveLength(2);
     expect(view.rewards.every((reward) => reward.claimable)).toBe(true);
     expect(view.rewards.every((reward) => !reward.claimed)).toBe(true);

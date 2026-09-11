@@ -90,7 +90,7 @@ function buildReport(): string {
   const realItems = items.filter((item) => !item.isStarter);
   const starterItems = items.filter((item) => item.isStarter);
 
-  assert.equal(realItems.length, 531, "当前真实副本与任务装备数量应为 531");
+  assert.equal(realItems.length, 560, "当前真实副本与任务装备数量应为 560");
   assert.equal(starterItems.length, 41, "当前初始装备定义数量应为 41");
   for (const item of realItems) {
     assert.ok(
@@ -120,7 +120,7 @@ function buildReport(): string {
   const lines = [
     "# 当前装备属性审计",
     "",
-    "生成日期：2026-09-10",
+    "生成日期：2026-09-11",
     "",
     "## 结论",
     "",
@@ -175,7 +175,7 @@ if (mode === "--write") {
       "装备属性审计报告已变化；请显式运行 npm run item-stats:audit:write。",
     );
   }
-  console.log("装备属性审计通过：531 件真实装备与 41 件初始装备资料完整。");
+  console.log("装备属性审计通过：560 件真实装备与 41 件初始装备资料完整。");
 } else {
   throw new Error(`未知参数：${mode}`);
 }

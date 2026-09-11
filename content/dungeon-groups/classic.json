@@ -43,6 +43,18 @@
         "blackrock_depths_detention_block",
         "blackrock_depths_shadowforge_city"
       ]
+    },
+    {
+      "id": "raid_prep_dungeons_60",
+      "name": { "zhCN": "60 级团本前准备" },
+      "order": 30
+    },
+    {
+      "id": "dire_maul_branch",
+      "name": { "zhCN": "厄运之槌分支" },
+      "order": 10,
+      "parentId": "raid_prep_dungeons_60",
+      "dungeonIds": ["dire_maul_east"]
     }
   ]
 }

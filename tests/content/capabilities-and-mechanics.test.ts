@@ -15,11 +15,11 @@ function moduleAt(modules: Record<string, unknown>, suffix: string): Record<stri
 }
 
 describe("party capability and encounter mechanic content", () => {
-  it("loads capability and mechanic indexes without changing current encounters", () => {
+  it("loads capability and mechanic indexes for current encounters", () => {
     const registry = loadBrowserContentRegistry();
 
     expect(registry.capabilityById.size).toBe(11);
-    expect(registry.mechanicById.size).toBe(106);
+    expect(registry.mechanicById.size).toBe(111);
     expect(registry.capabilityById.get(asBrandedId<"CapabilityId">("interrupt"))?.category).toBe(
       "interrupt",
     );

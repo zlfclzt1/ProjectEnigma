@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/dire-maul-east-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-11",
+        "notes": "核对小鬼群、献祭、水元素、精灵龙与奥兹恩变形阶段。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-11",
+        "notes": "用现有跨职业能力表达经典机制优势，不增加单职业硬门槛或实时战术按钮。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "mechanics": [
+    {
+      "id": "dire_maul_east_imp_chase",
+      "name": { "zhCN": "小鬼追逐" },
+      "type": "recommended",
+      "requirements": [
+        { "capabilityId": "crowd_control", "minimumValue": 1 },
+        { "capabilityId": "area_damage", "minimumValue": 1 }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.15,
+        "healingMultiplier": 1.12,
+        "probabilityModifier": -0.07,
+        "durationMultiplier": 1.12
+      },
+      "description": { "zhCN": "控制并快速清理追逐途中出现的小鬼群，可以避免连续拉怪拖垮队伍。" },
+      "reportTag": "dire_maul_east_imp_chase"
+    },
+    {
+      "id": "dire_maul_east_sacrifice",
+      "name": { "zhCN": "献祭与恶魔法术" },
+      "type": "recommended",
+      "requirements": [
+        { "capabilityId": "interrupt", "minimumValue": 1 },
+        { "capabilityId": "magic_dispel", "minimumValue": 1 }
+      ],
+      "missingEffects": {
+        "healingMultiplier": 1.18,
+        "damageMultiplier": 1.08,
+        "probabilityModifier": -0.09,
+        "durationMultiplier": 1.1
+      },
+      "description": { "zhCN": "打断恶魔法术并驱散献祭，可以缩短瑟雷姆的高压单体阶段。" },
+      "reportTag": "dire_maul_east_sacrifice"
+    },
+    {
+      "id": "dire_maul_east_water_surge",
+      "name": { "zhCN": "水浪与元素增援" },
+      "type": "recommended",
+      "requirements": [
+        { "capabilityId": "ranged_damage", "minimumValue": 1 },
+        { "capabilityId": "interrupt", "minimumValue": 1 }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.12,
+        "healingMultiplier": 1.14,
+        "probabilityModifier": -0.08,
+        "durationMultiplier": 1.11
+      },
+      "description": { "zhCN": "远程转火并打断水元素施法，可以控制海多斯博恩的浪涌压力。" },
+      "reportTag": "dire_maul_east_water_surge"
+    },
+    {
+      "id": "dire_maul_east_arcane_companion",
+      "name": { "zhCN": "奥术法术与精灵龙" },
+      "type": "recommended",
+      "requirements": [
+        { "capabilityId": "magic_dispel", "minimumValue": 1 },
+        { "capabilityId": "crowd_control", "minimumValue": 1 }
+      ],
+      "missingEffects": {
+        "healingMultiplier": 1.17,
+        "damageMultiplier": 1.07,
+        "probabilityModifier": -0.09,
+        "durationMultiplier": 1.11
+      },
+      "description": { "zhCN": "驱散奥术效果并控制精灵龙同伴，可以稳定完成蕾瑟塔蒂丝支路。" },
+      "reportTag": "dire_maul_east_arcane_companion"
+    },
+    {
+      "id": "dire_maul_east_felvine_transformation",
+      "name": { "zhCN": "魔藤变形" },
+      "type": "recommended",
+      "requirements": [
+        { "capabilityId": "poison_dispel", "minimumValue": 1 },
+        { "capabilityId": "area_damage", "minimumValue": 1 }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.15,
+        "healingMultiplier": 1.2,
+        "damageMultiplier": 1.08,
+        "probabilityModifier": -0.1,
+        "durationMultiplier": 1.13
+      },
+      "description": { "zhCN": "解除魔藤毒性并清理变形阶段的增援，是击败奥兹恩的关键准备。" },
+      "reportTag": "dire_maul_east_felvine_transformation"
+    }
+  ]
+}

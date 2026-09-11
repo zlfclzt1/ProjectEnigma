@@ -7,8 +7,8 @@ const CONTENT_DIRECTORY = path.join(ROOT, "content", "items");
 const OUTPUT_DIRECTORY = path.join(ROOT, "public", "assets", "item-icons");
 const MANIFEST_PATH = path.join(OUTPUT_DIRECTORY, "manifest.json");
 const ICON_ORIGIN = "https://wow.zamimg.com/images/wow/icons/large";
-const EXPECTED_ITEM_COUNT = 572;
-const EXPECTED_ICON_COUNT = 338;
+const EXPECTED_ITEM_COUNT = 601;
+const EXPECTED_ICON_COUNT = 359;
 const checkOnly = process.argv.includes("--check");
 
 interface ItemFile {

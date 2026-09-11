@@ -1,0 +1,245 @@
+{
+  "dungeonId": "dire_maul_east",
+  "samplesPerScenario": 100000,
+  "scenarios": {
+    "standard": {
+      "required": {
+        "level": 56,
+        "simulatedRuns": 100000,
+        "clearRate": 0.55508,
+        "previewClearProbability": 0.5541655526617026,
+        "durationSeconds": 2202.2,
+        "wipeCounts": {
+          "dire_maul_east_hydrospawn": 10138,
+          "dire_maul_east_alzzin": 24864,
+          "dire_maul_east_zevrim_thornhoof": 9490
+        }
+      },
+      "with-optional": {
+        "level": 56,
+        "simulatedRuns": 100000,
+        "clearRate": 0.36225,
+        "previewClearProbability": 0.3650984551269131,
+        "durationSeconds": 3219.2,
+        "wipeCounts": {
+          "dire_maul_east_zevrim_thornhoof": 15146,
+          "dire_maul_east_hydrospawn": 6860,
+          "dire_maul_east_pusillin": 16110,
+          "dire_maul_east_alzzin": 15795,
+          "dire_maul_east_lethtendris": 9864
+        }
+      },
+      "with-rare": {
+        "level": 56,
+        "simulatedRuns": 100000,
+        "clearRate": 0.53272,
+        "previewClearProbability": 0.5330922324993047,
+        "durationSeconds": 2242.8,
+        "wipeCounts": {
+          "dire_maul_east_zevrim_thornhoof": 10549,
+          "dire_maul_east_alzzin": 25531,
+          "dire_maul_east_hydrospawn": 10648
+        }
+      }
+    },
+    "no-tank": {
+      "required": {
+        "level": 56,
+        "simulatedRuns": 100000,
+        "clearRate": 0.00004,
+        "previewClearProbability": 0.000043200000000000007,
+        "durationSeconds": 2389.8,
+        "wipeCounts": {
+          "dire_maul_east_zevrim_thornhoof": 96370,
+          "dire_maul_east_hydrospawn": 3479,
+          "dire_maul_east_alzzin": 147
+        }
+      },
+      "with-optional": {
+        "level": 56,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 3.7439999999999996e-8,
+        "durationSeconds": 3479,
+        "wipeCounts": {
+          "dire_maul_east_pusillin": 96941,
+          "dire_maul_east_zevrim_thornhoof": 2960,
+          "dire_maul_east_hydrospawn": 93,
+          "dire_maul_east_lethtendris": 6
+        }
+      },
+      "with-rare": {
+        "level": 56,
+        "simulatedRuns": 100000,
+        "clearRate": 0.00003,
+        "previewClearProbability": 0.000048,
+        "durationSeconds": 2296,
+        "wipeCounts": {
+          "dire_maul_east_zevrim_thornhoof": 96043,
+          "dire_maul_east_hydrospawn": 3784,
+          "dire_maul_east_alzzin": 170
+        }
+      }
+    },
+    "no-healing": {
+      "required": {
+        "level": 56,
+        "simulatedRuns": 100000,
+        "clearRate": 0.00006,
+        "previewClearProbability": 0.000031200000000000006,
+        "durationSeconds": 2452.6,
+        "wipeCounts": {
+          "dire_maul_east_zevrim_thornhoof": 96775,
+          "dire_maul_east_hydrospawn": 3118,
+          "dire_maul_east_alzzin": 101
+        }
+      },
+      "with-optional": {
+        "level": 56,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 4.2479999999999994e-8,
+        "durationSeconds": 3450.6,
+        "wipeCounts": {
+          "dire_maul_east_pusillin": 96974,
+          "dire_maul_east_zevrim_thornhoof": 2932,
+          "dire_maul_east_hydrospawn": 92,
+          "dire_maul_east_lethtendris": 1,
+          "dire_maul_east_alzzin": 1
+        }
+      },
+      "with-rare": {
+        "level": 56,
+        "simulatedRuns": 100000,
+        "clearRate": 0.00004,
+        "previewClearProbability": 0.0000456,
+        "durationSeconds": 2339.8,
+        "wipeCounts": {
+          "dire_maul_east_zevrim_thornhoof": 96079,
+          "dire_maul_east_hydrospawn": 3772,
+          "dire_maul_east_alzzin": 145
+        }
+      }
+    },
+    "overlevel": {
+      "required": {
+        "level": 53,
+        "simulatedRuns": 100000,
+        "clearRate": 0.50647,
+        "previewClearProbability": 0.5056445466215508,
+        "durationSeconds": 2284.8,
+        "wipeCounts": {
+          "dire_maul_east_alzzin": 25449,
+          "dire_maul_east_zevrim_thornhoof": 14949,
+          "dire_maul_east_hydrospawn": 8955
+        }
+      },
+      "with-optional": {
+        "level": 53,
+        "simulatedRuns": 100000,
+        "clearRate": 0.28016,
+        "previewClearProbability": 0.2787561694502279,
+        "durationSeconds": 3402.4,
+        "wipeCounts": {
+          "dire_maul_east_alzzin": 14562,
+          "dire_maul_east_lethtendris": 9155,
+          "dire_maul_east_zevrim_thornhoof": 15743,
+          "dire_maul_east_pusillin": 21232,
+          "dire_maul_east_hydrospawn": 11292
+        }
+      },
+      "with-rare": {
+        "level": 53,
+        "simulatedRuns": 100000,
+        "clearRate": 0.54602,
+        "previewClearProbability": 0.5438506139281147,
+        "durationSeconds": 2214,
+        "wipeCounts": {
+          "dire_maul_east_alzzin": 25226,
+          "dire_maul_east_zevrim_thornhoof": 10287,
+          "dire_maul_east_hydrospawn": 9885
+        }
+      }
+    },
+    "max-level": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.64856,
+        "previewClearProbability": 0.648775274224468,
+        "durationSeconds": 1857.6,
+        "wipeCounts": {
+          "dire_maul_east_alzzin": 24421,
+          "dire_maul_east_zevrim_thornhoof": 3428,
+          "dire_maul_east_hydrospawn": 7295
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.62327,
+        "previewClearProbability": 0.6245860071632163,
+        "durationSeconds": 2560.4,
+        "wipeCounts": {
+          "dire_maul_east_alzzin": 20845,
+          "dire_maul_east_pusillin": 9351,
+          "dire_maul_east_zevrim_thornhoof": 1278,
+          "dire_maul_east_lethtendris": 2084,
+          "dire_maul_east_hydrospawn": 4115
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.56913,
+        "previewClearProbability": 0.5681953687500892,
+        "durationSeconds": 1906.8,
+        "wipeCounts": {
+          "dire_maul_east_hydrospawn": 9290,
+          "dire_maul_east_zevrim_thornhoof": 13456,
+          "dire_maul_east_alzzin": 20341
+        }
+      }
+    },
+    "speed-run": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.56992,
+        "previewClearProbability": 0.5716678295579635,
+        "durationSeconds": 1897.8,
+        "wipeCounts": {
+          "dire_maul_east_zevrim_thornhoof": 12743,
+          "dire_maul_east_hydrospawn": 8348,
+          "dire_maul_east_alzzin": 21917
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.542,
+        "previewClearProbability": 0.5427512839146684,
+        "durationSeconds": 2611,
+        "wipeCounts": {
+          "dire_maul_east_pusillin": 11083,
+          "dire_maul_east_zevrim_thornhoof": 7500,
+          "dire_maul_east_alzzin": 17860,
+          "dire_maul_east_hydrospawn": 6731,
+          "dire_maul_east_lethtendris": 2626
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.56124,
+        "previewClearProbability": 0.561907835537186,
+        "durationSeconds": 1913.4,
+        "wipeCounts": {
+          "dire_maul_east_alzzin": 23134,
+          "dire_maul_east_zevrim_thornhoof": 10755,
+          "dire_maul_east_hydrospawn": 9987
+        }
+      }
+    }
+  }
+}

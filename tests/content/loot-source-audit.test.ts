@@ -17,16 +17,16 @@ describe("loot source audit", () => {
 
   it("reports explicit no-equipment encounters without inventing loot", () => {
     const audit = auditLootSources(loadBrowserContentRegistry());
-    expect(audit.rows).toHaveLength(144);
+    expect(audit.rows).toHaveLength(149);
     expect(audit.lootTableCounts).toEqual({
-      "boss-drop": 124,
+      "boss-drop": 128,
       "route-completion": 0,
       "quest-reward": 0,
       "world-drop": 0,
       "design-placeholder": 0,
     });
-    expect(audit.encounterCounts["no-equipment"]).toBe(20);
-    expect(audit.questRewards).toHaveLength(52);
+    expect(audit.encounterCounts["no-equipment"]).toBe(21);
+    expect(audit.questRewards).toHaveLength(55);
     expect(audit.routeRewards).toEqual([]);
     expect(audit.bossQuestRewardOverlap).toEqual([]);
     expect(
@@ -37,6 +37,7 @@ describe("loot source audit", () => {
       "brd_detention_ring_of_law",
       "brd_shadowforge_ribbly_screwspigot",
       "brd_shadowforge_lyceum",
+      "dire_maul_east_pusillin",
       "maraudon_pariahs_instructions",
       "oggleflint",
       "bazzalan",
@@ -56,8 +57,8 @@ describe("loot source audit", () => {
     expect(audit.unusedLootTableIds).toEqual([]);
 
     const report = renderLootSourceAudit(audit);
-    expect(report).toContain("无装备掉落 20");
-    expect(report).toContain("成员副本任务：52，不同任务奖励装备：127");
+    expect(report).toContain("无装备掉落 21");
+    expect(report).toContain("成员副本任务：55，不同任务奖励装备：132");
     expect(report).toContain("奥格弗林特（oggleflint） | — | 无装备掉落");
     expect(report).toContain("毁灭之力（rfc_power_to_destroy）");
   });

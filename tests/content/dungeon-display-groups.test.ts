@@ -38,9 +38,12 @@ describe("dungeon display groups", () => {
     expect(content.dungeonDisplayGroups.map((group) => group.id)).toEqual([
       "growth_dungeons_10_45",
       "advanced_dungeons_45_60",
+      "raid_prep_dungeons_60",
+      "dire_maul_branch",
     ]);
     expect(new Set(groupedDungeonIds).size).toBe(content.dungeons.length);
     expect(groupedDungeonIds).toContain("blackrock_depths_shadowforge_city");
+    expect(groupedDungeonIds).toContain("dire_maul_east");
   });
 
   it("rejects duplicate, missing, cyclic, and dangling group relationships", () => {

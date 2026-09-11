@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/dire-maul-east-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-11",
+        "notes": "核对普希林追逐、东区首领顺序、魔藤区域和奥兹恩终战。"
+      },
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-11",
+        "notes": "核对东区首领与装备来源。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-11",
+        "notes": "东区作为暗炉城后的首条满级分支入口；海多斯博恩纳入常规主线，普希林和蕾瑟塔蒂丝由玩家主动选路。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["minimumLevel", "recommendedLevel", "duration", "probability", "route"],
+        "reason": "按已批准的 60 级副本曲线设置首版本解锁、时长和路线风险，后续统一通过终局场景矩阵校准。",
+        "decidedAt": "2026-09-11"
+      }
+    ]
+  },
+  "dungeons": [
+    {
+      "id": "dire_maul_east",
+      "name": { "zhCN": "厄运之槌东区", "enUS": "Dire Maul East" },
+      "minimumLevel": 54,
+      "recommendedLevel": 56,
+      "defaultUnlocked": false,
+      "unlock": { "requiredDungeonIds": ["blackrock_depths_shadowforge_city"] },
+      "members": {
+        "minimum": 1,
+        "maximum": 5,
+        "recommended": 5,
+        "recommendedRoles": { "tank": 1, "healer": 1, "dps": 3 }
+      },
+      "duration": { "baseSeconds": 2400, "minimumRatio": 0.5, "maximumRatio": 1.75 },
+      "probability": {
+        "minimum": 0.03,
+        "maximum": 0.99,
+        "base": 0.04,
+        "readinessMultiplier": 0.98,
+        "surplusEffect": 0.52,
+        "geometricWeight": 0.7,
+        "bottleneckWeight": 0.3,
+        "overpowerThreshold": 1.48
+      },
+      "combatTuning": {
+        "bossProbabilityMaximum": 0.986,
+        "requirementMultipliers": { "tank": 0.62, "healing": 0.62, "damage": 0.62 }
+      },
+      "route": [
+        {
+          "id": "dire_maul_east_pusillin",
+          "type": "optional",
+          "encounterId": "dire_maul_east_pusillin",
+          "description": { "zhCN": "主动追逐普希林，完成月牙钥匙相关成员任务。" }
+        },
+        {
+          "id": "dire_maul_east_zevrim_thornhoof",
+          "type": "required",
+          "encounterId": "dire_maul_east_zevrim_thornhoof"
+        },
+        {
+          "id": "dire_maul_east_hydrospawn",
+          "type": "required",
+          "encounterId": "dire_maul_east_hydrospawn"
+        },
+        {
+          "id": "dire_maul_east_lethtendris",
+          "type": "optional",
+          "encounterId": "dire_maul_east_lethtendris",
+          "description": { "zhCN": "主动进入上层支路，挑战蕾瑟塔蒂丝与她的精灵龙同伴。" }
+        },
+        {
+          "id": "dire_maul_east_alzzin",
+          "type": "required",
+          "encounterId": "dire_maul_east_alzzin"
+        }
+      ]
+    }
+  ]
+}

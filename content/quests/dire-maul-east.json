@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/zone=2557/dire-maul#quests",
+        "verifiedAt": "2026-09-11",
+        "notes": "核对普希林、蕾瑟塔蒂丝之网与魔藤碎片的任务等级、目标和装备奖励。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-11",
+        "notes": "钥匙、蛛网、碎片和副本外回报不做背包交互；以玩家主动安排的 Encounter 胜利稳定结算。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["quests[].completion", "quests[].rewards.experienceFraction"],
+        "reason": "用确定性首领胜利压缩任务物品步骤，同时保留真实装备奖励。",
+        "decidedAt": "2026-09-11"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "dire_maul_east_pusillin_and_the_elder",
+      "name": { "zhCN": "普希林和埃斯托尔迪" },
+      "description": { "zhCN": "主动追逐并击败普希林，取回埃斯托尔迪请求的典籍。" },
+      "dungeonId": "dire_maul_east",
+      "eligibility": { "minimumLevel": 54, "allowedClassIds": [] },
+      "completion": { "type": "encounter-victories", "encounterIds": ["dire_maul_east_pusillin"] },
+      "rewards": {
+        "experienceFraction": 1,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["18410", "18411"]
+      }
+    },
+    {
+      "id": "dire_maul_east_lethtendris_web",
+      "name": { "zhCN": "蕾瑟塔蒂丝之网" },
+      "description": { "zhCN": "主动进入上层支路，击败蕾瑟塔蒂丝并取得她的蛛网。" },
+      "dungeonId": "dire_maul_east",
+      "eligibility": { "minimumLevel": 54, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["dire_maul_east_lethtendris"]
+      },
+      "rewards": {
+        "experienceFraction": 0.9,
+        "funds": 0,
+        "fixedItemIds": ["18491"],
+        "itemChoiceIds": []
+      }
+    },
+    {
+      "id": "dire_maul_east_shard_of_the_felvine",
+      "name": { "zhCN": "魔藤碎片" },
+      "description": { "zhCN": "击败奥兹恩，从厄运之槌东区深处带回魔藤碎片。" },
+      "dungeonId": "dire_maul_east",
+      "eligibility": { "minimumLevel": 56, "allowedClassIds": [] },
+      "completion": { "type": "encounter-victories", "encounterIds": ["dire_maul_east_alzzin"] },
+      "rewards": {
+        "experienceFraction": 1.1,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["18535", "18536"]
+      }
+    }
+  ]
+}

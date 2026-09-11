@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-11",
+        "notes": "日志只描述已经结算的东区主动路线、机制处理和战斗事实。"
+      }
+    ]
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "dire_maul_east_pusillin_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "dire_maul_east_pusillin" },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "普希林最后一次转身迎战，{member}截住了四散的小鬼。",
+        "{tank}稳住追逐终点的混战，{healer}让队伍保留了继续深入的余力。"
+      ]
+    },
+    {
+      "id": "dire_maul_east_zevrim_thornhoof_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "dire_maul_east_zevrim_thornhoof" },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "瑟雷姆的献祭被压制，{tank}重新接住了恶魔的正面攻势。",
+        "{member}打断最后一道恶魔法术，通往魔藤深处的道路重新打开。"
+      ]
+    },
+    {
+      "id": "dire_maul_east_hydrospawn_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "dire_maul_east_hydrospawn" },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "海多斯博恩的浪涌逐渐消散，{healer}稳住了被冲散的队伍。",
+        "{member}远程击碎最后一只水元素，{tank}把主目标牢牢留在原地。"
+      ]
+    },
+    {
+      "id": "dire_maul_east_lethtendris_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "dire_maul_east_lethtendris" },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "蕾瑟塔蒂丝的奥术防护被驱散，{member}控制住了她的精灵龙同伴。",
+        "{healer}顶住支路最后一轮法术压力，队伍带着蛛网战利品返回主线。"
+      ]
+    },
+    {
+      "id": "dire_maul_east_alzzin_victory",
+      "eventType": "encounter-victory",
+      "scope": { "type": "encounter", "encounterId": "dire_maul_east_alzzin" },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "奥兹恩倒在枯萎的魔藤旁，{member}清除了最后一批变形增援。",
+        "{tank}顶住终战压力，{healer}让队伍完整走出了厄运之槌东区。"
+      ]
+    }
+  ]
+}

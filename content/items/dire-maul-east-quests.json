@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/",
+        "verifiedAt": "2026-09-11",
+        "notes": "核对厄运之槌东区可由副本内胜利稳定结算的重要成员任务装备奖励，并通过逐件中文 XML 核对属性与图标。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "items": [
+    {
+      "id": "18410",
+      "name": {
+        "zhCN": "奔行者之剑"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 54,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_28"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区成员任务“普希林和埃斯托尔迪”装备奖励。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 99,
+            "maximumPoints": 149
+          },
+          "speedSeconds": 2.8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18410",
+        "url": "https://www.wowhead.com/classic/cn/item=18410&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18411",
+      "name": {
+        "zhCN": "活跃之靴"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 54,
+      "quality": "uncommon",
+      "slot": "feet",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_06"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区成员任务“普希林和埃斯托尔迪”装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 12
+        },
+        "defense": {
+          "armorPoints": 102,
+          "dodgePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18411",
+        "url": "https://www.wowhead.com/classic/cn/item=18411&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18491",
+      "name": {
+        "zhCN": "学识匕首"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_shortblade_21"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区成员任务“蕾瑟塔蒂丝之网”装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 5,
+          "intellectPoints": 6,
+          "spiritPoints": 5
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 3
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 45,
+            "maximumPoints": 68
+          },
+          "speedSeconds": 1.5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18491",
+        "url": "https://www.wowhead.com/classic/cn/item=18491&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18535",
+      "name": {
+        "zhCN": "米利的盾牌"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shield_12"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区成员任务“魔藤碎片”装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 7,
+          "spiritPoints": 7
+        },
+        "defense": {
+          "armorPoints": 2106,
+          "blockValuePoints": 37
+        },
+        "spell": {
+          "healthRegenPer5Seconds": 4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18535",
+        "url": "https://www.wowhead.com/classic/cn/item=18535&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18536",
+      "name": {
+        "zhCN": "米利的词典"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_book_06"
+      },
+      "description": {
+        "zhCN": "厄运之槌东区成员任务“魔藤碎片”装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 6,
+          "intellectPoints": 7
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18536",
+        "url": "https://www.wowhead.com/classic/cn/item=18536&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    }
+  ]
+}

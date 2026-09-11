@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/guide/dire-maul-east-dungeon-strategy-wow-classic",
+        "verifiedAt": "2026-09-11",
+        "notes": "核对东区五场首领与事件的相对顺序和战斗特征。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-11",
+        "notes": "将实时战斗压缩为职责需求、能力机制、时长、经验和资金结算。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": [
+          "encounters[].stageSeconds",
+          "encounters[].requirements",
+          "encounters[].weights",
+          "encounters[].experienceShare",
+          "encounters[].funds"
+        ],
+        "reason": "首版数值按暗炉城之后的五人分支入口定位设置，并将在完整终局矩阵中统一回调。",
+        "decidedAt": "2026-09-11"
+      }
+    ]
+  },
+  "encounters": [
+    {
+      "id": "dire_maul_east_pusillin",
+      "dungeonId": "dire_maul_east",
+      "name": { "zhCN": "普希林" },
+      "stageSeconds": 360,
+      "requirements": { "tank": 79, "healing": 83, "damage": 342 },
+      "weights": { "tank": 0.31, "healing": 0.31, "damage": 0.38 },
+      "experienceShare": 0.09,
+      "funds": 138,
+      "firstKillBonus": 276,
+      "mechanicIds": ["dire_maul_east_imp_chase"]
+    },
+    {
+      "id": "dire_maul_east_zevrim_thornhoof",
+      "dungeonId": "dire_maul_east",
+      "name": { "zhCN": "瑟雷姆·刺蹄" },
+      "stageSeconds": 500,
+      "requirements": { "tank": 82, "healing": 87, "damage": 354 },
+      "weights": { "tank": 0.34, "healing": 0.39, "damage": 0.27 },
+      "experienceShare": 0.18,
+      "funds": 198,
+      "firstKillBonus": 396,
+      "lootTableId": "dire_maul_east_zevrim_thornhoof",
+      "mechanicIds": ["dire_maul_east_sacrifice"]
+    },
+    {
+      "id": "dire_maul_east_hydrospawn",
+      "dungeonId": "dire_maul_east",
+      "name": { "zhCN": "海多斯博恩" },
+      "stageSeconds": 420,
+      "requirements": { "tank": 83, "healing": 88, "damage": 359 },
+      "weights": { "tank": 0.3, "healing": 0.35, "damage": 0.35 },
+      "experienceShare": 0.17,
+      "funds": 202,
+      "firstKillBonus": 404,
+      "lootTableId": "dire_maul_east_hydro",
+      "mechanicIds": ["dire_maul_east_water_surge"]
+    },
+    {
+      "id": "dire_maul_east_lethtendris",
+      "dungeonId": "dire_maul_east",
+      "name": { "zhCN": "蕾瑟塔蒂丝" },
+      "stageSeconds": 380,
+      "requirements": { "tank": 82, "healing": 89, "damage": 361 },
+      "weights": { "tank": 0.27, "healing": 0.41, "damage": 0.32 },
+      "experienceShare": 0.14,
+      "funds": 188,
+      "firstKillBonus": 376,
+      "lootTableId": "dire_maul_east_lethtendris",
+      "mechanicIds": ["dire_maul_east_arcane_companion"]
+    },
+    {
+      "id": "dire_maul_east_alzzin",
+      "dungeonId": "dire_maul_east",
+      "name": { "zhCN": "奥兹恩" },
+      "stageSeconds": 740,
+      "requirements": { "tank": 87, "healing": 93, "damage": 379 },
+      "weights": { "tank": 0.35, "healing": 0.39, "damage": 0.26 },
+      "experienceShare": 0.28,
+      "funds": 276,
+      "firstKillBonus": 552,
+      "lootTableId": "dire_maul_east_alzzin",
+      "mechanicIds": ["dire_maul_east_felvine_transformation"]
+    }
+  ]
+}
