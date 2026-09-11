@@ -53,74 +53,73 @@ function durationLabel(seconds: number): string {
     </header>
 
     <div class="preview-scroll">
+      <details
+        v-if="routeVariants?.length || optionalRoutes.length || rareRoutes.length"
+        class="route-config"
+      >
+        <summary>
+          <span>路线配置</span>
+          <small>
+            {{ routeVariants?.find((variant) => variant.selected)?.name ?? "默认路线" }}
+            <template v-if="optionalRoutes.filter((route) => route.selected).length">
+              · 可选首领 {{ optionalRoutes.filter((route) => route.selected).length }} 个
+            </template>
+          </small>
+        </summary>
+        <section v-if="routeVariants?.length" class="route-variants">
+          <h4>副本路线</h4>
+          <label v-for="variant in routeVariants" :key="variant.id">
+            <input
+              type="radio"
+              name="dungeon-route-variant"
+              :value="variant.id"
+              :checked="variant.selected"
+              @change="$emit('selectRouteVariant', variant.id)"
+            />
+            <span>
+              <strong>{{ variant.name }}</strong>
+              <small>{{ variant.description }}</small>
+            </span>
+          </label>
+        </section>
+        <section v-if="optionalRoutes.length || rareRoutes.length" class="route-options">
+          <h4>路线安排</h4>
+          <label v-for="route in optionalRoutes" :key="route.id">
+            <input
+              type="checkbox"
+              :checked="route.selected"
+              @change="$emit('toggleOptional', route.id)"
+            />
+            <span>
+              <strong>可选 · {{ route.name }}</strong>
+              <small>{{ route.description }}</small>
+              <small>
+                额外 {{ route.durationSeconds ? durationLabel(route.durationSeconds) : "待评估" }} ·
+                胜率
+                {{ route.probability === null ? "待评估" : probabilityLabel(route.probability) }} ·
+                掉落池 {{ route.lootItemCount }} 件
+              </small>
+            </span>
+          </label>
+          <article v-for="route in rareRoutes" :key="route.id">
+            <span>
+              <strong>稀有 · {{ route.name }}</strong>
+              <small>
+                出现率 {{ probabilityLabel(route.spawnProbability) }} · 条件胜率
+                {{
+                  route.conditionalProbability === null
+                    ? "待评估"
+                    : probabilityLabel(route.conditionalProbability)
+                }}
+                · 最多增加
+                {{ route.durationSeconds ? durationLabel(route.durationSeconds) : "待评估" }} ·
+                掉落池 {{ route.lootItemCount }} 件
+              </small>
+            </span>
+          </article>
+        </section>
+      </details>
       <template v-if="preview">
-        <details
-          v-if="routeVariants?.length || optionalRoutes.length || rareRoutes.length"
-          class="route-config"
-        >
-          <summary>
-            <span>路线配置</span>
-            <small>
-              {{ routeVariants?.find((variant) => variant.selected)?.name ?? "默认路线" }}
-              <template v-if="optionalRoutes.filter((route) => route.selected).length">
-                · 可选首领 {{ optionalRoutes.filter((route) => route.selected).length }} 个
-              </template>
-            </small>
-          </summary>
-          <section v-if="routeVariants?.length" class="route-variants">
-            <h4>副本路线</h4>
-            <label v-for="variant in routeVariants" :key="variant.id">
-              <input
-                type="radio"
-                name="dungeon-route-variant"
-                :value="variant.id"
-                :checked="variant.selected"
-                @change="$emit('selectRouteVariant', variant.id)"
-              />
-              <span>
-                <strong>{{ variant.name }}</strong>
-                <small>{{ variant.description }}</small>
-              </span>
-            </label>
-          </section>
-          <section v-if="optionalRoutes.length || rareRoutes.length" class="route-options">
-            <h4>路线安排</h4>
-            <label v-for="route in optionalRoutes" :key="route.id">
-              <input
-                type="checkbox"
-                :checked="route.selected"
-                @change="$emit('toggleOptional', route.id)"
-              />
-              <span>
-                <strong>可选 · {{ route.name }}</strong>
-                <small>{{ route.description }}</small>
-                <small>
-                  额外
-                  {{ route.durationSeconds ? durationLabel(route.durationSeconds) : "待评估" }} ·
-                  胜率
-                  {{ route.probability === null ? "待评估" : probabilityLabel(route.probability) }}
-                  · 掉落池 {{ route.lootItemCount }} 件
-                </small>
-              </span>
-            </label>
-            <article v-for="route in rareRoutes" :key="route.id">
-              <span>
-                <strong>稀有 · {{ route.name }}</strong>
-                <small>
-                  出现率 {{ probabilityLabel(route.spawnProbability) }} · 条件胜率
-                  {{
-                    route.conditionalProbability === null
-                      ? "待评估"
-                      : probabilityLabel(route.conditionalProbability)
-                  }}
-                  · 最多增加
-                  {{ route.durationSeconds ? durationLabel(route.durationSeconds) : "待评估" }} ·
-                  掉落池 {{ route.lootItemCount }} 件
-                </small>
-              </span>
-            </article>
-          </section>
-        </details>
         <dl class="metrics">
           <div>
             <dt>坦克</dt>

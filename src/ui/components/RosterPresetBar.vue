@@ -32,22 +32,42 @@ const selectedPreset = computed(
       </div>
       <button type="button" class="quiet" @click="emit('manage')">管理固定队伍</button>
     </div>
-    <div class="preset-actions">
-      <select
-        aria-label="选择固定队伍"
-        :value="selectedPresetId ?? ''"
-        @change="
-          emit(
-            'select',
-            (($event.target as HTMLSelectElement).value || null) as RosterPresetId | null,
-          )
-        "
+    <div v-if="presets.length" class="preset-list" aria-label="选择固定队伍">
+      <button
+        v-for="preset in presets"
+        :key="preset.id"
+        type="button"
+        class="preset-option"
+        :class="{ selected: preset.id === selectedPresetId }"
+        :aria-pressed="preset.id === selectedPresetId"
+        :disabled="pending"
+        @click="emit('select', preset.id)"
       >
-        <option value="">选择一支固定队伍</option>
-        <option v-for="preset in presets" :key="preset.id" :value="preset.id">
-          {{ preset.name }}（{{ preset.members.length }} 人）
-        </option>
-      </select>
+        <span class="preset-option-heading">
+          <strong>{{ preset.name }}</strong>
+          <small>
+            {{ preset.members.length }} 人
+            <em v-if="preset.activeCount">· {{ preset.activeCount }} 人忙</em>
+            <em v-if="preset.departedCount" class="departed"
+              >· {{ preset.departedCount }} 人离队</em
+            >
+          </small>
+        </span>
+        <span class="preset-members">
+          <span
+            v-for="member in preset.members"
+            :key="member.id"
+            :class="{ active: member.active, departed: member.departed }"
+          >
+            {{ member.name }}
+            <em v-if="member.active">忙</em>
+            <em v-else-if="member.departed">离队</em>
+          </span>
+        </span>
+      </button>
+    </div>
+    <p v-else class="empty-presets">还没有保存固定队伍。</p>
+    <div class="preset-actions">
       <button
         type="button"
         :disabled="pending || selectedMemberCount === 0 || presets.length >= maximumPresets"
@@ -108,13 +128,89 @@ const selectedPreset = computed(
   margin-top: 12px;
   flex-wrap: wrap;
 }
-select {
-  min-width: min(300px, 100%);
-  padding: 8px;
-  border: 1px solid #514a3d;
-  border-radius: 6px;
-  color: #e2d5bb;
+.preset-list {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  overflow-x: auto;
+  padding: 1px 1px 6px;
+  scrollbar-gutter: stable;
+}
+.preset-option {
+  display: grid;
+  flex: 0 0 230px;
+  gap: 8px;
+  min-width: 0;
+  padding: 9px 10px;
+  border-color: #403a31;
+  color: #cdbb98;
   background: #0b0e10;
+  text-align: left;
+}
+.preset-option:hover,
+.preset-option.selected {
+  border-color: #a27c3c;
+  background: #211d16;
+}
+.preset-option-heading {
+  display: grid;
+  gap: 2px;
+}
+.preset-option-heading > strong {
+  overflow: hidden;
+  color: #e0cfaf;
+  font-size: 0.72rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.preset-option-heading > small {
+  color: #81796c;
+  font-size: 0.56rem;
+}
+.preset-option-heading em {
+  color: #d29b58;
+  font-style: normal;
+}
+.preset-option-heading em.departed {
+  color: #a56d65;
+}
+.preset-members {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.preset-members > span {
+  padding: 3px 5px;
+  border: 1px solid #35312a;
+  border-radius: 4px;
+  color: #a99d89;
+  background: #151616;
+  font-size: 0.55rem;
+}
+.preset-members > span.active {
+  border-color: #6a4b2b;
+  color: #e1ad69;
+  background: #281c10;
+}
+.preset-members > span.departed {
+  border-color: #513934;
+  color: #aa7770;
+  background: #211413;
+}
+.preset-members em {
+  margin-left: 2px;
+  font-size: 0.49rem;
+  font-style: normal;
+  font-weight: 800;
+}
+.empty-presets {
+  margin: 10px 0 0;
+  padding: 10px;
+  border: 1px dashed #3b3831;
+  color: #81796c;
+  background: #0b0e10;
+  font-size: 0.64rem;
+  text-align: center;
 }
 button {
   padding: 8px 11px;
@@ -145,8 +241,8 @@ button:disabled {
     align-items: flex-start;
     flex-direction: column;
   }
-  .preset-actions > select {
-    flex: 1 1 100%;
+  .preset-option {
+    flex-basis: min(230px, 85vw);
   }
 }
 </style>

@@ -11,6 +11,7 @@ import { useGameStore } from "../../src/stores/game-store";
 import { useUiStore } from "../../src/stores/ui-store";
 import DungeonsPage from "../../src/ui/pages/DungeonsPage.vue";
 import PartyPreview from "../../src/ui/components/PartyPreview.vue";
+import RosterPresetBar from "../../src/ui/components/RosterPresetBar.vue";
 import { FakeClock } from "../helpers/runtime-fakes";
 
 describe("dungeons page", () => {
@@ -207,6 +208,38 @@ describe("dungeons page", () => {
     expect(wrapper.emitted("toggleOptional")?.[0]).toEqual(["optional_taragaman"]);
   });
 
+  it("keeps the Scarlet Library Loksey route visible without a party preview", async () => {
+    const game = useGameStore();
+    await game.initialize(() =>
+      loadOrCreateV2Client({
+        saves: new MemorySaveRepository(),
+        content: loadBrowserContentRegistry(),
+        clock: new FakeClock(1_000),
+        slotId: asBrandedId<"SaveSlotId">("scarlet-library-route-ui"),
+        seed: "scarlet-library-route-ui",
+      }),
+    );
+    const dungeonId = asBrandedId<"DungeonId">("scarlet_monastery_library");
+    await game.execute({
+      type: "unlock-scarlet-library-for-ui-test",
+      execute(draft) {
+        draft.guild.unlockedDungeonIds = [
+          ...new Set([...draft.guild.unlockedDungeonIds, dungeonId]),
+        ];
+      },
+    });
+    const ui = useUiStore();
+    ui.selectDungeon(dungeonId);
+
+    const wrapper = mount(DungeonsPage);
+    await flushPromises();
+
+    expect(wrapper.find(".party-preview .placeholder").exists()).toBe(true);
+    expect(wrapper.get(".route-config").text()).toContain("驯犬者洛克希");
+    await wrapper.get('.route-config input[type="checkbox"]').setValue(true);
+    expect(ui.selectedOptionalNodeIds).toEqual(["scarlet_library_houndmaster_loksey"]);
+  });
+
   it("unlocks the fourth and fifth run options through the visible guild upgrade", async () => {
     const game = useGameStore();
     await game.initialize(() =>
@@ -269,7 +302,7 @@ describe("dungeons page", () => {
     expect(game.rosterPresets?.presets[0]?.name).toBe("怒焰常驻队");
     expect(game.rosterPresets?.presets[0]?.members).toHaveLength(5);
     ui.clearParty();
-    await wrapper.get(".preset-actions select").setValue(game.rosterPresets!.presets[0]!.id);
+    await wrapper.get(".preset-option").trigger("click");
     expect(ui.selectedPartyMemberIds).toHaveLength(5);
     expect(wrapper.text()).toContain("已切换至“怒焰常驻队”");
   });
@@ -307,10 +340,53 @@ describe("dungeons page", () => {
     if (!created.ok) throw new Error("Expected fixed team creation");
     const wrapper = mount(DungeonsPage);
     await flushPromises();
-    await wrapper.get(".preset-actions select").setValue(created.result.id);
+    await wrapper.get(".preset-option").trigger("click");
     expect(useUiStore().selectedPartyMemberIds).toHaveLength(10);
     expect(wrapper.get(".party-summary").text()).toContain("10 人");
     expect(wrapper.get(".party-preview .issues").text()).toContain("最多选择 5 名成员");
     expect(wrapper.get(".party-preview > button").attributes("disabled")).toBeDefined();
+  });
+
+  it("shows busy members before selecting a fixed team", async () => {
+    const presetId = asBrandedId<"RosterPresetId">("busy-team");
+    const memberId = asBrandedId<"MemberId">("busy-member");
+    const wrapper = mount(RosterPresetBar, {
+      props: {
+        presets: [
+          {
+            id: presetId,
+            name: "晚班小队",
+            members: [
+              {
+                id: memberId,
+                name: "铁锤",
+                nameAtSave: "铁锤",
+                departed: false,
+                active: true,
+                classId: asBrandedId<"ClassId">("warrior"),
+                className: "战士",
+                role: "tank",
+                roleName: "坦克",
+                level: 20,
+              },
+            ],
+            currentMemberIds: [memberId],
+            departedCount: 0,
+            activeCount: 1,
+            createdAt: 1,
+            updatedAt: 1,
+          },
+        ],
+        selectedPresetId: null,
+        selectedMemberCount: 0,
+        maximumPresets: 10,
+        pending: false,
+      },
+    });
+
+    expect(wrapper.get(".preset-option").text()).toContain("1 人忙");
+    expect(wrapper.get(".preset-members .active").text()).toContain("铁锤 忙");
+    await wrapper.get(".preset-option").trigger("click");
+    expect(wrapper.emitted("select")?.[0]).toEqual([presetId]);
   });
 });
