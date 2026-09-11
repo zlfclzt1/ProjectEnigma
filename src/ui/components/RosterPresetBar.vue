@@ -25,9 +25,18 @@ const selectedPreset = computed(
   () => props.presets.find((preset) => preset.id === props.selectedPresetId) ?? null,
 );
 const inspectedPresetId = ref<RosterPresetId | null>(null);
+const allPresetsOpen = ref(false);
+const presetSearch = ref("");
 const inspectedPreset = computed(
   () => props.presets.find((preset) => preset.id === inspectedPresetId.value) ?? null,
 );
+const displayedPresets = computed(() => props.presets.slice(0, 4));
+const filteredPresets = computed(() => {
+  const needle = presetSearch.value.trim().toLocaleLowerCase();
+  return props.presets.filter(
+    (preset) => !needle || preset.name.toLocaleLowerCase().includes(needle),
+  );
+});
 
 function prioritizedMembers(preset: RosterPresetView): RosterPresetMemberView[] {
   return [...preset.members].sort(
@@ -51,6 +60,12 @@ function roleCount(preset: RosterPresetView, role: RosterPresetMemberView["role"
 function exceptionMembers(preset: RosterPresetView): readonly RosterPresetMemberView[] {
   return preset.members.filter((member) => member.active || member.departed);
 }
+
+function selectPreset(presetId: RosterPresetId): void {
+  emit("select", presetId);
+  allPresetsOpen.value = false;
+  presetSearch.value = "";
+}
 </script>
 
 <template>
@@ -60,11 +75,21 @@ function exceptionMembers(preset: RosterPresetView): readonly RosterPresetMember
         <h3>固定队伍</h3>
         <p>点击队伍即可切换当前阵容。</p>
       </div>
-      <button type="button" class="quiet" @click="emit('manage')">管理固定队伍</button>
+      <div class="preset-heading-actions">
+        <button
+          v-if="presets.length > 4"
+          type="button"
+          class="quiet all-presets-button"
+          @click="allPresetsOpen = true"
+        >
+          全部固定队（{{ presets.length }}）
+        </button>
+        <button type="button" class="quiet" @click="emit('manage')">管理固定队伍</button>
+      </div>
     </div>
     <div v-if="presets.length" class="preset-list" aria-label="选择固定队伍">
       <article
-        v-for="preset in presets"
+        v-for="preset in displayedPresets"
         :key="preset.id"
         class="preset-card"
         :class="{ selected: preset.id === selectedPresetId }"
@@ -75,7 +100,7 @@ function exceptionMembers(preset: RosterPresetView): readonly RosterPresetMember
           :class="{ selected: preset.id === selectedPresetId }"
           :aria-pressed="preset.id === selectedPresetId"
           :disabled="pending"
-          @click="emit('select', preset.id)"
+          @click="selectPreset(preset.id)"
         >
           <span class="preset-option-heading">
             <strong>{{ preset.name }}</strong>
@@ -154,6 +179,56 @@ function exceptionMembers(preset: RosterPresetView): readonly RosterPresetMember
     </p>
     <p v-else-if="presets.length === 0" class="preset-status">还没有保存固定队伍。</p>
 
+    <div v-if="allPresetsOpen" class="roster-backdrop" @click.self="allPresetsOpen = false">
+      <section
+        class="all-presets-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="all-presets-title"
+      >
+        <header>
+          <div>
+            <h3 id="all-presets-title">全部固定队伍</h3>
+            <p>共 {{ presets.length }} 支队伍，点击任意队伍立即切换。</p>
+          </div>
+          <button type="button" class="quiet" @click="allPresetsOpen = false">关闭</button>
+        </header>
+        <label class="preset-search">
+          <span>搜索队伍</span>
+          <input v-model="presetSearch" type="search" placeholder="输入队伍名称" />
+        </label>
+        <div class="all-presets-list">
+          <button
+            v-for="preset in filteredPresets"
+            :key="preset.id"
+            type="button"
+            class="all-presets-option"
+            :class="{ selected: preset.id === selectedPresetId }"
+            :disabled="pending"
+            @click="selectPreset(preset.id)"
+          >
+            <span>
+              <strong>{{ preset.name }}</strong>
+              <small>
+                {{ preset.members.length }} 人 · 坦克 {{ roleCount(preset, "tank") }} · 治疗
+                {{ roleCount(preset, "healer") }} · 输出 {{ roleCount(preset, "dps") }}
+              </small>
+            </span>
+            <span class="all-presets-status">
+              <em v-if="preset.activeCount">{{ preset.activeCount }} 人忙</em>
+              <em v-if="preset.departedCount" class="departed"
+                >{{ preset.departedCount }} 人离队</em
+              >
+              <em v-if="!preset.activeCount && !preset.departedCount" class="available"
+                >全员可用</em
+              >
+            </span>
+          </button>
+          <p v-if="filteredPresets.length === 0" class="empty-presets">没有匹配的固定队伍。</p>
+        </div>
+      </section>
+    </div>
+
     <div v-if="inspectedPreset" class="roster-backdrop" @click.self="inspectedPresetId = null">
       <section
         class="roster-dialog"
@@ -213,6 +288,11 @@ function exceptionMembers(preset: RosterPresetView): readonly RosterPresetMember
   justify-content: space-between;
   gap: 10px;
 }
+.preset-heading-actions {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
 .preset-heading h3,
 .preset-heading p,
 .preset-status {
@@ -239,13 +319,13 @@ function exceptionMembers(preset: RosterPresetView): readonly RosterPresetMember
   align-items: stretch;
   gap: 8px;
   margin-top: 12px;
-  overflow-x: auto;
-  padding: 1px 1px 6px;
-  scrollbar-gutter: stable;
+  overflow: hidden;
+  padding: 1px;
 }
 .preset-card {
   display: grid;
-  flex: 0 0 250px;
+  flex: 1 1 0;
+  min-width: 0;
   grid-template-rows: 1fr auto;
   overflow: hidden;
   border: 1px solid #403a31;
@@ -507,13 +587,128 @@ button:disabled {
 .full-roster article.departed em {
   color: #b8736a;
 }
+.all-presets-dialog {
+  width: min(680px, 100%);
+  max-height: calc(100vh - 36px);
+  overflow: hidden;
+  border: 1px solid #5c503d;
+  border-radius: 10px;
+  background: #111416;
+  box-shadow: 0 24px 70px #000;
+}
+.all-presets-dialog > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 17px;
+  border-bottom: 1px solid #37332c;
+}
+.all-presets-dialog h3,
+.all-presets-dialog p {
+  margin: 0;
+}
+.all-presets-dialog h3 {
+  color: #e0cda7;
+  font-size: 1.1rem;
+}
+.all-presets-dialog p {
+  margin-top: 3px;
+  color: #8f8575;
+  font-size: 0.63rem;
+}
+.preset-search {
+  display: grid;
+  gap: 4px;
+  padding: 12px 17px;
+  color: #8f8575;
+  font-size: 0.6rem;
+}
+.preset-search input {
+  min-width: 0;
+  padding: 8px 9px;
+  border: 1px solid #514a3d;
+  border-radius: 5px;
+  color: #e2d5bb;
+  background: #090c0e;
+  font: inherit;
+}
+.all-presets-list {
+  display: grid;
+  gap: 6px;
+  max-height: min(60vh, 520px);
+  overflow: auto;
+  padding: 0 17px 17px;
+}
+.all-presets-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 11px;
+  border: 1px solid #35312a;
+  border-radius: 6px;
+  color: #cdbb98;
+  background: #0b0e10;
+  text-align: left;
+}
+.all-presets-option:hover,
+.all-presets-option.selected {
+  border-color: #a27c3c;
+  background: #211d16;
+}
+.all-presets-option > span:first-child {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+.all-presets-option strong {
+  overflow: hidden;
+  color: #e0cfaf;
+  font-size: 0.7rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.all-presets-option small {
+  color: #81796c;
+  font-size: 0.57rem;
+}
+.all-presets-status {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 4px;
+}
+.all-presets-status em {
+  padding: 3px 5px;
+  border-radius: 4px;
+  color: #d29b58;
+  background: #281c10;
+  font-size: 0.53rem;
+  font-style: normal;
+  font-weight: 800;
+}
+.all-presets-status em.departed {
+  color: #b8736a;
+  background: #211413;
+}
+.all-presets-status em.available {
+  color: #77ac7d;
+  background: #17251a;
+}
 @media (max-width: 650px) {
   .preset-heading {
     align-items: flex-start;
     flex-direction: column;
   }
-  .preset-card {
-    flex-basis: min(250px, 85vw);
+  .preset-heading-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .preset-heading-actions button {
+    flex: 1 1 auto;
   }
 }
 </style>

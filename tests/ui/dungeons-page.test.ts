@@ -441,4 +441,49 @@ describe("dungeons page", () => {
     await wrapper.get(".view-roster").trigger("click");
     expect(wrapper.findAll(".full-roster article")).toHaveLength(40);
   });
+
+  it("keeps more than four fixed teams discoverable in an all-teams panel", async () => {
+    const presets = Array.from({ length: 5 }, (_, index) => {
+      const memberId = asBrandedId<"MemberId">(`saved-team-member-${index + 1}`);
+      return {
+        id: asBrandedId<"RosterPresetId">(`saved-team-${index + 1}`),
+        name: `固定队 ${index + 1}`,
+        members: [
+          {
+            id: memberId,
+            name: `成员 ${index + 1}`,
+            nameAtSave: `成员 ${index + 1}`,
+            departed: false,
+            active: false,
+            classId: asBrandedId<"ClassId">("warrior"),
+            className: "战士",
+            role: "tank" as const,
+            roleName: "坦克",
+            level: 20,
+          },
+        ],
+        currentMemberIds: [memberId],
+        departedCount: 0,
+        activeCount: 0,
+        createdAt: index,
+        updatedAt: index,
+      };
+    });
+    const wrapper = mount(RosterPresetBar, {
+      props: {
+        presets,
+        selectedPresetId: null,
+        selectedMemberCount: 0,
+        maximumPresets: 10,
+        pending: false,
+      },
+    });
+
+    expect(wrapper.findAll(".preset-card")).toHaveLength(4);
+    expect(wrapper.get(".all-presets-button").text()).toContain("全部固定队（5）");
+    await wrapper.get(".all-presets-button").trigger("click");
+    expect(wrapper.findAll(".all-presets-option")).toHaveLength(5);
+    await wrapper.get(".all-presets-option:nth-child(5)").trigger("click");
+    expect(wrapper.emitted("select")?.[0]).toEqual(["saved-team-5"]);
+  });
 });
