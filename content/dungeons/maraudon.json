@@ -28,8 +28,8 @@
     "balanceOverrides": [
       {
         "fields": ["minimumLevel", "recommendedLevel", "duration", "probability", "route"],
-        "reason": "按祖尔法拉克后的 46–49 级升级入口、约 22 分钟主线与约 29 分钟完整路线设置初始参数。",
-        "decidedAt": "2026-09-10"
+        "reason": "按副本解锁顺序的 20–55 分钟近线性耗时曲线重新校准，保留原有等级、概率与路线定位。",
+        "decidedAt": "2026-09-11"
       }
     ]
   },
@@ -52,7 +52,7 @@
         "recommended": 5
       },
       "duration": {
-        "baseSeconds": 1720,
+        "baseSeconds": 2940,
         "minimumRatio": 0.48,
         "maximumRatio": 1.8
       },

@@ -12,7 +12,7 @@ describe("Razorfen Downs content", () => {
       minimumLevel: 37,
       recommendedLevel: 45,
       unlock: { requiredDungeonIds: ["scarlet_monastery_cathedral"] },
-      duration: { baseSeconds: 1440, minimumRatio: 0.5 },
+      duration: { baseSeconds: 2580, minimumRatio: 0.5 },
     });
     expect(dungeon.route.filter((node) => node.type === "required")).toHaveLength(4);
     expect(dungeon.route.filter((node) => node.type === "optional")).toEqual([
@@ -27,7 +27,7 @@ describe("Razorfen Downs content", () => {
         (seconds, node) => seconds + content.encounterById.get(node.encounterId)!.stageSeconds,
         0,
       ),
-    ).toBe(1440);
+    ).toBe(2580);
   });
 
   it("connects every route encounter to the researched loot pool, mechanics, and logs", () => {

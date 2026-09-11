@@ -22,7 +22,7 @@ describe("Scarlet Monastery Cathedral balance", () => {
     );
   });
 
-  it("preserves role pressure, repeat farming, and the eighteen-minute full-route target", () => {
+  it("preserves role pressure, repeat farming, and the forty-one-minute full-route target", () => {
     const dungeon = content.dungeonById.get(
       asBrandedId<"DungeonId">("scarlet_monastery_cathedral"),
     )!;
@@ -35,8 +35,10 @@ describe("Scarlet Monastery Cathedral balance", () => {
     expect(balance.scenarios["no-tank"].required.clearRate).toBeLessThan(0.01);
     expect(balance.scenarios["no-healing"].required.clearRate).toBeLessThan(0.01);
     expect(balance.scenarios["max-level"].required.clearRate).toBeGreaterThanOrEqual(0.83);
-    expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeGreaterThanOrEqual(990);
-    expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeLessThanOrEqual(1_100);
+    expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeGreaterThanOrEqual(
+      2_300,
+    );
+    expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeLessThanOrEqual(2_400);
     expect(balance.scenarios["max-level"]["with-optional"].durationSeconds).toBeGreaterThanOrEqual(
       minimumDuration,
     );

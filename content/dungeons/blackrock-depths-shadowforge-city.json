@@ -28,8 +28,8 @@
     "balanceOverrides": [
       {
         "fields": ["minimumLevel", "recommendedLevel", "duration", "probability", "route"],
-        "reason": "按禁闭区后的 52–56 级最终升级入口、约 30 分钟主线和约 45 分钟完整主动路线设置首版参数。",
-        "decidedAt": "2026-09-10"
+        "reason": "按副本解锁顺序的 20–55 分钟近线性耗时曲线重新校准，保留原有等级、概率与路线定位。",
+        "decidedAt": "2026-09-11"
       }
     ]
   },
@@ -52,7 +52,7 @@
         "recommended": 5
       },
       "duration": {
-        "baseSeconds": 2500,
+        "baseSeconds": 3300,
         "minimumRatio": 0.48,
         "maximumRatio": 1.8
       },

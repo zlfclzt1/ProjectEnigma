@@ -18,15 +18,15 @@ describe("Scarlet Monastery Armory balance", () => {
     expect(balance.scenarios.standard.required.previewClearProbability).toBeGreaterThan(0.8);
   });
 
-  it("supports level-45 repeat farming near the sixteen-minute target and above the floor", () => {
+  it("supports level-45 repeat farming near the thirty-nine-minute target and above the floor", () => {
     const dungeon = content.dungeonById.get(asBrandedId<"DungeonId">("scarlet_monastery_armory"))!;
     const minimumDuration =
       content.encounterById.get(asBrandedId<"EncounterId">("scarlet_armory_herod"))!.stageSeconds *
       dungeon.duration.minimumRatio;
 
     expect(balance.scenarios["max-level"].required.clearRate).toBeGreaterThanOrEqual(0.85);
-    expect(balance.scenarios.standard.required.durationSeconds).toBeGreaterThanOrEqual(900);
-    expect(balance.scenarios.standard.required.durationSeconds).toBeLessThanOrEqual(1_080);
+    expect(balance.scenarios.standard.required.durationSeconds).toBeGreaterThanOrEqual(2_400);
+    expect(balance.scenarios.standard.required.durationSeconds).toBeLessThanOrEqual(2_550);
     expect(balance.scenarios["max-level"].required.durationSeconds).toBeGreaterThanOrEqual(
       minimumDuration,
     );

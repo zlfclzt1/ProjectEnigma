@@ -8,7 +8,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.79284,
         "previewClearProbability": 0.7935265569215912,
-        "durationSeconds": 1610.4,
+        "durationSeconds": 1554.6,
         "wipeCounts": {
           "brd_detention_high_interrogator_gerstahn": 3463,
           "brd_detention_fineous_darkvire": 4554,
@@ -21,7 +21,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.69322,
         "previewClearProbability": 0.6915620848343821,
-        "durationSeconds": 2414.6,
+        "durationSeconds": 2327.8,
         "wipeCounts": {
           "brd_detention_lord_roccor": 1835,
           "brd_detention_high_interrogator_gerstahn": 6794,
@@ -41,7 +41,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.76422,
         "previewClearProbability": 0.761390061835583,
-        "durationSeconds": 1803,
+        "durationSeconds": 1746.2,
         "wipeCounts": {
           "brd_detention_ring_of_law": 9015,
           "brd_detention_high_interrogator_gerstahn": 3062,
@@ -58,7 +58,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.00002,
         "previewClearProbability": 0.000006250000000000001,
-        "durationSeconds": 1782.4,
+        "durationSeconds": 1721,
         "wipeCounts": {
           "brd_detention_high_interrogator_gerstahn": 94971,
           "brd_detention_ring_of_law": 4770,
@@ -71,7 +71,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 4.882812500000003e-15,
-        "durationSeconds": 2691,
+        "durationSeconds": 2594.4,
         "wipeCounts": {
           "brd_detention_high_interrogator_gerstahn": 95081,
           "brd_detention_lord_roccor": 4691,
@@ -84,7 +84,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.5625000000000006e-8,
-        "durationSeconds": 1928,
+        "durationSeconds": 1868.2,
         "wipeCounts": {
           "brd_detention_high_interrogator_gerstahn": 95115,
           "brd_detention_ring_of_law": 4656,
@@ -100,7 +100,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 0.000006250000000000001,
-        "durationSeconds": 1886,
+        "durationSeconds": 1820.8,
         "wipeCounts": {
           "brd_detention_high_interrogator_gerstahn": 94924,
           "brd_detention_ring_of_law": 4832,
@@ -113,7 +113,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 4.882812500000003e-15,
-        "durationSeconds": 2794.6,
+        "durationSeconds": 2693.4,
         "wipeCounts": {
           "brd_detention_high_interrogator_gerstahn": 94875,
           "brd_detention_lord_roccor": 4859,
@@ -127,7 +127,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.5625000000000006e-8,
-        "durationSeconds": 2067.6,
+        "durationSeconds": 2002.8,
         "wipeCounts": {
           "brd_detention_high_interrogator_gerstahn": 95077,
           "brd_detention_ring_of_law": 4656,
@@ -143,7 +143,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.73743,
         "previewClearProbability": 0.7357529354116462,
-        "durationSeconds": 1664,
+        "durationSeconds": 1606,
         "wipeCounts": {
           "brd_detention_ring_of_law": 11033,
           "brd_detention_fineous_darkvire": 4689,
@@ -156,7 +156,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.50666,
         "previewClearProbability": 0.5050507957478437,
-        "durationSeconds": 2573.8,
+        "durationSeconds": 2480.2,
         "wipeCounts": {
           "brd_detention_ring_of_law": 11485,
           "brd_detention_black_vault": 2649,
@@ -176,7 +176,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.74632,
         "previewClearProbability": 0.7457059182988871,
-        "durationSeconds": 1812.2,
+        "durationSeconds": 1756,
         "wipeCounts": {
           "brd_detention_high_interrogator_gerstahn": 4234,
           "brd_detention_ring_of_law": 9125,
@@ -193,7 +193,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.88561,
         "previewClearProbability": 0.8850113205976106,
-        "durationSeconds": 1589,
+        "durationSeconds": 1527,
         "wipeCounts": {
           "brd_detention_arena_gorosh": 1927,
           "brd_detention_high_interrogator_gerstahn": 1980,
@@ -206,7 +206,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.79006,
         "previewClearProbability": 0.7912868906599464,
-        "durationSeconds": 1845.6,
+        "durationSeconds": 1778.8,
         "wipeCounts": {
           "brd_detention_watchman_doomgrip": 1822,
           "brd_detention_fineous_darkvire": 2527,
@@ -226,7 +226,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.8713,
         "previewClearProbability": 0.8729035341609265,
-        "durationSeconds": 1589,
+        "durationSeconds": 1527,
         "wipeCounts": {
           "brd_detention_verek": 1793,
           "brd_detention_high_interrogator_gerstahn": 2908,
@@ -243,7 +243,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.88911,
         "previewClearProbability": 0.888456310998793,
-        "durationSeconds": 1589,
+        "durationSeconds": 1527,
         "wipeCounts": {
           "brd_detention_arena_gorosh": 1841,
           "brd_detention_high_interrogator_gerstahn": 3841,
@@ -256,7 +256,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.79406,
         "previewClearProbability": 0.7954188870060073,
-        "durationSeconds": 1846.6,
+        "durationSeconds": 1780.6,
         "wipeCounts": {
           "brd_detention_lord_incendius": 1746,
           "brd_detention_watchman_doomgrip": 1725,
@@ -276,7 +276,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.8372,
         "previewClearProbability": 0.8369440672398589,
-        "durationSeconds": 1589,
+        "durationSeconds": 1527,
         "wipeCounts": {
           "brd_detention_fineous_darkvire": 3444,
           "brd_detention_ring_of_law": 4589,

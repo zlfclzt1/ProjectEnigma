@@ -14,7 +14,7 @@ describe("Blackrock Depths Detention Block content", () => {
       minimumLevel: 50,
       recommendedLevel: 54,
       unlock: { requiredDungeonIds: ["sunken_temple"] },
-      duration: { baseSeconds: 3310, minimumRatio: 0.48 },
+      duration: { baseSeconds: 3180, minimumRatio: 0.48 },
     });
     expect(dungeon.route.filter((node) => node.type === "required")).toHaveLength(3);
     expect(dungeon.route.filter((node) => node.type === "optional")).toHaveLength(7);
@@ -27,7 +27,7 @@ describe("Blackrock Depths Detention Block content", () => {
         (seconds, node) => seconds + content.encounterById.get(node.encounterId)!.stageSeconds,
         0,
       ),
-    ).toBe(3310);
+    ).toBe(3180);
   });
 
   it("models the Ring of Law as one guaranteed random opponent", () => {

@@ -12,7 +12,7 @@ describe("Scarlet Monastery Armory content", () => {
       minimumLevel: 32,
       recommendedLevel: 42,
       unlock: { requiredDungeonIds: ["scarlet_monastery_library"] },
-      duration: { baseSeconds: 960, minimumRatio: 0.5 },
+      duration: { baseSeconds: 2340, minimumRatio: 0.5 },
     });
     expect(dungeon.route).toEqual([
       expect.objectContaining({ id: "scarlet_armory_herod", type: "required" }),

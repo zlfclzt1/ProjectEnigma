@@ -14,7 +14,7 @@ describe("Blackrock Depths Shadowforge City content", () => {
       minimumLevel: 52,
       recommendedLevel: 56,
       unlock: { requiredDungeonIds: ["blackrock_depths_detention_block"] },
-      duration: { baseSeconds: 2500, minimumRatio: 0.48 },
+      duration: { baseSeconds: 3300, minimumRatio: 0.48 },
     });
     expect(dungeon.route.filter((node) => node.type === "required")).toHaveLength(6);
     expect(dungeon.route.filter((node) => node.type === "optional")).toHaveLength(6);
@@ -27,7 +27,7 @@ describe("Blackrock Depths Shadowforge City content", () => {
         (seconds, node) => seconds + content.encounterById.get(node.encounterId)!.stageSeconds,
         0,
       ),
-    ).toBe(2500);
+    ).toBe(3300);
     expect(
       content.dungeons.filter(
         (candidate) =>

@@ -26,7 +26,7 @@
       "name": {
         "zhCN": "失踪的矮人"
       },
-      "stageSeconds": 260,
+      "stageSeconds": 390,
       "requirements": {
         "tank": 36,
         "healing": 38,
@@ -49,7 +49,7 @@
       "name": {
         "zhCN": "鲁维罗什"
       },
-      "stageSeconds": 190,
+      "stageSeconds": 290,
       "requirements": {
         "tank": 36,
         "healing": 40,
@@ -72,7 +72,7 @@
       "name": {
         "zhCN": "艾隆纳亚"
       },
-      "stageSeconds": 220,
+      "stageSeconds": 330,
       "requirements": {
         "tank": 40,
         "healing": 41,
@@ -95,7 +95,7 @@
       "name": {
         "zhCN": "黑曜石哨兵"
       },
-      "stageSeconds": 180,
+      "stageSeconds": 270,
       "requirements": {
         "tank": 39,
         "healing": 42,
@@ -117,7 +117,7 @@
       "name": {
         "zhCN": "古代的石头看守者"
       },
-      "stageSeconds": 210,
+      "stageSeconds": 320,
       "requirements": {
         "tank": 40,
         "healing": 42,
@@ -140,7 +140,7 @@
       "name": {
         "zhCN": "加加恩·火锤"
       },
-      "stageSeconds": 230,
+      "stageSeconds": 340,
       "requirements": {
         "tank": 40,
         "healing": 44,
@@ -163,7 +163,7 @@
       "name": {
         "zhCN": "格瑞姆洛克"
       },
-      "stageSeconds": 230,
+      "stageSeconds": 340,
       "requirements": {
         "tank": 41,
         "healing": 44,
@@ -186,7 +186,7 @@
       "name": {
         "zhCN": "阿扎达斯"
       },
-      "stageSeconds": 280,
+      "stageSeconds": 420,
       "requirements": {
         "tank": 43,
         "healing": 46,

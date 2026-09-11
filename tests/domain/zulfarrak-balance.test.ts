@@ -46,9 +46,9 @@ describe("Zul'Farrak balance", () => {
       balance.scenarios.standard.required.durationSeconds,
     );
     expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeGreaterThanOrEqual(
-      1_200,
+      2_350,
     );
-    expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeLessThanOrEqual(1_320);
+    expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeLessThanOrEqual(2_500);
     expect(balance.scenarios["max-level"]["with-optional"].durationSeconds).toBeGreaterThanOrEqual(
       minimumDuration,
     );

@@ -8,7 +8,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.82623,
         "previewClearProbability": 0.8281538198898725,
-        "durationSeconds": 1385.8,
+        "durationSeconds": 2368.8,
         "wipeCounts": {
           "maraudon_lord_vyletongue": 2005,
           "maraudon_celebras_the_cursed": 2828,
@@ -22,7 +22,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.76784,
         "previewClearProbability": 0.7682861783544643,
-        "durationSeconds": 1774.4,
+        "durationSeconds": 3032.2,
         "wipeCounts": {
           "maraudon_tinkerer_gizlock": 1647,
           "maraudon_princess_theradras": 4926,
@@ -40,7 +40,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.81362,
         "previewClearProbability": 0.8147961864740945,
-        "durationSeconds": 1453.4,
+        "durationSeconds": 2483.8,
         "wipeCounts": {
           "maraudon_landslide": 3510,
           "maraudon_princess_theradras": 6650,
@@ -57,7 +57,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 3.1250000000000013e-7,
-        "durationSeconds": 1553.2,
+        "durationSeconds": 2654.2,
         "wipeCounts": {
           "maraudon_noxxion": 95012,
           "maraudon_lord_vyletongue": 4741,
@@ -70,7 +70,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.953125000000001e-12,
-        "durationSeconds": 1995.4,
+        "durationSeconds": 3411,
         "wipeCounts": {
           "maraudon_pariahs_instructions": 94973,
           "maraudon_noxxion": 4763,
@@ -84,7 +84,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.5625000000000006e-8,
-        "durationSeconds": 1575,
+        "durationSeconds": 2691.8,
         "wipeCounts": {
           "maraudon_noxxion": 95016,
           "maraudon_lord_vyletongue": 4726,
@@ -100,7 +100,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 3.1250000000000013e-7,
-        "durationSeconds": 1536.6,
+        "durationSeconds": 2625.2,
         "wipeCounts": {
           "maraudon_noxxion": 94899,
           "maraudon_lord_vyletongue": 4852,
@@ -113,7 +113,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.953125000000001e-12,
-        "durationSeconds": 1976.8,
+        "durationSeconds": 3378.4,
         "wipeCounts": {
           "maraudon_pariahs_instructions": 95088,
           "maraudon_noxxion": 4664,
@@ -127,7 +127,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.5625000000000006e-8,
-        "durationSeconds": 1590,
+        "durationSeconds": 2717,
         "wipeCounts": {
           "maraudon_noxxion": 94988,
           "maraudon_lord_vyletongue": 4765,
@@ -142,7 +142,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.75702,
         "previewClearProbability": 0.7575626605182622,
-        "durationSeconds": 1449.4,
+        "durationSeconds": 2474.8,
         "wipeCounts": {
           "maraudon_lord_vyletongue": 2169,
           "maraudon_landslide": 5200,
@@ -156,7 +156,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.60884,
         "previewClearProbability": 0.6103502057026388,
-        "durationSeconds": 1892,
+        "durationSeconds": 3234.8,
         "wipeCounts": {
           "maraudon_celebras_the_cursed": 8981,
           "maraudon_pariahs_instructions": 2010,
@@ -174,7 +174,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.77374,
         "previewClearProbability": 0.7757559132195498,
-        "durationSeconds": 1468.6,
+        "durationSeconds": 2510,
         "wipeCounts": {
           "maraudon_lord_vyletongue": 1993,
           "maraudon_princess_theradras": 10132,
@@ -191,7 +191,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.90056,
         "previewClearProbability": 0.8991706409267566,
-        "durationSeconds": 844,
+        "durationSeconds": 1442.8,
         "wipeCounts": {
           "maraudon_noxxion": 1941,
           "maraudon_celebras_the_cursed": 1832,
@@ -205,7 +205,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.83256,
         "previewClearProbability": 0.8337477621301497,
-        "durationSeconds": 1051,
+        "durationSeconds": 1794.6,
         "wipeCounts": {
           "maraudon_celebras_the_cursed": 1817,
           "maraudon_princess_theradras": 1736,
@@ -223,7 +223,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.88644,
         "previewClearProbability": 0.8858423808639998,
-        "durationSeconds": 870.4,
+        "durationSeconds": 1488,
         "wipeCounts": {
           "maraudon_meshlok_the_harvester": 1883,
           "maraudon_princess_theradras": 1755,
@@ -240,7 +240,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.90465,
         "previewClearProbability": 0.9039207967999998,
-        "durationSeconds": 837,
+        "durationSeconds": 1430.2,
         "wipeCounts": {
           "maraudon_noxxion": 1972,
           "maraudon_celebras_the_cursed": 1933,
@@ -254,7 +254,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.83491,
         "previewClearProbability": 0.8337477621301497,
-        "durationSeconds": 1052.8,
+        "durationSeconds": 1798.8,
         "wipeCounts": {
           "maraudon_celebras_the_cursed": 1870,
           "maraudon_tinkerer_gizlock": 1733,
@@ -272,7 +272,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.88709,
         "previewClearProbability": 0.8858423808639998,
-        "durationSeconds": 887.8,
+        "durationSeconds": 1516.6,
         "wipeCounts": {
           "maraudon_lord_vyletongue": 1949,
           "maraudon_landslide": 1883,

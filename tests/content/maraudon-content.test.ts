@@ -12,7 +12,7 @@ describe("Maraudon content", () => {
       minimumLevel: 45,
       recommendedLevel: 49,
       unlock: { requiredDungeonIds: ["zulfarrak"] },
-      duration: { baseSeconds: 1720, minimumRatio: 0.48 },
+      duration: { baseSeconds: 2940, minimumRatio: 0.48 },
     });
     expect(dungeon.route.filter((node) => node.type === "required")).toHaveLength(5);
     expect(dungeon.route.filter((node) => node.type === "optional")).toEqual([
@@ -33,7 +33,7 @@ describe("Maraudon content", () => {
         (seconds, node) => seconds + content.encounterById.get(node.encounterId)!.stageSeconds,
         0,
       ),
-    ).toBe(1720);
+    ).toBe(2940);
   });
 
   it("connects every route node to mechanics, logs, and the authentic loot boundary", () => {

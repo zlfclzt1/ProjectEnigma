@@ -8,7 +8,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.86904,
         "previewClearProbability": 0.8681255332467199,
-        "durationSeconds": 992.2,
+        "durationSeconds": 1945,
         "wipeCounts": {
           "zulfarrak_chief_ukorz": 1696,
           "zulfarrak_sandfury_executioner": 1874,
@@ -24,7 +24,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.83407,
         "previewClearProbability": 0.8337477621301497,
-        "durationSeconds": 1242.8,
+        "durationSeconds": 2425.2,
         "wipeCounts": {
           "zulfarrak_witch_doctor_zumrah": 1977,
           "zulfarrak_sandfury_executioner": 1862,
@@ -42,7 +42,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.81635,
         "previewClearProbability": 0.8170728068875468,
-        "durationSeconds": 1170.6,
+        "durationSeconds": 2300.8,
         "wipeCounts": {
           "zulfarrak_hydromancer_velratha": 1679,
           "zulfarrak_sandarr_dunereaver": 1964,
@@ -63,7 +63,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 7.812500000000005e-10,
-        "durationSeconds": 1102.6,
+        "durationSeconds": 2160.4,
         "wipeCounts": {
           "zulfarrak_antusul": 95047,
           "zulfarrak_theka_the_martyr": 4704,
@@ -76,7 +76,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.953125000000001e-12,
-        "durationSeconds": 1413.2,
+        "durationSeconds": 2757.2,
         "wipeCounts": {
           "zulfarrak_antusul": 95139,
           "zulfarrak_theka_the_martyr": 4616,
@@ -91,7 +91,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 9.765625000000004e-14,
-        "durationSeconds": 1260.4,
+        "durationSeconds": 2477.8,
         "wipeCounts": {
           "zulfarrak_zerillis": 95070,
           "zulfarrak_antusul": 4701,
@@ -107,7 +107,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 7.812500000000005e-10,
-        "durationSeconds": 1120.8,
+        "durationSeconds": 2197,
         "wipeCounts": {
           "zulfarrak_antusul": 95130,
           "zulfarrak_witch_doctor_zumrah": 215,
@@ -120,7 +120,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.953125000000001e-12,
-        "durationSeconds": 1388,
+        "durationSeconds": 2710.2,
         "wipeCounts": {
           "zulfarrak_antusul": 95043,
           "zulfarrak_theka_the_martyr": 4709,
@@ -133,7 +133,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 9.765625000000004e-14,
-        "durationSeconds": 1274.6,
+        "durationSeconds": 2504.6,
         "wipeCounts": {
           "zulfarrak_zerillis": 94980,
           "zulfarrak_antusul": 4757,
@@ -148,7 +148,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.85251,
         "previewClearProbability": 0.8527017026742578,
-        "durationSeconds": 1027.8,
+        "durationSeconds": 2015,
         "wipeCounts": {
           "zulfarrak_chief_ukorz": 1684,
           "zulfarrak_nekrum_and_sezzziz": 1807,
@@ -164,7 +164,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.77,
         "previewClearProbability": 0.7712865782604557,
-        "durationSeconds": 1318.2,
+        "durationSeconds": 2572.2,
         "wipeCounts": {
           "zulfarrak_gahzrilla": 2994,
           "zulfarrak_antusul": 3631,
@@ -182,7 +182,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.81661,
         "previewClearProbability": 0.8170728068875468,
-        "durationSeconds": 1169.2,
+        "durationSeconds": 2298.6,
         "wipeCounts": {
           "zulfarrak_antusul": 2023,
           "zulfarrak_sandarr_dunereaver": 1934,
@@ -203,7 +203,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.85174,
         "previewClearProbability": 0.8545427478534304,
-        "durationSeconds": 1004.8,
+        "durationSeconds": 1967,
         "wipeCounts": {
           "zulfarrak_chief_ukorz": 2857,
           "zulfarrak_hydromancer_velratha": 1784,
@@ -219,7 +219,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.83396,
         "previewClearProbability": 0.8337477621301497,
-        "durationSeconds": 1235.4,
+        "durationSeconds": 2410.4,
         "wipeCounts": {
           "zulfarrak_witch_doctor_zumrah": 1931,
           "zulfarrak_hydromancer_velratha": 1752,
@@ -237,7 +237,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.81253,
         "previewClearProbability": 0.8095173630826297,
-        "durationSeconds": 1183.6,
+        "durationSeconds": 2326.8,
         "wipeCounts": {
           "zulfarrak_dustwraith": 1762,
           "zulfarrak_sandfury_executioner": 1719,
@@ -258,7 +258,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.85856,
         "previewClearProbability": 0.8588095469912961,
-        "durationSeconds": 1000.6,
+        "durationSeconds": 1963.2,
         "wipeCounts": {
           "zulfarrak_antusul": 2891,
           "zulfarrak_nekrum_and_sezzziz": 1989,
@@ -274,7 +274,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.83162,
         "previewClearProbability": 0.8322064423820535,
-        "durationSeconds": 1256.2,
+        "durationSeconds": 2450.6,
         "wipeCounts": {
           "zulfarrak_theka_the_martyr": 2014,
           "zulfarrak_gahzrilla": 1736,
@@ -292,7 +292,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.80013,
         "previewClearProbability": 0.7983956236392504,
-        "durationSeconds": 1198,
+        "durationSeconds": 2355.4,
         "wipeCounts": {
           "zulfarrak_sandarr_dunereaver": 1920,
           "zulfarrak_hydromancer_velratha": 1706,

@@ -18,9 +18,9 @@ describe("Sunken Temple balance", () => {
 
   it("keeps the full route viable while preserving level-49 pressure", () => {
     expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeGreaterThanOrEqual(
-      1_900,
+      3_200,
     );
-    expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeLessThanOrEqual(1_980);
+    expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeLessThanOrEqual(3_350);
     expect(balance.scenarios.standard["with-optional"].clearRate).toBeGreaterThanOrEqual(0.67);
     expect(balance.scenarios.standard["with-optional"].clearRate).toBeLessThanOrEqual(0.72);
     expect(balance.scenarios.overlevel["with-optional"].level).toBe(49);

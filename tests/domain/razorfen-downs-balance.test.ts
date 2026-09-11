@@ -41,9 +41,9 @@ describe("Razorfen Downs balance", () => {
       balance.scenarios.standard.required.clearRate,
     );
     expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeGreaterThanOrEqual(
-      1_300,
+      2_300,
     );
-    expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeLessThanOrEqual(1_450);
+    expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeLessThanOrEqual(2_420);
     expect(balance.scenarios["max-level"]["with-rare"].durationSeconds).toBeGreaterThanOrEqual(
       minimumDuration,
     );

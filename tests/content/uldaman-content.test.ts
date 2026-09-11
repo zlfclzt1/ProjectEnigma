@@ -12,7 +12,7 @@ describe("Uldaman content", () => {
       minimumLevel: 40,
       recommendedLevel: 45,
       unlock: { requiredDungeonIds: ["razorfen_downs"] },
-      duration: { baseSeconds: 1800, minimumRatio: 0.5 },
+      duration: { baseSeconds: 2700, minimumRatio: 0.5 },
     });
     expect(dungeon.route.filter((node) => node.type === "required")).toHaveLength(6);
     expect(dungeon.route.filter((node) => node.type === "optional")).toEqual([
@@ -25,7 +25,7 @@ describe("Uldaman content", () => {
         (seconds, node) => seconds + content.encounterById.get(node.encounterId)!.stageSeconds,
         0,
       ),
-    ).toBe(1800);
+    ).toBe(2700);
   });
 
   it("connects all encounters to mechanics and keeps the quest-only sentinel lootless", () => {

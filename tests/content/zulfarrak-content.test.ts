@@ -12,7 +12,7 @@ describe("Zul'Farrak content", () => {
       minimumLevel: 40,
       recommendedLevel: 45,
       unlock: { requiredDungeonIds: ["uldaman"] },
-      duration: { baseSeconds: 1440, minimumRatio: 0.5 },
+      duration: { baseSeconds: 2820, minimumRatio: 0.5 },
     });
     expect(dungeon.route.filter((node) => node.type === "required")).toHaveLength(7);
     expect(dungeon.route.filter((node) => node.type === "optional")).toEqual([
@@ -30,7 +30,7 @@ describe("Zul'Farrak content", () => {
         (seconds, node) => seconds + content.encounterById.get(node.encounterId)!.stageSeconds,
         0,
       ),
-    ).toBe(1440);
+    ).toBe(2820);
   });
 
   it("connects every encounter to mechanics and preserves five authentic lootless nodes", () => {

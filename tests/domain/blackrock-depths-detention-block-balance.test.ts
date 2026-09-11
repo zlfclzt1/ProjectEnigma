@@ -18,9 +18,9 @@ describe("Blackrock Depths Detention Block balance", () => {
 
   it("keeps the full active route viable while preserving level-51 pressure", () => {
     expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeGreaterThanOrEqual(
-      2_350,
+      2_250,
     );
-    expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeLessThanOrEqual(2_480);
+    expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeLessThanOrEqual(2_400);
     expect(balance.scenarios.standard["with-optional"].clearRate).toBeGreaterThanOrEqual(0.67);
     expect(balance.scenarios.standard["with-optional"].clearRate).toBeLessThanOrEqual(0.72);
     expect(balance.scenarios.overlevel["with-optional"].level).toBe(51);

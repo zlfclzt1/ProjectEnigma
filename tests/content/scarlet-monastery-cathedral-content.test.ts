@@ -14,7 +14,7 @@ describe("Scarlet Monastery Cathedral content", () => {
       minimumLevel: 35,
       recommendedLevel: 44,
       unlock: { requiredDungeonIds: ["scarlet_monastery_armory"] },
-      duration: { baseSeconds: 1080, minimumRatio: 0.5 },
+      duration: { baseSeconds: 2460, minimumRatio: 0.5 },
     });
     expect(dungeon.route).toEqual([
       expect.objectContaining({

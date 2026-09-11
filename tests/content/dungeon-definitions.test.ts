@@ -53,7 +53,7 @@ describe("dungeon content", () => {
       recommendedLevel: 13,
       defaultUnlocked: true,
       members: { minimum: 1, maximum: 5, recommended: 5 },
-      duration: { baseSeconds: 600, minimumRatio: 0.5 },
+      duration: { baseSeconds: 1200, minimumRatio: 0.5 },
     });
     expect(
       dungeons.every((dungeon) => dungeon.route.every((node) => node.type === "required")),

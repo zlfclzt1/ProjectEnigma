@@ -8,7 +8,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.80106,
         "previewClearProbability": 0.803385913811417,
-        "durationSeconds": 1084.2,
+        "durationSeconds": 1302.6,
         "wipeCounts": {
           "razorfen_kraul_aggem_thorncurse": 2033,
           "razorfen_kraul_charlga_razorflank": 6403,
@@ -22,7 +22,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.75646,
         "previewClearProbability": 0.7573156727860981,
-        "durationSeconds": 1222.2,
+        "durationSeconds": 1468.2,
         "wipeCounts": {
           "razorfen_kraul_charlga_razorflank": 8854,
           "razorfen_kraul_agathelos_the_raging": 3794,
@@ -37,7 +37,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.69698,
         "previewClearProbability": 0.6980845538809592,
-        "durationSeconds": 1436,
+        "durationSeconds": 1723.4,
         "wipeCounts": {
           "razorfen_kraul_earthcaller_halmgar": 4473,
           "razorfen_kraul_charlga_razorflank": 7564,
@@ -55,7 +55,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 3.1250000000000013e-7,
-        "durationSeconds": 1213.4,
+        "durationSeconds": 1458.2,
         "wipeCounts": {
           "razorfen_kraul_aggem_thorncurse": 94875,
           "razorfen_kraul_death_speaker_jargba": 4863,
@@ -69,7 +69,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.5625000000000006e-8,
-        "durationSeconds": 1353.8,
+        "durationSeconds": 1625.8,
         "wipeCounts": {
           "razorfen_kraul_roogug": 94986,
           "razorfen_kraul_aggem_thorncurse": 4738,
@@ -82,7 +82,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 7.812500000000005e-10,
-        "durationSeconds": 1544,
+        "durationSeconds": 1853.2,
         "wipeCounts": {
           "razorfen_kraul_aggem_thorncurse": 94972,
           "razorfen_kraul_death_speaker_jargba": 4787,
@@ -98,7 +98,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 3.1250000000000013e-7,
-        "durationSeconds": 1186.4,
+        "durationSeconds": 1425.8,
         "wipeCounts": {
           "razorfen_kraul_aggem_thorncurse": 95039,
           "razorfen_kraul_death_speaker_jargba": 4715,
@@ -112,7 +112,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.5625000000000006e-8,
-        "durationSeconds": 1340.4,
+        "durationSeconds": 1609.8,
         "wipeCounts": {
           "razorfen_kraul_roogug": 94908,
           "razorfen_kraul_death_speaker_jargba": 226,
@@ -126,7 +126,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 7.812500000000005e-10,
-        "durationSeconds": 1555.4,
+        "durationSeconds": 1866.4,
         "wipeCounts": {
           "razorfen_kraul_aggem_thorncurse": 94935,
           "razorfen_kraul_death_speaker_jargba": 4811,
@@ -141,7 +141,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.71283,
         "previewClearProbability": 0.712169864511446,
-        "durationSeconds": 1154.8,
+        "durationSeconds": 1387,
         "wipeCounts": {
           "razorfen_kraul_agathelos_the_raging": 5914,
           "razorfen_kraul_death_speaker_jargba": 5922,
@@ -155,7 +155,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.60887,
         "previewClearProbability": 0.609489894633395,
-        "durationSeconds": 1316,
+        "durationSeconds": 1581.8,
         "wipeCounts": {
           "razorfen_kraul_death_speaker_jargba": 8418,
           "razorfen_kraul_overlord_ramtusk": 6150,
@@ -170,7 +170,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.65165,
         "previewClearProbability": 0.6520376149953974,
-        "durationSeconds": 1470.4,
+        "durationSeconds": 1764.8,
         "wipeCounts": {
           "razorfen_kraul_blind_hunter": 4447,
           "razorfen_kraul_charlga_razorflank": 8286,
@@ -188,7 +188,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.90489,
         "previewClearProbability": 0.9039207967999998,
-        "durationSeconds": 850,
+        "durationSeconds": 1020,
         "wipeCounts": {
           "razorfen_kraul_agathelos_the_raging": 1844,
           "razorfen_kraul_charlga_razorflank": 1861,
@@ -202,7 +202,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.88602,
         "previewClearProbability": 0.8858423808639998,
-        "durationSeconds": 850,
+        "durationSeconds": 1020,
         "wipeCounts": {
           "razorfen_kraul_death_speaker_jargba": 1875,
           "razorfen_kraul_roogug": 1963,
@@ -217,7 +217,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.86991,
         "previewClearProbability": 0.8681255332467199,
-        "durationSeconds": 888,
+        "durationSeconds": 1065.6,
         "wipeCounts": {
           "razorfen_kraul_overlord_ramtusk": 1828,
           "razorfen_kraul_death_speaker_jargba": 1978,
@@ -235,7 +235,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.90408,
         "previewClearProbability": 0.9039207967999998,
-        "durationSeconds": 850,
+        "durationSeconds": 1020,
         "wipeCounts": {
           "razorfen_kraul_agathelos_the_raging": 1822,
           "razorfen_kraul_death_speaker_jargba": 1980,
@@ -249,7 +249,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.89428,
         "previewClearProbability": 0.8931475366911998,
-        "durationSeconds": 850,
+        "durationSeconds": 1020,
         "wipeCounts": {
           "razorfen_kraul_roogug": 1542,
           "razorfen_kraul_charlga_razorflank": 1751,
@@ -264,7 +264,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.86606,
         "previewClearProbability": 0.8657289206250093,
-        "durationSeconds": 911.2,
+        "durationSeconds": 1092.8,
         "wipeCounts": {
           "razorfen_kraul_earthcaller_halmgar": 1984,
           "razorfen_kraul_death_speaker_jargba": 1968,

@@ -8,7 +8,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.80881,
         "previewClearProbability": 0.8106166321456933,
-        "durationSeconds": 1910.6,
+        "durationSeconds": 2522.4,
         "wipeCounts": {
           "brd_shadowforge_seven": 1592,
           "brd_shadowforge_phalanx": 2968,
@@ -23,7 +23,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.70369,
         "previewClearProbability": 0.7033478816227123,
-        "durationSeconds": 2572.8,
+        "durationSeconds": 3394.4,
         "wipeCounts": {
           "brd_shadowforge_hurley_blackbreath": 1462,
           "brd_shadowforge_emperor_dagran_thaurissan": 6831,
@@ -44,7 +44,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.79529,
         "previewClearProbability": 0.7973863353871231,
-        "durationSeconds": 2063,
+        "durationSeconds": 2725.4,
         "wipeCounts": {
           "brd_shadowforge_phalanx": 2260,
           "brd_shadowforge_lyceum": 6262,
@@ -62,7 +62,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.5625000000000006e-8,
-        "durationSeconds": 2142.4,
+        "durationSeconds": 2826.8,
         "wipeCounts": {
           "brd_shadowforge_phalanx": 95085,
           "brd_shadowforge_ambassador_flamelash": 4672,
@@ -75,7 +75,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 2.4414062500000014e-16,
-        "durationSeconds": 2875.8,
+        "durationSeconds": 3793.6,
         "wipeCounts": {
           "brd_shadowforge_general_angerforge": 95067,
           "brd_shadowforge_golem_lord_argelmach": 4695,
@@ -89,7 +89,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 7.812500000000005e-10,
-        "durationSeconds": 2212.6,
+        "durationSeconds": 2922.2,
         "wipeCounts": {
           "brd_shadowforge_phalanx": 95050,
           "brd_shadowforge_ambassador_flamelash": 4727,
@@ -104,7 +104,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.5625000000000006e-8,
-        "durationSeconds": 2174.6,
+        "durationSeconds": 2870.8,
         "wipeCounts": {
           "brd_shadowforge_phalanx": 94981,
           "brd_shadowforge_ambassador_flamelash": 4766,
@@ -118,7 +118,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 2.4414062500000014e-16,
-        "durationSeconds": 2864,
+        "durationSeconds": 3779.4,
         "wipeCounts": {
           "brd_shadowforge_general_angerforge": 94882,
           "brd_shadowforge_golem_lord_argelmach": 4870,
@@ -131,7 +131,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 7.812500000000005e-10,
-        "durationSeconds": 2273.8,
+        "durationSeconds": 3004.4,
         "wipeCounts": {
           "brd_shadowforge_phalanx": 94960,
           "brd_shadowforge_ambassador_flamelash": 4776,
@@ -147,7 +147,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.7479,
         "previewClearProbability": 0.748647007531768,
-        "durationSeconds": 1981.2,
+        "durationSeconds": 2615,
         "wipeCounts": {
           "brd_shadowforge_magmus": 1379,
           "brd_shadowforge_ambassador_flamelash": 6529,
@@ -162,7 +162,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.54105,
         "previewClearProbability": 0.5419065964991955,
-        "durationSeconds": 2698.4,
+        "durationSeconds": 3560.6,
         "wipeCounts": {
           "brd_shadowforge_phalanx": 5243,
           "brd_shadowforge_emperor_dagran_thaurissan": 5945,
@@ -183,7 +183,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.78569,
         "previewClearProbability": 0.7868028700735881,
-        "durationSeconds": 2057.4,
+        "durationSeconds": 2717.4,
         "wipeCounts": {
           "brd_shadowforge_magmus": 2709,
           "brd_shadowforge_phalanx": 1750,
@@ -201,7 +201,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.8831,
         "previewClearProbability": 0.8851730052246942,
-        "durationSeconds": 1617.4,
+        "durationSeconds": 2134.6,
         "wipeCounts": {
           "brd_shadowforge_lyceum": 3073,
           "brd_shadowforge_ambassador_flamelash": 2480,
@@ -216,7 +216,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.83102,
         "previewClearProbability": 0.8311766567242836,
-        "durationSeconds": 2115.2,
+        "durationSeconds": 2790.6,
         "wipeCounts": {
           "brd_shadowforge_lyceum": 1615,
           "brd_shadowforge_plugger_spazzring": 1450,
@@ -237,7 +237,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.85074,
         "previewClearProbability": 0.8493019415682277,
-        "durationSeconds": 1779.4,
+        "durationSeconds": 2350.4,
         "wipeCounts": {
           "brd_shadowforge_panzor": 1513,
           "brd_shadowforge_magmus": 1336,
@@ -255,7 +255,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.87108,
         "previewClearProbability": 0.8699988605193436,
-        "durationSeconds": 1641.8,
+        "durationSeconds": 2167.2,
         "wipeCounts": {
           "brd_shadowforge_emperor_dagran_thaurissan": 4067,
           "brd_shadowforge_magmus": 1378,
@@ -270,7 +270,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.80825,
         "previewClearProbability": 0.8089723018662761,
-        "durationSeconds": 2142.6,
+        "durationSeconds": 2826.2,
         "wipeCounts": {
           "brd_shadowforge_golem_lord_argelmach": 1519,
           "brd_shadowforge_plugger_spazzring": 1445,
@@ -291,7 +291,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.83997,
         "previewClearProbability": 0.8393614504631118,
-        "durationSeconds": 1783,
+        "durationSeconds": 2356.4,
         "wipeCounts": {
           "brd_shadowforge_phalanx": 1824,
           "brd_shadowforge_ambassador_flamelash": 2569,

@@ -8,7 +8,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.8738,
         "previewClearProbability": 0.8746551181229721,
-        "durationSeconds": 1363.4,
+        "durationSeconds": 2045,
         "wipeCounts": {
           "uldaman_lost_dwarves": 2029,
           "uldaman_ancient_stone_keeper": 1898,
@@ -23,7 +23,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.84748,
         "previewClearProbability": 0.8474385297725261,
-        "durationSeconds": 1746.2,
+        "durationSeconds": 2618.4,
         "wipeCounts": {
           "uldaman_archaedas": 2115,
           "uldaman_ironaya": 1900,
@@ -40,7 +40,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.87661,
         "previewClearProbability": 0.8790946175044032,
-        "durationSeconds": 1369.8,
+        "durationSeconds": 2053.8,
         "wipeCounts": {
           "uldaman_revelosh": 2013,
           "uldaman_ancient_stone_keeper": 1945,
@@ -57,7 +57,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.5625000000000006e-8,
-        "durationSeconds": 1529.8,
+        "durationSeconds": 2293.6,
         "wipeCounts": {
           "uldaman_lost_dwarves": 94996,
           "uldaman_ancient_stone_keeper": 266,
@@ -70,7 +70,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 3.906250000000002e-11,
-        "durationSeconds": 1973,
+        "durationSeconds": 2959.4,
         "wipeCounts": {
           "uldaman_lost_dwarves": 95011,
           "uldaman_revelosh": 4751,
@@ -83,7 +83,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.5625000000000006e-8,
-        "durationSeconds": 1482,
+        "durationSeconds": 2221.8,
         "wipeCounts": {
           "uldaman_lost_dwarves": 94979,
           "uldaman_revelosh": 4769,
@@ -98,7 +98,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.5625000000000006e-8,
-        "durationSeconds": 1507,
+        "durationSeconds": 2260.6,
         "wipeCounts": {
           "uldaman_lost_dwarves": 95056,
           "uldaman_revelosh": 4710,
@@ -112,7 +112,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 3.906250000000002e-11,
-        "durationSeconds": 1951,
+        "durationSeconds": 2925.8,
         "wipeCounts": {
           "uldaman_lost_dwarves": 94965,
           "uldaman_revelosh": 4748,
@@ -125,7 +125,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.5625000000000006e-8,
-        "durationSeconds": 1499.6,
+        "durationSeconds": 2248.8,
         "wipeCounts": {
           "uldaman_lost_dwarves": 95024,
           "uldaman_revelosh": 4712,
@@ -141,7 +141,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.8282,
         "previewClearProbability": 0.8277087634559332,
-        "durationSeconds": 1426.6,
+        "durationSeconds": 2140,
         "wipeCounts": {
           "uldaman_revelosh": 1942,
           "uldaman_lost_dwarves": 1936,
@@ -156,7 +156,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.76717,
         "previewClearProbability": 0.7686589974790026,
-        "durationSeconds": 1850.4,
+        "durationSeconds": 2774.8,
         "wipeCounts": {
           "uldaman_archaedas": 6931,
           "uldaman_grimlok": 4307,
@@ -173,7 +173,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.86222,
         "previewClearProbability": 0.8641583184626667,
-        "durationSeconds": 1378.8,
+        "durationSeconds": 2067,
         "wipeCounts": {
           "uldaman_lost_dwarves": 1955,
           "uldaman_archaedas": 4017,
@@ -190,7 +190,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.86227,
         "previewClearProbability": 0.8603268627776339,
-        "durationSeconds": 1388.6,
+        "durationSeconds": 2082,
         "wipeCounts": {
           "uldaman_archaedas": 3769,
           "uldaman_galgann_firehammer": 1843,
@@ -205,7 +205,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.84591,
         "previewClearProbability": 0.8472212377025465,
-        "durationSeconds": 1747.6,
+        "durationSeconds": 2620.6,
         "wipeCounts": {
           "uldaman_revelosh": 1923,
           "uldaman_lost_dwarves": 2065,
@@ -222,7 +222,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.87887,
         "previewClearProbability": 0.8783749366773941,
-        "durationSeconds": 1367.2,
+        "durationSeconds": 2049.8,
         "wipeCounts": {
           "uldaman_ancient_stone_keeper": 1847,
           "uldaman_galgann_firehammer": 1877,
@@ -239,7 +239,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.86996,
         "previewClearProbability": 0.8701644224335938,
-        "durationSeconds": 1366.8,
+        "durationSeconds": 2050.4,
         "wipeCounts": {
           "uldaman_grimlok": 1878,
           "uldaman_archaedas": 3403,
@@ -254,7 +254,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.83962,
         "previewClearProbability": 0.8393502345255804,
-        "durationSeconds": 1754.6,
+        "durationSeconds": 2631.2,
         "wipeCounts": {
           "uldaman_archaedas": 2889,
           "uldaman_ancient_stone_keeper": 1832,
@@ -271,7 +271,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.84669,
         "previewClearProbability": 0.8467356976785482,
-        "durationSeconds": 1404.2,
+        "durationSeconds": 2104.2,
         "wipeCounts": {
           "uldaman_archaedas": 5092,
           "uldaman_galgann_firehammer": 1877,

@@ -34,7 +34,7 @@
       "name": {
         "zhCN": "泽雷利斯"
       },
-      "stageSeconds": 70,
+      "stageSeconds": 140,
       "requirements": {
         "tank": 40,
         "healing": 42,
@@ -57,7 +57,7 @@
       "name": {
         "zhCN": "安图苏尔"
       },
-      "stageSeconds": 150,
+      "stageSeconds": 290,
       "requirements": {
         "tank": 43,
         "healing": 47,
@@ -80,7 +80,7 @@
       "name": {
         "zhCN": "沙怒守护者"
       },
-      "stageSeconds": 60,
+      "stageSeconds": 120,
       "requirements": {
         "tank": 41,
         "healing": 43,
@@ -102,7 +102,7 @@
       "name": {
         "zhCN": "殉教者塞卡"
       },
-      "stageSeconds": 100,
+      "stageSeconds": 200,
       "requirements": {
         "tank": 41,
         "healing": 43,
@@ -124,7 +124,7 @@
       "name": {
         "zhCN": "巫医祖穆拉恩"
       },
-      "stageSeconds": 120,
+      "stageSeconds": 240,
       "requirements": {
         "tank": 42,
         "healing": 47,
@@ -147,7 +147,7 @@
       "name": {
         "zhCN": "灰尘怨灵"
       },
-      "stageSeconds": 60,
+      "stageSeconds": 120,
       "requirements": {
         "tank": 42,
         "healing": 44,
@@ -170,7 +170,7 @@
       "name": {
         "zhCN": "沙怒刽子手与百人斩"
       },
-      "stageSeconds": 220,
+      "stageSeconds": 430,
       "requirements": {
         "tank": 43,
         "healing": 48,
@@ -192,7 +192,7 @@
       "name": {
         "zhCN": "耐克鲁姆·食尸者与暗影祭司塞瑟斯"
       },
-      "stageSeconds": 150,
+      "stageSeconds": 290,
       "requirements": {
         "tank": 44,
         "healing": 49,
@@ -215,7 +215,7 @@
       "name": {
         "zhCN": "布莱中士"
       },
-      "stageSeconds": 120,
+      "stageSeconds": 230,
       "requirements": {
         "tank": 45,
         "healing": 49,
@@ -237,7 +237,7 @@
       "name": {
         "zhCN": "水占师维蕾萨"
       },
-      "stageSeconds": 100,
+      "stageSeconds": 200,
       "requirements": {
         "tank": 42,
         "healing": 46,
@@ -259,7 +259,7 @@
       "name": {
         "zhCN": "加兹瑞拉"
       },
-      "stageSeconds": 130,
+      "stageSeconds": 250,
       "requirements": {
         "tank": 45,
         "healing": 50,
@@ -282,7 +282,7 @@
       "name": {
         "zhCN": "乌克兹·沙顶与卢兹鲁"
       },
-      "stageSeconds": 160,
+      "stageSeconds": 310,
       "requirements": {
         "tank": 47,
         "healing": 52,

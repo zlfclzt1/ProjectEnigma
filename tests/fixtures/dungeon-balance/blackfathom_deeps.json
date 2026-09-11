@@ -8,7 +8,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.83063,
         "previewClearProbability": 0.8308228786655084,
-        "durationSeconds": 1141.2,
+        "durationSeconds": 1331.2,
         "wipeCounts": {
           "bfd_akumai": 4056,
           "bfd_old_serrakis": 2674,
@@ -23,7 +23,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.78618,
         "previewClearProbability": 0.786223260796963,
-        "durationSeconds": 1358,
+        "durationSeconds": 1585.2,
         "wipeCounts": {
           "bfd_baron_aquanis": 1859,
           "bfd_ghamoo_ra": 1942,
@@ -40,7 +40,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.82912,
         "previewClearProbability": 0.829756177198574,
-        "durationSeconds": 1145.6,
+        "durationSeconds": 1336.2,
         "wipeCounts": {
           "bfd_gelihast": 1913,
           "bfd_akumai": 5003,
@@ -57,7 +57,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.5625000000000006e-8,
-        "durationSeconds": 1285.8,
+        "durationSeconds": 1499.2,
         "wipeCounts": {
           "bfd_ghamoo_ra": 94951,
           "bfd_lady_sarevess": 4771,
@@ -70,7 +70,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 3.906250000000002e-11,
-        "durationSeconds": 1533.8,
+        "durationSeconds": 1789,
         "wipeCounts": {
           "bfd_ghamoo_ra": 95031,
           "bfd_lady_sarevess": 4733,
@@ -83,7 +83,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.5625000000000006e-8,
-        "durationSeconds": 1247.8,
+        "durationSeconds": 1456.6,
         "wipeCounts": {
           "bfd_ghamoo_ra": 95016,
           "bfd_lady_sarevess": 4719,
@@ -99,7 +99,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.5625000000000006e-8,
-        "durationSeconds": 1249.4,
+        "durationSeconds": 1458.2,
         "wipeCounts": {
           "bfd_ghamoo_ra": 95187,
           "bfd_lady_sarevess": 4556,
@@ -113,7 +113,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 3.906250000000002e-11,
-        "durationSeconds": 1504.2,
+        "durationSeconds": 1754.2,
         "wipeCounts": {
           "bfd_ghamoo_ra": 94988,
           "bfd_lady_sarevess": 4737,
@@ -126,7 +126,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.5625000000000006e-8,
-        "durationSeconds": 1250,
+        "durationSeconds": 1458.2,
         "wipeCounts": {
           "bfd_ghamoo_ra": 95074,
           "bfd_lady_sarevess": 4673,
@@ -142,7 +142,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.63339,
         "previewClearProbability": 0.6320383843429248,
-        "durationSeconds": 1247.4,
+        "durationSeconds": 1455,
         "wipeCounts": {
           "bfd_lady_sarevess": 4429,
           "bfd_gelihast": 5361,
@@ -157,7 +157,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.5017,
         "previewClearProbability": 0.5031007809809367,
-        "durationSeconds": 1514.4,
+        "durationSeconds": 1766.4,
         "wipeCounts": {
           "bfd_old_serrakis": 6688,
           "bfd_ghamoo_ra": 4234,
@@ -174,7 +174,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.6949,
         "previewClearProbability": 0.696160593860933,
-        "durationSeconds": 1210,
+        "durationSeconds": 1411,
         "wipeCounts": {
           "bfd_twilight_lord_kelris": 6015,
           "bfd_gelihast": 4648,
@@ -191,7 +191,7 @@
         "simulatedRuns": 100000,
         "clearRate": 1,
         "previewClearProbability": 1,
-        "durationSeconds": 720,
+        "durationSeconds": 840,
         "wipeCounts": {}
       },
       "with-optional": {
@@ -199,7 +199,7 @@
         "simulatedRuns": 100000,
         "clearRate": 1,
         "previewClearProbability": 1,
-        "durationSeconds": 720,
+        "durationSeconds": 840,
         "wipeCounts": {}
       },
       "with-rare": {
@@ -207,7 +207,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.96805,
         "previewClearProbability": 0.968,
-        "durationSeconds": 720,
+        "durationSeconds": 840,
         "wipeCounts": {
           "bfd_akumai": 832,
           "bfd_twilight_lord_kelris": 2363
@@ -220,7 +220,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.9781,
         "previewClearProbability": 0.9780000000000001,
-        "durationSeconds": 720,
+        "durationSeconds": 840,
         "wipeCounts": {
           "bfd_twilight_lord_kelris": 1407,
           "bfd_akumai": 783
@@ -231,7 +231,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.98085,
         "previewClearProbability": 0.9800000000000001,
-        "durationSeconds": 720,
+        "durationSeconds": 840,
         "wipeCounts": {
           "bfd_twilight_lord_kelris": 1915
         }
@@ -241,7 +241,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.98216,
         "previewClearProbability": 0.982,
-        "durationSeconds": 720,
+        "durationSeconds": 840,
         "wipeCounts": {
           "bfd_twilight_lord_kelris": 990,
           "bfd_akumai": 794

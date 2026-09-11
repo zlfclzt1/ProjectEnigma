@@ -24,7 +24,7 @@
       "id": "scarlet_armory_herod",
       "dungeonId": "scarlet_monastery_armory",
       "name": { "zhCN": "赫洛德" },
-      "stageSeconds": 960,
+      "stageSeconds": 2340,
       "requirements": { "tank": 42, "healing": 43, "damage": 130 },
       "weights": { "tank": 0.36, "healing": 0.31, "damage": 0.33 },
       "experienceShare": 1,

@@ -8,7 +8,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.83124,
         "previewClearProbability": 0.8313149677338487,
-        "durationSeconds": 1314.8,
+        "durationSeconds": 1518.6,
         "wipeCounts": {
           "gnomeregan_viscous_fallout": 1994,
           "gnomeregan_mekgineer_thermaplugg": 7581,
@@ -22,7 +22,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.83903,
         "previewClearProbability": 0.8400627860775393,
-        "durationSeconds": 1328.2,
+        "durationSeconds": 1534,
         "wipeCounts": {
           "gnomeregan_mekgineer_thermaplugg": 6560,
           "gnomeregan_electrocutioner_6000": 2193,
@@ -36,7 +36,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.81053,
         "previewClearProbability": 0.8098039184286338,
-        "durationSeconds": 1548.4,
+        "durationSeconds": 1791,
         "wipeCounts": {
           "gnomeregan_viscous_fallout": 1944,
           "gnomeregan_electrocutioner_6000": 1881,
@@ -53,7 +53,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 3.1250000000000013e-7,
-        "durationSeconds": 1470.2,
+        "durationSeconds": 1698,
         "wipeCounts": {
           "gnomeregan_grubbis": 94935,
           "gnomeregan_viscous_fallout": 4823,
@@ -66,7 +66,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 3.1250000000000013e-7,
-        "durationSeconds": 1473.4,
+        "durationSeconds": 1701.4,
         "wipeCounts": {
           "gnomeregan_grubbis": 95023,
           "gnomeregan_viscous_fallout": 4715,
@@ -79,7 +79,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.5625000000000006e-8,
-        "durationSeconds": 1666.2,
+        "durationSeconds": 1927.2,
         "wipeCounts": {
           "gnomeregan_grubbis": 95037,
           "gnomeregan_viscous_fallout": 4719,
@@ -95,7 +95,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 3.1250000000000013e-7,
-        "durationSeconds": 1444.8,
+        "durationSeconds": 1668.8,
         "wipeCounts": {
           "gnomeregan_grubbis": 94919,
           "gnomeregan_electrocutioner_6000": 259,
@@ -108,7 +108,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 3.1250000000000013e-7,
-        "durationSeconds": 1458.4,
+        "durationSeconds": 1684.8,
         "wipeCounts": {
           "gnomeregan_grubbis": 94912,
           "gnomeregan_viscous_fallout": 4837,
@@ -122,7 +122,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.5625000000000006e-8,
-        "durationSeconds": 1679.2,
+        "durationSeconds": 1942,
         "wipeCounts": {
           "gnomeregan_grubbis": 95014,
           "gnomeregan_viscous_fallout": 4740,
@@ -137,7 +137,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.79256,
         "previewClearProbability": 0.7903808940258206,
-        "durationSeconds": 1403.6,
+        "durationSeconds": 1621,
         "wipeCounts": {
           "gnomeregan_viscous_fallout": 3924,
           "gnomeregan_mekgineer_thermaplugg": 9039,
@@ -151,7 +151,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.69977,
         "previewClearProbability": 0.7014222326227115,
-        "durationSeconds": 1437.2,
+        "durationSeconds": 1659.6,
         "wipeCounts": {
           "gnomeregan_crowd_pummeler_9_60": 4911,
           "gnomeregan_mekgineer_thermaplugg": 12157,
@@ -165,7 +165,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.76414,
         "previewClearProbability": 0.7657293511265426,
-        "durationSeconds": 1588.4,
+        "durationSeconds": 1836.6,
         "wipeCounts": {
           "gnomeregan_dark_iron_ambassador": 2357,
           "gnomeregan_crowd_pummeler_9_60": 4205,
@@ -182,7 +182,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.91042,
         "previewClearProbability": 0.9113750374399998,
-        "durationSeconds": 830,
+        "durationSeconds": 960,
         "wipeCounts": {
           "gnomeregan_crowd_pummeler_9_60": 1959,
           "gnomeregan_electrocutioner_6000": 1960,
@@ -196,7 +196,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.92147,
         "previewClearProbability": 0.9224434553599998,
-        "durationSeconds": 830,
+        "durationSeconds": 960,
         "wipeCounts": {
           "gnomeregan_mekgineer_thermaplugg": 1879,
           "gnomeregan_crowd_pummeler_9_60": 1976,
@@ -210,7 +210,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.88911,
         "previewClearProbability": 0.8894580640511999,
-        "durationSeconds": 857.6,
+        "durationSeconds": 992.4,
         "wipeCounts": {
           "gnomeregan_dark_iron_ambassador": 1854,
           "gnomeregan_electrocutioner_6000": 1882,
@@ -227,7 +227,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.90968,
         "previewClearProbability": 0.9112997420799998,
-        "durationSeconds": 830,
+        "durationSeconds": 960,
         "wipeCounts": {
           "gnomeregan_electrocutioner_6000": 1958,
           "gnomeregan_viscous_fallout": 2033,
@@ -241,7 +241,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.92281,
         "previewClearProbability": 0.9225955827199999,
-        "durationSeconds": 830,
+        "durationSeconds": 960,
         "wipeCounts": {
           "gnomeregan_mekgineer_thermaplugg": 1905,
           "gnomeregan_grubbis": 789,
@@ -255,7 +255,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.89186,
         "previewClearProbability": 0.8930737472383997,
-        "durationSeconds": 875.2,
+        "durationSeconds": 1012.2,
         "wipeCounts": {
           "gnomeregan_mekgineer_thermaplugg": 1861,
           "gnomeregan_grubbis": 1268,

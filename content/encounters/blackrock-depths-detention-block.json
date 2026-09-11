@@ -26,7 +26,7 @@
       "name": {
         "zhCN": "审讯官格斯塔恩"
       },
-      "stageSeconds": 360,
+      "stageSeconds": 350,
       "requirements": {
         "tank": 75,
         "healing": 80,
@@ -95,7 +95,7 @@
       "name": {
         "zhCN": "秩序竞技场"
       },
-      "stageSeconds": 300,
+      "stageSeconds": 290,
       "requirements": {
         "tank": 75,
         "healing": 79,
@@ -117,7 +117,7 @@
       "name": {
         "zhCN": "修行者高罗什"
       },
-      "stageSeconds": 180,
+      "stageSeconds": 170,
       "requirements": {
         "tank": 80,
         "healing": 84,
@@ -140,7 +140,7 @@
       "name": {
         "zhCN": "格里兹尔"
       },
-      "stageSeconds": 180,
+      "stageSeconds": 170,
       "requirements": {
         "tank": 80,
         "healing": 84,
@@ -163,7 +163,7 @@
       "name": {
         "zhCN": "剜眼者"
       },
-      "stageSeconds": 180,
+      "stageSeconds": 170,
       "requirements": {
         "tank": 80,
         "healing": 84,
@@ -186,7 +186,7 @@
       "name": {
         "zhCN": "破坏者奥科索尔"
       },
-      "stageSeconds": 180,
+      "stageSeconds": 170,
       "requirements": {
         "tank": 80,
         "healing": 84,
@@ -209,7 +209,7 @@
       "name": {
         "zhCN": "阿努希尔"
       },
-      "stageSeconds": 180,
+      "stageSeconds": 170,
       "requirements": {
         "tank": 80,
         "healing": 84,
@@ -232,7 +232,7 @@
       "name": {
         "zhCN": "爬行者赫杜姆"
       },
-      "stageSeconds": 180,
+      "stageSeconds": 170,
       "requirements": {
         "tank": 80,
         "healing": 84,
@@ -278,7 +278,7 @@
       "name": {
         "zhCN": "黑色宝库"
       },
-      "stageSeconds": 130,
+      "stageSeconds": 120,
       "requirements": {
         "tank": 65,
         "healing": 70,
@@ -370,7 +370,7 @@
       "name": {
         "zhCN": "弗诺斯·达克维尔"
       },
-      "stageSeconds": 600,
+      "stageSeconds": 580,
       "requirements": {
         "tank": 82,
         "healing": 86,
@@ -393,7 +393,7 @@
       "name": {
         "zhCN": "伊森迪奥斯"
       },
-      "stageSeconds": 130,
+      "stageSeconds": 120,
       "requirements": {
         "tank": 67,
         "healing": 73,
@@ -416,7 +416,7 @@
       "name": {
         "zhCN": "贝尔加"
       },
-      "stageSeconds": 130,
+      "stageSeconds": 120,
       "requirements": {
         "tank": 69,
         "healing": 73,

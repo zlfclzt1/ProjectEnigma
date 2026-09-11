@@ -7,6 +7,12 @@
         "provider": "manual",
         "verifiedAt": "2026-09-07",
         "notes": "从 V1 怒焰裂谷副本定义原样迁移。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-11",
+        "notes": "按副本解锁顺序的 20–55 分钟近线性耗时曲线重新校准，并按原比例分配遭遇阶段耗时。"
       }
     ]
   },
@@ -25,7 +31,7 @@
         "recommended": 5
       },
       "duration": {
-        "baseSeconds": 600,
+        "baseSeconds": 1200,
         "minimumRatio": 0.5,
         "maximumRatio": 1.8
       },

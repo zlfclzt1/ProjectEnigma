@@ -277,8 +277,8 @@ describe("V2 expedition creation", () => {
     expect(preview.preview.memberProfiles).toHaveLength(5);
     expect(preview.preview.clearProbability).toBeGreaterThanOrEqual(0.75);
     expect(preview.preview.clearProbability).toBeLessThanOrEqual(0.9);
-    expect(preview.preview.durationSeconds).toBeGreaterThanOrEqual(570);
-    expect(preview.preview.durationSeconds).toBeLessThanOrEqual(630);
+    expect(preview.preview.durationSeconds).toBeGreaterThanOrEqual(1_170);
+    expect(preview.preview.durationSeconds).toBeLessThanOrEqual(1_290);
   });
 
   it("lets levels and real attributes reach overpower and minimum-duration territory", () => {
@@ -290,8 +290,8 @@ describe("V2 expedition creation", () => {
     if (!preview.ok) throw new Error("Expected preview");
 
     expect(preview.preview.clearProbability).toBe(1);
-    expect(preview.preview.durationSeconds).toBeGreaterThanOrEqual(300);
-    expect(preview.preview.durationSeconds).toBeLessThanOrEqual(330);
+    expect(preview.preview.durationSeconds).toBeGreaterThanOrEqual(600);
+    expect(preview.preview.durationSeconds).toBeLessThanOrEqual(660);
   });
 
   it("allows nonstandard parties but preserves the missing-role bottleneck", () => {

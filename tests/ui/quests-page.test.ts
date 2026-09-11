@@ -46,7 +46,10 @@ describe("dungeon development archive", () => {
     await flushPromises();
 
     expect(
-      wrapper.findAll(".dungeon-tabs button").slice(0, 6).map((button) => button.text()),
+      wrapper
+        .findAll(".dungeon-tabs button")
+        .slice(0, 6)
+        .map((button) => button.text()),
     ).toEqual([
       expect.stringContaining("怒焰裂谷"),
       expect.stringContaining("黑暗深渊"),

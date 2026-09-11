@@ -187,7 +187,7 @@ describe("validated automatic content registry", () => {
     const items = itemFile.items as Array<{ name: { zhCN: string } }>;
     items[0].name.zhCN = "测试装备·被诅咒的魔刃";
 
-    expect(() => loadContentRegistry(modules)).toThrowError(/路线阶段总时长 600 秒/);
+    expect(() => loadContentRegistry(modules)).toThrowError(/路线阶段总时长 1200 秒/);
     expect(() => loadContentRegistry(modules)).toThrowError(/副本解锁关系存在循环/);
     expect(() => loadContentRegistry(modules)).toThrowError(/测试占位符/);
   });

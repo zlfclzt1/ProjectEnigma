@@ -20,8 +20,8 @@
     "balanceOverrides": [
       {
         "fields": ["minimumLevel", "recommendedLevel", "duration", "probability", "route"],
-        "reason": "按 45 级前长副本、30 分钟完整路线与剃刀高地后续进度定位设置初始参数。",
-        "decidedAt": "2026-09-09"
+        "reason": "按副本解锁顺序的 20–55 分钟近线性耗时曲线重新校准，保留原有等级、概率与路线定位。",
+        "decidedAt": "2026-09-11"
       }
     ]
   },
@@ -44,7 +44,7 @@
         "recommended": 5
       },
       "duration": {
-        "baseSeconds": 1800,
+        "baseSeconds": 2700,
         "minimumRatio": 0.5,
         "maximumRatio": 1.8
       },

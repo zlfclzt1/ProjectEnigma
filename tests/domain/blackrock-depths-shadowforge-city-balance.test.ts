@@ -14,15 +14,15 @@ describe("Blackrock Depths Shadowforge City balance", () => {
       balance.scenarios.standard.required.clearRate,
       2,
     );
-    expect(balance.scenarios.standard.required.durationSeconds).toBeGreaterThanOrEqual(1_850);
-    expect(balance.scenarios.standard.required.durationSeconds).toBeLessThanOrEqual(1_970);
+    expect(balance.scenarios.standard.required.durationSeconds).toBeGreaterThanOrEqual(2_450);
+    expect(balance.scenarios.standard.required.durationSeconds).toBeLessThanOrEqual(2_600);
   });
 
   it("keeps the full active route viable while preserving level-53 pressure", () => {
     expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeGreaterThanOrEqual(
-      2_500,
+      3_300,
     );
-    expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeLessThanOrEqual(2_650);
+    expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeLessThanOrEqual(3_450);
     expect(balance.scenarios.standard["with-optional"].clearRate).toBeGreaterThanOrEqual(0.68);
     expect(balance.scenarios.standard["with-optional"].clearRate).toBeLessThanOrEqual(0.73);
     expect(balance.scenarios.overlevel["with-optional"].level).toBe(53);

@@ -28,8 +28,8 @@
     "balanceOverrides": [
       {
         "fields": ["minimumLevel", "recommendedLevel", "duration", "probability", "route"],
-        "reason": "按神庙后的 50–54 级升级入口、约 27 分钟主线和约 38 分钟完整主动路线设置初始参数。",
-        "decidedAt": "2026-09-10"
+        "reason": "按副本解锁顺序的 20–55 分钟近线性耗时曲线重新校准，保留原有等级、概率与路线定位。",
+        "decidedAt": "2026-09-11"
       }
     ]
   },
@@ -52,7 +52,7 @@
         "recommended": 5
       },
       "duration": {
-        "baseSeconds": 3310,
+        "baseSeconds": 3180,
         "minimumRatio": 0.48,
         "maximumRatio": 1.8
       },

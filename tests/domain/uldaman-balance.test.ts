@@ -39,9 +39,9 @@ describe("Uldaman balance", () => {
     expect(balance.scenarios["no-tank"].required.clearRate).toBeLessThan(0.001);
     expect(balance.scenarios["no-healing"].required.clearRate).toBeLessThan(0.001);
     expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeGreaterThanOrEqual(
-      1_700,
+      2_550,
     );
-    expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeLessThanOrEqual(1_900);
+    expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeLessThanOrEqual(2_700);
     expect(balance.scenarios["max-level"]["with-optional"].durationSeconds).toBeGreaterThanOrEqual(
       minimumDuration,
     );

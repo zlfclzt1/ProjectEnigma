@@ -12,7 +12,7 @@ describe("Sunken Temple content", () => {
       minimumLevel: 48,
       recommendedLevel: 52,
       unlock: { requiredDungeonIds: ["maraudon"] },
-      duration: { baseSeconds: 1810, minimumRatio: 0.48 },
+      duration: { baseSeconds: 3060, minimumRatio: 0.48 },
     });
     expect(dungeon.route.filter((node) => node.type === "required")).toHaveLength(6);
     expect(dungeon.route.filter((node) => node.type === "optional")).toEqual([
@@ -27,7 +27,7 @@ describe("Sunken Temple content", () => {
         (seconds, node) => seconds + content.encounterById.get(node.encounterId)!.stageSeconds,
         0,
       ),
-    ).toBe(1810);
+    ).toBe(3060);
   });
 
   it("connects every route node to mechanics, logs, and authentic equipment", () => {

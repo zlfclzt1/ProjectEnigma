@@ -8,7 +8,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.8208,
         "previewClearProbability": 0.8218253499107462,
-        "durationSeconds": 502,
+        "durationSeconds": 1593.4,
         "wipeCounts": {
           "scarlet_library_arcanist_doan": 17920
         }
@@ -18,7 +18,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.75019,
         "previewClearProbability": 0.7528620580236696,
-        "durationSeconds": 746,
+        "durationSeconds": 2362.2,
         "wipeCounts": {
           "scarlet_library_houndmaster_loksey": 9652,
           "scarlet_library_arcanist_doan": 15329
@@ -29,7 +29,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.8101,
         "previewClearProbability": 0.8096901056027661,
-        "durationSeconds": 509.2,
+        "durationSeconds": 1616.2,
         "wipeCounts": {
           "scarlet_library_arcanist_doan": 18990
         }
@@ -41,7 +41,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.04973,
         "previewClearProbability": 0.05,
-        "durationSeconds": 538.2,
+        "durationSeconds": 1708.4,
         "wipeCounts": {
           "scarlet_library_arcanist_doan": 95027
         }
@@ -51,7 +51,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.00236,
         "previewClearProbability": 0.0025000000000000005,
-        "durationSeconds": 803.4,
+        "durationSeconds": 2545.2,
         "wipeCounts": {
           "scarlet_library_houndmaster_loksey": 95060,
           "scarlet_library_arcanist_doan": 4704
@@ -62,7 +62,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.0509,
         "previewClearProbability": 0.05,
-        "durationSeconds": 527.6,
+        "durationSeconds": 1675.4,
         "wipeCounts": {
           "scarlet_library_arcanist_doan": 94910
         }
@@ -74,7 +74,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.04985,
         "previewClearProbability": 0.05,
-        "durationSeconds": 530.2,
+        "durationSeconds": 1682.8,
         "wipeCounts": {
           "scarlet_library_arcanist_doan": 95015
         }
@@ -84,7 +84,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.00245,
         "previewClearProbability": 0.0025000000000000005,
-        "durationSeconds": 805.8,
+        "durationSeconds": 2552,
         "wipeCounts": {
           "scarlet_library_arcanist_doan": 4856,
           "scarlet_library_houndmaster_loksey": 94899
@@ -95,7 +95,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.04982,
         "previewClearProbability": 0.05,
-        "durationSeconds": 534.2,
+        "durationSeconds": 1695.2,
         "wipeCounts": {
           "scarlet_library_arcanist_doan": 95018
         }
@@ -107,7 +107,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.77578,
         "previewClearProbability": 0.7773433604939992,
-        "durationSeconds": 539.2,
+        "durationSeconds": 1711.4,
         "wipeCounts": {
           "scarlet_library_arcanist_doan": 22422
         }
@@ -117,7 +117,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.62942,
         "previewClearProbability": 0.6255272925883355,
-        "durationSeconds": 828.6,
+        "durationSeconds": 2624.6,
         "wipeCounts": {
           "scarlet_library_arcanist_doan": 22166,
           "scarlet_library_houndmaster_loksey": 14892
@@ -128,7 +128,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.77439,
         "previewClearProbability": 0.7707483334086556,
-        "durationSeconds": 533.6,
+        "durationSeconds": 1693.6,
         "wipeCounts": {
           "scarlet_library_arcanist_doan": 22561
         }
@@ -140,7 +140,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.86818,
         "previewClearProbability": 0.8690683112701031,
-        "durationSeconds": 396,
+        "durationSeconds": 1257,
         "wipeCounts": {
           "scarlet_library_arcanist_doan": 13182
         }
@@ -150,7 +150,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.88587,
         "previewClearProbability": 0.8861419677546432,
-        "durationSeconds": 568.8,
+        "durationSeconds": 1801.6,
         "wipeCounts": {
           "scarlet_library_arcanist_doan": 9489,
           "scarlet_library_houndmaster_loksey": 1924
@@ -161,7 +161,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.89655,
         "previewClearProbability": 0.8974177220721302,
-        "durationSeconds": 379.8,
+        "durationSeconds": 1205.8,
         "wipeCounts": {
           "scarlet_library_arcanist_doan": 10345
         }
@@ -173,7 +173,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.8868,
         "previewClearProbability": 0.887034866667787,
-        "durationSeconds": 385.4,
+        "durationSeconds": 1223.8,
         "wipeCounts": {
           "scarlet_library_arcanist_doan": 11320
         }
@@ -183,7 +183,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.88379,
         "previewClearProbability": 0.8820826501409449,
-        "durationSeconds": 570.2,
+        "durationSeconds": 1805.2,
         "wipeCounts": {
           "scarlet_library_arcanist_doan": 8141,
           "scarlet_library_houndmaster_loksey": 3480
@@ -194,7 +194,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.85889,
         "previewClearProbability": 0.8584554371941089,
-        "durationSeconds": 399.8,
+        "durationSeconds": 1269.2,
         "wipeCounts": {
           "scarlet_library_arcanist_doan": 14111
         }

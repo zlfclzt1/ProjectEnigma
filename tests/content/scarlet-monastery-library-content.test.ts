@@ -12,7 +12,7 @@ describe("Scarlet Monastery Library content", () => {
       minimumLevel: 31,
       recommendedLevel: 40,
       unlock: { requiredDungeonIds: ["scarlet_monastery_graveyard"] },
-      duration: { baseSeconds: 720, minimumRatio: 0.5 },
+      duration: { baseSeconds: 2280, minimumRatio: 0.5 },
     });
     expect(dungeon.route).toEqual([
       expect.objectContaining({

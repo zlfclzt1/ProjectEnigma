@@ -17,7 +17,7 @@
       "name": {
         "zhCN": "奥格弗林特"
       },
-      "stageSeconds": 120,
+      "stageSeconds": 240,
       "requirements": {
         "tank": 9,
         "healing": 9,
@@ -39,7 +39,7 @@
       "name": {
         "zhCN": "饥饿者塔拉加曼"
       },
-      "stageSeconds": 150,
+      "stageSeconds": 300,
       "requirements": {
         "tank": 10,
         "healing": 10,
@@ -62,7 +62,7 @@
       "name": {
         "zhCN": "祈求者耶戈什"
       },
-      "stageSeconds": 150,
+      "stageSeconds": 300,
       "requirements": {
         "tank": 10,
         "healing": 10.5,
@@ -85,7 +85,7 @@
       "name": {
         "zhCN": "巴扎兰"
       },
-      "stageSeconds": 180,
+      "stageSeconds": 360,
       "requirements": {
         "tank": 10.5,
         "healing": 10,

@@ -8,7 +8,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.88308,
         "previewClearProbability": 0.8815310956796452,
-        "durationSeconds": 1075.2,
+        "durationSeconds": 1934.4,
         "wipeCounts": {
           "razorfen_downs_amnennar_the_coldbringer": 5205,
           "razorfen_downs_tutenkash": 1969,
@@ -21,7 +21,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.87772,
         "previewClearProbability": 0.877773297136013,
-        "durationSeconds": 1315.6,
+        "durationSeconds": 2360.8,
         "wipeCounts": {
           "razorfen_downs_tutenkash": 2053,
           "razorfen_downs_mordresh_fire_eye": 2247,
@@ -35,7 +35,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.8482,
         "previewClearProbability": 0.8469293051157392,
-        "durationSeconds": 1318.4,
+        "durationSeconds": 2367.6,
         "wipeCounts": {
           "razorfen_downs_amnennar_the_coldbringer": 5087,
           "razorfen_downs_tutenkash": 1990,
@@ -52,7 +52,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.00001,
         "previewClearProbability": 0.000006250000000000001,
-        "durationSeconds": 1195.6,
+        "durationSeconds": 2149.2,
         "wipeCounts": {
           "razorfen_downs_tutenkash": 95027,
           "razorfen_downs_mordresh_fire_eye": 4734,
@@ -65,7 +65,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 3.1250000000000013e-7,
-        "durationSeconds": 1496.4,
+        "durationSeconds": 2682.6,
         "wipeCounts": {
           "razorfen_downs_mordresh_fire_eye": 4640,
           "razorfen_downs_tutenkash": 95126,
@@ -79,7 +79,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.5625000000000006e-8,
-        "durationSeconds": 1418,
+        "durationSeconds": 2545.6,
         "wipeCounts": {
           "razorfen_downs_tutenkash": 95033,
           "razorfen_downs_lady_faltheress": 4729,
@@ -94,7 +94,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 0.000006250000000000001,
-        "durationSeconds": 1209.2,
+        "durationSeconds": 2173.6,
         "wipeCounts": {
           "razorfen_downs_tutenkash": 94892,
           "razorfen_downs_mordresh_fire_eye": 4843,
@@ -107,7 +107,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 3.1250000000000013e-7,
-        "durationSeconds": 1476,
+        "durationSeconds": 2647,
         "wipeCounts": {
           "razorfen_downs_tutenkash": 94997,
           "razorfen_downs_mordresh_fire_eye": 4779,
@@ -120,7 +120,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0,
         "previewClearProbability": 1.5625000000000006e-8,
-        "durationSeconds": 1439.6,
+        "durationSeconds": 2584,
         "wipeCounts": {
           "razorfen_downs_tutenkash": 94880,
           "razorfen_downs_lady_faltheress": 4881,
@@ -135,7 +135,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.82836,
         "previewClearProbability": 0.829777757089551,
-        "durationSeconds": 1115.4,
+        "durationSeconds": 2005.8,
         "wipeCounts": {
           "razorfen_downs_amnennar_the_coldbringer": 7175,
           "razorfen_downs_glutton": 1969,
@@ -148,7 +148,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.69607,
         "previewClearProbability": 0.6973424255840226,
-        "durationSeconds": 1408.8,
+        "durationSeconds": 2526.4,
         "wipeCounts": {
           "razorfen_downs_mordresh_fire_eye": 7629,
           "razorfen_downs_glutton": 4073,
@@ -162,7 +162,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.83039,
         "previewClearProbability": 0.8279764698726977,
-        "durationSeconds": 1322.2,
+        "durationSeconds": 2373.4,
         "wipeCounts": {
           "razorfen_downs_amnennar_the_coldbringer": 5175,
           "razorfen_downs_glutton": 2851,
@@ -179,7 +179,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.87797,
         "previewClearProbability": 0.878833095310319,
-        "durationSeconds": 1082,
+        "durationSeconds": 1945.4,
         "wipeCounts": {
           "razorfen_downs_mordresh_fire_eye": 3070,
           "razorfen_downs_amnennar_the_coldbringer": 4912,
@@ -192,7 +192,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.89006,
         "previewClearProbability": 0.8922599801102509,
-        "durationSeconds": 1311.4,
+        "durationSeconds": 2351.6,
         "wipeCounts": {
           "razorfen_downs_glutton": 1947,
           "razorfen_downs_amnennar_the_coldbringer": 3128,
@@ -206,7 +206,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.80748,
         "previewClearProbability": 0.8081929636084366,
-        "durationSeconds": 1327.8,
+        "durationSeconds": 2383.4,
         "wipeCounts": {
           "razorfen_downs_tutenkash": 2035,
           "razorfen_downs_ragglesnout": 1744,
@@ -223,7 +223,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.83408,
         "previewClearProbability": 0.8335028789939184,
-        "durationSeconds": 1084,
+        "durationSeconds": 1949.6,
         "wipeCounts": {
           "razorfen_downs_amnennar_the_coldbringer": 8479,
           "razorfen_downs_mordresh_fire_eye": 4147,
@@ -236,7 +236,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.83366,
         "previewClearProbability": 0.8338211564189034,
-        "durationSeconds": 1333,
+        "durationSeconds": 2390.4,
         "wipeCounts": {
           "razorfen_downs_glutton": 1806,
           "razorfen_downs_tutenkash": 2072,
@@ -250,7 +250,7 @@
         "simulatedRuns": 100000,
         "clearRate": 0.7802,
         "previewClearProbability": 0.7794707118914748,
-        "durationSeconds": 1343.6,
+        "durationSeconds": 2411,
         "wipeCounts": {
           "razorfen_downs_amnennar_the_coldbringer": 7109,
           "razorfen_downs_tutenkash": 2223,

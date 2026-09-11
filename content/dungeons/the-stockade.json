@@ -20,8 +20,8 @@
     "balanceOverrides": [
       {
         "fields": ["minimumLevel", "recommendedLevel", "duration", "probability", "route"],
-        "reason": "将原版分叉监狱路线压缩为 12 分钟完整路线，并保留随机稀有 Boss。",
-        "decidedAt": "2026-09-09"
+        "reason": "按副本解锁顺序的 20–55 分钟近线性耗时曲线重新校准，保留原有等级、概率与路线定位。",
+        "decidedAt": "2026-09-11"
       }
     ]
   },
@@ -34,7 +34,7 @@
       "defaultUnlocked": false,
       "unlock": { "requiredDungeonIds": ["blackfathom_deeps"] },
       "members": { "minimum": 1, "maximum": 5, "recommended": 5 },
-      "duration": { "baseSeconds": 720, "minimumRatio": 0.5, "maximumRatio": 1.8 },
+      "duration": { "baseSeconds": 1800, "minimumRatio": 0.5, "maximumRatio": 1.8 },
       "probability": {
         "minimum": 0.05,
         "maximum": 0.99,

@@ -18,9 +18,9 @@ describe("Maraudon balance", () => {
 
   it("keeps the full route viable while preserving minimum-level pressure", () => {
     expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeGreaterThanOrEqual(
-      1_700,
+      2_950,
     );
-    expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeLessThanOrEqual(1_850);
+    expect(balance.scenarios.standard["with-optional"].durationSeconds).toBeLessThanOrEqual(3_100);
     expect(balance.scenarios.standard["with-optional"].clearRate).toBeGreaterThanOrEqual(0.74);
     expect(balance.scenarios.standard["with-optional"].clearRate).toBeLessThanOrEqual(0.8);
     expect(balance.scenarios.overlevel["with-optional"].level).toBe(46);

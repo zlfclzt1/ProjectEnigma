@@ -17,7 +17,7 @@
       "name": {
         "zhCN": "安娜科德拉"
       },
-      "stageSeconds": 180,
+      "stageSeconds": 140,
       "requirements": {
         "tank": 16,
         "healing": 16,
@@ -40,7 +40,7 @@
       "name": {
         "zhCN": "考布莱恩领主"
       },
-      "stageSeconds": 180,
+      "stageSeconds": 140,
       "requirements": {
         "tank": 16.5,
         "healing": 16,
@@ -63,7 +63,7 @@
       "name": {
         "zhCN": "克雷什"
       },
-      "stageSeconds": 120,
+      "stageSeconds": 100,
       "requirements": {
         "tank": 16.5,
         "healing": 15.5,
@@ -86,7 +86,7 @@
       "name": {
         "zhCN": "皮萨斯领主"
       },
-      "stageSeconds": 180,
+      "stageSeconds": 140,
       "requirements": {
         "tank": 17,
         "healing": 16.5,
@@ -109,7 +109,7 @@
       "name": {
         "zhCN": "斯卡姆"
       },
-      "stageSeconds": 180,
+      "stageSeconds": 140,
       "requirements": {
         "tank": 17,
         "healing": 17,
@@ -132,7 +132,7 @@
       "name": {
         "zhCN": "瑟芬迪斯领主"
       },
-      "stageSeconds": 240,
+      "stageSeconds": 190,
       "requirements": {
         "tank": 17.5,
         "healing": 17,
@@ -155,7 +155,7 @@
       "name": {
         "zhCN": "永生者沃尔丹"
       },
-      "stageSeconds": 240,
+      "stageSeconds": 190,
       "requirements": {
         "tank": 18,
         "healing": 17.5,
@@ -178,7 +178,7 @@
       "name": {
         "zhCN": "吞噬者穆坦努斯"
       },
-      "stageSeconds": 360,
+      "stageSeconds": 280,
       "requirements": {
         "tank": 18,
         "healing": 18,
