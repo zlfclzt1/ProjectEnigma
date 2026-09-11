@@ -389,4 +389,56 @@ describe("dungeons page", () => {
     await wrapper.get(".preset-option").trigger("click");
     expect(wrapper.emitted("select")?.[0]).toEqual([presetId]);
   });
+
+  it("summarizes a forty-player fixed team and exposes its full roster", async () => {
+    const presetId = asBrandedId<"RosterPresetId">("raid-team");
+    const roles = ["tank", "healer", "dps"] as const;
+    const members = Array.from({ length: 40 }, (_, index) => {
+      const role = roles[index % roles.length]!;
+      return {
+        id: asBrandedId<"MemberId">(`raid-member-${index + 1}`),
+        name: `团员 ${index + 1}`,
+        nameAtSave: `团员 ${index + 1}`,
+        departed: index === 1,
+        active: index === 0,
+        classId: asBrandedId<"ClassId">("warrior"),
+        className: "战士",
+        role,
+        roleName: { tank: "坦克", healer: "治疗", dps: "输出" }[role],
+        level: 60,
+      };
+    });
+    const wrapper = mount(RosterPresetBar, {
+      props: {
+        presets: [
+          {
+            id: presetId,
+            name: "熔火之心一团",
+            members,
+            currentMemberIds: members
+              .filter((member) => !member.departed)
+              .map((member) => member.id),
+            departedCount: 1,
+            activeCount: 1,
+            createdAt: 1,
+            updatedAt: 1,
+          },
+        ],
+        selectedPresetId: null,
+        selectedMemberCount: 0,
+        maximumPresets: 10,
+        pending: false,
+      },
+    });
+
+    expect(wrapper.find(".preset-members").exists()).toBe(false);
+    expect(wrapper.get(".large-roster-summary").text()).toContain("坦克 14");
+    expect(wrapper.get(".large-roster-summary").text()).toContain("治疗 12");
+    expect(wrapper.get(".large-roster-summary").text()).toContain("输出 13");
+    expect(wrapper.get(".exception-members").text()).toContain("团员 1 · 忙");
+    expect(wrapper.get(".exception-members").text()).toContain("团员 2 · 离队");
+
+    await wrapper.get(".view-roster").trigger("click");
+    expect(wrapper.findAll(".full-roster article")).toHaveLength(40);
+  });
 });

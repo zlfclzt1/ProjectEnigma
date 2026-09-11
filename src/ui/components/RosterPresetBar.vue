@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import type { RosterPresetView } from "../../application/queries/get-roster-presets-view";
+import { computed, ref } from "vue";
+import type {
+  RosterPresetMemberView,
+  RosterPresetView,
+} from "../../application/queries/get-roster-presets-view";
 import type { RosterPresetId } from "../../domain/shared/ids";
 
 const props = defineProps<{
@@ -21,6 +24,33 @@ const emit = defineEmits<{
 const selectedPreset = computed(
   () => props.presets.find((preset) => preset.id === props.selectedPresetId) ?? null,
 );
+const inspectedPresetId = ref<RosterPresetId | null>(null);
+const inspectedPreset = computed(
+  () => props.presets.find((preset) => preset.id === inspectedPresetId.value) ?? null,
+);
+
+function prioritizedMembers(preset: RosterPresetView): RosterPresetMemberView[] {
+  return [...preset.members].sort(
+    (left, right) => Number(right.active || right.departed) - Number(left.active || left.departed),
+  );
+}
+
+function visibleMembers(preset: RosterPresetView): readonly RosterPresetMemberView[] {
+  if (preset.members.length <= 5) return preset.members;
+  return prioritizedMembers(preset).slice(0, 6);
+}
+
+function hiddenMemberCount(preset: RosterPresetView): number {
+  return Math.max(0, preset.members.length - visibleMembers(preset).length);
+}
+
+function roleCount(preset: RosterPresetView, role: RosterPresetMemberView["role"]): number {
+  return preset.members.filter((member) => !member.departed && member.role === role).length;
+}
+
+function exceptionMembers(preset: RosterPresetView): readonly RosterPresetMemberView[] {
+  return preset.members.filter((member) => member.active || member.departed);
+}
 </script>
 
 <template>
@@ -33,38 +63,71 @@ const selectedPreset = computed(
       <button type="button" class="quiet" @click="emit('manage')">管理固定队伍</button>
     </div>
     <div v-if="presets.length" class="preset-list" aria-label="选择固定队伍">
-      <button
+      <article
         v-for="preset in presets"
         :key="preset.id"
-        type="button"
-        class="preset-option"
+        class="preset-card"
         :class="{ selected: preset.id === selectedPresetId }"
-        :aria-pressed="preset.id === selectedPresetId"
-        :disabled="pending"
-        @click="emit('select', preset.id)"
       >
-        <span class="preset-option-heading">
-          <strong>{{ preset.name }}</strong>
-          <small>
-            {{ preset.members.length }} 人
-            <em v-if="preset.activeCount">· {{ preset.activeCount }} 人忙</em>
-            <em v-if="preset.departedCount" class="departed"
-              >· {{ preset.departedCount }} 人离队</em
-            >
-          </small>
-        </span>
-        <span class="preset-members">
-          <span
-            v-for="member in preset.members"
-            :key="member.id"
-            :class="{ active: member.active, departed: member.departed }"
-          >
-            {{ member.name }}
-            <em v-if="member.active">忙</em>
-            <em v-else-if="member.departed">离队</em>
+        <button
+          type="button"
+          class="preset-option"
+          :class="{ selected: preset.id === selectedPresetId }"
+          :aria-pressed="preset.id === selectedPresetId"
+          :disabled="pending"
+          @click="emit('select', preset.id)"
+        >
+          <span class="preset-option-heading">
+            <strong>{{ preset.name }}</strong>
+            <small>
+              {{ preset.members.length }} 人
+              <em v-if="preset.activeCount">· {{ preset.activeCount }} 人忙</em>
+              <em v-if="preset.departedCount" class="departed"
+                >· {{ preset.departedCount }} 人离队</em
+              >
+            </small>
           </span>
-        </span>
-      </button>
+          <span v-if="preset.members.length <= 10" class="preset-members">
+            <span
+              v-for="member in visibleMembers(preset)"
+              :key="member.id"
+              :class="{ active: member.active, departed: member.departed }"
+            >
+              {{ member.name }}
+              <em v-if="member.active">忙</em>
+              <em v-else-if="member.departed">离队</em>
+            </span>
+            <span v-if="hiddenMemberCount(preset)" class="more-members">
+              +{{ hiddenMemberCount(preset) }} 人
+            </span>
+          </span>
+          <span v-else class="large-roster-summary">
+            <span class="role-counts">
+              <span>坦克 {{ roleCount(preset, "tank") }}</span>
+              <span>治疗 {{ roleCount(preset, "healer") }}</span>
+              <span>输出 {{ roleCount(preset, "dps") }}</span>
+            </span>
+            <span v-if="exceptionMembers(preset).length" class="exception-members">
+              <span
+                v-for="member in exceptionMembers(preset)"
+                :key="member.id"
+                :class="{ active: member.active, departed: member.departed }"
+              >
+                {{ member.name }} · {{ member.active ? "忙" : "离队" }}
+              </span>
+            </span>
+            <span v-else class="all-available">全员可用</span>
+          </span>
+        </button>
+        <button
+          v-if="preset.members.length > 5"
+          type="button"
+          class="view-roster"
+          @click="inspectedPresetId = preset.id"
+        >
+          查看完整名单
+        </button>
+      </article>
     </div>
     <p v-else class="empty-presets">还没有保存固定队伍。</p>
     <div class="preset-actions">
@@ -90,6 +153,49 @@ const selectedPreset = computed(
       <span v-if="selectedPreset.departedCount">· {{ selectedPreset.departedCount }} 人已离队</span>
     </p>
     <p v-else-if="presets.length === 0" class="preset-status">还没有保存固定队伍。</p>
+
+    <div v-if="inspectedPreset" class="roster-backdrop" @click.self="inspectedPresetId = null">
+      <section
+        class="roster-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="fixed-roster-title"
+      >
+        <header>
+          <div>
+            <h3 id="fixed-roster-title">{{ inspectedPreset.name }}</h3>
+            <p>
+              {{ inspectedPreset.members.length }} 人
+              <span v-if="inspectedPreset.activeCount">
+                · {{ inspectedPreset.activeCount }} 人活动中
+              </span>
+              <span v-if="inspectedPreset.departedCount">
+                · {{ inspectedPreset.departedCount }} 人已离队
+              </span>
+            </p>
+          </div>
+          <button type="button" class="quiet" @click="inspectedPresetId = null">关闭</button>
+        </header>
+        <div class="full-roster">
+          <article
+            v-for="member in prioritizedMembers(inspectedPreset)"
+            :key="member.id"
+            :class="{ active: member.active, departed: member.departed }"
+          >
+            <span>
+              <strong>{{ member.name }}</strong>
+              <small v-if="!member.departed">
+                {{ member.className }} · {{ member.roleName }} · LV {{ member.level }}
+              </small>
+              <small v-else>保存时名称：{{ member.nameAtSave }}</small>
+            </span>
+            <em v-if="member.active">活动中</em>
+            <em v-else-if="member.departed">已离队</em>
+            <em v-else class="available">可用</em>
+          </article>
+        </div>
+      </section>
+    </div>
   </section>
 </template>
 
@@ -130,27 +236,42 @@ const selectedPreset = computed(
 }
 .preset-list {
   display: flex;
+  align-items: stretch;
   gap: 8px;
   margin-top: 12px;
   overflow-x: auto;
   padding: 1px 1px 6px;
   scrollbar-gutter: stable;
 }
+.preset-card {
+  display: grid;
+  flex: 0 0 250px;
+  grid-template-rows: 1fr auto;
+  overflow: hidden;
+  border: 1px solid #403a31;
+  border-radius: 6px;
+  background: #0b0e10;
+}
+.preset-card:hover,
+.preset-card.selected {
+  border-color: #a27c3c;
+  background: #211d16;
+}
 .preset-option {
   display: grid;
-  flex: 0 0 230px;
   gap: 8px;
+  width: 100%;
   min-width: 0;
   padding: 9px 10px;
-  border-color: #403a31;
+  border: 0;
+  border-radius: 0;
   color: #cdbb98;
-  background: #0b0e10;
+  background: transparent;
   text-align: left;
 }
 .preset-option:hover,
 .preset-option.selected {
-  border-color: #a27c3c;
-  background: #211d16;
+  background: transparent;
 }
 .preset-option-heading {
   display: grid;
@@ -197,11 +318,69 @@ const selectedPreset = computed(
   color: #aa7770;
   background: #211413;
 }
+.preset-members > span.more-members {
+  color: #c0aa7d;
+  background: #242018;
+}
 .preset-members em {
   margin-left: 2px;
   font-size: 0.49rem;
   font-style: normal;
   font-weight: 800;
+}
+.large-roster-summary {
+  display: grid;
+  gap: 7px;
+}
+.role-counts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+.role-counts > span {
+  padding: 5px 4px;
+  color: #ad9f86;
+  background: #151716;
+  font-size: 0.55rem;
+  text-align: center;
+}
+.exception-members {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  max-height: 42px;
+  overflow: auto;
+}
+.exception-members > span {
+  padding: 3px 5px;
+  border: 1px solid #513934;
+  border-radius: 4px;
+  color: #aa7770;
+  background: #211413;
+  font-size: 0.52rem;
+}
+.exception-members > span.active {
+  border-color: #6a4b2b;
+  color: #e1ad69;
+  background: #281c10;
+}
+.all-available {
+  color: #75a77b;
+  font-size: 0.57rem;
+}
+.view-roster {
+  width: 100%;
+  padding: 6px 9px;
+  border: 0;
+  border-top: 1px solid #35312a;
+  border-radius: 0;
+  color: #aa956d;
+  background: #151512;
+  font-size: 0.56rem;
+}
+.view-roster:hover {
+  color: #dfc58f;
+  background: #252017;
 }
 .empty-presets {
   margin: 10px 0 0;
@@ -236,13 +415,105 @@ button:disabled {
   margin-top: 8px;
   color: #b08e67;
 }
+.roster-backdrop {
+  position: fixed;
+  z-index: 60;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgb(0 0 0 / 78%);
+}
+.roster-dialog {
+  width: min(760px, 100%);
+  max-height: calc(100vh - 36px);
+  overflow: hidden;
+  border: 1px solid #5c503d;
+  border-radius: 10px;
+  background: #111416;
+  box-shadow: 0 24px 70px #000;
+}
+.roster-dialog > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 17px;
+  border-bottom: 1px solid #37332c;
+}
+.roster-dialog h3,
+.roster-dialog p {
+  margin: 0;
+}
+.roster-dialog h3 {
+  color: #e0cda7;
+  font-size: 1.1rem;
+}
+.roster-dialog p {
+  margin-top: 3px;
+  color: #8f8575;
+  font-size: 0.63rem;
+}
+.full-roster {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 6px;
+  max-height: min(70vh, 620px);
+  overflow: auto;
+  padding: 14px;
+}
+.full-roster article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 9px;
+  border-left: 2px solid #456b4a;
+  background: #0b0e10;
+}
+.full-roster article.active {
+  border-left-color: #b17d38;
+  background: #1e170e;
+}
+.full-roster article.departed {
+  border-left-color: #8c5048;
+  background: #1b1111;
+}
+.full-roster article > span {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+.full-roster strong {
+  overflow: hidden;
+  color: #d8c9ab;
+  font-size: 0.66rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.full-roster small {
+  color: #80786b;
+  font-size: 0.55rem;
+}
+.full-roster em {
+  flex: 0 0 auto;
+  color: #d5a35f;
+  font-size: 0.55rem;
+  font-style: normal;
+}
+.full-roster em.available {
+  color: #77ac7d;
+}
+.full-roster article.departed em {
+  color: #b8736a;
+}
 @media (max-width: 650px) {
   .preset-heading {
     align-items: flex-start;
     flex-direction: column;
   }
-  .preset-option {
-    flex-basis: min(230px, 85vw);
+  .preset-card {
+    flex-basis: min(250px, 85vw);
   }
 }
 </style>
