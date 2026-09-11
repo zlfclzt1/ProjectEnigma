@@ -780,6 +780,28 @@ export class ContentRegistry {
           }
         }
       });
+      owner.value.routeVariants?.forEach((variant, index) => {
+        if (!variant.completionReward) return;
+        const exists = requireReference(
+          lootTableById,
+          variant.completionReward.lootTableId,
+          owner,
+          `routeVariants[${index}].completionReward.lootTableId`,
+          "掉落表",
+          issues,
+        );
+        if (
+          exists &&
+          lootTableById.get(variant.completionReward.lootTableId)?.sourceType !== "route_completion"
+        ) {
+          issues.push({
+            filePath: owner.filePath,
+            fieldPath: `${owner.fieldPath}.routeVariants[${index}].completionReward.lootTableId`,
+            message: "命名路线完成奖励必须引用 sourceType 为 route_completion 的掉落表",
+            invalidReferenceId: variant.completionReward.lootTableId,
+          });
+        }
+      });
       if (stageSeconds !== owner.value.duration.baseSeconds) {
         issues.push({
           filePath: owner.filePath,

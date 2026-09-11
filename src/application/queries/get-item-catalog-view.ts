@@ -17,6 +17,7 @@ import { EQUIPMENT_SLOT_NAMES, getItemStatLines } from "./get-members-view";
 import type {
   CollectionRewardId,
   DungeonId,
+  DungeonRouteVariantId,
   EncounterId,
   ItemDefinitionId,
   ItemSetId,
@@ -40,7 +41,9 @@ export interface CatalogSuffixView {
 export interface CatalogItemSourceView {
   readonly dungeonId: DungeonId;
   readonly dungeonName: string;
-  readonly encounterId: EncounterId;
+  readonly sourceType: "encounter" | "route-completion";
+  readonly encounterId?: EncounterId;
+  readonly routeVariantId?: DungeonRouteVariantId;
   readonly encounterName: string;
   readonly lootTableId?: LootTableId;
   readonly kind: "base" | "development";
@@ -88,6 +91,13 @@ export interface EncounterCatalogView {
   readonly items: readonly CatalogItemView[];
 }
 
+export interface RouteRewardCatalogView {
+  readonly id: DungeonRouteVariantId;
+  readonly name: string;
+  readonly guaranteedEquipmentDrops: number;
+  readonly items: readonly CatalogItemView[];
+}
+
 export interface DungeonCatalogDevelopmentView {
   readonly level: number;
   readonly points: number;
@@ -112,6 +122,7 @@ export interface UnlockedDungeonCatalogView extends CollectionProgressView {
   readonly unlocked: true;
   readonly development: DungeonCatalogDevelopmentView;
   readonly encounters: readonly EncounterCatalogView[];
+  readonly routeRewards: readonly RouteRewardCatalogView[];
 }
 
 export type DungeonCatalogView = LockedDungeonCatalogView | UnlockedDungeonCatalogView;
@@ -158,7 +169,10 @@ export interface ItemCatalogView {
 
 interface CatalogSource {
   readonly dungeonId: DungeonId;
-  readonly encounterId: EncounterId;
+  readonly sourceType: "encounter" | "route-completion";
+  readonly encounterId?: EncounterId;
+  readonly routeVariantId?: DungeonRouteVariantId;
+  readonly sourceName: string;
   readonly lootTableId?: LootTableId;
   readonly kind: "base" | "development";
   readonly guaranteedEquipmentDrops: number;
@@ -253,7 +267,8 @@ export function getItemCatalogView(state: GameState, content: ContentRegistry): 
             items: itemIds.map((itemId) => {
               const definition = content.itemById.get(itemId)!;
               const source = (index.sourcesByItemId.get(itemId) ?? []).find(
-                (candidate) => candidate.encounterId === encounter.id,
+                (candidate) =>
+                  candidate.sourceType === "encounter" && candidate.encounterId === encounter.id,
               )!;
               return projectItem(
                 state,
@@ -266,6 +281,34 @@ export function getItemCatalogView(state: GameState, content: ContentRegistry): 
               );
             }),
           };
+        }),
+        routeRewards: (dungeon.routeVariants ?? []).flatMap((variant): RouteRewardCatalogView[] => {
+          if (!variant.completionReward) return [];
+          const table = content.lootTableById.get(variant.completionReward.lootTableId)!;
+          return [
+            {
+              id: variant.id,
+              name: `${variant.name.zhCN}完成奖励`,
+              guaranteedEquipmentDrops: table.guaranteedEquipmentDrops,
+              items: table.items.map(({ itemId }) => {
+                const definition = content.itemById.get(itemId)!;
+                const source = (index.sourcesByItemId.get(itemId) ?? []).find(
+                  (candidate) =>
+                    candidate.sourceType === "route-completion" &&
+                    candidate.routeVariantId === variant.id,
+                )!;
+                return projectItem(
+                  state,
+                  content,
+                  index,
+                  visibleSetIds,
+                  unlockedDungeonIds,
+                  definition,
+                  source,
+                );
+              }),
+            },
+          ];
         }),
       };
     })
@@ -371,7 +414,9 @@ function buildCatalogIndex(state: GameState, content: ContentRegistry): CatalogI
         );
         sources.push({
           dungeonId: dungeon.id,
+          sourceType: "encounter",
           encounterId: encounter.id,
+          sourceName: encounter.name.zhCN,
           ...(lootTable ? { lootTableId: lootTable.id } : {}),
           kind: baseEntry ? "base" : "development",
           guaranteedEquipmentDrops,
@@ -395,6 +440,35 @@ function buildCatalogIndex(state: GameState, content: ContentRegistry): CatalogI
           baseDungeonItemIds.add(entry.itemId);
           allItemIds.add(entry.itemId);
         }
+      }
+    }
+    for (const variant of dungeon.routeVariants ?? []) {
+      if (!variant.completionReward) continue;
+      const table = content.lootTableById.get(variant.completionReward.lootTableId)!;
+      const totalWeight = table.items.reduce((sum, entry) => sum + entry.weight, 0);
+      for (const entry of table.items) {
+        const perDropChance = entry.weight / totalWeight;
+        const sources = sourcesByItemId.get(entry.itemId) ?? [];
+        sources.push({
+          dungeonId: dungeon.id,
+          sourceType: "route-completion",
+          routeVariantId: variant.id,
+          sourceName: `${variant.name.zhCN}完成奖励`,
+          lootTableId: table.id,
+          kind: "base",
+          guaranteedEquipmentDrops: table.guaranteedEquipmentDrops,
+          relativeWeight: entry.weight,
+          basePerDropChance: perDropChance,
+          perDropChance,
+          baseEncounterDropChance: 1 - (1 - perDropChance) ** table.guaranteedEquipmentDrops,
+          encounterDropChance: 1 - (1 - perDropChance) ** table.guaranteedEquipmentDrops,
+          developmentQuestNames: [],
+          firstDevelopmentReward: false,
+        });
+        sourcesByItemId.set(entry.itemId, sources);
+        dungeonItemIds.add(entry.itemId);
+        baseDungeonItemIds.add(entry.itemId);
+        allItemIds.add(entry.itemId);
       }
     }
     itemIdsByDungeonId.set(dungeon.id, dungeonItemIds);
@@ -532,12 +606,13 @@ function projectCatalogSource(
   source: CatalogSource,
 ): CatalogItemSourceView {
   const dungeon = content.dungeonById.get(source.dungeonId)!;
-  const encounter = content.encounterById.get(source.encounterId)!;
   return {
     dungeonId: dungeon.id,
     dungeonName: dungeon.name.zhCN,
-    encounterId: encounter.id,
-    encounterName: encounter.name.zhCN,
+    sourceType: source.sourceType,
+    ...(source.encounterId ? { encounterId: source.encounterId } : {}),
+    ...(source.routeVariantId ? { routeVariantId: source.routeVariantId } : {}),
+    encounterName: source.sourceName,
     ...(source.lootTableId ? { lootTableId: source.lootTableId } : {}),
     kind: source.kind,
     guaranteedEquipmentDrops: source.guaranteedEquipmentDrops,

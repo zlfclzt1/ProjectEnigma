@@ -10,6 +10,7 @@ import type {
   GatheringSiteId,
   ItemDefinitionId,
   ItemInstanceId,
+  LootTableId,
   MemberId,
   PersonalityId,
   ProfessionDefinitionId,
@@ -143,6 +144,17 @@ export interface ExpeditionRunPlan {
   rareNodeSpawns?: RareRouteSpawnLocks;
   rareNodeReveals: RareRouteReveals;
   mainRouteCompleted?: boolean;
+  routeCompletionReward?: ExpeditionRouteCompletionRewardSnapshot;
+}
+
+export interface ExpeditionRouteCompletionRewardSnapshot {
+  routeVariantId: DungeonRouteVariantId;
+  lootTableId: LootTableId;
+  guaranteedEquipmentDrops: number;
+  items: Array<{ itemId: ItemDefinitionId; weight: number }>;
+  lootSeed: string;
+  status: "pending" | "granted";
+  itemInstanceIds?: ItemInstanceId[];
 }
 
 export interface GatheringActivity extends ActivityBase<"gathering"> {

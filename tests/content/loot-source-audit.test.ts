@@ -20,12 +20,14 @@ describe("loot source audit", () => {
     expect(audit.rows).toHaveLength(144);
     expect(audit.lootTableCounts).toEqual({
       "boss-drop": 124,
+      "route-completion": 0,
       "quest-reward": 0,
       "world-drop": 0,
       "design-placeholder": 0,
     });
     expect(audit.encounterCounts["no-equipment"]).toBe(20);
     expect(audit.questRewards).toHaveLength(52);
+    expect(audit.routeRewards).toEqual([]);
     expect(audit.bossQuestRewardOverlap).toEqual([]);
     expect(
       audit.rows.filter((row) => row.category === "no-equipment").map((row) => row.encounterId),

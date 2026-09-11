@@ -4,6 +4,7 @@ import type {
   CatalogItemView,
   DungeonCatalogView,
   EncounterCatalogView,
+  RouteRewardCatalogView,
 } from "../../application/queries/get-item-catalog-view";
 import type { EquipmentSlot } from "../../domain/equipment/equipment-slot";
 import type { CollectionRewardId } from "../../domain/shared/ids";
@@ -80,6 +81,13 @@ const filteredDungeons = computed<readonly DungeonCatalogView[]>(() => {
             ...encounter,
             items: encounter.items.filter(itemMatchesFilters),
           })),
+        routeRewards:
+          encounterId.value === ""
+            ? dungeon.routeRewards.map((reward): RouteRewardCatalogView => ({
+                ...reward,
+                items: reward.items.filter(itemMatchesFilters),
+              }))
+            : [],
       };
     });
 });
@@ -89,7 +97,8 @@ const displayedItemCount = computed(() =>
     (total, dungeon) =>
       total +
       (dungeon.unlocked
-        ? dungeon.encounters.reduce((sum, encounter) => sum + encounter.items.length, 0)
+        ? dungeon.encounters.reduce((sum, encounter) => sum + encounter.items.length, 0) +
+          dungeon.routeRewards.reduce((sum, reward) => sum + reward.items.length, 0)
         : 0),
     0,
   ),
@@ -251,6 +260,24 @@ async function claimReward(rewardId: CollectionRewardId): Promise<void> {
               />
             </div>
             <p v-else class="empty">该 Boss 没有符合当前筛选的装备。</p>
+          </section>
+          <section
+            v-for="reward in dungeon.routeRewards"
+            :key="reward.id"
+            class="encounter-section route-reward-section"
+          >
+            <header class="encounter-heading">
+              <h4>{{ reward.name }}</h4>
+              <span>路线全通后固定 {{ reward.guaranteedEquipmentDrops }} 件</span>
+            </header>
+            <div v-if="reward.items.length" class="item-grid">
+              <CatalogItemCard
+                v-for="item in reward.items"
+                :key="`${reward.id}:${item.id}`"
+                :item="item"
+              />
+            </div>
+            <p v-else class="empty">该路线奖励没有符合当前筛选的装备。</p>
           </section>
           <p v-if="dungeon.encounters.length === 0" class="empty">
             没有符合当前 Boss 筛选的路线节点。

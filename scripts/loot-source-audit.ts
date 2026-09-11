@@ -1,7 +1,8 @@
 import type { ContentRegistry } from "../src/content/registry";
 import type { LootTable } from "../src/content/schemas/dungeon";
 
-export type LootSourceCategory = "boss-drop" | "quest-reward" | "world-drop" | "design-placeholder";
+export type LootSourceCategory =
+  "boss-drop" | "route-completion" | "quest-reward" | "world-drop" | "design-placeholder";
 export type EncounterLootCategory = LootSourceCategory | "no-equipment";
 
 export interface LootSourceAuditRow {
@@ -24,6 +25,17 @@ export interface QuestRewardAuditRow {
   readonly items: readonly { readonly id: string; readonly name: string }[];
 }
 
+export interface RouteRewardAuditRow {
+  readonly dungeonId: string;
+  readonly dungeonName: string;
+  readonly routeVariantId: string;
+  readonly routeVariantName: string;
+  readonly lootTableId: string;
+  readonly category: LootSourceCategory;
+  readonly guaranteedEquipmentDrops: number;
+  readonly items: readonly { readonly id: string; readonly name: string }[];
+}
+
 export interface LootSourceAudit {
   readonly rows: readonly LootSourceAuditRow[];
   readonly lootTableCounts: Readonly<Record<LootSourceCategory, number>>;
@@ -31,11 +43,13 @@ export interface LootSourceAudit {
   readonly distinctItemCounts: Readonly<Record<LootSourceCategory, number>>;
   readonly unusedLootTableIds: readonly string[];
   readonly questRewards: readonly QuestRewardAuditRow[];
+  readonly routeRewards: readonly RouteRewardAuditRow[];
   readonly bossQuestRewardOverlap: readonly string[];
 }
 
 const SOURCE_TYPE_CATEGORIES: Readonly<Record<string, LootSourceCategory>> = {
   boss_drop: "boss-drop",
+  route_completion: "route-completion",
   dungeon_quest_rewards: "quest-reward",
   world_drop: "world-drop",
   design_placeholder: "design-placeholder",
@@ -43,6 +57,7 @@ const SOURCE_TYPE_CATEGORIES: Readonly<Record<string, LootSourceCategory>> = {
 
 const CATEGORY_LABELS: Readonly<Record<LootSourceCategory, string>> = {
   "boss-drop": "Boss 专属掉落",
+  "route-completion": "路线完成奖励",
   "quest-reward": "任务奖励",
   "world-drop": "世界掉落",
   "design-placeholder": "设计占位",
@@ -55,6 +70,7 @@ const ENCOUNTER_CATEGORY_LABELS: Readonly<Record<EncounterLootCategory, string>>
 
 const CATEGORIES: readonly LootSourceCategory[] = [
   "boss-drop",
+  "route-completion",
   "quest-reward",
   "world-drop",
   "design-placeholder",
@@ -68,6 +84,7 @@ export function classifyLootSource(table: LootTable): LootSourceCategory {
 function emptyCounts(): Record<LootSourceCategory, number> {
   return {
     "boss-drop": 0,
+    "route-completion": 0,
     "quest-reward": 0,
     "world-drop": 0,
     "design-placeholder": 0,
@@ -121,6 +138,33 @@ export function auditLootSources(registry: ContentRegistry): LootSourceAudit {
     }
   }
 
+  const routeRewards = registry.dungeons.flatMap((dungeon) =>
+    (dungeon.routeVariants ?? []).flatMap((variant): RouteRewardAuditRow[] => {
+      if (!variant.completionReward) return [];
+      const table = registry.lootTableById.get(variant.completionReward.lootTableId);
+      if (!table) {
+        throw new Error(`路线 ${variant.id} 缺少掉落表 ${variant.completionReward.lootTableId}`);
+      }
+      referencedLootTableIds.add(table.id);
+      return [
+        {
+          dungeonId: dungeon.id,
+          dungeonName: dungeon.name.zhCN,
+          routeVariantId: variant.id,
+          routeVariantName: variant.name.zhCN,
+          lootTableId: table.id,
+          category: classifyLootSource(table),
+          guaranteedEquipmentDrops: table.guaranteedEquipmentDrops,
+          items: table.items.map(({ itemId }) => {
+            const item = registry.itemById.get(itemId);
+            if (!item) throw new Error(`掉落表 ${table.id} 缺少物品 ${itemId}`);
+            return { id: item.id, name: item.name.zhCN };
+          }),
+        },
+      ];
+    }),
+  );
+
   const lootTableCounts = emptyCounts();
   const encounterCounts = emptyEncounterCounts();
   const distinctItems = new Map<LootSourceCategory, Set<string>>(
@@ -173,6 +217,7 @@ export function auditLootSources(registry: ContentRegistry): LootSourceAudit {
       .map((table) => table.id)
       .sort(),
     questRewards,
+    routeRewards,
     bossQuestRewardOverlap,
   };
 }
@@ -232,6 +277,7 @@ export function renderLootSourceAudit(audit: LootSourceAudit): string {
     `- Boss 掉落与任务奖励重复：${audit.bossQuestRewardOverlap.length === 0 ? "0" : audit.bossQuestRewardOverlap.join("、")}。`,
     `- 未显式填写 \`sourceType\` 的 Boss 掉落表：${implicitBossTables.size}。`,
     `- 未被路线 Encounter 引用的掉落表：${audit.unusedLootTableIds.length === 0 ? "0" : audit.unusedLootTableIds.join("、")}。`,
+    `- 命名路线完成奖励：${audit.routeRewards.length}。`,
     "",
     "## 后续迁移候选",
     "",
@@ -265,6 +311,22 @@ export function renderLootSourceAudit(audit: LootSourceAudit): string {
       "",
     );
   }
+
+  lines.push(
+    "## 命名路线完成奖励",
+    "",
+    ...(audit.routeRewards.length === 0
+      ? ["当前没有命名路线完成奖励。"]
+      : [
+          "| 副本 | 路线 | 掉落表 | 分类 | 保证数量 | 装备 |",
+          "|---|---|---|---|---:|---|",
+          ...audit.routeRewards.map(
+            (row) =>
+              `| ${row.dungeonName}（${row.dungeonId}） | ${row.routeVariantName}（${row.routeVariantId}） | ${row.lootTableId} | ${CATEGORY_LABELS[row.category]} | ${row.guaranteedEquipmentDrops} | ${row.items.map((item) => `${item.id} ${item.name}`).join("、")} |`,
+          ),
+        ]),
+    "",
+  );
 
   lines.push(
     "## 成员任务奖励",

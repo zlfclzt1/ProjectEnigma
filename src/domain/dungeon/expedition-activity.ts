@@ -19,7 +19,7 @@ import { evaluateExpeditionParty } from "./party-evaluation";
 import { lockRareRouteSpawns, revealRareRouteNodes } from "./rare-route";
 import { getExpeditionRunCapacity } from "../guild/guild-upgrade-rules";
 import { applyMemberExperience, getMemberLevelCap } from "../member/member-level-cap";
-import { routeForVariant } from "./dungeon-route";
+import { getDungeonRouteVariant, routeForVariant } from "./dungeon-route";
 import { buildExpeditionDevelopmentSnapshot } from "./dungeon-development";
 
 export interface DungeonExperienceConfig {
@@ -134,6 +134,13 @@ export function createExpeditionActivityHandler(
       const dungeon = content.dungeonById.get(request.dungeonId)!;
       const requestedOptionalIds = new Set(request.selectedOptionalNodeIds ?? []);
       const activeRoute = routeForVariant(dungeon, request.routeVariantId);
+      const selectedRouteVariant = getDungeonRouteVariant(dungeon, request.routeVariantId);
+      const routeRewardTable = selectedRouteVariant?.completionReward
+        ? content.lootTableById.get(selectedRouteVariant.completionReward.lootTableId)
+        : undefined;
+      if (selectedRouteVariant?.completionReward && !routeRewardTable) {
+        throw new Error(`命名路线 ${selectedRouteVariant.id} 缺少完成奖励掉落表。`);
+      }
       const selectedOptionalNodeIds = activeRoute
         .filter((node) => node.type === "optional" && requestedOptionalIds.has(node.id))
         .map((node) => node.id);
@@ -211,6 +218,18 @@ export function createExpeditionActivityHandler(
           rareNodeSpawns,
           rareNodeReveals: {},
           mainRouteCompleted: false,
+          ...(selectedRouteVariant && routeRewardTable
+            ? {
+                routeCompletionReward: {
+                  routeVariantId: selectedRouteVariant.id,
+                  lootTableId: routeRewardTable.id,
+                  guaranteedEquipmentDrops: routeRewardTable.guaranteedEquipmentDrops,
+                  items: routeRewardTable.items.map((entry) => ({ ...entry })),
+                  lootSeed: `${runSeed}:route-completion:${selectedRouteVariant.id}:${runRandom.next("route-completion-loot")}`,
+                  status: "pending" as const,
+                },
+              }
+            : {}),
         };
         revealRareRouteNodes(runPlan, activeRoute, runPlan.stages[0]?.routeNodeId);
         runPlans.push(runPlan);

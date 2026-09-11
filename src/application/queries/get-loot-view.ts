@@ -2,7 +2,13 @@ import type { ContentRegistry } from "../../content/registry";
 import { evaluateUpgrade } from "../../domain/equipment/upgrade-evaluation";
 import { equipmentSellValue } from "../../domain/equipment/item-value";
 import type { GameState } from "../../domain/game-state";
-import type { ActivityId, EncounterId, MemberId, PendingLootId } from "../../domain/shared/ids";
+import type {
+  ActivityId,
+  DungeonRouteVariantId,
+  EncounterId,
+  MemberId,
+  PendingLootId,
+} from "../../domain/shared/ids";
 import { getEquippedItemView, type EquippedItemView } from "./get-members-view";
 import { resolveItemInstance } from "../../domain/equipment/resolve-item-instance";
 
@@ -33,6 +39,7 @@ export interface PendingLootView {
   readonly id: PendingLootId;
   readonly activityId: ActivityId;
   readonly encounterId?: EncounterId;
+  readonly routeVariantId?: DungeonRouteVariantId;
   readonly acquiredAt: number;
   readonly item: EquippedItemView;
   readonly activityName: string;
@@ -59,13 +66,14 @@ export function getLootView(state: GameState, content: ContentRegistry): LootVie
       if (!instance) return [];
       const definition = resolveItemInstance(instance, content).definition;
       const activity = state.activities[entry.sourceActivityId];
-      const source = instance.source.type === "encounter" ? instance.source : undefined;
+      const encounterSource = instance.source.type === "encounter" ? instance.source : undefined;
+      const routeSource = instance.source.type === "route-completion" ? instance.source : undefined;
       const activityOrder = activity?.createdAt ?? entry.acquiredAt;
       const encounterOrder =
-        activity && activity.type === "expedition" && source
+        activity && activity.type === "expedition" && encounterSource
           ? activity.runPlans.reduce((best, run, runIndex) => {
               const stageIndex = run.stages.findIndex(
-                (stage) => stage.encounterId === source.encounterId,
+                (stage) => stage.encounterId === encounterSource.encounterId,
               );
               return stageIndex >= 0 ? Math.min(best, runIndex * 10_000 + stageIndex) : best;
             }, Number.POSITIVE_INFINITY)
@@ -109,18 +117,31 @@ export function getLootView(state: GameState, content: ContentRegistry): LootVie
         {
           id: entry.id,
           activityId: entry.sourceActivityId,
-          ...(source ? { encounterId: source.encounterId } : {}),
+          ...(encounterSource ? { encounterId: encounterSource.encounterId } : {}),
+          ...(routeSource ? { routeVariantId: routeSource.routeVariantId } : {}),
           acquiredAt: entry.acquiredAt,
           item: getEquippedItemView(instance, content),
-          activityName: source
-            ? (content.dungeonById.get(source.dungeonId)?.name.zhCN ?? source.dungeonId)
-            : "本次活动",
-          dungeonName: source
-            ? (content.dungeonById.get(source.dungeonId)?.name.zhCN ?? source.dungeonId)
-            : "其他来源",
-          encounterName: source
-            ? (content.encounterById.get(source.encounterId)?.name.zhCN ?? source.encounterId)
-            : "未知来源",
+          activityName: encounterSource
+            ? (content.dungeonById.get(encounterSource.dungeonId)?.name.zhCN ??
+              encounterSource.dungeonId)
+            : routeSource
+              ? (content.dungeonById.get(routeSource.dungeonId)?.name.zhCN ?? routeSource.dungeonId)
+              : "本次活动",
+          dungeonName: encounterSource
+            ? (content.dungeonById.get(encounterSource.dungeonId)?.name.zhCN ??
+              encounterSource.dungeonId)
+            : routeSource
+              ? (content.dungeonById.get(routeSource.dungeonId)?.name.zhCN ?? routeSource.dungeonId)
+              : "其他来源",
+          encounterName: encounterSource
+            ? (content.encounterById.get(encounterSource.encounterId)?.name.zhCN ??
+              encounterSource.encounterId)
+            : routeSource
+              ? (content.dungeonById
+                  .get(routeSource.dungeonId)
+                  ?.routeVariants?.find((variant) => variant.id === routeSource.routeVariantId)
+                  ?.name.zhCN ?? "路线完成奖励")
+              : "未知来源",
           activityOrder,
           encounterOrder: Number.isFinite(encounterOrder) ? encounterOrder : entry.acquiredAt,
           locked,

@@ -93,7 +93,10 @@ function chanceChanged(item: CatalogItemView): boolean {
       </section>
       <section v-if="item.sources.length > 1" class="sources">
         <strong>全部已公开来源</strong>
-        <span v-for="source in item.sources" :key="`${source.dungeonId}:${source.encounterId}`">
+        <span
+          v-for="source in item.sources"
+          :key="`${source.dungeonId}:${source.encounterId ?? source.routeVariantId}`"
+        >
           {{ source.dungeonName }} · {{ source.encounterName }} ·
           {{ source.kind === "development" ? "调查解锁" : "基础掉落" }} · 本场
           {{ percent(source.encounterDropChance) }}

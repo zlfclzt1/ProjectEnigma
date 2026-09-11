@@ -132,6 +132,31 @@ describe("dungeon content", () => {
     expect(() => dungeonDefinitionFileSchema.parse(raw)).toThrow(/不存在的节点/);
   });
 
+  it("accepts a content-driven completion reward on a named route", () => {
+    const raw = readJson("content/dungeons/ragefire-chasm.json") as {
+      dungeons: Array<{ route: Array<{ id: string }>; routeVariants?: unknown[] }>;
+    };
+    raw.dungeons[0]!.routeVariants = [
+      {
+        id: "normal_route",
+        name: { zhCN: "普通路线" },
+        description: { zhCN: "挑战所有主要首领。" },
+        requiredNodeIds: raw.dungeons[0]!.route.map((node) => node.id),
+      },
+      {
+        id: "reward_route",
+        name: { zhCN: "奖励路线" },
+        description: { zhCN: "完成后领取路线宝箱。" },
+        requiredNodeIds: [raw.dungeons[0]!.route[0]!.id],
+        completionReward: { lootTableId: "route_reward_table" },
+      },
+    ];
+
+    expect(dungeonDefinitionFileSchema.parse(raw).dungeons[0]!.routeVariants?.[1]).toMatchObject({
+      completionReward: { lootTableId: "route_reward_table" },
+    });
+  });
+
   it("defines complete weighted loot tables with stable item references", () => {
     expect(lootTables).toHaveLength(26);
     expect(lootTables.every((table) => table.guaranteedEquipmentDrops >= 1)).toBe(true);

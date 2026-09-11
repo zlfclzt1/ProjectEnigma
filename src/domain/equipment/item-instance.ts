@@ -1,6 +1,7 @@
 import type {
   ActivityId,
   DungeonId,
+  DungeonRouteVariantId,
   EnchantmentId,
   EncounterId,
   ItemDefinitionId,
@@ -19,6 +20,12 @@ export type ItemAcquisitionSource =
       activityId: ActivityId;
       dungeonId: DungeonId;
       encounterId: EncounterId;
+    }
+  | {
+      type: "route-completion";
+      activityId: ActivityId;
+      dungeonId: DungeonId;
+      routeVariantId: DungeonRouteVariantId;
     }
   | { type: "crafting"; activityId: ActivityId; recipeId: RecipeId }
   | { type: "grant"; reasonId: string }

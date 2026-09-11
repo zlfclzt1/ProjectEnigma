@@ -60,6 +60,12 @@ const dungeonRouteVariantSchema = z
     name: localizedTextSchema,
     description: localizedTextSchema,
     requiredNodeIds: z.array(routeNodeIdSchema).min(1),
+    completionReward: z
+      .object({
+        lootTableId: lootTableIdSchema,
+      })
+      .strict()
+      .optional(),
   })
   .strict()
   .refine(

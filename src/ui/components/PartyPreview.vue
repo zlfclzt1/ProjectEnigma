@@ -84,6 +84,12 @@ function durationLabel(seconds: number): string {
             <span>
               <strong>{{ variant.name }}</strong>
               <small>{{ variant.description }}</small>
+              <small v-if="variant.completionReward" class="route-reward">
+                全通奖励 {{ variant.completionReward.guaranteedEquipmentDrops }} 件 · 奖励池
+                {{ variant.completionReward.itemCount }} 件：{{
+                  variant.completionReward.itemNames.join("、")
+                }}
+              </small>
             </span>
           </label>
         </section>

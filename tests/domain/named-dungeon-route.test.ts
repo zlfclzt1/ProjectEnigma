@@ -47,6 +47,55 @@ function routeContent() {
   return loadContentRegistry(modules);
 }
 
+function routeRewardContent() {
+  const modules = structuredClone(browserContentModules) as Record<string, unknown>;
+  const dungeonKey = Object.keys(modules).find((path) =>
+    path.endsWith("/content/dungeons/ragefire-chasm.json"),
+  );
+  const lootKey = Object.keys(modules).find((path) =>
+    path.endsWith("/content/loot-tables/ragefire-chasm.json"),
+  );
+  if (!dungeonKey || !lootKey) throw new Error("Expected Ragefire Chasm content");
+  const dungeon = (
+    modules[dungeonKey] as {
+      dungeons: Array<{ route: Array<{ id: string }>; routeVariants?: unknown[] }>;
+    }
+  ).dungeons[0]!;
+  const lootTables = (
+    modules[lootKey] as {
+      lootTables: Array<{
+        id: string;
+        sourceType?: string;
+        guaranteedEquipmentDrops: number;
+        items: Array<{ itemId: string; weight: number }>;
+      }>;
+    }
+  ).lootTables;
+  const rewardTable = {
+    ...structuredClone(lootTables[0]!),
+    id: "shortcut_route_reward",
+    sourceType: "route_completion",
+    guaranteedEquipmentDrops: 2,
+  };
+  lootTables.push(rewardTable);
+  dungeon.routeVariants = [
+    {
+      id: normalRouteId,
+      name: { zhCN: "完整路线" },
+      description: { zhCN: "依次挑战全部主要首领。" },
+      requiredNodeIds: dungeon.route.map((node) => node.id),
+    },
+    {
+      id: shortcutRouteId,
+      name: { zhCN: "捷径路线" },
+      description: { zhCN: "跳过中段守卫，直接前往终点。" },
+      requiredNodeIds: [dungeon.route[0]!.id, dungeon.route.at(-1)!.id],
+      completionReward: { lootTableId: rewardTable.id },
+    },
+  ];
+  return loadContentRegistry(modules);
+}
+
 function newState(content: ReturnType<typeof routeContent>) {
   const state = createNewGame({
     slotId: asBrandedId<"SaveSlotId">("named-route"),
@@ -160,5 +209,62 @@ describe("named dungeon routes", () => {
       "optional_boss",
       "rare_boss",
     ]);
+  });
+
+  it("snapshots and grants a named-route reward only after its required route is cleared", async () => {
+    const content = routeRewardContent();
+    const state = newState(content);
+    const participantIds = Object.values(state.members).map((member) => member.id);
+    const activity = await startExpeditionCommand(
+      { content, clock: new FakeClock(2_000) },
+      { dungeonId, participantIds, requestedRuns: 1, routeVariantId: shortcutRouteId },
+    ).execute(state);
+    const persisted = state.activities[activity.id];
+    if (persisted?.type !== "expedition") throw new Error("Expected expedition");
+    const run = persisted.runPlans[0]!;
+    expect(run.routeCompletionReward).toMatchObject({
+      routeVariantId: shortcutRouteId,
+      lootTableId: "shortcut_route_reward",
+      guaranteedEquipmentDrops: 2,
+      status: "pending",
+    });
+    for (const stage of run.stages) stage.successRoll = 0;
+
+    const service = new SettlementService(content);
+    service.settleDueActivities(state, persisted.nextSettlementAt);
+    expect(run.routeCompletionReward?.status).toBe("pending");
+    service.settleDueActivities(state, Number.MAX_SAFE_INTEGER);
+
+    expect(run.routeCompletionReward?.status).toBe("granted");
+    expect(run.routeCompletionReward?.itemInstanceIds).toHaveLength(2);
+    for (const itemId of run.routeCompletionReward?.itemInstanceIds ?? []) {
+      expect(state.itemInstances[itemId]?.source).toEqual({
+        type: "route-completion",
+        activityId: activity.id,
+        dungeonId,
+        routeVariantId: shortcutRouteId,
+      });
+    }
+  });
+
+  it("does not grant the route reward when the selected route wipes", async () => {
+    const content = routeRewardContent();
+    const state = newState(content);
+    const participantIds = Object.values(state.members).map((member) => member.id);
+    const activity = await startExpeditionCommand(
+      { content, clock: new FakeClock(2_000) },
+      { dungeonId, participantIds, requestedRuns: 1, routeVariantId: shortcutRouteId },
+    ).execute(state);
+    const persisted = state.activities[activity.id];
+    if (persisted?.type !== "expedition") throw new Error("Expected expedition");
+    const run = persisted.runPlans[0]!;
+    run.stages[0]!.successRoll = 0;
+    run.stages[1]!.successRoll = 1;
+
+    new SettlementService(content).settleDueActivities(state, Number.MAX_SAFE_INTEGER);
+
+    expect(persisted.status).toBe("failed");
+    expect(run.routeCompletionReward).toMatchObject({ status: "pending" });
+    expect(run.routeCompletionReward?.itemInstanceIds).toBeUndefined();
   });
 });

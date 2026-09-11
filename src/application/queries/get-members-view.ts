@@ -309,6 +309,12 @@ function acquisitionSource(instance: ItemInstance, content: ContentRegistry): st
       const encounter = content.encounterById.get(instance.source.encounterId)?.name.zhCN;
       return `${dungeon ?? "未知副本"} · ${encounter ?? "未知首领"}`;
     }
+    case "route-completion": {
+      const dungeon = content.dungeonById.get(instance.source.dungeonId);
+      const routeVariantId = instance.source.routeVariantId;
+      const route = dungeon?.routeVariants?.find((variant) => variant.id === routeVariantId);
+      return `${dungeon?.name.zhCN ?? "未知副本"} · ${route?.name.zhCN ?? "路线完成奖励"}`;
+    }
     case "crafting":
       return `专业制造 · 配方 ${instance.source.recipeId}`;
     case "grant":

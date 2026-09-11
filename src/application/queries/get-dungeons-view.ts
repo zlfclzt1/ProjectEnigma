@@ -175,6 +175,11 @@ export interface DungeonRouteVariantView {
   readonly name: string;
   readonly description: string;
   readonly selected: boolean;
+  readonly completionReward?: {
+    readonly guaranteedEquipmentDrops: number;
+    readonly itemCount: number;
+    readonly itemNames: readonly string[];
+  };
 }
 
 export interface ExpeditionRunCapacityUpgradeView {
@@ -455,6 +460,20 @@ export function getDungeonPlanningView(
       name: variant.name.zhCN,
       description: variant.description.zhCN,
       selected: variant.id === selectedRouteVariantId,
+      ...(variant.completionReward
+        ? {
+            completionReward: (() => {
+              const table = content.lootTableById.get(variant.completionReward.lootTableId)!;
+              return {
+                guaranteedEquipmentDrops: table.guaranteedEquipmentDrops,
+                itemCount: table.items.length,
+                itemNames: table.items.map(
+                  ({ itemId }) => content.itemById.get(itemId)?.name.zhCN ?? itemId,
+                ),
+              };
+            })(),
+          }
+        : {}),
     }));
     const selectedOptionalIds = new Set(selectedOptionalNodeIds);
     optionalRoutes = dungeonDefinition.route.flatMap((node) => {
@@ -621,6 +640,9 @@ export function getDungeonPlanningView(
             result.preview.clearProbability,
             experience.reduce((sum, member) => sum + member.experienceFraction, 0),
             development.extraLootChance,
+            dungeonDefinition.routeVariants?.find(
+              (variant) => variant.id === selectedRouteVariantId,
+            ),
           ),
         };
       } else {
@@ -677,6 +699,8 @@ function projectYieldPreview(
   clearProbability: number,
   totalProjectedExperience: number,
   extraLootChance: number,
+  routeVariant:
+    NonNullable<ContentRegistry["dungeons"][number]["routeVariants"]>[number] | undefined,
 ): PartyPreviewView["yields"] {
   const unlocked = unlockedDevelopmentItemsByEncounter(state, content, dungeonId);
   const rewardSources = new Map<
@@ -724,6 +748,27 @@ function projectYieldPreview(
     const encounterUpgradeChance =
       preview.probability * (1 - Math.pow(1 - upgradePerDrop, dropCount));
     noUpgradePerRun *= 1 - encounterUpgradeChance;
+  }
+  if (routeVariant?.completionReward) {
+    const table = content.lootTableById.get(routeVariant.completionReward.lootTableId)!;
+    const totalWeight = table.items.reduce((sum, entry) => sum + entry.weight, 0);
+    let upgradeWeight = 0;
+    let averageSaleValue = 0;
+    for (const entry of table.items) {
+      const definition = content.itemById.get(entry.itemId);
+      if (!definition) continue;
+      const score = previewItemScore(state, content, memberIds, entry.itemId);
+      if (score > 0) upgradeWeight += entry.weight;
+      averageSaleValue += equipmentSellValue(definition) * (entry.weight / totalWeight);
+      const source = rewardSources.get(entry.itemId) ?? { score, bossNames: new Set<string>() };
+      source.bossNames.add(routeVariant.name.zhCN + "完成奖励");
+      rewardSources.set(entry.itemId, source);
+    }
+    expectedSaleValuePerRun += clearProbability * averageSaleValue * table.guaranteedEquipmentDrops;
+    const upgradePerDrop = upgradeWeight / totalWeight;
+    const routeUpgradeChance =
+      clearProbability * (1 - Math.pow(1 - upgradePerDrop, table.guaranteedEquipmentDrops));
+    noUpgradePerRun *= 1 - routeUpgradeChance;
   }
   const rewardPool = [...rewardSources.entries()]
     .map(([itemId, entry]) => {

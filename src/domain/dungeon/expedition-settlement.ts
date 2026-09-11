@@ -13,7 +13,11 @@ import type { GameState } from "../game-state";
 import type { CombatReportId, MemberId } from "../shared/ids";
 import { generateCombatReport } from "../combat/report-generator";
 import { DEFAULT_DUNGEON_EXPERIENCE_CONFIG, experienceFractions } from "./expedition-activity";
-import { generateEncounterLoot, generateSpecificEncounterLoot } from "./loot-generation";
+import {
+  generateEncounterLoot,
+  generateRouteCompletionLoot,
+  generateSpecificEncounterLoot,
+} from "./loot-generation";
 import { revealRareRouteNodes } from "./rare-route";
 import { applyMemberExperience, getMemberLevelCap } from "../member/member-level-cap";
 import {
@@ -143,6 +147,18 @@ export function settleNextExpeditionStage(
     selectDevelopmentCacheItems(state, content, activity, stage, completedQuestIds),
   );
   generatedLoot.push(...developmentCache);
+  if (run.mainRouteCompleted && run.routeCompletionReward?.status === "pending") {
+    const routeRewardLoot = generateRouteCompletionLoot(
+      activity,
+      run.routeCompletionReward,
+      content,
+      settledAt,
+      ids,
+    );
+    run.routeCompletionReward.status = "granted";
+    run.routeCompletionReward.itemInstanceIds = routeRewardLoot.map(({ instance }) => instance.id);
+    generatedLoot.push(...routeRewardLoot);
+  }
   recordDevelopmentEvents(
     activity,
     content,

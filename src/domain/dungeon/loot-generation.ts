@@ -2,7 +2,11 @@ import type { IdGenerator } from "../../application/ports/id-generator";
 import type { ContentRegistry } from "../../content/registry";
 import type { LootTable } from "../../content/schemas/dungeon";
 import type { ItemSuffixDefinition } from "../../content/schemas/item-suffix";
-import type { ExpeditionActivity, ExpeditionEncounterPlan } from "../activity/activity";
+import type {
+  ExpeditionActivity,
+  ExpeditionEncounterPlan,
+  ExpeditionRouteCompletionRewardSnapshot,
+} from "../activity/activity";
 import type { ItemInstance, PendingLoot } from "../equipment/item-instance";
 import { asBrandedId, type ItemDefinitionId } from "../shared/ids";
 import { SeededRandomSource } from "../../infrastructure/random/seeded-random-source";
@@ -72,6 +76,42 @@ export function generateSpecificEncounterLoot(
       ids,
     ),
   );
+}
+
+export function generateRouteCompletionLoot(
+  activity: ExpeditionActivity,
+  reward: ExpeditionRouteCompletionRewardSnapshot,
+  content: ContentRegistry,
+  acquiredAt: number,
+  ids: IdGenerator,
+): GeneratedLoot[] {
+  const random = new SeededRandomSource(reward.lootSeed);
+  return Array.from({ length: reward.guaranteedEquipmentDrops }, (_, dropIndex) => {
+    const definitionId = weightedItem(reward.items, random.next(`drop:${dropIndex}`));
+    const randomSuffixId = rollRandomSuffix(content, definitionId, reward.lootSeed, dropIndex);
+    const instance: ItemInstance = {
+      id: asBrandedId<"ItemInstanceId">(ids.next("item")),
+      definitionId,
+      ...(randomSuffixId ? { randomSuffixId } : {}),
+      bound: false,
+      acquiredAt,
+      source: {
+        type: "route-completion",
+        activityId: activity.id,
+        dungeonId: activity.dungeonId,
+        routeVariantId: reward.routeVariantId,
+      },
+      enchantmentIds: [],
+    };
+    const pending: PendingLoot = {
+      id: asBrandedId<"PendingLootId">(ids.next("pending-loot")),
+      itemInstanceId: instance.id,
+      sourceActivityId: activity.id,
+      eligibleMemberIds: [...activity.participantIds],
+      acquiredAt,
+    };
+    return { instance, pending };
+  });
 }
 
 function createEncounterLoot(
