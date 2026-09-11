@@ -86,12 +86,34 @@ export const dungeonDefinitionSchema = z
         minimum: z.number().int().positive(),
         maximum: z.number().int().positive(),
         recommended: z.number().int().positive(),
+        recommendedRoles: z
+          .object({
+            tank: z.number().int().nonnegative(),
+            healer: z.number().int().nonnegative(),
+            dps: z.number().int().nonnegative(),
+          })
+          .strict()
+          .optional(),
       })
       .strict()
-      .refine(
-        ({ minimum, recommended, maximum }) => minimum <= recommended && recommended <= maximum,
-        "队伍人数必须满足 minimum <= recommended <= maximum",
-      ),
+      .superRefine(({ minimum, recommended, maximum, recommendedRoles }, context) => {
+        if (!(minimum <= recommended && recommended <= maximum)) {
+          context.addIssue({
+            code: "custom",
+            message: "队伍人数必须满足 minimum <= recommended <= maximum",
+          });
+        }
+        if (
+          recommendedRoles &&
+          recommendedRoles.tank + recommendedRoles.healer + recommendedRoles.dps !== recommended
+        ) {
+          context.addIssue({
+            code: "custom",
+            path: ["recommendedRoles"],
+            message: "推荐职责人数之和必须等于推荐队伍人数",
+          });
+        }
+      }),
     duration: z
       .object({
         baseSeconds: z.number().int().positive(),

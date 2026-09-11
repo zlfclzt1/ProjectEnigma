@@ -48,6 +48,11 @@ function durationLabel(seconds: number): string {
       <div>
         <h3>出发预览</h3>
         <p v-if="preview">公式 {{ preview.formulaVersion }}</p>
+        <p v-if="dungeon">
+          推荐 {{ dungeon.recommendedMembers }} 人 · {{ dungeon.recommendedRoleCounts.tank }} 坦 /
+          {{ dungeon.recommendedRoleCounts.healer }} 治 /
+          {{ dungeon.recommendedRoleCounts.dps }} 输出
+        </p>
       </div>
       <strong v-if="preview">全通 {{ probabilityLabel(preview.clearProbability) }}</strong>
     </header>

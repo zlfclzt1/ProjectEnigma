@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { dungeonDefinitionSchema } from "../../src/content/schemas/dungeon";
 import {
   brandedContentIdSchema,
   itemQualitySchema,
@@ -14,6 +15,48 @@ import {
 import type { DungeonId } from "../../src/domain/shared/ids";
 
 describe("content schema foundation", () => {
+  it("requires recommended role counts to match the recommended party size", () => {
+    const base = {
+      id: "ten_player_test",
+      name: { zhCN: "十人职责测试" },
+      minimumLevel: 58,
+      recommendedLevel: 60,
+      defaultUnlocked: false,
+      members: {
+        minimum: 1,
+        maximum: 10,
+        recommended: 10,
+        recommendedRoles: { tank: 2, healer: 2, dps: 6 },
+      },
+      duration: { baseSeconds: 600, minimumRatio: 0.5, maximumRatio: 2 },
+      probability: {
+        minimum: 0.05,
+        maximum: 0.99,
+        base: 0.8,
+        readinessMultiplier: 1,
+        surplusEffect: 0.1,
+        geometricWeight: 0.5,
+        bottleneckWeight: 0.5,
+        overpowerThreshold: 2,
+      },
+      combatTuning: {
+        bossProbabilityMaximum: 0.99,
+        requirementMultipliers: { tank: 1, healing: 1, damage: 1 },
+      },
+      route: [{ id: "boss", type: "required", encounterId: "boss" }],
+    } as const;
+
+    expect(dungeonDefinitionSchema.safeParse(base).success).toBe(true);
+    expect(
+      dungeonDefinitionSchema.safeParse({
+        ...base,
+        members: {
+          ...base.members,
+          recommendedRoles: { tank: 2, healer: 3, dps: 6 },
+        },
+      }).success,
+    ).toBe(false);
+  });
   it("parses a content ID into its domain-specific branded type", () => {
     const dungeonIdSchema = brandedContentIdSchema<"DungeonId">();
     const dungeonId: DungeonId = dungeonIdSchema.parse("ragefire_chasm");

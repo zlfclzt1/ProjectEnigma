@@ -39,6 +39,11 @@ export interface DungeonOptionView {
   readonly minimumMembers: number;
   readonly maximumMembers: number;
   readonly recommendedMembers: number;
+  readonly recommendedRoleCounts: {
+    readonly tank: number;
+    readonly healer: number;
+    readonly dps: number;
+  };
   readonly baseDurationSeconds: number;
   readonly encounterCount: number;
   readonly clearCount: number;
@@ -358,6 +363,11 @@ function dungeonOptions(
       minimumMembers: dungeon.members.minimum,
       maximumMembers: dungeon.members.maximum,
       recommendedMembers: dungeon.members.recommended,
+      recommendedRoleCounts: dungeon.members.recommendedRoles ?? {
+        tank: 1,
+        healer: 1,
+        dps: Math.max(0, dungeon.members.recommended - 2),
+      },
       baseDurationSeconds: dungeon.duration.baseSeconds,
       encounterCount: dungeon.route.length,
       clearCount: state.history.dungeonClearCounts[dungeon.id] ?? 0,
