@@ -201,6 +201,8 @@ function contributionName(capability: string | undefined): string {
   align-items: end;
   justify-content: space-between;
   gap: 16px;
+  padding: 2px 4px 14px;
+  border-bottom: 1px solid #4a3b25;
 }
 .detail-heading a {
   color: #a88245;
@@ -209,20 +211,26 @@ function contributionName(capability: string | undefined): string {
 }
 .detail-heading h2 {
   margin: 8px 0 2px;
-  color: #f0dfbf;
+  color: #e8d29b;
   font-family: Georgia, serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 .detail-heading p {
   margin: 0;
   color: #988e7d;
 }
 .detail-heading > span {
+  padding: 5px 9px;
+  border: 1px solid #4f6249;
+  border-radius: 2px;
   color: #73ac77;
+  background: #101a13;
   font-size: 0.78rem;
 }
 .detail-heading > span.active {
+  border-color: #415b71;
   color: #72a7d0;
+  background: #101821;
 }
 .panel {
   padding: 17px;

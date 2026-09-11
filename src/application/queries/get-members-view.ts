@@ -60,7 +60,7 @@ export interface EquippedItemView {
 }
 
 export interface EquipmentSlotView {
-  readonly id: EquipmentSlot;
+  readonly id: EquipmentSlot | "shirt" | "tabard";
   readonly name: string;
   readonly item?: EquippedItemView;
 }
@@ -119,6 +119,11 @@ export const EQUIPMENT_SLOT_NAMES: Readonly<Record<EquipmentSlot, string>> = {
   offHand: "副手",
   ranged: "远程",
 };
+
+export const CHARACTER_SHEET_SLOT_NAMES = {
+  shirt: "衬衣",
+  tabard: "战袍",
+} as const;
 
 const STAT_LABELS: Readonly<Record<string, string>> = {
   strengthPoints: "力量",
