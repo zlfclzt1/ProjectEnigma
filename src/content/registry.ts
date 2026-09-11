@@ -717,6 +717,17 @@ export class ContentRegistry {
           "套装",
           issues,
         );
+      } else if (condition.type === "item-sets-completion") {
+        condition.itemSetIds.forEach((itemSetId, index) =>
+          requireReference(
+            itemSetById,
+            itemSetId,
+            owner,
+            `condition.itemSetIds[${index}]`,
+            "套装",
+            issues,
+          ),
+        );
       }
     }
   }

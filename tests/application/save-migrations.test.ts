@@ -203,6 +203,21 @@ describe("save migrations", () => {
     expect(result.state).not.toBe(migrated);
   });
 
+  it("backfills automatic encounter milestones for a current old save", () => {
+    const current = migrateSave(createLegacyGameStateV4Fixture(), content).state;
+    current.guild.funds = 100;
+    current.history.encounterVictoryCounts[
+      asBrandedId<"EncounterId">("brd_shadowforge_emperor_dagran_thaurissan")
+    ] = 1;
+
+    const result = migrateSave(current, content);
+
+    expect(result.migrated).toBe(true);
+    expect(result.state.guild.funds).toBe(1100);
+    expect(result.state.collection.claimedRewardIds).toContain("blackrock_depths_conqueror");
+    expect(result.state.collection.claimedRewardIds).not.toContain("zulfarrak_level_45_graduation");
+  });
+
   it("migrates V11 saves with an empty fixed-team directory", () => {
     const legacy = createLegacyGameStateV11Fixture();
 

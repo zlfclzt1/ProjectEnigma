@@ -30,6 +30,14 @@ const rewardFile = collectionRewardDefinitionFileSchema.parse(
     fs.readFileSync(path.join(projectRoot, "content/collection-rewards/prototype.json"), "utf8"),
   ),
 );
+const level60RewardFile = collectionRewardDefinitionFileSchema.parse(
+  JSON.parse(
+    fs.readFileSync(
+      path.join(projectRoot, "content/collection-rewards/level-60-stage.json"),
+      "utf8",
+    ),
+  ),
+);
 
 function clonedModules(): Record<string, unknown> {
   return structuredClone(browserContentModules) as Record<string, unknown>;
@@ -85,7 +93,25 @@ describe("item sets and collection reward content", () => {
     const registry = loadContentRegistry(browserContentModules);
 
     expect(registry.itemSetById.size).toBe(9);
-    expect(registry.collectionRewardById.size).toBe(4);
+    expect(registry.collectionRewardById.size).toBe(6);
+    expect(level60RewardFile.collectionRewards).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          id: "blackrock_depths_conqueror",
+          condition: {
+            type: "encounter-victory",
+            encounterId: "brd_shadowforge_emperor_dagran_thaurissan",
+          },
+        }),
+        expect.objectContaining({
+          id: "dungeon_set_1_all_classes_complete",
+          condition: expect.objectContaining({
+            type: "item-sets-completion",
+            minimumPercent: 100,
+          }),
+        }),
+      ]),
+    );
     expect(
       registry.collectionRewardById.get("zulfarrak_level_45_graduation" as CollectionRewardId),
     ).toMatchObject({

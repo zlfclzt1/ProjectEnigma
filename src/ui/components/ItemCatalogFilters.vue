@@ -9,7 +9,6 @@ defineProps<{
   dungeons: readonly DungeonCatalogView[];
   encounterOptions: readonly { readonly id: string; readonly name: string }[];
   setOptions: readonly { readonly id: string; readonly name: string }[];
-  setFilterUnlocked: boolean;
   suffixOptions: readonly { readonly id: string; readonly name: string }[];
   dungeonId: string;
   encounterId: string;
@@ -79,11 +78,9 @@ const slotOptions: readonly { readonly id: EquipmentSlot; readonly name: string 
       <span>套装</span>
       <select
         :value="itemSetId"
-        :disabled="!setFilterUnlocked"
-        :title="setFilterUnlocked ? undefined : '完成对应收藏奖励后解锁套装筛选'"
         @change="emit('update:itemSetId', ($event.target as HTMLSelectElement).value)"
       >
-        <option value="">{{ setFilterUnlocked ? "全部套装" : "完成收藏奖励后解锁" }}</option>
+        <option value="">全部套装</option>
         <option v-for="set in setOptions" :key="set.id" :value="set.id">{{ set.name }}</option>
       </select>
     </label>

@@ -17,6 +17,7 @@ import { migrateV10ToV11 } from "./migrate-v10-to-v11";
 import { migrateV11ToV12 } from "./migrate-v11-to-v12";
 import { migrateV12ToV13 } from "./migrate-v12-to-v13";
 import { migrateV13ToV14 } from "./migrate-v13-to-v14";
+import { applyEligibleAutomaticCollectionRewards } from "../../../domain/collection/collection-reward-rules";
 
 export interface SaveMigrationResult {
   readonly state: GameState;
@@ -27,10 +28,12 @@ export function migrateSave(
   persisted: PersistedGameState,
   content: ContentRegistry,
 ): SaveMigrationResult {
-  if (persisted.saveVersion === 14) {
-    return { state: structuredClone(persisted), migrated: false };
-  }
-  return { state: migrateV13ToV14(migrateToV13(persisted, content)), migrated: true };
+  const versionMigrated = persisted.saveVersion !== 14;
+  const state = versionMigrated
+    ? migrateV13ToV14(migrateToV13(persisted, content))
+    : structuredClone(persisted);
+  const automaticRewards = applyEligibleAutomaticCollectionRewards(state, content);
+  return { state, migrated: versionMigrated || automaticRewards.length > 0 };
 }
 
 function migrateToV13(

@@ -4,10 +4,7 @@ import type { DungeonDefinition } from "../../content/schemas/dungeon";
 import type { ActivityScheduler } from "../activity/activity-scheduler";
 import type { ExpeditionActivity, ExpeditionEncounterPlan } from "../activity/activity";
 import { recordAcquiredItem } from "../collection/item-collection";
-import {
-  applyCollectionReward,
-  evaluateCollectionReward,
-} from "../collection/collection-reward-rules";
+import { applyEligibleAutomaticCollectionRewards } from "../collection/collection-reward-rules";
 import type { ItemInstance } from "../equipment/item-instance";
 import type { GameState } from "../game-state";
 import type { CombatReportId, MemberId } from "../shared/ids";
@@ -319,19 +316,11 @@ function applyEncounterVictoryCollectionRewards(
   content: ContentRegistry,
   encounterId: ExpeditionEncounterPlan["encounterId"],
 ): number {
-  let awardedFunds = 0;
-  for (const reward of content.collectionRewards) {
-    if (
-      reward.condition.type !== "encounter-victory" ||
-      reward.condition.encounterId !== encounterId
-    ) {
-      continue;
-    }
-    const eligibility = evaluateCollectionReward(state, content, reward.id);
-    if (!eligibility.claimable) continue;
-    awardedFunds += applyCollectionReward(state, content, reward.id).awardedFunds;
-  }
-  return awardedFunds;
+  void encounterId;
+  return applyEligibleAutomaticCollectionRewards(state, content).reduce(
+    (sum, reward) => sum + reward.awardedFunds,
+    0,
+  );
 }
 
 function requiredStagesCleared(

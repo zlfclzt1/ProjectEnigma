@@ -20,6 +20,7 @@ function acquire(state: ReturnType<typeof createGameStateFixture>, ...itemIds: s
 }
 
 const valorItemIds = ["16730", "16731", "16732", "16733", "16734", "16735", "16736", "16737"];
+const allDungeonSetItemIds = content.itemSets.flatMap((set) => set.itemIds);
 
 describe("collection reward rules", () => {
   it("evaluates dungeon, set, and global progress from permanent discovery history", () => {
@@ -135,6 +136,28 @@ describe("collection reward rules", () => {
     expect(evaluateCollectionReward(state, content, rewardId)).toMatchObject({
       acquiredItemCount: 1,
       totalItemCount: 1,
+      completionPercent: 100,
+      conditionMet: true,
+      claimable: true,
+    });
+  });
+
+  it("requires every configured item set to meet the multi-set threshold", () => {
+    const state = createGameStateFixture();
+    const rewardId = asBrandedId<"CollectionRewardId">("dungeon_set_1_all_classes_complete");
+    acquire(state, ...allDungeonSetItemIds.slice(0, -1));
+
+    expect(evaluateCollectionReward(state, content, rewardId)).toMatchObject({
+      acquiredItemCount: 71,
+      totalItemCount: 72,
+      conditionMet: false,
+      claimable: false,
+    });
+
+    acquire(state, allDungeonSetItemIds.at(-1)!);
+    expect(evaluateCollectionReward(state, content, rewardId)).toMatchObject({
+      acquiredItemCount: 72,
+      totalItemCount: 72,
       completionPercent: 100,
       conditionMet: true,
       claimable: true,

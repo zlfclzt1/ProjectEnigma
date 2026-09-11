@@ -27,6 +27,16 @@ export const collectionRewardConditionSchema = z.discriminatedUnion("type", [
     .strict(),
   z
     .object({
+      type: z.literal("item-sets-completion"),
+      itemSetIds: z
+        .array(brandedContentIdSchema<"ItemSetId">())
+        .min(2)
+        .refine((ids) => new Set(ids).size === ids.length, "多套装条件不能重复引用同一套装"),
+      minimumPercent: completionPercentSchema,
+    })
+    .strict(),
+  z
+    .object({
       type: z.literal("global-completion"),
       minimumPercent: completionPercentSchema,
     })

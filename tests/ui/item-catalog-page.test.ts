@@ -80,7 +80,8 @@ describe("item catalog page", () => {
     expect(wrapper.text()).not.toContain("狼王斗篷");
     expect(wrapper.findAll(".set-card")).toHaveLength(0);
     const setSelect = wrapper.findAll(".catalog-filters select")[2]!;
-    expect(setSelect.attributes("disabled")).toBeDefined();
+    expect(setSelect.attributes("disabled")).toBeUndefined();
+    expect(setSelect.text()).toContain("全部套装");
 
     const dungeonSelect = wrapper.findAll(".catalog-filters select")[0]!;
     await dungeonSelect.setValue("wailing_caverns");

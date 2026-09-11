@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-11",
+        "notes": "60 级副本补全计划确认的中期里程碑与 Dungeon Set 1 总收藏展示记录。"
+      }
+    ]
+  },
+  "collectionRewards": [
+    {
+      "id": "blackrock_depths_conqueror",
+      "name": { "zhCN": "黑石深渊征服者" },
+      "description": { "zhCN": "首次击败达格兰·索瑞森大帝，完成黑石深渊阶段。" },
+      "condition": {
+        "type": "encounter-victory",
+        "encounterId": "brd_shadowforge_emperor_dagran_thaurissan"
+      },
+      "effects": [
+        { "type": "guild-funds", "amount": 1000 },
+        { "type": "display-record", "recordId": "blackrock_depths_conqueror" }
+      ],
+      "source": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-11",
+        "notes": "自动领取且幂等；加载已有首胜记录的旧存档时补发。"
+      }
+    },
+    {
+      "id": "dungeon_set_1_all_classes_complete",
+      "name": { "zhCN": "九职业地下城套装收藏家" },
+      "description": { "zhCN": "完整收录九职业共九套 Dungeon Set 1 基础装备。" },
+      "condition": {
+        "type": "item-sets-completion",
+        "itemSetIds": [
+          "dungeon_set_1_elements",
+          "dungeon_set_1_beaststalker",
+          "dungeon_set_1_magister",
+          "dungeon_set_1_devout",
+          "dungeon_set_1_dreadmist",
+          "dungeon_set_1_wildheart",
+          "dungeon_set_1_shadowcraft",
+          "dungeon_set_1_lightforge",
+          "dungeon_set_1_valor"
+        ],
+        "minimumPercent": 100
+      },
+      "effects": [{ "type": "display-record", "recordId": "dungeon_set_1_all_classes_complete" }],
+      "source": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-11",
+        "notes": "仅授予永久展示记录，不提供资金、战斗属性或管理功能。"
+      }
+    }
+  ]
+}

@@ -31,7 +31,7 @@
     {
       "id": "prototype_wailing_collection_set",
       "name": { "zhCN": "成套归档" },
-      "description": { "zhCN": "完成一套 Dungeon Set 1 收藏后解锁套装筛选。" },
+      "description": { "zhCN": "历史兼容奖励；套装筛选现已作为装备图鉴基础功能开放。" },
       "condition": {
         "type": "item-set-completion",
         "itemSetId": "dungeon_set_1_valor",
@@ -42,7 +42,7 @@
         "kind": "design-decision",
         "provider": "manual",
         "verifiedAt": "2026-09-08",
-        "notes": "保留旧奖励 ID 兼容已经领取的存档；正式条件改为完成勇气套装。"
+        "notes": "保留旧奖励 ID、条件与效果以兼容已领取存档；界面不再以此奖励作为套装筛选门槛。"
       }
     },
     {

@@ -61,7 +61,20 @@ export function evaluateCollectionReward(
   ).length;
   const totalItemCount = itemIds.size;
   const completionPercent = totalItemCount === 0 ? 0 : (acquiredItemCount / totalItemCount) * 100;
-  const conditionMet = completionPercent >= reward.condition.minimumPercent;
+  const conditionMet =
+    reward.condition.type === "item-sets-completion"
+      ? (() => {
+          const minimumPercent = reward.condition.minimumPercent;
+          return reward.condition.itemSetIds.every((itemSetId) => {
+            const setItemIds = content.itemSetById.get(itemSetId)?.itemIds ?? [];
+            if (setItemIds.length === 0) return false;
+            const acquired = setItemIds.filter(
+              (itemId) => state.collection.items[itemId] !== undefined,
+            ).length;
+            return (acquired / setItemIds.length) * 100 >= minimumPercent;
+          });
+        })()
+      : completionPercent >= reward.condition.minimumPercent;
   const claimed = state.collection.claimedRewardIds.includes(reward.id);
 
   return {
@@ -146,6 +159,13 @@ export function getCollectionRewardItemIds(
   if (condition.type === "item-set-completion") {
     return new Set(content.itemSetById.get(condition.itemSetId)?.itemIds ?? []);
   }
+  if (condition.type === "item-sets-completion") {
+    return new Set(
+      condition.itemSetIds.flatMap(
+        (itemSetId) => content.itemSetById.get(itemSetId)?.itemIds ?? [],
+      ),
+    );
+  }
 
   const dungeonIds =
     condition.type === "dungeon-completion"
@@ -161,4 +181,17 @@ export function getCollectionRewardItemIds(
     }
   }
   return itemIds;
+}
+
+export function applyEligibleAutomaticCollectionRewards(
+  state: GameState,
+  content: ContentRegistry,
+): readonly AppliedCollectionReward[] {
+  const applied: AppliedCollectionReward[] = [];
+  for (const reward of content.collectionRewards) {
+    if (reward.condition.type !== "encounter-victory") continue;
+    const eligibility = evaluateCollectionReward(state, content, reward.id);
+    if (eligibility.claimable) applied.push(applyCollectionReward(state, content, reward.id));
+  }
+  return applied;
 }

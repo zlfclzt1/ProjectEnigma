@@ -143,7 +143,11 @@ export interface ItemSetCatalogView extends CollectionProgressView {
 
 export interface CollectionRewardConditionView extends CollectionProgressView {
   readonly type:
-    "encounter-victory" | "dungeon-completion" | "item-set-completion" | "global-completion";
+    | "encounter-victory"
+    | "dungeon-completion"
+    | "item-set-completion"
+    | "item-sets-completion"
+    | "global-completion";
   readonly minimumPercent: number;
   readonly scopeName: string;
 }
@@ -353,7 +357,10 @@ export function getItemCatalogView(state: GameState, content: ContentRegistry): 
       if (reward.condition.type === "dungeon-completion") {
         return unlockedDungeonIds.has(reward.condition.dungeonId);
       }
-      return visibleSetIds.has(reward.condition.itemSetId);
+      if (reward.condition.type === "item-set-completion") {
+        return visibleSetIds.has(reward.condition.itemSetId);
+      }
+      return reward.condition.itemSetIds.every((itemSetId) => visibleSetIds.has(itemSetId));
     })
     .map((reward): CollectionRewardView => {
       const eligibility = evaluateCollectionReward(state, content, reward.id);
@@ -677,6 +684,16 @@ function rewardConditionView(
       type: condition.type,
       minimumPercent: condition.minimumPercent,
       scopeName: set?.name.zhCN ?? condition.itemSetId,
+      ...progress,
+    };
+  }
+  if (condition.type === "item-sets-completion") {
+    return {
+      type: condition.type,
+      minimumPercent: condition.minimumPercent,
+      scopeName: condition.itemSetIds
+        .map((itemSetId) => content.itemSetById.get(itemSetId)?.name.zhCN ?? itemSetId)
+        .join("、"),
       ...progress,
     };
   }

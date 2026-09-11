@@ -26,10 +26,6 @@ const acquired = ref<CatalogAcquiredFilter>("all");
 const pendingRewardId = ref<CollectionRewardId | null>(null);
 const rewardMessage = ref("");
 
-const setFilterUnlocked = computed(
-  () => game.itemCatalog?.unlockedManagementFeatureIds.includes("catalog_set_filter") ?? false,
-);
-
 const encounterOptions = computed(() => {
   const dungeons = game.itemCatalog?.dungeons ?? [];
   return dungeons
@@ -169,7 +165,6 @@ async function claimReward(rewardId: CollectionRewardId): Promise<void> {
       :dungeons="game.itemCatalog.dungeons"
       :encounter-options="encounterOptions"
       :set-options="setOptions"
-      :set-filter-unlocked="setFilterUnlocked"
       :suffix-options="suffixOptions"
       :dungeon-id="dungeonId"
       :encounter-id="encounterId"
