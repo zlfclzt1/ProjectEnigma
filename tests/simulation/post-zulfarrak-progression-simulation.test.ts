@@ -4,7 +4,7 @@ import { simulatePostZulfarrakProgression } from "../../scripts/post-zulfarrak-p
 import baseline from "../fixtures/post-zulfarrak-progression-baseline.json";
 
 describe("post-Zul'Farrak progression simulation", () => {
-  it("keeps old dungeons useful but reports the real content cap", () => {
+  it("reaches the current Shadowforge City content target deterministically", () => {
     const content = loadBrowserContentRegistry();
     const config = {
       seed: "post-zulfarrak-test",
@@ -15,14 +15,14 @@ describe("post-Zul'Farrak progression simulation", () => {
     const second = simulatePostZulfarrakProgression(content, config);
 
     expect(second).toEqual(first);
-    expect(first.status).toBe("content-cap");
-    expect(first.targetDungeonId).toBe("upper_blackrock_spire");
-    expect(first.targetReached).toBe(false);
-    expect(first.daysToTarget).toBeNull();
+    expect(first.status).toBe("target-reached");
+    expect(first.targetDungeonId).toBe("blackrock_depths_shadowforge_city");
+    expect(first.targetReached).toBe(true);
+    expect(first.daysToTarget).not.toBeNull();
     expect(first.levelCap).toBe(60);
     expect(first.highestAvailableRecommendedLevel).toBe(56);
-    expect(first.minimumCoreLevel).toBe(60);
-    expect(first.maximumCoreLevel).toBe(60);
+    expect(first.minimumCoreLevel).toBeGreaterThanOrEqual(45);
+    expect(first.maximumCoreLevel).toBeLessThanOrEqual(60);
     expect(first.activitiesStarted).toBeGreaterThan(0);
     expect(first.attemptedDungeonRuns).toBeGreaterThan(0);
     expect(first.attemptedDungeonIds).toContain("zulfarrak");
@@ -41,20 +41,20 @@ describe("post-Zul'Farrak progression simulation", () => {
     expect(baseline.startingState).toBe("zulfarrak-graduated-core-five-at-level-45");
     expect(baseline.target).toEqual({
       type: "dungeon-first-clear",
-      dungeonId: "upper_blackrock_spire",
+      dungeonId: "blackrock_depths_shadowforge_city",
     });
     expect(baseline.highestAvailableRecommendedLevel).toBe(56);
     expect(baseline.policy.levelCap).toBe(60);
     expect(baseline.policy.oldContent).toBe("all-nineteen-current-dungeons-remain-repeatable");
     expect(baseline.policy.expectedStop).toBe(
-      "content-cap-after-shadowforge-city-current-scope-complete",
+      "target-reached-at-shadowforge-city-current-scope-complete",
     );
     expect(baseline.policy.offlineIncome).toBe("none-outside-player-scheduled-activities");
     for (const scenario of baseline.scenarios) {
-      expect(scenario.outcomes["content-cap"]).toBe(baseline.sampleCount);
-      expect(scenario.outcomes["target-reached"]).toBe(0);
-      expect(scenario.minimumCoreLevel.p50).toBe(60);
-      expect(scenario.maximumCoreLevel.p90).toBe(60);
+      expect(scenario.outcomes["target-reached"]).toBe(baseline.sampleCount);
+      expect(scenario.outcomes["content-cap"]).toBe(0);
+      expect(scenario.minimumCoreLevel.p50).toBeGreaterThanOrEqual(45);
+      expect(scenario.maximumCoreLevel.p90).toBeLessThanOrEqual(60);
       expect(scenario.activitiesStarted.p50).toBeGreaterThan(0);
       expect(scenario.boostedRunCount.p50).toBe(1);
       expect(scenario.lootAssignments.p50 + scenario.lootSales.p50).toBeGreaterThan(0);

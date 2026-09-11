@@ -25,7 +25,7 @@ import type { NumericSummary } from "./progression-simulation";
 const DAY_MS = 24 * 60 * 60 * 1_000;
 const REASONABLE_CLEAR_PROBABILITY = 0.55;
 const BOOST_CLEAR_PROBABILITY = 0.8;
-const TARGET_DUNGEON_ID = asBrandedId<"DungeonId">("upper_blackrock_spire");
+const TARGET_DUNGEON_ID = asBrandedId<"DungeonId">("blackrock_depths_shadowforge_city");
 const GRADUATION_REWARD_ID = asBrandedId<"CollectionRewardId">("zulfarrak_level_45_graduation");
 const QUEUE_UPGRADE_ID = asBrandedId<"GuildUpgradeId">("expedition_queue_5");
 const ZULFARRAK_ID = asBrandedId<"DungeonId">("zulfarrak");
@@ -431,7 +431,7 @@ export interface PostZulfarrakProgressionBaseline {
     readonly normalRecruitment: "one-random-newcomer-boosted-once";
     readonly lootHandling: "auto-assign-after-each-player-scheduled-activity";
     readonly offlineIncome: "none-outside-player-scheduled-activities";
-    readonly expectedStop: "content-cap-after-shadowforge-city-current-scope-complete";
+    readonly expectedStop: "target-reached-at-shadowforge-city-current-scope-complete";
   };
   readonly highestAvailableRecommendedLevel: number;
   readonly scenarios: readonly PostZulfarrakScenarioSummary[];
@@ -496,7 +496,7 @@ export function buildPostZulfarrakProgressionBaseline(
       normalRecruitment: "one-random-newcomer-boosted-once",
       lootHandling: "auto-assign-after-each-player-scheduled-activity",
       offlineIncome: "none-outside-player-scheduled-activities",
-      expectedStop: "content-cap-after-shadowforge-city-current-scope-complete",
+      expectedStop: "target-reached-at-shadowforge-city-current-scope-complete",
     },
     highestAvailableRecommendedLevel: Math.max(
       ...content.dungeons.map((dungeon) => dungeon.recommendedLevel),
