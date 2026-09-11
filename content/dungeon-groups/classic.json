@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-11",
+        "notes": "副本作战室采用内容驱动的阶段和分支顺序；新增满级副本时在此扩展分支。"
+      }
+    ]
+  },
+  "groups": [
+    {
+      "id": "growth_dungeons_10_45",
+      "name": { "zhCN": "10–45 级成长副本" },
+      "order": 10,
+      "dungeonIds": [
+        "ragefire_chasm",
+        "wailing_caverns",
+        "deadmines",
+        "shadowfang_keep",
+        "the_stockade",
+        "blackfathom_deeps",
+        "razorfen_kraul",
+        "gnomeregan",
+        "scarlet_monastery_graveyard",
+        "scarlet_monastery_library",
+        "scarlet_monastery_armory",
+        "scarlet_monastery_cathedral",
+        "razorfen_downs",
+        "uldaman"
+      ]
+    },
+    {
+      "id": "advanced_dungeons_45_60",
+      "name": { "zhCN": "45–60 级进阶副本" },
+      "order": 20,
+      "dungeonIds": [
+        "zulfarrak",
+        "maraudon",
+        "sunken_temple",
+        "blackrock_depths_detention_block",
+        "blackrock_depths_shadowforge_city"
+      ]
+    }
+  ]
+}

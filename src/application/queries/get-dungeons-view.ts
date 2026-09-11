@@ -52,6 +52,14 @@ export interface DungeonOptionView {
   readonly partyPreview: DungeonPartyPreviewSummary | null;
 }
 
+export interface DungeonDisplayGroupView {
+  readonly id: import("../../domain/shared/ids").DungeonDisplayGroupId;
+  readonly name: string;
+  readonly pathName: string;
+  readonly depth: number;
+  readonly dungeons: readonly DungeonOptionView[];
+}
+
 export interface DungeonPartyPreviewSummary {
   readonly clearProbability: number | null;
   readonly durationSeconds: number | null;
@@ -211,6 +219,7 @@ export interface QuestRouteWarningView {
 
 export interface DungeonPlanningView {
   readonly dungeons: readonly DungeonOptionView[];
+  readonly dungeonGroups: readonly DungeonDisplayGroupView[];
   readonly selectedDungeon: DungeonOptionView | null;
   readonly members: readonly PartyMemberOptionView[];
   readonly classOptions: readonly {
@@ -359,38 +368,73 @@ function dungeonOptions(
   selectedMemberIds: readonly MemberId[],
   routeSelections: Readonly<Record<string, DungeonRouteSelectionInput>> = {},
 ): DungeonOptionView[] {
-  return content.dungeons
-    .map((dungeon) => ({
-      id: dungeon.id,
-      name: dungeon.name.zhCN,
-      minimumLevel: dungeon.minimumLevel,
-      recommendedLevel: dungeon.recommendedLevel,
-      minimumMembers: dungeon.members.minimum,
-      maximumMembers: dungeon.members.maximum,
-      recommendedMembers: dungeon.members.recommended,
-      recommendedRoleCounts: dungeon.members.recommendedRoles ?? {
-        tank: 1,
-        healer: 1,
-        dps: Math.max(0, dungeon.members.recommended - 2),
-      },
-      baseDurationSeconds: dungeon.duration.baseSeconds,
-      encounterCount: dungeon.route.length,
-      clearCount: state.history.dungeonClearCounts[dungeon.id] ?? 0,
-      unlocked: state.guild.unlockedDungeonIds.includes(dungeon.id),
-      unlockHint: unlockHint(state, content, dungeon),
-      partyPreview: dungeonPartyPreview(
-        state,
-        content,
-        dungeon,
-        selectedMemberIds,
-        routeSelections[dungeon.id],
+  return content.dungeons.map((dungeon) => ({
+    id: dungeon.id,
+    name: dungeon.name.zhCN,
+    minimumLevel: dungeon.minimumLevel,
+    recommendedLevel: dungeon.recommendedLevel,
+    minimumMembers: dungeon.members.minimum,
+    maximumMembers: dungeon.members.maximum,
+    recommendedMembers: dungeon.members.recommended,
+    recommendedRoleCounts: dungeon.members.recommendedRoles ?? {
+      tank: 1,
+      healer: 1,
+      dps: Math.max(0, dungeon.members.recommended - 2),
+    },
+    baseDurationSeconds: dungeon.duration.baseSeconds,
+    encounterCount: dungeon.route.length,
+    clearCount: state.history.dungeonClearCounts[dungeon.id] ?? 0,
+    unlocked: state.guild.unlockedDungeonIds.includes(dungeon.id),
+    unlockHint: unlockHint(state, content, dungeon),
+    partyPreview: dungeonPartyPreview(
+      state,
+      content,
+      dungeon,
+      selectedMemberIds,
+      routeSelections[dungeon.id],
+    ),
+  }));
+}
+
+function dungeonDisplayGroups(
+  content: ContentRegistry,
+  dungeons: readonly DungeonOptionView[],
+): DungeonDisplayGroupView[] {
+  const dungeonById = new Map(dungeons.map((dungeon) => [dungeon.id, dungeon]));
+  const childrenByParent = new Map<string | undefined, typeof content.dungeonDisplayGroups>();
+  for (const group of content.dungeonDisplayGroups) {
+    const children = childrenByParent.get(group.parentId) ?? [];
+    childrenByParent.set(group.parentId, [...children, group]);
+  }
+  for (const [parentId, children] of childrenByParent) {
+    childrenByParent.set(
+      parentId,
+      [...children].sort(
+        (left, right) => left.order - right.order || left.id.localeCompare(right.id),
       ),
-    }))
-    .sort(
-      (left, right) =>
-        Number(right.unlocked) - Number(left.unlocked) ||
-        left.recommendedLevel - right.recommendedLevel,
     );
+  }
+  const output: DungeonDisplayGroupView[] = [];
+  const visit = (
+    group: ContentRegistry["dungeonDisplayGroups"][number],
+    parentNames: readonly string[],
+  ): void => {
+    const names = [...parentNames, group.name.zhCN];
+    const children = childrenByParent.get(group.id) ?? [];
+    if (children.length > 0) {
+      for (const child of children) visit(child, names);
+      return;
+    }
+    output.push({
+      id: group.id,
+      name: group.name.zhCN,
+      pathName: names.join(" · "),
+      depth: names.length - 1,
+      dungeons: (group.dungeonIds ?? []).map((id) => dungeonById.get(id)!),
+    });
+  };
+  for (const root of childrenByParent.get(undefined) ?? []) visit(root, []);
+  return output;
 }
 
 function partyMembers(state: GameState, content: ContentRegistry): PartyMemberOptionView[] {
@@ -430,6 +474,7 @@ export function getDungeonPlanningView(
   routeSelections: Readonly<Record<string, DungeonRouteSelectionInput>> = {},
 ): DungeonPlanningView {
   const dungeons = dungeonOptions(state, content, selectedMemberIds, routeSelections);
+  const dungeonGroups = dungeonDisplayGroups(content, dungeons);
   const selectedDungeon =
     dungeons.find((dungeon) => dungeon.id === dungeonId) ??
     dungeons.find((dungeon) => dungeon.unlocked) ??
@@ -658,6 +703,7 @@ export function getDungeonPlanningView(
 
   return {
     dungeons,
+    dungeonGroups,
     selectedDungeon,
     members,
     classOptions: content.classes.map((definition) => ({

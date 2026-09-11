@@ -250,7 +250,7 @@ async function deletePreset(presetId: RosterPresetId): Promise<void> {
 
     <div class="planning-grid">
       <DungeonSelector
-        :dungeons="planning.dungeons"
+        :groups="planning.dungeonGroups"
         :selected-id="planning.selectedDungeon?.id ?? null"
         :selected-member-levels="
           planning.members

@@ -27,6 +27,7 @@ import type { CapabilityDefinition } from "./schemas/capability";
 import type { MechanicDefinition } from "./schemas/mechanic";
 import type { SpecCapabilityProgression } from "./schemas/spec-capability";
 import type { DungeonQuestDefinition } from "./schemas/quest";
+import type { DungeonDisplayGroupDefinition } from "./schemas/dungeon-display-group";
 
 class ReadonlyMapView<Key, Value> implements ReadonlyMap<Key, Value> {
   readonly #source: Map<Key, Value>;
@@ -213,6 +214,7 @@ export class ContentRegistry {
   readonly itemSuffixes: readonly ItemSuffixDefinition[];
   readonly collectionRewards: readonly CollectionRewardDefinition[];
   readonly dungeons: readonly DungeonDefinition[];
+  readonly dungeonDisplayGroups: readonly DungeonDisplayGroupDefinition[];
   readonly encounters: readonly EncounterDefinition[];
   readonly lootTables: readonly LootTable[];
   readonly logTemplates: readonly LogTemplateGroup[];
@@ -240,6 +242,10 @@ export class ContentRegistry {
     CollectionRewardDefinition
   >;
   readonly dungeonById: ReadonlyMap<DungeonDefinition["id"], DungeonDefinition>;
+  readonly dungeonDisplayGroupById: ReadonlyMap<
+    DungeonDisplayGroupDefinition["id"],
+    DungeonDisplayGroupDefinition
+  >;
   readonly encounterById: ReadonlyMap<EncounterDefinition["id"], EncounterDefinition>;
   readonly lootTableById: ReadonlyMap<LootTable["id"], LootTable>;
   readonly logTemplateById: ReadonlyMap<LogTemplateGroup["id"], LogTemplateGroup>;
@@ -267,6 +273,7 @@ export class ContentRegistry {
     const itemSuffixById = buildIndex(loaded.itemSuffixes, issues, "随机词缀");
     const collectionRewardById = buildIndex(loaded.collectionRewards, issues, "收藏奖励");
     const dungeonById = buildIndex(loaded.dungeons, issues, "副本");
+    const dungeonDisplayGroupById = buildIndex(loaded.dungeonDisplayGroups, issues, "副本展示分组");
     const encounterById = buildIndex(loaded.encounters, issues, "首领战");
     const lootTableById = buildIndex(loaded.lootTables, issues, "掉落表");
     const logTemplateById = buildIndex(loaded.logTemplates, issues, "日志模板");
@@ -313,6 +320,7 @@ export class ContentRegistry {
       mechanicById,
       issues,
     );
+    this.validateDungeonDisplayGroups(loaded, dungeonById, dungeonDisplayGroupById, issues);
     this.validateMechanicReferences(loaded, capabilityById, issues);
     this.validateSpecCapabilityReferences(
       loaded,
@@ -343,6 +351,9 @@ export class ContentRegistry {
     this.itemSuffixes = Object.freeze(loaded.itemSuffixes.map(({ value }) => value));
     this.collectionRewards = Object.freeze(loaded.collectionRewards.map(({ value }) => value));
     this.dungeons = Object.freeze(loaded.dungeons.map(({ value }) => value));
+    this.dungeonDisplayGroups = Object.freeze(
+      loaded.dungeonDisplayGroups.map(({ value }) => value),
+    );
     this.encounters = Object.freeze(loaded.encounters.map(({ value }) => value));
     this.lootTables = Object.freeze(loaded.lootTables.map(({ value }) => value));
     this.logTemplates = Object.freeze(loaded.logTemplates.map(({ value }) => value));
@@ -363,6 +374,7 @@ export class ContentRegistry {
     this.itemSuffixById = readonlyMap(itemSuffixById);
     this.collectionRewardById = readonlyMap(collectionRewardById);
     this.dungeonById = readonlyMap(dungeonById);
+    this.dungeonDisplayGroupById = readonlyMap(dungeonDisplayGroupById);
     this.encounterById = readonlyMap(encounterById);
     this.lootTableById = readonlyMap(lootTableById);
     this.logTemplateById = readonlyMap(logTemplateById);
@@ -371,6 +383,101 @@ export class ContentRegistry {
     this.namePoolByLocale = readonlyMap(namePoolByLocale);
     this.questById = readonlyMap(questById);
     Object.freeze(this);
+  }
+
+  private validateDungeonDisplayGroups(
+    loaded: LoadedContent,
+    dungeonById: ReadonlyMap<DungeonDefinition["id"], DungeonDefinition>,
+    groupById: ReadonlyMap<DungeonDisplayGroupDefinition["id"], DungeonDisplayGroupDefinition>,
+    issues: ContentValidationIssue[],
+  ): void {
+    const childrenByParent = new Map<string, DungeonDisplayGroupDefinition["id"][]>();
+    const ownersById = new Map(loaded.dungeonDisplayGroups.map((owner) => [owner.value.id, owner]));
+    const siblingOrders = new Map<string, Set<number>>();
+    const dungeonOwners = new Map<DungeonDefinition["id"], string[]>();
+
+    for (const owner of loaded.dungeonDisplayGroups) {
+      const group = owner.value;
+      const parentKey = group.parentId ?? "<root>";
+      const orders = siblingOrders.get(parentKey) ?? new Set<number>();
+      if (orders.has(group.order)) {
+        issues.push({
+          filePath: owner.filePath,
+          fieldPath: `${owner.fieldPath}.order`,
+          message: `同级副本展示分组顺序 ${group.order} 重复`,
+        });
+      }
+      orders.add(group.order);
+      siblingOrders.set(parentKey, orders);
+      if (group.parentId) {
+        requireReference(groupById, group.parentId, owner, "parentId", "父展示分组", issues);
+        const children = childrenByParent.get(group.parentId) ?? [];
+        children.push(group.id);
+        childrenByParent.set(group.parentId, children);
+      }
+      for (const [index, dungeonId] of (group.dungeonIds ?? []).entries()) {
+        requireReference(dungeonById, dungeonId, owner, `dungeonIds[${index}]`, "副本", issues);
+        const owners = dungeonOwners.get(dungeonId) ?? [];
+        owners.push(group.id);
+        dungeonOwners.set(dungeonId, owners);
+      }
+    }
+
+    const states = new Map<DungeonDisplayGroupDefinition["id"], "visiting" | "visited">();
+    const stack: DungeonDisplayGroupDefinition["id"][] = [];
+    const visit = (groupId: DungeonDisplayGroupDefinition["id"]): void => {
+      states.set(groupId, "visiting");
+      stack.push(groupId);
+      const parentId = groupById.get(groupId)?.parentId;
+      if (parentId && groupById.has(parentId)) {
+        if (states.get(parentId) === "visiting") {
+          const owner = ownersById.get(groupId)!;
+          const start = stack.indexOf(parentId);
+          issues.push({
+            filePath: owner.filePath,
+            fieldPath: `${owner.fieldPath}.parentId`,
+            message: `副本展示分组存在循环：${[...stack.slice(start), parentId].join(" -> ")}`,
+            invalidReferenceId: parentId,
+          });
+        } else if (!states.has(parentId)) visit(parentId);
+      }
+      stack.pop();
+      states.set(groupId, "visited");
+    };
+    for (const groupId of groupById.keys()) if (!states.has(groupId)) visit(groupId);
+
+    for (const owner of loaded.dungeonDisplayGroups) {
+      const group = owner.value;
+      const hasChildren = (childrenByParent.get(group.id)?.length ?? 0) > 0;
+      const dungeonCount = group.dungeonIds?.length ?? 0;
+      if (hasChildren && dungeonCount > 0) {
+        issues.push({
+          filePath: owner.filePath,
+          fieldPath: `${owner.fieldPath}.dungeonIds`,
+          message: "包含子分组的父分组不能直接引用副本",
+        });
+      } else if (!hasChildren && dungeonCount === 0) {
+        issues.push({
+          filePath: owner.filePath,
+          fieldPath: `${owner.fieldPath}.dungeonIds`,
+          message: "叶级副本展示分组必须至少引用一座副本",
+        });
+      }
+    }
+
+    for (const dungeon of loaded.dungeons) {
+      const owners = dungeonOwners.get(dungeon.value.id) ?? [];
+      if (owners.length === 1) continue;
+      issues.push({
+        filePath: dungeon.filePath,
+        fieldPath: `${dungeon.fieldPath}.id`,
+        message:
+          owners.length === 0
+            ? "副本未加入任何叶级展示分组"
+            : `副本被多个展示分组引用：${owners.join("、")}`,
+        invalidReferenceId: dungeon.value.id,
+      });
+    }
   }
 
   private validateMemberReferences(

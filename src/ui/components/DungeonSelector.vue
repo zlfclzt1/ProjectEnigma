@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import type { DungeonOptionView } from "../../application/queries/get-dungeons-view";
+import type {
+  DungeonDisplayGroupView,
+  DungeonOptionView,
+} from "../../application/queries/get-dungeons-view";
 import type { DungeonId } from "../../domain/shared/ids";
 
 type LevelBand = "all" | "1-19" | "20-29" | "30-39" | "40-49" | "50+";
-type SortBy = "level" | "success" | "duration";
+type SortBy = "content" | "level" | "success" | "duration";
 
 const props = defineProps<{
-  dungeons: readonly DungeonOptionView[];
+  groups: readonly DungeonDisplayGroupView[];
   selectedId: DungeonId | null;
   selectedMemberLevels: readonly number[];
 }>();
@@ -16,8 +19,8 @@ const emit = defineEmits<{ select: [dungeonId: DungeonId] }>();
 
 const search = ref("");
 const levelBand = ref<LevelBand>("all");
-const sortBy = ref<SortBy>("level");
-const lockedExpanded = ref(false);
+const sortBy = ref<SortBy>("content");
+const collapsedGroupIds = ref<string[]>([]);
 
 function durationLabel(seconds: number): string {
   return `${Math.round(seconds / 60)} 分钟`;
@@ -40,14 +43,6 @@ function matchesFilters(dungeon: DungeonOptionView): boolean {
   );
 }
 
-function recommendedForParty(dungeon: DungeonOptionView): boolean {
-  return (
-    dungeon.unlocked &&
-    props.selectedMemberLevels.length > 0 &&
-    props.selectedMemberLevels.every((level) => level >= dungeon.minimumLevel)
-  );
-}
-
 function sortValue(dungeon: DungeonOptionView): number {
   if (sortBy.value === "success") return dungeon.partyPreview?.clearProbability ?? -1;
   if (sortBy.value === "duration") {
@@ -57,6 +52,7 @@ function sortValue(dungeon: DungeonOptionView): number {
 }
 
 function sortDungeons(dungeons: readonly DungeonOptionView[]): DungeonOptionView[] {
+  if (sortBy.value === "content") return [...dungeons];
   return [...dungeons].sort((left, right) => {
     const difference = sortValue(left) - sortValue(right);
     if (difference !== 0) return sortBy.value === "success" ? -difference : difference;
@@ -64,27 +60,30 @@ function sortDungeons(dungeons: readonly DungeonOptionView[]): DungeonOptionView
   });
 }
 
-const filteredDungeons = computed(() => props.dungeons.filter(matchesFilters));
-const recommendedDungeons = computed(() =>
-  sortDungeons(filteredDungeons.value.filter(recommendedForParty)),
+const filteredGroups = computed(() =>
+  props.groups
+    .map((group) => ({
+      ...group,
+      dungeons: sortDungeons(group.dungeons.filter(matchesFilters)),
+    }))
+    .filter((group) => group.dungeons.length > 0),
 );
-const availableDungeons = computed(() =>
-  sortDungeons(
-    filteredDungeons.value.filter((dungeon) => dungeon.unlocked && !recommendedForParty(dungeon)),
-  ),
-);
-const lockedDungeons = computed(() =>
-  sortDungeons(filteredDungeons.value.filter((dungeon) => !dungeon.unlocked)),
-);
-const resultCount = computed(() => filteredDungeons.value.length);
-const showLockedEntries = computed(
-  () => lockedExpanded.value || search.value.trim().length > 0 || levelBand.value !== "all",
+const resultCount = computed(() =>
+  filteredGroups.value.reduce((sum, group) => sum + group.dungeons.length, 0),
 );
 
-function familyLabel(dungeon: DungeonOptionView): string | null {
-  if (dungeon.name.startsWith("血色修道院")) return "血色修道院";
-  if (dungeon.name.startsWith("黑石深渊")) return "黑石深渊";
-  return null;
+function groupExpanded(groupId: string): boolean {
+  return (
+    !collapsedGroupIds.value.includes(groupId) ||
+    search.value.trim().length > 0 ||
+    levelBand.value !== "all"
+  );
+}
+
+function toggleGroup(groupId: string): void {
+  collapsedGroupIds.value = collapsedGroupIds.value.includes(groupId)
+    ? collapsedGroupIds.value.filter((id) => id !== groupId)
+    : [...collapsedGroupIds.value, groupId];
 }
 
 function selectDungeon(dungeon: DungeonOptionView): void {
@@ -121,6 +120,7 @@ function selectDungeon(dungeon: DungeonOptionView): void {
       <label>
         <span>排序</span>
         <select v-model="sortBy">
+          <option value="content">阶段顺序</option>
           <option value="level">推荐等级</option>
           <option value="success">成功率</option>
           <option value="duration">单次耗时</option>
@@ -134,140 +134,63 @@ function selectDungeon(dungeon: DungeonOptionView): void {
     </div>
 
     <nav class="dungeon-list" aria-label="副本列表">
-      <section v-if="recommendedDungeons.length" class="dungeon-section">
-        <header>
-          <strong>适合当前阵容</strong>
-          <small>成员均达到最低等级</small>
-        </header>
-        <button
-          v-for="dungeon in recommendedDungeons"
-          :key="dungeon.id"
-          type="button"
-          class="dungeon-option"
-          :class="{ selected: dungeon.id === selectedId }"
-          @click="selectDungeon(dungeon)"
-        >
-          <span class="option-title">
-            <strong>{{ dungeon.name }}</strong>
-            <span class="option-aside">
-              <em v-if="familyLabel(dungeon)">{{ familyLabel(dungeon) }}</em>
-              <b
-                v-if="dungeon.partyPreview"
-                class="success-badge"
-                :class="{ ready: dungeon.partyPreview.clearProbability !== null }"
-              >
-                {{
-                  dungeon.partyPreview.clearProbability !== null
-                    ? `${(dungeon.partyPreview.clearProbability * 100).toFixed(2)}%`
-                    : "待组队"
-                }}
-              </b>
-            </span>
-          </span>
-          <span class="option-metrics">
-            <span>
-              <small>耗时</small>
-              <strong>{{
-                durationLabel(dungeon.partyPreview?.durationSeconds ?? dungeon.baseDurationSeconds)
-              }}</strong>
-            </span>
-            <span>
-              <small>等级 / 人数</small>
-              <strong
-                >{{ dungeon.recommendedLevel }} · {{ dungeon.minimumMembers }}–{{
-                  dungeon.maximumMembers
-                }}</strong
-              >
-            </span>
-          </span>
-        </button>
-      </section>
-
-      <section v-if="availableDungeons.length" class="dungeon-section">
-        <header>
-          <strong>已解锁</strong>
-          <small>{{
-            selectedMemberLevels.length ? "当前阵容未完全达标" : "选择成员后显示适合项"
-          }}</small>
-        </header>
-        <button
-          v-for="dungeon in availableDungeons"
-          :key="dungeon.id"
-          type="button"
-          class="dungeon-option"
-          :class="{ selected: dungeon.id === selectedId }"
-          @click="selectDungeon(dungeon)"
-        >
-          <span class="option-title">
-            <strong>{{ dungeon.name }}</strong>
-            <span class="option-aside">
-              <em v-if="familyLabel(dungeon)">{{ familyLabel(dungeon) }}</em>
-              <b
-                v-if="dungeon.partyPreview"
-                class="success-badge"
-                :class="{ ready: dungeon.partyPreview.clearProbability !== null }"
-              >
-                {{
-                  dungeon.partyPreview.clearProbability !== null
-                    ? `${(dungeon.partyPreview.clearProbability * 100).toFixed(2)}%`
-                    : "待组队"
-                }}
-              </b>
-            </span>
-          </span>
-          <span class="option-metrics">
-            <span>
-              <small>耗时</small>
-              <strong>{{
-                durationLabel(dungeon.partyPreview?.durationSeconds ?? dungeon.baseDurationSeconds)
-              }}</strong>
-            </span>
-            <span>
-              <small>等级 / 人数</small>
-              <strong
-                >{{ dungeon.recommendedLevel }} · {{ dungeon.minimumMembers }}–{{
-                  dungeon.maximumMembers
-                }}</strong
-              >
-            </span>
-          </span>
-        </button>
-      </section>
-
-      <section v-if="lockedDungeons.length" class="dungeon-section locked-section">
+      <section v-for="group in filteredGroups" :key="group.id" class="dungeon-section">
         <button
           type="button"
           class="section-toggle"
-          :aria-expanded="showLockedEntries"
-          @click="lockedExpanded = !lockedExpanded"
+          :aria-expanded="groupExpanded(group.id)"
+          @click="toggleGroup(group.id)"
         >
-          <span
-            ><strong>未解锁</strong><small>{{ lockedDungeons.length }} 个副本</small></span
-          >
-          <em>{{ showLockedEntries ? "收起" : "展开" }}</em>
+          <span>
+            <strong>{{ group.pathName }}</strong>
+            <small>{{ group.dungeons.length }} 个副本</small>
+          </span>
+          <em>{{ groupExpanded(group.id) ? "收起" : "展开" }}</em>
         </button>
-        <template v-if="showLockedEntries">
+        <template v-if="groupExpanded(group.id)">
           <button
-            v-for="dungeon in lockedDungeons"
+            v-for="dungeon in group.dungeons"
             :key="dungeon.id"
             type="button"
-            class="dungeon-option locked"
-            :class="{ selected: dungeon.id === selectedId }"
+            class="dungeon-option"
+            :class="{ selected: dungeon.id === selectedId, locked: !dungeon.unlocked }"
             @click="selectDungeon(dungeon)"
           >
             <span class="option-title">
               <strong>{{ dungeon.name }}</strong>
               <span class="option-aside">
-                <em v-if="familyLabel(dungeon)">{{ familyLabel(dungeon) }}</em>
-                <b class="success-badge unavailable">未解锁</b>
+                <b
+                  v-if="dungeon.partyPreview && dungeon.unlocked"
+                  class="success-badge"
+                  :class="{ ready: dungeon.partyPreview.clearProbability !== null }"
+                >
+                  {{
+                    dungeon.partyPreview.clearProbability !== null
+                      ? (dungeon.partyPreview.clearProbability * 100).toFixed(2) + "%"
+                      : "待组队"
+                  }}
+                </b>
+                <b v-else-if="!dungeon.unlocked" class="success-badge unavailable">未解锁</b>
               </span>
             </span>
             <span class="option-metrics">
               <span>
-                <small>推荐等级</small>
-                <strong>{{ dungeon.recommendedLevel }}</strong>
+                <small>耗时</small>
+                <strong>{{
+                  durationLabel(
+                    dungeon.partyPreview?.durationSeconds ?? dungeon.baseDurationSeconds,
+                  )
+                }}</strong>
               </span>
-              <span class="unlock-copy">{{ dungeon.unlockHint }}</span>
+              <span>
+                <small>等级 / 人数</small>
+                <strong
+                  >{{ dungeon.recommendedLevel }} · {{ dungeon.minimumMembers }}–{{
+                    dungeon.maximumMembers
+                  }}</strong
+                >
+              </span>
+              <span v-if="!dungeon.unlocked" class="unlock-copy">{{ dungeon.unlockHint }}</span>
             </span>
           </button>
         </template>

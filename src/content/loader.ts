@@ -46,6 +46,10 @@ import {
   type SpecDefinition,
 } from "./schemas/member-definitions";
 import { dungeonQuestDefinitionFileSchema, type DungeonQuestDefinition } from "./schemas/quest";
+import {
+  dungeonDisplayGroupDefinitionFileSchema,
+  type DungeonDisplayGroupDefinition,
+} from "./schemas/dungeon-display-group";
 
 export type RawContentModules = Readonly<Record<string, unknown>>;
 
@@ -103,6 +107,7 @@ export interface LoadedContent {
   readonly itemSuffixes: readonly LocatedContent<ItemSuffixDefinition>[];
   readonly collectionRewards: readonly LocatedContent<CollectionRewardDefinition>[];
   readonly dungeons: readonly LocatedContent<DungeonDefinition>[];
+  readonly dungeonDisplayGroups: readonly LocatedContent<DungeonDisplayGroupDefinition>[];
   readonly encounters: readonly LocatedContent<EncounterDefinition>[];
   readonly lootTables: readonly LocatedContent<LootTable>[];
   readonly logTemplates: readonly LocatedContent<LogTemplateGroup>[];
@@ -171,6 +176,11 @@ const DIRECTORY_DESCRIPTORS: Readonly<Record<string, FileDescriptor>> = {
     collection: "dungeons",
     property: "dungeons",
   },
+  "dungeon-groups": {
+    schema: dungeonDisplayGroupDefinitionFileSchema,
+    collection: "dungeonDisplayGroups",
+    property: "groups",
+  },
   encounters: {
     schema: encounterDefinitionFileSchema,
     collection: "encounters",
@@ -216,6 +226,7 @@ function emptyLoadedContent(): MutableLoadedContent {
     itemSuffixes: [],
     collectionRewards: [],
     dungeons: [],
+    dungeonDisplayGroups: [],
     encounters: [],
     lootTables: [],
     logTemplates: [],

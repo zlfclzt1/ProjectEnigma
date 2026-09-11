@@ -14,6 +14,7 @@ export type CollectionRewardId = BrandedId<"CollectionRewardId">;
 export type ContentVersion = BrandedId<"ContentVersion">;
 export type DisplayRecordId = BrandedId<"DisplayRecordId">;
 export type DungeonId = BrandedId<"DungeonId">;
+export type DungeonDisplayGroupId = BrandedId<"DungeonDisplayGroupId">;
 export type DungeonRouteNodeId = BrandedId<"DungeonRouteNodeId">;
 export type DungeonRouteVariantId = BrandedId<"DungeonRouteVariantId">;
 export type EnchantmentId = BrandedId<"EnchantmentId">;
