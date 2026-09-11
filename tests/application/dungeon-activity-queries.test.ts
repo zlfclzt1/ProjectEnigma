@@ -327,6 +327,40 @@ describe("dungeon and activity queries", () => {
     expect(view.active[0]).not.toHaveProperty("runPlans");
   });
 
+  it("sorts active activities by settlement time and then stable activity ID", () => {
+    const game = state();
+    const memberIds = Object.values(game.members).map((member) => member.id);
+    const registry = new ActivityRegistry();
+    registry.register(createExpeditionActivityHandler(content));
+    const scheduler = new ActivityScheduler(registry);
+    const started = scheduler.start<StartExpeditionRequest, ExpeditionActivity>(
+      game,
+      {
+        type: "expedition",
+        dungeonId: asBrandedId<"DungeonId">("ragefire_chasm"),
+        participantIds: memberIds,
+        requestedRuns: 1,
+      },
+      1_000,
+      { ids: new LocalIdGenerator(game.ids), random: new SeededRandomSource("activity-sort") },
+    );
+    expect(started.status).toBe("started");
+    if (started.status !== "started") throw new Error("Expected expedition to start");
+
+    const first = structuredClone(started.activity);
+    first.id = asBrandedId<"ActivityId">("activity_b");
+    first.nextSettlementAt = 20_000;
+    const second = structuredClone(started.activity);
+    second.id = asBrandedId<"ActivityId">("activity_a");
+    second.nextSettlementAt = 20_000;
+    game.activities = { [first.id]: first, [second.id]: second };
+
+    expect(getActivitiesView(game, content, 1_000).active.map((activity) => activity.id)).toEqual([
+      "activity_a",
+      "activity_b",
+    ]);
+  });
+
   it("explains soft mechanic penalties and hard Boss blockers", () => {
     const softContent = contentWithMechanic("test_recommended_magic_dispel");
     const softState = createNewGame({

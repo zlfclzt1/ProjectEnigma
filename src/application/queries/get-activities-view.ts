@@ -264,7 +264,11 @@ export function getActivitiesView(
   return {
     active: expeditions
       .filter((activity) => activity.status === "active" || activity.status === "scheduled")
-      .sort((left, right) => (left.nextSettlementAt ?? 0) - (right.nextSettlementAt ?? 0)),
+      .sort(
+        (left, right) =>
+          (left.nextSettlementAt ?? 0) - (right.nextSettlementAt ?? 0) ||
+          left.id.localeCompare(right.id),
+      ),
     history: expeditions
       .filter((activity) => !["active", "scheduled"].includes(activity.status))
       .reverse(),
