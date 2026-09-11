@@ -4,7 +4,7 @@ import { rankLootAssignment } from "../../domain/equipment/loot-assignment-ranki
 import type { GameState } from "../../domain/game-state";
 import { assignLoot, assertLootUnlocked } from "./assign-loot";
 import { sellLoot } from "./sell-loot";
-import type { MemberId, PendingLootId } from "../../domain/shared/ids";
+import type { ActivityId, MemberId, PendingLootId } from "../../domain/shared/ids";
 
 export interface AutoAssignLootEntryResult {
   readonly pendingLootId: PendingLootId;
@@ -22,16 +22,23 @@ export interface AutoAssignLootResult {
   readonly entries: readonly AutoAssignLootEntryResult[];
 }
 
-export function autoAssignLootCommand(content: ContentRegistry): GameCommand<AutoAssignLootResult> {
+export function autoAssignLootCommand(
+  content: ContentRegistry,
+  activityId?: ActivityId,
+): GameCommand<AutoAssignLootResult> {
   return {
     type: "auto-assign-loot",
     execute(draft) {
-      return autoAssignLoot(draft, content);
+      return autoAssignLoot(draft, content, activityId);
     },
   };
 }
 
-export function autoAssignLoot(state: GameState, content: ContentRegistry): AutoAssignLootResult {
+export function autoAssignLoot(
+  state: GameState,
+  content: ContentRegistry,
+  activityId?: ActivityId,
+): AutoAssignLootResult {
   let assigned = 0;
   let sold = 0;
   let locked = 0;
@@ -41,6 +48,7 @@ export function autoAssignLoot(state: GameState, content: ContentRegistry): Auto
     (left, right) => left.acquiredAt - right.acquiredAt || left.id.localeCompare(right.id),
   );
   for (const pending of pendingLoot) {
+    if (activityId && pending.sourceActivityId !== activityId) continue;
     try {
       assertLootUnlocked(state, pending.sourceActivityId);
     } catch {

@@ -468,9 +468,11 @@ export const useGameStore = defineStore("game", () => {
     return execute(sellLootCommand(content, pendingLootId));
   }
 
-  async function autoAssignLoot(): Promise<GameCommandOutcome<unknown>> {
+  async function autoAssignLoot(
+    activityId?: import("../domain/shared/ids").ActivityId,
+  ): Promise<GameCommandOutcome<unknown>> {
     if (!content) return unavailableOutcome("auto-assign-loot");
-    return execute(autoAssignLootCommand(content));
+    return execute(autoAssignLootCommand(content, activityId));
   }
 
   function lootPlan(
@@ -479,6 +481,12 @@ export const useGameStore = defineStore("game", () => {
   ) {
     return stateSnapshot.value && content
       ? getLootPlanView(stateSnapshot.value, content, overrides, activityId)
+      : null;
+  }
+
+  function autoLootPreviewForActivity(activityId?: import("../domain/shared/ids").ActivityId) {
+    return stateSnapshot.value && content
+      ? getAutoLootPreview(stateSnapshot.value, content, activityId)
       : null;
   }
 
@@ -527,6 +535,7 @@ export const useGameStore = defineStore("game", () => {
     guildUpgrades,
     itemCatalog,
     autoLootPreview,
+    autoLootPreviewForActivity,
     rosterPresets,
     dungeonDevelopment,
     initialize,

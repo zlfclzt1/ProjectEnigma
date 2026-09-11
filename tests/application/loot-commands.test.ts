@@ -138,6 +138,22 @@ describe("manual loot commands", () => {
 });
 
 describe("automatic loot assignment", () => {
+  it("can limit one-click assignment to the selected activity", async () => {
+    const state = idleFixture();
+    const member = Object.values(state.members)[0]!;
+    const selected = addPendingLoot(state, 1, "14149", [member.id]);
+    const other = addPendingLoot(state, 2, "14149", [member.id]);
+    const session = await createSession(state);
+
+    const result = await session.execute(autoAssignLootCommand(content, selected.activityId));
+
+    expect(result.status).toBe("committed");
+    if (result.status !== "committed") throw new Error("Expected scoped automatic assignment");
+    expect(result.result.assigned + result.result.sold).toBe(1);
+    expect(session.snapshot().pendingLoot[selected.pendingId]).toBeUndefined();
+    expect(session.snapshot().pendingLoot[other.pendingId]).toBeDefined();
+  });
+
   it("equips a positive item-level upgrade and sells loot nobody can use", async () => {
     const state = idleFixture();
     const warrior = Object.values(state.members)[0]!;

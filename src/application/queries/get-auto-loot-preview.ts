@@ -3,7 +3,7 @@ import { equipmentSellValue } from "../../domain/equipment/item-value";
 import { rankLootAssignment } from "../../domain/equipment/loot-assignment-ranking";
 import { resolveItemInstance } from "../../domain/equipment/resolve-item-instance";
 import type { GameState } from "../../domain/game-state";
-import type { MemberId, PendingLootId } from "../../domain/shared/ids";
+import type { ActivityId, MemberId, PendingLootId } from "../../domain/shared/ids";
 import { assignLoot, assertLootUnlocked } from "../commands/assign-loot";
 import { sellLoot } from "../commands/sell-loot";
 
@@ -27,7 +27,11 @@ export interface AutoLootPreview {
   readonly projectedSaleProceeds: number;
 }
 
-export function getAutoLootPreview(state: GameState, content: ContentRegistry): AutoLootPreview {
+export function getAutoLootPreview(
+  state: GameState,
+  content: ContentRegistry,
+  activityId?: ActivityId,
+): AutoLootPreview {
   const simulated = structuredClone(state);
   const entries: AutoLootPreviewEntry[] = [];
   let lockedCount = 0;
@@ -36,6 +40,7 @@ export function getAutoLootPreview(state: GameState, content: ContentRegistry): 
     (left, right) => left.acquiredAt - right.acquiredAt || left.id.localeCompare(right.id),
   );
   for (const pending of pendingLoot) {
+    if (activityId && pending.sourceActivityId !== activityId) continue;
     try {
       assertLootUnlocked(simulated, pending.sourceActivityId);
     } catch {

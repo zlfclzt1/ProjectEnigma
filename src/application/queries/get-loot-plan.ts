@@ -73,9 +73,8 @@ export function getLootPlanView(
   let replacedCount = 0;
   let projectedSaleProceeds = 0;
 
-  const pendingIds = Object.values(state.pendingLoot)
-    .filter((entry) => !activityId || entry.sourceActivityId === activityId)
-    .sort((left, right) => left.acquiredAt - right.acquiredAt || left.id.localeCompare(right.id))
+  const pendingIds = initial.pending
+    .filter((entry) => !activityId || entry.activityId === activityId)
     .map((entry) => entry.id);
 
   for (const pendingLootId of pendingIds) {

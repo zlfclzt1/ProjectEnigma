@@ -58,6 +58,7 @@ describe("loot page", () => {
     expect(wrapper.findAll(".queue-entry")).toHaveLength(4);
     expect(wrapper.text()).toContain("活动掉落");
     expect(wrapper.text()).toContain("掉落自");
+    const queueNames = wrapper.findAll(".queue-entry").map((entry) => entry.text());
     const assignEntry = wrapper
       .findAll(".queue-entry")
       .find((entry) => !entry.text().includes("出售"))!;
@@ -79,6 +80,7 @@ describe("loot page", () => {
     await flushPromises();
     expect(game.loot?.pending).toHaveLength(3);
     expect(wrapper.text()).toContain(`${candidateName} 获得了`);
+    expect(wrapper.find(".queue-entry.selected").text()).toContain(queueNames[2]!);
 
     await wrapper.find(".sell-button").trigger("click");
     await flushPromises();

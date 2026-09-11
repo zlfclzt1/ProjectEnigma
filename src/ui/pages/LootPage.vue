@@ -10,6 +10,7 @@ const selectedActivityId = ref<ActivityId | null>(null);
 const selectedLootId = ref<PendingLootId | null>(null);
 const notice = ref("");
 const confirmingNoUpgradeSale = ref(false);
+const confirmingAutoAssign = ref(false);
 const confirmingSingleSale = ref<PendingLootId | null>(null);
 const confirmingAssignment = ref<{ pendingLootId: PendingLootId; memberId: MemberId } | null>(null);
 
@@ -28,6 +29,9 @@ const activitySessions = computed(() => {
   return [...sessions.values()];
 });
 const plan = computed(() => game.lootPlan([], selectedActivityId.value ?? undefined));
+const autoPreview = computed(() =>
+  game.autoLootPreviewForActivity(selectedActivityId.value ?? undefined),
+);
 const selectedEntry = computed(() =>
   plan.value?.entries.find((entry) => entry.pendingLootId === selectedLootId.value),
 );
@@ -84,6 +88,7 @@ function chooseSale(pendingLootId: PendingLootId): void {
 async function confirmAssignment(): Promise<void> {
   const request = confirmingAssignment.value;
   if (!request) return;
+  const previousOrder = plan.value?.entries.map((entry) => entry.pendingLootId) ?? [];
   const entry = plan.value?.entries.find(
     (candidate) => candidate.pendingLootId === request.pendingLootId,
   );
@@ -95,7 +100,7 @@ async function confirmAssignment(): Promise<void> {
   const result = outcome.result as { saleProceeds: number };
   confirmingAssignment.value = null;
   notice.value = `${candidate.name} 获得了「${entry.item.name}」${result.saleProceeds ? `，替换装备回收 ${result.saleProceeds} G` : ""}。`;
-  selectNextEntry(request.pendingLootId);
+  selectNextEntry(request.pendingLootId, previousOrder);
 }
 
 async function confirmNoUpgradeSale(): Promise<void> {
@@ -107,22 +112,52 @@ async function confirmNoUpgradeSale(): Promise<void> {
   selectedLootId.value = plan.value?.entries[0]?.pendingLootId ?? null;
 }
 
+async function confirmAutoAssign(): Promise<void> {
+  const activityId = selectedActivityId.value;
+  if (!activityId) return;
+  const outcome = await game.autoAssignLoot(activityId);
+  if (!outcome.ok) return;
+  const result = outcome.result as {
+    assigned: number;
+    sold: number;
+    locked: number;
+    saleProceeds: number;
+  };
+  confirmingAutoAssign.value = false;
+  notice.value = `自动分配完成：分配 ${result.assigned} 件，出售 ${result.sold} 件，公会金增加 ${result.saleProceeds} G。`;
+  selectedLootId.value = null;
+}
+
 async function confirmSingleSale(): Promise<void> {
   const pendingLootId = confirmingSingleSale.value;
   if (!pendingLootId) return;
+  const previousOrder = plan.value?.entries.map((entry) => entry.pendingLootId) ?? [];
   const entry = plan.value?.entries.find((candidate) => candidate.pendingLootId === pendingLootId);
   if (!entry) return;
   const outcome = await game.sellLoot(pendingLootId);
   if (!outcome.ok) return;
   confirmingSingleSale.value = null;
   notice.value = `已将「${entry.item.name}」出售，公会金增加 ${outcome.result} G。`;
-  selectNextEntry(pendingLootId);
+  selectNextEntry(pendingLootId, previousOrder);
 }
 
-function selectNextEntry(removedId: PendingLootId): void {
+function selectNextEntry(removedId: PendingLootId, previousOrder: readonly PendingLootId[]): void {
   const remaining = plan.value?.entries ?? [];
-  const next = remaining.find((entry) => entry.pendingLootId !== removedId);
-  selectedLootId.value = next?.pendingLootId ?? null;
+  if (remaining.length === 0) {
+    selectedLootId.value = null;
+    return;
+  }
+  const remainingIds = new Set(remaining.map((entry) => entry.pendingLootId));
+  const removedIndex = previousOrder.indexOf(removedId);
+  const nextId =
+    (removedIndex >= 0
+      ? previousOrder.slice(removedIndex + 1).find((id) => remainingIds.has(id))
+      : undefined) ??
+    (removedIndex >= 0
+      ? [...previousOrder.slice(0, removedIndex)].reverse().find((id) => remainingIds.has(id))
+      : undefined) ??
+    remaining[0]?.pendingLootId;
+  selectedLootId.value = nextId ?? null;
 }
 
 function percent(value: number | undefined): string {
@@ -143,6 +178,13 @@ function percent(value: number | undefined): string {
         </p>
       </div>
       <div class="heading-actions">
+        <button
+          type="button"
+          :disabled="game.commandPending || !autoPreview?.entries.length"
+          @click="confirmingAutoAssign = true"
+        >
+          一键自动分配
+        </button>
         <button
           type="button"
           class="secondary"
@@ -379,6 +421,32 @@ function percent(value: number | undefined): string {
           </button>
           <button type="button" :disabled="game.commandPending" @click="confirmNoUpgradeSale">
             确认出售
+          </button>
+        </footer>
+      </section>
+    </div>
+
+    <div
+      v-if="confirmingAutoAssign && autoPreview?.entries.length"
+      class="modal-backdrop"
+      @click.self="confirmingAutoAssign = false"
+    >
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="auto-assign-title">
+        <h3 id="auto-assign-title">一键自动分配本次活动？</h3>
+        <p>
+          系统将按提升排序自动分配 {{ autoPreview.assignedCount }} 件装备，并出售
+          {{ autoPreview.soldCount }} 件无人获得主职责提升的装备，预计增加
+          {{ autoPreview.projectedSaleProceeds }} G 公会金。
+          <span v-if="autoPreview.lockedCount"
+            >另有 {{ autoPreview.lockedCount }} 件仍被锁定。</span
+          >
+        </p>
+        <footer>
+          <button type="button" class="secondary" @click="confirmingAutoAssign = false">
+            取消
+          </button>
+          <button type="button" :disabled="game.commandPending" @click="confirmAutoAssign">
+            确认自动分配
           </button>
         </footer>
       </section>
