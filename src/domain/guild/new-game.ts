@@ -31,6 +31,25 @@ export interface NewGameOptions {
   readonly guildName?: string;
 }
 
+export const MAX_GUILD_NAME_LENGTH = 20;
+
+export function normalizeGuildName(name: string): string {
+  const normalized = name.trim();
+  if (!normalized) throw new Error("请为你的公会命名。");
+  if (
+    [...normalized].some((character) => {
+      const codePoint = character.codePointAt(0) ?? 0;
+      return codePoint <= 31 || codePoint === 127;
+    })
+  ) {
+    throw new Error("公会名称不能包含换行或控制字符。");
+  }
+  if ([...normalized].length > MAX_GUILD_NAME_LENGTH) {
+    throw new Error(`公会名称最多 ${MAX_GUILD_NAME_LENGTH} 个字符。`);
+  }
+  return normalized;
+}
+
 const INITIAL_ROLES = ["tank", "healer", "dps", "dps", "dps"] as const;
 
 export function createNewGame(
@@ -70,7 +89,7 @@ export function createNewGame(
     revision: 0,
     contentVersion: dependencies.contentVersion,
     guild: {
-      name: options.guildName?.trim() || "神秘公会",
+      name: options.guildName === undefined ? "神秘公会" : normalizeGuildName(options.guildName),
       funds: 100,
       candidateCapacity: 10,
       purchasedUpgradeIds: [],

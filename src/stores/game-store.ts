@@ -63,7 +63,7 @@ import type {
   SpecId,
 } from "../domain/shared/ids";
 
-export type GameStoreStatus = "idle" | "loading" | "ready" | "error";
+export type GameStoreStatus = "idle" | "loading" | "needs-setup" | "ready" | "error";
 export type GameStoreErrorKind = "initialization" | "command" | "conflict" | "missing-save";
 
 export interface GameStoreError {
@@ -172,7 +172,19 @@ export const useGameStore = defineStore("game", () => {
     if (session) stateSnapshot.value = getGameSnapshot(session);
   }
 
-  async function initialize(bootstrap: () => Promise<V2ClientBootstrapResult>): Promise<boolean> {
+  function adoptBootstrapResult(result: V2ClientBootstrapResult): void {
+    session = markRaw(result.session);
+    content = markRaw(result.content);
+    clock = markRaw(result.clock);
+    origin.value = result.origin;
+    now.value = clock.now();
+    refreshSnapshot();
+    status.value = "ready";
+  }
+
+  async function initialize(
+    bootstrap: () => Promise<V2ClientBootstrapResult | null>,
+  ): Promise<boolean> {
     if (status.value === "ready") return true;
     if (initialization) return initialization;
     status.value = "loading";
@@ -180,13 +192,11 @@ export const useGameStore = defineStore("game", () => {
     initialization = (async () => {
       try {
         const result = await bootstrap();
-        session = markRaw(result.session);
-        content = markRaw(result.content);
-        clock = markRaw(result.clock);
-        origin.value = result.origin;
-        now.value = clock.now();
-        refreshSnapshot();
-        status.value = "ready";
+        if (!result) {
+          status.value = "needs-setup";
+          return false;
+        }
+        adoptBootstrapResult(result);
         return true;
       } catch (reason) {
         error.value = { kind: "initialization", message: messageOf(reason) };
@@ -197,6 +207,20 @@ export const useGameStore = defineStore("game", () => {
       }
     })();
     return initialization;
+  }
+
+  async function createNewGame(create: () => Promise<V2ClientBootstrapResult>): Promise<boolean> {
+    if (status.value !== "needs-setup" && status.value !== "error") return false;
+    status.value = "loading";
+    error.value = null;
+    try {
+      adoptBootstrapResult(await create());
+      return true;
+    } catch (reason) {
+      error.value = { kind: "initialization", message: messageOf(reason) };
+      status.value = "needs-setup";
+      return false;
+    }
   }
 
   async function execute<Result>(
@@ -501,6 +525,7 @@ export const useGameStore = defineStore("game", () => {
     rosterPresets,
     dungeonDevelopment,
     initialize,
+    createNewGame,
     execute,
     tick,
     paidRefreshCandidate,

@@ -1,7 +1,7 @@
-import { expect, test } from "./fixtures";
+import { expect, openGame, test } from "./fixtures";
 
 test("browses the unlocked item catalog without revealing locked loot", async ({ page }) => {
-  await page.goto("");
+  await openGame(page);
   await page.getByRole("link", { name: "装备图鉴" }).click();
   await expect(page).toHaveURL(/#\/catalog$/);
   await expect(page.getByRole("heading", { name: "装备图鉴" })).toBeVisible();
@@ -20,7 +20,7 @@ test("browses the unlocked item catalog without revealing locked loot", async ({
 
 test("keeps the catalog usable at a narrow mobile width", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/#/catalog");
+  await openGame(page, "/#/catalog");
 
   await expect(page.getByRole("heading", { name: "装备图鉴" })).toBeVisible();
   await expect(page.locator(".catalog-filters select")).toHaveCount(7);
@@ -30,7 +30,7 @@ test("keeps the catalog usable at a narrow mobile width", async ({ page }) => {
 });
 
 test("claims collection rewards once and persists their effects", async ({ page }) => {
-  await page.goto("");
+  await openGame(page);
   await page.evaluate(async () => {
     const request = indexedDB.open("mystery-guild-master-v2");
     const database = await new Promise<IDBDatabase>((resolve, reject) => {

@@ -1,7 +1,7 @@
-import { expect, test } from "./fixtures";
+import { expect, openGame, test } from "./fixtures";
 
 test("saves, manages, and reapplies a fixed team", async ({ page }) => {
-  await page.goto("");
+  await openGame(page);
   await page.getByRole("link", { name: "副本组队" }).click();
 
   const members = page.locator('.party-builder input[type="checkbox"]');

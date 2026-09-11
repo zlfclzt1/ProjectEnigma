@@ -1,7 +1,7 @@
-import { expect, test } from "./fixtures";
+import { expect, openGame, test } from "./fixtures";
 
 test("persists application commands in isolated IndexedDB across reloads", async ({ page }) => {
-  await page.goto("");
+  await openGame(page);
   await page.getByRole("link", { name: "招募大厅" }).click();
   await expect(page.locator("article.candidate-card")).toHaveCount(3);
 

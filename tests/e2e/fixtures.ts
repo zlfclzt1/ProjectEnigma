@@ -28,3 +28,13 @@ export async function advanceTestClock(page: Page, milliseconds: number): Promis
     runtime.__MYSTERY_TEST_NOW__ = (runtime.__MYSTERY_TEST_NOW__ ?? Date.now()) + amount;
   }, milliseconds);
 }
+
+export async function openGame(page: Page, target = ""): Promise<void> {
+  await page.goto(target);
+  const guildName = page.getByLabel("公会名称");
+  if (await guildName.isVisible().catch(() => false)) {
+    await guildName.fill("测试远征团");
+    await page.getByRole("button", { name: "开始远征" }).click();
+    await expect(page.getByLabel("版本 V2")).toBeVisible();
+  }
+}

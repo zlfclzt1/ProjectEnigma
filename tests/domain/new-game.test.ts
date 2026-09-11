@@ -60,6 +60,28 @@ describe("V2 new game factory", () => {
     expect(first.ids.counter).toBeGreaterThan(0);
   });
 
+  it("normalizes and validates an explicitly chosen guild name", () => {
+    const dependencies = {
+      slotId: asBrandedId<"SaveSlotId">("named-slot"),
+      content,
+      contentVersion,
+      clock: new FakeClock(1_000_000),
+      ids: new LocalIdGenerator(),
+      random: new SeededRandomSource("named-guild"),
+    };
+
+    expect(createNewGame(dependencies, { guildName: "  暮色远征团  " }).guild.name).toBe(
+      "暮色远征团",
+    );
+    expect(() => createNewGame(dependencies, { guildName: "   " })).toThrow("请为你的公会命名");
+    expect(() => createNewGame(dependencies, { guildName: "暮色\n远征团" })).toThrow(
+      "不能包含换行",
+    );
+    expect(() => createNewGame(dependencies, { guildName: "一".repeat(21) })).toThrow(
+      "最多 20 个字符",
+    );
+  });
+
   it("equips every initial member with definition-backed starter instances", () => {
     const state = newGame();
     const instances = Object.values(state.itemInstances);

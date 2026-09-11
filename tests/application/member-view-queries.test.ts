@@ -136,7 +136,7 @@ describe("member view queries", () => {
 
     const detail = getMemberDetailView(game, content, member.id)!;
     const item = detail.equipment.find((slot) => slot.item?.instanceId === instance.id)!.item!;
-    expect(item.iconUrl).toMatch(/^https:\/\/wow\.zamimg\.com\/images\/wow\/icons\/large\//);
+    expect(item.iconUrl).toMatch(/^\/assets\/item-icons\/[a-z0-9_]+\.jpg$/);
     expect(item.stats.length).toBeGreaterThan(0);
     expect(item.statsSource).toMatch(/^Wowhead Classic · 2026-09-0[89]$/);
     expect(item.acquisitionSource).toContain("怒焰裂谷");

@@ -29,9 +29,9 @@ export interface V2ClientBootstrapResult {
 const DEFAULT_SLOT_ID = asBrandedId<"SaveSlotId">("primary");
 const DEFAULT_CONTENT_VERSION = asBrandedId<"ContentVersion">("classic-v1");
 
-export async function loadOrCreateV2Client(
+export async function loadExistingV2Client(
   dependencies: V2ClientBootstrapDependencies,
-): Promise<V2ClientBootstrapResult> {
+): Promise<V2ClientBootstrapResult | null> {
   const slotId = dependencies.slotId ?? DEFAULT_SLOT_ID;
   const persisted = await dependencies.saves.load(slotId);
   if (persisted) {
@@ -53,21 +53,39 @@ export async function loadOrCreateV2Client(
     };
   }
 
-  const session = await createNewGameSession({
-    saves: dependencies.saves,
-    slotId,
-    content: dependencies.content,
-    contentVersion: dependencies.contentVersion ?? DEFAULT_CONTENT_VERSION,
-    clock: dependencies.clock,
-    ids: new LocalIdGenerator(),
-    random: new SeededRandomSource(
-      dependencies.seed ?? `browser-new-game:${slotId}:${dependencies.clock.now()}`,
-    ),
-  });
+  return null;
+}
+
+export async function createV2Client(
+  dependencies: V2ClientBootstrapDependencies,
+  guildName: string,
+): Promise<V2ClientBootstrapResult> {
+  const slotId = dependencies.slotId ?? DEFAULT_SLOT_ID;
+
+  const session = await createNewGameSession(
+    {
+      saves: dependencies.saves,
+      slotId,
+      content: dependencies.content,
+      contentVersion: dependencies.contentVersion ?? DEFAULT_CONTENT_VERSION,
+      clock: dependencies.clock,
+      ids: new LocalIdGenerator(),
+      random: new SeededRandomSource(
+        dependencies.seed ?? `browser-new-game:${slotId}:${dependencies.clock.now()}`,
+      ),
+    },
+    { guildName },
+  );
   return {
     session,
     origin: "created",
     content: dependencies.content,
     clock: dependencies.clock,
   };
+}
+
+export async function loadOrCreateV2Client(
+  dependencies: V2ClientBootstrapDependencies,
+): Promise<V2ClientBootstrapResult> {
+  return (await loadExistingV2Client(dependencies)) ?? createV2Client(dependencies, "神秘公会");
 }

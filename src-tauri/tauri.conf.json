@@ -1,0 +1,29 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "艾泽拉斯公会志",
+  "version": "0.1.0-alpha.1",
+  "identifier": "io.github.zlfclzt1.azeroth-guild-chronicle",
+  "build": {
+    "frontendDist": "../dist",
+    "beforeDevCommand": "npm run build",
+    "beforeBuildCommand": "npm run build"
+  },
+  "app": {
+    "windows": [],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["dmg"],
+    "category": "SimulationGame",
+    "shortDescription": "一款单机放置公会经营游戏",
+    "longDescription": "招募成员、组织远征、挑战经典副本，并决定每一件战利品的归属。",
+    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns"],
+    "macOS": {
+      "minimumSystemVersion": "13.3",
+      "hardenedRuntime": false
+    }
+  }
+}

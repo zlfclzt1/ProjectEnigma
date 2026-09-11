@@ -1,0 +1,17 @@
+Original image-generation prompt, 2026-09-11:
+
+Create a polished original macOS application icon, square 1024x1024. A heavy
+timeworn guild chronicle book viewed nearly front-on with subtle three-quarter
+depth, thick dark leather cover in midnight navy and deep burgundy, antique
+gold corner fittings and page edges. Centered on the cover is an original
+embossed round golden guild seal featuring a refined quill crossing a subtle
+five-point adventuring-party formation, purely abstract and not resembling any
+existing game faction, crest, rune, logo, or symbol. Rich painterly 3D material
+detail, premium game icon finish, warm dramatic rim light, strong readable
+silhouette at small sizes. Rounded macOS icon composition with transparent
+background outside the rounded-square object. No text, no letters, no
+watermark, no World of Warcraft or Warcraft symbols, no Blizzard logos.
+
+The image-generation result could not be exported into the shared workspace,
+so assets/app-icon.svg is the repository-bound original vector realization of
+the same approved direction and is the source used for packaging.

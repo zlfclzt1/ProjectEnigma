@@ -79,7 +79,7 @@ describe("loot and combat report queries", () => {
     expect(locked.pending[0]?.candidates.map((candidate) => candidate.memberId)).toEqual(
       expect.arrayContaining(memberIds),
     );
-    expect(locked.pending[0]?.item.iconUrl).toContain("wow.zamimg.com");
+    expect(locked.pending[0]?.item.iconUrl).toMatch(/^\/assets\/item-icons\/[a-z0-9_]+\.jpg$/);
 
     clock.set(24 * 60 * 60 * 1_000);
     await settleDueActivitiesCommand({ content, clock }).execute(state);

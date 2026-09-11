@@ -1,6 +1,6 @@
 {
   "name": "mystery-guild-master",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.1",
   "private": true,
   "type": "module",
   "engines": {
@@ -9,6 +9,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "desktop:dev": "tauri dev",
+    "desktop:build": "tauri build --target aarch64-apple-darwin",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
@@ -33,11 +35,14 @@
     "post-zulfarrak:baseline:check": "node --import tsx scripts/simulate-post-zulfarrak-progression.ts --check",
     "post-zulfarrak:baseline:write": "node --import tsx scripts/simulate-post-zulfarrak-progression.ts --write",
     "simulate:dungeons": "node --import tsx scripts/simulate-dungeons.ts 100000",
-    "simulate:dungeon": "node --import tsx scripts/simulate-dungeon.ts"
+    "simulate:dungeon": "node --import tsx scripts/simulate-dungeon.ts",
+    "item-icons:sync": "node --import tsx scripts/sync-item-icons.ts",
+    "item-icons:check": "node --import tsx scripts/sync-item-icons.ts --check"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.63.0",
+    "@tauri-apps/cli": "^2.11.4",
     "@types/node": "^26.5.0",
     "@vitejs/plugin-vue": "^6.0.8",
     "@vue/test-utils": "^2.5.0",

@@ -1,8 +1,8 @@
-import { expect, test } from "./fixtures";
+import { expect, openGame, test } from "./fixtures";
 
 test("purchases the next guild expansion and persists its capacity", async ({ page }) => {
-  await page.goto("");
-  await expect(page.getByRole("heading", { name: "神秘公会" })).toBeVisible();
+  await openGame(page);
+  await expect(page.getByRole("heading", { name: "测试远征团" })).toBeVisible();
 
   await page.evaluate(async () => {
     const request = indexedDB.open("mystery-guild-master-v2");

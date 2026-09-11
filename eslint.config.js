@@ -9,6 +9,7 @@ export default tseslint.config(
       "node_modules/",
       "data/",
       "docs/",
+      "src-tauri/target/",
       "src/*.js",
       "scripts/*.mjs",
       "tests/*.mjs",

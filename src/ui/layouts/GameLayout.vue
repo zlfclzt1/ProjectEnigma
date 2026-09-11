@@ -29,7 +29,7 @@ defineProps<{
     </section>
 
     <section v-if="loading" class="status-card" aria-live="polite">
-      <span class="rune">M</span>
+      <span class="rune">羽</span>
       <div>
         <h2>正在翻阅公会账本</h2>
         <p>加载存档与内容注册表……</p>

@@ -1,5 +1,5 @@
 import type { Page } from "@playwright/test";
-import { advanceTestClock, expect, test } from "./fixtures";
+import { advanceTestClock, expect, openGame, test } from "./fixtures";
 
 const DATABASE_NAME = "mystery-guild-master-v2";
 const SAVE_STORE = "saves";
@@ -225,8 +225,8 @@ async function updateSave(
 test("completes the playable zulfarrak stage and keeps the guild running", async ({ page }) => {
   test.setTimeout(90_000);
   await test.step("start a new guild and recruit a sixth member", async () => {
-    await page.goto("");
-    await expect(page.getByRole("heading", { name: "神秘公会" })).toBeVisible();
+    await openGame(page);
+    await expect(page.getByRole("heading", { name: "测试远征团" })).toBeVisible();
     await page.getByRole("link", { name: "招募大厅" }).click();
     await expect(page.locator(".toolbar")).toContainText("成员 5 / 10");
     await page.getByRole("button", { name: "加入公会" }).first().click();

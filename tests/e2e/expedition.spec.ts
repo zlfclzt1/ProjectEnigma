@@ -1,7 +1,7 @@
-import { advanceTestClock, expect, test } from "./fixtures";
+import { advanceTestClock, expect, openGame, test } from "./fixtures";
 
 test("starts an expedition, advances its route, and exposes a combat report", async ({ page }) => {
-  await page.goto("");
+  await openGame(page);
   await page.getByRole("link", { name: "副本组队" }).click();
 
   const members = page.locator('.member-options input[type="checkbox"]');

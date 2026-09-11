@@ -4,7 +4,7 @@
 
 ## 技术栈
 
-当前客户端使用 Vue、Pinia、Vue Router、Dexie 和 TypeScript，业务逻辑按领域、应用、基础设施和 UI 分层。正式内容通过 Schema 验证后载入只读注册表，本地存档使用 IndexedDB。
+当前客户端使用 Vue、Pinia、Vue Router、Dexie 和 TypeScript，业务逻辑按领域、应用、基础设施和 UI 分层。正式内容通过 Schema 验证后载入只读注册表。浏览器开发模式使用 IndexedDB，macOS 发行版由桌面启动器管理 Application Support 中的 JSON 存档。
 
 ## 本地运行
 
@@ -14,6 +14,23 @@
 npm install
 npm run dev
 ```
+
+## macOS Alpha 打包
+
+需要 Rust stable、Apple Silicon Mac 和 Tauri 的系统构建依赖。
+
+```bash
+npm run item-icons:check
+npm run desktop:build
+```
+
+生成的 DMG 位于：
+
+```text
+src-tauri/target/aarch64-apple-darwin/release/bundle/dmg/
+```
+
+桌面启动器不创建 WebView 窗口，而是在随机回环端口提供内嵌前端、打开默认浏览器，并通过菜单栏维持生命周期。桌面存档写入 macOS Application Support；浏览器开发模式仍使用 IndexedDB。
 
 开发服务器固定使用 `http://localhost:4173/`。
 
@@ -106,7 +123,7 @@ tests/                   领域、应用、Store、组件和 Playwright 测试
 
 ## 存档与开发数据
 
-- 当前客户端存档使用 IndexedDB。
+- 浏览器开发模式存档使用 IndexedDB；macOS 发行版存档由桌面启动器保管。
 - 检测到旧版独立存档时，客户端会提示创建新公会，不会删除旧数据。
 - 开发阶段允许删除 V2 IndexedDB 后重新开档。
 

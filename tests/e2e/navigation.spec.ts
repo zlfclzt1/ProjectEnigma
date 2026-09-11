@@ -1,7 +1,7 @@
-import { expect, test } from "./fixtures";
+import { expect, openGame, test } from "./fixtures";
 
 test("keeps member filters while navigating without bouncing pages", async ({ page }) => {
-  await page.goto("");
+  await openGame(page);
   await page.getByRole("link", { name: "公会成员" }).click();
   await expect(page).toHaveURL(/#\/members$/);
 

@@ -499,7 +499,7 @@ function projectItem(
     icon: structuredClone(definition.icon),
     ...(definition.icon.kind === "database"
       ? {
-          iconUrl: `https://wow.zamimg.com/images/wow/icons/large/${encodeURIComponent(definition.icon.name)}.jpg`,
+          iconUrl: `/assets/item-icons/${encodeURIComponent(definition.icon.name)}.jpg`,
         }
       : {}),
     stats: structuredClone(definition.stats),

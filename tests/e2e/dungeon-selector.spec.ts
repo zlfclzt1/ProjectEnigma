@@ -1,7 +1,7 @@
-import { expect, test } from "./fixtures";
+import { expect, openGame, test } from "./fixtures";
 
 test("keeps the dungeon page compact and searches the full dungeon catalog", async ({ page }) => {
-  await page.goto("");
+  await openGame(page);
   await page.getByRole("link", { name: "副本组队" }).click();
 
   await expect(page.locator(".current-dungeon")).toContainText("怒焰裂谷");
@@ -26,7 +26,7 @@ test("keeps the dungeon page compact and searches the full dungeon catalog", asy
 
 test("uses a single-column dungeon picker at a narrow viewport", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("");
+  await openGame(page);
   await page.getByRole("link", { name: "副本组队" }).click();
   await page.getByRole("button", { name: "切换副本" }).click();
 
@@ -40,7 +40,7 @@ test("uses a single-column dungeon picker at a narrow viewport", async ({ page }
 test("previews the selected lineup's base clear chance while switching dungeons", async ({
   page,
 }) => {
-  await page.goto("");
+  await openGame(page);
   await page.getByRole("link", { name: "副本组队" }).click();
   const members = page.locator('.party-builder input[type="checkbox"]');
   for (let index = 0; index < 5; index += 1) await members.nth(index).check();

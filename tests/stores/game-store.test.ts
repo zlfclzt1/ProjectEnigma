@@ -2,7 +2,11 @@ import { createPinia, setActivePinia } from "pinia";
 import { isReadonly } from "vue";
 import { beforeEach, describe, expect, it } from "vitest";
 import type { SaveRepository, SaveResult } from "../../src/application/ports/save-repository";
-import { loadOrCreateV2Client } from "../../src/app/client-bootstrap";
+import {
+  createV2Client,
+  loadExistingV2Client,
+  loadOrCreateV2Client,
+} from "../../src/app/client-bootstrap";
 import { loadBrowserContentRegistry } from "../../src/content/manifest";
 import type { GameState } from "../../src/domain/game-state";
 import { asBrandedId } from "../../src/domain/shared/ids";
@@ -50,6 +54,20 @@ describe("game store", () => {
       memberCount: 5,
       candidateCount: 3,
     });
+  });
+
+  it("waits for first-launch setup and adopts the newly named guild", async () => {
+    const store = useGameStore();
+    const deps = dependencies();
+
+    await expect(store.initialize(() => loadExistingV2Client(deps))).resolves.toBe(false);
+    expect(store.status).toBe("needs-setup");
+    expect(store.snapshot).toBeNull();
+
+    await expect(store.createNewGame(() => createV2Client(deps, "暮色议会"))).resolves.toBe(true);
+    expect(store.status).toBe("ready");
+    expect(store.snapshot?.guild.name).toBe("暮色议会");
+    expect(store.diagnostics).toMatchObject({ origin: "created", memberCount: 5 });
   });
 
   it("runs application commands and refreshes its isolated snapshot after commit", async () => {
