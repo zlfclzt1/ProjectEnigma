@@ -1,7 +1,7 @@
 import type { ContentRegistry } from "../../content/registry";
 import { rankLootAssignment } from "../../domain/equipment/loot-assignment-ranking";
 import type { GameState } from "../../domain/game-state";
-import type { MemberId, PendingLootId } from "../../domain/shared/ids";
+import type { ActivityId, MemberId, PendingLootId } from "../../domain/shared/ids";
 import { assignLoot } from "../commands/assign-loot";
 import { sellLoot } from "../commands/sell-loot";
 import { getLootView, type LootCandidateView, type PendingLootView } from "./get-loot-view";
@@ -16,9 +16,15 @@ export type LootPlanOverride =
 
 export interface LootPlanEntryView {
   readonly pendingLootId: PendingLootId;
+  readonly activityId: PendingLootView["activityId"];
+  readonly encounterId?: PendingLootView["encounterId"];
+  readonly acquiredAt: number;
   readonly item: PendingLootView["item"];
+  readonly activityName: string;
   readonly dungeonName: string;
   readonly encounterName: string;
+  readonly activityOrder: number;
+  readonly encounterOrder: number;
   readonly saleValue: number;
   readonly recommendedAction: "assign" | "sell";
   readonly recommendedMemberId?: MemberId;
@@ -48,9 +54,13 @@ export function getLootPlanView(
   state: GameState,
   content: ContentRegistry,
   overrides: readonly LootPlanOverride[] = [],
+  activityId?: ActivityId,
 ): LootPlanView {
   const initial = getLootView(state, content);
-  const immediateNoUpgrade = initial.pending.filter(
+  const scopedPending = activityId
+    ? initial.pending.filter((entry) => entry.activityId === activityId)
+    : initial.pending;
+  const immediateNoUpgrade = scopedPending.filter(
     (entry) =>
       !entry.locked &&
       !entry.candidates.some(
@@ -64,6 +74,7 @@ export function getLootPlanView(
   let projectedSaleProceeds = 0;
 
   const pendingIds = Object.values(state.pendingLoot)
+    .filter((entry) => !activityId || entry.sourceActivityId === activityId)
     .sort((left, right) => left.acquiredAt - right.acquiredAt || left.id.localeCompare(right.id))
     .map((entry) => entry.id);
 
@@ -107,9 +118,15 @@ export function getLootPlanView(
     projectedSaleProceeds += proceeds;
     entries.push({
       pendingLootId,
+      activityId: current.activityId,
+      ...(current.encounterId ? { encounterId: current.encounterId } : {}),
+      acquiredAt: current.acquiredAt,
       item: current.item,
+      activityName: current.activityName,
       dungeonName: current.dungeonName,
       encounterName: current.encounterName,
+      activityOrder: current.activityOrder,
+      encounterOrder: current.encounterOrder,
       saleValue: current.saleValue,
       recommendedAction,
       ...(recommendedMemberId ? { recommendedMemberId } : {}),
@@ -137,7 +154,7 @@ export function getLootPlanView(
 
   return {
     entries,
-    locked: initial.pending.filter((entry) => entry.locked),
+    locked: scopedPending.filter((entry) => entry.locked),
     assignedCount: entries.filter((entry) => entry.action === "assign").length,
     soldCount: entries.filter((entry) => entry.action === "sell").length,
     replacedCount,

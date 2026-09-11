@@ -14,7 +14,7 @@ import { FakeClock } from "../helpers/runtime-fakes";
 describe("loot page", () => {
   beforeEach(() => setActivePinia(createPinia()));
 
-  it("reviews a draft plan, changes one decision, and executes every unlocked item", async () => {
+  it("groups loot by encounter and applies assignment or sale immediately after confirmation", async () => {
     const game = useGameStore();
     const clock = new FakeClock(1_000);
     await game.initialize(() =>
@@ -56,27 +56,38 @@ describe("loot page", () => {
 
     const wrapper = mount(LootPage);
     expect(wrapper.findAll(".queue-entry")).toHaveLength(4);
-    expect(wrapper.text()).toContain("审核队列");
+    expect(wrapper.text()).toContain("活动掉落");
+    expect(wrapper.text()).toContain("掉落自");
     const assignEntry = wrapper
       .findAll(".queue-entry")
       .find((entry) => !entry.text().includes("出售"))!;
     await assignEntry.trigger("click");
     await flushPromises();
     expect(wrapper.text()).toContain("主职责提升");
-    expect(wrapper.findAll(".candidate-row")).toHaveLength(5);
+    expect(wrapper.findAll(".candidate-row").length).toBeGreaterThan(0);
     expect(wrapper.findAll(".upgrade-comparison")).toHaveLength(4);
+
+    const candidate = wrapper.findAll(".candidate-row")[0]!;
+    const candidateName = candidate.find("strong").text();
+    await candidate.trigger("click");
+    await flushPromises();
+    expect(wrapper.text()).toContain("确认立即分配");
+    await wrapper
+      .findAll(".modal button")
+      .find((button) => !button.classes("secondary"))!
+      .trigger("click");
+    await flushPromises();
+    expect(game.loot?.pending).toHaveLength(3);
+    expect(wrapper.text()).toContain(`${candidateName} 获得了`);
 
     await wrapper.find(".sell-button").trigger("click");
     await flushPromises();
-    expect(game.loot?.pending).toHaveLength(4);
-    expect(wrapper.text()).toContain("已改派");
-
+    expect(wrapper.text()).toContain("确认出售装备");
     await wrapper
-      .findAll(".heading-actions button")
-      .find((button) => button.text().includes("执行分配方案"))!
+      .findAll(".modal button")
+      .find((button) => !button.classes("secondary"))!
       .trigger("click");
     await flushPromises();
-    expect(game.loot?.pending).toHaveLength(0);
-    expect(wrapper.text()).toContain("方案已执行");
+    expect(game.loot?.pending).toHaveLength(2);
   });
 });

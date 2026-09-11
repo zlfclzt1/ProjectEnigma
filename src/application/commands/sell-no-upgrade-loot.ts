@@ -3,6 +3,7 @@ import { rankLootAssignment } from "../../domain/equipment/loot-assignment-ranki
 import type { GameCommand } from "../services/game-session";
 import { assertLootUnlocked } from "./assign-loot";
 import { sellLoot } from "./sell-loot";
+import type { ActivityId } from "../../domain/shared/ids";
 
 export interface SellNoUpgradeLootResult {
   readonly sold: number;
@@ -11,12 +12,14 @@ export interface SellNoUpgradeLootResult {
 
 export function sellNoUpgradeLootCommand(
   content: ContentRegistry,
+  activityId?: ActivityId,
 ): GameCommand<SellNoUpgradeLootResult> {
   return {
     type: "sell-no-upgrade-loot",
     execute(draft) {
       const pending = Object.values(draft.pendingLoot)
         .filter((entry) => {
+          if (activityId && entry.sourceActivityId !== activityId) return false;
           const source = draft.activities[entry.sourceActivityId];
           if (source?.status === "active" || source?.status === "scheduled") return false;
           assertLootUnlocked(draft, entry.sourceActivityId);

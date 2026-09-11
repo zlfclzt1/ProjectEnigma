@@ -2,7 +2,7 @@ import type { ContentRegistry } from "../../content/registry";
 import { evaluateUpgrade } from "../../domain/equipment/upgrade-evaluation";
 import { equipmentSellValue } from "../../domain/equipment/item-value";
 import type { GameState } from "../../domain/game-state";
-import type { MemberId, PendingLootId } from "../../domain/shared/ids";
+import type { ActivityId, EncounterId, MemberId, PendingLootId } from "../../domain/shared/ids";
 import { getEquippedItemView, type EquippedItemView } from "./get-members-view";
 import { resolveItemInstance } from "../../domain/equipment/resolve-item-instance";
 
@@ -31,9 +31,15 @@ export interface LootCandidateView {
 
 export interface PendingLootView {
   readonly id: PendingLootId;
+  readonly activityId: ActivityId;
+  readonly encounterId?: EncounterId;
+  readonly acquiredAt: number;
   readonly item: EquippedItemView;
+  readonly activityName: string;
   readonly dungeonName: string;
   readonly encounterName: string;
+  readonly activityOrder: number;
+  readonly encounterOrder: number;
   readonly locked: boolean;
   readonly lockReason?: string;
   readonly saleValue: number;
@@ -48,13 +54,22 @@ export interface LootView {
 
 export function getLootView(state: GameState, content: ContentRegistry): LootView {
   const pending = Object.values(state.pendingLoot)
-    .sort((left, right) => left.acquiredAt - right.acquiredAt || left.id.localeCompare(right.id))
     .flatMap((entry): PendingLootView[] => {
       const instance = state.itemInstances[entry.itemInstanceId];
       if (!instance) return [];
       const definition = resolveItemInstance(instance, content).definition;
       const activity = state.activities[entry.sourceActivityId];
       const source = instance.source.type === "encounter" ? instance.source : undefined;
+      const activityOrder = activity?.createdAt ?? entry.acquiredAt;
+      const encounterOrder =
+        activity && activity.type === "expedition" && source
+          ? activity.runPlans.reduce((best, run, runIndex) => {
+              const stageIndex = run.stages.findIndex(
+                (stage) => stage.encounterId === source.encounterId,
+              );
+              return stageIndex >= 0 ? Math.min(best, runIndex * 10_000 + stageIndex) : best;
+            }, Number.POSITIVE_INFINITY)
+          : entry.acquiredAt;
       const locked = activity?.status === "active" || activity?.status === "scheduled";
       const candidates = entry.eligibleMemberIds.flatMap((memberId): LootCandidateView[] => {
         const member = state.members[memberId];
@@ -93,13 +108,21 @@ export function getLootView(state: GameState, content: ContentRegistry): LootVie
       return [
         {
           id: entry.id,
+          activityId: entry.sourceActivityId,
+          ...(source ? { encounterId: source.encounterId } : {}),
+          acquiredAt: entry.acquiredAt,
           item: getEquippedItemView(instance, content),
+          activityName: source
+            ? (content.dungeonById.get(source.dungeonId)?.name.zhCN ?? source.dungeonId)
+            : "本次活动",
           dungeonName: source
             ? (content.dungeonById.get(source.dungeonId)?.name.zhCN ?? source.dungeonId)
             : "其他来源",
           encounterName: source
             ? (content.encounterById.get(source.encounterId)?.name.zhCN ?? source.encounterId)
             : "未知来源",
+          activityOrder,
+          encounterOrder: Number.isFinite(encounterOrder) ? encounterOrder : entry.acquiredAt,
           locked,
           ...(locked ? { lockReason: "该队伍的连续副本尚未结束。" } : {}),
           saleValue: equipmentSellValue(definition),
@@ -112,7 +135,15 @@ export function getLootView(state: GameState, content: ContentRegistry): LootVie
           ),
         },
       ];
-    });
+    })
+    .sort(
+      (left, right) =>
+        left.activityOrder - right.activityOrder ||
+        left.encounterOrder - right.encounterOrder ||
+        left.acquiredAt - right.acquiredAt ||
+        left.item.name.localeCompare(right.item.name) ||
+        left.id.localeCompare(right.id),
+    );
   return {
     pending,
     unlockedCount: pending.filter((entry) => !entry.locked).length,

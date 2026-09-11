@@ -473,9 +473,12 @@ export const useGameStore = defineStore("game", () => {
     return execute(autoAssignLootCommand(content));
   }
 
-  function lootPlan(overrides: readonly LootPlanOverride[] = []) {
+  function lootPlan(
+    overrides: readonly LootPlanOverride[] = [],
+    activityId?: import("../domain/shared/ids").ActivityId,
+  ) {
     return stateSnapshot.value && content
-      ? getLootPlanView(stateSnapshot.value, content, overrides)
+      ? getLootPlanView(stateSnapshot.value, content, overrides, activityId)
       : null;
   }
 
@@ -486,9 +489,11 @@ export const useGameStore = defineStore("game", () => {
     return execute(executeLootPlanCommand(content, decisions));
   }
 
-  async function sellNoUpgradeLoot(): Promise<GameCommandOutcome<unknown>> {
+  async function sellNoUpgradeLoot(
+    activityId?: import("../domain/shared/ids").ActivityId,
+  ): Promise<GameCommandOutcome<unknown>> {
     if (!content) return unavailableOutcome("sell-no-upgrade-loot");
-    return execute(sellNoUpgradeLootCommand(content));
+    return execute(sellNoUpgradeLootCommand(content, activityId));
   }
 
   function combatReport(reportId: CombatReportId) {
