@@ -29,6 +29,7 @@ const activitySessions = computed(() => {
   return [...sessions.values()];
 });
 const plan = computed(() => game.lootPlan([], selectedActivityId.value ?? undefined));
+const allActivitiesPlan = computed(() => game.lootPlan([], undefined));
 const autoPreview = computed(() =>
   game.autoLootPreviewForActivity(selectedActivityId.value ?? undefined),
 );
@@ -104,7 +105,7 @@ async function confirmAssignment(): Promise<void> {
 }
 
 async function confirmNoUpgradeSale(): Promise<void> {
-  const outcome = await game.sellNoUpgradeLoot(selectedActivityId.value ?? undefined);
+  const outcome = await game.sellNoUpgradeLoot();
   if (!outcome.ok) return;
   const result = outcome.result as { sold: number; saleProceeds: number };
   confirmingNoUpgradeSale.value = false;
@@ -188,10 +189,10 @@ function percent(value: number | undefined): string {
         <button
           type="button"
           class="secondary"
-          :disabled="game.commandPending || plan.immediateNoUpgradeCount === 0"
+          :disabled="game.commandPending || allActivitiesPlan?.immediateNoUpgradeCount === 0"
           @click="confirmingNoUpgradeSale = true"
         >
-          出售全部无提升（{{ plan.immediateNoUpgradeCount }}）
+          出售所有活动无提升（{{ allActivitiesPlan?.immediateNoUpgradeCount ?? 0 }}）
         </button>
       </div>
     </header>
@@ -400,7 +401,7 @@ function percent(value: number | undefined): string {
     <p v-else class="empty">没有待分配装备。出发打副本通常能改善这个情况。</p>
 
     <div
-      v-if="confirmingNoUpgradeSale && plan.immediateNoUpgradeCount > 0"
+      v-if="confirmingNoUpgradeSale && allActivitiesPlan?.immediateNoUpgradeCount > 0"
       class="modal-backdrop"
       @click.self="confirmingNoUpgradeSale = false"
     >
@@ -410,10 +411,10 @@ function percent(value: number | undefined): string {
         aria-modal="true"
         aria-labelledby="sell-no-upgrade-title"
       >
-        <h3 id="sell-no-upgrade-title">出售全部无提升装备？</h3>
+        <h3 id="sell-no-upgrade-title">出售所有活动的无提升装备？</h3>
         <p>
-          将出售 {{ plan.immediateNoUpgradeCount }} 件装备，获得
-          {{ plan.immediateNoUpgradeSaleValue }} G。出售后无法撤销。
+          将出售所有活动中的 {{ allActivitiesPlan.immediateNoUpgradeCount }} 件装备，获得
+          {{ allActivitiesPlan.immediateNoUpgradeSaleValue }} G。出售后无法撤销。
         </p>
         <footer>
           <button type="button" class="secondary" @click="confirmingNoUpgradeSale = false">
