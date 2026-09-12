@@ -22,6 +22,7 @@ describe("dungeon content audit", () => {
     const audit = auditDungeonContent(loadBrowserContentRegistry());
     expect(audit.unusedLootTableIds).toEqual([]);
     expect(audit.unreferencedItemIds).toEqual([]);
+    expect(audit.unreferencedItemSetIds).toEqual([]);
     expect(audit.questRewardBossOverlap).toEqual([]);
     expect(renderDungeonContentAudit(audit)).toContain("任务奖励与 Boss 掉落重复：0");
   });

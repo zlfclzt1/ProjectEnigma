@@ -84,6 +84,17 @@ export function auditDungeonContent(registry: ContentRegistry): DungeonContentAu
     itemSet.itemIds.forEach((itemId) => referencedItemIds.add(itemId));
     return String(itemSet.id);
   });
+  const referencedItemSetIds = new Set(
+    registry.collectionRewards.flatMap((reward) => {
+      if (reward.condition.type === "item-set-completion") {
+        return [String(reward.condition.itemSetId)];
+      }
+      if (reward.condition.type === "item-sets-completion") {
+        return reward.condition.itemSetIds.map(String);
+      }
+      return [];
+    }),
+  );
   const questRewardIds = new Set(
     registry.quests.flatMap((quest) =>
       [...quest.rewards.fixedItemIds, ...quest.rewards.itemChoiceIds].map(String),
@@ -112,14 +123,7 @@ export function auditDungeonContent(registry: ContentRegistry): DungeonContentAu
       .map((quest) => String(quest.id))
       .sort(),
     unreferencedItemSetIds: registry.itemSets
-      .filter(
-        (itemSet) =>
-          !registry.collectionRewards.some(
-            (reward) =>
-              reward.condition.type === "item-set-completion" &&
-              reward.condition.itemSetId === itemSet.id,
-          ),
-      )
+      .filter((itemSet) => !referencedItemSetIds.has(String(itemSet.id)))
       .map((itemSet) => String(itemSet.id))
       .sort(),
     questRewardBossOverlap: [...questRewardIds].filter((itemId) => bossDropIds.has(itemId)).sort(),
