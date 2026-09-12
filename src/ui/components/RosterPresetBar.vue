@@ -30,7 +30,6 @@ const presetSearch = ref("");
 const inspectedPreset = computed(
   () => props.presets.find((preset) => preset.id === inspectedPresetId.value) ?? null,
 );
-const displayedPresets = computed(() => props.presets.slice(0, 4));
 const filteredPresets = computed(() => {
   const needle = presetSearch.value.trim().toLocaleLowerCase();
   return props.presets.filter(
@@ -89,7 +88,7 @@ function selectPreset(presetId: RosterPresetId): void {
     </div>
     <div v-if="presets.length" class="preset-list" aria-label="选择固定队伍">
       <article
-        v-for="preset in displayedPresets"
+        v-for="preset in presets"
         :key="preset.id"
         class="preset-card"
         :class="{ selected: preset.id === selectedPresetId }"
@@ -318,19 +317,24 @@ function selectPreset(presetId: RosterPresetId): void {
   display: flex;
   align-items: stretch;
   gap: 8px;
+  min-width: 0;
   margin-top: 12px;
-  overflow: hidden;
-  padding: 1px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 1px 1px 8px;
+  scroll-snap-type: x proximity;
+  touch-action: pan-x;
 }
 .preset-card {
   display: grid;
-  flex: 1 1 0;
-  min-width: 0;
+  flex: 0 0 min(220px, calc(100% - 18px));
+  min-width: 180px;
   grid-template-rows: 1fr auto;
   overflow: hidden;
   border: 1px solid #403a31;
   border-radius: 6px;
   background: #0b0e10;
+  scroll-snap-align: start;
 }
 .preset-card:hover,
 .preset-card.selected {

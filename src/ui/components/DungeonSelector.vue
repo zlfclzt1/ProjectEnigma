@@ -7,7 +7,7 @@ import type {
 import type { DungeonId } from "../../domain/shared/ids";
 
 type LevelBand = "all" | "1-19" | "20-29" | "30-39" | "40-49" | "50+";
-type SortBy = "content" | "level" | "success" | "duration";
+type SortBy = "unlocked" | "content" | "level" | "success" | "duration";
 
 const props = defineProps<{
   groups: readonly DungeonDisplayGroupView[];
@@ -19,7 +19,7 @@ const emit = defineEmits<{ select: [dungeonId: DungeonId] }>();
 
 const search = ref("");
 const levelBand = ref<LevelBand>("all");
-const sortBy = ref<SortBy>("content");
+const sortBy = ref<SortBy>("unlocked");
 const collapsedGroupIds = ref<string[]>([]);
 
 function durationLabel(seconds: number): string {
@@ -52,6 +52,13 @@ function sortValue(dungeon: DungeonOptionView): number {
 }
 
 function sortDungeons(dungeons: readonly DungeonOptionView[]): DungeonOptionView[] {
+  if (sortBy.value === "unlocked") {
+    return [...dungeons].sort((left, right) => {
+      if (left.unlocked !== right.unlocked) return Number(right.unlocked) - Number(left.unlocked);
+      if (left.unlocked) return right.recommendedLevel - left.recommendedLevel;
+      return 0;
+    });
+  }
   if (sortBy.value === "content") return [...dungeons];
   return [...dungeons].sort((left, right) => {
     const difference = sortValue(left) - sortValue(right);
@@ -120,6 +127,7 @@ function selectDungeon(dungeon: DungeonOptionView): void {
       <label>
         <span>排序</span>
         <select v-model="sortBy">
+          <option value="unlocked">已解锁优先</option>
           <option value="content">阶段顺序</option>
           <option value="level">推荐等级</option>
           <option value="success">成功率</option>
@@ -289,7 +297,9 @@ h3 {
   display: grid;
   gap: 12px;
   max-height: min(68vh, 760px);
+  min-width: 0;
   overflow: auto;
+  overflow-x: hidden;
   padding-right: 4px;
 }
 .dungeon-section {
@@ -312,6 +322,7 @@ h3 {
 .dungeon-option {
   display: grid;
   gap: 7px;
+  min-width: 0;
   width: 100%;
   padding: 9px 10px;
   border: 1px solid #302e29;
@@ -333,6 +344,8 @@ h3 {
   min-width: 0;
 }
 .option-title > strong {
+  min-width: 0;
+  flex: 1 1 auto;
   overflow: hidden;
   color: #ded1b8;
   font-size: 0.73rem;
@@ -371,6 +384,8 @@ h3 {
 }
 .option-metrics {
   align-items: end;
+  min-width: 0;
+  flex-wrap: wrap;
   gap: 12px;
   color: #81796c;
   font-size: 0.57rem;
@@ -390,8 +405,9 @@ h3 {
   font-weight: 700;
 }
 .unlock-copy {
+  flex: 1 1 100%;
   overflow: hidden;
-  max-width: 58%;
+  max-width: none;
   color: #9d7869;
   text-overflow: ellipsis;
   white-space: nowrap;

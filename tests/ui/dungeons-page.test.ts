@@ -70,6 +70,8 @@ describe("dungeons page", () => {
       await checkbox.setValue(true);
     }
     expect(wrapper.get(".success-badge.ready").text()).toMatch(/\d+\.\d{2}%/);
+    await wrapper.findAll(".selector-filters select")[0]!.setValue("1-19");
+    expect(wrapper.get(".success-badge.ready").text()).toMatch(/\d+\.\d{2}%/);
     expect(wrapper.get(".party-preview").text()).toMatch(/全通 \d+\.\d{2}%/);
     const runsSelect = wrapper.find(".page-heading select");
     await runsSelect.setValue("2");
@@ -92,6 +94,44 @@ describe("dungeons page", () => {
     expect(wrapper.text()).toContain("可以继续组织另一支队伍");
     expect(wrapper.findAll('.member-options input[type="checkbox"][disabled]')).toHaveLength(5);
     expect(game.activities?.active[0]?.developmentEvents).toEqual([]);
+  });
+
+  it("prioritizes unlocked dungeons from higher to lower level by default", async () => {
+    const game = useGameStore();
+    await game.initialize(() =>
+      loadOrCreateV2Client({
+        saves: new MemorySaveRepository(),
+        content: loadBrowserContentRegistry(),
+        clock: new FakeClock(1_000),
+        slotId: asBrandedId<"SaveSlotId">("dungeons-sort-order"),
+        seed: "dungeons-sort-order",
+      }),
+    );
+    await game.execute({
+      type: "unlock-dungeons-for-sort-order-test",
+      execute(draft) {
+        draft.guild.unlockedDungeonIds = [
+          asBrandedId<"DungeonId">("ragefire_chasm"),
+          asBrandedId<"DungeonId">("wailing_caverns"),
+          asBrandedId<"DungeonId">("deadmines"),
+          asBrandedId<"DungeonId">("shadowfang_keep"),
+        ];
+      },
+    });
+
+    const wrapper = mount(DungeonsPage);
+    await flushPromises();
+
+    const firstGroupOptions = wrapper.findAll(".dungeon-section")[0]!.findAll(".dungeon-option");
+    expect(firstGroupOptions.slice(0, 4).map((option) => option.find("strong").text())).toEqual([
+      "影牙城堡",
+      "死亡矿井",
+      "哀嚎洞穴",
+      "怒焰裂谷",
+    ]);
+    expect(
+      (wrapper.findAll(".selector-filters select")[1]!.element as HTMLSelectElement).value,
+    ).toBe("unlocked");
   });
 
   it("renders mechanic readiness, exact requirements, and applied effects", () => {
@@ -446,7 +486,7 @@ describe("dungeons page", () => {
     expect(wrapper.findAll(".full-roster article")).toHaveLength(40);
   });
 
-  it("keeps more than four fixed teams discoverable in an all-teams panel", async () => {
+  it("renders all fixed teams in a horizontally scrollable list", async () => {
     const presets = Array.from({ length: 5 }, (_, index) => {
       const memberId = asBrandedId<"MemberId">(`saved-team-member-${index + 1}`);
       return {
@@ -483,8 +523,11 @@ describe("dungeons page", () => {
       },
     });
 
-    expect(wrapper.findAll(".preset-card")).toHaveLength(4);
+    expect(wrapper.findAll(".preset-card")).toHaveLength(5);
     expect(wrapper.get(".all-presets-button").text()).toContain("全部固定队（5）");
+    await wrapper.setProps({ selectedPresetId: presets[4]!.id });
+    expect(wrapper.findAll(".preset-card")).toHaveLength(5);
+    expect(wrapper.find(".preset-card.selected").text()).toContain("固定队 5");
     await wrapper.get(".all-presets-button").trigger("click");
     expect(wrapper.findAll(".all-presets-option")).toHaveLength(5);
     await wrapper.get(".all-presets-option:nth-child(5)").trigger("click");
