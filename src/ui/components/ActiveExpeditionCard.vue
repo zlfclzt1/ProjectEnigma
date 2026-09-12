@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { RouterLink } from "vue-router";
 import type { ExpeditionActivityView } from "../../application/queries/get-activities-view";
 import BossRoute from "./BossRoute.vue";
 
@@ -51,6 +52,7 @@ function remainingLabel(milliseconds: number | undefined): string {
         <span>全通率 {{ (activity.clearProbability * 100).toFixed(2) }}%</span>
         <span>公式 {{ activity.formulaVersion }}</span>
       </div>
+      <RouterLink v-if="showSettlementLink" to="/activities">查看活动 →</RouterLink>
     </footer>
   </article>
 </template>

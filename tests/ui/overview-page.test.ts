@@ -28,9 +28,13 @@ describe("overview page guild expansion", () => {
     return game;
   }
 
+  function mountOverview() {
+    return mount(OverviewPage, { global: { stubs: { RouterLink: true } } });
+  }
+
   it("shows the next locked expansion and exact missing conditions", async () => {
     await initializeGame();
-    const wrapper = mount(OverviewPage);
+    const wrapper = mountOverview();
 
     await wrapper.find(".member-capacity-card").trigger("click");
 
@@ -50,7 +54,7 @@ describe("overview page guild expansion", () => {
         draft.history.dungeonClearCounts[asBrandedId<"DungeonId">("deadmines")] = 1;
       },
     });
-    const wrapper = mount(OverviewPage);
+    const wrapper = mountOverview();
 
     expect(wrapper.find(".member-capacity-card").classes()).toContain("purchasable");
     expect(wrapper.text()).toContain("可扩建");
@@ -76,7 +80,7 @@ describe("overview page guild expansion", () => {
         ];
       },
     });
-    const wrapper = mount(OverviewPage);
+    const wrapper = mountOverview();
 
     await wrapper.find(".member-capacity-card").trigger("click");
 
