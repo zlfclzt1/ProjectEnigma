@@ -89,7 +89,8 @@ const sheetClass = computed(() => `class-${props.member.classId}`);
 .character-sheet {
   --gold: #c6a15a;
   position: relative;
-  overflow: hidden;
+  z-index: 2;
+  overflow: visible;
   padding: 14px;
   border: 1px solid #80643a;
   border-radius: 4px;
