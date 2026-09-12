@@ -7,7 +7,10 @@ export const test = base.extend<{ assertNoBrowserErrors: void }>({
     async ({ page }, use) => {
       const errors: string[] = [];
       await page.addInitScript((timestamp) => {
-        (globalThis as { __MYSTERY_TEST_NOW__?: number }).__MYSTERY_TEST_NOW__ = timestamp;
+        const runtime = globalThis as { __MYSTERY_TEST_NOW__?: number };
+        const stored = sessionStorage.getItem("mystery-test-now");
+        runtime.__MYSTERY_TEST_NOW__ = stored ? Number(stored) : timestamp;
+        sessionStorage.setItem("mystery-test-now", String(runtime.__MYSTERY_TEST_NOW__));
       }, TEST_START_TIME);
       page.on("pageerror", (error) => errors.push(`pageerror: ${error.message}`));
       page.on("console", (message) => {
@@ -26,6 +29,7 @@ export async function advanceTestClock(page: Page, milliseconds: number): Promis
   await page.evaluate((amount) => {
     const runtime = globalThis as { __MYSTERY_TEST_NOW__?: number };
     runtime.__MYSTERY_TEST_NOW__ = (runtime.__MYSTERY_TEST_NOW__ ?? Date.now()) + amount;
+    sessionStorage.setItem("mystery-test-now", String(runtime.__MYSTERY_TEST_NOW__));
   }, milliseconds);
 }
 
