@@ -1,0 +1,278 @@
+{
+  "dungeonId": "dire_maul_north",
+  "samplesPerScenario": 100000,
+  "scenarios": {
+    "standard": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.7584,
+        "previewClearProbability": 0.7588777980381084,
+        "durationSeconds": 2430.8,
+        "wipeCounts": {
+          "dire_maul_north_cho_rush": 2780,
+          "dire_maul_north_king_gordok": 8363,
+          "dire_maul_north_captain_kromcrush": 5546,
+          "dire_maul_north_guard_slipkik": 4093,
+          "dire_maul_north_guard_fengus": 1965,
+          "dire_maul_north_guard_moldar": 1413
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.78064,
+        "previewClearProbability": 0.7831808279667953,
+        "durationSeconds": 2823,
+        "wipeCounts": {
+          "dire_maul_north_stomper_kreeg": 1390,
+          "dire_maul_north_king_gordok": 7606,
+          "dire_maul_north_guard_slipkik": 2962,
+          "dire_maul_north_captain_kromcrush": 4397,
+          "dire_maul_north_guard_fengus": 1554,
+          "dire_maul_north_cho_rush": 2561,
+          "dire_maul_north_guard_moldar": 1466
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.75294,
+        "previewClearProbability": 0.7522124586837075,
+        "durationSeconds": 2438.6,
+        "wipeCounts": {
+          "dire_maul_north_king_gordok": 9211,
+          "dire_maul_north_cho_rush": 2522,
+          "dire_maul_north_guard_moldar": 1409,
+          "dire_maul_north_guard_slipkik": 4013,
+          "dire_maul_north_captain_kromcrush": 6139,
+          "dire_maul_north_guard_fengus": 1412
+        }
+      }
+    },
+    "no-tank": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.9600000000000007e-10,
+        "durationSeconds": 2671.6,
+        "wipeCounts": {
+          "dire_maul_north_guard_fengus": 1934,
+          "dire_maul_north_guard_moldar": 98004,
+          "dire_maul_north_guard_slipkik": 60,
+          "dire_maul_north_captain_kromcrush": 2
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 2.864000000000001e-12,
+        "durationSeconds": 3152.4,
+        "wipeCounts": {
+          "dire_maul_north_guard_moldar": 98020,
+          "dire_maul_north_stomper_kreeg": 1938,
+          "dire_maul_north_guard_fengus": 40,
+          "dire_maul_north_guard_slipkik": 2
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.9600000000000007e-10,
+        "durationSeconds": 2612.6,
+        "wipeCounts": {
+          "dire_maul_north_guard_moldar": 97979,
+          "dire_maul_north_guard_fengus": 1954,
+          "dire_maul_north_guard_slipkik": 65,
+          "dire_maul_north_captain_kromcrush": 2
+        }
+      }
+    },
+    "no-healing": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 9.039999999999999e-11,
+        "durationSeconds": 2702,
+        "wipeCounts": {
+          "dire_maul_north_guard_moldar": 98030,
+          "dire_maul_north_guard_fengus": 1923,
+          "dire_maul_north_guard_slipkik": 47
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 3.392000000000001e-12,
+        "durationSeconds": 3137,
+        "wipeCounts": {
+          "dire_maul_north_guard_moldar": 97939,
+          "dire_maul_north_stomper_kreeg": 2015,
+          "dire_maul_north_guard_fengus": 46
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.9600000000000007e-10,
+        "durationSeconds": 2640,
+        "wipeCounts": {
+          "dire_maul_north_guard_moldar": 97986,
+          "dire_maul_north_guard_fengus": 1942,
+          "dire_maul_north_guard_slipkik": 70,
+          "dire_maul_north_captain_kromcrush": 2
+        }
+      }
+    },
+    "overlevel": {
+      "required": {
+        "level": 57,
+        "simulatedRuns": 100000,
+        "clearRate": 0.75014,
+        "previewClearProbability": 0.7514653586132518,
+        "durationSeconds": 2470.2,
+        "wipeCounts": {
+          "dire_maul_north_guard_moldar": 2002,
+          "dire_maul_north_king_gordok": 8746,
+          "dire_maul_north_captain_kromcrush": 5939,
+          "dire_maul_north_guard_slipkik": 5010,
+          "dire_maul_north_cho_rush": 1802,
+          "dire_maul_north_guard_fengus": 1487
+        }
+      },
+      "with-optional": {
+        "level": 57,
+        "simulatedRuns": 100000,
+        "clearRate": 0.63998,
+        "previewClearProbability": 0.6398747070314539,
+        "durationSeconds": 2963.2,
+        "wipeCounts": {
+          "dire_maul_north_king_gordok": 9459,
+          "dire_maul_north_cho_rush": 3621,
+          "dire_maul_north_captain_kromcrush": 7574,
+          "dire_maul_north_stomper_kreeg": 3705,
+          "dire_maul_north_guard_slipkik": 6659,
+          "dire_maul_north_guard_moldar": 2728,
+          "dire_maul_north_guard_fengus": 2256
+        }
+      },
+      "with-rare": {
+        "level": 57,
+        "simulatedRuns": 100000,
+        "clearRate": 0.79964,
+        "previewClearProbability": 0.7989550494060191,
+        "durationSeconds": 2396.8,
+        "wipeCounts": {
+          "dire_maul_north_guard_fengus": 1368,
+          "dire_maul_north_king_gordok": 8484,
+          "dire_maul_north_captain_kromcrush": 4721,
+          "dire_maul_north_cho_rush": 1285,
+          "dire_maul_north_guard_slipkik": 2778,
+          "dire_maul_north_guard_moldar": 1400
+        }
+      }
+    },
+    "max-level": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.73137,
+        "previewClearProbability": 0.7305159761898422,
+        "durationSeconds": 2471,
+        "wipeCounts": {
+          "dire_maul_north_captain_kromcrush": 6023,
+          "dire_maul_north_guard_moldar": 1760,
+          "dire_maul_north_guard_fengus": 2624,
+          "dire_maul_north_cho_rush": 3026,
+          "dire_maul_north_king_gordok": 8786,
+          "dire_maul_north_guard_slipkik": 4644
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.81217,
+        "previewClearProbability": 0.8123057588625174,
+        "durationSeconds": 2812.2,
+        "wipeCounts": {
+          "dire_maul_north_king_gordok": 7055,
+          "dire_maul_north_guard_slipkik": 2484,
+          "dire_maul_north_guard_moldar": 1403,
+          "dire_maul_north_cho_rush": 1330,
+          "dire_maul_north_captain_kromcrush": 3796,
+          "dire_maul_north_guard_fengus": 1325,
+          "dire_maul_north_stomper_kreeg": 1390
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.73917,
+        "previewClearProbability": 0.740347361310195,
+        "durationSeconds": 2457.2,
+        "wipeCounts": {
+          "dire_maul_north_cho_rush": 5175,
+          "dire_maul_north_king_gordok": 8380,
+          "dire_maul_north_guard_fengus": 2159,
+          "dire_maul_north_guard_slipkik": 3485,
+          "dire_maul_north_captain_kromcrush": 5493,
+          "dire_maul_north_guard_moldar": 1391
+        }
+      }
+    },
+    "speed-run": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.73699,
+        "previewClearProbability": 0.7349305243452366,
+        "durationSeconds": 2450.2,
+        "wipeCounts": {
+          "dire_maul_north_cho_rush": 4005,
+          "dire_maul_north_guard_moldar": 1386,
+          "dire_maul_north_king_gordok": 8754,
+          "dire_maul_north_captain_kromcrush": 5956,
+          "dire_maul_north_guard_fengus": 2015,
+          "dire_maul_north_guard_slipkik": 4185
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.75073,
+        "previewClearProbability": 0.7511237201933444,
+        "durationSeconds": 2842.2,
+        "wipeCounts": {
+          "dire_maul_north_cho_rush": 3695,
+          "dire_maul_north_captain_kromcrush": 5274,
+          "dire_maul_north_guard_fengus": 1826,
+          "dire_maul_north_king_gordok": 7507,
+          "dire_maul_north_stomper_kreeg": 1406,
+          "dire_maul_north_guard_slipkik": 3829,
+          "dire_maul_north_guard_moldar": 1390
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.67725,
+        "previewClearProbability": 0.6737985973413433,
+        "durationSeconds": 2495.8,
+        "wipeCounts": {
+          "dire_maul_north_captain_kromcrush": 7238,
+          "dire_maul_north_king_gordok": 9540,
+          "dire_maul_north_guard_fengus": 3252,
+          "dire_maul_north_cho_rush": 4527,
+          "dire_maul_north_guard_slipkik": 5826,
+          "dire_maul_north_guard_moldar": 1892
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,338 @@
+{
+  "dungeonId": "lower_blackrock_spire",
+  "samplesPerScenario": 100000,
+  "scenarios": {
+    "standard": {
+      "required": {
+        "level": 58,
+        "simulatedRuns": 100000,
+        "clearRate": 0.21831,
+        "previewClearProbability": 0.2190274644087884,
+        "durationSeconds": 2102.6,
+        "wipeCounts": {
+          "lbrs_smolderweb": 13352,
+          "lbrs_doomhowl": 13657,
+          "lbrs_vosh": 10410,
+          "lbrs_slavener": 9116,
+          "lbrs_zigris": 11871,
+          "lbrs_voone": 4395,
+          "lbrs_wyrmthalak": 4816,
+          "lbrs_omokk": 4540,
+          "lbrs_halycon": 6012
+        }
+      },
+      "with-optional": {
+        "level": 58,
+        "simulatedRuns": 100000,
+        "clearRate": 0.23709,
+        "previewClearProbability": 0.2353656306028164,
+        "durationSeconds": 2107.2,
+        "wipeCounts": {
+          "lbrs_doomhowl": 13920,
+          "lbrs_omokk": 3223,
+          "lbrs_wyrmthalak": 5122,
+          "lbrs_zigris": 12110,
+          "lbrs_halycon": 6086,
+          "lbrs_vosh": 9180,
+          "lbrs_smolderweb": 13365,
+          "lbrs_slavener": 9609,
+          "lbrs_voone": 3676
+        }
+      },
+      "with-rare": {
+        "level": 58,
+        "simulatedRuns": 100000,
+        "clearRate": 0.08401,
+        "previewClearProbability": 0.08436484545290333,
+        "durationSeconds": 3665.6,
+        "wipeCounts": {
+          "lbrs_smolderweb": 10471,
+          "lbrs_spirestone_lord_magus": 8382,
+          "lbrs_slavener": 5652,
+          "lbrs_grimaxe": 11129,
+          "lbrs_doomhowl": 9107,
+          "lbrs_vosh": 9557,
+          "lbrs_zigris": 7893,
+          "lbrs_bashguud": 4472,
+          "lbrs_spirestone_battle_lord": 2267,
+          "lbrs_voone": 3683,
+          "lbrs_felguard": 1396,
+          "lbrs_halycon": 3867,
+          "lbrs_spirestone_butcher": 2233,
+          "lbrs_crystal_fang": 4982,
+          "lbrs_wyrmthalak": 2149,
+          "lbrs_omokk": 4359
+        }
+      }
+    },
+    "no-tank": {
+      "required": {
+        "level": 58,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 2.7440000000000012e-15,
+        "durationSeconds": 2252,
+        "wipeCounts": {
+          "lbrs_omokk": 97944,
+          "lbrs_vosh": 2010,
+          "lbrs_voone": 44,
+          "lbrs_smolderweb": 2
+        }
+      },
+      "with-optional": {
+        "level": 58,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.8512000000000006e-15,
+        "durationSeconds": 2284,
+        "wipeCounts": {
+          "lbrs_omokk": 98013,
+          "lbrs_vosh": 1945,
+          "lbrs_voone": 39,
+          "lbrs_smolderweb": 3
+        }
+      },
+      "with-rare": {
+        "level": 58,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.8823840000000014e-26,
+        "durationSeconds": 3808,
+        "wipeCounts": {
+          "lbrs_felguard": 96502,
+          "lbrs_spirestone_butcher": 3439,
+          "lbrs_omokk": 58,
+          "lbrs_spirestone_battle_lord": 1
+        }
+      }
+    },
+    "no-healing": {
+      "required": {
+        "level": 58,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 9.584000000000003e-16,
+        "durationSeconds": 2309,
+        "wipeCounts": {
+          "lbrs_omokk": 97969,
+          "lbrs_vosh": 1994,
+          "lbrs_voone": 37
+        }
+      },
+      "with-optional": {
+        "level": 58,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 2.297600000000001e-15,
+        "durationSeconds": 2294.8,
+        "wipeCounts": {
+          "lbrs_omokk": 97964,
+          "lbrs_vosh": 2000,
+          "lbrs_voone": 35,
+          "lbrs_smolderweb": 1
+        }
+      },
+      "with-rare": {
+        "level": 58,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.8823840000000014e-26,
+        "durationSeconds": 3867.6,
+        "wipeCounts": {
+          "lbrs_felguard": 96405,
+          "lbrs_spirestone_butcher": 3520,
+          "lbrs_omokk": 75
+        }
+      }
+    },
+    "overlevel": {
+      "required": {
+        "level": 55,
+        "simulatedRuns": 100000,
+        "clearRate": 0.20847,
+        "previewClearProbability": 0.2065934775928162,
+        "durationSeconds": 2154.2,
+        "wipeCounts": {
+          "lbrs_vosh": 10778,
+          "lbrs_zigris": 11999,
+          "lbrs_smolderweb": 14255,
+          "lbrs_slavener": 8954,
+          "lbrs_voone": 3461,
+          "lbrs_doomhowl": 14208,
+          "lbrs_wyrmthalak": 4500,
+          "lbrs_omokk": 5715,
+          "lbrs_halycon": 5283
+        }
+      },
+      "with-optional": {
+        "level": 55,
+        "simulatedRuns": 100000,
+        "clearRate": 0.15342,
+        "previewClearProbability": 0.15263530459755448,
+        "durationSeconds": 2238.4,
+        "wipeCounts": {
+          "lbrs_zigris": 11005,
+          "lbrs_omokk": 8101,
+          "lbrs_voone": 6555,
+          "lbrs_smolderweb": 14449,
+          "lbrs_wyrmthalak": 4136,
+          "lbrs_vosh": 13254,
+          "lbrs_halycon": 5667,
+          "lbrs_doomhowl": 13792,
+          "lbrs_slavener": 7699
+        }
+      },
+      "with-rare": {
+        "level": 55,
+        "simulatedRuns": 100000,
+        "clearRate": 0.11579,
+        "previewClearProbability": 0.11629063721796881,
+        "durationSeconds": 3583.4,
+        "wipeCounts": {
+          "lbrs_smolderweb": 10671,
+          "lbrs_grimaxe": 10906,
+          "lbrs_slavener": 6899,
+          "lbrs_doomhowl": 10127,
+          "lbrs_wyrmthalak": 2325,
+          "lbrs_spirestone_lord_magus": 7464,
+          "lbrs_zigris": 8821,
+          "lbrs_bashguud": 5307,
+          "lbrs_voone": 1565,
+          "lbrs_spirestone_battle_lord": 1306,
+          "lbrs_halycon": 3721,
+          "lbrs_spirestone_butcher": 1756,
+          "lbrs_felguard": 1412,
+          "lbrs_vosh": 8976,
+          "lbrs_crystal_fang": 3793,
+          "lbrs_omokk": 3372
+        }
+      }
+    },
+    "max-level": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.25956,
+        "previewClearProbability": 0.26148741956256966,
+        "durationSeconds": 1977.6,
+        "wipeCounts": {
+          "lbrs_halycon": 5584,
+          "lbrs_zigris": 11992,
+          "lbrs_omokk": 3345,
+          "lbrs_slavener": 9629,
+          "lbrs_voone": 3664,
+          "lbrs_smolderweb": 12758,
+          "lbrs_doomhowl": 13389,
+          "lbrs_wyrmthalak": 4997,
+          "lbrs_vosh": 8686
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.34166,
+        "previewClearProbability": 0.3401975940778689,
+        "durationSeconds": 1904.2,
+        "wipeCounts": {
+          "lbrs_doomhowl": 12910,
+          "lbrs_zigris": 12145,
+          "lbrs_smolderweb": 11229,
+          "lbrs_wyrmthalak": 5079,
+          "lbrs_slavener": 11100,
+          "lbrs_halycon": 4407,
+          "lbrs_omokk": 1750,
+          "lbrs_vosh": 5885,
+          "lbrs_voone": 1329
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.12596,
+        "previewClearProbability": 0.1247421527749657,
+        "durationSeconds": 3372.4,
+        "wipeCounts": {
+          "lbrs_doomhowl": 9079,
+          "lbrs_smolderweb": 9162,
+          "lbrs_grimaxe": 9091,
+          "lbrs_voone": 5685,
+          "lbrs_slavener": 6432,
+          "lbrs_spirestone_lord_magus": 5338,
+          "lbrs_vosh": 6929,
+          "lbrs_zigris": 8247,
+          "lbrs_halycon": 4974,
+          "lbrs_spirestone_battle_lord": 3078,
+          "lbrs_wyrmthalak": 3007,
+          "lbrs_bashguud": 5230,
+          "lbrs_crystal_fang": 6047,
+          "lbrs_felguard": 1395,
+          "lbrs_spirestone_butcher": 1523,
+          "lbrs_omokk": 2187
+        }
+      }
+    },
+    "speed-run": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.23499,
+        "previewClearProbability": 0.23433297193357863,
+        "durationSeconds": 1965,
+        "wipeCounts": {
+          "lbrs_slavener": 9347,
+          "lbrs_voone": 5087,
+          "lbrs_omokk": 2457,
+          "lbrs_halycon": 7103,
+          "lbrs_zigris": 12098,
+          "lbrs_wyrmthalak": 5698,
+          "lbrs_smolderweb": 12637,
+          "lbrs_vosh": 8412,
+          "lbrs_doomhowl": 13662
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.28249,
+        "previewClearProbability": 0.2843733757574946,
+        "durationSeconds": 1941,
+        "wipeCounts": {
+          "lbrs_doomhowl": 12634,
+          "lbrs_halycon": 6606,
+          "lbrs_smolderweb": 11312,
+          "lbrs_vosh": 7238,
+          "lbrs_slavener": 9624,
+          "lbrs_zigris": 11738,
+          "lbrs_voone": 4634,
+          "lbrs_wyrmthalak": 5599,
+          "lbrs_omokk": 2366
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.09851,
+        "previewClearProbability": 0.10041094602100702,
+        "durationSeconds": 3432.6,
+        "wipeCounts": {
+          "lbrs_vosh": 8399,
+          "lbrs_wyrmthalak": 2410,
+          "lbrs_bashguud": 4660,
+          "lbrs_slavener": 5959,
+          "lbrs_doomhowl": 8866,
+          "lbrs_spirestone_lord_magus": 7257,
+          "lbrs_grimaxe": 9751,
+          "lbrs_smolderweb": 9623,
+          "lbrs_crystal_fang": 5144,
+          "lbrs_spirestone_battle_lord": 3739,
+          "lbrs_voone": 4432,
+          "lbrs_zigris": 7659,
+          "lbrs_halycon": 4124,
+          "lbrs_omokk": 3882,
+          "lbrs_spirestone_butcher": 2317,
+          "lbrs_felguard": 1927
+        }
+      }
+    }
+  }
+}

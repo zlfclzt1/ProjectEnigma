@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/zone=1583",
+        "verifiedAt": "2026-09-12",
+        "notes": "核对斯坦索姆血色区主要首领的阶段时间、职责压力与装备来源。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-12",
+        "notes": "以内容驱动路线、能力机制和活动快照表达经典副本，不模拟背包点击和后台收益。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "encounters": [
+    {
+      "id": "stratholme_live_skull",
+      "dungeonId": "stratholme_live",
+      "name": {
+        "zhCN": "Skul"
+      },
+      "stageSeconds": 375,
+      "requirements": {
+        "tank": 68,
+        "healing": 73,
+        "damage": 290
+      },
+      "weights": {
+        "tank": 0.34,
+        "healing": 0.36,
+        "damage": 0.3
+      },
+      "experienceShare": 0.125,
+      "funds": 180,
+      "firstKillBonus": 360,
+      "lootTableId": "stratholme_live_skull",
+      "mechanicIds": ["stratholme_live_skull_mechanic"]
+    },
+    {
+      "id": "stratholme_live_hearthsinger_forresten",
+      "dungeonId": "stratholme_live",
+      "name": {
+        "zhCN": "Hearthsinger Forresten"
+      },
+      "stageSeconds": 375,
+      "requirements": {
+        "tank": 70,
+        "healing": 75,
+        "damage": 298
+      },
+      "weights": {
+        "tank": 0.34,
+        "healing": 0.36,
+        "damage": 0.3
+      },
+      "experienceShare": 0.125,
+      "funds": 188,
+      "firstKillBonus": 376,
+      "lootTableId": "stratholme_live_hearthsinger_forresten",
+      "mechanicIds": ["stratholme_live_hearthsinger_forresten_mechanic"]
+    },
+    {
+      "id": "stratholme_live_the_unforgiven",
+      "dungeonId": "stratholme_live",
+      "name": {
+        "zhCN": "The Unforgiven"
+      },
+      "stageSeconds": 375,
+      "requirements": {
+        "tank": 72,
+        "healing": 77,
+        "damage": 306
+      },
+      "weights": {
+        "tank": 0.34,
+        "healing": 0.36,
+        "damage": 0.3
+      },
+      "experienceShare": 0.125,
+      "funds": 196,
+      "firstKillBonus": 392,
+      "lootTableId": "stratholme_live_the_unforgiven",
+      "mechanicIds": ["stratholme_live_the_unforgiven_mechanic"]
+    },
+    {
+      "id": "stratholme_live_postmaster",
+      "dungeonId": "stratholme_live",
+      "name": {
+        "zhCN": "Postmaster Malown"
+      },
+      "stageSeconds": 375,
+      "requirements": {
+        "tank": 74,
+        "healing": 79,
+        "damage": 314
+      },
+      "weights": {
+        "tank": 0.34,
+        "healing": 0.36,
+        "damage": 0.3
+      },
+      "experienceShare": 0.125,
+      "funds": 204,
+      "firstKillBonus": 408,
+      "lootTableId": "stratholme_live_postmaster",
+      "mechanicIds": ["stratholme_live_postmaster_mechanic"]
+    },
+    {
+      "id": "stratholme_live_timmythe_cruel",
+      "dungeonId": "stratholme_live",
+      "name": {
+        "zhCN": "Timmy the Cruel"
+      },
+      "stageSeconds": 375,
+      "requirements": {
+        "tank": 76,
+        "healing": 81,
+        "damage": 322
+      },
+      "weights": {
+        "tank": 0.34,
+        "healing": 0.36,
+        "damage": 0.3
+      },
+      "experienceShare": 0.125,
+      "funds": 212,
+      "firstKillBonus": 424,
+      "lootTableId": "stratholme_live_timmythe_cruel",
+      "mechanicIds": ["stratholme_live_timmythe_cruel_mechanic"]
+    },
+    {
+      "id": "stratholme_live_cannon_master_willey",
+      "dungeonId": "stratholme_live",
+      "name": {
+        "zhCN": "Cannon Master Willey"
+      },
+      "stageSeconds": 375,
+      "requirements": {
+        "tank": 78,
+        "healing": 83,
+        "damage": 330
+      },
+      "weights": {
+        "tank": 0.34,
+        "healing": 0.36,
+        "damage": 0.3
+      },
+      "experienceShare": 0.125,
+      "funds": 220,
+      "firstKillBonus": 440,
+      "lootTableId": "stratholme_live_cannon_master_willey",
+      "mechanicIds": ["stratholme_live_cannon_master_willey_mechanic"]
+    },
+    {
+      "id": "stratholme_live_archivist_galford",
+      "dungeonId": "stratholme_live",
+      "name": {
+        "zhCN": "Archivist Galford"
+      },
+      "stageSeconds": 375,
+      "requirements": {
+        "tank": 80,
+        "healing": 85,
+        "damage": 338
+      },
+      "weights": {
+        "tank": 0.34,
+        "healing": 0.36,
+        "damage": 0.3
+      },
+      "experienceShare": 0.125,
+      "funds": 228,
+      "firstKillBonus": 456,
+      "lootTableId": "stratholme_live_archivist_galford",
+      "mechanicIds": ["stratholme_live_archivist_galford_mechanic"]
+    },
+    {
+      "id": "stratholme_live_balnazzar",
+      "dungeonId": "stratholme_live",
+      "name": {
+        "zhCN": "Balnazzar"
+      },
+      "stageSeconds": 375,
+      "requirements": {
+        "tank": 82,
+        "healing": 87,
+        "damage": 346
+      },
+      "weights": {
+        "tank": 0.34,
+        "healing": 0.36,
+        "damage": 0.3
+      },
+      "experienceShare": 0.125,
+      "funds": 236,
+      "firstKillBonus": 472,
+      "lootTableId": "stratholme_live_balnazzar",
+      "mechanicIds": ["stratholme_live_balnazzar_mechanic"]
+    }
+  ]
+}

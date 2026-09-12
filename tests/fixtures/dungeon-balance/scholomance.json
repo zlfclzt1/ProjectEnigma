@@ -1,0 +1,360 @@
+{
+  "dungeonId": "scholomance",
+  "samplesPerScenario": 100000,
+  "scenarios": {
+    "standard": {
+      "required": {
+        "level": 59,
+        "simulatedRuns": 100000,
+        "clearRate": 0.46624,
+        "previewClearProbability": 0.4634887125257487,
+        "durationSeconds": 3305.6,
+        "wipeCounts": {
+          "scholomance_instructor_malicia": 4767,
+          "scholomance_darkmaster_gandling": 7474,
+          "scholomance_doctor_theolen_krastinov": 5507,
+          "scholomance_lorekeeper_polkelt": 3717,
+          "scholomance_vectus": 3432,
+          "scholomance_lord_alexei_barov": 7432,
+          "scholomance_the_ravenian": 7093,
+          "scholomance_marduk": 2680,
+          "scholomance_jandice_barov": 1535,
+          "scholomance_rattlegore": 1384,
+          "scholomance_lady_illucia_barov": 5766,
+          "scholomance_ras_frostwhisper": 1240,
+          "scholomance_kirtonosthe_herald": 1349
+        }
+      },
+      "with-optional": {
+        "level": 59,
+        "simulatedRuns": 100000,
+        "clearRate": 0.37398,
+        "previewClearProbability": 0.37327973135959025,
+        "durationSeconds": 3403.6,
+        "wipeCounts": {
+          "scholomance_lady_illucia_barov": 7834,
+          "scholomance_lord_alexei_barov": 5365,
+          "scholomance_the_ravenian": 9143,
+          "scholomance_vectus": 1517,
+          "scholomance_darkmaster_gandling": 8340,
+          "scholomance_lorekeeper_polkelt": 7386,
+          "scholomance_instructor_malicia": 6868,
+          "scholomance_ras_frostwhisper": 5181,
+          "scholomance_jandice_barov": 1428,
+          "scholomance_doctor_theolen_krastinov": 2965,
+          "scholomance_kirtonosthe_herald": 1363,
+          "scholomance_marduk": 3124,
+          "scholomance_rattlegore": 2088
+        }
+      },
+      "with-rare": {
+        "level": 59,
+        "simulatedRuns": 100000,
+        "clearRate": 0.42793,
+        "previewClearProbability": 0.4282568252118516,
+        "durationSeconds": 3330.2,
+        "wipeCounts": {
+          "scholomance_lorekeeper_polkelt": 5702,
+          "scholomance_doctor_theolen_krastinov": 4114,
+          "scholomance_instructor_malicia": 4857,
+          "scholomance_lady_illucia_barov": 7481,
+          "scholomance_darkmaster_gandling": 8035,
+          "scholomance_vectus": 2340,
+          "scholomance_kirtonosthe_herald": 1360,
+          "scholomance_ras_frostwhisper": 2781,
+          "scholomance_the_ravenian": 7925,
+          "scholomance_marduk": 2753,
+          "scholomance_lord_alexei_barov": 6841,
+          "scholomance_rattlegore": 1609,
+          "scholomance_jandice_barov": 1409
+        }
+      }
+    },
+    "no-tank": {
+      "required": {
+        "level": 59,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 2.4269199556396514e-20,
+        "durationSeconds": 3724.8,
+        "wipeCounts": {
+          "scholomance_kirtonosthe_herald": 97773,
+          "scholomance_jandice_barov": 2161,
+          "scholomance_rattlegore": 64,
+          "scholomance_marduk": 2
+        }
+      },
+      "with-optional": {
+        "level": 59,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 7.127095866918954e-20,
+        "durationSeconds": 3651.2,
+        "wipeCounts": {
+          "scholomance_kirtonosthe_herald": 97141,
+          "scholomance_rattlegore": 106,
+          "scholomance_jandice_barov": 2750,
+          "scholomance_marduk": 3
+        }
+      },
+      "with-rare": {
+        "level": 59,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 2.4269199556396517e-20,
+        "durationSeconds": 3647.4,
+        "wipeCounts": {
+          "scholomance_kirtonosthe_herald": 97722,
+          "scholomance_jandice_barov": 2227,
+          "scholomance_rattlegore": 48,
+          "scholomance_marduk": 3
+        }
+      }
+    },
+    "no-healing": {
+      "required": {
+        "level": 59,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 9.477183822558606e-20,
+        "durationSeconds": 3550,
+        "wipeCounts": {
+          "scholomance_kirtonosthe_herald": 96871,
+          "scholomance_jandice_barov": 3054,
+          "scholomance_rattlegore": 70,
+          "scholomance_marduk": 5
+        }
+      },
+      "with-optional": {
+        "level": 59,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 7.113367866918956e-20,
+        "durationSeconds": 3672.4,
+        "wipeCounts": {
+          "scholomance_kirtonosthe_herald": 96980,
+          "scholomance_jandice_barov": 2924,
+          "scholomance_rattlegore": 95,
+          "scholomance_marduk": 1
+        }
+      },
+      "with-rare": {
+        "level": 59,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 4.763279911279304e-20,
+        "durationSeconds": 3662.2,
+        "wipeCounts": {
+          "scholomance_kirtonosthe_herald": 97349,
+          "scholomance_jandice_barov": 2587,
+          "scholomance_rattlegore": 63,
+          "scholomance_marduk": 1
+        }
+      }
+    },
+    "overlevel": {
+      "required": {
+        "level": 56,
+        "simulatedRuns": 100000,
+        "clearRate": 0.22194,
+        "previewClearProbability": 0.22102996130621988,
+        "durationSeconds": 3586.2,
+        "wipeCounts": {
+          "scholomance_lord_alexei_barov": 8497,
+          "scholomance_ras_frostwhisper": 3604,
+          "scholomance_rattlegore": 1279,
+          "scholomance_doctor_theolen_krastinov": 9295,
+          "scholomance_darkmaster_gandling": 6781,
+          "scholomance_instructor_malicia": 8982,
+          "scholomance_jandice_barov": 3427,
+          "scholomance_lorekeeper_polkelt": 5945,
+          "scholomance_the_ravenian": 9529,
+          "scholomance_marduk": 5579,
+          "scholomance_lady_illucia_barov": 5587,
+          "scholomance_vectus": 6760,
+          "scholomance_kirtonosthe_herald": 2541
+        }
+      },
+      "with-optional": {
+        "level": 56,
+        "simulatedRuns": 100000,
+        "clearRate": 0.24221,
+        "previewClearProbability": 0.24239148675919475,
+        "durationSeconds": 3587,
+        "wipeCounts": {
+          "scholomance_marduk": 5957,
+          "scholomance_lorekeeper_polkelt": 6528,
+          "scholomance_instructor_malicia": 8798,
+          "scholomance_lord_alexei_barov": 6878,
+          "scholomance_darkmaster_gandling": 6873,
+          "scholomance_vectus": 4328,
+          "scholomance_the_ravenian": 9023,
+          "scholomance_doctor_theolen_krastinov": 6838,
+          "scholomance_lady_illucia_barov": 5671,
+          "scholomance_kirtonosthe_herald": 2980,
+          "scholomance_ras_frostwhisper": 5576,
+          "scholomance_rattlegore": 4303,
+          "scholomance_jandice_barov": 2026
+        }
+      },
+      "with-rare": {
+        "level": 56,
+        "simulatedRuns": 100000,
+        "clearRate": 0.2902,
+        "previewClearProbability": 0.2893194172303181,
+        "durationSeconds": 3440,
+        "wipeCounts": {
+          "scholomance_doctor_theolen_krastinov": 7962,
+          "scholomance_lord_alexei_barov": 8588,
+          "scholomance_instructor_malicia": 9368,
+          "scholomance_lorekeeper_polkelt": 4318,
+          "scholomance_darkmaster_gandling": 8668,
+          "scholomance_the_ravenian": 10809,
+          "scholomance_ras_frostwhisper": 2956,
+          "scholomance_lady_illucia_barov": 4921,
+          "scholomance_jandice_barov": 1408,
+          "scholomance_vectus": 4606,
+          "scholomance_marduk": 4061,
+          "scholomance_rattlegore": 1864,
+          "scholomance_kirtonosthe_herald": 1451
+        }
+      }
+    },
+    "max-level": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.4757,
+        "previewClearProbability": 0.475440075891414,
+        "durationSeconds": 3222.8,
+        "wipeCounts": {
+          "scholomance_lord_alexei_barov": 6790,
+          "scholomance_the_ravenian": 5492,
+          "scholomance_kirtonosthe_herald": 1429,
+          "scholomance_jandice_barov": 2239,
+          "scholomance_lady_illucia_barov": 5740,
+          "scholomance_vectus": 3951,
+          "scholomance_rattlegore": 2606,
+          "scholomance_lorekeeper_polkelt": 4402,
+          "scholomance_ras_frostwhisper": 3300,
+          "scholomance_doctor_theolen_krastinov": 5290,
+          "scholomance_instructor_malicia": 3299,
+          "scholomance_darkmaster_gandling": 6402,
+          "scholomance_marduk": 1490
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.43978,
+        "previewClearProbability": 0.4400662193940619,
+        "durationSeconds": 3254.8,
+        "wipeCounts": {
+          "scholomance_instructor_malicia": 6113,
+          "scholomance_doctor_theolen_krastinov": 6938,
+          "scholomance_jandice_barov": 1410,
+          "scholomance_lorekeeper_polkelt": 1632,
+          "scholomance_the_ravenian": 8685,
+          "scholomance_rattlegore": 1401,
+          "scholomance_lord_alexei_barov": 8628,
+          "scholomance_darkmaster_gandling": 8786,
+          "scholomance_marduk": 2449,
+          "scholomance_lady_illucia_barov": 3643,
+          "scholomance_vectus": 3673,
+          "scholomance_ras_frostwhisper": 1229,
+          "scholomance_kirtonosthe_herald": 1435
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.44242,
+        "previewClearProbability": 0.44203336108919195,
+        "durationSeconds": 3212.8,
+        "wipeCounts": {
+          "scholomance_darkmaster_gandling": 8176,
+          "scholomance_lorekeeper_polkelt": 4070,
+          "scholomance_ras_frostwhisper": 2404,
+          "scholomance_instructor_malicia": 5585,
+          "scholomance_lord_alexei_barov": 6624,
+          "scholomance_the_ravenian": 8033,
+          "scholomance_doctor_theolen_krastinov": 4521,
+          "scholomance_vectus": 3096,
+          "scholomance_lady_illucia_barov": 6099,
+          "scholomance_jandice_barov": 1510,
+          "scholomance_marduk": 2769,
+          "scholomance_kirtonosthe_herald": 1429,
+          "scholomance_rattlegore": 1442
+        }
+      }
+    },
+    "speed-run": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.40682,
+        "previewClearProbability": 0.4081329304040667,
+        "durationSeconds": 3233,
+        "wipeCounts": {
+          "scholomance_darkmaster_gandling": 7841,
+          "scholomance_doctor_theolen_krastinov": 5262,
+          "scholomance_lord_alexei_barov": 6841,
+          "scholomance_marduk": 3265,
+          "scholomance_jandice_barov": 1622,
+          "scholomance_instructor_malicia": 6219,
+          "scholomance_the_ravenian": 8544,
+          "scholomance_rattlegore": 1363,
+          "scholomance_lady_illucia_barov": 6270,
+          "scholomance_lorekeeper_polkelt": 4712,
+          "scholomance_kirtonosthe_herald": 1400,
+          "scholomance_ras_frostwhisper": 2183,
+          "scholomance_vectus": 3796
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.53959,
+        "previewClearProbability": 0.537657087775272,
+        "durationSeconds": 3157,
+        "wipeCounts": {
+          "scholomance_lorekeeper_polkelt": 3039,
+          "scholomance_darkmaster_gandling": 7898,
+          "scholomance_rattlegore": 1452,
+          "scholomance_lady_illucia_barov": 5048,
+          "scholomance_kirtonosthe_herald": 1377,
+          "scholomance_the_ravenian": 6531,
+          "scholomance_doctor_theolen_krastinov": 3938,
+          "scholomance_instructor_malicia": 2980,
+          "scholomance_lord_alexei_barov": 7181,
+          "scholomance_ras_frostwhisper": 1263,
+          "scholomance_vectus": 2158,
+          "scholomance_jandice_barov": 1375,
+          "scholomance_marduk": 1801
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.29617,
+        "previewClearProbability": 0.2946829936815677,
+        "durationSeconds": 3352.6,
+        "wipeCounts": {
+          "scholomance_the_ravenian": 8055,
+          "scholomance_lord_alexei_barov": 8260,
+          "scholomance_jandice_barov": 2408,
+          "scholomance_kirtonosthe_herald": 1412,
+          "scholomance_ras_frostwhisper": 4466,
+          "scholomance_vectus": 6193,
+          "scholomance_instructor_malicia": 6382,
+          "scholomance_darkmaster_gandling": 6853,
+          "scholomance_rattlegore": 3032,
+          "scholomance_doctor_theolen_krastinov": 8453,
+          "scholomance_lady_illucia_barov": 5700,
+          "scholomance_lorekeeper_polkelt": 5930,
+          "scholomance_marduk": 3239
+        }
+      }
+    }
+  }
+}

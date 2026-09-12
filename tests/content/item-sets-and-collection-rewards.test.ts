@@ -50,12 +50,12 @@ function moduleAt(modules: Record<string, unknown>, suffix: string): Record<stri
 }
 
 describe("item sets and collection reward content", () => {
-  it("loads all nine planned Dungeon Set 1 collections and the supported milestones", () => {
+  it("loads all nine active Dungeon Set 1 collections and the supported milestones", () => {
     expect(itemSetFile.itemSets).toHaveLength(9);
     const set = itemSetFile.itemSets.find((entry) => entry.id === "dungeon_set_1_valor")!;
     const setId: ItemSetId = set.id;
     expect(setId).toBe("dungeon_set_1_valor");
-    expect(set.status).toBe("planned");
+    expect(set.status).toBe("active");
     expect(set.itemIds).toEqual([
       "16730",
       "16731",
@@ -185,11 +185,11 @@ describe("item sets and collection reward content", () => {
       /itemSets\[0\]\.itemIds\[0\].*不存在的基础物品.*missing_item/s,
     );
 
-    const plannedItemModules = clonedModules();
-    const plannedItemFile = moduleAt(plannedItemModules, "/content/item-sets/dungeon-set-1.json");
-    const plannedItemSets = plannedItemFile.itemSets as Array<{ itemIds: string[] }>;
-    plannedItemSets[0]!.itemIds[0] = "future_item";
-    expect(() => loadContentRegistry(plannedItemModules)).not.toThrow();
+    const activeItemModules = clonedModules();
+    const activeItemFile = moduleAt(activeItemModules, "/content/item-sets/dungeon-set-1.json");
+    const activeItemSets = activeItemFile.itemSets as Array<{ itemIds: string[] }>;
+    activeItemSets[0]!.itemIds[0] = "future_item";
+    expect(() => loadContentRegistry(activeItemModules)).toThrowError(/不存在的基础物品/);
 
     const missingDungeonModules = clonedModules();
     const missingDungeonFile = moduleAt(

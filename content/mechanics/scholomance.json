@@ -1,0 +1,388 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/zone=2017",
+        "verifiedAt": "2026-09-12",
+        "notes": "核对通灵学院的驱散、打断、控制、范围伤害和远程处理机制。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-12",
+        "notes": "以内容驱动路线、能力机制和活动快照表达经典副本，不模拟背包点击和后台收益。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "mechanics": [
+    {
+      "id": "scholomance_kirtonosthe_herald_mechanic",
+      "name": {
+        "zhCN": "Kirtonos the Herald机制"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "magic_dispel",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "curse_dispel",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.1,
+        "healingMultiplier": 1.1,
+        "damageMultiplier": 1.04,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "通灵学院中Kirtonos the Herald的关键机制；准备对应能力可降低承伤和耗时。"
+      },
+      "reportTag": "scholomance_kirtonosthe_herald_mechanic"
+    },
+    {
+      "id": "scholomance_jandice_barov_mechanic",
+      "name": {
+        "zhCN": "Jandice Barov机制"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "curse_dispel",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "crowd_control",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.105,
+        "healingMultiplier": 1.104,
+        "damageMultiplier": 1.04,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "通灵学院中Jandice Barov的关键机制；准备对应能力可降低承伤和耗时。"
+      },
+      "reportTag": "scholomance_jandice_barov_mechanic"
+    },
+    {
+      "id": "scholomance_rattlegore_mechanic",
+      "name": {
+        "zhCN": "Rattlegore机制"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "crowd_control",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "magic_dispel",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.11,
+        "healingMultiplier": 1.108,
+        "damageMultiplier": 1.04,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "通灵学院中Rattlegore的关键机制；准备对应能力可降低承伤和耗时。"
+      },
+      "reportTag": "scholomance_rattlegore_mechanic"
+    },
+    {
+      "id": "scholomance_marduk_mechanic",
+      "name": {
+        "zhCN": "Marduk Blackpool机制"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "magic_dispel",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "curse_dispel",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.115,
+        "healingMultiplier": 1.112,
+        "damageMultiplier": 1.04,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "通灵学院中Marduk Blackpool的关键机制；准备对应能力可降低承伤和耗时。"
+      },
+      "reportTag": "scholomance_marduk_mechanic"
+    },
+    {
+      "id": "scholomance_vectus_mechanic",
+      "name": {
+        "zhCN": "Vectus机制"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "curse_dispel",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "crowd_control",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.12,
+        "healingMultiplier": 1.116,
+        "damageMultiplier": 1.04,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "通灵学院中Vectus的关键机制；准备对应能力可降低承伤和耗时。"
+      },
+      "reportTag": "scholomance_vectus_mechanic"
+    },
+    {
+      "id": "scholomance_ras_frostwhisper_mechanic",
+      "name": {
+        "zhCN": "Ras Frostwhisper机制"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "crowd_control",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "magic_dispel",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.125,
+        "healingMultiplier": 1.12,
+        "damageMultiplier": 1.04,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "通灵学院中Ras Frostwhisper的关键机制；准备对应能力可降低承伤和耗时。"
+      },
+      "reportTag": "scholomance_ras_frostwhisper_mechanic"
+    },
+    {
+      "id": "scholomance_instructor_malicia_mechanic",
+      "name": {
+        "zhCN": "Instructor Malicia机制"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "magic_dispel",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "curse_dispel",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.1300000000000001,
+        "healingMultiplier": 1.124,
+        "damageMultiplier": 1.04,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "通灵学院中Instructor Malicia的关键机制；准备对应能力可降低承伤和耗时。"
+      },
+      "reportTag": "scholomance_instructor_malicia_mechanic"
+    },
+    {
+      "id": "scholomance_doctor_theolen_krastinov_mechanic",
+      "name": {
+        "zhCN": "Doctor Theolen Krastinov机制"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "curse_dispel",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "crowd_control",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.135,
+        "healingMultiplier": 1.1280000000000001,
+        "damageMultiplier": 1.04,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "通灵学院中Doctor Theolen Krastinov的关键机制；准备对应能力可降低承伤和耗时。"
+      },
+      "reportTag": "scholomance_doctor_theolen_krastinov_mechanic"
+    },
+    {
+      "id": "scholomance_lorekeeper_polkelt_mechanic",
+      "name": {
+        "zhCN": "Lorekeeper Polkelt机制"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "crowd_control",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "magic_dispel",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.1400000000000001,
+        "healingMultiplier": 1.1320000000000001,
+        "damageMultiplier": 1.04,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "通灵学院中Lorekeeper Polkelt的关键机制；准备对应能力可降低承伤和耗时。"
+      },
+      "reportTag": "scholomance_lorekeeper_polkelt_mechanic"
+    },
+    {
+      "id": "scholomance_the_ravenian_mechanic",
+      "name": {
+        "zhCN": "The Ravenian机制"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "magic_dispel",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "curse_dispel",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.145,
+        "healingMultiplier": 1.1360000000000001,
+        "damageMultiplier": 1.04,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "通灵学院中The Ravenian的关键机制；准备对应能力可降低承伤和耗时。"
+      },
+      "reportTag": "scholomance_the_ravenian_mechanic"
+    },
+    {
+      "id": "scholomance_lord_alexei_barov_mechanic",
+      "name": {
+        "zhCN": "Lord Alexei Barov机制"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "curse_dispel",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "crowd_control",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.1500000000000001,
+        "healingMultiplier": 1.1400000000000001,
+        "damageMultiplier": 1.04,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "通灵学院中Lord Alexei Barov的关键机制；准备对应能力可降低承伤和耗时。"
+      },
+      "reportTag": "scholomance_lord_alexei_barov_mechanic"
+    },
+    {
+      "id": "scholomance_lady_illucia_barov_mechanic",
+      "name": {
+        "zhCN": "Lady Illucia Barov机制"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "crowd_control",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "magic_dispel",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.155,
+        "healingMultiplier": 1.1440000000000001,
+        "damageMultiplier": 1.04,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "通灵学院中Lady Illucia Barov的关键机制；准备对应能力可降低承伤和耗时。"
+      },
+      "reportTag": "scholomance_lady_illucia_barov_mechanic"
+    },
+    {
+      "id": "scholomance_darkmaster_gandling_mechanic",
+      "name": {
+        "zhCN": "Darkmaster Gandling机制"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "magic_dispel",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "curse_dispel",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.1600000000000001,
+        "healingMultiplier": 1.1480000000000001,
+        "damageMultiplier": 1.04,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "通灵学院中Darkmaster Gandling的关键机制；准备对应能力可降低承伤和耗时。"
+      },
+      "reportTag": "scholomance_darkmaster_gandling_mechanic"
+    }
+  ]
+}

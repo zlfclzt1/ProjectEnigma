@@ -1,0 +1,283 @@
+{
+  "dungeonId": "stratholme_live",
+  "samplesPerScenario": 100000,
+  "scenarios": {
+    "standard": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.71745,
+        "previewClearProbability": 0.7167566147836233,
+        "durationSeconds": 2480.2,
+        "wipeCounts": {
+          "stratholme_live_cannon_master_willey": 7159,
+          "stratholme_live_archivist_galford": 8246,
+          "stratholme_live_balnazzar": 3270,
+          "stratholme_live_postmaster": 4160,
+          "stratholme_live_the_unforgiven": 2834,
+          "stratholme_live_timmythe_cruel": 2586
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.69825,
+        "previewClearProbability": 0.6979389893888455,
+        "durationSeconds": 2525,
+        "wipeCounts": {
+          "stratholme_live_postmaster": 3004,
+          "stratholme_live_archivist_galford": 7343,
+          "stratholme_live_cannon_master_willey": 6301,
+          "stratholme_live_timmythe_cruel": 4480,
+          "stratholme_live_balnazzar": 7385,
+          "stratholme_live_the_unforgiven": 1662
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.68845,
+        "previewClearProbability": 0.6917777095730689,
+        "durationSeconds": 3251.4,
+        "wipeCounts": {
+          "stratholme_live_archivist_galford": 9161,
+          "stratholme_live_timmythe_cruel": 2169,
+          "stratholme_live_postmaster": 4004,
+          "stratholme_live_balnazzar": 3138,
+          "stratholme_live_cannon_master_willey": 7898,
+          "stratholme_live_skull": 1425,
+          "stratholme_live_the_unforgiven": 2018,
+          "stratholme_live_hearthsinger_forresten": 1342
+        }
+      }
+    },
+    "no-tank": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.4320000000000003e-10,
+        "durationSeconds": 2749.8,
+        "wipeCounts": {
+          "stratholme_live_the_unforgiven": 97984,
+          "stratholme_live_postmaster": 1987,
+          "stratholme_live_timmythe_cruel": 27,
+          "stratholme_live_cannon_master_willey": 2
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 9.040000000000002e-11,
+        "durationSeconds": 2788.2,
+        "wipeCounts": {
+          "stratholme_live_the_unforgiven": 97997,
+          "stratholme_live_postmaster": 1963,
+          "stratholme_live_timmythe_cruel": 39,
+          "stratholme_live_cannon_master_willey": 1
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.3720000000000006e-13,
+        "durationSeconds": 3479.8,
+        "wipeCounts": {
+          "stratholme_live_skull": 98019,
+          "stratholme_live_hearthsinger_forresten": 1921,
+          "stratholme_live_the_unforgiven": 59,
+          "stratholme_live_postmaster": 1
+        }
+      }
+    },
+    "no-healing": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 9.039999999999999e-11,
+        "durationSeconds": 2758,
+        "wipeCounts": {
+          "stratholme_live_the_unforgiven": 97968,
+          "stratholme_live_postmaster": 2001,
+          "stratholme_live_timmythe_cruel": 30,
+          "stratholme_live_cannon_master_willey": 1
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.168e-10,
+        "durationSeconds": 2779.6,
+        "wipeCounts": {
+          "stratholme_live_the_unforgiven": 98012,
+          "stratholme_live_postmaster": 1946,
+          "stratholme_live_timmythe_cruel": 42
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.1488000000000006e-13,
+        "durationSeconds": 3536.8,
+        "wipeCounts": {
+          "stratholme_live_skull": 97990,
+          "stratholme_live_hearthsinger_forresten": 1949,
+          "stratholme_live_the_unforgiven": 60,
+          "stratholme_live_postmaster": 1
+        }
+      }
+    },
+    "overlevel": {
+      "required": {
+        "level": 57,
+        "simulatedRuns": 100000,
+        "clearRate": 0.68258,
+        "previewClearProbability": 0.6826175629290578,
+        "durationSeconds": 2547,
+        "wipeCounts": {
+          "stratholme_live_postmaster": 4904,
+          "stratholme_live_archivist_galford": 8515,
+          "stratholme_live_balnazzar": 4924,
+          "stratholme_live_the_unforgiven": 3937,
+          "stratholme_live_cannon_master_willey": 7726,
+          "stratholme_live_timmythe_cruel": 1736
+        }
+      },
+      "with-optional": {
+        "level": 57,
+        "simulatedRuns": 100000,
+        "clearRate": 0.56495,
+        "previewClearProbability": 0.564042692708847,
+        "durationSeconds": 2640,
+        "wipeCounts": {
+          "stratholme_live_postmaster": 6966,
+          "stratholme_live_cannon_master_willey": 8810,
+          "stratholme_live_balnazzar": 6574,
+          "stratholme_live_the_unforgiven": 5693,
+          "stratholme_live_archivist_galford": 9189,
+          "stratholme_live_timmythe_cruel": 6273
+        }
+      },
+      "with-rare": {
+        "level": 57,
+        "simulatedRuns": 100000,
+        "clearRate": 0.73014,
+        "previewClearProbability": 0.7301697753767225,
+        "durationSeconds": 3216.2,
+        "wipeCounts": {
+          "stratholme_live_timmythe_cruel": 2385,
+          "stratholme_live_archivist_galford": 8110,
+          "stratholme_live_cannon_master_willey": 6457,
+          "stratholme_live_postmaster": 2846,
+          "stratholme_live_skull": 1434,
+          "stratholme_live_balnazzar": 2828,
+          "stratholme_live_hearthsinger_forresten": 1370,
+          "stratholme_live_the_unforgiven": 1556
+        }
+      }
+    },
+    "max-level": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.71424,
+        "previewClearProbability": 0.7141443682952736,
+        "durationSeconds": 2503,
+        "wipeCounts": {
+          "stratholme_live_cannon_master_willey": 7864,
+          "stratholme_live_archivist_galford": 8962,
+          "stratholme_live_postmaster": 4735,
+          "stratholme_live_timmythe_cruel": 1560,
+          "stratholme_live_the_unforgiven": 3264,
+          "stratholme_live_balnazzar": 2191
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.80334,
+        "previewClearProbability": 0.8043466937994868,
+        "durationSeconds": 2458.6,
+        "wipeCounts": {
+          "stratholme_live_postmaster": 2538,
+          "stratholme_live_cannon_master_willey": 5744,
+          "stratholme_live_archivist_galford": 7121,
+          "stratholme_live_balnazzar": 1169,
+          "stratholme_live_the_unforgiven": 1768,
+          "stratholme_live_timmythe_cruel": 1326
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.64511,
+        "previewClearProbability": 0.6427268051033563,
+        "durationSeconds": 3306.4,
+        "wipeCounts": {
+          "stratholme_live_hearthsinger_forresten": 1475,
+          "stratholme_live_timmythe_cruel": 4891,
+          "stratholme_live_postmaster": 3363,
+          "stratholme_live_cannon_master_willey": 6854,
+          "stratholme_live_archivist_galford": 7952,
+          "stratholme_live_the_unforgiven": 2301,
+          "stratholme_live_balnazzar": 7269,
+          "stratholme_live_skull": 1384
+        }
+      }
+    },
+    "speed-run": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.66421,
+        "previewClearProbability": 0.6638514703426077,
+        "durationSeconds": 2519.6,
+        "wipeCounts": {
+          "stratholme_live_cannon_master_willey": 7738,
+          "stratholme_live_archivist_galford": 8644,
+          "stratholme_live_postmaster": 4225,
+          "stratholme_live_timmythe_cruel": 4190,
+          "stratholme_live_balnazzar": 6429,
+          "stratholme_live_the_unforgiven": 2353
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.71797,
+        "previewClearProbability": 0.715836546540325,
+        "durationSeconds": 2496,
+        "wipeCounts": {
+          "stratholme_live_archivist_galford": 7448,
+          "stratholme_live_cannon_master_willey": 6673,
+          "stratholme_live_balnazzar": 4597,
+          "stratholme_live_the_unforgiven": 2359,
+          "stratholme_live_postmaster": 3880,
+          "stratholme_live_timmythe_cruel": 3246
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.60181,
+        "previewClearProbability": 0.598193947126863,
+        "durationSeconds": 3326.2,
+        "wipeCounts": {
+          "stratholme_live_postmaster": 5762,
+          "stratholme_live_balnazzar": 5342,
+          "stratholme_live_cannon_master_willey": 8668,
+          "stratholme_live_the_unforgiven": 3903,
+          "stratholme_live_archivist_galford": 9124,
+          "stratholme_live_timmythe_cruel": 3649,
+          "stratholme_live_skull": 1977,
+          "stratholme_live_hearthsinger_forresten": 1394
+        }
+      }
+    }
+  }
+}

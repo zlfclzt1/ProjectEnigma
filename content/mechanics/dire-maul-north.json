@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/zone=1583",
+        "verifiedAt": "2026-09-12",
+        "notes": "核对厄运之槌北区的驱散、打断、控制、范围伤害和远程处理机制。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-12",
+        "notes": "以内容驱动路线、能力机制和活动快照表达经典副本，不模拟背包点击和后台收益。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "mechanics": [
+    {
+      "id": "dire_maul_north_guard_moldar_mechanic",
+      "name": {
+        "zhCN": "Guard Mol'dar机制"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "crowd_control",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "area_damage",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.1,
+        "healingMultiplier": 1.1,
+        "damageMultiplier": 1.04,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "厄运之槌北区中Guard Mol'dar的关键机制；准备对应能力可降低承伤和耗时。"
+      },
+      "reportTag": "dire_maul_north_guard_moldar_mechanic"
+    },
+    {
+      "id": "dire_maul_north_stomper_kreeg_mechanic",
+      "name": {
+        "zhCN": "Stomper Kreeg机制"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "area_damage",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "interrupt",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.105,
+        "healingMultiplier": 1.104,
+        "damageMultiplier": 1.04,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "厄运之槌北区中Stomper Kreeg的关键机制；准备对应能力可降低承伤和耗时。"
+      },
+      "reportTag": "dire_maul_north_stomper_kreeg_mechanic"
+    },
+    {
+      "id": "dire_maul_north_guard_fengus_mechanic",
+      "name": {
+        "zhCN": "Guard Fengus机制"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "interrupt",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "crowd_control",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.11,
+        "healingMultiplier": 1.108,
+        "damageMultiplier": 1.04,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "厄运之槌北区中Guard Fengus的关键机制；准备对应能力可降低承伤和耗时。"
+      },
+      "reportTag": "dire_maul_north_guard_fengus_mechanic"
+    },
+    {
+      "id": "dire_maul_north_guard_slipkik_mechanic",
+      "name": {
+        "zhCN": "Guard Slip'kik机制"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "crowd_control",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "area_damage",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.115,
+        "healingMultiplier": 1.112,
+        "damageMultiplier": 1.04,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "厄运之槌北区中Guard Slip'kik的关键机制；准备对应能力可降低承伤和耗时。"
+      },
+      "reportTag": "dire_maul_north_guard_slipkik_mechanic"
+    },
+    {
+      "id": "dire_maul_north_captain_kromcrush_mechanic",
+      "name": {
+        "zhCN": "Captain Kromcrush机制"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "area_damage",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "interrupt",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.12,
+        "healingMultiplier": 1.116,
+        "damageMultiplier": 1.04,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "厄运之槌北区中Captain Kromcrush的关键机制；准备对应能力可降低承伤和耗时。"
+      },
+      "reportTag": "dire_maul_north_captain_kromcrush_mechanic"
+    },
+    {
+      "id": "dire_maul_north_cho_rush_mechanic",
+      "name": {
+        "zhCN": "Cho'Rush the Observer机制"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "interrupt",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "crowd_control",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.125,
+        "healingMultiplier": 1.12,
+        "damageMultiplier": 1.04,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "厄运之槌北区中Cho'Rush the Observer的关键机制；准备对应能力可降低承伤和耗时。"
+      },
+      "reportTag": "dire_maul_north_cho_rush_mechanic"
+    },
+    {
+      "id": "dire_maul_north_king_gordok_mechanic",
+      "name": {
+        "zhCN": "King Gordok机制"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "crowd_control",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "area_damage",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.1300000000000001,
+        "healingMultiplier": 1.124,
+        "damageMultiplier": 1.04,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "厄运之槌北区中King Gordok的关键机制；准备对应能力可降低承伤和耗时。"
+      },
+      "reportTag": "dire_maul_north_king_gordok_mechanic"
+    },
+    {
+      "id": "dire_maul_north_tributerun_mechanic",
+      "name": {
+        "zhCN": "Tribute机制"
+      },
+      "type": "recommended",
+      "requirements": [
+        {
+          "capabilityId": "area_damage",
+          "minimumValue": 1
+        },
+        {
+          "capabilityId": "interrupt",
+          "minimumValue": 1
+        }
+      ],
+      "missingEffects": {
+        "tankMultiplier": 1.135,
+        "healingMultiplier": 1.1280000000000001,
+        "damageMultiplier": 1.04,
+        "probabilityModifier": -0.04,
+        "durationMultiplier": 1.06
+      },
+      "description": {
+        "zhCN": "厄运之槌北区中Tribute的关键机制；准备对应能力可降低承伤和耗时。"
+      },
+      "reportTag": "dire_maul_north_tributerun_mechanic"
+    }
+  ]
+}

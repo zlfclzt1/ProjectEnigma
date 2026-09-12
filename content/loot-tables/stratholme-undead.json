@@ -1,0 +1,335 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-11",
+        "notes": "核对斯坦索姆亡灵区首领与受支持装备池；配方、材料、钥匙、任务物品、消耗品、卡牌、坐骑和法术书不进入装备掉落。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "lootTables": [
+    {
+      "id": "stratholme_undead_magistrate_barthilas",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "18727",
+          "weight": 0.16666666666666666
+        },
+        {
+          "itemId": "13376",
+          "weight": 0.16666666666666666
+        },
+        {
+          "itemId": "18726",
+          "weight": 0.16666666666666666
+        },
+        {
+          "itemId": "18722",
+          "weight": 0.16666666666666666
+        },
+        {
+          "itemId": "23198",
+          "weight": 0.16666666666666666
+        },
+        {
+          "itemId": "18725",
+          "weight": 0.16666666666666666
+        }
+      ]
+    },
+    {
+      "id": "stratholme_undead_stonespine",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "13397",
+          "weight": 0.3333333333333333
+        },
+        {
+          "itemId": "13954",
+          "weight": 0.3333333333333333
+        },
+        {
+          "itemId": "13399",
+          "weight": 0.3333333333333333
+        }
+      ]
+    },
+    {
+      "id": "stratholme_undead_baroness_anastari",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "16704",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "18728",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "18730",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "18729",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "13534",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "13538",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "13535",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "13537",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "13539",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "16697",
+          "weight": 0.05
+        },
+        {
+          "itemId": "16703",
+          "weight": 0.05
+        }
+      ]
+    },
+    {
+      "id": "stratholme_undead_nerubenkan",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "16675",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "18740",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "18739",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "18738",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "13529",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "13533",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "13532",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "13531",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "13530",
+          "weight": 0.1111111111111111
+        }
+      ]
+    },
+    {
+      "id": "stratholme_undead_malekithe_pallid",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "16691",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "18734",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "18735",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "13524",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "18737",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "13528",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "13525",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "13526",
+          "weight": 0.1111111111111111
+        },
+        {
+          "itemId": "13527",
+          "weight": 0.1111111111111111
+        }
+      ]
+    },
+    {
+      "id": "stratholme_undead_ramsteinthe_gorger",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "16737",
+          "weight": 0.14285714285714285
+        },
+        {
+          "itemId": "18723",
+          "weight": 0.14285714285714285
+        },
+        {
+          "itemId": "13374",
+          "weight": 0.14285714285714285
+        },
+        {
+          "itemId": "13373",
+          "weight": 0.14285714285714285
+        },
+        {
+          "itemId": "13515",
+          "weight": 0.14285714285714285
+        },
+        {
+          "itemId": "13375",
+          "weight": 0.14285714285714285
+        },
+        {
+          "itemId": "13372",
+          "weight": 0.14285714285714285
+        }
+      ]
+    },
+    {
+      "id": "stratholme_undead_baron_rivendare",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "13505",
+          "weight": 0.045454545454545456
+        },
+        {
+          "itemId": "22411",
+          "weight": 0.045454545454545456
+        },
+        {
+          "itemId": "22412",
+          "weight": 0.045454545454545456
+        },
+        {
+          "itemId": "13340",
+          "weight": 0.045454545454545456
+        },
+        {
+          "itemId": "13346",
+          "weight": 0.045454545454545456
+        },
+        {
+          "itemId": "22409",
+          "weight": 0.045454545454545456
+        },
+        {
+          "itemId": "13344",
+          "weight": 0.045454545454545456
+        },
+        {
+          "itemId": "22410",
+          "weight": 0.045454545454545456
+        },
+        {
+          "itemId": "13345",
+          "weight": 0.045454545454545456
+        },
+        {
+          "itemId": "22408",
+          "weight": 0.045454545454545456
+        },
+        {
+          "itemId": "13349",
+          "weight": 0.045454545454545456
+        },
+        {
+          "itemId": "13368",
+          "weight": 0.045454545454545456
+        },
+        {
+          "itemId": "13361",
+          "weight": 0.045454545454545456
+        },
+        {
+          "itemId": "16694",
+          "weight": 0.045454545454545456
+        },
+        {
+          "itemId": "16687",
+          "weight": 0.045454545454545456
+        },
+        {
+          "itemId": "16699",
+          "weight": 0.045454545454545456
+        },
+        {
+          "itemId": "16709",
+          "weight": 0.045454545454545456
+        },
+        {
+          "itemId": "16719",
+          "weight": 0.045454545454545456
+        },
+        {
+          "itemId": "16678",
+          "weight": 0.045454545454545456
+        },
+        {
+          "itemId": "16668",
+          "weight": 0.045454545454545456
+        },
+        {
+          "itemId": "16728",
+          "weight": 0.045454545454545456
+        },
+        {
+          "itemId": "16732",
+          "weight": 0.045454545454545456
+        }
+      ]
+    }
+  ]
+}

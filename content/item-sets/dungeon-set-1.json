@@ -17,9 +17,9 @@
       "id": "dungeon_set_1_elements",
       "name": { "zhCN": "元素套装" },
       "description": {
-        "zhCN": "萨满祭司的八件 Dungeon Set 1；当前仅记录基础物品收藏，不实现套装战斗效果。"
+        "zhCN": "萨满祭司的八件 Dungeon Set 1；记录真实属性、图标与副本来源，不实现套装战斗效果。"
       },
-      "status": "planned",
+      "status": "active",
       "itemIds": ["16666", "16667", "16668", "16669", "16670", "16671", "16672", "16673"],
       "source": {
         "kind": "source-fact",
@@ -34,9 +34,9 @@
       "id": "dungeon_set_1_beaststalker",
       "name": { "zhCN": "野兽追猎者套装" },
       "description": {
-        "zhCN": "猎人的八件 Dungeon Set 1；当前仅记录基础物品收藏，不实现套装战斗效果。"
+        "zhCN": "猎人的八件 Dungeon Set 1；记录真实属性、图标与副本来源，不实现套装战斗效果。"
       },
-      "status": "planned",
+      "status": "active",
       "itemIds": ["16674", "16675", "16676", "16677", "16678", "16679", "16680", "16681"],
       "source": {
         "kind": "source-fact",
@@ -51,9 +51,9 @@
       "id": "dungeon_set_1_magister",
       "name": { "zhCN": "博学者套装" },
       "description": {
-        "zhCN": "法师的八件 Dungeon Set 1；当前仅记录基础物品收藏，不实现套装战斗效果。"
+        "zhCN": "法师的八件 Dungeon Set 1；记录真实属性、图标与副本来源，不实现套装战斗效果。"
       },
-      "status": "planned",
+      "status": "active",
       "itemIds": ["16682", "16683", "16684", "16685", "16686", "16687", "16688", "16689"],
       "source": {
         "kind": "source-fact",
@@ -68,9 +68,9 @@
       "id": "dungeon_set_1_devout",
       "name": { "zhCN": "虔诚套装" },
       "description": {
-        "zhCN": "牧师的八件 Dungeon Set 1；当前仅记录基础物品收藏，不实现套装战斗效果。"
+        "zhCN": "牧师的八件 Dungeon Set 1；记录真实属性、图标与副本来源，不实现套装战斗效果。"
       },
-      "status": "planned",
+      "status": "active",
       "itemIds": ["16690", "16691", "16692", "16693", "16694", "16695", "16696", "16697"],
       "source": {
         "kind": "source-fact",
@@ -85,9 +85,9 @@
       "id": "dungeon_set_1_dreadmist",
       "name": { "zhCN": "鬼雾套装" },
       "description": {
-        "zhCN": "术士的八件 Dungeon Set 1；当前仅记录基础物品收藏，不实现套装战斗效果。"
+        "zhCN": "术士的八件 Dungeon Set 1；记录真实属性、图标与副本来源，不实现套装战斗效果。"
       },
-      "status": "planned",
+      "status": "active",
       "itemIds": ["16698", "16699", "16700", "16701", "16702", "16703", "16704", "16705"],
       "source": {
         "kind": "source-fact",
@@ -102,9 +102,9 @@
       "id": "dungeon_set_1_wildheart",
       "name": { "zhCN": "野性之心套装" },
       "description": {
-        "zhCN": "德鲁伊的八件 Dungeon Set 1；当前仅记录基础物品收藏，不实现套装战斗效果。"
+        "zhCN": "德鲁伊的八件 Dungeon Set 1；记录真实属性、图标与副本来源，不实现套装战斗效果。"
       },
-      "status": "planned",
+      "status": "active",
       "itemIds": ["16706", "16714", "16715", "16716", "16717", "16718", "16719", "16720"],
       "source": {
         "kind": "source-fact",
@@ -119,9 +119,9 @@
       "id": "dungeon_set_1_shadowcraft",
       "name": { "zhCN": "迅影套装" },
       "description": {
-        "zhCN": "潜行者的八件 Dungeon Set 1；当前仅记录基础物品收藏，不实现套装战斗效果。"
+        "zhCN": "潜行者的八件 Dungeon Set 1；记录真实属性、图标与副本来源，不实现套装战斗效果。"
       },
-      "status": "planned",
+      "status": "active",
       "itemIds": ["16707", "16708", "16709", "16710", "16711", "16712", "16713", "16721"],
       "source": {
         "kind": "source-fact",
@@ -136,9 +136,9 @@
       "id": "dungeon_set_1_lightforge",
       "name": { "zhCN": "光铸套装" },
       "description": {
-        "zhCN": "圣骑士的八件 Dungeon Set 1；当前仅记录基础物品收藏，不实现套装战斗效果。"
+        "zhCN": "圣骑士的八件 Dungeon Set 1；记录真实属性、图标与副本来源，不实现套装战斗效果。"
       },
-      "status": "planned",
+      "status": "active",
       "itemIds": ["16722", "16723", "16724", "16725", "16726", "16727", "16728", "16729"],
       "source": {
         "kind": "source-fact",
@@ -153,9 +153,9 @@
       "id": "dungeon_set_1_valor",
       "name": { "zhCN": "勇气套装" },
       "description": {
-        "zhCN": "战士的八件 Dungeon Set 1；当前仅记录基础物品收藏，不实现套装战斗效果。"
+        "zhCN": "战士的八件 Dungeon Set 1；记录真实属性、图标与副本来源，不实现套装战斗效果。"
       },
-      "status": "planned",
+      "status": "active",
       "itemIds": ["16730", "16731", "16732", "16733", "16734", "16735", "16736", "16737"],
       "source": {
         "kind": "source-fact",

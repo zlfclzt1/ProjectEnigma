@@ -1,0 +1,275 @@
+{
+  "dungeonId": "upper_blackrock_spire",
+  "samplesPerScenario": 100000,
+  "scenarios": {
+    "standard": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.16343,
+        "previewClearProbability": 0.16382407018695716,
+        "durationSeconds": 3909,
+        "wipeCounts": {
+          "ubrs_rend": 20955,
+          "ubrs_beast": 14018,
+          "ubrs_emberseer": 20280,
+          "ubrs_drakkisath": 7072,
+          "ubrs_gyth": 21332
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.08159,
+        "previewClearProbability": 0.08143069048692501,
+        "durationSeconds": 5542.4,
+        "wipeCounts": {
+          "ubrs_anvilcrack": 12939,
+          "ubrs_rend": 9760,
+          "ubrs_beast": 6669,
+          "ubrs_solakar": 21463,
+          "ubrs_emberseer": 24941,
+          "ubrs_drakkisath": 3453,
+          "ubrs_gyth": 12616
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.09995,
+        "previewClearProbability": 0.10064505913000654,
+        "durationSeconds": 4803.6,
+        "wipeCounts": {
+          "ubrs_runewatcher": 25325,
+          "ubrs_rend": 14187,
+          "ubrs_emberseer": 21812,
+          "ubrs_beast": 9061,
+          "ubrs_gyth": 14915,
+          "ubrs_drakkisath": 4705
+        }
+      }
+    },
+    "no-tank": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 3.200000000000001e-9,
+        "durationSeconds": 4123.8,
+        "wipeCounts": {
+          "ubrs_emberseer": 97973,
+          "ubrs_gyth": 1978,
+          "ubrs_rend": 47,
+          "ubrs_beast": 2
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.2800000000000002e-12,
+        "durationSeconds": 5824.6,
+        "wipeCounts": {
+          "ubrs_emberseer": 98028,
+          "ubrs_solakar": 1928,
+          "ubrs_anvilcrack": 43,
+          "ubrs_gyth": 1
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 6.400000000000001e-11,
+        "durationSeconds": 4797.2,
+        "wipeCounts": {
+          "ubrs_emberseer": 98011,
+          "ubrs_runewatcher": 1951,
+          "ubrs_gyth": 38
+        }
+      }
+    },
+    "no-healing": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 3.200000000000001e-9,
+        "durationSeconds": 4243.2,
+        "wipeCounts": {
+          "ubrs_emberseer": 97987,
+          "ubrs_gyth": 1975,
+          "ubrs_rend": 37,
+          "ubrs_beast": 1
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.2800000000000002e-12,
+        "durationSeconds": 5843.6,
+        "wipeCounts": {
+          "ubrs_emberseer": 97915,
+          "ubrs_solakar": 2036,
+          "ubrs_anvilcrack": 45,
+          "ubrs_gyth": 4
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 6.400000000000001e-11,
+        "durationSeconds": 4912.8,
+        "wipeCounts": {
+          "ubrs_emberseer": 98011,
+          "ubrs_runewatcher": 1949,
+          "ubrs_gyth": 39,
+          "ubrs_rend": 1
+        }
+      }
+    },
+    "overlevel": {
+      "required": {
+        "level": 57,
+        "simulatedRuns": 100000,
+        "clearRate": 0.14197,
+        "previewClearProbability": 0.14171080795651764,
+        "durationSeconds": 4068.4,
+        "wipeCounts": {
+          "ubrs_emberseer": 23830,
+          "ubrs_beast": 12737,
+          "ubrs_drakkisath": 6280,
+          "ubrs_rend": 20093,
+          "ubrs_gyth": 22863
+        }
+      },
+      "with-optional": {
+        "level": 57,
+        "simulatedRuns": 100000,
+        "clearRate": 0.0527,
+        "previewClearProbability": 0.05303646178969801,
+        "durationSeconds": 5886.6,
+        "wipeCounts": {
+          "ubrs_emberseer": 27975,
+          "ubrs_rend": 8763,
+          "ubrs_gyth": 11097,
+          "ubrs_solakar": 23608,
+          "ubrs_drakkisath": 3019,
+          "ubrs_beast": 5402,
+          "ubrs_anvilcrack": 14866
+        }
+      },
+      "with-rare": {
+        "level": 57,
+        "simulatedRuns": 100000,
+        "clearRate": 0.11351,
+        "previewClearProbability": 0.11256445467540141,
+        "durationSeconds": 4720.6,
+        "wipeCounts": {
+          "ubrs_beast": 9638,
+          "ubrs_drakkisath": 4902,
+          "ubrs_runewatcher": 24859,
+          "ubrs_emberseer": 20386,
+          "ubrs_gyth": 14465,
+          "ubrs_rend": 14399
+        }
+      }
+    },
+    "max-level": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.15323,
+        "previewClearProbability": 0.15439060902814578,
+        "durationSeconds": 4015.2,
+        "wipeCounts": {
+          "ubrs_beast": 14172,
+          "ubrs_rend": 21788,
+          "ubrs_gyth": 21172,
+          "ubrs_emberseer": 20305,
+          "ubrs_drakkisath": 7240
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.09758,
+        "previewClearProbability": 0.09814083449653534,
+        "durationSeconds": 5413,
+        "wipeCounts": {
+          "ubrs_rend": 11893,
+          "ubrs_anvilcrack": 14480,
+          "ubrs_emberseer": 17484,
+          "ubrs_solakar": 23449,
+          "ubrs_gyth": 10746,
+          "ubrs_beast": 7881,
+          "ubrs_drakkisath": 4309
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.08864,
+        "previewClearProbability": 0.08893245580952638,
+        "durationSeconds": 4905.6,
+        "wipeCounts": {
+          "ubrs_drakkisath": 4773,
+          "ubrs_emberseer": 26185,
+          "ubrs_runewatcher": 23261,
+          "ubrs_gyth": 16484,
+          "ubrs_rend": 12237,
+          "ubrs_beast": 8196
+        }
+      }
+    },
+    "speed-run": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.12755,
+        "previewClearProbability": 0.12647557806327175,
+        "durationSeconds": 4095.2,
+        "wipeCounts": {
+          "ubrs_gyth": 23714,
+          "ubrs_rend": 18767,
+          "ubrs_emberseer": 25889,
+          "ubrs_drakkisath": 6569,
+          "ubrs_beast": 12306
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.08632,
+        "previewClearProbability": 0.08609323641132184,
+        "durationSeconds": 5524.8,
+        "wipeCounts": {
+          "ubrs_beast": 7167,
+          "ubrs_gyth": 11015,
+          "ubrs_emberseer": 21736,
+          "ubrs_solakar": 22635,
+          "ubrs_anvilcrack": 14607,
+          "ubrs_rend": 10474,
+          "ubrs_drakkisath": 3734
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.07782,
+        "previewClearProbability": 0.07905392143394452,
+        "durationSeconds": 4950.8,
+        "wipeCounts": {
+          "ubrs_rend": 13025,
+          "ubrs_emberseer": 25613,
+          "ubrs_runewatcher": 25533,
+          "ubrs_gyth": 15386,
+          "ubrs_drakkisath": 4502,
+          "ubrs_beast": 8159
+        }
+      }
+    }
+  }
+}

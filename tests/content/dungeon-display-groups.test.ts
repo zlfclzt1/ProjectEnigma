@@ -40,6 +40,10 @@ describe("dungeon display groups", () => {
       "advanced_dungeons_45_60",
       "raid_prep_dungeons_60",
       "dire_maul_branch",
+      "scholomance_stratholme_branch",
+      "blackrock_spire_branch",
+      "final_challenge",
+      "upper_blackrock_spire_final",
     ]);
     expect(new Set(groupedDungeonIds).size).toBe(content.dungeons.length);
     expect(groupedDungeonIds).toContain("blackrock_depths_shadowforge_city");

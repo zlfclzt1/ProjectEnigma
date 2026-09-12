@@ -36,7 +36,7 @@ describe("Blackrock Depths Shadowforge City content", () => {
             candidate.unlock?.requiredAnyDungeonIds?.includes(dungeon.id),
         )
         .map((candidate) => candidate.id),
-    ).toEqual(["dire_maul_east"]);
+    ).toEqual(["dire_maul_east", "lower_blackrock_spire", "scholomance"]);
   });
 
   it("keeps side bosses player-selected and Panzor seed-driven", () => {

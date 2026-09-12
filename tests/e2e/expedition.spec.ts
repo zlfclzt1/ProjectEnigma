@@ -3,8 +3,9 @@ import { advanceTestClock, expect, openGame, test } from "./fixtures";
 test("starts an expedition, advances its route, and exposes a combat report", async ({ page }) => {
   await openGame(page);
   await page.getByRole("link", { name: "副本组队" }).click();
+  await page.getByRole("button", { name: "调整成员" }).click();
 
-  const members = page.locator('.member-options input[type="checkbox"]');
+  const members = page.locator('.party-builder input[type="checkbox"]');
   await expect(members).toHaveCount(5);
   for (let index = 0; index < 5; index += 1) await members.nth(index).check();
   await page.locator(".page-heading select").selectOption("2");

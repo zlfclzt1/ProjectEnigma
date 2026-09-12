@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-12",
+        "notes": "厄运之槌北区日志只记录已经结算的主动活动与首领战事实。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "dire_maul_north_guard_moldar_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "dire_maul_north_guard_moldar"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Guard Mol'dar的关键机制被处理后，{tank}稳住了厄运之槌北区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Guard Mol'dar。"
+      ]
+    },
+    {
+      "id": "dire_maul_north_stomper_kreeg_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "dire_maul_north_stomper_kreeg"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Stomper Kreeg的关键机制被处理后，{tank}稳住了厄运之槌北区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Stomper Kreeg。"
+      ]
+    },
+    {
+      "id": "dire_maul_north_guard_fengus_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "dire_maul_north_guard_fengus"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Guard Fengus的关键机制被处理后，{tank}稳住了厄运之槌北区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Guard Fengus。"
+      ]
+    },
+    {
+      "id": "dire_maul_north_guard_slipkik_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "dire_maul_north_guard_slipkik"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Guard Slip'kik的关键机制被处理后，{tank}稳住了厄运之槌北区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Guard Slip'kik。"
+      ]
+    },
+    {
+      "id": "dire_maul_north_captain_kromcrush_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "dire_maul_north_captain_kromcrush"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Captain Kromcrush的关键机制被处理后，{tank}稳住了厄运之槌北区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Captain Kromcrush。"
+      ]
+    },
+    {
+      "id": "dire_maul_north_cho_rush_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "dire_maul_north_cho_rush"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Cho'Rush the Observer的关键机制被处理后，{tank}稳住了厄运之槌北区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Cho'Rush the Observer。"
+      ]
+    },
+    {
+      "id": "dire_maul_north_king_gordok_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "dire_maul_north_king_gordok"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "King Gordok的关键机制被处理后，{tank}稳住了厄运之槌北区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了King Gordok。"
+      ]
+    },
+    {
+      "id": "dire_maul_north_tributerun_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "dire_maul_north_tributerun"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Tribute的关键机制被处理后，{tank}稳住了厄运之槌北区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Tribute。"
+      ]
+    }
+  ]
+}

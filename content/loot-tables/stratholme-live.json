@@ -1,0 +1,290 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-11",
+        "notes": "核对斯坦索姆血色区首领与受支持装备池；配方、材料、钥匙、任务物品、消耗品、卡牌、坐骑和法术书不进入装备掉落。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "lootTables": [
+    {
+      "id": "stratholme_live_skull",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "13395",
+          "weight": 0.3333333333333333
+        },
+        {
+          "itemId": "13394",
+          "weight": 0.3333333333333333
+        },
+        {
+          "itemId": "13396",
+          "weight": 0.3333333333333333
+        }
+      ]
+    },
+    {
+      "id": "stratholme_live_hearthsinger_forresten",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "16682",
+          "weight": 0.2
+        },
+        {
+          "itemId": "13378",
+          "weight": 0.2
+        },
+        {
+          "itemId": "13384",
+          "weight": 0.2
+        },
+        {
+          "itemId": "13383",
+          "weight": 0.2
+        },
+        {
+          "itemId": "13379",
+          "weight": 0.2
+        }
+      ]
+    },
+    {
+      "id": "stratholme_live_the_unforgiven",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "16717",
+          "weight": 0.2
+        },
+        {
+          "itemId": "13404",
+          "weight": 0.2
+        },
+        {
+          "itemId": "13405",
+          "weight": 0.2
+        },
+        {
+          "itemId": "13409",
+          "weight": 0.2
+        },
+        {
+          "itemId": "13408",
+          "weight": 0.2
+        }
+      ]
+    },
+    {
+      "id": "stratholme_live_postmaster",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "13390",
+          "weight": 0.16666666666666666
+        },
+        {
+          "itemId": "13388",
+          "weight": 0.16666666666666666
+        },
+        {
+          "itemId": "13389",
+          "weight": 0.16666666666666666
+        },
+        {
+          "itemId": "13391",
+          "weight": 0.16666666666666666
+        },
+        {
+          "itemId": "13392",
+          "weight": 0.16666666666666666
+        },
+        {
+          "itemId": "13393",
+          "weight": 0.16666666666666666
+        }
+      ]
+    },
+    {
+      "id": "stratholme_live_timmythe_cruel",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "16724",
+          "weight": 0.2
+        },
+        {
+          "itemId": "13400",
+          "weight": 0.2
+        },
+        {
+          "itemId": "13403",
+          "weight": 0.2
+        },
+        {
+          "itemId": "13402",
+          "weight": 0.2
+        },
+        {
+          "itemId": "13401",
+          "weight": 0.2
+        }
+      ]
+    },
+    {
+      "id": "stratholme_live_cannon_master_willey",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "16708",
+          "weight": 0.1
+        },
+        {
+          "itemId": "22407",
+          "weight": 0.1
+        },
+        {
+          "itemId": "22403",
+          "weight": 0.1
+        },
+        {
+          "itemId": "22405",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18721",
+          "weight": 0.1
+        },
+        {
+          "itemId": "13381",
+          "weight": 0.1
+        },
+        {
+          "itemId": "13382",
+          "weight": 0.1
+        },
+        {
+          "itemId": "13380",
+          "weight": 0.1
+        },
+        {
+          "itemId": "22404",
+          "weight": 0.1
+        },
+        {
+          "itemId": "22406",
+          "weight": 0.1
+        }
+      ]
+    },
+    {
+      "id": "stratholme_live_archivist_galford",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "16692",
+          "weight": 0.2
+        },
+        {
+          "itemId": "13386",
+          "weight": 0.2
+        },
+        {
+          "itemId": "13387",
+          "weight": 0.2
+        },
+        {
+          "itemId": "18716",
+          "weight": 0.2
+        },
+        {
+          "itemId": "13385",
+          "weight": 0.2
+        }
+      ]
+    },
+    {
+      "id": "stratholme_live_balnazzar",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "13353",
+          "weight": 0.08333333333333333
+        },
+        {
+          "itemId": "16725",
+          "weight": 0.08333333333333333
+        },
+        {
+          "itemId": "13359",
+          "weight": 0.08333333333333333
+        },
+        {
+          "itemId": "18718",
+          "weight": 0.08333333333333333
+        },
+        {
+          "itemId": "12103",
+          "weight": 0.08333333333333333
+        },
+        {
+          "itemId": "18720",
+          "weight": 0.08333333333333333
+        },
+        {
+          "itemId": "13358",
+          "weight": 0.08333333333333333
+        },
+        {
+          "itemId": "13369",
+          "weight": 0.08333333333333333
+        },
+        {
+          "itemId": "13360",
+          "weight": 0.08333333333333333
+        },
+        {
+          "itemId": "18717",
+          "weight": 0.08333333333333333
+        },
+        {
+          "itemId": "22334",
+          "weight": 0.08333333333333333
+        },
+        {
+          "itemId": "13348",
+          "weight": 0.08333333333333333
+        },
+        {
+          "itemId": "16696",
+          "weight": 0.05
+        },
+        {
+          "itemId": "16713",
+          "weight": 0.05
+        },
+        {
+          "itemId": "16723",
+          "weight": 0.05
+        }
+      ]
+    }
+  ]
+}

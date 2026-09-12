@@ -7,7 +7,7 @@ import { recordAcquiredItem } from "../collection/item-collection";
 import { applyEligibleAutomaticCollectionRewards } from "../collection/collection-reward-rules";
 import type { ItemInstance } from "../equipment/item-instance";
 import type { GameState } from "../game-state";
-import type { CombatReportId, MemberId } from "../shared/ids";
+import type { CombatReportId, DungeonRouteVariantId, MemberId } from "../shared/ids";
 import { generateCombatReport } from "../combat/report-generator";
 import { DEFAULT_DUNGEON_EXPERIENCE_CONFIG, experienceFractions } from "./expedition-activity";
 import {
@@ -114,7 +114,7 @@ export function settleNextExpeditionStage(
   const developmentProgress = [
     ...progressDevelopmentAfterEncounter(state, activity, encounter.id, settledAt),
   ];
-  if (!run.mainRouteCompleted && requiredStagesCleared(run, dungeon)) {
+  if (!run.mainRouteCompleted && requiredStagesCleared(run, dungeon, activity.routeVariantId)) {
     run.mainRouteCompleted = true;
     state.history.dungeonClearCounts[activity.dungeonId] =
       (state.history.dungeonClearCounts[activity.dungeonId] ?? 0) + 1;
@@ -326,9 +326,19 @@ function applyEncounterVictoryCollectionRewards(
 function requiredStagesCleared(
   run: ExpeditionActivity["runPlans"][number],
   dungeon: DungeonDefinition,
+  routeVariantId?: DungeonRouteVariantId,
 ): boolean {
+  const selectedVariant = dungeon.routeVariants?.find(
+    (variant) =>
+      variant.id === routeVariantId || variant.id === run.routeCompletionReward?.routeVariantId,
+  );
   const requiredEncounterIds = new Set(
-    dungeon.route.filter((node) => node.type === "required").map((node) => node.encounterId),
+    selectedVariant
+      ? selectedVariant.requiredNodeIds.flatMap((nodeId) => {
+          const node = dungeon.route.find((candidate) => candidate.id === nodeId);
+          return node ? [node.encounterId] : [];
+        })
+      : dungeon.route.filter((node) => node.type === "required").map((node) => node.encounterId),
   );
   return run.stages
     .filter((stage) =>

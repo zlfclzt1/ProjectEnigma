@@ -27,7 +27,7 @@ describe("item definitions", () => {
   it("loads all current dungeon and quest items with stable IDs and database icons", () => {
     const dungeonItems = migratedItems.filter((item) => !item.isStarter);
 
-    expect(dungeonItems).toHaveLength(560);
+    expect(dungeonItems).toHaveLength(1006);
     expect(dungeonItems.map((item) => item.id)).toEqual(
       expect.arrayContaining(["14149", "15451", "15452", "6324"]),
     );
@@ -87,7 +87,7 @@ describe("item definitions", () => {
             item.statsSource.provider === "wowhead-classic" &&
             item.statsSource.gameVersion === "classic-2019-phase-6" &&
             item.statsSource.externalId === item.id &&
-            /^2026-09-(0[89]|1[01])$/.test(item.statsSource.verifiedAt),
+            /^2026-09-(0[89]|1[0-2])$/.test(item.statsSource.verifiedAt),
         ),
     ).toBe(true);
     expect(

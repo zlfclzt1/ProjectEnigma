@@ -1,0 +1,2111 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/",
+        "verifiedAt": "2026-09-11",
+        "notes": "通过逐件中文 XML 核对厄运之槌北区装备属性、图标、品质与需求等级。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "items": [
+    {
+      "id": "18425",
+      "name": {
+        "zhCN": "克雷格的杯子"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_drink_05"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：践踏者克雷格的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12,
+          "spiritPoints": 15
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18425",
+        "url": "https://www.wowhead.com/classic/cn/item=18425&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18450",
+      "name": {
+        "zhCN": "燃烧法袍"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_24"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：卫兵摩尔达、卫兵芬古斯、卫兵斯里基克的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 17
+        },
+        "defense": {
+          "armorPoints": 77
+        },
+        "spell": {
+          "fireSpellPowerPoints": 26
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18450",
+        "url": "https://www.wowhead.com/classic/cn/item=18450&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18451",
+      "name": {
+        "zhCN": "土狼皮带"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "waist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_16"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：卫兵摩尔达、卫兵芬古斯、卫兵斯里基克的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 13
+        },
+        "defense": {
+          "armorPoints": 87
+        },
+        "physical": {
+          "attackPowerPoints": 28,
+          "rangedAttackPowerPoints": 28
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18451",
+        "url": "https://www.wowhead.com/classic/cn/item=18451&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18458",
+      "name": {
+        "zhCN": "谦虚护臂"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "wrist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_03"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：卫兵摩尔达、卫兵芬古斯、卫兵斯里基克的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 10
+        },
+        "defense": {
+          "armorPoints": 141
+        },
+        "spell": {
+          "spellPowerPoints": 12,
+          "healingPowerPoints": 12
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18458",
+        "url": "https://www.wowhead.com/classic/cn/item=18458&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18459",
+      "name": {
+        "zhCN": "豪侠护腕"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "wrist",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_19"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：卫兵摩尔达、卫兵芬古斯、卫兵斯里基克的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 14
+        },
+        "defense": {
+          "armorPoints": 249
+        },
+        "spell": {
+          "healingPowerPoints": 29
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18459",
+        "url": "https://www.wowhead.com/classic/cn/item=18459&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18460",
+      "name": {
+        "zhCN": "简易手持火炮"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_rifle_07"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：卫兵摩尔达、卫兵芬古斯、卫兵斯里基克的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 8
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 48,
+            "maximumPoints": 91
+          },
+          "speedSeconds": 2.5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18460",
+        "url": "https://www.wowhead.com/classic/cn/item=18460&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18462",
+      "name": {
+        "zhCN": "粗糙的骨制手套"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_13"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：卫兵摩尔达、卫兵芬古斯、卫兵斯里基克的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 8,
+          "staminaPoints": 7
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 51,
+            "maximumPoints": 78
+          },
+          "speedSeconds": 1.8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18462",
+        "url": "https://www.wowhead.com/classic/cn/item=18462&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18463",
+      "name": {
+        "zhCN": "食人魔小刀"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_04"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：卫兵摩尔达、卫兵芬古斯、卫兵斯里基克的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 7
+        },
+        "physical": {
+          "attackPowerPoints": 16,
+          "rangedAttackPowerPoints": 16
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 60,
+            "maximumPoints": 112
+          },
+          "speedSeconds": 2.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18463",
+        "url": "https://www.wowhead.com/classic/cn/item=18463&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18464",
+      "name": {
+        "zhCN": "戈多克鼻环"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_06"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：卫兵摩尔达、卫兵芬古斯、卫兵斯里基克的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 5,
+          "staminaPoints": 9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18464",
+        "url": "https://www.wowhead.com/classic/cn/item=18464&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18475",
+      "name": {
+        "zhCN": "古怪的魔法腰带"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "waist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_07"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克贡品的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 13
+        },
+        "defense": {
+          "armorPoints": 44
+        },
+        "spell": {
+          "spellPowerPoints": 16,
+          "healingPowerPoints": 16
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18475",
+        "url": "https://www.wowhead.com/classic/cn/item=18475&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18476",
+      "name": {
+        "zhCN": "沾泥的靴子"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "feet",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_07"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克贡品的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 10,
+          "staminaPoints": 15
+        },
+        "defense": {
+          "armorPoints": 106
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18476",
+        "url": "https://www.wowhead.com/classic/cn/item=18476&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18477",
+      "name": {
+        "zhCN": "粗糙的护腿"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "legs",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_14"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克贡品的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 19
+        },
+        "defense": {
+          "armorPoints": 135
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18477",
+        "url": "https://www.wowhead.com/classic/cn/item=18477&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18478",
+      "name": {
+        "zhCN": "土狼皮外套"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "chest",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_leather_06"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克贡品的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 20,
+          "staminaPoints": 13
+        },
+        "defense": {
+          "armorPoints": 154
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18478",
+        "url": "https://www.wowhead.com/classic/cn/item=18478&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18479",
+      "name": {
+        "zhCN": "腐蝎头盔"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "head",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_11"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克贡品的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10
+        },
+        "defense": {
+          "armorPoints": 262
+        },
+        "spell": {
+          "spellPowerPoints": 26,
+          "healingPowerPoints": 26
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18479",
+        "url": "https://www.wowhead.com/classic/cn/item=18479&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18480",
+      "name": {
+        "zhCN": "板壳头盔"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "head",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_23"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克贡品的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 13,
+          "intellectPoints": 20
+        },
+        "defense": {
+          "armorPoints": 463
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18480",
+        "url": "https://www.wowhead.com/classic/cn/item=18480&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18481",
+      "name": {
+        "zhCN": "碎骨钉锤"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_mace_05"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克贡品的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 22,
+          "agilityPoints": 10
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 119,
+            "maximumPoints": 179
+          },
+          "speedSeconds": 3.2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18481",
+        "url": "https://www.wowhead.com/classic/cn/item=18481&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18482",
+      "name": {
+        "zhCN": "食人魔牙签发射器"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_bow_05"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克贡品的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 6,
+          "staminaPoints": 5
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 61,
+            "maximumPoints": 62
+          },
+          "speedSeconds": 2.2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18482",
+        "url": "https://www.wowhead.com/classic/cn/item=18482&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18483",
+      "name": {
+        "zhCN": "法力引导魔杖"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_wand_05"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：观察者克鲁什的装备掉落。"
+      },
+      "stats": {
+        "spell": {
+          "manaRegenPer5Seconds": 4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18483",
+        "url": "https://www.wowhead.com/classic/cn/item=18483&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18484",
+      "name": {
+        "zhCN": "克鲁什之刃"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_shortblade_04"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：观察者克鲁什的装备掉落。"
+      },
+      "stats": {
+        "physical": {
+          "attackPowerPoints": 28,
+          "rangedAttackPowerPoints": 28
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 67,
+            "maximumPoints": 125
+          },
+          "speedSeconds": 2.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18484",
+        "url": "https://www.wowhead.com/classic/cn/item=18484&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18485",
+      "name": {
+        "zhCN": "观察者盾牌"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shield_13"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：观察者克鲁什的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 9,
+          "intellectPoints": 14,
+          "spiritPoints": 5
+        },
+        "defense": {
+          "armorPoints": 2089,
+          "blockValuePoints": 38
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18485",
+        "url": "https://www.wowhead.com/classic/cn/item=18485&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18490",
+      "name": {
+        "zhCN": "洞悉兜帽"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_41"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：观察者克鲁什的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12,
+          "intellectPoints": 15,
+          "spiritPoints": 9
+        },
+        "defense": {
+          "armorPoints": 139
+        },
+        "spell": {
+          "healingPowerPoints": 33,
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18490",
+        "url": "https://www.wowhead.com/classic/cn/item=18490&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18493",
+      "name": {
+        "zhCN": "巨大的铁护肩"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_26"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：卫兵摩尔达、卫兵斯里基克的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 15,
+          "staminaPoints": 12,
+          "spiritPoints": 5
+        },
+        "defense": {
+          "armorPoints": 470,
+          "defenseSkillPoints": 6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18493",
+        "url": "https://www.wowhead.com/classic/cn/item=18493&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18494",
+      "name": {
+        "zhCN": "洞穴守卫护肩"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_15"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：卫兵摩尔达、卫兵斯里基克的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 10,
+          "spiritPoints": 10
+        },
+        "defense": {
+          "armorPoints": 266
+        },
+        "spell": {
+          "spellPowerPoints": 18,
+          "healingPowerPoints": 18
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18494",
+        "url": "https://www.wowhead.com/classic/cn/item=18494&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18495",
+      "name": {
+        "zhCN": "壁垒披风"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_21"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克贡品的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 15
+        },
+        "defense": {
+          "armorPoints": 45,
+          "defenseSkillPoints": 7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18495",
+        "url": "https://www.wowhead.com/classic/cn/item=18495&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18496",
+      "name": {
+        "zhCN": "紫罗兰披风"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_02"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：卫兵摩尔达、卫兵斯里基克的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 10
+        },
+        "defense": {
+          "armorPoints": 43
+        },
+        "spell": {
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18496",
+        "url": "https://www.wowhead.com/classic/cn/item=18496&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18497",
+      "name": {
+        "zhCN": "庄严护腕"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_13"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：卫兵摩尔达、卫兵斯里基克的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 6,
+          "intellectPoints": 10,
+          "spiritPoints": 6
+        },
+        "defense": {
+          "armorPoints": 37
+        },
+        "spell": {
+          "spellPowerPoints": 12,
+          "healingPowerPoints": 12
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18497",
+        "url": "https://www.wowhead.com/classic/cn/item=18497&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18498",
+      "name": {
+        "zhCN": "修剪器"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_axe_11"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：卫兵摩尔达、卫兵斯里基克的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 5,
+          "staminaPoints": 12
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 60,
+            "maximumPoints": 90
+          },
+          "speedSeconds": 1.9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18498",
+        "url": "https://www.wowhead.com/classic/cn/item=18498&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18499",
+      "name": {
+        "zhCN": "荆棘盾牌"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shield_10"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克贡品的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 2121,
+          "blockValuePoints": 57,
+          "blockPercent": 2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18499",
+        "url": "https://www.wowhead.com/classic/cn/item=18499&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18500",
+      "name": {
+        "zhCN": "暗淡的精灵戒指"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_13"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克贡品的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 15
+        },
+        "physical": {
+          "hitPercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18500",
+        "url": "https://www.wowhead.com/classic/cn/item=18500&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18502",
+      "name": {
+        "zhCN": "巨型长刃"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_halberd_09"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：克罗卡斯的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 23
+        },
+        "defense": {
+          "defenseSkillPoints": 7,
+          "parryPercent": 1
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 123,
+            "maximumPoints": 185
+          },
+          "speedSeconds": 2.9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18502",
+        "url": "https://www.wowhead.com/classic/cn/item=18502&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18503",
+      "name": {
+        "zhCN": "克罗卡斯的胸甲"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_chain_14"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：克罗卡斯的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 16,
+          "staminaPoints": 16
+        },
+        "defense": {
+          "armorPoints": 777,
+          "defenseSkillPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18503",
+        "url": "https://www.wowhead.com/classic/cn/item=18503&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18505",
+      "name": {
+        "zhCN": "沼泽鳄皮腰带"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_02"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：克罗卡斯的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 16
+        },
+        "defense": {
+          "armorPoints": 98
+        },
+        "physical": {
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18505",
+        "url": "https://www.wowhead.com/classic/cn/item=18505&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18507",
+      "name": {
+        "zhCN": "圆月长靴"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_05"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：克罗卡斯的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12,
+          "intellectPoints": 12,
+          "spiritPoints": 9
+        },
+        "defense": {
+          "armorPoints": 60
+        },
+        "spell": {
+          "healingPowerPoints": 26
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18507",
+        "url": "https://www.wowhead.com/classic/cn/item=18507&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18520",
+      "name": {
+        "zhCN": "残暴之刃"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_11"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克大王的装备掉落。"
+      },
+      "stats": {
+        "physical": {
+          "attackPowerPoints": 60,
+          "rangedAttackPowerPoints": 60,
+          "criticalStrikePercent": 1
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 138,
+            "maximumPoints": 207
+          },
+          "speedSeconds": 3.2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18520",
+        "url": "https://www.wowhead.com/classic/cn/item=18520&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18521",
+      "name": {
+        "zhCN": "肮脏的金属靴"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_plate_01"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克大王的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 17
+        },
+        "defense": {
+          "armorPoints": 552,
+          "dodgePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18521",
+        "url": "https://www.wowhead.com/classic/cn/item=18521&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18522",
+      "name": {
+        "zhCN": "食人魔大王指环"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_32"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克大王的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 14,
+          "staminaPoints": 13
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18522",
+        "url": "https://www.wowhead.com/classic/cn/item=18522&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18523",
+      "name": {
+        "zhCN": "明亮的石头"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_orb_01"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克大王的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 7
+        },
+        "spell": {
+          "healingPowerPoints": 37
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18523",
+        "url": "https://www.wowhead.com/classic/cn/item=18523&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18524",
+      "name": {
+        "zhCN": "毁灭护腿"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_03"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克大王的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 14,
+          "staminaPoints": 20,
+          "intellectPoints": 13
+        },
+        "defense": {
+          "armorPoints": 324
+        },
+        "physical": {
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18524",
+        "url": "https://www.wowhead.com/classic/cn/item=18524&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18525",
+      "name": {
+        "zhCN": "繁荣护腕"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_12"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克大王的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 8,
+          "intellectPoints": 10,
+          "spiritPoints": 5
+        },
+        "defense": {
+          "armorPoints": 77
+        },
+        "spell": {
+          "healingPowerPoints": 22
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18525",
+        "url": "https://www.wowhead.com/classic/cn/item=18525&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18526",
+      "name": {
+        "zhCN": "食人魔领袖之冠"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_crown_01"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克大王的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 16,
+          "intellectPoints": 18,
+          "spiritPoints": 11
+        },
+        "defense": {
+          "armorPoints": 73
+        },
+        "spell": {
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18526",
+        "url": "https://www.wowhead.com/classic/cn/item=18526&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18527",
+      "name": {
+        "zhCN": "和谐护手"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_10"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克大王的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 5,
+          "intellectPoints": 5,
+          "spiritPoints": 5
+        },
+        "defense": {
+          "armorPoints": 231
+        },
+        "spell": {
+          "healingPowerPoints": 51
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18527",
+        "url": "https://www.wowhead.com/classic/cn/item=18527&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18528",
+      "name": {
+        "zhCN": "飓风肩铠"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_26"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克贡品的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 11,
+          "intellectPoints": 11,
+          "spiritPoints": 9
+        },
+        "defense": {
+          "armorPoints": 129
+        },
+        "spell": {
+          "spellPowerPoints": 14,
+          "healingPowerPoints": 14
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18528",
+        "url": "https://www.wowhead.com/classic/cn/item=18528&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18529",
+      "name": {
+        "zhCN": "元素板甲束带"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_18"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克贡品的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 17,
+          "staminaPoints": 10
+        },
+        "defense": {
+          "armorPoints": 358
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18529",
+        "url": "https://www.wowhead.com/classic/cn/item=18529&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18530",
+      "name": {
+        "zhCN": "食人魔锁甲"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_chain_12"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克贡品的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 8,
+          "agilityPoints": 20,
+          "staminaPoints": 13,
+          "intellectPoints": 8
+        },
+        "defense": {
+          "armorPoints": 365
+        },
+        "physical": {
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18530",
+        "url": "https://www.wowhead.com/classic/cn/item=18530&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18531",
+      "name": {
+        "zhCN": "坚硬巨槌"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_hammer_22"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克贡品的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12
+        },
+        "defense": {
+          "armorPoints": 250,
+          "defenseSkillPoints": 8
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 135,
+            "maximumPoints": 204
+          },
+          "speedSeconds": 3.2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18531",
+        "url": "https://www.wowhead.com/classic/cn/item=18531&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18532",
+      "name": {
+        "zhCN": "心灵漩涡长袍"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_29"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克贡品的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12,
+          "intellectPoints": 13
+        },
+        "defense": {
+          "armorPoints": 88
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18532",
+        "url": "https://www.wowhead.com/classic/cn/item=18532&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18533",
+      "name": {
+        "zhCN": "戈多克能量护腕"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_14"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克贡品的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 17,
+          "staminaPoints": 7
+        },
+        "defense": {
+          "armorPoints": 287
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18533",
+        "url": "https://www.wowhead.com/classic/cn/item=18533&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18534",
+      "name": {
+        "zhCN": "食人魔法师魔棒"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_staff_32"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克贡品的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 11,
+          "intellectPoints": 14,
+          "spiritPoints": 7
+        },
+        "spell": {
+          "spellPowerPoints": 23,
+          "healingPowerPoints": 23,
+          "criticalStrikePercent": 1
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 116,
+            "maximumPoints": 175
+          },
+          "speedSeconds": 2.7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18534",
+        "url": "https://www.wowhead.com/classic/cn/item=18534&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18537",
+      "name": {
+        "zhCN": "反击磁石"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_stone_02"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克贡品的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "parryPercent": 1
+        },
+        "physical": {
+          "attackPowerPoints": 22,
+          "rangedAttackPowerPoints": 22
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18537",
+        "url": "https://www.wowhead.com/classic/cn/item=18537&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18538",
+      "name": {
+        "zhCN": "古树天敌"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "epic",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_axe_10"
+      },
+      "description": {
+        "zhCN": "厄运之槌北区：戈多克贡品的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 25,
+          "staminaPoints": 15
+        },
+        "physical": {
+          "criticalStrikePercent": 2
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 128,
+            "maximumPoints": 193
+          },
+          "speedSeconds": 2.7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18538",
+        "url": "https://www.wowhead.com/classic/cn/item=18538&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    }
+  ]
+}

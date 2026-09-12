@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-12",
+        "notes": "斯坦索姆血色区日志只记录已经结算的主动活动与首领战事实。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "stratholme_live_skull_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "stratholme_live_skull"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Skul的关键机制被处理后，{tank}稳住了斯坦索姆血色区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Skul。"
+      ]
+    },
+    {
+      "id": "stratholme_live_hearthsinger_forresten_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "stratholme_live_hearthsinger_forresten"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Hearthsinger Forresten的关键机制被处理后，{tank}稳住了斯坦索姆血色区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Hearthsinger Forresten。"
+      ]
+    },
+    {
+      "id": "stratholme_live_the_unforgiven_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "stratholme_live_the_unforgiven"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "The Unforgiven的关键机制被处理后，{tank}稳住了斯坦索姆血色区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了The Unforgiven。"
+      ]
+    },
+    {
+      "id": "stratholme_live_postmaster_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "stratholme_live_postmaster"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Postmaster Malown的关键机制被处理后，{tank}稳住了斯坦索姆血色区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Postmaster Malown。"
+      ]
+    },
+    {
+      "id": "stratholme_live_timmythe_cruel_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "stratholme_live_timmythe_cruel"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Timmy the Cruel的关键机制被处理后，{tank}稳住了斯坦索姆血色区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Timmy the Cruel。"
+      ]
+    },
+    {
+      "id": "stratholme_live_cannon_master_willey_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "stratholme_live_cannon_master_willey"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Cannon Master Willey的关键机制被处理后，{tank}稳住了斯坦索姆血色区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Cannon Master Willey。"
+      ]
+    },
+    {
+      "id": "stratholme_live_archivist_galford_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "stratholme_live_archivist_galford"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Archivist Galford的关键机制被处理后，{tank}稳住了斯坦索姆血色区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Archivist Galford。"
+      ]
+    },
+    {
+      "id": "stratholme_live_balnazzar_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "stratholme_live_balnazzar"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Balnazzar的关键机制被处理后，{tank}稳住了斯坦索姆血色区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Balnazzar。"
+      ]
+    }
+  ]
+}

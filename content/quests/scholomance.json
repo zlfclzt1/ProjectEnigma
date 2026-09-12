@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/zone=2057/scholomance#quests",
+        "verifiedAt": "2026-09-12",
+        "notes": "核对通灵学院内可由首领胜利确定的成员任务。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-12",
+        "notes": "副本外跑腿与钥匙步骤不模拟，以对应首领胜利压缩任务完成条件。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["quests[].completion", "quests[].rewards.experienceFraction"],
+        "reason": "保留实例内首领目标与装备奖励，省略副本外交付步骤。",
+        "decidedAt": "2026-09-12"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "scholomance_ras_frostwhisper",
+      "name": { "zhCN": "莱斯·霜语的遗产" },
+      "description": { "zhCN": "击败莱斯·霜语并带回霜语的研究成果。" },
+      "dungeonId": "scholomance",
+      "eligibility": { "minimumLevel": 57, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["scholomance_ras_frostwhisper"]
+      },
+      "rewards": {
+        "experienceFraction": 1,
+        "funds": 0,
+        "fixedItemIds": ["15867"],
+        "itemChoiceIds": []
+      }
+    },
+    {
+      "id": "scholomance_darkmaster_gandling",
+      "name": { "zhCN": "院长的终局" },
+      "description": { "zhCN": "完成通灵学院主线并击败黑暗院长加丁。" },
+      "dungeonId": "scholomance",
+      "eligibility": { "minimumLevel": 58, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["scholomance_darkmaster_gandling"]
+      },
+      "rewards": {
+        "experienceFraction": 1.2,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["12038", "18410"]
+      }
+    }
+  ]
+}

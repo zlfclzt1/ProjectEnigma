@@ -3,6 +3,7 @@ import { expect, openGame, test } from "./fixtures";
 test("saves, manages, and reapplies a fixed team", async ({ page }) => {
   await openGame(page);
   await page.getByRole("link", { name: "副本组队" }).click();
+  await page.getByRole("button", { name: "调整成员" }).click();
 
   const members = page.locator('.party-builder input[type="checkbox"]');
   await expect(members).toHaveCount(5);
@@ -16,7 +17,8 @@ test("saves, manages, and reapplies a fixed team", async ({ page }) => {
 
   await expect(page.getByText("已保存固定队伍“怒焰常驻队”。")).toBeVisible();
   for (let index = 0; index < 5; index += 1) await members.nth(index).uncheck();
-  await page.getByRole("button", { name: "套用", exact: true }).click();
+  await page.getByRole("button", { name: /怒焰常驻队/ }).click();
+  await page.getByRole("button", { name: "调整成员" }).click();
   for (let index = 0; index < 5; index += 1) await expect(members.nth(index)).toBeChecked();
 
   await page.getByRole("button", { name: "管理固定队伍" }).click();

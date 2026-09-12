@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-11",
+        "notes": "核对厄运之槌西区首领与受支持装备池；配方、材料、钥匙、任务物品、消耗品、卡牌、坐骑和法术书不进入装备掉落。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "lootTables": [
+    {
+      "id": "dire_maul_west_tendris_warpwood",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "18393",
+          "weight": 0.25
+        },
+        {
+          "itemId": "18390",
+          "weight": 0.25
+        },
+        {
+          "itemId": "18352",
+          "weight": 0.25
+        },
+        {
+          "itemId": "18353",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "dire_maul_west_illyanna_ravenoak",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "18383",
+          "weight": 0.25
+        },
+        {
+          "itemId": "18386",
+          "weight": 0.25
+        },
+        {
+          "itemId": "18349",
+          "weight": 0.25
+        },
+        {
+          "itemId": "18347",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "dire_maul_west_magister_kalendris",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "18374",
+          "weight": 0.2
+        },
+        {
+          "itemId": "18397",
+          "weight": 0.2
+        },
+        {
+          "itemId": "18371",
+          "weight": 0.2
+        },
+        {
+          "itemId": "18350",
+          "weight": 0.2
+        },
+        {
+          "itemId": "18351",
+          "weight": 0.2
+        }
+      ]
+    },
+    {
+      "id": "dire_maul_west_tsuzee",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "18387",
+          "weight": 0.3333333333333333
+        },
+        {
+          "itemId": "18346",
+          "weight": 0.3333333333333333
+        },
+        {
+          "itemId": "18345",
+          "weight": 0.3333333333333333
+        }
+      ]
+    },
+    {
+      "id": "dire_maul_west_immolthar",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "18381",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18384",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18389",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18385",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18394",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18377",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18391",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18379",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18370",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18372",
+          "weight": 0.1
+        }
+      ]
+    },
+    {
+      "id": "dire_maul_west_prince_tortheldrin",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "18382",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18373",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18375",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18378",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18380",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18395",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18388",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18396",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18376",
+          "weight": 0.1
+        },
+        {
+          "itemId": "18392",
+          "weight": 0.1
+        }
+      ]
+    }
+  ]
+}

@@ -33,13 +33,13 @@ describe("dungeons page", () => {
     await wrapper.get(".party-summary button").trigger("click");
 
     expect(wrapper.get(".dungeon-selector").text()).toContain("怒焰裂谷");
-    expect(wrapper.findAll(".dungeon-option")).toHaveLength(20);
-    expect(wrapper.findAll(".dungeon-section")).toHaveLength(3);
+    expect(wrapper.findAll(".dungeon-option")).toHaveLength(27);
+    expect(wrapper.findAll(".dungeon-section")).toHaveLength(6);
     expect(wrapper.text()).toContain("10–45 级成长副本");
     expect(wrapper.text()).toContain("45–60 级进阶副本");
     expect(wrapper.text()).toContain("60 级团本前准备 · 厄运之槌分支");
     await wrapper.findAll(".section-toggle")[1]!.trigger("click");
-    expect(wrapper.findAll(".dungeon-option")).toHaveLength(15);
+    expect(wrapper.findAll(".dungeon-option")).toHaveLength(22);
     await wrapper.findAll(".section-toggle")[1]!.trigger("click");
     await wrapper.findAll(".dungeon-option")[1]!.trigger("click");
     expect(useUiStore().selectedDungeonId).toBe("wailing_caverns");

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/zone=2017/stratholme#quests",
+        "verifiedAt": "2026-09-12",
+        "notes": "核对白色区档案与巴纳扎尔路线任务目标。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["quests[].completion", "quests[].rewards.experienceFraction"],
+        "reason": "副本外信件与交付步骤不模拟。",
+        "decidedAt": "2026-09-12"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "stratholme-live-archivist-galford",
+      "name": { "zhCN": "档案管理员的灰烬" },
+      "description": { "zhCN": "击败档案管理员加尔福特，夺回血色档案。" },
+      "dungeonId": "stratholme_live",
+      "eligibility": { "minimumLevel": 57, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["stratholme_live_archivist_galford"]
+      },
+      "rewards": {
+        "experienceFraction": 1,
+        "funds": 0,
+        "fixedItemIds": ["12038"],
+        "itemChoiceIds": []
+      }
+    },
+    {
+      "id": "stratholme-live-balnazzar",
+      "name": { "zhCN": "巴纳扎尔的终局" },
+      "description": { "zhCN": "击败巴纳扎尔并结束血色区的恶魔统治。" },
+      "dungeonId": "stratholme_live",
+      "eligibility": { "minimumLevel": 58, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["stratholme_live_balnazzar"]
+      },
+      "rewards": {
+        "experienceFraction": 1.2,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["17774", "17775"]
+      }
+    }
+  ]
+}

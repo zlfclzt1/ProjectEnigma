@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/zone=1583",
+        "verifiedAt": "2026-09-12",
+        "notes": "核对上层黑石塔的主路线、可选首领、稀有首领和阶段顺序。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-12",
+        "notes": "以内容驱动路线、能力机制和活动快照表达经典副本，不模拟背包点击和后台收益。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "dungeons": [
+    {
+      "id": "upper_blackrock_spire",
+      "name": {
+        "zhCN": "上层黑石塔",
+        "enUS": "Upper Blackrock Spire"
+      },
+      "minimumLevel": 58,
+      "recommendedLevel": 60,
+      "defaultUnlocked": false,
+      "unlock": {
+        "requiredDungeonIds": [
+          "lower_blackrock_spire",
+          "scholomance",
+          "dire_maul_east",
+          "dire_maul_west",
+          "dire_maul_north",
+          "stratholme_live",
+          "stratholme_undead"
+        ]
+      },
+      "members": {
+        "minimum": 1,
+        "maximum": 10,
+        "recommended": 10,
+        "recommendedRoles": {
+          "tank": 2,
+          "healer": 2,
+          "dps": 6
+        }
+      },
+      "duration": {
+        "baseSeconds": 4200,
+        "minimumRatio": 0.5,
+        "maximumRatio": 1.8
+      },
+      "probability": {
+        "minimum": 0.02,
+        "maximum": 0.99,
+        "base": 0.02,
+        "readinessMultiplier": 0.98,
+        "surplusEffect": 0.5,
+        "geometricWeight": 0.7,
+        "bottleneckWeight": 0.3,
+        "overpowerThreshold": 1.4
+      },
+      "combatTuning": {
+        "bossProbabilityMaximum": 0.95,
+        "requirementMultipliers": {
+          "tank": 0.75,
+          "healing": 0.75,
+          "damage": 0.72
+        }
+      },
+      "route": [
+        {
+          "id": "ubrs_emberseer",
+          "type": "required",
+          "encounterId": "ubrs_emberseer"
+        },
+        {
+          "id": "ubrs_solakar",
+          "type": "optional",
+          "encounterId": "ubrs_solakar",
+          "description": {
+            "zhCN": "主动选择Solakar Flamewreath支路，获取额外装备与任务进度。"
+          }
+        },
+        {
+          "id": "ubrs_runewatcher",
+          "type": "rare",
+          "spawnProbability": 0.28,
+          "encounterId": "ubrs_runewatcher"
+        },
+        {
+          "id": "ubrs_anvilcrack",
+          "type": "optional",
+          "encounterId": "ubrs_anvilcrack",
+          "description": {
+            "zhCN": "主动选择Goraluk Anvilcrack 支路，获取额外装备与任务进度。"
+          }
+        },
+        {
+          "id": "ubrs_gyth",
+          "type": "required",
+          "encounterId": "ubrs_gyth"
+        },
+        {
+          "id": "ubrs_rend",
+          "type": "required",
+          "encounterId": "ubrs_rend"
+        },
+        {
+          "id": "ubrs_beast",
+          "type": "required",
+          "encounterId": "ubrs_beast"
+        },
+        {
+          "id": "ubrs_drakkisath",
+          "type": "required",
+          "encounterId": "ubrs_drakkisath"
+        }
+      ]
+    }
+  ]
+}

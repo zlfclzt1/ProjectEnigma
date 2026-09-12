@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-12",
+        "notes": "通灵学院日志只记录已经结算的主动活动与首领战事实。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "scholomance_kirtonosthe_herald_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "scholomance_kirtonosthe_herald"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Kirtonos the Herald的关键机制被处理后，{tank}稳住了通灵学院的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Kirtonos the Herald。"
+      ]
+    },
+    {
+      "id": "scholomance_jandice_barov_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "scholomance_jandice_barov"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Jandice Barov的关键机制被处理后，{tank}稳住了通灵学院的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Jandice Barov。"
+      ]
+    },
+    {
+      "id": "scholomance_rattlegore_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "scholomance_rattlegore"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Rattlegore的关键机制被处理后，{tank}稳住了通灵学院的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Rattlegore。"
+      ]
+    },
+    {
+      "id": "scholomance_marduk_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "scholomance_marduk"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Marduk Blackpool的关键机制被处理后，{tank}稳住了通灵学院的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Marduk Blackpool。"
+      ]
+    },
+    {
+      "id": "scholomance_vectus_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "scholomance_vectus"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Vectus的关键机制被处理后，{tank}稳住了通灵学院的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Vectus。"
+      ]
+    },
+    {
+      "id": "scholomance_ras_frostwhisper_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "scholomance_ras_frostwhisper"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Ras Frostwhisper的关键机制被处理后，{tank}稳住了通灵学院的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Ras Frostwhisper。"
+      ]
+    },
+    {
+      "id": "scholomance_instructor_malicia_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "scholomance_instructor_malicia"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Instructor Malicia的关键机制被处理后，{tank}稳住了通灵学院的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Instructor Malicia。"
+      ]
+    },
+    {
+      "id": "scholomance_doctor_theolen_krastinov_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "scholomance_doctor_theolen_krastinov"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Doctor Theolen Krastinov的关键机制被处理后，{tank}稳住了通灵学院的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Doctor Theolen Krastinov。"
+      ]
+    },
+    {
+      "id": "scholomance_lorekeeper_polkelt_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "scholomance_lorekeeper_polkelt"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Lorekeeper Polkelt的关键机制被处理后，{tank}稳住了通灵学院的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Lorekeeper Polkelt。"
+      ]
+    },
+    {
+      "id": "scholomance_the_ravenian_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "scholomance_the_ravenian"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "The Ravenian的关键机制被处理后，{tank}稳住了通灵学院的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了The Ravenian。"
+      ]
+    },
+    {
+      "id": "scholomance_lord_alexei_barov_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "scholomance_lord_alexei_barov"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Lord Alexei Barov的关键机制被处理后，{tank}稳住了通灵学院的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Lord Alexei Barov。"
+      ]
+    },
+    {
+      "id": "scholomance_lady_illucia_barov_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "scholomance_lady_illucia_barov"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Lady Illucia Barov的关键机制被处理后，{tank}稳住了通灵学院的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Lady Illucia Barov。"
+      ]
+    },
+    {
+      "id": "scholomance_darkmaster_gandling_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "scholomance_darkmaster_gandling"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Darkmaster Gandling的关键机制被处理后，{tank}稳住了通灵学院的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Darkmaster Gandling。"
+      ]
+    }
+  ]
+}

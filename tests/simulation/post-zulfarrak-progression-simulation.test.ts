@@ -4,7 +4,7 @@ import { simulatePostZulfarrakProgression } from "../../scripts/post-zulfarrak-p
 import baseline from "../fixtures/post-zulfarrak-progression-baseline.json";
 
 describe("post-Zul'Farrak progression simulation", () => {
-  it("reaches the current Shadowforge City content target deterministically", () => {
+  it("reaches the Upper Blackrock Spire content target deterministically", () => {
     const content = loadBrowserContentRegistry();
     const config = {
       seed: "post-zulfarrak-test",
@@ -16,11 +16,11 @@ describe("post-Zul'Farrak progression simulation", () => {
 
     expect(second).toEqual(first);
     expect(first.status).toBe("target-reached");
-    expect(first.targetDungeonId).toBe("blackrock_depths_shadowforge_city");
+    expect(first.targetDungeonId).toBe("upper_blackrock_spire");
     expect(first.targetReached).toBe(true);
     expect(first.daysToTarget).not.toBeNull();
     expect(first.levelCap).toBe(60);
-    expect(first.highestAvailableRecommendedLevel).toBe(56);
+    expect(first.highestAvailableRecommendedLevel).toBe(60);
     expect(first.minimumCoreLevel).toBeGreaterThanOrEqual(45);
     expect(first.maximumCoreLevel).toBeLessThanOrEqual(60);
     expect(first.activitiesStarted).toBeGreaterThan(0);
@@ -30,7 +30,15 @@ describe("post-Zul'Farrak progression simulation", () => {
     expect(first.attemptedDungeonIds).toContain("sunken_temple");
     expect(first.attemptedDungeonIds).toContain("blackrock_depths_detention_block");
     expect(first.attemptedDungeonIds).toContain("blackrock_depths_shadowforge_city");
-    expect(first.recruitedMemberCount).toBe(1);
+    expect(first.attemptedDungeonIds).toContain("dire_maul_east");
+    expect(first.attemptedDungeonIds).toContain("dire_maul_west");
+    expect(first.attemptedDungeonIds).toContain("dire_maul_north");
+    expect(first.attemptedDungeonIds).toContain("scholomance");
+    expect(first.attemptedDungeonIds).toContain("stratholme_live");
+    expect(first.attemptedDungeonIds).toContain("stratholme_undead");
+    expect(first.attemptedDungeonIds).toContain("lower_blackrock_spire");
+    expect(first.attemptedDungeonIds).toContain("upper_blackrock_spire");
+    expect(first.recruitedMemberCount).toBe(5);
     expect(first.boostedRunCount).toBe(1);
     expect(first.lootAssignments + first.lootSales).toBeGreaterThan(0);
     expect(first.unscheduledFundsDelta).toBe(0);
@@ -41,13 +49,13 @@ describe("post-Zul'Farrak progression simulation", () => {
     expect(baseline.startingState).toBe("zulfarrak-graduated-core-five-at-level-45");
     expect(baseline.target).toEqual({
       type: "dungeon-first-clear",
-      dungeonId: "blackrock_depths_shadowforge_city",
+      dungeonId: "upper_blackrock_spire",
     });
-    expect(baseline.highestAvailableRecommendedLevel).toBe(56);
+    expect(baseline.highestAvailableRecommendedLevel).toBe(60);
     expect(baseline.policy.levelCap).toBe(60);
     expect(baseline.policy.oldContent).toBe("all-nineteen-current-dungeons-remain-repeatable");
     expect(baseline.policy.expectedStop).toBe(
-      "target-reached-at-shadowforge-city-current-scope-complete",
+      "target-reached-at-upper-blackrock-spire-stage-complete",
     );
     expect(baseline.policy.offlineIncome).toBe("none-outside-player-scheduled-activities");
     for (const scenario of baseline.scenarios) {

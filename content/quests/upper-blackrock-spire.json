@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/zone=1583/upper-blackrock-spire#quests",
+        "verifiedAt": "2026-09-12",
+        "notes": "核对上层黑石塔达基萨斯首胜任务奖励暴君印记。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["quests[].completion", "quests[].rewards.experienceFraction"],
+        "reason": "钥匙、阵营与副本外对话不模拟；以达基萨斯胜利结算。",
+        "decidedAt": "2026-09-12"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "ubrs-general-drakkisath",
+      "name": { "zhCN": "黑手的遗产" },
+      "description": { "zhCN": "组织十人远征击败将军达基萨斯，取得暴君印记。" },
+      "dungeonId": "upper_blackrock_spire",
+      "eligibility": { "minimumLevel": 58, "allowedClassIds": [] },
+      "completion": { "type": "encounter-victories", "encounterIds": ["ubrs_drakkisath"] },
+      "rewards": {
+        "experienceFraction": 1.4,
+        "funds": 0,
+        "fixedItemIds": ["13905"],
+        "itemChoiceIds": []
+      }
+    }
+  ]
+}

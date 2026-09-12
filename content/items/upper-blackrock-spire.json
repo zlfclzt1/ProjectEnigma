@@ -1,0 +1,2604 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/",
+        "verifiedAt": "2026-09-11",
+        "notes": "通过逐件中文 XML 核对上层黑石塔装备属性、图标、品质与需求等级。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "items": [
+    {
+      "id": "12583",
+      "name": {
+        "zhCN": "黑手魔锯"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_halberd_04"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：大酋长雷德·黑手的装备掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 151,
+            "maximumPoints": 227
+          },
+          "speedSeconds": 3.5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12583",
+        "url": "https://www.wowhead.com/classic/cn/item=12583&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12587",
+      "name": {
+        "zhCN": "雷德之眼"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_46"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：大酋长雷德·黑手的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 13,
+          "staminaPoints": 7
+        },
+        "defense": {
+          "armorPoints": 143
+        },
+        "physical": {
+          "criticalStrikePercent": 2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12587",
+        "url": "https://www.wowhead.com/classic/cn/item=12587&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12588",
+      "name": {
+        "zhCN": "骨刺护肩"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_11"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：大酋长雷德·黑手的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 278
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12588",
+        "url": "https://www.wowhead.com/classic/cn/item=12588&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12589",
+      "name": {
+        "zhCN": "尘羽腰带"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_11"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：索拉卡·火冠的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 18
+        },
+        "defense": {
+          "armorPoints": 49
+        },
+        "spell": {
+          "spellPowerPoints": 9,
+          "healingPowerPoints": 9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12589",
+        "url": "https://www.wowhead.com/classic/cn/item=12589&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12590",
+      "name": {
+        "zhCN": "恶魔之击"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "epic",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_shortblade_25"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：大酋长雷德·黑手的装备掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 54,
+            "maximumPoints": 101
+          },
+          "speedSeconds": 1.7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12590",
+        "url": "https://www.wowhead.com/classic/cn/item=12590&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12592",
+      "name": {
+        "zhCN": "沙赫拉姆黑剑"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "epic",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_29"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：达基萨斯将军的装备掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 166,
+            "maximumPoints": 250
+          },
+          "speedSeconds": 3.5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12592",
+        "url": "https://www.wowhead.com/classic/cn/item=12592&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12602",
+      "name": {
+        "zhCN": "龙人之盾"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shield_20"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：达基萨斯将军的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 7
+        },
+        "defense": {
+          "armorPoints": 2153,
+          "defenseSkillPoints": 10,
+          "blockValuePoints": 40
+        },
+        "resistances": {
+          "firePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12602",
+        "url": "https://www.wowhead.com/classic/cn/item=12602&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12603",
+      "name": {
+        "zhCN": "深夜外套"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_plate06"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：索拉卡·火冠的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 5,
+          "staminaPoints": 10
+        },
+        "defense": {
+          "armorPoints": 172
+        },
+        "physical": {
+          "attackPowerPoints": 50,
+          "rangedAttackPowerPoints": 50
+        },
+        "resistances": {
+          "firePoints": 10,
+          "shadowPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12603",
+        "url": "https://www.wowhead.com/classic/cn/item=12603&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12604",
+      "name": {
+        "zhCN": "星火头冠"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_crown_02"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：杰德的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 28,
+          "spiritPoints": 10
+        },
+        "defense": {
+          "armorPoints": 69
+        },
+        "resistances": {
+          "firePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12604",
+        "url": "https://www.wowhead.com/classic/cn/item=12604&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "12605",
+      "name": {
+        "zhCN": "蜿蜒骨杖"
+      },
+      "itemLevel": 56,
+      "requiredLevel": 51,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_bone_elfskull_01"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：杰德的装备掉落。"
+      },
+      "stats": {
+        "resistances": {
+          "shadowPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12605",
+        "url": "https://www.wowhead.com/classic/cn/item=12605&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "12606",
+      "name": {
+        "zhCN": "晶化束带"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_10"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：索拉卡·火冠的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 6,
+          "intellectPoints": 19,
+          "spiritPoints": 6
+        },
+        "defense": {
+          "armorPoints": 97
+        },
+        "spell": {
+          "spellPowerPoints": 9,
+          "healingPowerPoints": 9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12606",
+        "url": "https://www.wowhead.com/classic/cn/item=12606&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12609",
+      "name": {
+        "zhCN": "幻色裹衣"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_17"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：索拉卡·火冠的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 87
+        },
+        "resistances": {
+          "arcanePoints": 20,
+          "firePoints": 20,
+          "frostPoints": 20,
+          "naturePoints": 20,
+          "shadowPoints": 20
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12609",
+        "url": "https://www.wowhead.com/classic/cn/item=12609&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "12709",
+      "name": {
+        "zhCN": "皮普的剥皮刀"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_33"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：比斯巨兽的装备掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 37,
+            "maximumPoints": 70
+          },
+          "speedSeconds": 1.3
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12709",
+        "url": "https://www.wowhead.com/classic/cn/item=12709&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12905",
+      "name": {
+        "zhCN": "野火斗篷"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_16"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：烈焰卫士艾博希尔的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 43
+        },
+        "resistances": {
+          "firePoints": 20
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12905",
+        "url": "https://www.wowhead.com/classic/cn/item=12905&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "12926",
+      "name": {
+        "zhCN": "喷焰指环"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "spell_holy_innerfire"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：烈焰卫士艾博希尔的装备掉落。"
+      },
+      "stats": {
+        "spell": {
+          "fireSpellPowerPoints": 24
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12926",
+        "url": "https://www.wowhead.com/classic/cn/item=12926&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12927",
+      "name": {
+        "zhCN": "强击护肩"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_10"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：烈焰卫士艾博希尔的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 129
+        },
+        "physical": {
+          "attackPowerPoints": 24,
+          "rangedAttackPowerPoints": 24,
+          "hitPercent": 2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12927",
+        "url": "https://www.wowhead.com/classic/cn/item=12927&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12929",
+      "name": {
+        "zhCN": "灰烬之怒"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_necklace_05"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：烈焰卫士艾博希尔的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 8,
+          "spiritPoints": 5
+        },
+        "physical": {
+          "criticalStrikePercent": 1
+        },
+        "resistances": {
+          "firePoints": 7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12929",
+        "url": "https://www.wowhead.com/classic/cn/item=12929&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12930",
+      "name": {
+        "zhCN": "石楠之环"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_root_02"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：杰德的装备掉落。"
+      },
+      "stats": {
+        "spell": {
+          "spellPowerPoints": 29,
+          "healingPowerPoints": 29
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12930",
+        "url": "https://www.wowhead.com/classic/cn/item=12930&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12935",
+      "name": {
+        "zhCN": "战争统帅护腿"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_04"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：大酋长雷德·黑手的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 13,
+          "staminaPoints": 15
+        },
+        "defense": {
+          "armorPoints": 575,
+          "dodgePercent": 2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12935",
+        "url": "https://www.wowhead.com/classic/cn/item=12935&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12936",
+      "name": {
+        "zhCN": "雷德的护腕"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_17"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：大酋长雷德·黑手的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 287
+        },
+        "physical": {
+          "hitPercent": 1,
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12936",
+        "url": "https://www.wowhead.com/classic/cn/item=12936&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12939",
+      "name": {
+        "zhCN": "雷德的部族护卫者"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_40"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：大酋长雷德·黑手的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 100,
+          "defenseSkillPoints": 7
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 52,
+            "maximumPoints": 97
+          },
+          "speedSeconds": 1.8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12939",
+        "url": "https://www.wowhead.com/classic/cn/item=12939&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12940",
+      "name": {
+        "zhCN": "雷德的神圣控诉者"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_43"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：大酋长雷德·黑手的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 4
+        },
+        "physical": {
+          "criticalStrikePercent": 1
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 81,
+            "maximumPoints": 151
+          },
+          "speedSeconds": 2.8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12940",
+        "url": "https://www.wowhead.com/classic/cn/item=12940&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12952",
+      "name": {
+        "zhCN": "盖斯之颅"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_23"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：盖斯的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 20
+        },
+        "defense": {
+          "armorPoints": 509,
+          "defenseSkillPoints": 9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12952",
+        "url": "https://www.wowhead.com/classic/cn/item=12952&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12953",
+      "name": {
+        "zhCN": "龙眼头巾"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_39"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：盖斯的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 17
+        },
+        "defense": {
+          "armorPoints": 288
+        },
+        "physical": {
+          "attackPowerPoints": 38,
+          "rangedAttackPowerPoints": 38
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12953",
+        "url": "https://www.wowhead.com/classic/cn/item=12953&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12960",
+      "name": {
+        "zhCN": "部族作战羽盔"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_24"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：盖斯的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12,
+          "intellectPoints": 15
+        },
+        "defense": {
+          "armorPoints": 137
+        },
+        "spell": {
+          "healingPowerPoints": 33
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12960",
+        "url": "https://www.wowhead.com/classic/cn/item=12960&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12963",
+      "name": {
+        "zhCN": "剑圣护腿"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_06"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：比斯巨兽的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 5
+        },
+        "defense": {
+          "armorPoints": 154,
+          "dodgePercent": 2
+        },
+        "physical": {
+          "hitPercent": 1,
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12963",
+        "url": "https://www.wowhead.com/classic/cn/item=12963&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12964",
+      "name": {
+        "zhCN": "三态护腿"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_04"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：比斯巨兽的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 13
+        },
+        "defense": {
+          "armorPoints": 324,
+          "dodgePercent": 2
+        },
+        "physical": {
+          "attackPowerPoints": 34,
+          "rangedAttackPowerPoints": 34
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12964",
+        "url": "https://www.wowhead.com/classic/cn/item=12964&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12965",
+      "name": {
+        "zhCN": "裹灵护腿"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_06"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：比斯巨兽的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 13,
+          "intellectPoints": 16,
+          "spiritPoints": 16
+        },
+        "defense": {
+          "armorPoints": 78
+        },
+        "spell": {
+          "spellPowerPoints": 19,
+          "healingPowerPoints": 19
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12965",
+        "url": "https://www.wowhead.com/classic/cn/item=12965&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12966",
+      "name": {
+        "zhCN": "黑雾护臂"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_07"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：比斯巨兽的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 5,
+          "staminaPoints": 13
+        },
+        "defense": {
+          "armorPoints": 77
+        },
+        "physical": {
+          "hitPercent": 1
+        },
+        "resistances": {
+          "shadowPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12966",
+        "url": "https://www.wowhead.com/classic/cn/item=12966&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "12967",
+      "name": {
+        "zhCN": "血月披风"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_05"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：比斯巨兽的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 17,
+          "spiritPoints": 5
+        },
+        "defense": {
+          "armorPoints": 45
+        },
+        "resistances": {
+          "arcanePoints": 7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12967",
+        "url": "https://www.wowhead.com/classic/cn/item=12967&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "12968",
+      "name": {
+        "zhCN": "霜纹斗蓬"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_18"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：比斯巨兽的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 12,
+          "spiritPoints": 12
+        },
+        "defense": {
+          "armorPoints": 45
+        },
+        "resistances": {
+          "frostPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12968",
+        "url": "https://www.wowhead.com/classic/cn/item=12968&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "12969",
+      "name": {
+        "zhCN": "横扫重锤"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_hammer_17"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：比斯巨兽的装备掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 155,
+            "maximumPoints": 233
+          },
+          "speedSeconds": 3.6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12969",
+        "url": "https://www.wowhead.com/classic/cn/item=12969&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13098",
+      "name": {
+        "zhCN": "痛苦指环"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_18"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：达基萨斯将军的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 7
+        },
+        "physical": {
+          "attackPowerPoints": 16,
+          "rangedAttackPowerPoints": 16,
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13098",
+        "url": "https://www.wowhead.com/classic/cn/item=13098&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13141",
+      "name": {
+        "zhCN": "咆哮之牙"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_necklace_09"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：达基萨斯将军的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 8,
+          "intellectPoints": 14
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 3
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13141",
+        "url": "https://www.wowhead.com/classic/cn/item=13141&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13142",
+      "name": {
+        "zhCN": "黑龙束带"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_33"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：达基萨斯将军的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 15,
+          "staminaPoints": 16
+        },
+        "defense": {
+          "armorPoints": 369
+        },
+        "physical": {
+          "hitPercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13142",
+        "url": "https://www.wowhead.com/classic/cn/item=13142&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13498",
+      "name": {
+        "zhCN": "手工精制护腿"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_04"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：古拉鲁克的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 29,
+          "staminaPoints": 12
+        },
+        "defense": {
+          "armorPoints": 548
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13498",
+        "url": "https://www.wowhead.com/classic/cn/item=13498&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13502",
+      "name": {
+        "zhCN": "手工精制束带"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_23"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：古拉鲁克的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 11,
+          "agilityPoints": 10,
+          "staminaPoints": 10
+        },
+        "defense": {
+          "armorPoints": 519
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13502",
+        "url": "https://www.wowhead.com/classic/cn/item=13502&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16666",
+      "name": {
+        "zhCN": "元素外衣"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_chain_11"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：达基萨斯将军的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 13,
+          "intellectPoints": 20,
+          "spiritPoints": 20
+        },
+        "defense": {
+          "armorPoints": 370
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16666",
+        "url": "https://www.wowhead.com/classic/cn/item=16666&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16669",
+      "name": {
+        "zhCN": "元素护肩"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_29"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：盖斯的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 6,
+          "staminaPoints": 14,
+          "intellectPoints": 15,
+          "spiritPoints": 6
+        },
+        "defense": {
+          "armorPoints": 266
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16669",
+        "url": "https://www.wowhead.com/classic/cn/item=16669&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16672",
+      "name": {
+        "zhCN": "元素护手"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_11"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：烈焰卫士艾博希尔的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 9,
+          "staminaPoints": 4,
+          "intellectPoints": 10,
+          "spiritPoints": 16
+        },
+        "defense": {
+          "armorPoints": 218
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16672",
+        "url": "https://www.wowhead.com/classic/cn/item=16672&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16674",
+      "name": {
+        "zhCN": "野兽追猎者外套"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["hunter"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_chain_03"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：达基萨斯将军的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 5,
+          "agilityPoints": 21,
+          "staminaPoints": 16,
+          "intellectPoints": 13,
+          "spiritPoints": 6
+        },
+        "defense": {
+          "armorPoints": 370
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16674",
+        "url": "https://www.wowhead.com/classic/cn/item=16674&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16688",
+      "name": {
+        "zhCN": "博学者长袍"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["mage"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_25"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：达基萨斯将军的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 9,
+          "intellectPoints": 31,
+          "spiritPoints": 8
+        },
+        "defense": {
+          "armorPoints": 89
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16688",
+        "url": "https://www.wowhead.com/classic/cn/item=16688&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16690",
+      "name": {
+        "zhCN": "虔诚长袍"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_11"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：达基萨斯将军的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 13,
+          "intellectPoints": 24,
+          "spiritPoints": 15
+        },
+        "defense": {
+          "armorPoints": 89
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16690",
+        "url": "https://www.wowhead.com/classic/cn/item=16690&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16695",
+      "name": {
+        "zhCN": "虔诚衬肩"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_02"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：索拉卡·火冠的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 4,
+          "intellectPoints": 21,
+          "spiritPoints": 9
+        },
+        "defense": {
+          "armorPoints": 64
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16695",
+        "url": "https://www.wowhead.com/classic/cn/item=16695&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16700",
+      "name": {
+        "zhCN": "鬼雾长袍"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_49"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：达基萨斯将军的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 20,
+          "intellectPoints": 21,
+          "spiritPoints": 13
+        },
+        "defense": {
+          "armorPoints": 89
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16700",
+        "url": "https://www.wowhead.com/classic/cn/item=16700&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16706",
+      "name": {
+        "zhCN": "野性之心外衣"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_plate06"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：达基萨斯将军的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 13,
+          "intellectPoints": 20,
+          "spiritPoints": 20
+        },
+        "defense": {
+          "armorPoints": 176
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16706",
+        "url": "https://www.wowhead.com/classic/cn/item=16706&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16721",
+      "name": {
+        "zhCN": "迅影外套"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["rogue"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_leather_07"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：达基萨斯将军的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 26,
+          "staminaPoints": 13,
+          "spiritPoints": 12
+        },
+        "defense": {
+          "armorPoints": 176
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16721",
+        "url": "https://www.wowhead.com/classic/cn/item=16721&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16726",
+      "name": {
+        "zhCN": "光铸胸甲"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_plate03"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：达基萨斯将军的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 13,
+          "staminaPoints": 21,
+          "intellectPoints": 16,
+          "spiritPoints": 8
+        },
+        "defense": {
+          "armorPoints": 657
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16726",
+        "url": "https://www.wowhead.com/classic/cn/item=16726&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16729",
+      "name": {
+        "zhCN": "光铸肩铠"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_10"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：比斯巨兽的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 9,
+          "agilityPoints": 4,
+          "staminaPoints": 15,
+          "intellectPoints": 11,
+          "spiritPoints": 5
+        },
+        "defense": {
+          "armorPoints": 470
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16729",
+        "url": "https://www.wowhead.com/classic/cn/item=16729&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16730",
+      "name": {
+        "zhCN": "勇气胸甲"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_plate03"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：达基萨斯将军的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 15,
+          "agilityPoints": 10,
+          "staminaPoints": 24,
+          "spiritPoints": 6
+        },
+        "defense": {
+          "armorPoints": 657
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16730",
+        "url": "https://www.wowhead.com/classic/cn/item=16730&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16733",
+      "name": {
+        "zhCN": "勇气肩甲"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_30"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：大酋长雷德·黑手的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 11,
+          "agilityPoints": 9,
+          "staminaPoints": 17
+        },
+        "defense": {
+          "armorPoints": 470
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16733",
+        "url": "https://www.wowhead.com/classic/cn/item=16733&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18047",
+      "name": {
+        "zhCN": "烈焰行者"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_02"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：古拉鲁克的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10
+        },
+        "defense": {
+          "armorPoints": 251,
+          "dodgePercent": 1
+        },
+        "resistances": {
+          "firePoints": 18
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18047",
+        "url": "https://www.wowhead.com/classic/cn/item=18047&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18048",
+      "name": {
+        "zhCN": "大铸甲师之锤"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "rogue", "priest", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_hammer_06"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：古拉鲁克的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 5
+        },
+        "spell": {
+          "spellPowerPoints": 14,
+          "healingPowerPoints": 14
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 66,
+            "maximumPoints": 123
+          },
+          "speedSeconds": 2.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18048",
+        "url": "https://www.wowhead.com/classic/cn/item=18048&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18102",
+      "name": {
+        "zhCN": "龙骑兵长靴"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_05"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：大酋长雷德·黑手的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 5,
+          "intellectPoints": 16
+        },
+        "defense": {
+          "armorPoints": 61
+        },
+        "spell": {
+          "spellPowerPoints": 18,
+          "healingPowerPoints": 18
+        },
+        "resistances": {
+          "firePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18102",
+        "url": "https://www.wowhead.com/classic/cn/item=18102&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18103",
+      "name": {
+        "zhCN": "沉思指环"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_16"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：大酋长雷德·黑手的装备掉落。"
+      },
+      "stats": {
+        "spell": {
+          "manaRegenPer5Seconds": 5,
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18103",
+        "url": "https://www.wowhead.com/classic/cn/item=18103&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18104",
+      "name": {
+        "zhCN": "野性之潮腰带"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_03"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：大酋长雷德·黑手的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 9,
+          "intellectPoints": 10
+        },
+        "defense": {
+          "armorPoints": 208
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18104",
+        "url": "https://www.wowhead.com/classic/cn/item=18104&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22225",
+      "name": {
+        "zhCN": "龙皮罩帽"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_27"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：盖斯的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12,
+          "intellectPoints": 15
+        },
+        "defense": {
+          "armorPoints": 69
+        },
+        "spell": {
+          "spellPowerPoints": 18,
+          "healingPowerPoints": 18
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22225",
+        "url": "https://www.wowhead.com/classic/cn/item=22225&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22247",
+      "name": {
+        "zhCN": "虔诚医者长靴"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_cloth_03"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：大酋长雷德·黑手的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 12,
+          "spiritPoints": 12
+        },
+        "defense": {
+          "armorPoints": 61
+        },
+        "spell": {
+          "healingPowerPoints": 26
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22247",
+        "url": "https://www.wowhead.com/classic/cn/item=22247&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22253",
+      "name": {
+        "zhCN": "失落之书"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_book_06"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：达基萨斯将军的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 6,
+          "intellectPoints": 7
+        },
+        "spell": {
+          "spellPowerPoints": 18,
+          "healingPowerPoints": 18
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22253",
+        "url": "https://www.wowhead.com/classic/cn/item=22253&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22267",
+      "name": {
+        "zhCN": "织法者头巾"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 60,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_62"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：达基萨斯将军的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 9
+        },
+        "defense": {
+          "armorPoints": 73
+        },
+        "spell": {
+          "spellPowerPoints": 36,
+          "healingPowerPoints": 36,
+          "hitPercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22267",
+        "url": "https://www.wowhead.com/classic/cn/item=22267&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22268",
+      "name": {
+        "zhCN": "龙人能量徽章"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_talisman_09"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：达基萨斯将军的装备掉落。"
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22268",
+        "url": "https://www.wowhead.com/classic/cn/item=22268&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22269",
+      "name": {
+        "zhCN": "暗影徘徊者披风"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_20"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：达基萨斯将军的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 17,
+          "staminaPoints": 7
+        },
+        "defense": {
+          "armorPoints": 45
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22269",
+        "url": "https://www.wowhead.com/classic/cn/item=22269&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "22311",
+      "name": {
+        "zhCN": "铁纹长靴"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_cloth_05"
+      },
+      "description": {
+        "zhCN": "上层黑石塔：比斯巨兽的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 17,
+          "intellectPoints": 11
+        },
+        "defense": {
+          "armorPoints": 150
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22311",
+        "url": "https://www.wowhead.com/classic/cn/item=22311&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "source": "https://wow.zamimg.com/images/wow/icons/large/<icon-name>.jpg",
-  "generatedAt": "2026-09-11",
-  "itemCount": 601,
-  "count": 359,
+  "generatedAt": "2026-09-12",
+  "itemCount": 1047,
+  "count": 490,
   "icons": [
     {
       "name": "ability_mount_whitedirewolf",
@@ -54,6 +54,18 @@
       "sha256": "381b0c671135dc229752506d781af08778a2326b66c91d09a4028948e322e7dd"
     },
     {
+      "name": "inv_axe_10",
+      "file": "inv_axe_10.jpg",
+      "bytes": 1996,
+      "sha256": "961fee12500619f5206569f851e5f632fafb068f7751cf9e83683bd4d6ecff6b"
+    },
+    {
+      "name": "inv_axe_11",
+      "file": "inv_axe_11.jpg",
+      "bytes": 1435,
+      "sha256": "53de4ac18ce06bdd793ecfece49dd3d802adc178a2484f9c633381ecbc6ab1ce"
+    },
+    {
       "name": "inv_axe_12",
       "file": "inv_axe_12.jpg",
       "bytes": 1699,
@@ -96,6 +108,18 @@
       "sha256": "32edbadbe3f41ce2ff78afdfee2b75cdf86ee9d6d3de88d9906b47f232df01aa"
     },
     {
+      "name": "inv_battery_02",
+      "file": "inv_battery_02.jpg",
+      "bytes": 1886,
+      "sha256": "b11ddf2aa249083c306652ad3c63c7cf46c1f0a31f32787842f9fbfeff440c8d"
+    },
+    {
+      "name": "inv_belt_02",
+      "file": "inv_belt_02.jpg",
+      "bytes": 1671,
+      "sha256": "5add48ca974ec4d597a9a5f2ceb79aacbaa9b210c677e1b54a9a87225ca8e57d"
+    },
+    {
       "name": "inv_belt_03",
       "file": "inv_belt_03.jpg",
       "bytes": 1714,
@@ -114,6 +138,18 @@
       "sha256": "4593249f3952fb7f5934d6a136fb87e034cfdd387d2d7f81660d0158ccbeeea7"
     },
     {
+      "name": "inv_belt_07",
+      "file": "inv_belt_07.jpg",
+      "bytes": 1642,
+      "sha256": "f7684ca062db7ec4482ccfab2b0f6497e1cff42b16a5541540b8e3b4b866dd79"
+    },
+    {
+      "name": "inv_belt_09",
+      "file": "inv_belt_09.jpg",
+      "bytes": 1426,
+      "sha256": "4e393f860a79153e363d0bd32eb261ae9c9fa68c78fbb45ac93d47f544e06d13"
+    },
+    {
       "name": "inv_belt_10",
       "file": "inv_belt_10.jpg",
       "bytes": 1877,
@@ -130,6 +166,18 @@
       "file": "inv_belt_12.jpg",
       "bytes": 2227,
       "sha256": "cdc9cb1a65651b8a99bf8bfada5c7f5a27834bd606d5f1c87c24813e40f123ae"
+    },
+    {
+      "name": "inv_belt_13",
+      "file": "inv_belt_13.jpg",
+      "bytes": 2130,
+      "sha256": "102fce7e486cc7e2d636911ed83d93b574c850436bb8f1a600195689cb494b84"
+    },
+    {
+      "name": "inv_belt_14",
+      "file": "inv_belt_14.jpg",
+      "bytes": 2411,
+      "sha256": "dcc8ac3750b9c2c498fe6d8c5193d305d8c3bd442d28cc59dd2925345e4338c9"
     },
     {
       "name": "inv_belt_15",
@@ -154,6 +202,18 @@
       "file": "inv_belt_18.jpg",
       "bytes": 1494,
       "sha256": "c4449a9906e638d7bf4e6af5b5ecac8b2f5f06726c3d26fddd365ce20d9485f9"
+    },
+    {
+      "name": "inv_belt_21",
+      "file": "inv_belt_21.jpg",
+      "bytes": 1847,
+      "sha256": "973cb3b99311463b2826ea81fe85681b27cb93924aff228f8c255b5e9fa39b9b"
+    },
+    {
+      "name": "inv_belt_23",
+      "file": "inv_belt_23.jpg",
+      "bytes": 1858,
+      "sha256": "d294188a939b769ea411d534b7b7ef7815a6f04ec3c2803674f362ca26c3d5e9"
     },
     {
       "name": "inv_belt_24",
@@ -270,6 +330,18 @@
       "sha256": "56635141ff3ab9c0ec13b72daaa9341726cce990320065bb72fbe4db07fc3c6c"
     },
     {
+      "name": "inv_boots_cloth_02",
+      "file": "inv_boots_cloth_02.jpg",
+      "bytes": 1748,
+      "sha256": "320cac0b334725005a683c09280186f5108a353efcd51aeaaccb9a107527b730"
+    },
+    {
+      "name": "inv_boots_cloth_03",
+      "file": "inv_boots_cloth_03.jpg",
+      "bytes": 1588,
+      "sha256": "c64569560d99cc7f381ca6c008dbe2aadc01aab6f273a0c69341e2d1ad4e76c5"
+    },
+    {
       "name": "inv_boots_cloth_05",
       "file": "inv_boots_cloth_05.jpg",
       "bytes": 1664,
@@ -288,10 +360,40 @@
       "sha256": "32bf2de0ed13defcf5a85834ce988957a14c7deeeaf877fe71e65c82abd4d831"
     },
     {
+      "name": "inv_boots_plate_03",
+      "file": "inv_boots_plate_03.jpg",
+      "bytes": 1776,
+      "sha256": "44d27381f7e02218305ff546735817ab5e52cf474e40ecf857943b8cc3c40f1c"
+    },
+    {
+      "name": "inv_boots_plate_04",
+      "file": "inv_boots_plate_04.jpg",
+      "bytes": 1693,
+      "sha256": "4ec6d7664387081861cef57041bc3461ce4daddf0e2fe79b70ce17826ee228d8"
+    },
+    {
       "name": "inv_boots_plate_06",
       "file": "inv_boots_plate_06.jpg",
       "bytes": 1663,
       "sha256": "607ab04c7a8a3ef777aae35d88bbef53b89ca63272a424e89e8bc2ba5ffec893"
+    },
+    {
+      "name": "inv_boots_plate_07",
+      "file": "inv_boots_plate_07.jpg",
+      "bytes": 1777,
+      "sha256": "190f5aaeae37a99ee146d1d64aa463d7ec0b3945d5c3bfe75c8ac095d72a7614"
+    },
+    {
+      "name": "inv_boots_plate_08",
+      "file": "inv_boots_plate_08.jpg",
+      "bytes": 1754,
+      "sha256": "a280e3570fc7aa5e6bc0fc6faf6957b1dc4eb81e41fe1cb0a0dfa4c1e1802c93"
+    },
+    {
+      "name": "inv_boots_plate_09",
+      "file": "inv_boots_plate_09.jpg",
+      "bytes": 1810,
+      "sha256": "fb56f94b5db4a63d4dd965d02129963994184f6a604f57661155a00883af722a"
     },
     {
       "name": "inv_boots_wolf",
@@ -304,6 +406,12 @@
       "file": "inv_bracer_02.jpg",
       "bytes": 1735,
       "sha256": "0bd2a8a1ee9f8523911350732b99fb54443d76b92cac1e8bd8012c608633e238"
+    },
+    {
+      "name": "inv_bracer_03",
+      "file": "inv_bracer_03.jpg",
+      "bytes": 1501,
+      "sha256": "927d9b06fec7441b3a6e8fe3a194ee7bce2ce040e2f6d4a75013e210d21dc5bb"
     },
     {
       "name": "inv_bracer_04",
@@ -354,6 +462,12 @@
       "sha256": "565b042bad29c3690c7f3412eadffa2850206483eb17ab8077bcaad3d0cbf67f"
     },
     {
+      "name": "inv_bracer_12",
+      "file": "inv_bracer_12.jpg",
+      "bytes": 1569,
+      "sha256": "db4fb57e37cc7e903d585f77cc5ad2b3371fd1054ac38588f38a9f26fa822561"
+    },
+    {
       "name": "inv_bracer_13",
       "file": "inv_bracer_13.jpg",
       "bytes": 1558,
@@ -390,6 +504,18 @@
       "sha256": "4d3920e7d7196fa0769c8ac70073fd0d92327d93a3642bd2c04c5d2573e86255"
     },
     {
+      "name": "inv_chest_chain_03",
+      "file": "inv_chest_chain_03.jpg",
+      "bytes": 2061,
+      "sha256": "02ba73c0222e04bc4c663c979f2b33fac818b4eb865aab3ee92295c344190866"
+    },
+    {
+      "name": "inv_chest_chain_04",
+      "file": "inv_chest_chain_04.jpg",
+      "bytes": 1966,
+      "sha256": "ac5b33e13fcf4542bf97fe3987212f026f4ae9dbbc352848ecb5ab5ebb51986b"
+    },
+    {
       "name": "inv_chest_chain_05",
       "file": "inv_chest_chain_05.jpg",
       "bytes": 1987,
@@ -408,6 +534,24 @@
       "sha256": "74abb0e86e4c14825cfe0c5fcaa38f6ee94c9b49c9cea921838e37897f0b2d07"
     },
     {
+      "name": "inv_chest_chain_11",
+      "file": "inv_chest_chain_11.jpg",
+      "bytes": 2108,
+      "sha256": "5ebed7c04788f835591e8c728e04536512ffe228587ea34347ebc17253365dad"
+    },
+    {
+      "name": "inv_chest_chain_12",
+      "file": "inv_chest_chain_12.jpg",
+      "bytes": 1720,
+      "sha256": "a6d68265792d893b52079d297c25423aa41481f7ae6cf7fb02eeef918908e1ee"
+    },
+    {
+      "name": "inv_chest_chain_14",
+      "file": "inv_chest_chain_14.jpg",
+      "bytes": 1918,
+      "sha256": "20a4a5585a00cbfa7a58fa84511f733b8df591be5534e9ecde2535d0ec724d22"
+    },
+    {
       "name": "inv_chest_chain_15",
       "file": "inv_chest_chain_15.jpg",
       "bytes": 1797,
@@ -420,16 +564,40 @@
       "sha256": "298c37b0b47e0f5dee310cd1a1b35182793a6177dc192b5b61b14fc1e09398d5"
     },
     {
+      "name": "inv_chest_chain_17",
+      "file": "inv_chest_chain_17.jpg",
+      "bytes": 1972,
+      "sha256": "cd4eb350cdf2ec2b245e2a051b54f44505b4afd47c498d066f76f460cc1e96c4"
+    },
+    {
       "name": "inv_chest_cloth_07",
       "file": "inv_chest_cloth_07.jpg",
       "bytes": 2033,
       "sha256": "f13adf6c42200c087775aa51d1ecd8a727aa9a73ba905bde096ccee350ad21a9"
     },
     {
+      "name": "inv_chest_cloth_08",
+      "file": "inv_chest_cloth_08.jpg",
+      "bytes": 1986,
+      "sha256": "29fb3daaeb3e488eaa67f1b9d484492b30cab71c87665510b3182a1cbb38e2a1"
+    },
+    {
       "name": "inv_chest_cloth_10",
       "file": "inv_chest_cloth_10.jpg",
       "bytes": 2000,
       "sha256": "b9113d493890fd5f77f3c90132d5a7c2e187bd860bc1da8eb191b6ddaf0d4b93"
+    },
+    {
+      "name": "inv_chest_cloth_11",
+      "file": "inv_chest_cloth_11.jpg",
+      "bytes": 2126,
+      "sha256": "bddcfbca2de239e59e34dc15a24915f05d36efb39614fee27577f723107ea722"
+    },
+    {
+      "name": "inv_chest_cloth_12",
+      "file": "inv_chest_cloth_12.jpg",
+      "bytes": 2000,
+      "sha256": "c7d5ba94655e79ee03cef46c5ecae54039f5456a93a1f1bea9c1e3959133cb41"
     },
     {
       "name": "inv_chest_cloth_15",
@@ -474,6 +642,12 @@
       "sha256": "3a75e7c6f23e8fcbdf8d1b95c8a6b14fd9be231938cc5bcbd30b2ba9d066e13e"
     },
     {
+      "name": "inv_chest_cloth_29",
+      "file": "inv_chest_cloth_29.jpg",
+      "bytes": 1953,
+      "sha256": "a1b2a65ae8a44178098ab5bcfc1f83bf0b91b4d7fae9dc4221d6cca17c48fd52"
+    },
+    {
       "name": "inv_chest_cloth_31",
       "file": "inv_chest_cloth_31.jpg",
       "bytes": 1799,
@@ -498,10 +672,34 @@
       "sha256": "5b3c044e22ceae8e22df7339700739879d7f54a08d2214f0fb9749a72ffe8311"
     },
     {
+      "name": "inv_chest_cloth_43",
+      "file": "inv_chest_cloth_43.jpg",
+      "bytes": 1672,
+      "sha256": "325026c1ed8002cee8a0d9c70d6b58f08f0fe493e3f296862e16849dfc2cbdba"
+    },
+    {
+      "name": "inv_chest_cloth_46",
+      "file": "inv_chest_cloth_46.jpg",
+      "bytes": 1931,
+      "sha256": "834eadbc82c41ac18b1197820b0229e3d7700d22e991a1c25f8cae5b1118d09b"
+    },
+    {
+      "name": "inv_chest_cloth_47",
+      "file": "inv_chest_cloth_47.jpg",
+      "bytes": 1693,
+      "sha256": "6207fa6e0b29faa38046fb5f43514b73aab8020bed28c31b1520cfaf7ea891cf"
+    },
+    {
       "name": "inv_chest_cloth_49",
       "file": "inv_chest_cloth_49.jpg",
       "bytes": 1890,
       "sha256": "c82c5684fa5e28b4aa30aaf745445694549753f418b0e05eff5deffc141d0e0a"
+    },
+    {
+      "name": "inv_chest_cloth_51",
+      "file": "inv_chest_cloth_51.jpg",
+      "bytes": 1904,
+      "sha256": "16a6bfc4102cc1906ae07d8b0a5a22e3ae7a10788dccc7ff9e743981aa156605"
     },
     {
       "name": "inv_chest_leather_01",
@@ -510,10 +708,28 @@
       "sha256": "2af57442bb5d10d05aff374184922cba5fb3d2a746654d9dd62d1cfc8bebbbd5"
     },
     {
+      "name": "inv_chest_leather_03",
+      "file": "inv_chest_leather_03.jpg",
+      "bytes": 1441,
+      "sha256": "03eb7bedd96c0e2da552a227439c796c6621e0d63698fbcfb2258a28ca67bafb"
+    },
+    {
       "name": "inv_chest_leather_05",
       "file": "inv_chest_leather_05.jpg",
       "bytes": 1590,
       "sha256": "5486ce0da1e323728e57be78e6e97fa9f19496397ce4a7f1a631b06a25ed85bc"
+    },
+    {
+      "name": "inv_chest_leather_06",
+      "file": "inv_chest_leather_06.jpg",
+      "bytes": 1768,
+      "sha256": "070554d78329ea109c2edbfe40c64ea7bea940b2e43126d420a27fc9bc70759a"
+    },
+    {
+      "name": "inv_chest_leather_07",
+      "file": "inv_chest_leather_07.jpg",
+      "bytes": 1811,
+      "sha256": "09f75ac8b7ba10d5c03257549187ed3d9e1c64f92d76fb1009a396837246d5dd"
     },
     {
       "name": "inv_chest_leather_08",
@@ -522,16 +738,34 @@
       "sha256": "2eaf72758149269d7ee055d28d92d1b33c2b88381c247cc262a043e42cb8fb45"
     },
     {
+      "name": "inv_chest_leather_10",
+      "file": "inv_chest_leather_10.jpg",
+      "bytes": 2056,
+      "sha256": "0b5fe8b22a57de729b4ccfa85b84fffffac5cfccdd11d5bd2f0e000ae7577b2b"
+    },
+    {
       "name": "inv_chest_plate02",
       "file": "inv_chest_plate02.jpg",
       "bytes": 1940,
       "sha256": "dad7eb58a10a94e45789125439aff30dd2d10e5b92fc186fae43bad26fe56c94"
     },
     {
+      "name": "inv_chest_plate03",
+      "file": "inv_chest_plate03.jpg",
+      "bytes": 1975,
+      "sha256": "c8bef04ac8b6af1b1151de04b2eda9af8e82984bbd552d05f1d05e313c80ecdd"
+    },
+    {
       "name": "inv_chest_plate04",
       "file": "inv_chest_plate04.jpg",
       "bytes": 1724,
       "sha256": "f9fc2e8510707d652fa4ae74441face1b26563da371863d373ef59b6096c9486"
+    },
+    {
+      "name": "inv_chest_plate06",
+      "file": "inv_chest_plate06.jpg",
+      "bytes": 1988,
+      "sha256": "22014cd640ed17639b3fd023e1542a08fc7a9c6e9347298c9d998a6bf2d875d7"
     },
     {
       "name": "inv_chest_plate08",
@@ -552,6 +786,12 @@
       "sha256": "11dd11ab606c27c803b1f90409bcf70518ebc0b2ce6b7121b79133104f2360ab"
     },
     {
+      "name": "inv_chest_plate13",
+      "file": "inv_chest_plate13.jpg",
+      "bytes": 2005,
+      "sha256": "1a8a34747eef10afeb064a0d3484d53f11da4605daa492f3d05c4d5c6164df01"
+    },
+    {
       "name": "inv_chest_plate15",
       "file": "inv_chest_plate15.jpg",
       "bytes": 1679,
@@ -564,16 +804,34 @@
       "sha256": "5f8c3a3aa5b0540dcc842eab796bc5135cd97b3997b6e435bd99989830671a3d"
     },
     {
+      "name": "inv_crown_02",
+      "file": "inv_crown_02.jpg",
+      "bytes": 1823,
+      "sha256": "da415532c240683b9b34e17b1084a154e9c41a92ca3b99131d8b712ba397c93b"
+    },
+    {
       "name": "inv_drink_01",
       "file": "inv_drink_01.jpg",
       "bytes": 1605,
       "sha256": "2ab47fc67954ce0700535dc7636b5b8438253f3f14478404a8640477f9614567"
     },
     {
+      "name": "inv_drink_03",
+      "file": "inv_drink_03.jpg",
+      "bytes": 1740,
+      "sha256": "05ab48085d393bf5922d672167588e8176e78f34dd15580b8bce18b7b27db796"
+    },
+    {
       "name": "inv_drink_04",
       "file": "inv_drink_04.jpg",
       "bytes": 1682,
       "sha256": "04f683bd69c5b2d51b6df6fa365cc64042aed7146596d1538ef24a24f355aaa0"
+    },
+    {
+      "name": "inv_drink_05",
+      "file": "inv_drink_05.jpg",
+      "bytes": 1760,
+      "sha256": "be7bee88a38e3c8ab959d1d6bc3b2af7e5262bf55164b7918a9dd0b48136ea4a"
     },
     {
       "name": "inv_drink_10",
@@ -630,10 +888,22 @@
       "sha256": "2507caf5d2f01f375f5bd89997c1e2c38b8af8fac154056f425b9fc50d70c8d4"
     },
     {
+      "name": "inv_gauntlets_14",
+      "file": "inv_gauntlets_14.jpg",
+      "bytes": 2080,
+      "sha256": "879fd4dcd7483d6e794cc5a471715db353d5f3fabddbabad168c7cd093d1bf71"
+    },
+    {
       "name": "inv_gauntlets_15",
       "file": "inv_gauntlets_15.jpg",
       "bytes": 1920,
       "sha256": "729f6eb185fdc242a6ff8f6dd4cd33c48036dda56512231e63cf774795d16b73"
+    },
+    {
+      "name": "inv_gauntlets_16",
+      "file": "inv_gauntlets_16.jpg",
+      "bytes": 1643,
+      "sha256": "904a6eeef25f82cecbb8d695532caf3dd093cd76c323e7fd957f195b6d3366d5"
     },
     {
       "name": "inv_gauntlets_17",
@@ -654,6 +924,12 @@
       "sha256": "4f221cbdea83742469c38fd81f0bfa96abb845009f9f1b50ca5fa9a64a78e614"
     },
     {
+      "name": "inv_gauntlets_21",
+      "file": "inv_gauntlets_21.jpg",
+      "bytes": 1741,
+      "sha256": "6d150007eee890f56a74f0b5e13feb0caeff955071e2783afb5859f49e146b03"
+    },
+    {
       "name": "inv_gauntlets_22",
       "file": "inv_gauntlets_22.jpg",
       "bytes": 1868,
@@ -664,6 +940,12 @@
       "file": "inv_gauntlets_23.jpg",
       "bytes": 1738,
       "sha256": "2c6aad0a970919ae0af9728fe5a25bc5bcc91d8f6f2504541fd6fad77edab167"
+    },
+    {
+      "name": "inv_gauntlets_24",
+      "file": "inv_gauntlets_24.jpg",
+      "bytes": 1796,
+      "sha256": "af09be1ae8de68867defa2547da58da83ca34fdf993f11e7e9f9e537088c3e0b"
     },
     {
       "name": "inv_gauntlets_26",
@@ -682,6 +964,12 @@
       "file": "inv_gauntlets_28.jpg",
       "bytes": 1785,
       "sha256": "f8c4f58ee1cf496befa2769d609c571345afc32486a26fc97685e53fe0c016fa"
+    },
+    {
+      "name": "inv_gauntlets_29",
+      "file": "inv_gauntlets_29.jpg",
+      "bytes": 1838,
+      "sha256": "c52fccfcda69af72ee0058125ab393fb3253ba28e2a16c847ed70331caf7d19d"
     },
     {
       "name": "inv_gauntlets_30",
@@ -712,6 +1000,18 @@
       "file": "inv_hammer_02.jpg",
       "bytes": 1547,
       "sha256": "f43b045a227cc26a98f14fba89858b67edda00152cc56cfcef909ccfabff3907"
+    },
+    {
+      "name": "inv_hammer_04",
+      "file": "inv_hammer_04.jpg",
+      "bytes": 1802,
+      "sha256": "f2a1175cd0b4d93ec190549f27d29e8d0fc24f3620f6c96f27218f3a3d5fbb24"
+    },
+    {
+      "name": "inv_hammer_06",
+      "file": "inv_hammer_06.jpg",
+      "bytes": 1583,
+      "sha256": "f441b5a88c3e18256ed625ee674206cce74d328a12c7745220726285a368a0c2"
     },
     {
       "name": "inv_hammer_07",
@@ -750,6 +1050,12 @@
       "sha256": "3fcbae836f79226b67889739f588dd4f9199d49cf3ae2361f7c9b87c6ab7be09"
     },
     {
+      "name": "inv_hammer_13",
+      "file": "inv_hammer_13.jpg",
+      "bytes": 1787,
+      "sha256": "7139d2812403a32165f4f9931b68fb1202fd14f78573c14e95c607d77a0dd8d1"
+    },
+    {
       "name": "inv_hammer_17",
       "file": "inv_hammer_17.jpg",
       "bytes": 1940,
@@ -762,16 +1068,58 @@
       "sha256": "cf4702327b3a4692b3a5a017e46dc7e28000517770ebc00c96f57216388b2fa3"
     },
     {
+      "name": "inv_hammer_22",
+      "file": "inv_hammer_22.jpg",
+      "bytes": 1505,
+      "sha256": "68a44ac4deccfefc6d26e91123f232e2eec04cf5ce75cc287d06da25d2d1d19c"
+    },
+    {
       "name": "inv_helmet_01",
       "file": "inv_helmet_01.jpg",
       "bytes": 1830,
       "sha256": "1fd9e89c9226127454366d6d90b098582893405d9ca88cf3b3a3657db35cfb3e"
     },
     {
+      "name": "inv_helmet_02",
+      "file": "inv_helmet_02.jpg",
+      "bytes": 1899,
+      "sha256": "f46584f88eaf2d92d3d42ae001da7cd71a24bee2fb604413ca0928cacb229201"
+    },
+    {
+      "name": "inv_helmet_03",
+      "file": "inv_helmet_03.jpg",
+      "bytes": 1677,
+      "sha256": "2ed01436fef8c4563e821d964256cd36e7e7510484017389fcca5962488fc4c2"
+    },
+    {
+      "name": "inv_helmet_04",
+      "file": "inv_helmet_04.jpg",
+      "bytes": 1750,
+      "sha256": "e71fcfee06764e95b7542089934b15dcfd074c8e42be1b7693c2c8474196e706"
+    },
+    {
+      "name": "inv_helmet_08",
+      "file": "inv_helmet_08.jpg",
+      "bytes": 2027,
+      "sha256": "13c24b29bcf91c7009d81ad73528901f3a29029bf0aadc09453141d459aed900"
+    },
+    {
       "name": "inv_helmet_09",
       "file": "inv_helmet_09.jpg",
       "bytes": 1972,
       "sha256": "aec8c113cc0de1742c9658252b4a6c335faafe3af37874f8c4a9040e30698a66"
+    },
+    {
+      "name": "inv_helmet_10",
+      "file": "inv_helmet_10.jpg",
+      "bytes": 1721,
+      "sha256": "a4af4f802fb939bc2216a82e1aabb8e472c3ef15753931f3317584f4d3c0f85b"
+    },
+    {
+      "name": "inv_helmet_11",
+      "file": "inv_helmet_11.jpg",
+      "bytes": 1646,
+      "sha256": "859c0cfb84b68bc30e4d31af2ba8afb7165008141cc5464ffd247a117f9fcd36"
     },
     {
       "name": "inv_helmet_12",
@@ -784,6 +1132,12 @@
       "file": "inv_helmet_13.jpg",
       "bytes": 1955,
       "sha256": "25dd9ca0ff99e6c87d524ae57a8fc80f51a4c0deac2441464ef16b571fcf0b2c"
+    },
+    {
+      "name": "inv_helmet_14",
+      "file": "inv_helmet_14.jpg",
+      "bytes": 1994,
+      "sha256": "a26718d040c9b1a89eace6d22342ae92696d445c69e7bd88f1e07ae7d0084c2b"
     },
     {
       "name": "inv_helmet_17",
@@ -822,16 +1176,34 @@
       "sha256": "2e7fbd9c50273c2538eff26cf770bf86ab77e60913fc1d05bac5db0c67937bf4"
     },
     {
+      "name": "inv_helmet_24",
+      "file": "inv_helmet_24.jpg",
+      "bytes": 2029,
+      "sha256": "c3807beab43e96335b5fbe2642ab076724366a5cd3a7b1a1335695573bef8d5c"
+    },
+    {
       "name": "inv_helmet_25",
       "file": "inv_helmet_25.jpg",
       "bytes": 1875,
       "sha256": "a14b360ec3157197b666157803f2ea442ad8fddea53e62bb93a95ce91f3464ab"
     },
     {
+      "name": "inv_helmet_27",
+      "file": "inv_helmet_27.jpg",
+      "bytes": 1702,
+      "sha256": "9f6d4ab59c9382d86825d5b374e857733eae8704cb5cbf70181c2e782ce39ad6"
+    },
+    {
       "name": "inv_helmet_28",
       "file": "inv_helmet_28.jpg",
       "bytes": 1593,
       "sha256": "4ee8dcc2014355a3dfdbd660f7b6f8e9230e38676934db951378363a5e895a2a"
+    },
+    {
+      "name": "inv_helmet_29",
+      "file": "inv_helmet_29.jpg",
+      "bytes": 1645,
+      "sha256": "5043184be66e6cc0e26caaf772fea7ae14b5658f8454abafb593cdadf742113e"
     },
     {
       "name": "inv_helmet_30",
@@ -864,6 +1236,12 @@
       "sha256": "af5bb3a47b9b62017ecf8e3c770fbe4f62eb8bc2d2aa48b98c5f339f94db494d"
     },
     {
+      "name": "inv_helmet_39",
+      "file": "inv_helmet_39.jpg",
+      "bytes": 1817,
+      "sha256": "5c1bbbe104f489ec03c4a3c789f9a32ce3aae02e0582d3d50507f2eef10ab0d6"
+    },
+    {
       "name": "inv_helmet_41",
       "file": "inv_helmet_41.jpg",
       "bytes": 1966,
@@ -886,6 +1264,12 @@
       "file": "inv_helmet_51.jpg",
       "bytes": 1468,
       "sha256": "00d7138ac1e95f7178e37328882f78c5023c458a338142e971e357c45c3a396f"
+    },
+    {
+      "name": "inv_helmet_62",
+      "file": "inv_helmet_62.jpg",
+      "bytes": 1536,
+      "sha256": "4014f3226c2dd39c3b7b22185620bd1bdff3ec5c62d1faa555fd26340e679390"
     },
     {
       "name": "inv_jewelry_amulet_01",
@@ -912,6 +1296,12 @@
       "sha256": "8be4efeaf92f27166c4a63fb76c8678ac01b327a8d01c86d73e86094aab32976"
     },
     {
+      "name": "inv_jewelry_necklace_01",
+      "file": "inv_jewelry_necklace_01.jpg",
+      "bytes": 1878,
+      "sha256": "8dace408df42a0703364cfce7b5bccc26468b3b745786aebf61ea3d2f254c0da"
+    },
+    {
       "name": "inv_jewelry_necklace_02",
       "file": "inv_jewelry_necklace_02.jpg",
       "bytes": 1627,
@@ -930,6 +1320,12 @@
       "sha256": "abdb44f492e5eb2f5ddafc203c10d6754ac79e88959910b7943c8d31e8964503"
     },
     {
+      "name": "inv_jewelry_necklace_05",
+      "file": "inv_jewelry_necklace_05.jpg",
+      "bytes": 2010,
+      "sha256": "1897280dbf4eb9e48e3d02906214da01a7e1135e146912d5dcb4db3c596d5f5c"
+    },
+    {
       "name": "inv_jewelry_necklace_06",
       "file": "inv_jewelry_necklace_06.jpg",
       "bytes": 1782,
@@ -940,6 +1336,18 @@
       "file": "inv_jewelry_necklace_07.jpg",
       "bytes": 1602,
       "sha256": "e2cf7a6787969a483008f46e727f5437ff8a6af6755ba946c7fa1ffeb34efb4c"
+    },
+    {
+      "name": "inv_jewelry_necklace_09",
+      "file": "inv_jewelry_necklace_09.jpg",
+      "bytes": 1633,
+      "sha256": "6cdfedb42bbc30c59d8a845b81541d28c86980cbf5b3e6aa71168211f52558c8"
+    },
+    {
+      "name": "inv_jewelry_necklace_10",
+      "file": "inv_jewelry_necklace_10.jpg",
+      "bytes": 1809,
+      "sha256": "86698c32ec2ba26a2f61bd82bd434f1d5b889462ff63c7bef815f383fdaa00c2"
     },
     {
       "name": "inv_jewelry_necklace_11",
@@ -984,6 +1392,12 @@
       "sha256": "88b19fd5bfa8f3ef6cdefeef348a61977fa272d5e67692a0a36de4f147cc02da"
     },
     {
+      "name": "inv_jewelry_ring_11",
+      "file": "inv_jewelry_ring_11.jpg",
+      "bytes": 1712,
+      "sha256": "e87a69abfb99c12da3e742ed3219b329d46fbeb21ca87b1c51ed49daff604109"
+    },
+    {
       "name": "inv_jewelry_ring_13",
       "file": "inv_jewelry_ring_13.jpg",
       "bytes": 1388,
@@ -1002,6 +1416,12 @@
       "sha256": "8d3c36f7eb514b14922a7ca66907fb78ffdc507f45080664444f716aea583922"
     },
     {
+      "name": "inv_jewelry_ring_16",
+      "file": "inv_jewelry_ring_16.jpg",
+      "bytes": 2137,
+      "sha256": "2370acc63a70cfd0e4f983b7305c4d42d777ffbbc7c9b8e72c0eb76443a13416"
+    },
+    {
       "name": "inv_jewelry_ring_17",
       "file": "inv_jewelry_ring_17.jpg",
       "bytes": 2056,
@@ -1018,6 +1438,18 @@
       "file": "inv_jewelry_ring_20.jpg",
       "bytes": 1916,
       "sha256": "deb105004a6fd91527e21d43c109ba7fb365d48d487f1f6ba489ca60cb823986"
+    },
+    {
+      "name": "inv_jewelry_ring_22",
+      "file": "inv_jewelry_ring_22.jpg",
+      "bytes": 1880,
+      "sha256": "317de626e0442141029fbcede551c295c33160d9258ad3022fe1695408265e6a"
+    },
+    {
+      "name": "inv_jewelry_ring_23",
+      "file": "inv_jewelry_ring_23.jpg",
+      "bytes": 2176,
+      "sha256": "c522bf59477a36d9e438136892ffd8375b2011d723ebb234ebf96499b52e9a9e"
     },
     {
       "name": "inv_jewelry_ring_24",
@@ -1080,6 +1512,24 @@
       "sha256": "acc0276fdfef114d8948b2b1fa2082e32bef115cc69a9354d845561932100877"
     },
     {
+      "name": "inv_jewelry_talisman_09",
+      "file": "inv_jewelry_talisman_09.jpg",
+      "bytes": 1810,
+      "sha256": "4e51c154f30d981ffe3b1c56ed9e55d6257d4113fa81cbeb2f011a2b22b77bba"
+    },
+    {
+      "name": "inv_jewelry_talisman_12",
+      "file": "inv_jewelry_talisman_12.jpg",
+      "bytes": 2049,
+      "sha256": "ed064bfe2712eb99849d64e90e1d74c9052d1166ee425dd3aa4d96e3f2b55b30"
+    },
+    {
+      "name": "inv_mace_01",
+      "file": "inv_mace_01.jpg",
+      "bytes": 1654,
+      "sha256": "913b85406ffd514016112275e38475ea90e0ebc03546ba59324b1994d0b9ad60"
+    },
+    {
       "name": "inv_mace_02",
       "file": "inv_mace_02.jpg",
       "bytes": 1656,
@@ -1090,6 +1540,12 @@
       "file": "inv_mace_04.jpg",
       "bytes": 1278,
       "sha256": "645044cd62820f7ff642de8286152c86499ee2fbaba73c11b675e9172b556faa"
+    },
+    {
+      "name": "inv_mace_05",
+      "file": "inv_mace_05.jpg",
+      "bytes": 1265,
+      "sha256": "a7f0d9249cce0b5370ae4ee8dde480d9ea0916904486eefdadc5da8ec3f9eb80"
     },
     {
       "name": "inv_mace_07",
@@ -1122,6 +1578,12 @@
       "sha256": "bb67f54d3b7d19c6dbda50e483c0a16176dc94d32794f9e5f99974ab838c4aa5"
     },
     {
+      "name": "inv_mace_15",
+      "file": "inv_mace_15.jpg",
+      "bytes": 1463,
+      "sha256": "e2543bc777f14542c657f1f67967753c94b146d8920013f8ce596c28fd822912"
+    },
+    {
       "name": "inv_misc_bandage_09",
       "file": "inv_misc_bandage_09.jpg",
       "bytes": 1594,
@@ -1132,6 +1594,30 @@
       "file": "inv_misc_bandage_14.jpg",
       "bytes": 1480,
       "sha256": "b0abbc7aa6236abbbdbd04d1703336a288f14208f1afdb91b88eb8413dd32c17"
+    },
+    {
+      "name": "inv_misc_bandage_15",
+      "file": "inv_misc_bandage_15.jpg",
+      "bytes": 1629,
+      "sha256": "ead58e88764b6c65ae31c58366374468bc67edbb9c823410140c02c69e62c6be"
+    },
+    {
+      "name": "inv_misc_bandana_01",
+      "file": "inv_misc_bandana_01.jpg",
+      "bytes": 1324,
+      "sha256": "59f4ef02c3994a20374c1e48c04ed77534f22ba127fbb5c5f12a2f477864bbbd"
+    },
+    {
+      "name": "inv_misc_bomb_04",
+      "file": "inv_misc_bomb_04.jpg",
+      "bytes": 1693,
+      "sha256": "a7b6f4e0158c723ba6f6c39d2a9275328b15fbc7807fd68b92e2d5c269026dd0"
+    },
+    {
+      "name": "inv_misc_bone_04",
+      "file": "inv_misc_bone_04.jpg",
+      "bytes": 1656,
+      "sha256": "28d21901e292e2ba76a8ae35e222499a0e16e8d14734f05440f40cfb74029164"
     },
     {
       "name": "inv_misc_bone_05",
@@ -1158,10 +1644,34 @@
       "sha256": "95527ab1c5d797f4583b193e47f12dd20b419fe2fba770b4c57d80841f17f406"
     },
     {
+      "name": "inv_misc_bone_humanskull_01",
+      "file": "inv_misc_bone_humanskull_01.jpg",
+      "bytes": 1583,
+      "sha256": "91dc8bd01581cb3b3686913ea5f5acf7213133b5ca23576a2210192110dfd635"
+    },
+    {
+      "name": "inv_misc_bone_taurenskull_01",
+      "file": "inv_misc_bone_taurenskull_01.jpg",
+      "bytes": 1753,
+      "sha256": "6f1a9f90bd36d0e5781e6529f137c7f1122202aa86acf897fd7fefbe6d1561c5"
+    },
+    {
+      "name": "inv_misc_book_05",
+      "file": "inv_misc_book_05.jpg",
+      "bytes": 1911,
+      "sha256": "d5df7f13bbd089eeae574b5a4997fdd047f5e0207a91c32edd8226dec5e60a67"
+    },
+    {
       "name": "inv_misc_book_06",
       "file": "inv_misc_book_06.jpg",
       "bytes": 2139,
       "sha256": "5352ccc604cd6cb6e6f393d779b4d29652c515f821773d17ea91e8b57f997630"
+    },
+    {
+      "name": "inv_misc_cape_01",
+      "file": "inv_misc_cape_01.jpg",
+      "bytes": 1727,
+      "sha256": "6e9490de8dda2ee90b80f1fd355560289f0dbaec9ed397985a6b339303e6546a"
     },
     {
       "name": "inv_misc_cape_02",
@@ -1200,6 +1710,12 @@
       "sha256": "f35f2050e0342dd1c4ec08fd491fa50ce618f0e15d2b2c16a4c4bfa0b1efc46e"
     },
     {
+      "name": "inv_misc_cape_14",
+      "file": "inv_misc_cape_14.jpg",
+      "bytes": 1614,
+      "sha256": "4f70f0818dccba931eddc987347d66c171a27135b46b2c2c7b00da3a36fe6128"
+    },
+    {
       "name": "inv_misc_cape_16",
       "file": "inv_misc_cape_16.jpg",
       "bytes": 1561,
@@ -1230,10 +1746,22 @@
       "sha256": "0062584f984086d7031dc2a125e0375037b1b6b37bb1d822914c0ea1aef410a1"
     },
     {
+      "name": "inv_misc_cape_21",
+      "file": "inv_misc_cape_21.jpg",
+      "bytes": 1683,
+      "sha256": "3b48cab0c932aa652ef1c5566a3e36206dadbb840f2e32bd9e940c3d560dc9f1"
+    },
+    {
       "name": "inv_misc_eye_01",
       "file": "inv_misc_eye_01.jpg",
       "bytes": 1702,
       "sha256": "a2c22d8eaf97e9d9cb641f02eeba2dd74b475ffdfd385ee5e43f23ec2a97e5a5"
+    },
+    {
+      "name": "inv_misc_flute_01",
+      "file": "inv_misc_flute_01.jpg",
+      "bytes": 1448,
+      "sha256": "52b8e89fe9211bc989b74607ddeb0b9e1a5be86b19fed56712a8cf846051a00e"
     },
     {
       "name": "inv_misc_gear_01",
@@ -1248,16 +1776,34 @@
       "sha256": "3c1561f6a9de791965d32a9bdecdabbb256503e02bdd0f833ce1425a6ada03de"
     },
     {
+      "name": "inv_misc_gear_06",
+      "file": "inv_misc_gear_06.jpg",
+      "bytes": 1505,
+      "sha256": "98c04cda33d1994ce1d9eb397944f09ccaa1812d687d52be493c640cf974c92f"
+    },
+    {
       "name": "inv_misc_gem_02",
       "file": "inv_misc_gem_02.jpg",
       "bytes": 1739,
       "sha256": "d3621ad873d46bde8df38b26680711c77ccba94588a1646c7e542da8bbdea7dd"
     },
     {
+      "name": "inv_misc_gem_bloodstone_01",
+      "file": "inv_misc_gem_bloodstone_01.jpg",
+      "bytes": 2026,
+      "sha256": "bfb199a14e814854eb5cba3c9990349dcae55ebacd4cfc4de8282127318c5b2d"
+    },
+    {
       "name": "inv_misc_gem_bloodstone_02",
       "file": "inv_misc_gem_bloodstone_02.jpg",
       "bytes": 1821,
       "sha256": "7a392a5d78caaf8a961aff507fdf01ae0cb452546ef247352bbb6e6521de2cc7"
+    },
+    {
+      "name": "inv_misc_gem_pearl_01",
+      "file": "inv_misc_gem_pearl_01.jpg",
+      "bytes": 1419,
+      "sha256": "220af9c481361da82c5d7d583cbd780419ab00f33ca49aaecc60b8c89cf6a080"
     },
     {
       "name": "inv_misc_gem_pearl_04",
@@ -1282,6 +1828,12 @@
       "file": "inv_misc_gem_topaz_01.jpg",
       "bytes": 2025,
       "sha256": "6d52840cbe3ca2d47116ad96da347217e37a677beba93bb3d9daeb12d21ff10a"
+    },
+    {
+      "name": "inv_misc_gem_variety_02",
+      "file": "inv_misc_gem_variety_02.jpg",
+      "bytes": 1956,
+      "sha256": "ca7b9b399928b7d9e4ff950194c0bce00beca6d7531e35275f7d6bc3945ae787"
     },
     {
       "name": "inv_misc_lantern_01",
@@ -1330,6 +1882,18 @@
       "file": "inv_misc_pelt_wolf_02.jpg",
       "bytes": 1729,
       "sha256": "b69483459996d676a2f6b520178682b528fd8cfe9607d9497d939fc27ee0f883"
+    },
+    {
+      "name": "inv_misc_root_02",
+      "file": "inv_misc_root_02.jpg",
+      "bytes": 2117,
+      "sha256": "ef8296a2fa2fc5458971785f25bb7d32339b1d5fe85c66611afb5b537550caa5"
+    },
+    {
+      "name": "inv_misc_stonetablet_04",
+      "file": "inv_misc_stonetablet_04.jpg",
+      "bytes": 1734,
+      "sha256": "fb6ced2baababaa9d7f58b2834eb38b260854deae771bdb8ee70b1fd421c7800"
     },
     {
       "name": "inv_misc_wrench_01",
@@ -1422,16 +1986,34 @@
       "sha256": "2cd4faa3674ab2222992031119c54b3b3e9dc8dc00602b9e19ee52396a2b7ad8"
     },
     {
+      "name": "inv_pick_05",
+      "file": "inv_pick_05.jpg",
+      "bytes": 1493,
+      "sha256": "d2f06a2d60ab79bb19def3b977cb26d9d2303238c666b5b1263c4a7f668fb08d"
+    },
+    {
       "name": "inv_relics_idolofferocity",
       "file": "inv_relics_idolofferocity.jpg",
       "bytes": 1911,
       "sha256": "fb273d8c73cd9b3e121b0962e79186c5b9c294b46fe6e82ca0c9952ceb69764f"
     },
     {
+      "name": "inv_relics_libramofhope",
+      "file": "inv_relics_libramofhope.jpg",
+      "bytes": 2022,
+      "sha256": "da1849280a4f0d67352785d9a86ccc347010ecf910f7115596eb441828c7b394"
+    },
+    {
       "name": "inv_relics_libramoftruth",
       "file": "inv_relics_libramoftruth.jpg",
       "bytes": 1871,
       "sha256": "8eb772c0b0d9603cc25090c4a2b6b71847cc23369f526b2f1ff41f474077225b"
+    },
+    {
+      "name": "inv_relics_totemoflife",
+      "file": "inv_relics_totemoflife.jpg",
+      "bytes": 1714,
+      "sha256": "d7fc7af1d73d3ff33339d55698a306eddcca979557a9d3a8b04e0fa4963ce2a5"
     },
     {
       "name": "inv_relics_totemofrage",
@@ -1488,6 +2070,18 @@
       "sha256": "80701346112ca9dc553e93904b88879c4c85073b5f19ed395821d8aae788545f"
     },
     {
+      "name": "inv_shield_13",
+      "file": "inv_shield_13.jpg",
+      "bytes": 2131,
+      "sha256": "d5852d329caac337b88a44ba2a0c31b17153ee43c5cd8d97f5b98444bca406c2"
+    },
+    {
+      "name": "inv_shield_14",
+      "file": "inv_shield_14.jpg",
+      "bytes": 2137,
+      "sha256": "30497edd47760d5ba5c8eff4afdd21814198d9131daeada7eea282abfbb1fae2"
+    },
+    {
       "name": "inv_shield_17",
       "file": "inv_shield_17.jpg",
       "bytes": 1801,
@@ -1498,6 +2092,18 @@
       "file": "inv_shield_18.jpg",
       "bytes": 1974,
       "sha256": "134d5958b0c7798b51a9bc829774e2797f858105fc6e8507b211572ab6331840"
+    },
+    {
+      "name": "inv_shield_19",
+      "file": "inv_shield_19.jpg",
+      "bytes": 1664,
+      "sha256": "783abccdd20a89b651609ac7eec1e1bed9861617542420676468655db4980d33"
+    },
+    {
+      "name": "inv_shield_20",
+      "file": "inv_shield_20.jpg",
+      "bytes": 1984,
+      "sha256": "6e1f1b2548fdeab110311bd38f6b8adfc2b7b1bdd279db2d7d4946abb6981e22"
     },
     {
       "name": "inv_shield_21",
@@ -1542,6 +2148,12 @@
       "sha256": "c19ed60e06241f82857a53f89b1c200e2a7b778f4018a1d5c912916381544600"
     },
     {
+      "name": "inv_shoulder_03",
+      "file": "inv_shoulder_03.jpg",
+      "bytes": 1793,
+      "sha256": "a48c4120fe811060c93da46abfb31acb51a78932d2c441d6a51436f2bfef8ae2"
+    },
+    {
       "name": "inv_shoulder_05",
       "file": "inv_shoulder_05.jpg",
       "bytes": 1855,
@@ -1572,6 +2184,18 @@
       "sha256": "26bfc1b8b3caac8f5d7d253f983277db059a9e16469621eda23c52b36a4153a4"
     },
     {
+      "name": "inv_shoulder_10",
+      "file": "inv_shoulder_10.jpg",
+      "bytes": 1943,
+      "sha256": "913baf8581a1746c085394ef19d9c085a4e6a878276d35aad6d511ea696c075b"
+    },
+    {
+      "name": "inv_shoulder_11",
+      "file": "inv_shoulder_11.jpg",
+      "bytes": 2268,
+      "sha256": "55fc515e1c75c2dc905b43982a9ba3d00c211cc3d821a7d49beaf7d6bc91cb70"
+    },
+    {
       "name": "inv_shoulder_13",
       "file": "inv_shoulder_13.jpg",
       "bytes": 1908,
@@ -1590,6 +2214,12 @@
       "sha256": "7827fd435727930c3cf88c84fee1e87d266e079601c33089f7c07651f4643fff"
     },
     {
+      "name": "inv_shoulder_17",
+      "file": "inv_shoulder_17.jpg",
+      "bytes": 2084,
+      "sha256": "3d26f50b37c6bd275f61aa9303e5e6c4aa16c9680f80d0ff311d2efb25690608"
+    },
+    {
       "name": "inv_shoulder_18",
       "file": "inv_shoulder_18.jpg",
       "bytes": 2071,
@@ -1600,6 +2230,12 @@
       "file": "inv_shoulder_23.jpg",
       "bytes": 1693,
       "sha256": "deaafa81394894f622ec305235907cfa126dff2f5b540b945658245da68badf2"
+    },
+    {
+      "name": "inv_shoulder_24",
+      "file": "inv_shoulder_24.jpg",
+      "bytes": 1626,
+      "sha256": "35b42867bf7b287933039ece14e3ba722125dade9b015eab6163727940732f50"
     },
     {
       "name": "inv_shoulder_25",
@@ -1626,6 +2262,12 @@
       "sha256": "1a17537010a8cdd03e2b08e64464245ab32c4d2a2f6582f9186a15037dc61b6e"
     },
     {
+      "name": "inv_shoulder_29",
+      "file": "inv_shoulder_29.jpg",
+      "bytes": 1786,
+      "sha256": "6762b6b08a19b724d82879bf86a66e65cc50177878cad859b117b8acde339970"
+    },
+    {
       "name": "inv_shoulder_30",
       "file": "inv_shoulder_30.jpg",
       "bytes": 1806,
@@ -1642,6 +2284,12 @@
       "file": "inv_spear_02.jpg",
       "bytes": 1849,
       "sha256": "9b7a04618280df1f28372c81ea45e931ca4727402bcb974c2c77c18fe9b1fab6"
+    },
+    {
+      "name": "inv_spear_05",
+      "file": "inv_spear_05.jpg",
+      "bytes": 1365,
+      "sha256": "feb587ea12fc317e28774f610e4b6b1013c639fb1aa0297cf97e482116a56045"
     },
     {
       "name": "inv_spear_06",
@@ -1678,6 +2326,12 @@
       "file": "inv_staff_06.jpg",
       "bytes": 1845,
       "sha256": "920fa2ef34502e171cc120f3cf1c84a1d61dcca68a705d9f50819c90385a0856"
+    },
+    {
+      "name": "inv_staff_08",
+      "file": "inv_staff_08.jpg",
+      "bytes": 1984,
+      "sha256": "73e50f9df82c747a7ce93d5f79c79027a9903600fffae07d5d03618b349014e1"
     },
     {
       "name": "inv_staff_10",
@@ -1722,6 +2376,12 @@
       "sha256": "eb8cec12f61ed07c605124f13242f3ac6bc24e370f8f329d333799941a63b260"
     },
     {
+      "name": "inv_staff_23",
+      "file": "inv_staff_23.jpg",
+      "bytes": 2112,
+      "sha256": "2127c72d3873e1ce07c53556b49143084b3d3e712f1e3cfe1c20f0a9b9faa95f"
+    },
+    {
       "name": "inv_staff_25",
       "file": "inv_staff_25.jpg",
       "bytes": 1867,
@@ -1738,6 +2398,12 @@
       "file": "inv_staff_28.jpg",
       "bytes": 1497,
       "sha256": "1fa95e490e7fdbed9f82738642f03188d77cdb898fac79545766ab19fc10c1bf"
+    },
+    {
+      "name": "inv_staff_29",
+      "file": "inv_staff_29.jpg",
+      "bytes": 1758,
+      "sha256": "ea4fe60ea2aac9cf6a146b24b7f8cb84788be09bb56a1b1cf3b1eef7b0be8d7b"
     },
     {
       "name": "inv_staff_30",
@@ -1764,6 +2430,12 @@
       "sha256": "6cc2a2c8d529d3d294e0f25d05684165d32a7a46c72c493f1fdecc62b0a68af8"
     },
     {
+      "name": "inv_stone_02",
+      "file": "inv_stone_02.jpg",
+      "bytes": 1523,
+      "sha256": "6af6f20737c44dcd126a36c07f5f5cd8667f878fa740a2eaa5f6c74f6b46c552"
+    },
+    {
       "name": "inv_stone_03",
       "file": "inv_stone_03.jpg",
       "bytes": 1862,
@@ -1776,10 +2448,28 @@
       "sha256": "c027cdadb59719d722016a12c63df8e5ecd1694d458b4b5edeb0344aaaae5528"
     },
     {
+      "name": "inv_sword_03",
+      "file": "inv_sword_03.jpg",
+      "bytes": 2257,
+      "sha256": "44100862ee4f5418d8b1b5b701518352612b2fbbb0298f02bba6b0db7bb74b78"
+    },
+    {
+      "name": "inv_sword_04",
+      "file": "inv_sword_04.jpg",
+      "bytes": 1379,
+      "sha256": "83ba186ef6764b623972040e5d6397bec635c2f27fef0390eb7e3d9bb9b03e30"
+    },
+    {
       "name": "inv_sword_09",
       "file": "inv_sword_09.jpg",
       "bytes": 2120,
       "sha256": "214d553285fcda221e6d94b81fde25c52fdc6ca021b146d11d9313dda58d517b"
+    },
+    {
+      "name": "inv_sword_11",
+      "file": "inv_sword_11.jpg",
+      "bytes": 1972,
+      "sha256": "98242200328b4f300ccf6d120e83c640464838c5534331755b925184516e6c6e"
     },
     {
       "name": "inv_sword_12",
@@ -1800,10 +2490,22 @@
       "sha256": "2509e3707c25de11ba4c540b16e79acf1b373c4baad3a2b1757bd53d180edce6"
     },
     {
+      "name": "inv_sword_15",
+      "file": "inv_sword_15.jpg",
+      "bytes": 1655,
+      "sha256": "ddb2b2cc6806eba55fca222d8447c0e740eb0353f6231ff4cf5e4577e3bf172a"
+    },
+    {
       "name": "inv_sword_16",
       "file": "inv_sword_16.jpg",
       "bytes": 1411,
       "sha256": "78275df868ff9e8ef75d732664b34a059c4a0e548cd4d95897efcd4943a5498e"
+    },
+    {
+      "name": "inv_sword_17",
+      "file": "inv_sword_17.jpg",
+      "bytes": 1679,
+      "sha256": "ec5cc449bac44b36bf50727ed45df6e57eac656a34b9e658fd0bfeae904a8bb1"
     },
     {
       "name": "inv_sword_18",
@@ -1860,6 +2562,12 @@
       "sha256": "10fd48f6b4d54a1cc8ce8fcd2d0b8d45919ab71377c536ce02a77941163b74ec"
     },
     {
+      "name": "inv_sword_29",
+      "file": "inv_sword_29.jpg",
+      "bytes": 1409,
+      "sha256": "c47c81c1b293aae3bfdbc8756a15dff00282a40aacfcdd41db62a367d1d19262"
+    },
+    {
       "name": "inv_sword_30",
       "file": "inv_sword_30.jpg",
       "bytes": 1728,
@@ -1900,6 +2608,18 @@
       "file": "inv_sword_39.jpg",
       "bytes": 1961,
       "sha256": "14741db9df5dd5c5305f00129bd4a56904bae2a1e832f909f845ae8e29502989"
+    },
+    {
+      "name": "inv_sword_40",
+      "file": "inv_sword_40.jpg",
+      "bytes": 1663,
+      "sha256": "349ae6062983968f6bcc6cbf760302e20d4e2b657e9a59d92a8dbcc4db01d6e8"
+    },
+    {
+      "name": "inv_sword_41",
+      "file": "inv_sword_41.jpg",
+      "bytes": 1652,
+      "sha256": "5c396ae8360762d8275fa338ff4986f7f053d2c57cc5d5d682ac1966f86714c9"
     },
     {
       "name": "inv_sword_42",
@@ -1968,10 +2688,22 @@
       "sha256": "49970a90076d5f1f79cebe6733a060270a417c161b0b22604b8a27a93c42301b"
     },
     {
+      "name": "inv_wand_05",
+      "file": "inv_wand_05.jpg",
+      "bytes": 2085,
+      "sha256": "fbcc1dfaa40d1ee1b7243e07181f9ac99bdcf83850bbcf0a6c1ff271cd67b66b"
+    },
+    {
       "name": "inv_wand_06",
       "file": "inv_wand_06.jpg",
       "bytes": 2031,
       "sha256": "bd26188df7727bbc4ecb0bfd1c9db5f95e9b13e67ad7da1d87803f788cd45c8c"
+    },
+    {
+      "name": "inv_wand_07",
+      "file": "inv_wand_07.jpg",
+      "bytes": 1627,
+      "sha256": "e27823ecd4cfea8a82be0388d04ce457666f5a22d7e006b9d9f2e73f15273d81"
     },
     {
       "name": "inv_wand_09",
@@ -2010,6 +2742,18 @@
       "sha256": "18d75c88f41bf26b5069c5a655707a5d41f4224b826c369c80c8e993284418e9"
     },
     {
+      "name": "inv_weapon_bow_05",
+      "file": "inv_weapon_bow_05.jpg",
+      "bytes": 1295,
+      "sha256": "8c388b11fe8acf5341695ffc22f5c6bd8117773809b20710a09eeb64e2ef7e81"
+    },
+    {
+      "name": "inv_weapon_bow_08",
+      "file": "inv_weapon_bow_08.jpg",
+      "bytes": 1839,
+      "sha256": "d6a650ef4659d64dbbde523e4fbb4b17fa3b6b3478a456a1fb5f58bfc9786f6a"
+    },
+    {
       "name": "inv_weapon_bow_10",
       "file": "inv_weapon_bow_10.jpg",
       "bytes": 1567,
@@ -2026,6 +2770,18 @@
       "file": "inv_weapon_bow_12.jpg",
       "bytes": 1329,
       "sha256": "da418fed1c57483dbddc2506a699b6f528e10c69c3072659b42313af73401739"
+    },
+    {
+      "name": "inv_weapon_crossbow_04",
+      "file": "inv_weapon_crossbow_04.jpg",
+      "bytes": 1871,
+      "sha256": "16c4655e8f9392318f1db76e7907b5bb7f686175aab62b1b7f7e372fe1394806"
+    },
+    {
+      "name": "inv_weapon_crossbow_08",
+      "file": "inv_weapon_crossbow_08.jpg",
+      "bytes": 1809,
+      "sha256": "df830a066a87ce24aa2d01194e88c922aac0efc563b3fe70cf34462b847333b4"
     },
     {
       "name": "inv_weapon_halbard_01",
@@ -2052,6 +2808,18 @@
       "sha256": "dcf5ef6a8f18620f60a37f74ca42e6fea78497b5e5e91e6b0c2217334cf40d56"
     },
     {
+      "name": "inv_weapon_halberd_09",
+      "file": "inv_weapon_halberd_09.jpg",
+      "bytes": 1790,
+      "sha256": "94d7ee71c1416750cd15d9c16c525f885ae19233caa6aff849fa819d4ce3f09a"
+    },
+    {
+      "name": "inv_weapon_halberd_11",
+      "file": "inv_weapon_halberd_11.jpg",
+      "bytes": 2032,
+      "sha256": "1d604b5b597a8687b4fee1b045063d3a1ddb44791e1c29ef898fe5fd0a279550"
+    },
+    {
       "name": "inv_weapon_rifle_02",
       "file": "inv_weapon_rifle_02.jpg",
       "bytes": 1800,
@@ -2074,6 +2842,12 @@
       "file": "inv_weapon_shortblade_02.jpg",
       "bytes": 1410,
       "sha256": "674c9515838d9760530cf586956266e352567da29d2b9ce69140328ec7b7fffb"
+    },
+    {
+      "name": "inv_weapon_shortblade_04",
+      "file": "inv_weapon_shortblade_04.jpg",
+      "bytes": 1510,
+      "sha256": "d152926980ea8797b49d7374fd29d7df95a960509e89abb2a572e583f6e00366"
     },
     {
       "name": "inv_weapon_shortblade_05",
@@ -2142,6 +2916,12 @@
       "sha256": "18ae9010379f0a715dd2e5aeb65d7af3a823b52cb3545d2a6256919feb1b4a23"
     },
     {
+      "name": "inv_weapon_shortblade_22",
+      "file": "inv_weapon_shortblade_22.jpg",
+      "bytes": 1163,
+      "sha256": "b390af0cbd660198196642b50dbe2aae3632f9e7de8a90f735390a2cec7fdcf4"
+    },
+    {
       "name": "inv_weapon_shortblade_25",
       "file": "inv_weapon_shortblade_25.jpg",
       "bytes": 1574,
@@ -2158,6 +2938,12 @@
       "file": "spell_frost_frostbrand.jpg",
       "bytes": 2103,
       "sha256": "99e1d179ec07633144bf959d73d31d6ca1ec2e523ab7c2c273953ed16cc904c0"
+    },
+    {
+      "name": "spell_holy_innerfire",
+      "file": "spell_holy_innerfire.jpg",
+      "bytes": 1687,
+      "sha256": "c4bc1336ae6986e4f7e6f99aa0b64ad99c2a90595ddf4479b3bc10dea691ea8d"
     }
   ]
 }

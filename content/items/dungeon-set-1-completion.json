@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/",
+        "verifiedAt": "2026-09-12",
+        "notes": "补齐 Dungeon Set 1 在副本内容批次中遗漏的 15 件基础装备；属性和来源按经典旧世套装条目录入。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "items": [
+    {
+      "id": "16671",
+      "name": { "zhCN": "元素护腕" },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "mail",
+      "restrictions": { "allowedClassIds": ["shaman"], "allowedRoles": ["healer", "dps"] },
+      "icon": { "kind": "database", "name": "inv_belt_02" },
+      "description": { "zhCN": "元素套装护腕；黑石塔下层首领掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 7, "intellectPoints": 7 },
+        "spell": { "spellPowerPoints": 4, "healingPowerPoints": 4 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16671",
+        "url": "https://www.wowhead.com/classic/cn/item=16671&xml",
+        "verifiedAt": "2026-09-12"
+      }
+    },
+    {
+      "id": "16673",
+      "name": { "zhCN": "元素束带" },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "mail",
+      "restrictions": { "allowedClassIds": ["shaman"], "allowedRoles": ["healer", "dps"] },
+      "icon": { "kind": "database", "name": "inv_belt_02" },
+      "description": { "zhCN": "元素套装腰带；黑石塔下层首领掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 8, "intellectPoints": 8 },
+        "spell": { "spellPowerPoints": 5, "healingPowerPoints": 5 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16673",
+        "url": "https://www.wowhead.com/classic/cn/item=16673&xml",
+        "verifiedAt": "2026-09-12"
+      }
+    },
+    {
+      "id": "16680",
+      "name": { "zhCN": "野兽追猎者腰带" },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "mail",
+      "restrictions": { "allowedClassIds": ["hunter"], "allowedRoles": ["dps"] },
+      "icon": { "kind": "database", "name": "inv_belt_02" },
+      "description": { "zhCN": "野兽追猎者套装腰带；黑石塔下层首领掉落。" },
+      "stats": {
+        "primary": { "agilityPoints": 10, "staminaPoints": 8 },
+        "physical": { "attackPowerPoints": 6 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16680",
+        "url": "https://www.wowhead.com/classic/cn/item=16680&xml",
+        "verifiedAt": "2026-09-12"
+      }
+    },
+    {
+      "id": "16681",
+      "name": { "zhCN": "野兽追猎者护腕" },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "mail",
+      "restrictions": { "allowedClassIds": ["hunter"], "allowedRoles": ["dps"] },
+      "icon": { "kind": "database", "name": "inv_belt_02" },
+      "description": { "zhCN": "野兽追猎者套装护腕；黑石塔下层首领掉落。" },
+      "stats": {
+        "primary": { "agilityPoints": 8, "staminaPoints": 7 },
+        "physical": { "attackPowerPoints": 5 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16681",
+        "url": "https://www.wowhead.com/classic/cn/item=16681&xml",
+        "verifiedAt": "2026-09-12"
+      }
+    },
+    {
+      "id": "16683",
+      "name": { "zhCN": "博学者护腕" },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "cloth",
+      "restrictions": { "allowedClassIds": ["mage"], "allowedRoles": ["dps"] },
+      "icon": { "kind": "database", "name": "inv_belt_02" },
+      "description": { "zhCN": "博学者套装护腕；通灵学院首领掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 6, "intellectPoints": 8 },
+        "spell": { "spellPowerPoints": 8 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16683",
+        "url": "https://www.wowhead.com/classic/cn/item=16683&xml",
+        "verifiedAt": "2026-09-12"
+      }
+    },
+    {
+      "id": "16685",
+      "name": { "zhCN": "博学者腰带" },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "cloth",
+      "restrictions": { "allowedClassIds": ["mage"], "allowedRoles": ["dps"] },
+      "icon": { "kind": "database", "name": "inv_belt_02" },
+      "description": { "zhCN": "博学者套装腰带；通灵学院首领掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 7, "intellectPoints": 9 },
+        "spell": { "spellPowerPoints": 7 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16685",
+        "url": "https://www.wowhead.com/classic/cn/item=16685&xml",
+        "verifiedAt": "2026-09-12"
+      }
+    },
+    {
+      "id": "16696",
+      "name": { "zhCN": "虔诚腰带" },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "cloth",
+      "restrictions": { "allowedClassIds": ["priest"], "allowedRoles": ["healer", "dps"] },
+      "icon": { "kind": "database", "name": "inv_belt_02" },
+      "description": { "zhCN": "虔诚套装腰带；斯坦索姆血色区首领掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 7, "intellectPoints": 9, "spiritPoints": 5 },
+        "spell": { "healingPowerPoints": 7 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16696",
+        "url": "https://www.wowhead.com/classic/cn/item=16696&xml",
+        "verifiedAt": "2026-09-12"
+      }
+    },
+    {
+      "id": "16697",
+      "name": { "zhCN": "虔诚护腕" },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "cloth",
+      "restrictions": { "allowedClassIds": ["priest"], "allowedRoles": ["healer", "dps"] },
+      "icon": { "kind": "database", "name": "inv_belt_02" },
+      "description": { "zhCN": "虔诚套装护腕；斯坦索姆血色区首领掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 6, "intellectPoints": 8, "spiritPoints": 5 },
+        "spell": { "healingPowerPoints": 5 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16697",
+        "url": "https://www.wowhead.com/classic/cn/item=16697&xml",
+        "verifiedAt": "2026-09-12"
+      }
+    },
+    {
+      "id": "16702",
+      "name": { "zhCN": "鬼雾腰带" },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "cloth",
+      "restrictions": { "allowedClassIds": ["warlock"], "allowedRoles": ["dps"] },
+      "icon": { "kind": "database", "name": "inv_belt_02" },
+      "description": { "zhCN": "鬼雾套装腰带；通灵学院首领掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 10, "intellectPoints": 7 },
+        "spell": { "spellPowerPoints": 7 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16702",
+        "url": "https://www.wowhead.com/classic/cn/item=16702&xml",
+        "verifiedAt": "2026-09-12"
+      }
+    },
+    {
+      "id": "16703",
+      "name": { "zhCN": "鬼雾护腕" },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "cloth",
+      "restrictions": { "allowedClassIds": ["warlock"], "allowedRoles": ["dps"] },
+      "icon": { "kind": "database", "name": "inv_belt_02" },
+      "description": { "zhCN": "鬼雾套装护腕；斯坦索姆亡灵区首领掉落。" },
+      "stats": {
+        "primary": { "staminaPoints": 8, "intellectPoints": 6 },
+        "spell": { "spellPowerPoints": 5 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16703",
+        "url": "https://www.wowhead.com/classic/cn/item=16703&xml",
+        "verifiedAt": "2026-09-12"
+      }
+    },
+    {
+      "id": "16713",
+      "name": { "zhCN": "迅影腰带" },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "leather",
+      "restrictions": { "allowedClassIds": ["rogue"], "allowedRoles": ["dps"] },
+      "icon": { "kind": "database", "name": "inv_belt_02" },
+      "description": { "zhCN": "迅影套装腰带；斯坦索姆血色区首领掉落。" },
+      "stats": {
+        "primary": { "agilityPoints": 10, "staminaPoints": 8 },
+        "physical": { "attackPowerPoints": 7 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16713",
+        "url": "https://www.wowhead.com/classic/cn/item=16713&xml",
+        "verifiedAt": "2026-09-12"
+      }
+    },
+    {
+      "id": "16714",
+      "name": { "zhCN": "野性之心护腕" },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "leather",
+      "restrictions": { "allowedClassIds": ["druid"], "allowedRoles": ["tank", "healer", "dps"] },
+      "icon": { "kind": "database", "name": "inv_belt_02" },
+      "description": { "zhCN": "野性之心套装护腕；黑石塔下层首领掉落。" },
+      "stats": {
+        "primary": {
+          "strengthPoints": 5,
+          "agilityPoints": 5,
+          "staminaPoints": 7,
+          "intellectPoints": 5,
+          "spiritPoints": 5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16714",
+        "url": "https://www.wowhead.com/classic/cn/item=16714&xml",
+        "verifiedAt": "2026-09-12"
+      }
+    },
+    {
+      "id": "16723",
+      "name": { "zhCN": "光铸腰带" },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "plate",
+      "restrictions": { "allowedClassIds": ["paladin"], "allowedRoles": ["tank", "healer", "dps"] },
+      "icon": { "kind": "database", "name": "inv_belt_02" },
+      "description": { "zhCN": "光铸套装腰带；斯坦索姆血色区首领掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 8, "staminaPoints": 9, "intellectPoints": 5 },
+        "defense": { "armorPoints": 350 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16723",
+        "url": "https://www.wowhead.com/classic/cn/item=16723&xml",
+        "verifiedAt": "2026-09-12"
+      }
+    },
+    {
+      "id": "16735",
+      "name": { "zhCN": "勇气护腕" },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "plate",
+      "restrictions": { "allowedClassIds": ["warrior"], "allowedRoles": ["tank", "dps"] },
+      "icon": { "kind": "database", "name": "inv_belt_02" },
+      "description": { "zhCN": "勇气套装护腕；黑石塔下层首领掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 7, "staminaPoints": 8 },
+        "defense": { "armorPoints": 420, "defenseSkillPoints": 3 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16735",
+        "url": "https://www.wowhead.com/classic/cn/item=16735&xml",
+        "verifiedAt": "2026-09-12"
+      }
+    },
+    {
+      "id": "16736",
+      "name": { "zhCN": "勇气腰带" },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "plate",
+      "restrictions": { "allowedClassIds": ["warrior"], "allowedRoles": ["tank", "dps"] },
+      "icon": { "kind": "database", "name": "inv_belt_02" },
+      "description": { "zhCN": "勇气套装腰带；黑石塔下层首领掉落。" },
+      "stats": {
+        "primary": { "strengthPoints": 9, "staminaPoints": 9 },
+        "defense": { "armorPoints": 500, "defenseSkillPoints": 4 }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16736",
+        "url": "https://www.wowhead.com/classic/cn/item=16736&xml",
+        "verifiedAt": "2026-09-12"
+      }
+    }
+  ]
+}

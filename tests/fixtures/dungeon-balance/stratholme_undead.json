@@ -1,0 +1,279 @@
+{
+  "dungeonId": "stratholme_undead",
+  "samplesPerScenario": 100000,
+  "scenarios": {
+    "standard": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.80596,
+        "previewClearProbability": 0.8054649002319618,
+        "durationSeconds": 2719.4,
+        "wipeCounts": {
+          "stratholme_undead_malekithe_pallid": 5553,
+          "stratholme_undead_ramsteinthe_gorger": 7251,
+          "stratholme_undead_nerubenkan": 1333,
+          "stratholme_undead_magistrate_barthilas": 1355,
+          "stratholme_undead_baroness_anastari": 2726,
+          "stratholme_undead_baron_rivendare": 1186
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.81985,
+        "previewClearProbability": 0.817716613086208,
+        "durationSeconds": 2740.8,
+        "wipeCounts": {
+          "stratholme_undead_ramsteinthe_gorger": 6141,
+          "stratholme_undead_nerubenkan": 1790,
+          "stratholme_undead_baroness_anastari": 1677,
+          "stratholme_undead_malekithe_pallid": 4391,
+          "stratholme_undead_baron_rivendare": 2646,
+          "stratholme_undead_magistrate_barthilas": 1370
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.77136,
+        "previewClearProbability": 0.7705873630113633,
+        "durationSeconds": 3207.8,
+        "wipeCounts": {
+          "stratholme_undead_ramsteinthe_gorger": 7680,
+          "stratholme_undead_malekithe_pallid": 5986,
+          "stratholme_undead_magistrate_barthilas": 1417,
+          "stratholme_undead_baron_rivendare": 2524,
+          "stratholme_undead_stonespine": 1418,
+          "stratholme_undead_nerubenkan": 1837,
+          "stratholme_undead_baroness_anastari": 2002
+        }
+      }
+    },
+    "no-tank": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 2.872000000000001e-10,
+        "durationSeconds": 3036.4,
+        "wipeCounts": {
+          "stratholme_undead_magistrate_barthilas": 96777,
+          "stratholme_undead_baroness_anastari": 3164,
+          "stratholme_undead_nerubenkan": 58,
+          "stratholme_undead_malekithe_pallid": 1
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 2.314000000000001e-10,
+        "durationSeconds": 3074,
+        "wipeCounts": {
+          "stratholme_undead_magistrate_barthilas": 97088,
+          "stratholme_undead_baroness_anastari": 2859,
+          "stratholme_undead_nerubenkan": 51,
+          "stratholme_undead_malekithe_pallid": 2
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 5.744000000000002e-12,
+        "durationSeconds": 3460.4,
+        "wipeCounts": {
+          "stratholme_undead_magistrate_barthilas": 96737,
+          "stratholme_undead_stonespine": 3215,
+          "stratholme_undead_baroness_anastari": 48
+        }
+      }
+    },
+    "no-healing": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 2.314000000000001e-10,
+        "durationSeconds": 3028,
+        "wipeCounts": {
+          "stratholme_undead_magistrate_barthilas": 96994,
+          "stratholme_undead_baroness_anastari": 2928,
+          "stratholme_undead_nerubenkan": 76,
+          "stratholme_undead_malekithe_pallid": 2
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.7560000000000005e-10,
+        "durationSeconds": 3096.8,
+        "wipeCounts": {
+          "stratholme_undead_magistrate_barthilas": 97427,
+          "stratholme_undead_baroness_anastari": 2518,
+          "stratholme_undead_nerubenkan": 54,
+          "stratholme_undead_malekithe_pallid": 1
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 4.628000000000002e-12,
+        "durationSeconds": 3522.8,
+        "wipeCounts": {
+          "stratholme_undead_stonespine": 2815,
+          "stratholme_undead_magistrate_barthilas": 97134,
+          "stratholme_undead_baroness_anastari": 48,
+          "stratholme_undead_nerubenkan": 3
+        }
+      }
+    },
+    "overlevel": {
+      "required": {
+        "level": 57,
+        "simulatedRuns": 100000,
+        "clearRate": 0.77756,
+        "previewClearProbability": 0.7767106577779549,
+        "durationSeconds": 2783,
+        "wipeCounts": {
+          "stratholme_undead_ramsteinthe_gorger": 7248,
+          "stratholme_undead_malekithe_pallid": 6155,
+          "stratholme_undead_magistrate_barthilas": 1429,
+          "stratholme_undead_nerubenkan": 1332,
+          "stratholme_undead_baroness_anastari": 3956,
+          "stratholme_undead_baron_rivendare": 2124
+        }
+      },
+      "with-optional": {
+        "level": 57,
+        "simulatedRuns": 100000,
+        "clearRate": 0.66057,
+        "previewClearProbability": 0.6604370616025156,
+        "durationSeconds": 2907.6,
+        "wipeCounts": {
+          "stratholme_undead_baron_rivendare": 5043,
+          "stratholme_undead_ramsteinthe_gorger": 8751,
+          "stratholme_undead_malekithe_pallid": 7847,
+          "stratholme_undead_baroness_anastari": 5462,
+          "stratholme_undead_magistrate_barthilas": 2692,
+          "stratholme_undead_nerubenkan": 4148
+        }
+      },
+      "with-rare": {
+        "level": 57,
+        "simulatedRuns": 100000,
+        "clearRate": 0.79736,
+        "previewClearProbability": 0.7962759567205213,
+        "durationSeconds": 3174,
+        "wipeCounts": {
+          "stratholme_undead_malekithe_pallid": 4615,
+          "stratholme_undead_baron_rivendare": 2805,
+          "stratholme_undead_ramsteinthe_gorger": 6565,
+          "stratholme_undead_nerubenkan": 1894,
+          "stratholme_undead_stonespine": 1367,
+          "stratholme_undead_magistrate_barthilas": 1460,
+          "stratholme_undead_baroness_anastari": 1558
+        }
+      }
+    },
+    "max-level": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.75446,
+        "previewClearProbability": 0.7547153545932603,
+        "durationSeconds": 2792.6,
+        "wipeCounts": {
+          "stratholme_undead_malekithe_pallid": 6098,
+          "stratholme_undead_ramsteinthe_gorger": 7395,
+          "stratholme_undead_baroness_anastari": 3259,
+          "stratholme_undead_baron_rivendare": 2970,
+          "stratholme_undead_magistrate_barthilas": 1911,
+          "stratholme_undead_nerubenkan": 2921
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.85026,
+        "previewClearProbability": 0.8487870580705718,
+        "durationSeconds": 2722.4,
+        "wipeCounts": {
+          "stratholme_undead_nerubenkan": 1300,
+          "stratholme_undead_ramsteinthe_gorger": 5405,
+          "stratholme_undead_baroness_anastari": 1726,
+          "stratholme_undead_malekithe_pallid": 3967,
+          "stratholme_undead_magistrate_barthilas": 1374,
+          "stratholme_undead_baron_rivendare": 1202
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.78176,
+        "previewClearProbability": 0.7818515068046954,
+        "durationSeconds": 3190.8,
+        "wipeCounts": {
+          "stratholme_undead_ramsteinthe_gorger": 6968,
+          "stratholme_undead_malekithe_pallid": 5495,
+          "stratholme_undead_nerubenkan": 1533,
+          "stratholme_undead_baron_rivendare": 2701,
+          "stratholme_undead_stonespine": 1512,
+          "stratholme_undead_magistrate_barthilas": 1447,
+          "stratholme_undead_baroness_anastari": 2168
+        }
+      }
+    },
+    "speed-run": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.79583,
+        "previewClearProbability": 0.7970772436377418,
+        "durationSeconds": 2724.4,
+        "wipeCounts": {
+          "stratholme_undead_malekithe_pallid": 6278,
+          "stratholme_undead_ramsteinthe_gorger": 7634,
+          "stratholme_undead_baroness_anastari": 2380,
+          "stratholme_undead_nerubenkan": 1372,
+          "stratholme_undead_baron_rivendare": 1353,
+          "stratholme_undead_magistrate_barthilas": 1400
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.81617,
+        "previewClearProbability": 0.8165859423089993,
+        "durationSeconds": 2723.6,
+        "wipeCounts": {
+          "stratholme_undead_nerubenkan": 1364,
+          "stratholme_undead_ramsteinthe_gorger": 6529,
+          "stratholme_undead_malekithe_pallid": 5453,
+          "stratholme_undead_magistrate_barthilas": 1421,
+          "stratholme_undead_baroness_anastari": 2401,
+          "stratholme_undead_baron_rivendare": 1215
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.70155,
+        "previewClearProbability": 0.7018150187810047,
+        "durationSeconds": 3263.4,
+        "wipeCounts": {
+          "stratholme_undead_nerubenkan": 2956,
+          "stratholme_undead_magistrate_barthilas": 1884,
+          "stratholme_undead_ramsteinthe_gorger": 8383,
+          "stratholme_undead_baroness_anastari": 3850,
+          "stratholme_undead_malekithe_pallid": 7238,
+          "stratholme_undead_baron_rivendare": 3069,
+          "stratholme_undead_stonespine": 2465
+        }
+      }
+    }
+  }
+}

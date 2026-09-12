@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/zone=2557/dire-maul#quests",
+        "verifiedAt": "2026-09-12",
+        "notes": "核对厄运之槌西区主要恶魔首领任务目标。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["quests[].completion", "quests[].rewards.experienceFraction"],
+        "reason": "将副本外交付步骤压缩为首领胜利。",
+        "decidedAt": "2026-09-12"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "dire_maul_west_immolthar",
+      "name": { "zhCN": "伊莫塔尔的封印" },
+      "description": { "zhCN": "击败伊莫塔尔并完成西区恶魔封印任务。" },
+      "dungeonId": "dire_maul_west",
+      "eligibility": { "minimumLevel": 56, "allowedClassIds": [] },
+      "completion": { "type": "encounter-victories", "encounterIds": ["dire_maul_west_immolthar"] },
+      "rewards": {
+        "experienceFraction": 1,
+        "funds": 0,
+        "fixedItemIds": ["18491"],
+        "itemChoiceIds": []
+      }
+    },
+    {
+      "id": "dire-maul-west-prince-tortheldrin",
+      "name": { "zhCN": "托塞德林的终结" },
+      "description": { "zhCN": "完成王子支路并击败托塞德林王子。" },
+      "dungeonId": "dire_maul_west",
+      "eligibility": { "minimumLevel": 57, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["dire_maul_west_prince_tortheldrin"]
+      },
+      "rewards": {
+        "experienceFraction": 1.1,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["18535", "18536"]
+      }
+    }
+  ]
+}

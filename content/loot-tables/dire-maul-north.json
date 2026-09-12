@@ -1,0 +1,358 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-11",
+        "notes": "核对厄运之槌北区首领与受支持装备池；配方、材料、钥匙、任务物品、消耗品、卡牌、坐骑和法术书不进入装备掉落。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "lootTables": [
+    {
+      "id": "dire_maul_north_guard_moldar",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "18494",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18493",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18496",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18497",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18498",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18450",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18458",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18459",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18451",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18462",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18463",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18464",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18460",
+          "weight": 0.07692307692307693
+        }
+      ]
+    },
+    {
+      "id": "dire_maul_north_stomper_kreeg",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "18425",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "dire_maul_north_guard_fengus",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "18450",
+          "weight": 0.125
+        },
+        {
+          "itemId": "18458",
+          "weight": 0.125
+        },
+        {
+          "itemId": "18459",
+          "weight": 0.125
+        },
+        {
+          "itemId": "18451",
+          "weight": 0.125
+        },
+        {
+          "itemId": "18462",
+          "weight": 0.125
+        },
+        {
+          "itemId": "18463",
+          "weight": 0.125
+        },
+        {
+          "itemId": "18464",
+          "weight": 0.125
+        },
+        {
+          "itemId": "18460",
+          "weight": 0.125
+        }
+      ]
+    },
+    {
+      "id": "dire_maul_north_guard_slipkik",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "18494",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18493",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18496",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18497",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18498",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18450",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18458",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18459",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18451",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18462",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18463",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18464",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18460",
+          "weight": 0.07692307692307693
+        }
+      ]
+    },
+    {
+      "id": "dire_maul_north_captain_kromcrush",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "18503",
+          "weight": 0.25
+        },
+        {
+          "itemId": "18505",
+          "weight": 0.25
+        },
+        {
+          "itemId": "18507",
+          "weight": 0.25
+        },
+        {
+          "itemId": "18502",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "dire_maul_north_cho_rush",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "18490",
+          "weight": 0.25
+        },
+        {
+          "itemId": "18483",
+          "weight": 0.25
+        },
+        {
+          "itemId": "18485",
+          "weight": 0.25
+        },
+        {
+          "itemId": "18484",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "dire_maul_north_king_gordok",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "18526",
+          "weight": 0.125
+        },
+        {
+          "itemId": "18525",
+          "weight": 0.125
+        },
+        {
+          "itemId": "18527",
+          "weight": 0.125
+        },
+        {
+          "itemId": "18524",
+          "weight": 0.125
+        },
+        {
+          "itemId": "18521",
+          "weight": 0.125
+        },
+        {
+          "itemId": "18522",
+          "weight": 0.125
+        },
+        {
+          "itemId": "18523",
+          "weight": 0.125
+        },
+        {
+          "itemId": "18520",
+          "weight": 0.125
+        }
+      ]
+    },
+    {
+      "id": "dire_maul_north_full_tribute",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "route_completion",
+      "items": [
+        {
+          "itemId": "18538",
+          "weight": 0.05
+        },
+        {
+          "itemId": "18528",
+          "weight": 0.05
+        },
+        {
+          "itemId": "18495",
+          "weight": 0.05
+        },
+        {
+          "itemId": "18532",
+          "weight": 0.05
+        },
+        {
+          "itemId": "18530",
+          "weight": 0.05
+        },
+        {
+          "itemId": "18533",
+          "weight": 0.05
+        },
+        {
+          "itemId": "18529",
+          "weight": 0.05
+        },
+        {
+          "itemId": "18500",
+          "weight": 0.05
+        },
+        {
+          "itemId": "18537",
+          "weight": 0.05
+        },
+        {
+          "itemId": "18499",
+          "weight": 0.05
+        },
+        {
+          "itemId": "18531",
+          "weight": 0.05
+        },
+        {
+          "itemId": "18534",
+          "weight": 0.05
+        },
+        {
+          "itemId": "18479",
+          "weight": 0.05
+        },
+        {
+          "itemId": "18480",
+          "weight": 0.05
+        },
+        {
+          "itemId": "18478",
+          "weight": 0.05
+        },
+        {
+          "itemId": "18475",
+          "weight": 0.05
+        },
+        {
+          "itemId": "18477",
+          "weight": 0.05
+        },
+        {
+          "itemId": "18476",
+          "weight": 0.05
+        },
+        {
+          "itemId": "18482",
+          "weight": 0.05
+        },
+        {
+          "itemId": "18481",
+          "weight": 0.05
+        }
+      ]
+    }
+  ]
+}

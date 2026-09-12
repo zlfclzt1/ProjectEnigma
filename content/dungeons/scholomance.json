@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/zone=2017",
+        "verifiedAt": "2026-09-12",
+        "notes": "核对通灵学院的主路线、可选首领、稀有首领和阶段顺序。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-12",
+        "notes": "以内容驱动路线、能力机制和活动快照表达经典副本，不模拟背包点击和后台收益。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "dungeons": [
+    {
+      "id": "scholomance",
+      "name": {
+        "zhCN": "通灵学院",
+        "enUS": "Scholomance"
+      },
+      "minimumLevel": 56,
+      "recommendedLevel": 59,
+      "defaultUnlocked": false,
+      "unlock": {
+        "requiredDungeonIds": ["blackrock_depths_shadowforge_city"]
+      },
+      "members": {
+        "minimum": 1,
+        "maximum": 5,
+        "recommended": 5,
+        "recommendedRoles": {
+          "tank": 1,
+          "healer": 1,
+          "dps": 3
+        }
+      },
+      "duration": {
+        "baseSeconds": 3000,
+        "minimumRatio": 0.48,
+        "maximumRatio": 1.8
+      },
+      "probability": {
+        "minimum": 0.02,
+        "maximum": 0.99,
+        "base": 0.035,
+        "readinessMultiplier": 0.98,
+        "surplusEffect": 0.5,
+        "geometricWeight": 0.7,
+        "bottleneckWeight": 0.3,
+        "overpowerThreshold": 1.48
+      },
+      "combatTuning": {
+        "bossProbabilityMaximum": 0.986,
+        "requirementMultipliers": {
+          "tank": 0.62,
+          "healing": 0.62,
+          "damage": 0.62
+        }
+      },
+      "route": [
+        {
+          "id": "scholomance_kirtonosthe_herald",
+          "type": "required",
+          "encounterId": "scholomance_kirtonosthe_herald"
+        },
+        {
+          "id": "scholomance_jandice_barov",
+          "type": "required",
+          "encounterId": "scholomance_jandice_barov"
+        },
+        {
+          "id": "scholomance_rattlegore",
+          "type": "required",
+          "encounterId": "scholomance_rattlegore"
+        },
+        {
+          "id": "scholomance_marduk",
+          "type": "required",
+          "encounterId": "scholomance_marduk"
+        },
+        {
+          "id": "scholomance_vectus",
+          "type": "required",
+          "encounterId": "scholomance_vectus"
+        },
+        {
+          "id": "scholomance_ras_frostwhisper",
+          "type": "required",
+          "encounterId": "scholomance_ras_frostwhisper"
+        },
+        {
+          "id": "scholomance_instructor_malicia",
+          "type": "required",
+          "encounterId": "scholomance_instructor_malicia"
+        },
+        {
+          "id": "scholomance_doctor_theolen_krastinov",
+          "type": "required",
+          "encounterId": "scholomance_doctor_theolen_krastinov"
+        },
+        {
+          "id": "scholomance_lorekeeper_polkelt",
+          "type": "required",
+          "encounterId": "scholomance_lorekeeper_polkelt"
+        },
+        {
+          "id": "scholomance_the_ravenian",
+          "type": "required",
+          "encounterId": "scholomance_the_ravenian"
+        },
+        {
+          "id": "scholomance_lord_alexei_barov",
+          "type": "required",
+          "encounterId": "scholomance_lord_alexei_barov"
+        },
+        {
+          "id": "scholomance_lady_illucia_barov",
+          "type": "required",
+          "encounterId": "scholomance_lady_illucia_barov"
+        },
+        {
+          "id": "scholomance_darkmaster_gandling",
+          "type": "required",
+          "encounterId": "scholomance_darkmaster_gandling"
+        }
+      ]
+    }
+  ]
+}

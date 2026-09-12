@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/zone=2557/dire-maul#quests",
+        "verifiedAt": "2026-09-12",
+        "notes": "核对戈多克贡品路线的首领目标与任务奖励。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["quests[].completion", "quests[].rewards.experienceFraction"],
+        "reason": "贡品路线的伪装与交付步骤由命名路线和首领胜利表达。",
+        "decidedAt": "2026-09-12"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "dire-maul-north-tribute",
+      "name": { "zhCN": "戈多克贡品" },
+      "description": { "zhCN": "完成完整贡品路线并击败戈多克大王。" },
+      "dungeonId": "dire_maul_north",
+      "eligibility": { "minimumLevel": 57, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["dire_maul_north_king_gordok"]
+      },
+      "rewards": {
+        "experienceFraction": 1.2,
+        "funds": 0,
+        "fixedItemIds": ["18410"],
+        "itemChoiceIds": []
+      }
+    }
+  ]
+}

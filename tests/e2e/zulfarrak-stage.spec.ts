@@ -249,20 +249,20 @@ test("completes the playable zulfarrak stage and keeps the guild running", async
 
   await test.step("plan the optional boss and start the stage run", async () => {
     await page.getByRole("link", { name: "副本组队" }).click();
-    await page.getByRole("button", { name: "切换副本" }).click();
-    const dungeonDialog = page.getByRole("dialog", { name: "选择副本" });
-    await dungeonDialog.getByPlaceholder("输入副本名称").fill("祖尔法拉克");
-    await dungeonDialog
+    await page.getByPlaceholder("输入副本名称").fill("祖尔法拉克");
+    await page
       .locator(".dungeon-option")
       .filter({ hasText: /^祖尔法拉克/ })
       .click();
-    await dungeonDialog.getByRole("button", { name: "选择这个副本" }).click();
+    await page.getByText("连刷上限 3 次").click();
     await page.getByRole("button", { name: "升级至 5 次 · 1000 G" }).click();
     await expect(page.locator(".page-heading select option")).toHaveCount(5);
 
-    const coreMembers = page.locator('.member-options label:has-text("LV 45") input');
+    await page.getByRole("button", { name: "调整成员" }).click();
+    const coreMembers = page.locator('.party-builder label:has-text("LV 45") input');
     await expect(coreMembers).toHaveCount(5);
     for (let index = 0; index < 5; index += 1) await coreMembers.nth(index).check();
+    await page.getByText("路线配置").click();
     const optionalBoss = page.locator(".route-options label", { hasText: "布莱中士" });
     await optionalBoss.locator('input[type="checkbox"]').check();
     await page.getByRole("button", { name: "出发：祖尔法拉克" }).click();
@@ -286,17 +286,23 @@ test("completes the playable zulfarrak stage and keeps the guild running", async
     await updateSave(page, "add-collection-loot");
     await page.reload();
     await page.getByRole("link", { name: "装备分配" }).click();
-    await expect(page.getByRole("heading", { name: "野熊之鲁恩乌的肩甲" })).toBeVisible();
+    await expect(page.locator(".loot-detail h3")).toBeVisible();
 
-    await expect(page.getByText("审核队列")).toBeVisible();
+    await expect(page.locator(".loot-queue")).toBeVisible();
     await expect(page.getByText("主职责提升", { exact: true })).toBeVisible();
     const alternative = page.locator(".candidate-row:not(.active):not(:disabled)").first();
     if (await alternative.isVisible()) {
       await alternative.click();
-      await expect(page.getByText("已改派").first()).toBeVisible();
+      const assignmentDialog = page.getByRole("dialog", { name: "确认立即分配" });
+      await expect(assignmentDialog).toBeVisible();
+      await assignmentDialog.getByRole("button", { name: "确认分配" }).click();
+      await expect(page.getByText(/获得了/).first()).toBeVisible();
     }
-    await page.getByRole("button", { name: "执行分配方案" }).click();
-    await expect(page.getByText(/方案已执行/)).toBeVisible();
+    await page.getByRole("button", { name: "一键自动分配" }).click();
+    const autoDialog = page.getByRole("dialog", { name: "一键自动分配本次活动？" });
+    await expect(autoDialog).toBeVisible();
+    await autoDialog.getByRole("button", { name: "确认自动分配" }).click();
+    await expect(page.getByText(/自动分配完成/)).toBeVisible();
     await expect(page.locator(".queue-entry")).toHaveCount(0);
   });
 
@@ -315,17 +321,11 @@ test("completes the playable zulfarrak stage and keeps the guild running", async
       "已领取",
     );
     await page.getByRole("link", { name: "副本组队" }).click();
-    await page.getByRole("button", { name: "切换副本" }).click();
-    const unlockedDialog = page.getByRole("dialog", { name: "选择副本" });
-    await unlockedDialog.getByPlaceholder("输入副本名称").fill("祖尔法拉克");
-    await expect(
-      unlockedDialog.locator(".dungeon-option").filter({ hasText: /^祖尔法拉克/ }),
-    ).toContainText("通关 1 次");
-    await unlockedDialog.getByPlaceholder("输入副本名称").fill("玛拉顿");
-    await expect(
-      unlockedDialog.locator(".dungeon-option").filter({ hasText: /^玛拉顿/ }),
-    ).toBeVisible();
-    await unlockedDialog.getByRole("button", { name: "关闭" }).click();
+    const dungeonSelector = page.getByPlaceholder("输入副本名称");
+    await dungeonSelector.fill("祖尔法拉克");
+    await expect(page.locator(".dungeon-option").filter({ hasText: /^祖尔法拉克/ })).toBeVisible();
+    await dungeonSelector.fill("玛拉顿");
+    await expect(page.locator(".dungeon-option").filter({ hasText: /^玛拉顿/ })).toBeVisible();
     await expect(page.locator(".page-heading select option")).toHaveCount(5);
     await page.getByRole("link", { name: "招募大厅" }).click();
     await expect(page.getByRole("heading", { name: "今天谁在找公会？" })).toBeVisible();

@@ -1,0 +1,2627 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/",
+        "verifiedAt": "2026-09-11",
+        "notes": "通过逐件中文 XML 核对斯坦索姆亡灵区装备属性、图标、品质与需求等级。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "items": [
+    {
+      "id": "13340",
+      "name": {
+        "zhCN": "黑爵士的斗篷"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_20"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：瑞文戴尔男爵的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 15
+        },
+        "defense": {
+          "armorPoints": 45
+        },
+        "physical": {
+          "attackPowerPoints": 20,
+          "rangedAttackPowerPoints": 20
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13340",
+        "url": "https://www.wowhead.com/classic/cn/item=13340&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13344",
+      "name": {
+        "zhCN": "龙玉护手"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_31"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：瑞文戴尔男爵的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 11,
+          "spiritPoints": 9
+        },
+        "defense": {
+          "armorPoints": 231
+        },
+        "spell": {
+          "spellPowerPoints": 16,
+          "healingPowerPoints": 16
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13344",
+        "url": "https://www.wowhead.com/classic/cn/item=13344&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13345",
+      "name": {
+        "zhCN": "瑞文戴尔封印之戒"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_16"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：瑞文戴尔男爵的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 17,
+          "spiritPoints": 7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13345",
+        "url": "https://www.wowhead.com/classic/cn/item=13345&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13346",
+      "name": {
+        "zhCN": "尊贵法袍"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_08"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：瑞文戴尔男爵的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 5,
+          "spiritPoints": 11
+        },
+        "defense": {
+          "armorPoints": 89
+        },
+        "spell": {
+          "healingPowerPoints": 68
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13346",
+        "url": "https://www.wowhead.com/classic/cn/item=13346&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13349",
+      "name": {
+        "zhCN": "邪恶权杖"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "rogue", "priest", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_mace_07"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：瑞文戴尔男爵的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 5
+        },
+        "spell": {
+          "shadowSpellPowerPoints": 19
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 69,
+            "maximumPoints": 129
+          },
+          "speedSeconds": 2.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13349",
+        "url": "https://www.wowhead.com/classic/cn/item=13349&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13361",
+      "name": {
+        "zhCN": "斩骨剑"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_12"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：瑞文戴尔男爵的装备掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 72,
+            "maximumPoints": 135
+          },
+          "speedSeconds": 2.5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13361",
+        "url": "https://www.wowhead.com/classic/cn/item=13361&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13368",
+      "name": {
+        "zhCN": "刮骨者"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_shortblade_12"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：瑞文戴尔男爵的装备掉落。"
+      },
+      "stats": {
+        "physical": {
+          "attackPowerPoints": 30,
+          "rangedAttackPowerPoints": 30
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 40,
+            "maximumPoints": 74
+          },
+          "speedSeconds": 1.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13368",
+        "url": "https://www.wowhead.com/classic/cn/item=13368&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13372",
+      "name": {
+        "zhCN": "驱奴藤条"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_staff_08"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：吞咽者拉姆斯登的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 29,
+          "staminaPoints": 12
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 160,
+            "maximumPoints": 241
+          },
+          "speedSeconds": 3.9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13372",
+        "url": "https://www.wowhead.com/classic/cn/item=13372&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13373",
+      "name": {
+        "zhCN": "血肉指环"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_bone_04"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：吞咽者拉姆斯登的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 6,
+          "agilityPoints": 3,
+          "staminaPoints": 16
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13373",
+        "url": "https://www.wowhead.com/classic/cn/item=13373&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13374",
+      "name": {
+        "zhCN": "盗灵衬肩"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_02"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：吞咽者拉姆斯登的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 22,
+          "spiritPoints": 9
+        },
+        "defense": {
+          "armorPoints": 64
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13374",
+        "url": "https://www.wowhead.com/classic/cn/item=13374&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13375",
+      "name": {
+        "zhCN": "惩戒之盾"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shield_19"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：吞咽者拉姆斯登的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 2057,
+          "blockValuePoints": 38
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13375",
+        "url": "https://www.wowhead.com/classic/cn/item=13375&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13376",
+      "name": {
+        "zhCN": "皇家法官披风"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_14"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：巴瑟拉斯镇长的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 7,
+          "intellectPoints": 16
+        },
+        "defense": {
+          "armorPoints": 42
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13376",
+        "url": "https://www.wowhead.com/classic/cn/item=13376&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13397",
+      "name": {
+        "zhCN": "石像鬼斗篷"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_19"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：石脊的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 7,
+          "agilityPoints": 8,
+          "staminaPoints": 14
+        },
+        "defense": {
+          "armorPoints": 43
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13397",
+        "url": "https://www.wowhead.com/classic/cn/item=13397&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13399",
+      "name": {
+        "zhCN": "石像鬼之爪"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_11"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：石脊的装备掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 49,
+            "maximumPoints": 91
+          },
+          "speedSeconds": 1.8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13399",
+        "url": "https://www.wowhead.com/classic/cn/item=13399&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13505",
+      "name": {
+        "zhCN": "瑞文戴尔之剑"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "epic",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_17"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：瑞文戴尔男爵的装备掉落。"
+      },
+      "stats": {
+        "spell": {
+          "healthRegenPer5Seconds": 20
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 171,
+            "maximumPoints": 257
+          },
+          "speedSeconds": 3.6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13505",
+        "url": "https://www.wowhead.com/classic/cn/item=13505&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13515",
+      "name": {
+        "zhCN": "拉姆斯登的闪电钉"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_gear_06"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：吞咽者拉姆斯登的装备掉落。"
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13515",
+        "url": "https://www.wowhead.com/classic/cn/item=13515&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13524",
+      "name": {
+        "zhCN": "燃魂之颅"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_bone_humanskull_01"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：苍白的玛勒基的装备掉落。"
+      },
+      "stats": {
+        "resistances": {
+          "firePoints": 15,
+          "shadowPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13524",
+        "url": "https://www.wowhead.com/classic/cn/item=13524&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13525",
+      "name": {
+        "zhCN": "暗缚之指"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "uncommon",
+      "slot": "hands",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_15"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：苍白的玛勒基的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 50
+        },
+        "resistances": {
+          "shadowPoints": 20
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13525",
+        "url": "https://www.wowhead.com/classic/cn/item=13525&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13526",
+      "name": {
+        "zhCN": "火痕束带"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "uncommon",
+      "slot": "waist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_09"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：苍白的玛勒基的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 89
+        },
+        "resistances": {
+          "firePoints": 20
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13526",
+        "url": "https://www.wowhead.com/classic/cn/item=13526&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13527",
+      "name": {
+        "zhCN": "熔岩行者胫甲"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "uncommon",
+      "slot": "feet",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_plate_09"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：苍白的玛勒基的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 404
+        },
+        "resistances": {
+          "firePoints": 20
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13527",
+        "url": "https://www.wowhead.com/classic/cn/item=13527&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13528",
+      "name": {
+        "zhCN": "暮色虚空护腕"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "uncommon",
+      "slot": "wrist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_16"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：苍白的玛勒基的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 145
+        },
+        "resistances": {
+          "shadowPoints": 15
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13528",
+        "url": "https://www.wowhead.com/classic/cn/item=13528&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13529",
+      "name": {
+        "zhCN": "奈鲁布恩坎的壳"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shield_02"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：奈鲁布恩坎的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10
+        },
+        "defense": {
+          "armorPoints": 2089,
+          "blockValuePoints": 38
+        },
+        "resistances": {
+          "naturePoints": 15
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13529",
+        "url": "https://www.wowhead.com/classic/cn/item=13529&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13530",
+      "name": {
+        "zhCN": "蛛牙长靴"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "uncommon",
+      "slot": "feet",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_05"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：奈鲁布恩坎的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 54
+        },
+        "resistances": {
+          "naturePoints": 20
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13530",
+        "url": "https://www.wowhead.com/classic/cn/item=13530&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13531",
+      "name": {
+        "zhCN": "地穴行者护腿"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "uncommon",
+      "slot": "legs",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_09"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：奈鲁布恩坎的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 136
+        },
+        "resistances": {
+          "naturePoints": 18,
+          "shadowPoints": 18
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13531",
+        "url": "https://www.wowhead.com/classic/cn/item=13531&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13532",
+      "name": {
+        "zhCN": "黑暗蛛爪"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "uncommon",
+      "slot": "hands",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_31"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：奈鲁布恩坎的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 204
+        },
+        "resistances": {
+          "naturePoints": 13,
+          "shadowPoints": 13
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13532",
+        "url": "https://www.wowhead.com/classic/cn/item=13532&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13533",
+      "name": {
+        "zhCN": "酸蚀肩甲"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "uncommon",
+      "slot": "shoulder",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_18"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：奈鲁布恩坎的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 434
+        },
+        "resistances": {
+          "naturePoints": 20
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13533",
+        "url": "https://www.wowhead.com/classic/cn/item=13533&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13534",
+      "name": {
+        "zhCN": "女妖之指"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_shortblade_18"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：安娜丝塔丽男爵夫人的装备掉落。"
+      },
+      "stats": {
+        "resistances": {
+          "frostPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13534",
+        "url": "https://www.wowhead.com/classic/cn/item=13534&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13535",
+      "name": {
+        "zhCN": "冰冷幻影长袍"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_47"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：安娜丝塔丽男爵夫人的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 77
+        },
+        "resistances": {
+          "arcanePoints": 13,
+          "frostPoints": 20
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13535",
+        "url": "https://www.wowhead.com/classic/cn/item=13535&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13537",
+      "name": {
+        "zhCN": "冰鳞护腕"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "wrist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_07"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：安娜丝塔丽男爵夫人的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 67
+        },
+        "resistances": {
+          "frostPoints": 15
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13537",
+        "url": "https://www.wowhead.com/classic/cn/item=13537&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13538",
+      "name": {
+        "zhCN": "寒风肩铠"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "shoulder",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_13"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：安娜丝塔丽男爵夫人的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 242
+        },
+        "resistances": {
+          "arcanePoints": 20
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13538",
+        "url": "https://www.wowhead.com/classic/cn/item=13538&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13539",
+      "name": {
+        "zhCN": "女妖之触"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "hands",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_29"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：安娜丝塔丽男爵夫人的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 356
+        },
+        "resistances": {
+          "arcanePoints": 13,
+          "frostPoints": 13
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13539",
+        "url": "https://www.wowhead.com/classic/cn/item=13539&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13954",
+      "name": {
+        "zhCN": "翠绿足垫"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_08"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：石脊的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 118
+        },
+        "spell": {
+          "healingPowerPoints": 37,
+          "natureSpellPowerPoints": 24
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13954",
+        "url": "https://www.wowhead.com/classic/cn/item=13954&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "16668",
+      "name": {
+        "zhCN": "元素护腿"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_03"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：瑞文戴尔男爵的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 12,
+          "agilityPoints": 6,
+          "staminaPoints": 7,
+          "intellectPoints": 15,
+          "spiritPoints": 20
+        },
+        "defense": {
+          "armorPoints": 315
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16668",
+        "url": "https://www.wowhead.com/classic/cn/item=16668&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16675",
+      "name": {
+        "zhCN": "野兽追猎者长靴"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["hunter"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_plate_07"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：奈鲁布恩坎的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 21,
+          "staminaPoints": 9
+        },
+        "defense": {
+          "armorPoints": 240
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16675",
+        "url": "https://www.wowhead.com/classic/cn/item=16675&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16678",
+      "name": {
+        "zhCN": "野兽追猎者短裤"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["hunter"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_03"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：瑞文戴尔男爵的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 6,
+          "agilityPoints": 26,
+          "staminaPoints": 6,
+          "spiritPoints": 12
+        },
+        "defense": {
+          "armorPoints": 315
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16678",
+        "url": "https://www.wowhead.com/classic/cn/item=16678&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16687",
+      "name": {
+        "zhCN": "博学者护腿"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["mage"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_06"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：瑞文戴尔男爵的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12,
+          "intellectPoints": 20,
+          "spiritPoints": 21
+        },
+        "defense": {
+          "armorPoints": 76
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16687",
+        "url": "https://www.wowhead.com/classic/cn/item=16687&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16691",
+      "name": {
+        "zhCN": "虔诚软鞋"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_05"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：苍白的玛勒基的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 9,
+          "intellectPoints": 10,
+          "spiritPoints": 17
+        },
+        "defense": {
+          "armorPoints": 58
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16691",
+        "url": "https://www.wowhead.com/classic/cn/item=16691&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16694",
+      "name": {
+        "zhCN": "虔诚长裙"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_08"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：瑞文戴尔男爵的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12,
+          "intellectPoints": 15,
+          "spiritPoints": 23
+        },
+        "defense": {
+          "armorPoints": 76
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16694",
+        "url": "https://www.wowhead.com/classic/cn/item=16694&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16699",
+      "name": {
+        "zhCN": "鬼雾护腿"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_08"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：瑞文戴尔男爵的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 15,
+          "intellectPoints": 14,
+          "spiritPoints": 21
+        },
+        "defense": {
+          "armorPoints": 76
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16699",
+        "url": "https://www.wowhead.com/classic/cn/item=16699&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16704",
+      "name": {
+        "zhCN": "鬼雾便鞋"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_05"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：安娜丝塔丽男爵夫人的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 17,
+          "intellectPoints": 9,
+          "spiritPoints": 10
+        },
+        "defense": {
+          "armorPoints": 58
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16704",
+        "url": "https://www.wowhead.com/classic/cn/item=16704&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16709",
+      "name": {
+        "zhCN": "迅影短裤"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["rogue"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_02"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：瑞文戴尔男爵的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 12,
+          "agilityPoints": 25,
+          "staminaPoints": 12
+        },
+        "defense": {
+          "armorPoints": 150
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16709",
+        "url": "https://www.wowhead.com/classic/cn/item=16709&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16719",
+      "name": {
+        "zhCN": "野性之心褶裙"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_08"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：瑞文戴尔男爵的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 13,
+          "agilityPoints": 12,
+          "staminaPoints": 14,
+          "intellectPoints": 14,
+          "spiritPoints": 14
+        },
+        "defense": {
+          "armorPoints": 150
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16719",
+        "url": "https://www.wowhead.com/classic/cn/item=16719&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16728",
+      "name": {
+        "zhCN": "光铸腿铠"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_04"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：瑞文戴尔男爵的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 20,
+          "agilityPoints": 8,
+          "staminaPoints": 14,
+          "intellectPoints": 12,
+          "spiritPoints": 9
+        },
+        "defense": {
+          "armorPoints": 557
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16728",
+        "url": "https://www.wowhead.com/classic/cn/item=16728&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16732",
+      "name": {
+        "zhCN": "勇气腿铠"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_04"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：瑞文戴尔男爵的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 23,
+          "agilityPoints": 11,
+          "staminaPoints": 15,
+          "spiritPoints": 4
+        },
+        "defense": {
+          "armorPoints": 557
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16732",
+        "url": "https://www.wowhead.com/classic/cn/item=16732&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16737",
+      "name": {
+        "zhCN": "勇气护手"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_26"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：吞咽者拉姆斯登的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 17,
+          "agilityPoints": 3,
+          "staminaPoints": 10,
+          "spiritPoints": 8
+        },
+        "defense": {
+          "armorPoints": 386
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16737",
+        "url": "https://www.wowhead.com/classic/cn/item=16737&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18722",
+      "name": {
+        "zhCN": "死亡之握"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_13"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：巴瑟拉斯镇长的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 22
+        },
+        "defense": {
+          "armorPoints": 404
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18722",
+        "url": "https://www.wowhead.com/classic/cn/item=18722&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18723",
+      "name": {
+        "zhCN": "生命项链"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_necklace_01"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：吞咽者拉姆斯登的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 7,
+          "spiritPoints": 6
+        },
+        "spell": {
+          "healingPowerPoints": 33
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18723",
+        "url": "https://www.wowhead.com/classic/cn/item=18723&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18725",
+      "name": {
+        "zhCN": "和平制造者"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_spear_07"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：巴瑟拉斯镇长的装备掉落。"
+      },
+      "stats": {
+        "physical": {
+          "attackPowerPoints": 56,
+          "rangedAttackPowerPoints": 56,
+          "criticalStrikePercent": 1
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 137,
+            "maximumPoints": 206
+          },
+          "speedSeconds": 3.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18725",
+        "url": "https://www.wowhead.com/classic/cn/item=18725&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18726",
+      "name": {
+        "zhCN": "巴瑟拉斯镇长的腕轮"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_11"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：巴瑟拉斯镇长的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 15
+        },
+        "defense": {
+          "armorPoints": 73
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18726",
+        "url": "https://www.wowhead.com/classic/cn/item=18726&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18727",
+      "name": {
+        "zhCN": "血红毡帽"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_51"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：巴瑟拉斯镇长的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 8,
+          "intellectPoints": 8,
+          "spiritPoints": 8
+        },
+        "defense": {
+          "armorPoints": 68
+        },
+        "spell": {
+          "spellPowerPoints": 30,
+          "healingPowerPoints": 30
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18727",
+        "url": "https://www.wowhead.com/classic/cn/item=18727&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18728",
+      "name": {
+        "zhCN": "安娜丝塔丽的传家宝"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_necklace_11"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：安娜丝塔丽男爵夫人的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 15
+        },
+        "spell": {
+          "shadowSpellPowerPoints": 13
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18728",
+        "url": "https://www.wowhead.com/classic/cn/item=18728&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18729",
+      "name": {
+        "zhCN": "尖啸之弓"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_bow_12"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：安娜丝塔丽男爵夫人的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 3
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 70,
+            "maximumPoints": 71
+          },
+          "speedSeconds": 2.3
+        },
+        "resistances": {
+          "shadowPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18729",
+        "url": "https://www.wowhead.com/classic/cn/item=18729&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18730",
+      "name": {
+        "zhCN": "暗影花边裹手"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_16"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：安娜丝塔丽男爵夫人的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 15
+        },
+        "defense": {
+          "armorPoints": 53
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 5
+        },
+        "resistances": {
+          "shadowPoints": 12
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18730",
+        "url": "https://www.wowhead.com/classic/cn/item=18730&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18734",
+      "name": {
+        "zhCN": "暗月披风"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_11"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：苍白的玛勒基的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 8,
+          "staminaPoints": 12
+        },
+        "defense": {
+          "armorPoints": 44
+        },
+        "resistances": {
+          "shadowPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18734",
+        "url": "https://www.wowhead.com/classic/cn/item=18734&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18735",
+      "name": {
+        "zhCN": "玛勒基的裹足"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_03"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：苍白的玛勒基的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 9,
+          "intellectPoints": 9
+        },
+        "defense": {
+          "armorPoints": 60
+        },
+        "spell": {
+          "shadowSpellPowerPoints": 27
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18735",
+        "url": "https://www.wowhead.com/classic/cn/item=18735&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18737",
+      "name": {
+        "zhCN": "斩骨手斧"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_axe_11"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：苍白的玛勒基的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 13,
+          "staminaPoints": 5
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 48,
+            "maximumPoints": 90
+          },
+          "speedSeconds": 1.7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18737",
+        "url": "https://www.wowhead.com/classic/cn/item=18737&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18738",
+      "name": {
+        "zhCN": "虫壳强弩"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_crossbow_04"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：奈鲁布恩坎的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 4,
+          "staminaPoints": 9
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 82,
+            "maximumPoints": 124
+          },
+          "speedSeconds": 3.3
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18738",
+        "url": "https://www.wowhead.com/classic/cn/item=18738&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18739",
+      "name": {
+        "zhCN": "虫壳板甲护腿"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_04"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：奈鲁布恩坎的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 20,
+          "intellectPoints": 20
+        },
+        "defense": {
+          "armorPoints": 557
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18739",
+        "url": "https://www.wowhead.com/classic/cn/item=18739&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18740",
+      "name": {
+        "zhCN": "图萨丁腰带"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_13"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：奈鲁布恩坎的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 11,
+          "intellectPoints": 12,
+          "spiritPoints": 11
+        },
+        "defense": {
+          "armorPoints": 49
+        },
+        "spell": {
+          "spellPowerPoints": 11,
+          "healingPowerPoints": 11
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18740",
+        "url": "https://www.wowhead.com/classic/cn/item=18740&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22408",
+      "name": {
+        "zhCN": "雷特森的魔晶手杖"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_wand_07"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：瑞文戴尔男爵的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 4
+        },
+        "spell": {
+          "spellPowerPoints": 11,
+          "healingPowerPoints": 11
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22408",
+        "url": "https://www.wowhead.com/classic/cn/item=22408&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22409",
+      "name": {
+        "zhCN": "月牙外套"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_leather_08"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：瑞文戴尔男爵的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 14,
+          "intellectPoints": 12,
+          "spiritPoints": 11
+        },
+        "defense": {
+          "armorPoints": 176
+        },
+        "spell": {
+          "spellPowerPoints": 15,
+          "healingPowerPoints": 15,
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22409",
+        "url": "https://www.wowhead.com/classic/cn/item=22409&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22410",
+      "name": {
+        "zhCN": "灵巧护手"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_11"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：瑞文戴尔男爵的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 23,
+          "staminaPoints": 10
+        },
+        "defense": {
+          "armorPoints": 311
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22410",
+        "url": "https://www.wowhead.com/classic/cn/item=22410&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "22411",
+      "name": {
+        "zhCN": "刽子手的头盔"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_01"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：瑞文戴尔男爵的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 14,
+          "staminaPoints": 20
+        },
+        "defense": {
+          "armorPoints": 534
+        },
+        "physical": {
+          "hitPercent": 2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22411",
+        "url": "https://www.wowhead.com/classic/cn/item=22411&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22412",
+      "name": {
+        "zhCN": "图萨丁衬肩"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_02"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：瑞文戴尔男爵的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 11,
+          "intellectPoints": 18
+        },
+        "defense": {
+          "armorPoints": 67
+        },
+        "spell": {
+          "spellPowerPoints": 12,
+          "healingPowerPoints": 12
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22412",
+        "url": "https://www.wowhead.com/classic/cn/item=22412&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "23198",
+      "name": {
+        "zhCN": "蛮兽神像"
+      },
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_relics_idolofferocity"
+      },
+      "description": {
+        "zhCN": "斯坦索姆亡灵区：巴瑟拉斯镇长的装备掉落。"
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "23198",
+        "url": "https://www.wowhead.com/classic/cn/item=23198&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    }
+  ]
+}

@@ -216,6 +216,13 @@ describe("save migrations", () => {
     expect(result.state.guild.funds).toBe(1100);
     expect(result.state.collection.claimedRewardIds).toContain("blackrock_depths_conqueror");
     expect(result.state.collection.claimedRewardIds).not.toContain("zulfarrak_level_45_graduation");
+
+    const second = migrateSave(result.state, content);
+    expect(second.migrated).toBe(false);
+    expect(second.state.guild.funds).toBe(1100);
+    expect(
+      second.state.collection.claimedRewardIds.filter((id) => id === "blackrock_depths_conqueror"),
+    ).toHaveLength(1);
   });
 
   it("migrates V11 saves with an empty fixed-team directory", () => {

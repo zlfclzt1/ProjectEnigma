@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-12",
+        "notes": "斯坦索姆亡灵区日志只记录已经结算的主动活动与首领战事实。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "stratholme_undead_magistrate_barthilas_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "stratholme_undead_magistrate_barthilas"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Magistrate Barthilas的关键机制被处理后，{tank}稳住了斯坦索姆亡灵区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Magistrate Barthilas。"
+      ]
+    },
+    {
+      "id": "stratholme_undead_stonespine_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "stratholme_undead_stonespine"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Stonespine的关键机制被处理后，{tank}稳住了斯坦索姆亡灵区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Stonespine。"
+      ]
+    },
+    {
+      "id": "stratholme_undead_baroness_anastari_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "stratholme_undead_baroness_anastari"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Baroness Anastari的关键机制被处理后，{tank}稳住了斯坦索姆亡灵区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Baroness Anastari。"
+      ]
+    },
+    {
+      "id": "stratholme_undead_nerubenkan_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "stratholme_undead_nerubenkan"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Nerub'enkan的关键机制被处理后，{tank}稳住了斯坦索姆亡灵区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Nerub'enkan。"
+      ]
+    },
+    {
+      "id": "stratholme_undead_malekithe_pallid_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "stratholme_undead_malekithe_pallid"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Maleki the Pallid的关键机制被处理后，{tank}稳住了斯坦索姆亡灵区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Maleki the Pallid。"
+      ]
+    },
+    {
+      "id": "stratholme_undead_ramsteinthe_gorger_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "stratholme_undead_ramsteinthe_gorger"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Ramstein the Gorger的关键机制被处理后，{tank}稳住了斯坦索姆亡灵区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Ramstein the Gorger。"
+      ]
+    },
+    {
+      "id": "stratholme_undead_baron_rivendare_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "stratholme_undead_baron_rivendare"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Baron Rivendare的关键机制被处理后，{tank}稳住了斯坦索姆亡灵区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Baron Rivendare。"
+      ]
+    }
+  ]
+}

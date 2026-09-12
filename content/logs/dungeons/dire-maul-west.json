@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-12",
+        "notes": "厄运之槌西区日志只记录已经结算的主动活动与首领战事实。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "dire_maul_west_tendris_warpwood_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "dire_maul_west_tendris_warpwood"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Tendris Warpwood的关键机制被处理后，{tank}稳住了厄运之槌西区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Tendris Warpwood。"
+      ]
+    },
+    {
+      "id": "dire_maul_west_illyanna_ravenoak_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "dire_maul_west_illyanna_ravenoak"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Illyanna Ravenoak的关键机制被处理后，{tank}稳住了厄运之槌西区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Illyanna Ravenoak。"
+      ]
+    },
+    {
+      "id": "dire_maul_west_magister_kalendris_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "dire_maul_west_magister_kalendris"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Magister Kalendris的关键机制被处理后，{tank}稳住了厄运之槌西区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Magister Kalendris。"
+      ]
+    },
+    {
+      "id": "dire_maul_west_tsuzee_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "dire_maul_west_tsuzee"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Tsu'zee的关键机制被处理后，{tank}稳住了厄运之槌西区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Tsu'zee。"
+      ]
+    },
+    {
+      "id": "dire_maul_west_immolthar_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "dire_maul_west_immolthar"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Immol'thar的关键机制被处理后，{tank}稳住了厄运之槌西区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Immol'thar。"
+      ]
+    },
+    {
+      "id": "dire_maul_west_prince_tortheldrin_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "dire_maul_west_prince_tortheldrin"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Prince Tortheldrin的关键机制被处理后，{tank}稳住了厄运之槌西区的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Prince Tortheldrin。"
+      ]
+    }
+  ]
+}

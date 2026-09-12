@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-12",
+        "notes": "上层黑石塔日志只记录已经结算的主动活动与首领战事实。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "ubrs_emberseer_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "ubrs_emberseer"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Pyroguard Emberseer的关键机制被处理后，{tank}稳住了上层黑石塔的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Pyroguard Emberseer。"
+      ]
+    },
+    {
+      "id": "ubrs_solakar_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "ubrs_solakar"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Solakar Flamewreath的关键机制被处理后，{tank}稳住了上层黑石塔的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Solakar Flamewreath。"
+      ]
+    },
+    {
+      "id": "ubrs_runewatcher_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "ubrs_runewatcher"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Jed Runewatcher的关键机制被处理后，{tank}稳住了上层黑石塔的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Jed Runewatcher。"
+      ]
+    },
+    {
+      "id": "ubrs_anvilcrack_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "ubrs_anvilcrack"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Goraluk Anvilcrack 的关键机制被处理后，{tank}稳住了上层黑石塔的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Goraluk Anvilcrack 。"
+      ]
+    },
+    {
+      "id": "ubrs_gyth_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "ubrs_gyth"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Gyth的关键机制被处理后，{tank}稳住了上层黑石塔的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Gyth。"
+      ]
+    },
+    {
+      "id": "ubrs_rend_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "ubrs_rend"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Warchief Rend Blackhand的关键机制被处理后，{tank}稳住了上层黑石塔的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Warchief Rend Blackhand。"
+      ]
+    },
+    {
+      "id": "ubrs_beast_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "ubrs_beast"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "The Beast的关键机制被处理后，{tank}稳住了上层黑石塔的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了The Beast。"
+      ]
+    },
+    {
+      "id": "ubrs_drakkisath_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "ubrs_drakkisath"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "General Drakkisath的关键机制被处理后，{tank}稳住了上层黑石塔的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了General Drakkisath。"
+      ]
+    }
+  ]
+}

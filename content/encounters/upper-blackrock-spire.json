@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/zone=1583",
+        "verifiedAt": "2026-09-12",
+        "notes": "核对上层黑石塔主要首领的阶段时间、职责压力与装备来源。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-12",
+        "notes": "以内容驱动路线、能力机制和活动快照表达经典副本，不模拟背包点击和后台收益。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "encounters": [
+    {
+      "id": "ubrs_emberseer",
+      "dungeonId": "upper_blackrock_spire",
+      "name": {
+        "zhCN": "Pyroguard Emberseer"
+      },
+      "stageSeconds": 525,
+      "requirements": {
+        "tank": 80,
+        "healing": 85,
+        "damage": 380
+      },
+      "weights": {
+        "tank": 0.34,
+        "healing": 0.36,
+        "damage": 0.3
+      },
+      "experienceShare": 0.125,
+      "funds": 180,
+      "firstKillBonus": 360,
+      "lootTableId": "ubrs_emberseer",
+      "mechanicIds": ["ubrs_emberseer_mechanic"]
+    },
+    {
+      "id": "ubrs_solakar",
+      "dungeonId": "upper_blackrock_spire",
+      "name": {
+        "zhCN": "Solakar Flamewreath"
+      },
+      "stageSeconds": 525,
+      "requirements": {
+        "tank": 82,
+        "healing": 87,
+        "damage": 388
+      },
+      "weights": {
+        "tank": 0.34,
+        "healing": 0.36,
+        "damage": 0.3
+      },
+      "experienceShare": 0.125,
+      "funds": 188,
+      "firstKillBonus": 376,
+      "lootTableId": "ubrs_solakar",
+      "mechanicIds": ["ubrs_solakar_mechanic"]
+    },
+    {
+      "id": "ubrs_runewatcher",
+      "dungeonId": "upper_blackrock_spire",
+      "name": {
+        "zhCN": "Jed Runewatcher"
+      },
+      "stageSeconds": 525,
+      "requirements": {
+        "tank": 84,
+        "healing": 89,
+        "damage": 396
+      },
+      "weights": {
+        "tank": 0.34,
+        "healing": 0.36,
+        "damage": 0.3
+      },
+      "experienceShare": 0.125,
+      "funds": 196,
+      "firstKillBonus": 392,
+      "lootTableId": "ubrs_runewatcher",
+      "mechanicIds": ["ubrs_runewatcher_mechanic"]
+    },
+    {
+      "id": "ubrs_anvilcrack",
+      "dungeonId": "upper_blackrock_spire",
+      "name": {
+        "zhCN": "Goraluk Anvilcrack "
+      },
+      "stageSeconds": 525,
+      "requirements": {
+        "tank": 86,
+        "healing": 91,
+        "damage": 404
+      },
+      "weights": {
+        "tank": 0.34,
+        "healing": 0.36,
+        "damage": 0.3
+      },
+      "experienceShare": 0.125,
+      "funds": 204,
+      "firstKillBonus": 408,
+      "lootTableId": "ubrs_anvilcrack",
+      "mechanicIds": ["ubrs_anvilcrack_mechanic"]
+    },
+    {
+      "id": "ubrs_gyth",
+      "dungeonId": "upper_blackrock_spire",
+      "name": {
+        "zhCN": "Gyth"
+      },
+      "stageSeconds": 525,
+      "requirements": {
+        "tank": 88,
+        "healing": 93,
+        "damage": 412
+      },
+      "weights": {
+        "tank": 0.34,
+        "healing": 0.36,
+        "damage": 0.3
+      },
+      "experienceShare": 0.125,
+      "funds": 212,
+      "firstKillBonus": 424,
+      "lootTableId": "ubrs_gyth",
+      "mechanicIds": ["ubrs_gyth_mechanic"]
+    },
+    {
+      "id": "ubrs_rend",
+      "dungeonId": "upper_blackrock_spire",
+      "name": {
+        "zhCN": "Warchief Rend Blackhand"
+      },
+      "stageSeconds": 525,
+      "requirements": {
+        "tank": 90,
+        "healing": 95,
+        "damage": 420
+      },
+      "weights": {
+        "tank": 0.34,
+        "healing": 0.36,
+        "damage": 0.3
+      },
+      "experienceShare": 0.125,
+      "funds": 220,
+      "firstKillBonus": 440,
+      "lootTableId": "ubrs_rend",
+      "mechanicIds": ["ubrs_rend_mechanic"]
+    },
+    {
+      "id": "ubrs_beast",
+      "dungeonId": "upper_blackrock_spire",
+      "name": {
+        "zhCN": "The Beast"
+      },
+      "stageSeconds": 525,
+      "requirements": {
+        "tank": 92,
+        "healing": 97,
+        "damage": 428
+      },
+      "weights": {
+        "tank": 0.34,
+        "healing": 0.36,
+        "damage": 0.3
+      },
+      "experienceShare": 0.125,
+      "funds": 228,
+      "firstKillBonus": 456,
+      "lootTableId": "ubrs_beast",
+      "mechanicIds": ["ubrs_beast_mechanic"]
+    },
+    {
+      "id": "ubrs_drakkisath",
+      "dungeonId": "upper_blackrock_spire",
+      "name": {
+        "zhCN": "General Drakkisath"
+      },
+      "stageSeconds": 525,
+      "requirements": {
+        "tank": 94,
+        "healing": 99,
+        "damage": 436
+      },
+      "weights": {
+        "tank": 0.34,
+        "healing": 0.36,
+        "damage": 0.3
+      },
+      "experienceShare": 0.125,
+      "funds": 236,
+      "firstKillBonus": 472,
+      "lootTableId": "ubrs_drakkisath",
+      "mechanicIds": ["ubrs_drakkisath_mechanic"]
+    }
+  ]
+}

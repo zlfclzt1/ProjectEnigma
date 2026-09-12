@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-12",
+        "notes": "黑石塔下层日志只记录已经结算的主动活动与首领战事实。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "locale": "zh-CN",
+  "groups": [
+    {
+      "id": "lbrs_felguard_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "lbrs_felguard"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Burning Felguard的关键机制被处理后，{tank}稳住了黑石塔下层的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Burning Felguard。"
+      ]
+    },
+    {
+      "id": "lbrs_spirestone_butcher_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "lbrs_spirestone_butcher"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Spirestone Butcher的关键机制被处理后，{tank}稳住了黑石塔下层的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Spirestone Butcher。"
+      ]
+    },
+    {
+      "id": "lbrs_omokk_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "lbrs_omokk"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Highlord Omokk的关键机制被处理后，{tank}稳住了黑石塔下层的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Highlord Omokk。"
+      ]
+    },
+    {
+      "id": "lbrs_spirestone_battle_lord_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "lbrs_spirestone_battle_lord"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Spirestone Battle Lord的关键机制被处理后，{tank}稳住了黑石塔下层的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Spirestone Battle Lord。"
+      ]
+    },
+    {
+      "id": "lbrs_spirestone_lord_magus_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "lbrs_spirestone_lord_magus"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Spirestone Lord Magus的关键机制被处理后，{tank}稳住了黑石塔下层的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Spirestone Lord Magus。"
+      ]
+    },
+    {
+      "id": "lbrs_vosh_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "lbrs_vosh"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Shadow Hunter Vosh'gajin的关键机制被处理后，{tank}稳住了黑石塔下层的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Shadow Hunter Vosh'gajin。"
+      ]
+    },
+    {
+      "id": "lbrs_voone_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "lbrs_voone"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "War Master Voone的关键机制被处理后，{tank}稳住了黑石塔下层的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了War Master Voone。"
+      ]
+    },
+    {
+      "id": "lbrs_grimaxe_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "lbrs_grimaxe"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Bannok Grimaxe的关键机制被处理后，{tank}稳住了黑石塔下层的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Bannok Grimaxe。"
+      ]
+    },
+    {
+      "id": "lbrs_smolderweb_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "lbrs_smolderweb"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Mother Smolderweb的关键机制被处理后，{tank}稳住了黑石塔下层的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Mother Smolderweb。"
+      ]
+    },
+    {
+      "id": "lbrs_crystal_fang_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "lbrs_crystal_fang"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Crystal Fang的关键机制被处理后，{tank}稳住了黑石塔下层的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Crystal Fang。"
+      ]
+    },
+    {
+      "id": "lbrs_doomhowl_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "lbrs_doomhowl"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Urok Doomhowl的关键机制被处理后，{tank}稳住了黑石塔下层的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Urok Doomhowl。"
+      ]
+    },
+    {
+      "id": "lbrs_zigris_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "lbrs_zigris"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Quartermaster Zigris的关键机制被处理后，{tank}稳住了黑石塔下层的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Quartermaster Zigris。"
+      ]
+    },
+    {
+      "id": "lbrs_halycon_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "lbrs_halycon"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Halycon的关键机制被处理后，{tank}稳住了黑石塔下层的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Halycon。"
+      ]
+    },
+    {
+      "id": "lbrs_slavener_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "lbrs_slavener"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Gizrul the Slavener的关键机制被处理后，{tank}稳住了黑石塔下层的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Gizrul the Slavener。"
+      ]
+    },
+    {
+      "id": "lbrs_bashguud_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "lbrs_bashguud"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Ghok Bashguud的关键机制被处理后，{tank}稳住了黑石塔下层的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Ghok Bashguud。"
+      ]
+    },
+    {
+      "id": "lbrs_wyrmthalak_victory",
+      "eventType": "encounter-victory",
+      "scope": {
+        "type": "encounter",
+        "encounterId": "lbrs_wyrmthalak"
+      },
+      "availableParameters": ["tank", "healer", "member"],
+      "templates": [
+        "Overlord Wyrmthalak的关键机制被处理后，{tank}稳住了黑石塔下层的战线。",
+        "{healer}顶住最后一轮压力，{member}完成了Overlord Wyrmthalak。"
+      ]
+    }
+  ]
+}

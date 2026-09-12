@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "atlasloot-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic_DungeonsAndRaids/data.lua",
+        "verifiedAt": "2026-09-11",
+        "notes": "核对上层黑石塔首领与受支持装备池；配方、材料、钥匙、任务物品、消耗品、卡牌、坐骑和法术书不进入装备掉落。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "lootTables": [
+    {
+      "id": "ubrs_emberseer",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "16672",
+          "weight": 0.2
+        },
+        {
+          "itemId": "12929",
+          "weight": 0.2
+        },
+        {
+          "itemId": "12927",
+          "weight": 0.2
+        },
+        {
+          "itemId": "12905",
+          "weight": 0.2
+        },
+        {
+          "itemId": "12926",
+          "weight": 0.2
+        }
+      ]
+    },
+    {
+      "id": "ubrs_solakar",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "16695",
+          "weight": 0.2
+        },
+        {
+          "itemId": "12609",
+          "weight": 0.2
+        },
+        {
+          "itemId": "12603",
+          "weight": 0.2
+        },
+        {
+          "itemId": "12589",
+          "weight": 0.2
+        },
+        {
+          "itemId": "12606",
+          "weight": 0.2
+        }
+      ]
+    },
+    {
+      "id": "ubrs_runewatcher",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "12604",
+          "weight": 0.3333333333333333
+        },
+        {
+          "itemId": "12930",
+          "weight": 0.3333333333333333
+        },
+        {
+          "itemId": "12605",
+          "weight": 0.3333333333333333
+        }
+      ]
+    },
+    {
+      "id": "ubrs_anvilcrack",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "13502",
+          "weight": 0.25
+        },
+        {
+          "itemId": "13498",
+          "weight": 0.25
+        },
+        {
+          "itemId": "18047",
+          "weight": 0.25
+        },
+        {
+          "itemId": "18048",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "id": "ubrs_gyth",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "16669",
+          "weight": 0.2
+        },
+        {
+          "itemId": "22225",
+          "weight": 0.2
+        },
+        {
+          "itemId": "12960",
+          "weight": 0.2
+        },
+        {
+          "itemId": "12953",
+          "weight": 0.2
+        },
+        {
+          "itemId": "12952",
+          "weight": 0.2
+        }
+      ]
+    },
+    {
+      "id": "ubrs_rend",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "12590",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "16733",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "12587",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "12588",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "12936",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18104",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "12935",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18102",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "22247",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "18103",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "12940",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "12939",
+          "weight": 0.07692307692307693
+        },
+        {
+          "itemId": "12583",
+          "weight": 0.07692307692307693
+        }
+      ]
+    },
+    {
+      "id": "ubrs_beast",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "16729",
+          "weight": 0.1
+        },
+        {
+          "itemId": "12967",
+          "weight": 0.1
+        },
+        {
+          "itemId": "12968",
+          "weight": 0.1
+        },
+        {
+          "itemId": "12966",
+          "weight": 0.1
+        },
+        {
+          "itemId": "12965",
+          "weight": 0.1
+        },
+        {
+          "itemId": "12963",
+          "weight": 0.1
+        },
+        {
+          "itemId": "12964",
+          "weight": 0.1
+        },
+        {
+          "itemId": "22311",
+          "weight": 0.1
+        },
+        {
+          "itemId": "12709",
+          "weight": 0.1
+        },
+        {
+          "itemId": "12969",
+          "weight": 0.1
+        }
+      ]
+    },
+    {
+      "id": "ubrs_drakkisath",
+      "guaranteedEquipmentDrops": 1,
+      "sourceType": "boss_drop",
+      "items": [
+        {
+          "itemId": "12592",
+          "weight": 0.05555555555555555
+        },
+        {
+          "itemId": "22267",
+          "weight": 0.05555555555555555
+        },
+        {
+          "itemId": "13141",
+          "weight": 0.05555555555555555
+        },
+        {
+          "itemId": "22269",
+          "weight": 0.05555555555555555
+        },
+        {
+          "itemId": "13142",
+          "weight": 0.05555555555555555
+        },
+        {
+          "itemId": "13098",
+          "weight": 0.05555555555555555
+        },
+        {
+          "itemId": "22268",
+          "weight": 0.05555555555555555
+        },
+        {
+          "itemId": "22253",
+          "weight": 0.05555555555555555
+        },
+        {
+          "itemId": "12602",
+          "weight": 0.05555555555555555
+        },
+        {
+          "itemId": "16690",
+          "weight": 0.05555555555555555
+        },
+        {
+          "itemId": "16688",
+          "weight": 0.05555555555555555
+        },
+        {
+          "itemId": "16700",
+          "weight": 0.05555555555555555
+        },
+        {
+          "itemId": "16721",
+          "weight": 0.05555555555555555
+        },
+        {
+          "itemId": "16706",
+          "weight": 0.05555555555555555
+        },
+        {
+          "itemId": "16674",
+          "weight": 0.05555555555555555
+        },
+        {
+          "itemId": "16666",
+          "weight": 0.05555555555555555
+        },
+        {
+          "itemId": "16726",
+          "weight": 0.05555555555555555
+        },
+        {
+          "itemId": "16730",
+          "weight": 0.05555555555555555
+        }
+      ]
+    }
+  ]
+}

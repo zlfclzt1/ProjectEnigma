@@ -1,0 +1,266 @@
+{
+  "dungeonId": "dire_maul_west",
+  "samplesPerScenario": 100000,
+  "scenarios": {
+    "standard": {
+      "required": {
+        "level": 58,
+        "simulatedRuns": 100000,
+        "clearRate": 0.74617,
+        "previewClearProbability": 0.7449885444171285,
+        "durationSeconds": 2474.6,
+        "wipeCounts": {
+          "dire_maul_west_prince_tortheldrin": 8949,
+          "dire_maul_west_tendris_warpwood": 1498,
+          "dire_maul_west_immolthar": 7747,
+          "dire_maul_west_magister_kalendris": 4257,
+          "dire_maul_west_illyanna_ravenoak": 2932
+        }
+      },
+      "with-optional": {
+        "level": 58,
+        "simulatedRuns": 100000,
+        "clearRate": 0.78167,
+        "previewClearProbability": 0.7843866776855031,
+        "durationSeconds": 2491.6,
+        "wipeCounts": {
+          "dire_maul_west_magister_kalendris": 3196,
+          "dire_maul_west_illyanna_ravenoak": 1838,
+          "dire_maul_west_prince_tortheldrin": 8322,
+          "dire_maul_west_immolthar": 7058,
+          "dire_maul_west_tendris_warpwood": 1419
+        }
+      },
+      "with-rare": {
+        "level": 58,
+        "simulatedRuns": 100000,
+        "clearRate": 0.72155,
+        "previewClearProbability": 0.7197282061656215,
+        "durationSeconds": 2956.6,
+        "wipeCounts": {
+          "dire_maul_west_illyanna_ravenoak": 2181,
+          "dire_maul_west_immolthar": 8234,
+          "dire_maul_west_prince_tortheldrin": 9359,
+          "dire_maul_west_tsuzee": 2276,
+          "dire_maul_west_magister_kalendris": 4365,
+          "dire_maul_west_tendris_warpwood": 1430
+        }
+      }
+    },
+    "no-tank": {
+      "required": {
+        "level": 58,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 4.6400000000000005e-9,
+        "durationSeconds": 2737,
+        "wipeCounts": {
+          "dire_maul_west_tendris_warpwood": 97140,
+          "dire_maul_west_illyanna_ravenoak": 2791,
+          "dire_maul_west_magister_kalendris": 68,
+          "dire_maul_west_immolthar": 1
+        }
+      },
+      "with-optional": {
+        "level": 58,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 3.6800000000000005e-9,
+        "durationSeconds": 2764.2,
+        "wipeCounts": {
+          "dire_maul_west_tendris_warpwood": 97687,
+          "dire_maul_west_illyanna_ravenoak": 2262,
+          "dire_maul_west_magister_kalendris": 51
+        }
+      },
+      "with-rare": {
+        "level": 58,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.9600000000000007e-10,
+        "durationSeconds": 3162,
+        "wipeCounts": {
+          "dire_maul_west_tendris_warpwood": 96488,
+          "dire_maul_west_illyanna_ravenoak": 3440,
+          "dire_maul_west_magister_kalendris": 71,
+          "dire_maul_west_tsuzee": 1
+        }
+      }
+    },
+    "no-healing": {
+      "required": {
+        "level": 58,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 3.6800000000000014e-9,
+        "durationSeconds": 2725.2,
+        "wipeCounts": {
+          "dire_maul_west_tendris_warpwood": 97614,
+          "dire_maul_west_illyanna_ravenoak": 2349,
+          "dire_maul_west_magister_kalendris": 37
+        }
+      },
+      "with-optional": {
+        "level": 58,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 4.1600000000000005e-9,
+        "durationSeconds": 2756.4,
+        "wipeCounts": {
+          "dire_maul_west_tendris_warpwood": 97344,
+          "dire_maul_west_illyanna_ravenoak": 2605,
+          "dire_maul_west_magister_kalendris": 50,
+          "dire_maul_west_immolthar": 1
+        }
+      },
+      "with-rare": {
+        "level": 58,
+        "simulatedRuns": 100000,
+        "clearRate": 0,
+        "previewClearProbability": 1.6960000000000004e-10,
+        "durationSeconds": 3213.2,
+        "wipeCounts": {
+          "dire_maul_west_tendris_warpwood": 96851,
+          "dire_maul_west_illyanna_ravenoak": 3088,
+          "dire_maul_west_magister_kalendris": 59,
+          "dire_maul_west_tsuzee": 2
+        }
+      }
+    },
+    "overlevel": {
+      "required": {
+        "level": 55,
+        "simulatedRuns": 100000,
+        "clearRate": 0.71891,
+        "previewClearProbability": 0.7169491392092864,
+        "durationSeconds": 2539.4,
+        "wipeCounts": {
+          "dire_maul_west_tendris_warpwood": 1451,
+          "dire_maul_west_prince_tortheldrin": 9048,
+          "dire_maul_west_magister_kalendris": 5194,
+          "dire_maul_west_immolthar": 8267,
+          "dire_maul_west_illyanna_ravenoak": 4149
+        }
+      },
+      "with-optional": {
+        "level": 55,
+        "simulatedRuns": 100000,
+        "clearRate": 0.63684,
+        "previewClearProbability": 0.6372196994247754,
+        "durationSeconds": 2617.6,
+        "wipeCounts": {
+          "dire_maul_west_tendris_warpwood": 3742,
+          "dire_maul_west_prince_tortheldrin": 9930,
+          "dire_maul_west_magister_kalendris": 7031,
+          "dire_maul_west_immolthar": 9769,
+          "dire_maul_west_illyanna_ravenoak": 5844
+        }
+      },
+      "with-rare": {
+        "level": 55,
+        "simulatedRuns": 100000,
+        "clearRate": 0.75104,
+        "previewClearProbability": 0.7501946832313608,
+        "durationSeconds": 2926.2,
+        "wipeCounts": {
+          "dire_maul_west_magister_kalendris": 3406,
+          "dire_maul_west_immolthar": 7321,
+          "dire_maul_west_prince_tortheldrin": 8510,
+          "dire_maul_west_tendris_warpwood": 1463,
+          "dire_maul_west_illyanna_ravenoak": 1690,
+          "dire_maul_west_tsuzee": 2506
+        }
+      }
+    },
+    "max-level": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.79057,
+        "previewClearProbability": 0.7921507113112415,
+        "durationSeconds": 2297.4,
+        "wipeCounts": {
+          "dire_maul_west_magister_kalendris": 3186,
+          "dire_maul_west_prince_tortheldrin": 7536,
+          "dire_maul_west_immolthar": 6413,
+          "dire_maul_west_tendris_warpwood": 1445,
+          "dire_maul_west_illyanna_ravenoak": 2363
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.8615,
+        "previewClearProbability": 0.8608388012886123,
+        "durationSeconds": 2261.6,
+        "wipeCounts": {
+          "dire_maul_west_immolthar": 3947,
+          "dire_maul_west_magister_kalendris": 1699,
+          "dire_maul_west_tendris_warpwood": 1354,
+          "dire_maul_west_prince_tortheldrin": 5503,
+          "dire_maul_west_illyanna_ravenoak": 1347
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.79527,
+        "previewClearProbability": 0.793249115946541,
+        "durationSeconds": 2741,
+        "wipeCounts": {
+          "dire_maul_west_prince_tortheldrin": 6755,
+          "dire_maul_west_tsuzee": 3419,
+          "dire_maul_west_illyanna_ravenoak": 1490,
+          "dire_maul_west_immolthar": 5252,
+          "dire_maul_west_tendris_warpwood": 1401,
+          "dire_maul_west_magister_kalendris": 2156
+        }
+      }
+    },
+    "speed-run": {
+      "required": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.80831,
+        "previewClearProbability": 0.8089354863843052,
+        "durationSeconds": 2286.2,
+        "wipeCounts": {
+          "dire_maul_west_illyanna_ravenoak": 1625,
+          "dire_maul_west_prince_tortheldrin": 7622,
+          "dire_maul_west_tendris_warpwood": 1387,
+          "dire_maul_west_immolthar": 6194,
+          "dire_maul_west_magister_kalendris": 2341
+        }
+      },
+      "with-optional": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.82934,
+        "previewClearProbability": 0.8286275035701267,
+        "durationSeconds": 2277.8,
+        "wipeCounts": {
+          "dire_maul_west_immolthar": 5389,
+          "dire_maul_west_prince_tortheldrin": 6565,
+          "dire_maul_west_magister_kalendris": 2310,
+          "dire_maul_west_tendris_warpwood": 1360,
+          "dire_maul_west_illyanna_ravenoak": 1442
+        }
+      },
+      "with-rare": {
+        "level": 60,
+        "simulatedRuns": 100000,
+        "clearRate": 0.73596,
+        "previewClearProbability": 0.7344739043218597,
+        "durationSeconds": 2766,
+        "wipeCounts": {
+          "dire_maul_west_prince_tortheldrin": 8329,
+          "dire_maul_west_magister_kalendris": 3912,
+          "dire_maul_west_illyanna_ravenoak": 2447,
+          "dire_maul_west_immolthar": 7438,
+          "dire_maul_west_tsuzee": 2863,
+          "dire_maul_west_tendris_warpwood": 1415
+        }
+      }
+    }
+  }
+}

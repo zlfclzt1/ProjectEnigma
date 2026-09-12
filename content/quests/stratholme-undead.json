@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/zone=2017/stratholme#quests",
+        "verifiedAt": "2026-09-12",
+        "notes": "核对亡灵区男爵路线任务目标。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["quests[].completion", "quests[].rewards.experienceFraction"],
+        "reason": "副本外交付步骤不模拟，以实例首领胜利结算。",
+        "decidedAt": "2026-09-12"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "stratholme-undead-male-ki",
+      "name": { "zhCN": "苍白的玛勒基" },
+      "description": { "zhCN": "击败苍白的玛勒基并取得他的符文。" },
+      "dungeonId": "stratholme_undead",
+      "eligibility": { "minimumLevel": 58, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["stratholme_undead_malekithe_pallid"]
+      },
+      "rewards": {
+        "experienceFraction": 1,
+        "funds": 0,
+        "fixedItemIds": ["12059"],
+        "itemChoiceIds": []
+      }
+    },
+    {
+      "id": "stratholme-undead-rivendare",
+      "name": { "zhCN": "瑞文戴尔男爵的陨落" },
+      "description": { "zhCN": "完成亡灵区主线并击败瑞文戴尔男爵。" },
+      "dungeonId": "stratholme_undead",
+      "eligibility": { "minimumLevel": 58, "allowedClassIds": [] },
+      "completion": {
+        "type": "encounter-victories",
+        "encounterIds": ["stratholme_undead_baron_rivendare"]
+      },
+      "rewards": {
+        "experienceFraction": 1.2,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["15824", "15825", "15827"]
+      }
+    }
+  ]
+}

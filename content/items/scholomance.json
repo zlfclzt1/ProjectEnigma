@@ -1,0 +1,3771 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/",
+        "verifiedAt": "2026-09-11",
+        "notes": "通过逐件中文 XML 核对通灵学院装备属性、图标、品质与需求等级。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "items": [
+    {
+      "id": "13314",
+      "name": {
+        "zhCN": "奥兰纳的拥抱"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "epic",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_12"
+      },
+      "description": {
+        "zhCN": "通灵学院：莱斯·霜语的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 20,
+          "intellectPoints": 20,
+          "spiritPoints": 20
+        },
+        "defense": {
+          "armorPoints": 96
+        },
+        "spell": {
+          "spellPowerPoints": 20,
+          "healingPowerPoints": 20
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13314",
+        "url": "https://www.wowhead.com/classic/cn/item=13314&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13398",
+      "name": {
+        "zhCN": "尖叫者之靴"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_08"
+      },
+      "description": {
+        "zhCN": "通灵学院：黑暗院长加丁的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 10,
+          "spiritPoints": 10
+        },
+        "defense": {
+          "armorPoints": 120
+        },
+        "spell": {
+          "spellPowerPoints": 12,
+          "healingPowerPoints": 12
+        },
+        "resistances": {
+          "shadowPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13398",
+        "url": "https://www.wowhead.com/classic/cn/item=13398&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13937",
+      "name": {
+        "zhCN": "院长之杖"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "epic",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_talisman_12"
+      },
+      "description": {
+        "zhCN": "通灵学院：黑暗院长加丁的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 30,
+          "spiritPoints": 20
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 135,
+            "maximumPoints": 204
+          },
+          "speedSeconds": 2.9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13937",
+        "url": "https://www.wowhead.com/classic/cn/item=13937&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13938",
+      "name": {
+        "zhCN": "噬骨铁针"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_bone_taurenskull_01"
+      },
+      "description": {
+        "zhCN": "通灵学院：黑暗院长加丁的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 4
+        },
+        "spell": {
+          "spellPowerPoints": 11,
+          "healingPowerPoints": 11
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13938",
+        "url": "https://www.wowhead.com/classic/cn/item=13938&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13944",
+      "name": {
+        "zhCN": "墓碑胸甲"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_chain_17"
+      },
+      "description": {
+        "zhCN": "通灵学院：黑暗院长加丁的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 10,
+          "staminaPoints": 10
+        },
+        "defense": {
+          "armorPoints": 174
+        },
+        "physical": {
+          "criticalStrikePercent": 2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13944",
+        "url": "https://www.wowhead.com/classic/cn/item=13944&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13950",
+      "name": {
+        "zhCN": "拘禁束带"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_09"
+      },
+      "description": {
+        "zhCN": "通灵学院：黑暗院长加丁的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 17,
+          "spiritPoints": 11
+        },
+        "defense": {
+          "armorPoints": 205
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13950",
+        "url": "https://www.wowhead.com/classic/cn/item=13950&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13951",
+      "name": {
+        "zhCN": "活钢臂甲"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_18"
+      },
+      "description": {
+        "zhCN": "通灵学院：黑暗院长加丁的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 7,
+          "staminaPoints": 17
+        },
+        "defense": {
+          "armorPoints": 283
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13951",
+        "url": "https://www.wowhead.com/classic/cn/item=13951&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13952",
+      "name": {
+        "zhCN": "冰刃斧"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_axe_03"
+      },
+      "description": {
+        "zhCN": "通灵学院：莱斯·霜语的装备掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 57,
+            "maximumPoints": 106
+          },
+          "speedSeconds": 2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13952",
+        "url": "https://www.wowhead.com/classic/cn/item=13952&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13953",
+      "name": {
+        "zhCN": "沉默之牙"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_41"
+      },
+      "description": {
+        "zhCN": "通灵学院：黑暗院长加丁的装备掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 45,
+            "maximumPoints": 85
+          },
+          "speedSeconds": 1.6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13953",
+        "url": "https://www.wowhead.com/classic/cn/item=13953&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13955",
+      "name": {
+        "zhCN": "石头护肩"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_25"
+      },
+      "description": {
+        "zhCN": "通灵学院：传令官基尔图诺斯的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 688,
+          "defenseSkillPoints": 7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13955",
+        "url": "https://www.wowhead.com/classic/cn/item=13955&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13956",
+      "name": {
+        "zhCN": "尸魔腰带"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_12"
+      },
+      "description": {
+        "zhCN": "通灵学院：传令官基尔图诺斯的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 9,
+          "intellectPoints": 19
+        },
+        "defense": {
+          "armorPoints": 49
+        },
+        "spell": {
+          "hitPercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13956",
+        "url": "https://www.wowhead.com/classic/cn/item=13956&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13957",
+      "name": {
+        "zhCN": "石像鬼手套"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_09"
+      },
+      "description": {
+        "zhCN": "通灵学院：传令官基尔图诺斯的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 10,
+          "agilityPoints": 5,
+          "staminaPoints": 12
+        },
+        "defense": {
+          "armorPoints": 107
+        },
+        "physical": {
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13957",
+        "url": "https://www.wowhead.com/classic/cn/item=13957&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13960",
+      "name": {
+        "zhCN": "恶魔之心"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_orb_03"
+      },
+      "description": {
+        "zhCN": "通灵学院：传令官基尔图诺斯的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 5,
+          "intellectPoints": 5,
+          "spiritPoints": 15
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13960",
+        "url": "https://www.wowhead.com/classic/cn/item=13960&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13964",
+      "name": {
+        "zhCN": "女巫之刃"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_shortblade_25"
+      },
+      "description": {
+        "zhCN": "通灵学院：黑暗院长加丁的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 8
+        },
+        "spell": {
+          "spellPowerPoints": 14,
+          "healingPowerPoints": 14
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 45,
+            "maximumPoints": 85
+          },
+          "speedSeconds": 1.6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13964",
+        "url": "https://www.wowhead.com/classic/cn/item=13964&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13967",
+      "name": {
+        "zhCN": "疾风胫甲"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_plate_04"
+      },
+      "description": {
+        "zhCN": "通灵学院：传令官基尔图诺斯的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 20
+        },
+        "defense": {
+          "armorPoints": 247
+        },
+        "physical": {
+          "hitPercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13967",
+        "url": "https://www.wowhead.com/classic/cn/item=13967&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13969",
+      "name": {
+        "zhCN": "近卫臂甲"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_16"
+      },
+      "description": {
+        "zhCN": "通灵学院：传令官基尔图诺斯的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 6,
+          "intellectPoints": 7
+        },
+        "defense": {
+          "armorPoints": 157
+        },
+        "spell": {
+          "healingPowerPoints": 33
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13969",
+        "url": "https://www.wowhead.com/classic/cn/item=13969&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13983",
+      "name": {
+        "zhCN": "墓石战斧"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_halberd_09"
+      },
+      "description": {
+        "zhCN": "通灵学院：传令官基尔图诺斯的装备掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 144,
+            "maximumPoints": 217
+          },
+          "speedSeconds": 3.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13983",
+        "url": "https://www.wowhead.com/classic/cn/item=13983&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14024",
+      "name": {
+        "zhCN": "惊骇之爪"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_shortblade_16"
+      },
+      "description": {
+        "zhCN": "通灵学院：传令官基尔图诺斯的装备掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 39,
+            "maximumPoints": 73
+          },
+          "speedSeconds": 1.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14024",
+        "url": "https://www.wowhead.com/classic/cn/item=14024&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14340",
+      "name": {
+        "zhCN": "寒冰巫妖法袍"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_46"
+      },
+      "description": {
+        "zhCN": "通灵学院：莱斯·霜语的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 15
+        },
+        "defense": {
+          "armorPoints": 88
+        },
+        "spell": {
+          "frostSpellPowerPoints": 43
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14340",
+        "url": "https://www.wowhead.com/classic/cn/item=14340&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14487",
+      "name": {
+        "zhCN": "寒骨战锤"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "rogue", "priest", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_hammer_13"
+      },
+      "description": {
+        "zhCN": "通灵学院：莱斯·霜语的装备掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 68,
+            "maximumPoints": 127
+          },
+          "speedSeconds": 2.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14487",
+        "url": "https://www.wowhead.com/classic/cn/item=14487&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14502",
+      "name": {
+        "zhCN": "霜冻束带"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_10"
+      },
+      "description": {
+        "zhCN": "通灵学院：莱斯·霜语的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 5,
+          "agilityPoints": 15,
+          "staminaPoints": 15
+        },
+        "defense": {
+          "armorPoints": 98
+        },
+        "resistances": {
+          "frostPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14502",
+        "url": "https://www.wowhead.com/classic/cn/item=14502&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "14503",
+      "name": {
+        "zhCN": "死亡指节"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_25"
+      },
+      "description": {
+        "zhCN": "通灵学院：莱斯·霜语的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 10,
+          "agilityPoints": 10,
+          "staminaPoints": 10,
+          "intellectPoints": 10,
+          "spiritPoints": 10
+        },
+        "defense": {
+          "armorPoints": 131
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14503",
+        "url": "https://www.wowhead.com/classic/cn/item=14503&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "14522",
+      "name": {
+        "zhCN": "漩涡护腿"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_04"
+      },
+      "description": {
+        "zhCN": "通灵学院：莱斯·霜语的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 20,
+          "intellectPoints": 20,
+          "spiritPoints": 10
+        },
+        "defense": {
+          "armorPoints": 320
+        },
+        "spell": {
+          "healingPowerPoints": 13
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14522",
+        "url": "https://www.wowhead.com/classic/cn/item=14522&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14525",
+      "name": {
+        "zhCN": "骨节护手"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_29"
+      },
+      "description": {
+        "zhCN": "通灵学院：莱斯·霜语的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 15,
+          "staminaPoints": 14
+        },
+        "defense": {
+          "armorPoints": 404,
+          "defenseSkillPoints": 7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14525",
+        "url": "https://www.wowhead.com/classic/cn/item=14525&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14528",
+      "name": {
+        "zhCN": "断骨圆盾"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shield_02"
+      },
+      "description": {
+        "zhCN": "通灵学院：血骨傀儡的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 7,
+          "intellectPoints": 12,
+          "spiritPoints": 7
+        },
+        "defense": {
+          "armorPoints": 2121,
+          "blockValuePoints": 39
+        },
+        "resistances": {
+          "shadowPoints": 7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14528",
+        "url": "https://www.wowhead.com/classic/cn/item=14528&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "14531",
+      "name": {
+        "zhCN": "恐怖骨锤"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_hammer_13"
+      },
+      "description": {
+        "zhCN": "通灵学院：血骨傀儡的装备掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 137,
+            "maximumPoints": 206
+          },
+          "speedSeconds": 3.4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14531",
+        "url": "https://www.wowhead.com/classic/cn/item=14531&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14537",
+      "name": {
+        "zhCN": "尸光胫甲"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_plate_09"
+      },
+      "description": {
+        "zhCN": "通灵学院：血骨傀儡的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 22
+        },
+        "defense": {
+          "armorPoints": 445
+        },
+        "resistances": {
+          "shadowPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14537",
+        "url": "https://www.wowhead.com/classic/cn/item=14537&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "14538",
+      "name": {
+        "zhCN": "行尸衬肩"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_02"
+      },
+      "description": {
+        "zhCN": "通灵学院：血骨傀儡的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 19,
+          "intellectPoints": 9
+        },
+        "defense": {
+          "armorPoints": 66
+        },
+        "spell": {
+          "shadowSpellPowerPoints": 13
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14538",
+        "url": "https://www.wowhead.com/classic/cn/item=14538&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14539",
+      "name": {
+        "zhCN": "骨环头盔"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_14"
+      },
+      "description": {
+        "zhCN": "通灵学院：血骨傀儡的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 6,
+          "agilityPoints": 5,
+          "staminaPoints": 30,
+          "intellectPoints": 6,
+          "spiritPoints": 6
+        },
+        "defense": {
+          "armorPoints": 141
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14539",
+        "url": "https://www.wowhead.com/classic/cn/item=14539&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "14541",
+      "name": {
+        "zhCN": "巴罗夫家族长剑"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_03"
+      },
+      "description": {
+        "zhCN": "通灵学院：詹迪斯·巴罗夫的装备掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 87,
+            "maximumPoints": 132
+          },
+          "speedSeconds": 2.1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14541",
+        "url": "https://www.wowhead.com/classic/cn/item=14541&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14543",
+      "name": {
+        "zhCN": "暗影手套"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_15"
+      },
+      "description": {
+        "zhCN": "通灵学院：詹迪斯·巴罗夫的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 6,
+          "intellectPoints": 7,
+          "spiritPoints": 6
+        },
+        "defense": {
+          "armorPoints": 55
+        },
+        "resistances": {
+          "arcanePoints": 15,
+          "shadowPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14543",
+        "url": "https://www.wowhead.com/classic/cn/item=14543&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "14545",
+      "name": {
+        "zhCN": "鬼影护腿"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_11"
+      },
+      "description": {
+        "zhCN": "通灵学院：詹迪斯·巴罗夫的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 18,
+          "spiritPoints": 13
+        },
+        "defense": {
+          "armorPoints": 152
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14545",
+        "url": "https://www.wowhead.com/classic/cn/item=14545&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14548",
+      "name": {
+        "zhCN": "皇家肩甲"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_11"
+      },
+      "description": {
+        "zhCN": "通灵学院：詹迪斯·巴罗夫的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 8,
+          "intellectPoints": 9,
+          "spiritPoints": 13
+        },
+        "defense": {
+          "armorPoints": 274
+        },
+        "spell": {
+          "healingPowerPoints": 26
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14548",
+        "url": "https://www.wowhead.com/classic/cn/item=14548&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14576",
+      "name": {
+        "zhCN": "玛杜克黑剑"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "rogue", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_15"
+      },
+      "description": {
+        "zhCN": "通灵学院：马杜克·布莱克波尔的装备掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 73,
+            "maximumPoints": 137
+          },
+          "speedSeconds": 2.7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14576",
+        "url": "https://www.wowhead.com/classic/cn/item=14576&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14577",
+      "name": {
+        "zhCN": "骨烟短裤"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_08"
+      },
+      "description": {
+        "zhCN": "通灵学院：维克图斯的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 20,
+          "intellectPoints": 20
+        },
+        "defense": {
+          "armorPoints": 76
+        },
+        "resistances": {
+          "firePoints": 10,
+          "shadowPoints": 5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14577",
+        "url": "https://www.wowhead.com/classic/cn/item=14577&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "14611",
+      "name": {
+        "zhCN": "血链锁甲"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_leather_05"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 10,
+          "staminaPoints": 15,
+          "intellectPoints": 15,
+          "spiritPoints": 10
+        },
+        "defense": {
+          "armorPoints": 360,
+          "dodgePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14611",
+        "url": "https://www.wowhead.com/classic/cn/item=14611&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14612",
+      "name": {
+        "zhCN": "血链护腿"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_06"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 15,
+          "agilityPoints": 12,
+          "staminaPoints": 16,
+          "intellectPoints": 15
+        },
+        "defense": {
+          "armorPoints": 315
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14612",
+        "url": "https://www.wowhead.com/classic/cn/item=14612&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "14614",
+      "name": {
+        "zhCN": "血链腰带"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_23"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 12,
+          "agilityPoints": 12,
+          "staminaPoints": 11,
+          "intellectPoints": 9
+        },
+        "defense": {
+          "armorPoints": 202
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14614",
+        "url": "https://www.wowhead.com/classic/cn/item=14614&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "14615",
+      "name": {
+        "zhCN": "血链护手"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_26"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 9,
+          "staminaPoints": 10,
+          "intellectPoints": 10
+        },
+        "defense": {
+          "armorPoints": 225
+        },
+        "physical": {
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14615",
+        "url": "https://www.wowhead.com/classic/cn/item=14615&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14616",
+      "name": {
+        "zhCN": "血链战靴"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_01"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 9,
+          "agilityPoints": 9,
+          "staminaPoints": 10,
+          "intellectPoints": 10
+        },
+        "defense": {
+          "armorPoints": 247
+        },
+        "physical": {
+          "hitPercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14616",
+        "url": "https://www.wowhead.com/classic/cn/item=14616&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14620",
+      "name": {
+        "zhCN": "亡骨束带"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_12"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 15
+        },
+        "defense": {
+          "armorPoints": 358,
+          "defenseSkillPoints": 9
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14620",
+        "url": "https://www.wowhead.com/classic/cn/item=14620&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14621",
+      "name": {
+        "zhCN": "亡骨马靴"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_01"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 9
+        },
+        "defense": {
+          "armorPoints": 438,
+          "defenseSkillPoints": 10
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14621",
+        "url": "https://www.wowhead.com/classic/cn/item=14621&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14622",
+      "name": {
+        "zhCN": "亡骨护手"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_28"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 14
+        },
+        "defense": {
+          "armorPoints": 398,
+          "defenseSkillPoints": 10
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14622",
+        "url": "https://www.wowhead.com/classic/cn/item=14622&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14623",
+      "name": {
+        "zhCN": "亡骨腿甲"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_04"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 20
+        },
+        "defense": {
+          "armorPoints": 557,
+          "defenseSkillPoints": 13
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14623",
+        "url": "https://www.wowhead.com/classic/cn/item=14623&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14624",
+      "name": {
+        "zhCN": "亡骨胸甲"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_chain_15"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12
+        },
+        "defense": {
+          "armorPoints": 637,
+          "defenseSkillPoints": 17
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14624",
+        "url": "https://www.wowhead.com/classic/cn/item=14624&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14626",
+      "name": {
+        "zhCN": "骨堆长袍"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_43"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 22,
+          "intellectPoints": 12,
+          "spiritPoints": 12
+        },
+        "defense": {
+          "armorPoints": 87
+        },
+        "spell": {
+          "spellPowerPoints": 8,
+          "healingPowerPoints": 8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14626",
+        "url": "https://www.wowhead.com/classic/cn/item=14626&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14629",
+      "name": {
+        "zhCN": "骨堆腕轮"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_07"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12,
+          "intellectPoints": 11,
+          "spiritPoints": 7
+        },
+        "defense": {
+          "armorPoints": 38
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14629",
+        "url": "https://www.wowhead.com/classic/cn/item=14629&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "14631",
+      "name": {
+        "zhCN": "骨堆长靴"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_05"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 15,
+          "intellectPoints": 10,
+          "spiritPoints": 9
+        },
+        "defense": {
+          "armorPoints": 60
+        },
+        "spell": {
+          "spellPowerPoints": 11,
+          "healingPowerPoints": 11
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14631",
+        "url": "https://www.wowhead.com/classic/cn/item=14631&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14632",
+      "name": {
+        "zhCN": "骨堆护腿"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_08"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 21,
+          "intellectPoints": 18,
+          "spiritPoints": 12
+        },
+        "defense": {
+          "armorPoints": 76
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14632",
+        "url": "https://www.wowhead.com/classic/cn/item=14632&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "14633",
+      "name": {
+        "zhCN": "骨堆衬肩"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_02"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 17,
+          "intellectPoints": 11,
+          "spiritPoints": 9
+        },
+        "defense": {
+          "armorPoints": 65
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14633",
+        "url": "https://www.wowhead.com/classic/cn/item=14633&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "14636",
+      "name": {
+        "zhCN": "苍白腰带"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_16"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12
+        },
+        "defense": {
+          "armorPoints": 97
+        },
+        "physical": {
+          "attackPowerPoints": 40,
+          "rangedAttackPowerPoints": 40
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14636",
+        "url": "https://www.wowhead.com/classic/cn/item=14636&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14637",
+      "name": {
+        "zhCN": "苍白护甲"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_leather_03"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 8,
+          "agilityPoints": 8
+        },
+        "defense": {
+          "armorPoints": 172
+        },
+        "physical": {
+          "attackPowerPoints": 60,
+          "rangedAttackPowerPoints": 60
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14637",
+        "url": "https://www.wowhead.com/classic/cn/item=14637&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14638",
+      "name": {
+        "zhCN": "苍白护腿"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_07"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 18
+        },
+        "defense": {
+          "armorPoints": 150
+        },
+        "physical": {
+          "attackPowerPoints": 52,
+          "rangedAttackPowerPoints": 52
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14638",
+        "url": "https://www.wowhead.com/classic/cn/item=14638&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14640",
+      "name": {
+        "zhCN": "苍白手套"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_15"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 9
+        },
+        "defense": {
+          "armorPoints": 107
+        },
+        "physical": {
+          "attackPowerPoints": 44,
+          "rangedAttackPowerPoints": 44
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14640",
+        "url": "https://www.wowhead.com/classic/cn/item=14640&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "14641",
+      "name": {
+        "zhCN": "苍白长靴"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_05"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 20
+        },
+        "defense": {
+          "armorPoints": 118
+        },
+        "physical": {
+          "attackPowerPoints": 24,
+          "rangedAttackPowerPoints": 24
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "14641",
+        "url": "https://www.wowhead.com/classic/cn/item=14641&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "16667",
+      "name": {
+        "zhCN": "元素罩帽"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_04"
+      },
+      "description": {
+        "zhCN": "通灵学院：黑暗院长加丁的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 7,
+          "staminaPoints": 13,
+          "intellectPoints": 23,
+          "spiritPoints": 12
+        },
+        "defense": {
+          "armorPoints": 297
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16667",
+        "url": "https://www.wowhead.com/classic/cn/item=16667&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16677",
+      "name": {
+        "zhCN": "野兽追猎者之帽"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["hunter"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_24"
+      },
+      "description": {
+        "zhCN": "通灵学院：黑暗院长加丁的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 20,
+          "staminaPoints": 20,
+          "intellectPoints": 10,
+          "spiritPoints": 6
+        },
+        "defense": {
+          "armorPoints": 297
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16677",
+        "url": "https://www.wowhead.com/classic/cn/item=16677&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16684",
+      "name": {
+        "zhCN": "博学者手套"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["mage"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_17"
+      },
+      "description": {
+        "zhCN": "通灵学院：瑟尔林·卡斯迪诺夫教授的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 9,
+          "intellectPoints": 14,
+          "spiritPoints": 14
+        },
+        "defense": {
+          "armorPoints": 52
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16684",
+        "url": "https://www.wowhead.com/classic/cn/item=16684&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16686",
+      "name": {
+        "zhCN": "博学者头冠"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["mage"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_crown_02"
+      },
+      "description": {
+        "zhCN": "通灵学院：黑暗院长加丁的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 11,
+          "intellectPoints": 30,
+          "spiritPoints": 5
+        },
+        "defense": {
+          "armorPoints": 71
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16686",
+        "url": "https://www.wowhead.com/classic/cn/item=16686&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16689",
+      "name": {
+        "zhCN": "博学者衬肩"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["mage"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_23"
+      },
+      "description": {
+        "zhCN": "通灵学院：莱斯·霜语的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 6,
+          "intellectPoints": 22,
+          "spiritPoints": 6
+        },
+        "defense": {
+          "armorPoints": 64
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16689",
+        "url": "https://www.wowhead.com/classic/cn/item=16689&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16693",
+      "name": {
+        "zhCN": "虔诚头冠"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_crown_01"
+      },
+      "description": {
+        "zhCN": "通灵学院：黑暗院长加丁的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 13,
+          "intellectPoints": 24,
+          "spiritPoints": 15
+        },
+        "defense": {
+          "armorPoints": 71
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16693",
+        "url": "https://www.wowhead.com/classic/cn/item=16693&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16698",
+      "name": {
+        "zhCN": "鬼雾面具"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_29"
+      },
+      "description": {
+        "zhCN": "通灵学院：黑暗院长加丁的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 15,
+          "intellectPoints": 23,
+          "spiritPoints": 12
+        },
+        "defense": {
+          "armorPoints": 71
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16698",
+        "url": "https://www.wowhead.com/classic/cn/item=16698&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16701",
+      "name": {
+        "zhCN": "鬼雾衬肩"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_bone_taurenskull_01"
+      },
+      "description": {
+        "zhCN": "通灵学院：詹迪斯·巴罗夫的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 14,
+          "intellectPoints": 15,
+          "spiritPoints": 9
+        },
+        "defense": {
+          "armorPoints": 64
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16701",
+        "url": "https://www.wowhead.com/classic/cn/item=16701&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16705",
+      "name": {
+        "zhCN": "鬼雾手套"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_32"
+      },
+      "description": {
+        "zhCN": "通灵学院：博学者普克尔特的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 13,
+          "intellectPoints": 9,
+          "spiritPoints": 14
+        },
+        "defense": {
+          "armorPoints": 52
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16705",
+        "url": "https://www.wowhead.com/classic/cn/item=16705&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16707",
+      "name": {
+        "zhCN": "迅影罩帽"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["rogue"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_41"
+      },
+      "description": {
+        "zhCN": "通灵学院：黑暗院长加丁的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 13,
+          "agilityPoints": 20,
+          "staminaPoints": 18,
+          "spiritPoints": 5
+        },
+        "defense": {
+          "armorPoints": 141
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16707",
+        "url": "https://www.wowhead.com/classic/cn/item=16707&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16710",
+      "name": {
+        "zhCN": "迅影护腕"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["rogue"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_07"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 15,
+          "staminaPoints": 7
+        },
+        "defense": {
+          "armorPoints": 71
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16710",
+        "url": "https://www.wowhead.com/classic/cn/item=16710&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16711",
+      "name": {
+        "zhCN": "迅影长靴"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["rogue"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_08"
+      },
+      "description": {
+        "zhCN": "通灵学院：血骨傀儡的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 21,
+          "staminaPoints": 9
+        },
+        "defense": {
+          "armorPoints": 115
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16711",
+        "url": "https://www.wowhead.com/classic/cn/item=16711&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16716",
+      "name": {
+        "zhCN": "野性之心腰带"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_15"
+      },
+      "description": {
+        "zhCN": "通灵学院：拉文尼亚的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 9,
+          "intellectPoints": 17,
+          "spiritPoints": 10
+        },
+        "defense": {
+          "armorPoints": 93
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16716",
+        "url": "https://www.wowhead.com/classic/cn/item=16716&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16720",
+      "name": {
+        "zhCN": "野性之心兜帽"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_27"
+      },
+      "description": {
+        "zhCN": "通灵学院：黑暗院长加丁的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 6,
+          "staminaPoints": 10,
+          "intellectPoints": 20,
+          "spiritPoints": 20
+        },
+        "defense": {
+          "armorPoints": 141
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16720",
+        "url": "https://www.wowhead.com/classic/cn/item=16720&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16722",
+      "name": {
+        "zhCN": "光铸护腕"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_14"
+      },
+      "description": {
+        "zhCN": "通灵学院：阿雷克斯·巴罗夫领主的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 7,
+          "agilityPoints": 4,
+          "staminaPoints": 10,
+          "spiritPoints": 8
+        },
+        "defense": {
+          "armorPoints": 261
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16722",
+        "url": "https://www.wowhead.com/classic/cn/item=16722&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16727",
+      "name": {
+        "zhCN": "光铸头盔"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_08"
+      },
+      "description": {
+        "zhCN": "通灵学院：黑暗院长加丁的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 13,
+          "agilityPoints": 6,
+          "staminaPoints": 20,
+          "intellectPoints": 14,
+          "spiritPoints": 10
+        },
+        "defense": {
+          "armorPoints": 526
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16727",
+        "url": "https://www.wowhead.com/classic/cn/item=16727&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16731",
+      "name": {
+        "zhCN": "勇气头盔"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_02"
+      },
+      "description": {
+        "zhCN": "通灵学院：黑暗院长加丁的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 15,
+          "agilityPoints": 9,
+          "staminaPoints": 23,
+          "spiritPoints": 8
+        },
+        "defense": {
+          "armorPoints": 526
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16731",
+        "url": "https://www.wowhead.com/classic/cn/item=16731&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16734",
+      "name": {
+        "zhCN": "勇气战靴"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_plate_03"
+      },
+      "description": {
+        "zhCN": "通灵学院：传令官基尔图诺斯的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 8,
+          "agilityPoints": 4,
+          "staminaPoints": 20,
+          "spiritPoints": 3
+        },
+        "defense": {
+          "armorPoints": 424
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16734",
+        "url": "https://www.wowhead.com/classic/cn/item=16734&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18680",
+      "name": {
+        "zhCN": "上古骨弓"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_bow_08"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 11
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 61,
+            "maximumPoints": 114
+          },
+          "speedSeconds": 2.8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18680",
+        "url": "https://www.wowhead.com/classic/cn/item=18680&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18681",
+      "name": {
+        "zhCN": "葬礼披肩"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_05"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 16
+        },
+        "defense": {
+          "armorPoints": 65
+        },
+        "spell": {
+          "spellPowerPoints": 20,
+          "healingPowerPoints": 20
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18681",
+        "url": "https://www.wowhead.com/classic/cn/item=18681&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18682",
+      "name": {
+        "zhCN": "食尸鬼皮护腿"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_02"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 20,
+          "intellectPoints": 8,
+          "spiritPoints": 8
+        },
+        "defense": {
+          "armorPoints": 150
+        },
+        "spell": {
+          "healingPowerPoints": 44
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18682",
+        "url": "https://www.wowhead.com/classic/cn/item=18682&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18683",
+      "name": {
+        "zhCN": "薄暮之锤"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "rogue", "priest", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_hammer_13"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 7,
+          "staminaPoints": 12
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 70,
+            "maximumPoints": 131
+          },
+          "speedSeconds": 2.5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18683",
+        "url": "https://www.wowhead.com/classic/cn/item=18683&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18684",
+      "name": {
+        "zhCN": "白玛瑙戒指"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_15"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18684",
+        "url": "https://www.wowhead.com/classic/cn/item=18684&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18686",
+      "name": {
+        "zhCN": "骨魔护肩"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_03"
+      },
+      "description": {
+        "zhCN": "通灵学院：血骨傀儡的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 19,
+          "staminaPoints": 9,
+          "intellectPoints": 9
+        },
+        "defense": {
+          "armorPoints": 274
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18686",
+        "url": "https://www.wowhead.com/classic/cn/item=18686&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18689",
+      "name": {
+        "zhCN": "幽灵披风"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_20"
+      },
+      "description": {
+        "zhCN": "通灵学院：詹迪斯·巴罗夫的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 12,
+          "staminaPoints": 11
+        },
+        "defense": {
+          "armorPoints": 114
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18689",
+        "url": "https://www.wowhead.com/classic/cn/item=18689&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18690",
+      "name": {
+        "zhCN": "怨灵腿甲"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_04"
+      },
+      "description": {
+        "zhCN": "通灵学院：詹迪斯·巴罗夫的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 20
+        },
+        "defense": {
+          "armorPoints": 696,
+          "parryPercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18690",
+        "url": "https://www.wowhead.com/classic/cn/item=18690&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18691",
+      "name": {
+        "zhCN": "黑暗顾问坠饰"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_necklace_06"
+      },
+      "description": {
+        "zhCN": "通灵学院：维克图斯的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 8,
+          "intellectPoints": 7
+        },
+        "spell": {
+          "shadowSpellPowerPoints": 20
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18691",
+        "url": "https://www.wowhead.com/classic/cn/item=18691&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18692",
+      "name": {
+        "zhCN": "死亡骑士马靴"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_plate_08"
+      },
+      "description": {
+        "zhCN": "通灵学院：马杜克·布莱克波尔的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 11,
+          "staminaPoints": 11,
+          "intellectPoints": 11,
+          "spiritPoints": 9
+        },
+        "defense": {
+          "armorPoints": 424
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18692",
+        "url": "https://www.wowhead.com/classic/cn/item=18692&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18693",
+      "name": {
+        "zhCN": "寒冷护手"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_16"
+      },
+      "description": {
+        "zhCN": "通灵学院：莱斯·霜语的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12,
+          "intellectPoints": 12,
+          "spiritPoints": 9
+        },
+        "defense": {
+          "armorPoints": 55
+        },
+        "spell": {
+          "frostSpellPowerPoints": 17
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18693",
+        "url": "https://www.wowhead.com/classic/cn/item=18693&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18694",
+      "name": {
+        "zhCN": "暗影锁甲护胫"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_01"
+      },
+      "description": {
+        "zhCN": "通灵学院：莱斯·霜语的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 22
+        },
+        "defense": {
+          "armorPoints": 251
+        },
+        "resistances": {
+          "shadowPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18694",
+        "url": "https://www.wowhead.com/classic/cn/item=18694&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18695",
+      "name": {
+        "zhCN": "锢法宝典"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_book_06"
+      },
+      "description": {
+        "zhCN": "通灵学院：莱斯·霜语的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 6,
+          "intellectPoints": 17,
+          "spiritPoints": 3
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18695",
+        "url": "https://www.wowhead.com/classic/cn/item=18695&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18696",
+      "name": {
+        "zhCN": "无序符文盾"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shield_02"
+      },
+      "description": {
+        "zhCN": "通灵学院：莱斯·霜语的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 8
+        },
+        "defense": {
+          "armorPoints": 2121,
+          "blockValuePoints": 63
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18696",
+        "url": "https://www.wowhead.com/classic/cn/item=18696&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22394",
+      "name": {
+        "zhCN": "混乱法杖"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_staff_29"
+      },
+      "description": {
+        "zhCN": "通灵学院：詹迪斯·巴罗夫的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 15,
+          "intellectPoints": 15,
+          "spiritPoints": 13
+        },
+        "spell": {
+          "healingPowerPoints": 35
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 89,
+            "maximumPoints": 134
+          },
+          "speedSeconds": 2.1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22394",
+        "url": "https://www.wowhead.com/classic/cn/item=22394&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22433",
+      "name": {
+        "zhCN": "莫里希奥的统御指环"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_16"
+      },
+      "description": {
+        "zhCN": "通灵学院：黑暗院长加丁的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 5
+        },
+        "spell": {
+          "spellPowerPoints": 11,
+          "healingPowerPoints": 11,
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22433",
+        "url": "https://www.wowhead.com/classic/cn/item=22433&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "23200",
+      "name": {
+        "zhCN": "持久图腾"
+      },
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_relics_totemoflife"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "23200",
+        "url": "https://www.wowhead.com/classic/cn/item=23200&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "23201",
+      "name": {
+        "zhCN": "神性圣契"
+      },
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_relics_libramofhope"
+      },
+      "description": {
+        "zhCN": "通灵学院：讲师玛丽希亚、瑟尔林·卡斯迪诺夫教授、博学者普克尔特、拉文尼亚、阿雷克斯·巴罗夫领主、伊露希亚·巴罗夫女士的装备掉落。"
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "23201",
+        "url": "https://www.wowhead.com/classic/cn/item=23201&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    }
+  ]
+}

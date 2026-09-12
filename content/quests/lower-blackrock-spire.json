@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/zone=1583/lower-blackrock-spire#quests",
+        "verifiedAt": "2026-09-12",
+        "notes": "核对黑石塔下层首领任务目标与真实装备奖励。"
+      },
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-12",
+        "notes": "阵营、报告物品和钥匙交互不模拟；以玩家主动安排对应首领胜利表达任务进度。"
+      }
+    ],
+    "balanceOverrides": [
+      {
+        "fields": ["quests[].completion", "quests[].rewards.experienceFraction"],
+        "reason": "将副本内可确定的首领目标压缩为 Encounter 胜利，保留经典装备奖励。",
+        "decidedAt": "2026-09-12"
+      }
+    ]
+  },
+  "quests": [
+    {
+      "id": "lbrs_bishus_report",
+      "name": { "zhCN": "比修的报告" },
+      "description": { "zhCN": "主动深入黑石塔下层并完成报告目标。" },
+      "dungeonId": "lower_blackrock_spire",
+      "eligibility": { "minimumLevel": 55, "allowedClassIds": [] },
+      "completion": { "type": "encounter-victories", "encounterIds": ["lbrs_omokk"] },
+      "rewards": {
+        "experienceFraction": 0.9,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["15824", "15825", "15827"]
+      }
+    },
+    {
+      "id": "lbrs_omokk_girth",
+      "name": { "zhCN": "欧莫克的瘦身腰带" },
+      "description": { "zhCN": "击败欧莫克大王并取得任务所需的腰带。" },
+      "dungeonId": "lower_blackrock_spire",
+      "eligibility": { "minimumLevel": 55, "allowedClassIds": [] },
+      "completion": { "type": "encounter-victories", "encounterIds": ["lbrs_omokk"] },
+      "rewards": {
+        "experienceFraction": 0.8,
+        "funds": 0,
+        "fixedItemIds": ["13959"],
+        "itemChoiceIds": []
+      }
+    },
+    {
+      "id": "lbrs_voone_vice_grips",
+      "name": { "zhCN": "沃恩的邪恶之握" },
+      "description": { "zhCN": "击败指挥官沃恩并带回他的邪恶之握。" },
+      "dungeonId": "lower_blackrock_spire",
+      "eligibility": { "minimumLevel": 55, "allowedClassIds": [] },
+      "completion": { "type": "encounter-victories", "encounterIds": ["lbrs_voone"] },
+      "rewards": {
+        "experienceFraction": 0.8,
+        "funds": 0,
+        "fixedItemIds": ["13963"],
+        "itemChoiceIds": []
+      }
+    },
+    {
+      "id": "lbrs_voshgajin_strand",
+      "name": { "zhCN": "沃什加斯的绳索" },
+      "description": { "zhCN": "击败暗影猎手沃什加斯并取得绳索。" },
+      "dungeonId": "lower_blackrock_spire",
+      "eligibility": { "minimumLevel": 55, "allowedClassIds": [] },
+      "completion": { "type": "encounter-victories", "encounterIds": ["lbrs_vosh"] },
+      "rewards": {
+        "experienceFraction": 0.8,
+        "funds": 0,
+        "fixedItemIds": ["13962"],
+        "itemChoiceIds": []
+      }
+    },
+    {
+      "id": "lbrs_wyrmthalak_shackles",
+      "name": { "zhCN": "维姆萨拉克的镣铐" },
+      "description": { "zhCN": "击败维姆萨拉克并带回他的镣铐。" },
+      "dungeonId": "lower_blackrock_spire",
+      "eligibility": { "minimumLevel": 55, "allowedClassIds": [] },
+      "completion": { "type": "encounter-victories", "encounterIds": ["lbrs_wyrmthalak"] },
+      "rewards": {
+        "experienceFraction": 0.9,
+        "funds": 0,
+        "fixedItemIds": ["13958"],
+        "itemChoiceIds": []
+      }
+    },
+    {
+      "id": "lbrs_halycon_muzzle",
+      "name": { "zhCN": "哈雷肯的笼口" },
+      "description": { "zhCN": "击败哈雷肯并取得他的笼口。" },
+      "dungeonId": "lower_blackrock_spire",
+      "eligibility": { "minimumLevel": 55, "allowedClassIds": [] },
+      "completion": { "type": "encounter-victories", "encounterIds": ["lbrs_halycon"] },
+      "rewards": {
+        "experienceFraction": 0.8,
+        "funds": 0,
+        "fixedItemIds": ["13961"],
+        "itemChoiceIds": []
+      }
+    },
+    {
+      "id": "lbrs_mother_smolderweb_milk",
+      "name": { "zhCN": "蛛后的乳汁" },
+      "description": { "zhCN": "击败烟网蛛后并带回蛛后之乳。" },
+      "dungeonId": "lower_blackrock_spire",
+      "eligibility": { "minimumLevel": 55, "allowedClassIds": [] },
+      "completion": { "type": "encounter-victories", "encounterIds": ["lbrs_smolderweb"] },
+      "rewards": {
+        "experienceFraction": 0.7,
+        "funds": 0,
+        "fixedItemIds": ["15873"],
+        "itemChoiceIds": []
+      }
+    },
+    {
+      "id": "lbrs_warmaster_voone_gloves",
+      "name": { "zhCN": "沃恩的副官装备" },
+      "description": { "zhCN": "完成沃恩支路并从任务奖励中选择适合队伍的装备。" },
+      "dungeonId": "lower_blackrock_spire",
+      "eligibility": { "minimumLevel": 55, "allowedClassIds": [] },
+      "completion": { "type": "encounter-victories", "encounterIds": ["lbrs_voone"] },
+      "rewards": {
+        "experienceFraction": 0.7,
+        "funds": 0,
+        "fixedItemIds": [],
+        "itemChoiceIds": ["15858", "15859"]
+      }
+    },
+    {
+      "id": "lbrs_urok_prismcharm",
+      "name": { "zhCN": "乌洛克的棱彩护符" },
+      "description": { "zhCN": "主动完成乌洛克事件并取得棱石护符。" },
+      "dungeonId": "lower_blackrock_spire",
+      "eligibility": { "minimumLevel": 55, "allowedClassIds": [] },
+      "completion": { "type": "encounter-victories", "encounterIds": ["lbrs_doomhowl"] },
+      "rewards": {
+        "experienceFraction": 0.7,
+        "funds": 0,
+        "fixedItemIds": ["15867"],
+        "itemChoiceIds": []
+      }
+    }
+  ]
+}

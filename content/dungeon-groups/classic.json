@@ -54,7 +54,33 @@
       "name": { "zhCN": "厄运之槌分支" },
       "order": 10,
       "parentId": "raid_prep_dungeons_60",
-      "dungeonIds": ["dire_maul_east"]
+      "dungeonIds": ["dire_maul_east", "dire_maul_west", "dire_maul_north"]
+    },
+    {
+      "id": "scholomance_stratholme_branch",
+      "name": { "zhCN": "通灵学院与斯坦索姆分支" },
+      "order": 20,
+      "parentId": "raid_prep_dungeons_60",
+      "dungeonIds": ["scholomance", "stratholme_live", "stratholme_undead"]
+    },
+    {
+      "id": "blackrock_spire_branch",
+      "name": { "zhCN": "黑石塔分支" },
+      "order": 30,
+      "parentId": "raid_prep_dungeons_60",
+      "dungeonIds": ["lower_blackrock_spire"]
+    },
+    {
+      "id": "final_challenge",
+      "name": { "zhCN": "最终挑战" },
+      "order": 40
+    },
+    {
+      "id": "upper_blackrock_spire_final",
+      "name": { "zhCN": "上层黑石塔" },
+      "order": 10,
+      "parentId": "final_challenge",
+      "dungeonIds": ["upper_blackrock_spire"]
     }
   ]
 }

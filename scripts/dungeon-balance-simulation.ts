@@ -121,6 +121,7 @@ function routeSelection(content: ContentRegistry, dungeonId: DungeonId, variant:
             ...rareNodes.filter((node) => !groupedRareIds.has(node.id)).map((node) => node.id),
           ]
         : [],
+    routeVariantId: dungeon.routeVariants?.[0]?.id,
   };
 }
 
@@ -156,6 +157,7 @@ function runScenario(
       memberIds,
       selection.optional,
       selection.rare,
+      selection.routeVariantId,
     );
     if (!result.ok) throw new Error(result.issues.map((issue) => issue.message).join(" "));
     return result.preview;

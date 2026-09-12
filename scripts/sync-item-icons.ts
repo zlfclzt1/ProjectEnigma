@@ -7,8 +7,8 @@ const CONTENT_DIRECTORY = path.join(ROOT, "content", "items");
 const OUTPUT_DIRECTORY = path.join(ROOT, "public", "assets", "item-icons");
 const MANIFEST_PATH = path.join(OUTPUT_DIRECTORY, "manifest.json");
 const ICON_ORIGIN = "https://wow.zamimg.com/images/wow/icons/large";
-const EXPECTED_ITEM_COUNT = 601;
-const EXPECTED_ICON_COUNT = 359;
+const EXPECTED_ITEM_COUNT = 1047;
+const EXPECTED_ICON_COUNT = 490;
 const checkOnly = process.argv.includes("--check");
 
 interface ItemFile {
@@ -90,7 +90,7 @@ async function main(): Promise<void> {
   const manifest = {
     schemaVersion: 1,
     source: `${ICON_ORIGIN}/<icon-name>.jpg`,
-    generatedAt: "2026-09-11",
+    generatedAt: "2026-09-12",
     itemCount,
     count: icons.length,
     icons,

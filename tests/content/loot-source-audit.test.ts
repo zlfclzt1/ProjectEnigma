@@ -17,17 +17,22 @@ describe("loot source audit", () => {
 
   it("reports explicit no-equipment encounters without inventing loot", () => {
     const audit = auditLootSources(loadBrowserContentRegistry());
-    expect(audit.rows).toHaveLength(149);
+    expect(audit.rows).toHaveLength(215);
     expect(audit.lootTableCounts).toEqual({
-      "boss-drop": 128,
-      "route-completion": 0,
+      "boss-drop": 193,
+      "route-completion": 1,
       "quest-reward": 0,
       "world-drop": 0,
       "design-placeholder": 0,
     });
     expect(audit.encounterCounts["no-equipment"]).toBe(21);
-    expect(audit.questRewards).toHaveLength(55);
-    expect(audit.routeRewards).toEqual([]);
+    expect(audit.questRewards).toHaveLength(74);
+    expect(audit.routeRewards).toHaveLength(1);
+    expect(audit.routeRewards[0]).toMatchObject({
+      dungeonId: "dire_maul_north",
+      routeVariantId: "dire_maul_north_full_tribute",
+      category: "route-completion",
+    });
     expect(audit.bossQuestRewardOverlap).toEqual([]);
     expect(
       audit.rows.filter((row) => row.category === "no-equipment").map((row) => row.encounterId),
@@ -58,7 +63,7 @@ describe("loot source audit", () => {
 
     const report = renderLootSourceAudit(audit);
     expect(report).toContain("无装备掉落 21");
-    expect(report).toContain("成员副本任务：55，不同任务奖励装备：132");
+    expect(report).toContain("成员副本任务：74，不同任务奖励装备：145");
     expect(report).toContain("奥格弗林特（oggleflint） | — | 无装备掉落");
     expect(report).toContain("毁灭之力（rfc_power_to_destroy）");
   });

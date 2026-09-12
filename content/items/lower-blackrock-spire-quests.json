@@ -1,0 +1,487 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/",
+        "verifiedAt": "2026-09-11",
+        "notes": "核对黑石塔下层可由副本内胜利稳定结算的重要成员任务装备奖励，并通过逐件中文 XML 核对属性与图标。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "items": [
+    {
+      "id": "15824",
+      "name": {
+        "zhCN": "阿斯托里长袍"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_07"
+      },
+      "description": {
+        "zhCN": "黑石塔下层成员任务“比修的报告”装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 5,
+          "intellectPoints": 20,
+          "spiritPoints": 10
+        },
+        "defense": {
+          "armorPoints": 76
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "15824",
+        "url": "https://www.wowhead.com/classic/cn/item=15824&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "15825",
+      "name": {
+        "zhCN": "吊钩外套"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "chest",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_plate06"
+      },
+      "description": {
+        "zhCN": "黑石塔下层成员任务“比修的报告”装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 5,
+          "agilityPoints": 24
+        },
+        "defense": {
+          "armorPoints": 152
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "15825",
+        "url": "https://www.wowhead.com/classic/cn/item=15825&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "15827",
+      "name": {
+        "zhCN": "碧鳞胸甲"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "chest",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_chain_04"
+      },
+      "description": {
+        "zhCN": "黑石塔下层成员任务“比修的报告”装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 23,
+          "spiritPoints": 7
+        },
+        "defense": {
+          "armorPoints": 317
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "15827",
+        "url": "https://www.wowhead.com/classic/cn/item=15827&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13958",
+      "name": {
+        "zhCN": "维姆萨拉克的镣铐"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_04"
+      },
+      "description": {
+        "zhCN": "黑石塔下层成员任务“维姆萨拉克的镣铐”装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 9,
+          "spiritPoints": 15
+        },
+        "defense": {
+          "armorPoints": 37
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13958",
+        "url": "https://www.wowhead.com/classic/cn/item=13958&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13959",
+      "name": {
+        "zhCN": "欧莫克的瘦身腰带"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_13"
+      },
+      "description": {
+        "zhCN": "黑石塔下层成员任务“欧莫克的瘦身腰带”装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 15,
+          "staminaPoints": 9
+        },
+        "defense": {
+          "armorPoints": 353
+        },
+        "physical": {
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13959",
+        "url": "https://www.wowhead.com/classic/cn/item=13959&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13961",
+      "name": {
+        "zhCN": "哈雷肯的笼口"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_24"
+      },
+      "description": {
+        "zhCN": "黑石塔下层成员任务“哈雷肯的笼口”装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 22,
+          "spiritPoints": 5
+        },
+        "defense": {
+          "armorPoints": 127
+        },
+        "resistances": {
+          "arcanePoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13961",
+        "url": "https://www.wowhead.com/classic/cn/item=13961&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13962",
+      "name": {
+        "zhCN": "沃什加斯的绳索"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_15"
+      },
+      "description": {
+        "zhCN": "黑石塔下层成员任务“沃什加斯的绳索”装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 9,
+          "staminaPoints": 6
+        },
+        "defense": {
+          "armorPoints": 95,
+          "dodgePercent": 1
+        },
+        "physical": {
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13962",
+        "url": "https://www.wowhead.com/classic/cn/item=13962&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13963",
+      "name": {
+        "zhCN": "沃恩的邪恶之握"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_15"
+      },
+      "description": {
+        "zhCN": "黑石塔下层成员任务“沃恩的邪恶之握”装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 9,
+          "staminaPoints": 6
+        },
+        "defense": {
+          "armorPoints": 221
+        },
+        "physical": {
+          "hitPercent": 2
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13963",
+        "url": "https://www.wowhead.com/classic/cn/item=13963&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "15858",
+      "name": {
+        "zhCN": "乱风手套"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "hands",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_16"
+      },
+      "description": {
+        "zhCN": "黑石塔下层成员任务“乱风手套”装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "spiritPoints": 19
+        },
+        "defense": {
+          "armorPoints": 48
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "15858",
+        "url": "https://www.wowhead.com/classic/cn/item=15858&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "15859",
+      "name": {
+        "zhCN": "海港束带"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "waist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_23"
+      },
+      "description": {
+        "zhCN": "黑石塔下层成员任务“海港束带”装备奖励。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 8,
+          "intellectPoints": 8,
+          "spiritPoints": 13
+        },
+        "defense": {
+          "armorPoints": 179
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "15859",
+        "url": "https://www.wowhead.com/classic/cn/item=15859&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "15873",
+      "name": {
+        "zhCN": "约翰的无尽之杯"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_drink_03"
+      },
+      "description": {
+        "zhCN": "黑石塔下层成员任务“约翰的无尽之杯”装备奖励。"
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "15873",
+        "url": "https://www.wowhead.com/classic/cn/item=15873&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "15867",
+      "name": {
+        "zhCN": "棱石护符"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "uncommon",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_gem_variety_02"
+      },
+      "description": {
+        "zhCN": "黑石塔下层成员任务“棱石护符”装备奖励。"
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "15867",
+        "url": "https://www.wowhead.com/classic/cn/item=15867&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    }
+  ]
+}

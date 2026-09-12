@@ -1,0 +1,2112 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "url": "https://www.wowhead.com/classic/",
+        "verifiedAt": "2026-09-11",
+        "notes": "通过逐件中文 XML 核对斯坦索姆血色区装备属性、图标、品质与需求等级。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "items": [
+    {
+      "id": "12103",
+      "name": {
+        "zhCN": "秘术之星"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_talisman_08"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：巴纳扎尔的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 9,
+          "intellectPoints": 9,
+          "spiritPoints": 8
+        },
+        "spell": {
+          "hitPercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "12103",
+        "url": "https://www.wowhead.com/classic/cn/item=12103&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13348",
+      "name": {
+        "zhCN": "斩魔者"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_sword_14"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：巴纳扎尔的装备掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 163,
+            "maximumPoints": 246
+          },
+          "speedSeconds": 3.8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13348",
+        "url": "https://www.wowhead.com/classic/cn/item=13348&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13353",
+      "name": {
+        "zhCN": "亡者之书"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "epic",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_book_06"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：巴纳扎尔的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 8,
+          "intellectPoints": 15,
+          "spiritPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13353",
+        "url": "https://www.wowhead.com/classic/cn/item=13353&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13358",
+      "name": {
+        "zhCN": "巨龙之舌"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_24"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：巴纳扎尔的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 23,
+          "staminaPoints": 10
+        },
+        "defense": {
+          "armorPoints": 132
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13358",
+        "url": "https://www.wowhead.com/classic/cn/item=13358&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13359",
+      "name": {
+        "zhCN": "暴君之冠"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_03"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：巴纳扎尔的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 20,
+          "spiritPoints": -10
+        },
+        "defense": {
+          "armorPoints": 301
+        },
+        "physical": {
+          "attackPowerPoints": 40,
+          "rangedAttackPowerPoints": 40,
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13359",
+        "url": "https://www.wowhead.com/classic/cn/item=13359&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13360",
+      "name": {
+        "zhCN": "精灵法师的礼物"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_shortblade_15"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：巴纳扎尔的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 5,
+          "intellectPoints": 10,
+          "spiritPoints": 6
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 43,
+            "maximumPoints": 81
+          },
+          "speedSeconds": 1.5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13360",
+        "url": "https://www.wowhead.com/classic/cn/item=13360&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13369",
+      "name": {
+        "zhCN": "火焰远行之靴"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_05"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：巴纳扎尔的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "spiritPoints": 5
+        },
+        "defense": {
+          "armorPoints": 61
+        },
+        "spell": {
+          "fireSpellPowerPoints": 29
+        },
+        "resistances": {
+          "firePoints": 15
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13369",
+        "url": "https://www.wowhead.com/classic/cn/item=13369&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13378",
+      "name": {
+        "zhCN": "百灵上衣"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_cloth_38"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：弗雷斯特恩的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 13,
+          "agilityPoints": 13,
+          "staminaPoints": 13,
+          "intellectPoints": 13,
+          "spiritPoints": 13
+        },
+        "defense": {
+          "armorPoints": 165
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13378",
+        "url": "https://www.wowhead.com/classic/cn/item=13378&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13379",
+      "name": {
+        "zhCN": "烈焰短笛"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_flute_01"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：弗雷斯特恩的装备掉落。"
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13379",
+        "url": "https://www.wowhead.com/classic/cn/item=13379&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13380",
+      "name": {
+        "zhCN": "威利的便携式榴弹炮"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_rifle_07"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：炮手威利的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 9
+        },
+        "physical": {
+          "attackPowerPoints": 8,
+          "rangedAttackPowerPoints": 8
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 63,
+            "maximumPoints": 118
+          },
+          "speedSeconds": 2.9
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13380",
+        "url": "https://www.wowhead.com/classic/cn/item=13380&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13381",
+      "name": {
+        "zhCN": "炮手长靴"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_plate_09"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：炮手威利的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 10,
+          "staminaPoints": 21
+        },
+        "defense": {
+          "armorPoints": 438
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13381",
+        "url": "https://www.wowhead.com/classic/cn/item=13381&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13382",
+      "name": {
+        "zhCN": "便携火炮"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "trinket1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_bomb_04"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：炮手威利的装备掉落。"
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13382",
+        "url": "https://www.wowhead.com/classic/cn/item=13382&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13383",
+      "name": {
+        "zhCN": "吟游诗人热裤"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_14"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：弗雷斯特恩的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12,
+          "intellectPoints": 10
+        },
+        "defense": {
+          "armorPoints": 301
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13383",
+        "url": "https://www.wowhead.com/classic/cn/item=13383&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13384",
+      "name": {
+        "zhCN": "彩虹束带"
+      },
+      "itemLevel": 58,
+      "requiredLevel": 53,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_30"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：弗雷斯特恩的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 10,
+          "agilityPoints": 9,
+          "staminaPoints": 10,
+          "intellectPoints": 10,
+          "spiritPoints": 9
+        },
+        "defense": {
+          "armorPoints": 341
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13384",
+        "url": "https://www.wowhead.com/classic/cn/item=13384&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13385",
+      "name": {
+        "zhCN": "知识宝典"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "offHand",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_book_05"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：档案管理员加尔福特的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 8,
+          "agilityPoints": 8,
+          "staminaPoints": 8,
+          "intellectPoints": 8,
+          "spiritPoints": 8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13385",
+        "url": "https://www.wowhead.com/classic/cn/item=13385&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13386",
+      "name": {
+        "zhCN": "档案员斗篷"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "back",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_cape_19"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：档案管理员加尔福特的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 43
+        },
+        "spell": {
+          "manaRegenPer5Seconds": 4
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13386",
+        "url": "https://www.wowhead.com/classic/cn/item=13386&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13387",
+      "name": {
+        "zhCN": "远见束带"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_21"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：档案管理员加尔福特的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 202
+        },
+        "spell": {
+          "healthRegenPer5Seconds": 5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13387",
+        "url": "https://www.wowhead.com/classic/cn/item=13387&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13388",
+      "name": {
+        "zhCN": "邮差外套"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_leather_10"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：邮差马龙的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 13,
+          "intellectPoints": 20,
+          "spiritPoints": 10
+        },
+        "defense": {
+          "armorPoints": 87
+        },
+        "spell": {
+          "spellPowerPoints": 15,
+          "healingPowerPoints": 15
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13388",
+        "url": "https://www.wowhead.com/classic/cn/item=13388&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13389",
+      "name": {
+        "zhCN": "邮差长裤"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "legs",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_pants_06"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：邮差马龙的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12,
+          "intellectPoints": 20,
+          "spiritPoints": 20
+        },
+        "defense": {
+          "armorPoints": 76
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13389",
+        "url": "https://www.wowhead.com/classic/cn/item=13389&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13390",
+      "name": {
+        "zhCN": "邮差头环"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_bandage_15"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：邮差马龙的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 25,
+          "spiritPoints": 10
+        },
+        "defense": {
+          "armorPoints": 70
+        },
+        "spell": {
+          "spellPowerPoints": 14,
+          "healingPowerPoints": 14
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13390",
+        "url": "https://www.wowhead.com/classic/cn/item=13390&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13391",
+      "name": {
+        "zhCN": "邮差的布靴"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_02"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：邮差马龙的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 14,
+          "intellectPoints": 15,
+          "spiritPoints": 6
+        },
+        "defense": {
+          "armorPoints": 60
+        },
+        "spell": {
+          "spellPowerPoints": 7,
+          "healingPowerPoints": 7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13391",
+        "url": "https://www.wowhead.com/classic/cn/item=13391&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13392",
+      "name": {
+        "zhCN": "邮差徽记"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_23"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：邮差马龙的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 6,
+          "intellectPoints": 3,
+          "spiritPoints": 17
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13392",
+        "url": "https://www.wowhead.com/classic/cn/item=13392&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13393",
+      "name": {
+        "zhCN": "马龙之肘"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_mace_01"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：邮差马龙的装备掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 158,
+            "maximumPoints": 238
+          },
+          "speedSeconds": 3.8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13393",
+        "url": "https://www.wowhead.com/classic/cn/item=13393&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13394",
+      "name": {
+        "zhCN": "斯库尔的寒冷拥抱"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "chest",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_chest_chain_15"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：斯库尔的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 19,
+          "staminaPoints": 20
+        },
+        "defense": {
+          "armorPoints": 617,
+          "defenseSkillPoints": 6
+        },
+        "resistances": {
+          "frostPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13394",
+        "url": "https://www.wowhead.com/classic/cn/item=13394&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13395",
+      "name": {
+        "zhCN": "斯库尔的骨爪"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_27"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：斯库尔的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10
+        },
+        "defense": {
+          "armorPoints": 105
+        },
+        "physical": {
+          "attackPowerPoints": 40,
+          "rangedAttackPowerPoints": 40
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13395",
+        "url": "https://www.wowhead.com/classic/cn/item=13395&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13396",
+      "name": {
+        "zhCN": "斯库尔的苍白之触"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "ranged",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_bone_elfskull_01"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：斯库尔的装备掉落。"
+      },
+      "stats": {
+        "spell": {
+          "shadowSpellPowerPoints": 14
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13396",
+        "url": "https://www.wowhead.com/classic/cn/item=13396&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13400",
+      "name": {
+        "zhCN": "虐待者臂铠"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_17"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：悲惨的提米的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 6,
+          "staminaPoints": 7
+        },
+        "defense": {
+          "armorPoints": 270
+        },
+        "physical": {
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13400",
+        "url": "https://www.wowhead.com/classic/cn/item=13400&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13401",
+      "name": {
+        "zhCN": "提米的手"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "rogue", "priest", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_bone_elfskull_01"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：悲惨的提米的装备掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 50,
+            "maximumPoints": 94
+          },
+          "speedSeconds": 1.8
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13401",
+        "url": "https://www.wowhead.com/classic/cn/item=13401&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13402",
+      "name": {
+        "zhCN": "提米的靴子"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_01"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：悲惨的提米的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 17,
+          "staminaPoints": 11,
+          "intellectPoints": 11
+        },
+        "defense": {
+          "armorPoints": 240
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13402",
+        "url": "https://www.wowhead.com/classic/cn/item=13402&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13403",
+      "name": {
+        "zhCN": "肮脏的套索"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_02"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：悲惨的提米的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 9,
+          "intellectPoints": 17,
+          "spiritPoints": 10
+        },
+        "defense": {
+          "armorPoints": 47
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13403",
+        "url": "https://www.wowhead.com/classic/cn/item=13403&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "13404",
+      "name": {
+        "zhCN": "不可宽恕者的面具"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_misc_bandana_01"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：不可宽恕者的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12
+        },
+        "defense": {
+          "armorPoints": 132
+        },
+        "physical": {
+          "hitPercent": 2,
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13404",
+        "url": "https://www.wowhead.com/classic/cn/item=13404&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13405",
+      "name": {
+        "zhCN": "哀嚎肩甲"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_25"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：不可宽恕者的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 14,
+          "staminaPoints": 14
+        },
+        "defense": {
+          "armorPoints": 448,
+          "defenseSkillPoints": 3
+        },
+        "resistances": {
+          "shadowPoints": 10
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13405",
+        "url": "https://www.wowhead.com/classic/cn/item=13405&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13408",
+      "name": {
+        "zhCN": "破灵者"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_halberd_05"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：不可宽恕者的装备掉落。"
+      },
+      "stats": {
+        "weapon": {
+          "damage": {
+            "minimumPoints": 42,
+            "maximumPoints": 78
+          },
+          "speedSeconds": 1.6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13408",
+        "url": "https://www.wowhead.com/classic/cn/item=13408&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "13409",
+      "name": {
+        "zhCN": "泪泉护腕"
+      },
+      "itemLevel": 57,
+      "requiredLevel": 52,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_bracer_13"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：不可宽恕者的装备掉落。"
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 35
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "13409",
+        "url": "https://www.wowhead.com/classic/cn/item=13409&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16682",
+      "name": {
+        "zhCN": "博学者长靴"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["mage"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_02"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：弗雷斯特恩的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 9,
+          "intellectPoints": 14,
+          "spiritPoints": 14
+        },
+        "defense": {
+          "armorPoints": 58
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16682",
+        "url": "https://www.wowhead.com/classic/cn/item=16682&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16692",
+      "name": {
+        "zhCN": "虔诚护手"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_14"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：档案管理员加尔福特的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 9,
+          "intellectPoints": 10,
+          "spiritPoints": 17
+        },
+        "defense": {
+          "armorPoints": 52
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16692",
+        "url": "https://www.wowhead.com/classic/cn/item=16692&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16708",
+      "name": {
+        "zhCN": "迅影肩甲"
+      },
+      "itemLevel": 60,
+      "requiredLevel": 55,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["rogue"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_07"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：炮手威利的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 22,
+          "staminaPoints": 9
+        },
+        "defense": {
+          "armorPoints": 127
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16708",
+        "url": "https://www.wowhead.com/classic/cn/item=16708&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16717",
+      "name": {
+        "zhCN": "野性之心手套"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_17"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：不可宽恕者的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 9,
+          "spiritPoints": 21
+        },
+        "defense": {
+          "armorPoints": 105
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16717",
+        "url": "https://www.wowhead.com/classic/cn/item=16717&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16724",
+      "name": {
+        "zhCN": "光铸护手"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "hands",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_gauntlets_19"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：悲惨的提米的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 14,
+          "staminaPoints": 9,
+          "spiritPoints": 14
+        },
+        "defense": {
+          "armorPoints": 386
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16724",
+        "url": "https://www.wowhead.com/classic/cn/item=16724&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "16725",
+      "name": {
+        "zhCN": "光铸战靴"
+      },
+      "itemLevel": 59,
+      "requiredLevel": 54,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_plate_03"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：巴纳扎尔的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 8,
+          "staminaPoints": 18,
+          "spiritPoints": 9
+        },
+        "defense": {
+          "armorPoints": 424
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "16725",
+        "url": "https://www.wowhead.com/classic/cn/item=16725&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18716",
+      "name": {
+        "zhCN": "灰烬覆盖的靴子"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "feet",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_boots_08"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：档案管理员加尔福特的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "agilityPoints": 13,
+          "staminaPoints": 13
+        },
+        "defense": {
+          "armorPoints": 118,
+          "dodgePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18716",
+        "url": "https://www.wowhead.com/classic/cn/item=18716&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18717",
+      "name": {
+        "zhCN": "大十字军之锤"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_hammer_06"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：巴纳扎尔的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 10,
+          "intellectPoints": 26,
+          "spiritPoints": 9
+        },
+        "spell": {
+          "healingPowerPoints": 22
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 116,
+            "maximumPoints": 175
+          },
+          "speedSeconds": 2.7
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18717",
+        "url": "https://www.wowhead.com/classic/cn/item=18717&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18718",
+      "name": {
+        "zhCN": "大十字军的头盔"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "plate",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_10"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：巴纳扎尔的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "strengthPoints": 16,
+          "staminaPoints": 16,
+          "spiritPoints": 12
+        },
+        "defense": {
+          "armorPoints": 584
+        },
+        "resistances": {
+          "shadowPoints": 15
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18718",
+        "url": "https://www.wowhead.com/classic/cn/item=18718&xml",
+        "verifiedAt": "2026-09-11"
+      }
+    },
+    {
+      "id": "18720",
+      "name": {
+        "zhCN": "纳斯雷兹姆护肩"
+      },
+      "itemLevel": 63,
+      "requiredLevel": 58,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_23"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：巴纳扎尔的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "intellectPoints": 16,
+          "spiritPoints": 10
+        },
+        "defense": {
+          "armorPoints": 67
+        },
+        "spell": {
+          "criticalStrikePercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18720",
+        "url": "https://www.wowhead.com/classic/cn/item=18720&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "18721",
+      "name": {
+        "zhCN": "掩护束带"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "waist",
+      "armorType": "mail",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "paladin", "hunter", "shaman"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_belt_18"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：炮手威利的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 6,
+          "intellectPoints": 6,
+          "spiritPoints": 6
+        },
+        "defense": {
+          "armorPoints": 202
+        },
+        "spell": {
+          "spellPowerPoints": 23,
+          "healingPowerPoints": 23
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "18721",
+        "url": "https://www.wowhead.com/classic/cn/item=18721&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22334",
+      "name": {
+        "zhCN": "修复之戒"
+      },
+      "itemLevel": 62,
+      "requiredLevel": 57,
+      "quality": "rare",
+      "slot": "ring1",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_ring_05"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：巴纳扎尔的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 7,
+          "intellectPoints": 7,
+          "spiritPoints": 6
+        },
+        "spell": {
+          "healingPowerPoints": 31
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22334",
+        "url": "https://www.wowhead.com/classic/cn/item=22334&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22403",
+      "name": {
+        "zhCN": "珠光贝壳项链"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "neck",
+      "restrictions": {
+        "allowedClassIds": [],
+        "allowedRoles": []
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_jewelry_necklace_10"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：炮手威利的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 8,
+          "intellectPoints": 8
+        },
+        "spell": {
+          "spellPowerPoints": 9,
+          "healingPowerPoints": 9,
+          "hitPercent": 1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22403",
+        "url": "https://www.wowhead.com/classic/cn/item=22403&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22404",
+      "name": {
+        "zhCN": "威利的痒痒挠"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "mainHand",
+      "restrictions": {
+        "allowedClassIds": ["warrior", "hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_weapon_shortblade_16"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：炮手威利的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 12
+        },
+        "physical": {
+          "attackPowerPoints": 10,
+          "rangedAttackPowerPoints": 10
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 73,
+            "maximumPoints": 136
+          },
+          "speedSeconds": 2.6
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22404",
+        "url": "https://www.wowhead.com/classic/cn/item=22404&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22405",
+      "name": {
+        "zhCN": "血色十字军衬肩"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "shoulder",
+      "armorType": "cloth",
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_shoulder_02"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：炮手威利的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 11,
+          "intellectPoints": 11,
+          "spiritPoints": 12
+        },
+        "defense": {
+          "armorPoints": 65
+        },
+        "spell": {
+          "healingPowerPoints": 20
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22405",
+        "url": "https://www.wowhead.com/classic/cn/item=22405&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22406",
+      "name": {
+        "zhCN": "救赎"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "mainHand",
+      "twoHanded": true,
+      "restrictions": {
+        "allowedClassIds": ["priest", "mage", "warlock", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_staff_23"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：炮手威利的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "spiritPoints": 12
+        },
+        "spell": {
+          "healingPowerPoints": 66
+        },
+        "weapon": {
+          "damage": {
+            "minimumPoints": 87,
+            "maximumPoints": 132
+          },
+          "speedSeconds": 2.1
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22406",
+        "url": "https://www.wowhead.com/classic/cn/item=22406&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    },
+    {
+      "id": "22407",
+      "name": {
+        "zhCN": "新月头盔"
+      },
+      "itemLevel": 61,
+      "requiredLevel": 56,
+      "quality": "rare",
+      "slot": "head",
+      "armorType": "leather",
+      "restrictions": {
+        "allowedClassIds": ["hunter", "rogue", "shaman", "druid"],
+        "allowedRoles": ["tank", "healer", "dps"]
+      },
+      "icon": {
+        "kind": "database",
+        "name": "inv_helmet_41"
+      },
+      "description": {
+        "zhCN": "斯坦索姆血色区：炮手威利的装备掉落。"
+      },
+      "stats": {
+        "primary": {
+          "staminaPoints": 14,
+          "intellectPoints": 13,
+          "spiritPoints": 12
+        },
+        "defense": {
+          "armorPoints": 139
+        },
+        "spell": {
+          "spellPowerPoints": 23,
+          "healingPowerPoints": 23
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "22407",
+        "url": "https://www.wowhead.com/classic/cn/item=22407&xml",
+        "verifiedAt": "2026-09-11",
+        "notes": "原版使用、触发或特殊装备效果暂不进入常驻属性模型；保留真实物品用于任务、图鉴和装备选择。"
+      }
+    }
+  ]
+}

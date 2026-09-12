@@ -1,5 +1,6 @@
 import { autoAssignLoot } from "../src/application/commands/auto-assign-loot";
 import { recruitMemberCommand } from "../src/application/commands/recruit-member";
+import { settleCandidateGenerationCommand } from "../src/application/commands/generate-candidate";
 import { SettlementService } from "../src/application/services/settlement-service";
 import type { ContentRegistry } from "../src/content/registry";
 import type { DungeonDefinition } from "../src/content/schemas/dungeon";
@@ -25,7 +26,7 @@ import type { NumericSummary } from "./progression-simulation";
 const DAY_MS = 24 * 60 * 60 * 1_000;
 const REASONABLE_CLEAR_PROBABILITY = 0.55;
 const BOOST_CLEAR_PROBABILITY = 0.8;
-const TARGET_DUNGEON_ID = asBrandedId<"DungeonId">("blackrock_depths_shadowforge_city");
+const TARGET_DUNGEON_ID = asBrandedId<"DungeonId">("upper_blackrock_spire");
 const GRADUATION_REWARD_ID = asBrandedId<"CollectionRewardId">("zulfarrak_level_45_graduation");
 const QUEUE_UPGRADE_ID = asBrandedId<"GuildUpgradeId">("expedition_queue_5");
 const ZULFARRAK_ID = asBrandedId<"DungeonId">("zulfarrak");
@@ -109,7 +110,7 @@ export function simulatePostZulfarrakProgression(
   let attemptedDungeonRuns = 0;
   let completedDungeonRuns = 0;
   let failedDungeonRuns = 0;
-  let recruitedMemberId: MemberId | undefined;
+  const recruitedMemberIds: MemberId[] = [];
   let boostedRunCount = 0;
   let lootAssignments = 0;
   let lootSales = 0;
@@ -123,17 +124,35 @@ export function simulatePostZulfarrakProgression(
     currentTime = Math.max(currentTime, day * DAY_MS);
     daysElapsed = day;
     for (let action = 0; action < config.managementActionsPerDay; action += 1) {
-      if (!recruitedMemberId) recruitedMemberId = recruitNewcomer(state, content, currentTime);
+      // Let the natural recruitment timer refill candidates while the simulated guild advances.
+      settleCandidateGenerationCommand({ content, clock: { now: () => currentTime } }).execute(
+        state,
+      );
+      while (Object.keys(state.members).length < 10 && Object.keys(state.candidates).length > 0) {
+        const recruited = recruitNewcomer(state, content, currentTime);
+        if (!recruited) break;
+        recruitedMemberIds.push(recruited);
+      }
 
       let participantIds = coreMemberIds;
       let dungeon: DungeonDefinition | null = null;
-      if (recruitedMemberId && boostedRunCount === 0) {
-        participantIds = boostParty(state, content, coreMemberIds, recruitedMemberId);
-        dungeon = chooseBoostDungeon(state, content, participantIds, recruitedMemberId);
+      const firstRecruit = recruitedMemberIds[0];
+      if (firstRecruit && boostedRunCount === 0) {
+        participantIds = boostParty(state, content, coreMemberIds, firstRecruit);
+        dungeon = chooseBoostDungeon(state, content, participantIds, firstRecruit);
         if (dungeon) boostedRunCount += 1;
         else participantIds = coreMemberIds;
       }
-      dungeon ??= chooseExperienceDungeon(state, content, coreMemberIds);
+      const targetParty = Object.values(state.members).map((member) => member.id);
+      if (activitiesStarted === 0) {
+        dungeon = content.dungeonById.get(ZULFARRAK_ID) ?? null;
+      }
+      dungeon ??= chooseProgressionDungeon(
+        state,
+        content,
+        dungeonIsTargetUnlocked(state) ? targetParty : coreMemberIds,
+        coreMemberIds,
+      );
       if (!dungeon) {
         status = "content-cap";
         break outer;
@@ -146,6 +165,7 @@ export function simulatePostZulfarrakProgression(
         dungeon.id,
         participantIds,
         currentTime,
+        routeVariantIdFor(dungeon.id),
       );
       activitiesStarted += 1;
       attemptedDungeonIds.add(dungeon.id);
@@ -193,7 +213,7 @@ export function simulatePostZulfarrakProgression(
     attemptedDungeonRuns,
     completedDungeonRuns,
     failedDungeonRuns,
-    recruitedMemberCount: recruitedMemberId ? 1 : 0,
+    recruitedMemberCount: recruitedMemberIds.length,
     boostedRunCount,
     lootAssignments,
     lootSales,
@@ -258,6 +278,7 @@ function startExpedition(
   dungeonId: DungeonId,
   participantIds: readonly MemberId[],
   now: number,
+  routeVariantId?: import("../src/domain/shared/ids").DungeonRouteVariantId,
 ): ExpeditionActivity {
   const ids = new LocalIdGenerator(state.ids);
   const random = new SeededRandomSource(state.random);
@@ -269,6 +290,7 @@ function startExpedition(
       participantIds,
       requestedRuns: getExpeditionRunCapacity(state, content),
       selectedOptionalNodeIds: [],
+      ...(routeVariantId ? { routeVariantId } : {}),
     },
     now,
     { ids, random },
@@ -281,23 +303,47 @@ function startExpedition(
   return state.activities[result.activity.id] as ExpeditionActivity;
 }
 
-function chooseExperienceDungeon(
+function chooseProgressionDungeon(
   state: GameState,
   content: ContentRegistry,
   memberIds: readonly MemberId[],
+  eligibilityMemberIds: readonly MemberId[] = memberIds,
 ): DungeonDefinition | null {
   const candidates = state.guild.unlockedDungeonIds.flatMap((dungeonId) => {
     const dungeon = content.dungeonById.get(dungeonId);
-    if (!dungeon || dungeon.minimumLevel > minimumLevel(state, memberIds)) return [];
+    if (!dungeon || dungeon.minimumLevel > minimumLevel(state, eligibilityMemberIds)) return [];
     const totalExperience = Object.values(
       experienceFractions(state, content, dungeon.id, memberIds),
     ).reduce<number>((sum, fraction) => sum + (fraction ?? 0), 0);
-    if (totalExperience <= 0) return [];
-    const preview = evaluateExpeditionParty(state, content, dungeon.id, memberIds);
+    const cleared = (state.history.dungeonClearCounts[dungeon.id] ?? 0) > 0;
+    // First clear every newly unlocked node, even after the core reaches level 60 and
+    // the normal experience curve reaches zero. This models deliberate progression
+    // planning instead of getting stuck replaying the last source of experience.
+    if (cleared && totalExperience <= 0) return [];
+    const preview = evaluateExpeditionParty(
+      state,
+      content,
+      dungeon.id,
+      memberIds,
+      [],
+      [],
+      routeVariantIdFor(dungeon.id),
+    );
     if (!preview.ok) return [];
     return [{ dungeon, clearProbability: preview.preview.clearProbability }];
   });
   if (candidates.length === 0) return null;
+  const firstClearCandidates = candidates.filter(
+    ({ dungeon }) => (state.history.dungeonClearCounts[dungeon.id] ?? 0) === 0,
+  );
+  if (firstClearCandidates.length > 0) {
+    return [...firstClearCandidates].sort(
+      (left, right) =>
+        left.dungeon.recommendedLevel - right.dungeon.recommendedLevel ||
+        right.clearProbability - left.clearProbability ||
+        left.dungeon.id.localeCompare(right.dungeon.id),
+    )[0]!.dungeon;
+  }
   const reasonable = candidates.filter(
     (candidate) => candidate.clearProbability >= REASONABLE_CLEAR_PROBABILITY,
   );
@@ -310,6 +356,18 @@ function chooseExperienceDungeon(
       right.clearProbability - left.clearProbability ||
       left.dungeon.id.localeCompare(right.dungeon.id),
   )[0]!.dungeon;
+}
+
+function routeVariantIdFor(
+  dungeonId: DungeonId,
+): import("../src/domain/shared/ids").DungeonRouteVariantId | undefined {
+  return dungeonId === asBrandedId<"DungeonId">("dire_maul_north")
+    ? asBrandedId<"DungeonRouteVariantId">("dire_maul_north_normal")
+    : undefined;
+}
+
+function dungeonIsTargetUnlocked(state: GameState): boolean {
+  return state.guild.unlockedDungeonIds.includes(TARGET_DUNGEON_ID);
 }
 
 function recruitNewcomer(
@@ -431,7 +489,7 @@ export interface PostZulfarrakProgressionBaseline {
     readonly normalRecruitment: "one-random-newcomer-boosted-once";
     readonly lootHandling: "auto-assign-after-each-player-scheduled-activity";
     readonly offlineIncome: "none-outside-player-scheduled-activities";
-    readonly expectedStop: "target-reached-at-shadowforge-city-current-scope-complete";
+    readonly expectedStop: "target-reached-at-upper-blackrock-spire-stage-complete";
   };
   readonly highestAvailableRecommendedLevel: number;
   readonly scenarios: readonly PostZulfarrakScenarioSummary[];
@@ -496,7 +554,7 @@ export function buildPostZulfarrakProgressionBaseline(
       normalRecruitment: "one-random-newcomer-boosted-once",
       lootHandling: "auto-assign-after-each-player-scheduled-activity",
       offlineIncome: "none-outside-player-scheduled-activities",
-      expectedStop: "target-reached-at-shadowforge-city-current-scope-complete",
+      expectedStop: "target-reached-at-upper-blackrock-spire-stage-complete",
     },
     highestAvailableRecommendedLevel: Math.max(
       ...content.dungeons.map((dungeon) => dungeon.recommendedLevel),
