@@ -11,6 +11,8 @@ import {
 import { LocalIdGenerator } from "../../infrastructure/ids/local-id-generator";
 import { SeededRandomSource } from "../../infrastructure/random/seeded-random-source";
 import type { ActivityValidationIssue } from "../../domain/activity/activity-handler";
+import { reserveStackFromGuildBank } from "../../domain/inventory/guild-bank-rules";
+import { recordEconomyEvent } from "../../domain/economy/economy-ledger";
 
 export class StartExpeditionError extends Error {
   constructor(readonly issues: readonly ActivityValidationIssue[]) {
@@ -29,7 +31,9 @@ export function startExpeditionCommand(
       const ids = new LocalIdGenerator(draft.ids);
       const random = new SeededRandomSource(draft.random);
       const registry = new ActivityRegistry();
-      registry.register(createExpeditionActivityHandler(dependencies.content));
+      registry.register(
+        createExpeditionActivityHandler(dependencies.content, draft.guild.supplyPlans ?? {}),
+      );
       const scheduler = new ActivityScheduler(registry);
       const result = scheduler.start<StartExpeditionRequest, ExpeditionActivity>(
         draft,
@@ -38,6 +42,23 @@ export function startExpeditionCommand(
         { ids, random },
       );
       if (result.status === "rejected") throw new StartExpeditionError(result.issues);
+      for (const entry of result.activity.supplySnapshot?.entries ?? []) {
+        if (entry.allocatedQuantity > 0) {
+          draft.guildBank = reserveStackFromGuildBank(
+            draft.guildBank,
+            entry.itemId,
+            entry.allocatedQuantity,
+          );
+          recordEconomyEvent(draft, {
+            kind: "supply-allocated",
+            source: "expedition-supply",
+            itemId: entry.itemId,
+            quantity: entry.allocatedQuantity,
+            activityId: result.activity.id,
+            occurredAt: dependencies.clock.now(),
+          });
+        }
+      }
       draft.ids = ids.snapshot();
       draft.random = random.snapshot();
       return result.activity;

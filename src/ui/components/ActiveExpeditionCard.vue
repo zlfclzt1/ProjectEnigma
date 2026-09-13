@@ -31,6 +31,24 @@ function remainingLabel(milliseconds: number | undefined): string {
       <i :style="{ width: `${activity.progressPercent}%` }" />
     </div>
     <p class="members">{{ activity.memberNames.join(" · ") }}</p>
+    <div v-if="activity.supply" class="supply-summary">
+      <span>补给</span>
+      <span>稳定 {{ (activity.supply.channels.stability * 100).toFixed(0) }}%</span>
+      <span>效率 {{ (activity.supply.channels.efficiency * 100).toFixed(0) }}%</span>
+      <span>探索 {{ (activity.supply.channels.exploration * 100).toFixed(0) }}%</span>
+      <span v-if="activity.supply.routeChoiceCredits"
+        >路线权 {{ activity.supply.routeChoiceCredits }}</span
+      >
+      <small>
+        {{ activity.supply.entries.reduce((sum, entry) => sum + entry.consumedQuantity, 0) }} /
+        {{ activity.supply.entries.reduce((sum, entry) => sum + entry.allocatedQuantity, 0) }}
+        已消耗
+        <template v-if="activity.supply.entries.some((entry) => entry.releasedQuantity > 0)">
+          · 释放
+          {{ activity.supply.entries.reduce((sum, entry) => sum + entry.releasedQuantity, 0) }}
+        </template>
+      </small>
+    </div>
     <BossRoute :stages="activity.route" />
     <ul v-if="activity.rareEvents.length" class="rare-events" aria-label="稀有首领动态">
       <li v-for="event in activity.rareEvents" :key="event.id" :data-outcome="event.outcome">
@@ -95,6 +113,22 @@ header p,
   margin: 0;
   color: #8d8475;
   font-size: 0.68rem;
+}
+.supply-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  align-items: center;
+  padding: 7px 9px;
+  margin: 8px 0;
+  border: 1px solid #3d3528;
+  background: #15120e;
+  color: #bd9b62;
+  font-size: 0.62rem;
+}
+.supply-summary small {
+  margin-left: auto;
+  color: #8e806b;
 }
 time {
   color: #edc25f;

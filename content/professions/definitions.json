@@ -1,0 +1,567 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-12",
+        "notes": "专业系统首批启用采矿与锻造；完整 Classic 专业资料按实现计划逐步补齐。"
+      }
+    ]
+  },
+  "professions": [
+    {
+      "id": "mining",
+      "kind": "primary",
+      "status": "available",
+      "name": { "zhCN": "采矿", "enUS": "Mining" },
+      "maxSkill": 300,
+      "trainingTiers": [
+        {
+          "id": "mining-apprentice",
+          "rank": 1,
+          "name": { "zhCN": "采矿学徒", "enUS": "Apprentice Mining" },
+          "skillCap": 75,
+          "cost": 0,
+          "availability": "available"
+        },
+        {
+          "id": "mining-journeyman",
+          "rank": 2,
+          "name": { "zhCN": "采矿熟练工", "enUS": "Journeyman Mining" },
+          "skillCap": 150,
+          "cost": 250,
+          "requiredMemberLevel": 10,
+          "availability": "available"
+        },
+        {
+          "id": "mining-expert",
+          "rank": 3,
+          "name": { "zhCN": "采矿专家", "enUS": "Expert Mining" },
+          "skillCap": 225,
+          "cost": 500,
+          "requiredMemberLevel": 20,
+          "availability": "available"
+        },
+        {
+          "id": "mining-artisan",
+          "rank": 4,
+          "name": { "zhCN": "采矿大师", "enUS": "Artisan Mining" },
+          "skillCap": 300,
+          "cost": 1000,
+          "requiredMemberLevel": 35,
+          "availability": "available"
+        }
+      ],
+      "facilityId": "mining-camp",
+      "sources": [{ "type": "trainer", "sourceId": "classic-mining-trainer" }]
+    },
+    {
+      "id": "blacksmithing",
+      "kind": "primary",
+      "status": "available",
+      "name": { "zhCN": "锻造", "enUS": "Blacksmithing" },
+      "maxSkill": 300,
+      "trainingTiers": [
+        {
+          "id": "blacksmithing-apprentice",
+          "rank": 1,
+          "name": { "zhCN": "锻造学徒", "enUS": "Apprentice Blacksmithing" },
+          "skillCap": 75,
+          "cost": 0,
+          "availability": "available"
+        },
+        {
+          "id": "blacksmithing-journeyman",
+          "rank": 2,
+          "name": { "zhCN": "锻造熟练工", "enUS": "Journeyman Blacksmithing" },
+          "skillCap": 150,
+          "cost": 250,
+          "requiredMemberLevel": 10,
+          "availability": "available"
+        },
+        {
+          "id": "blacksmithing-expert",
+          "rank": 3,
+          "name": { "zhCN": "锻造专家", "enUS": "Expert Blacksmithing" },
+          "skillCap": 225,
+          "cost": 500,
+          "requiredMemberLevel": 20,
+          "availability": "available"
+        },
+        {
+          "id": "blacksmithing-artisan",
+          "rank": 4,
+          "name": { "zhCN": "锻造大师", "enUS": "Artisan Blacksmithing" },
+          "skillCap": 300,
+          "cost": 1000,
+          "requiredMemberLevel": 35,
+          "availability": "available"
+        }
+      ],
+      "facilityId": "blacksmith-forge",
+      "sources": [{ "type": "trainer", "sourceId": "classic-blacksmithing-trainer" }]
+    },
+    {
+      "id": "alchemy",
+      "kind": "primary",
+      "status": "preview",
+      "name": { "zhCN": "炼金术", "enUS": "Alchemy" },
+      "facilityId": "alchemy-lab",
+      "maxSkill": 300,
+      "trainingTiers": [
+        {
+          "id": "alchemy-apprentice-preview",
+          "rank": 1,
+          "name": { "zhCN": "炼金学徒", "enUS": "Apprentice Alchemy" },
+          "skillCap": 75,
+          "cost": 0,
+          "availability": "preview"
+        },
+        {
+          "id": "alchemy-journeyman-preview",
+          "rank": 2,
+          "name": { "zhCN": "炼金熟练工", "enUS": "Journeyman Alchemy" },
+          "skillCap": 150,
+          "cost": 0,
+          "requiredMemberLevel": 10,
+          "availability": "preview"
+        },
+        {
+          "id": "alchemy-expert-preview",
+          "rank": 3,
+          "name": { "zhCN": "炼金专家", "enUS": "Expert Alchemy" },
+          "skillCap": 225,
+          "cost": 0,
+          "requiredMemberLevel": 20,
+          "availability": "preview"
+        },
+        {
+          "id": "alchemy-artisan-preview",
+          "rank": 4,
+          "name": { "zhCN": "炼金大师", "enUS": "Artisan Alchemy" },
+          "skillCap": 300,
+          "cost": 0,
+          "requiredMemberLevel": 35,
+          "availability": "preview"
+        }
+      ],
+      "sources": [{ "type": "design", "reason": "首批只启用采矿与锻造" }]
+    },
+    {
+      "id": "herbalism",
+      "kind": "primary",
+      "status": "preview",
+      "name": { "zhCN": "草药学", "enUS": "Herbalism" },
+      "facilityId": "herbalism-garden",
+      "maxSkill": 300,
+      "trainingTiers": [
+        {
+          "id": "herbalism-apprentice-preview",
+          "rank": 1,
+          "name": { "zhCN": "草药学徒", "enUS": "Apprentice Herbalism" },
+          "skillCap": 75,
+          "cost": 0,
+          "availability": "preview"
+        },
+        {
+          "id": "herbalism-journeyman-preview",
+          "rank": 2,
+          "name": { "zhCN": "草药熟练工", "enUS": "Journeyman Herbalism" },
+          "skillCap": 150,
+          "cost": 0,
+          "requiredMemberLevel": 10,
+          "availability": "preview"
+        },
+        {
+          "id": "herbalism-expert-preview",
+          "rank": 3,
+          "name": { "zhCN": "草药专家", "enUS": "Expert Herbalism" },
+          "skillCap": 225,
+          "cost": 0,
+          "requiredMemberLevel": 20,
+          "availability": "preview"
+        },
+        {
+          "id": "herbalism-artisan-preview",
+          "rank": 4,
+          "name": { "zhCN": "草药大师", "enUS": "Artisan Herbalism" },
+          "skillCap": 300,
+          "cost": 0,
+          "requiredMemberLevel": 35,
+          "availability": "preview"
+        }
+      ],
+      "sources": [{ "type": "design", "reason": "Classic 专业框架预览内容" }]
+    },
+    {
+      "id": "enchanting",
+      "kind": "primary",
+      "status": "preview",
+      "name": { "zhCN": "附魔", "enUS": "Enchanting" },
+      "facilityId": "enchanting-sanctum",
+      "maxSkill": 300,
+      "trainingTiers": [
+        {
+          "id": "enchanting-apprentice-preview",
+          "rank": 1,
+          "name": { "zhCN": "附魔学徒", "enUS": "Apprentice Enchanting" },
+          "skillCap": 75,
+          "cost": 0,
+          "availability": "preview"
+        },
+        {
+          "id": "enchanting-journeyman-preview",
+          "rank": 2,
+          "name": { "zhCN": "附魔熟练工", "enUS": "Journeyman Enchanting" },
+          "skillCap": 150,
+          "cost": 0,
+          "requiredMemberLevel": 10,
+          "availability": "preview"
+        },
+        {
+          "id": "enchanting-expert-preview",
+          "rank": 3,
+          "name": { "zhCN": "附魔专家", "enUS": "Expert Enchanting" },
+          "skillCap": 225,
+          "cost": 0,
+          "requiredMemberLevel": 20,
+          "availability": "preview"
+        },
+        {
+          "id": "enchanting-artisan-preview",
+          "rank": 4,
+          "name": { "zhCN": "附魔大师", "enUS": "Artisan Enchanting" },
+          "skillCap": 300,
+          "cost": 0,
+          "requiredMemberLevel": 35,
+          "availability": "preview"
+        }
+      ],
+      "sources": [{ "type": "design", "reason": "Classic 专业框架预览内容" }]
+    },
+    {
+      "id": "engineering",
+      "kind": "primary",
+      "status": "preview",
+      "name": { "zhCN": "工程学", "enUS": "Engineering" },
+      "facilityId": "engineering-workshop",
+      "maxSkill": 300,
+      "trainingTiers": [
+        {
+          "id": "engineering-apprentice-preview",
+          "rank": 1,
+          "name": { "zhCN": "工程学徒", "enUS": "Apprentice Engineering" },
+          "skillCap": 75,
+          "cost": 0,
+          "availability": "preview"
+        },
+        {
+          "id": "engineering-journeyman-preview",
+          "rank": 2,
+          "name": { "zhCN": "工程熟练工", "enUS": "Journeyman Engineering" },
+          "skillCap": 150,
+          "cost": 0,
+          "requiredMemberLevel": 10,
+          "availability": "preview"
+        },
+        {
+          "id": "engineering-expert-preview",
+          "rank": 3,
+          "name": { "zhCN": "工程专家", "enUS": "Expert Engineering" },
+          "skillCap": 225,
+          "cost": 0,
+          "requiredMemberLevel": 20,
+          "availability": "preview"
+        },
+        {
+          "id": "engineering-artisan-preview",
+          "rank": 4,
+          "name": { "zhCN": "工程大师", "enUS": "Artisan Engineering" },
+          "skillCap": 300,
+          "cost": 0,
+          "requiredMemberLevel": 35,
+          "availability": "preview"
+        }
+      ],
+      "sources": [{ "type": "design", "reason": "Classic 专业框架预览内容" }]
+    },
+    {
+      "id": "leatherworking",
+      "kind": "primary",
+      "status": "preview",
+      "name": { "zhCN": "制皮", "enUS": "Leatherworking" },
+      "facilityId": "leatherworking-station",
+      "maxSkill": 300,
+      "trainingTiers": [
+        {
+          "id": "leatherworking-apprentice-preview",
+          "rank": 1,
+          "name": { "zhCN": "制皮学徒", "enUS": "Apprentice Leatherworking" },
+          "skillCap": 75,
+          "cost": 0,
+          "availability": "preview"
+        },
+        {
+          "id": "leatherworking-journeyman-preview",
+          "rank": 2,
+          "name": { "zhCN": "制皮熟练工", "enUS": "Journeyman Leatherworking" },
+          "skillCap": 150,
+          "cost": 0,
+          "requiredMemberLevel": 10,
+          "availability": "preview"
+        },
+        {
+          "id": "leatherworking-expert-preview",
+          "rank": 3,
+          "name": { "zhCN": "制皮专家", "enUS": "Expert Leatherworking" },
+          "skillCap": 225,
+          "cost": 0,
+          "requiredMemberLevel": 20,
+          "availability": "preview"
+        },
+        {
+          "id": "leatherworking-artisan-preview",
+          "rank": 4,
+          "name": { "zhCN": "制皮大师", "enUS": "Artisan Leatherworking" },
+          "skillCap": 300,
+          "cost": 0,
+          "requiredMemberLevel": 35,
+          "availability": "preview"
+        }
+      ],
+      "sources": [{ "type": "design", "reason": "Classic 专业框架预览内容" }]
+    },
+    {
+      "id": "tailoring",
+      "kind": "primary",
+      "status": "preview",
+      "name": { "zhCN": "裁缝", "enUS": "Tailoring" },
+      "facilityId": "tailoring-loom",
+      "maxSkill": 300,
+      "trainingTiers": [
+        {
+          "id": "tailoring-apprentice-preview",
+          "rank": 1,
+          "name": { "zhCN": "裁缝学徒", "enUS": "Apprentice Tailoring" },
+          "skillCap": 75,
+          "cost": 0,
+          "availability": "preview"
+        },
+        {
+          "id": "tailoring-journeyman-preview",
+          "rank": 2,
+          "name": { "zhCN": "裁缝熟练工", "enUS": "Journeyman Tailoring" },
+          "skillCap": 150,
+          "cost": 0,
+          "requiredMemberLevel": 10,
+          "availability": "preview"
+        },
+        {
+          "id": "tailoring-expert-preview",
+          "rank": 3,
+          "name": { "zhCN": "裁缝专家", "enUS": "Expert Tailoring" },
+          "skillCap": 225,
+          "cost": 0,
+          "requiredMemberLevel": 20,
+          "availability": "preview"
+        },
+        {
+          "id": "tailoring-artisan-preview",
+          "rank": 4,
+          "name": { "zhCN": "裁缝大师", "enUS": "Artisan Tailoring" },
+          "skillCap": 300,
+          "cost": 0,
+          "requiredMemberLevel": 35,
+          "availability": "preview"
+        }
+      ],
+      "sources": [{ "type": "design", "reason": "Classic 专业框架预览内容" }]
+    },
+    {
+      "id": "cooking",
+      "kind": "secondary",
+      "status": "preview",
+      "name": { "zhCN": "烹饪", "enUS": "Cooking" },
+      "facilityId": "cooking-fire",
+      "maxSkill": 300,
+      "trainingTiers": [
+        {
+          "id": "cooking-apprentice-preview",
+          "rank": 1,
+          "name": { "zhCN": "烹饪学徒", "enUS": "Apprentice Cooking" },
+          "skillCap": 75,
+          "cost": 0,
+          "availability": "preview"
+        },
+        {
+          "id": "cooking-journeyman-preview",
+          "rank": 2,
+          "name": { "zhCN": "烹饪熟练工", "enUS": "Journeyman Cooking" },
+          "skillCap": 150,
+          "cost": 0,
+          "requiredMemberLevel": 10,
+          "availability": "preview"
+        },
+        {
+          "id": "cooking-expert-preview",
+          "rank": 3,
+          "name": { "zhCN": "烹饪专家", "enUS": "Expert Cooking" },
+          "skillCap": 225,
+          "cost": 0,
+          "requiredMemberLevel": 20,
+          "availability": "preview"
+        },
+        {
+          "id": "cooking-artisan-preview",
+          "rank": 4,
+          "name": { "zhCN": "烹饪大师", "enUS": "Artisan Cooking" },
+          "skillCap": 300,
+          "cost": 0,
+          "requiredMemberLevel": 35,
+          "availability": "preview"
+        }
+      ],
+      "sources": [{ "type": "design", "reason": "Classic 专业框架预览内容" }]
+    },
+    {
+      "id": "first-aid",
+      "kind": "secondary",
+      "status": "preview",
+      "name": { "zhCN": "急救", "enUS": "First Aid" },
+      "facilityId": "first-aid-clinic",
+      "maxSkill": 300,
+      "trainingTiers": [
+        {
+          "id": "first-aid-apprentice-preview",
+          "rank": 1,
+          "name": { "zhCN": "急救学徒", "enUS": "Apprentice First Aid" },
+          "skillCap": 75,
+          "cost": 0,
+          "availability": "preview"
+        },
+        {
+          "id": "first-aid-journeyman-preview",
+          "rank": 2,
+          "name": { "zhCN": "急救熟练工", "enUS": "Journeyman First Aid" },
+          "skillCap": 150,
+          "cost": 0,
+          "requiredMemberLevel": 10,
+          "availability": "preview"
+        },
+        {
+          "id": "first-aid-expert-preview",
+          "rank": 3,
+          "name": { "zhCN": "急救专家", "enUS": "Expert First Aid" },
+          "skillCap": 225,
+          "cost": 0,
+          "requiredMemberLevel": 20,
+          "availability": "preview"
+        },
+        {
+          "id": "first-aid-artisan-preview",
+          "rank": 4,
+          "name": { "zhCN": "急救大师", "enUS": "Artisan First Aid" },
+          "skillCap": 300,
+          "cost": 0,
+          "requiredMemberLevel": 35,
+          "availability": "preview"
+        }
+      ],
+      "sources": [{ "type": "design", "reason": "Classic 专业框架预览内容" }]
+    },
+    {
+      "id": "fishing",
+      "kind": "secondary",
+      "status": "preview",
+      "name": { "zhCN": "钓鱼", "enUS": "Fishing" },
+      "facilityId": "fishing-pier",
+      "maxSkill": 300,
+      "trainingTiers": [
+        {
+          "id": "fishing-apprentice-preview",
+          "rank": 1,
+          "name": { "zhCN": "钓鱼学徒", "enUS": "Apprentice Fishing" },
+          "skillCap": 75,
+          "cost": 0,
+          "availability": "preview"
+        },
+        {
+          "id": "fishing-journeyman-preview",
+          "rank": 2,
+          "name": { "zhCN": "钓鱼熟练工", "enUS": "Journeyman Fishing" },
+          "skillCap": 150,
+          "cost": 0,
+          "requiredMemberLevel": 10,
+          "availability": "preview"
+        },
+        {
+          "id": "fishing-expert-preview",
+          "rank": 3,
+          "name": { "zhCN": "钓鱼专家", "enUS": "Expert Fishing" },
+          "skillCap": 225,
+          "cost": 0,
+          "requiredMemberLevel": 20,
+          "availability": "preview"
+        },
+        {
+          "id": "fishing-artisan-preview",
+          "rank": 4,
+          "name": { "zhCN": "钓鱼大师", "enUS": "Artisan Fishing" },
+          "skillCap": 300,
+          "cost": 0,
+          "requiredMemberLevel": 35,
+          "availability": "preview"
+        }
+      ],
+      "sources": [{ "type": "design", "reason": "Classic 专业框架预览内容" }]
+    },
+    {
+      "id": "skinning",
+      "kind": "primary",
+      "status": "preview",
+      "name": { "zhCN": "剥皮", "enUS": "Skinning" },
+      "facilityId": "skinning-camp",
+      "maxSkill": 300,
+      "trainingTiers": [
+        {
+          "id": "skinning-apprentice-preview",
+          "rank": 1,
+          "name": { "zhCN": "剥皮学徒", "enUS": "Apprentice Skinning" },
+          "skillCap": 75,
+          "cost": 0,
+          "availability": "preview"
+        },
+        {
+          "id": "skinning-journeyman-preview",
+          "rank": 2,
+          "name": { "zhCN": "剥皮熟练工", "enUS": "Journeyman Skinning" },
+          "skillCap": 150,
+          "cost": 0,
+          "requiredMemberLevel": 10,
+          "availability": "preview"
+        },
+        {
+          "id": "skinning-expert-preview",
+          "rank": 3,
+          "name": { "zhCN": "剥皮专家", "enUS": "Expert Skinning" },
+          "skillCap": 225,
+          "cost": 0,
+          "requiredMemberLevel": 20,
+          "availability": "preview"
+        },
+        {
+          "id": "skinning-artisan-preview",
+          "rank": 4,
+          "name": { "zhCN": "剥皮大师", "enUS": "Artisan Skinning" },
+          "skillCap": 300,
+          "cost": 0,
+          "requiredMemberLevel": 35,
+          "availability": "preview"
+        }
+      ],
+      "sources": [{ "type": "trainer", "sourceId": "classic-skinning-trainer" }]
+    }
+  ]
+}

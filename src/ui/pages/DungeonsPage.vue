@@ -8,7 +8,14 @@ import PartyPreview from "../components/PartyPreview.vue";
 import RosterPresetBar from "../components/RosterPresetBar.vue";
 import RosterPresetManager from "../components/RosterPresetManager.vue";
 import RosterPresetNameDialog from "../components/RosterPresetNameDialog.vue";
-import type { DungeonRouteNodeId, MemberId, RosterPresetId } from "../../domain/shared/ids";
+import type {
+  DungeonRouteNodeId,
+  ItemDefinitionId,
+  MemberId,
+  RosterPresetId,
+  SupplyPlanId,
+} from "../../domain/shared/ids";
+import type { GuildSupplyPlanEntry } from "../../domain/guild/supply-plan";
 
 const game = useGameStore();
 const ui = useUiStore();
@@ -17,6 +24,11 @@ const selectedPresetId = ref<RosterPresetId | null>(null);
 const namingOpen = ref(false);
 const managerOpen = ref(false);
 const partyEditorOpen = ref(false);
+const selectedSupplyPlanId = ref<SupplyPlanId | null>(null);
+const supplyEditorOpen = ref(false);
+const editingSupplyPlanId = ref<SupplyPlanId | null>(null);
+const supplyPlanName = ref("");
+const supplyPlanEntries = ref<GuildSupplyPlanEntry[]>([]);
 const planning = computed(() =>
   game.dungeonPlanning(
     ui.selectedDungeonId,
@@ -67,6 +79,7 @@ async function depart(optionalNodeIds: readonly DungeonRouteNodeId[]): Promise<v
     ui.requestedExpeditionRuns,
     optionalNodeIds,
     ui.selectedRouteVariantId ?? undefined,
+    selectedSupplyPlanId.value ?? undefined,
   );
   if (!outcome.ok) return;
   notice.value = `${dungeon.name}队伍已经出发，可以继续组织另一支队伍。`;
@@ -145,6 +158,59 @@ async function deletePreset(presetId: RosterPresetId): Promise<void> {
   if (selectedPresetId.value === presetId) selectedPresetId.value = null;
   notice.value = `已删除固定队伍“${preset.name}”。`;
 }
+
+function editSupplyPlan(planId: SupplyPlanId | null): void {
+  editingSupplyPlanId.value = planId;
+  const plan = game.supplyPlans.find((entry) => entry.id === planId && entry.isCustom);
+  supplyPlanName.value = plan?.name.zhCN ?? "新补给方案";
+  supplyPlanEntries.value = plan?.entries.map((entry) => ({ ...entry })) ?? [];
+  supplyEditorOpen.value = true;
+}
+
+function addSupplyEntry(): void {
+  const itemId = game.supplyItems[0]?.id as ItemDefinitionId | undefined;
+  if (!itemId) return;
+  supplyPlanEntries.value.push({ itemId, quantityPerRun: 1 });
+}
+
+function removeSupplyEntry(index: number): void {
+  supplyPlanEntries.value.splice(index, 1);
+}
+
+async function saveSupplyPlan(): Promise<void> {
+  const outcome = editingSupplyPlanId.value
+    ? await game.updateSupplyPlan(
+        editingSupplyPlanId.value,
+        supplyPlanName.value,
+        supplyPlanEntries.value,
+      )
+    : await game.createSupplyPlan(supplyPlanName.value, supplyPlanEntries.value);
+  if (!outcome.ok) return;
+  const plan = outcome.result as { id: SupplyPlanId; name: string };
+  selectedSupplyPlanId.value = plan.id;
+  supplyEditorOpen.value = false;
+  notice.value = `补给方案“${plan.name}”已保存。`;
+}
+
+async function duplicateSelectedSupplyPlan(): Promise<void> {
+  const plan = game.supplyPlans.find((entry) => entry.id === selectedSupplyPlanId.value);
+  if (!plan || !plan.isCustom) return;
+  const outcome = await game.duplicateSupplyPlan(plan.id, `${plan.name.zhCN} 副本`);
+  if (outcome.ok) {
+    selectedSupplyPlanId.value = (outcome.result as { id: SupplyPlanId }).id;
+    notice.value = "已复制补给方案。";
+  }
+}
+
+async function deleteSelectedSupplyPlan(): Promise<void> {
+  const plan = game.supplyPlans.find((entry) => entry.id === selectedSupplyPlanId.value);
+  if (!plan || !plan.isCustom || !window.confirm(`确定删除“${plan.name.zhCN}”吗？`)) return;
+  const outcome = await game.deleteSupplyPlan(plan.id);
+  if (outcome.ok) {
+    selectedSupplyPlanId.value = null;
+    notice.value = "补给方案已删除。";
+  }
+}
 </script>
 
 <template>
@@ -194,6 +260,73 @@ async function deletePreset(presetId: RosterPresetId): Promise<void> {
         </details>
       </div>
     </header>
+
+    <section v-if="game.supplyPlans.length" class="supply-picker panel">
+      <label>
+        <span>远征补给</span>
+        <select v-model="selectedSupplyPlanId">
+          <option :value="null">不配置</option>
+          <option v-for="plan in game.supplyPlans" :key="plan.id" :value="plan.id">
+            {{ plan.name.zhCN }}
+          </option>
+        </select>
+      </label>
+      <small>库存不足时会按可用数量逐项降级，不阻止队伍出发。</small>
+      <div class="supply-actions">
+        <button type="button" class="quiet" @click="editSupplyPlan(null)">新建方案</button>
+        <button
+          v-if="game.supplyPlans.find((plan) => plan.id === selectedSupplyPlanId)?.isCustom"
+          type="button"
+          class="quiet"
+          @click="editSupplyPlan(selectedSupplyPlanId)"
+        >
+          编辑
+        </button>
+        <button
+          v-if="game.supplyPlans.find((plan) => plan.id === selectedSupplyPlanId)?.isCustom"
+          type="button"
+          class="quiet"
+          @click="duplicateSelectedSupplyPlan"
+        >
+          复制
+        </button>
+        <button
+          v-if="game.supplyPlans.find((plan) => plan.id === selectedSupplyPlanId)?.isCustom"
+          type="button"
+          class="quiet"
+          @click="deleteSelectedSupplyPlan"
+        >
+          删除
+        </button>
+      </div>
+    </section>
+
+    <section v-if="supplyEditorOpen" class="panel supply-editor">
+      <div class="panel-heading">
+        <h3>{{ editingSupplyPlanId ? "编辑补给方案" : "新建补给方案" }}</h3>
+      </div>
+      <label><span>方案名称</span><input v-model="supplyPlanName" maxlength="40" /></label>
+      <div v-for="(entry, index) in supplyPlanEntries" :key="index" class="supply-entry">
+        <select v-model="entry.itemId">
+          <option v-for="item in game.supplyItems" :key="item.id" :value="item.id">
+            {{ item.name }}
+          </option>
+        </select>
+        <input v-model.number="entry.quantityPerRun" type="number" min="1" />
+        <select v-model="entry.effectId">
+          <option :value="undefined">无效果</option>
+          <option v-for="effect in game.supplyEffects" :key="effect.id" :value="effect.id">
+            {{ effect.name }}
+          </option>
+        </select>
+        <button type="button" class="quiet" @click="removeSupplyEntry(index)">移除</button>
+      </div>
+      <div class="supply-actions">
+        <button type="button" class="quiet" @click="addSupplyEntry">添加物品</button>
+        <button type="button" :disabled="game.commandPending" @click="saveSupplyPlan">保存</button>
+        <button type="button" class="quiet" @click="supplyEditorOpen = false">取消</button>
+      </div>
+    </section>
 
     <RosterPresetBar
       v-if="game.rosterPresets"

@@ -17,6 +17,7 @@ import type {
 import { RECRUIT_INTERVAL_MS } from "./recruitment";
 import { createEmptyRosterPresetState } from "./roster-preset";
 import { createEmptyDungeonDevelopmentState } from "../dungeon/dungeon-development";
+import { createEmptyEconomyLedger } from "../economy/economy-ledger";
 
 export interface NewGameDependencies {
   readonly slotId: SaveSlotId;
@@ -97,6 +98,15 @@ export function createNewGame(
         .filter((dungeon) => dungeon.defaultUnlocked)
         .map((dungeon) => dungeon.id),
       firstKillEncounterIds: [],
+      professionFacilities: Object.fromEntries(
+        dependencies.content.professionFacilities
+          .filter((facility) => facility.status === "available")
+          .map((facility) => [
+            facility.id,
+            { facilityId: facility.id, level: facility.levels[0]?.level ?? 0 },
+          ]),
+      ),
+      supplyPlans: {},
     },
     recruitment: { nextCandidateAt: createdAt + RECRUIT_INTERVAL_MS },
     members,
@@ -105,7 +115,7 @@ export function createNewGame(
     activities: {},
     pendingLoot: {},
     collection,
-    guildBank: { stackCounts: {}, equipmentInstanceIds: [] },
+    guildBank: { stackCounts: {}, equipmentInstanceIds: [], capacitySlots: 100 },
     rosterPresets: createEmptyRosterPresetState(),
     dungeonDevelopment: createEmptyDungeonDevelopmentState(),
     history: {
@@ -116,6 +126,7 @@ export function createNewGame(
       encounterVictoryCounts: {},
       dungeonClearCounts: {},
     },
+    economyLedger: createEmptyEconomyLedger(),
     random: dependencies.random.snapshot(),
     ids: dependencies.ids.snapshot(),
     createdAt,

@@ -10,6 +10,7 @@ import type { ItemInstance } from "../../domain/equipment/item-instance";
 import type { ItemDefinitionId, ItemInstanceId, MemberId, QuestId } from "../../domain/shared/ids";
 import { LocalIdGenerator } from "../../infrastructure/ids/local-id-generator";
 import type { GameCommand } from "../services/game-session";
+import { recordEconomyEvent } from "../../domain/economy/economy-ledger";
 
 export interface ClaimMemberDungeonQuestResult {
   readonly memberId: MemberId;
@@ -107,6 +108,12 @@ export function claimMemberDungeonQuestCommand(
       claimMemberQuest(updatedMember.quests, questId, acquiredAt);
       draft.members[memberId] = updatedMember;
       draft.guild.funds += quest.rewards.funds + saleProceeds;
+      if (quest.rewards.funds + saleProceeds > 0)
+        recordEconomyEvent(draft, {
+          kind: "gold-income",
+          source: "quest-reward",
+          amount: quest.rewards.funds + saleProceeds,
+        });
       draft.ids = ids.snapshot();
       return {
         memberId,

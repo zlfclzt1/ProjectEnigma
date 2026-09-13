@@ -19,9 +19,18 @@ import {
   getMemberDirectoryView,
 } from "../application/queries/get-members-view";
 import { getOverviewView } from "../application/queries/get-overview-view";
+import { getProfessionView } from "../application/queries/get-profession-view";
 import { getRespecPreview } from "../application/queries/get-respec-preview";
 import { getRecruitmentView } from "../application/queries/get-recruitment-view";
 import { startExpeditionCommand } from "../application/commands/start-expedition";
+import { learnProfessionCommand } from "../application/commands/learn-profession";
+import { learnRecipeCommand } from "../application/commands/learn-recipe";
+import { trainProfessionCommand } from "../application/commands/train-profession";
+import { upgradeProfessionFacilityCommand } from "../application/commands/upgrade-profession-facility";
+import {
+  startCraftingCommand,
+  startGatheringCommand,
+} from "../application/commands/start-profession-activities";
 import { settleDueActivitiesCommand } from "../application/services/settlement-service";
 import { assignLootCommand } from "../application/commands/assign-loot";
 import { autoAssignLootCommand } from "../application/commands/auto-assign-loot";
@@ -33,6 +42,10 @@ import {
   type LootPlanDecision,
 } from "../application/commands/execute-loot-plan";
 import { sellNoUpgradeLootCommand } from "../application/commands/sell-no-upgrade-loot";
+import {
+  assignGuildBankEquipmentCommand,
+  sellGuildBankEquipmentCommand,
+} from "../application/commands/assign-guild-bank-equipment";
 import { getCombatReportsView } from "../application/queries/get-combat-reports-view";
 import { getGuildUpgradeView } from "../application/queries/get-guild-upgrade-view";
 import { getItemCatalogView } from "../application/queries/get-item-catalog-view";
@@ -41,6 +54,12 @@ import { claimCollectionRewardCommand } from "../application/commands/claim-coll
 import { getExpeditionQuestBriefView } from "../application/queries/get-expedition-quest-brief-view";
 import { getRosterPresetsView } from "../application/queries/get-roster-presets-view";
 import { getDungeonDevelopmentView } from "../application/queries/get-dungeon-development-view";
+import {
+  createSupplyPlanCommand,
+  deleteSupplyPlanCommand,
+  duplicateSupplyPlanCommand,
+  updateSupplyPlanCommand,
+} from "../application/commands/manage-supply-plans";
 import {
   createRosterPresetCommand,
   deleteRosterPresetCommand,
@@ -61,7 +80,11 @@ import type {
   PendingLootId,
   RosterPresetId,
   SpecId,
+  SupplyPlanId,
 } from "../domain/shared/ids";
+import type { GuildSupplyPlanEntry } from "../domain/guild/supply-plan";
+import { organizeGuildBankCommand } from "../application/commands/organize-guild-bank";
+import { getEconomyReport } from "../application/queries/get-economy-report";
 
 export type GameStoreStatus = "idle" | "loading" | "needs-setup" | "ready" | "error";
 export type GameStoreErrorKind = "initialization" | "command" | "conflict" | "missing-save";
@@ -167,6 +190,43 @@ export const useGameStore = defineStore("game", () => {
   const dungeonDevelopment = computed(() =>
     stateSnapshot.value && content ? getDungeonDevelopmentView(stateSnapshot.value, content) : null,
   );
+  const supplyPlans = computed(() => {
+    const defaults = (content?.supplyPlans ?? []).map((plan) => ({
+      ...plan,
+      editable: plan.editable,
+      isCustom: false,
+    }));
+    const custom = Object.values(stateSnapshot.value?.guild.supplyPlans ?? {}).map((plan) => ({
+      id: plan.id,
+      name: { zhCN: plan.name },
+      editable: true,
+      isCustom: true,
+      entries: plan.entries,
+    }));
+    return [...defaults, ...custom];
+  });
+  const professions = computed(() => content?.professions ?? []);
+  const gatheringSites = computed(() => content?.gatheringSites ?? []);
+  const recipes = computed(() => content?.recipes ?? []);
+  const supplyItems = computed(
+    () =>
+      content?.items
+        .filter((item) => item.kind === "material" || item.kind === "consumable")
+        .map((item) => ({ id: item.id, name: item.name.zhCN })) ?? [],
+  );
+  const supplyEffects = computed(
+    () => content?.consumableEffects.map((effect) => ({ id: effect.id, name: effect.id })) ?? [],
+  );
+  const professionView = computed(() =>
+    stateSnapshot.value && content ? getProfessionView(stateSnapshot.value, content) : null,
+  );
+  const economyReport = computed(() =>
+    stateSnapshot.value ? getEconomyReport(stateSnapshot.value) : null,
+  );
+
+  function economyReportFor(from?: number, to?: number) {
+    return stateSnapshot.value ? getEconomyReport(stateSnapshot.value, from, to) : null;
+  }
 
   function refreshSnapshot(): void {
     if (session) stateSnapshot.value = getGameSnapshot(session);
@@ -413,6 +473,7 @@ export const useGameStore = defineStore("game", () => {
     requestedRuns: number,
     selectedOptionalNodeIds: readonly import("../domain/shared/ids").DungeonRouteNodeId[] = [],
     routeVariantId?: import("../domain/shared/ids").DungeonRouteVariantId,
+    supplyPlanId?: SupplyPlanId,
   ): Promise<GameCommandOutcome<unknown>> {
     if (!content || !clock) return unavailableOutcome("start-expedition");
     return execute(
@@ -424,8 +485,96 @@ export const useGameStore = defineStore("game", () => {
           requestedRuns,
           selectedOptionalNodeIds: [...selectedOptionalNodeIds],
           ...(routeVariantId ? { routeVariantId } : {}),
+          ...(supplyPlanId ? { supplyPlanId } : {}),
         },
       ),
+    );
+  }
+
+  async function createSupplyPlan(
+    name: string,
+    entries: readonly GuildSupplyPlanEntry[],
+  ): Promise<GameCommandOutcome<unknown>> {
+    if (!content || !clock) return unavailableOutcome("create-supply-plan");
+    return execute(createSupplyPlanCommand(content, clock, name, entries));
+  }
+
+  async function updateSupplyPlan(
+    id: SupplyPlanId,
+    name: string,
+    entries: readonly GuildSupplyPlanEntry[],
+  ): Promise<GameCommandOutcome<unknown>> {
+    if (!content || !clock) return unavailableOutcome("update-supply-plan");
+    return execute(updateSupplyPlanCommand(content, clock, id, name, entries));
+  }
+
+  async function duplicateSupplyPlan(
+    id: SupplyPlanId,
+    name: string,
+  ): Promise<GameCommandOutcome<unknown>> {
+    if (!content || !clock) return unavailableOutcome("duplicate-supply-plan");
+    return execute(duplicateSupplyPlanCommand(content, clock, id, name));
+  }
+
+  async function deleteSupplyPlan(id: SupplyPlanId): Promise<GameCommandOutcome<boolean>> {
+    return execute(deleteSupplyPlanCommand(id));
+  }
+
+  async function organizeGuildBank(): Promise<GameCommandOutcome<boolean>> {
+    if (!content) return unavailableOutcome("organize-guild-bank");
+    return execute(organizeGuildBankCommand(content));
+  }
+
+  async function learnProfession(
+    memberId: MemberId,
+    professionId: import("../domain/shared/ids").ProfessionDefinitionId,
+  ): Promise<GameCommandOutcome<unknown>> {
+    if (!content) return unavailableOutcome("learn-profession");
+    return execute(learnProfessionCommand(content, memberId, professionId));
+  }
+
+  async function learnRecipe(
+    memberId: MemberId,
+    recipeId: import("../domain/shared/ids").RecipeId,
+  ): Promise<GameCommandOutcome<unknown>> {
+    if (!content) return unavailableOutcome("learn-recipe");
+    return execute(learnRecipeCommand(content, memberId, recipeId));
+  }
+
+  async function trainProfession(
+    memberId: MemberId,
+    professionId: import("../domain/shared/ids").ProfessionDefinitionId,
+  ): Promise<GameCommandOutcome<unknown>> {
+    if (!content) return unavailableOutcome("train-profession");
+    return execute(trainProfessionCommand(content, memberId, professionId));
+  }
+
+  async function upgradeProfessionFacility(
+    facilityId: import("../domain/shared/ids").ProfessionFacilityId,
+  ): Promise<GameCommandOutcome<unknown>> {
+    if (!content) return unavailableOutcome("upgrade-profession-facility");
+    return execute(upgradeProfessionFacilityCommand(content, facilityId));
+  }
+
+  async function startGathering(
+    memberId: MemberId,
+    siteId: import("../domain/shared/ids").GatheringSiteId,
+    quantity: number,
+  ): Promise<GameCommandOutcome<unknown>> {
+    if (!content || !clock) return unavailableOutcome("start-gathering");
+    return execute(
+      startGatheringCommand({ content, clock }, { participantIds: [memberId], siteId, quantity }),
+    );
+  }
+
+  async function startCrafting(
+    memberId: MemberId,
+    recipeId: import("../domain/shared/ids").RecipeId,
+    quantity: number,
+  ): Promise<GameCommandOutcome<unknown>> {
+    if (!content || !clock) return unavailableOutcome("start-crafting");
+    return execute(
+      startCraftingCommand({ content, clock }, { participantIds: [memberId], recipeId, quantity }),
     );
   }
 
@@ -470,6 +619,21 @@ export const useGameStore = defineStore("game", () => {
   async function sellLoot(pendingLootId: PendingLootId): Promise<GameCommandOutcome<number>> {
     if (!content) return unavailableOutcome("sell-loot");
     return execute(sellLootCommand(content, pendingLootId));
+  }
+
+  async function assignGuildBankEquipment(
+    instanceId: import("../domain/shared/ids").ItemInstanceId,
+    memberId: MemberId,
+  ): Promise<GameCommandOutcome<unknown>> {
+    if (!content) return unavailableOutcome("assign-guild-bank-equipment");
+    return execute(assignGuildBankEquipmentCommand(content, instanceId, memberId));
+  }
+
+  async function sellGuildBankEquipment(
+    instanceId: import("../domain/shared/ids").ItemInstanceId,
+  ): Promise<GameCommandOutcome<number>> {
+    if (!content) return unavailableOutcome("sell-guild-bank-equipment");
+    return execute(sellGuildBankEquipmentCommand(content, instanceId));
   }
 
   async function autoAssignLoot(
@@ -542,6 +706,15 @@ export const useGameStore = defineStore("game", () => {
     autoLootPreviewForActivity,
     rosterPresets,
     dungeonDevelopment,
+    supplyPlans,
+    professions,
+    gatheringSites,
+    recipes,
+    supplyItems,
+    supplyEffects,
+    professionView,
+    economyReport,
+    economyReportFor,
     initialize,
     createNewGame,
     execute,
@@ -558,12 +731,25 @@ export const useGameStore = defineStore("game", () => {
     expeditionQuestBrief,
     dungeonPlanning,
     startExpedition,
+    createSupplyPlan,
+    updateSupplyPlan,
+    duplicateSupplyPlan,
+    deleteSupplyPlan,
+    organizeGuildBank,
+    learnProfession,
+    learnRecipe,
+    trainProfession,
+    upgradeProfessionFacility,
+    startGathering,
+    startCrafting,
     createRosterPreset,
     updateRosterPreset,
     renameRosterPreset,
     deleteRosterPreset,
     assignLoot,
     sellLoot,
+    assignGuildBankEquipment,
+    sellGuildBankEquipment,
     autoAssignLoot,
     executeLootPlan,
     sellNoUpgradeLoot,

@@ -40,6 +40,9 @@ export interface EquipItemResult {
 }
 
 export function candidateEquipmentSlots(definition: ItemDefinition): readonly EquipmentSlot[] {
+  if (definition.slot === "none") {
+    return [];
+  }
   return INTERCHANGEABLE_SLOTS[definition.slot] ?? [definition.slot];
 }
 

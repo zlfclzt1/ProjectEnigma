@@ -17,6 +17,7 @@ import {
 import { classicItemStatsSchema } from "./item-stats";
 
 export const equipmentSlotSchema = z.enum(EQUIPMENT_SLOTS);
+export const itemSlotSchema = z.union([equipmentSlotSchema, z.literal("none")]);
 
 export const itemIconSchema = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("database"), name: z.string().trim().min(1) }).strict(),
@@ -33,11 +34,13 @@ export const equipRestrictionsSchema = z
 export const itemDefinitionSchema = z
   .object({
     id: brandedContentIdSchema<"ItemDefinitionId">(),
+    kind: z.enum(["equipment", "material", "consumable", "recipe", "quest"]).optional(),
     name: localizedTextSchema,
+    stackLimit: z.number().int().positive().optional(),
     itemLevel: levelSchema,
     requiredLevel: levelSchema.optional(),
     quality: itemQualitySchema,
-    slot: equipmentSlotSchema,
+    slot: itemSlotSchema,
     armorType: armorTypeSchema.optional(),
     twoHanded: z.boolean().default(false),
     restrictions: equipRestrictionsSchema,
@@ -55,20 +58,39 @@ export const itemDefinitionSchema = z
   })
   .strict()
   .superRefine((item, context) => {
-    if (item.twoHanded && item.slot !== "mainHand") {
+    const kind = item.kind ?? "equipment";
+    if (kind === "equipment" && item.slot === "none") {
+      context.addIssue({ code: "custom", path: ["slot"], message: "装备物品必须配置装备栏位" });
+    }
+    if (kind !== "equipment" && item.slot !== "none") {
+      context.addIssue({ code: "custom", path: ["slot"], message: "非装备物品必须使用 none 栏位" });
+    }
+    if (kind === "equipment" && item.stackLimit !== undefined && item.stackLimit !== 1) {
+      context.addIssue({
+        code: "custom",
+        path: ["stackLimit"],
+        message: "装备物品的堆叠上限必须为 1",
+      });
+    }
+    if (kind === "equipment" && item.twoHanded && item.slot !== "mainHand") {
       context.addIssue({
         code: "custom",
         path: ["twoHanded"],
         message: "双手武器必须使用主手栏位",
       });
     }
-    if (item.stats.weapon && !["mainHand", "offHand", "ranged"].includes(item.slot)) {
+    if (
+      kind === "equipment" &&
+      item.stats.weapon &&
+      !["mainHand", "offHand", "ranged"].includes(item.slot)
+    ) {
       context.addIssue({
         code: "custom",
         path: ["stats", "weapon"],
         message: "武器伤害与速度只能配置在武器栏位",
       });
     }
+    if (kind !== "equipment") return;
     if (item.isStarter) {
       if (item.statsSource.kind !== "design-decision" || item.statsSource.provider !== "manual") {
         context.addIssue({
@@ -84,6 +106,12 @@ export const itemDefinitionSchema = z
           message: "初始装备必须为 stats 提供平衡覆盖说明",
         });
       }
+    } else if (
+      item.statsSource.kind === "design-decision" &&
+      item.statsSource.provider === "manual" &&
+      item.statsBalanceOverride?.fields.includes("stats")
+    ) {
+      // Crafted/test equipment may use explicitly documented game-design stats.
     } else if (
       item.statsSource.kind !== "source-fact" ||
       item.statsSource.provider !== "wowhead-classic" ||

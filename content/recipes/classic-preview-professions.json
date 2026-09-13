@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "profession-recipes-preview",
+        "url": "https://www.wowhead.com/classic/items/recipes",
+        "verifiedAt": "2026-09-13",
+        "notes": "完整专业框架的预览配方索引；全部保持 preview，待对应专业玩法启用后再开放执行。"
+      }
+    ]
+  },
+  "recipes": [
+    {
+      "id": "preview_alchemy_minor_healing_potion",
+      "professionId": "alchemy",
+      "facilityId": "alchemy-lab",
+      "status": "preview",
+      "category": "crafting",
+      "name": { "zhCN": "初级治疗药水（预览）", "enUS": "Minor Healing Potion (Preview)" },
+      "requiredSkill": 1,
+      "requiredTrainingRank": 1,
+      "input": [
+        { "itemId": "profession_peacebloom", "quantityPerBatch": 1 },
+        { "itemId": "profession_silverleaf", "quantityPerBatch": 1 }
+      ],
+      "output": [
+        {
+          "type": "consumable-effect",
+          "effectId": "coarse-sharpening-stability",
+          "charges": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 120,
+      "batchLimit": 20,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "vendor", "sourceId": "classic-alchemy-vendor" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "vendor", "sourceId": "classic-alchemy-vendor" }]
+    },
+    {
+      "id": "preview_enchanting_strange_dust",
+      "professionId": "enchanting",
+      "facilityId": "enchanting-sanctum",
+      "status": "preview",
+      "category": "enchanting",
+      "name": { "zhCN": "分解奇异之尘（预览）", "enUS": "Disenchant Strange Dust (Preview)" },
+      "requiredSkill": 1,
+      "requiredTrainingRank": 1,
+      "input": [{ "itemId": "profession_strange_dust", "quantityPerBatch": 1 }],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_strange_dust",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 90,
+      "batchLimit": 20,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "trainer", "sourceId": "classic-enchanting-trainer" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "classic-enchanting-trainer" }]
+    },
+    {
+      "id": "preview_engineering_rough_blasting_powder",
+      "professionId": "engineering",
+      "facilityId": "engineering-workshop",
+      "status": "preview",
+      "category": "crafting",
+      "name": { "zhCN": "粗制火药（预览）", "enUS": "Rough Blasting Powder (Preview)" },
+      "requiredSkill": 1,
+      "requiredTrainingRank": 1,
+      "input": [{ "itemId": "profession_rough_stone", "quantityPerBatch": 1 }],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_rough_stone",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 90,
+      "batchLimit": 20,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "trainer", "sourceId": "classic-engineering-trainer" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "classic-engineering-trainer" }]
+    },
+    {
+      "id": "preview_leatherworking_light_armor_kit",
+      "professionId": "leatherworking",
+      "facilityId": "leatherworking-station",
+      "status": "preview",
+      "category": "crafting",
+      "name": { "zhCN": "轻型护甲片（预览）", "enUS": "Light Armor Kit (Preview)" },
+      "requiredSkill": 1,
+      "requiredTrainingRank": 1,
+      "input": [{ "itemId": "profession_light_leather", "quantityPerBatch": 1 }],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_light_leather",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 90,
+      "batchLimit": 20,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "trainer", "sourceId": "classic-leatherworking-trainer" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "classic-leatherworking-trainer" }]
+    },
+    {
+      "id": "preview_tailoring_linen_bandage",
+      "professionId": "tailoring",
+      "facilityId": "tailoring-loom",
+      "status": "preview",
+      "category": "crafting",
+      "name": { "zhCN": "亚麻卷（预览）", "enUS": "Linen Bolt (Preview)" },
+      "requiredSkill": 1,
+      "requiredTrainingRank": 1,
+      "input": [{ "itemId": "profession_linen_cloth", "quantityPerBatch": 2 }],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_linen_cloth",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 90,
+      "batchLimit": 20,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "trainer", "sourceId": "classic-tailoring-trainer" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "classic-tailoring-trainer" }]
+    },
+    {
+      "id": "preview_cooking_roasted_boar_meat",
+      "professionId": "cooking",
+      "facilityId": "cooking-fire",
+      "status": "preview",
+      "category": "crafting",
+      "name": { "zhCN": "烤野猪肉（预览）", "enUS": "Roasted Boar Meat (Preview)" },
+      "requiredSkill": 1,
+      "requiredTrainingRank": 1,
+      "input": [{ "itemId": "profession_boar_meat", "quantityPerBatch": 1 }],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_boar_meat",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 90,
+      "batchLimit": 20,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "trainer", "sourceId": "classic-cooking-trainer" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "classic-cooking-trainer" }]
+    },
+    {
+      "id": "preview_first_aid_linen_bandage",
+      "professionId": "first-aid",
+      "facilityId": "first-aid-clinic",
+      "status": "preview",
+      "category": "crafting",
+      "name": { "zhCN": "亚麻绷带（预览）", "enUS": "Linen Bandage (Preview)" },
+      "requiredSkill": 1,
+      "requiredTrainingRank": 1,
+      "input": [{ "itemId": "profession_linen_cloth", "quantityPerBatch": 1 }],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_linen_cloth",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 60,
+      "batchLimit": 20,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "trainer", "sourceId": "classic-first-aid-trainer" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "classic-first-aid-trainer" }]
+    }
+  ]
+}

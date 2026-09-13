@@ -18,8 +18,9 @@ import type {
 } from "./shared/ids";
 import type { IdGeneratorState, RandomState } from "./shared/runtime-state";
 import type { DungeonDevelopmentState } from "./dungeon/dungeon-development";
+import type { EconomyLedgerEntry } from "./economy/economy-ledger";
 
-export const GAME_STATE_SAVE_VERSION = 14 as const;
+export const GAME_STATE_SAVE_VERSION = 15 as const;
 
 export interface GameState {
   slotId: SaveSlotId;
@@ -38,6 +39,7 @@ export interface GameState {
   rosterPresets: RosterPresetState;
   dungeonDevelopment: DungeonDevelopmentState;
   history: HistorySummary;
+  economyLedger?: EconomyLedgerEntry[];
   random: RandomState;
   ids: IdGeneratorState;
   createdAt: number;
@@ -58,6 +60,8 @@ export interface LegacyGameStateV13 extends Omit<GameState, "saveVersion" | "mem
   saveVersion: 13;
   members: Record<MemberId, LegacyMemberV13>;
 }
+
+export type LegacyGameStateV14 = Omit<GameState, "saveVersion"> & { saveVersion: 14 };
 
 export type LegacyExpeditionActivityV12 = Omit<
   ExpeditionActivity,
@@ -171,6 +175,7 @@ export interface LegacyGameStateV2 extends Omit<
 
 export type PersistedGameState =
   | GameState
+  | LegacyGameStateV14
   | LegacyGameStateV13
   | LegacyGameStateV12
   | LegacyGameStateV11

@@ -5,6 +5,7 @@ import type { GameState } from "../../domain/game-state";
 import type { PendingLootId } from "../../domain/shared/ids";
 import { resolveItemInstance } from "../../domain/equipment/resolve-item-instance";
 import { assertLootUnlocked } from "./assign-loot";
+import { recordEconomyEvent } from "../../domain/economy/economy-ledger";
 
 export function sellLootCommand(
   content: ContentRegistry,
@@ -33,5 +34,6 @@ export function sellLoot(
   delete state.pendingLoot[pendingLootId];
   delete state.itemInstances[instance.id];
   state.guild.funds += value;
+  recordEconomyEvent(state, { kind: "gold-income", source: "loot-sale", amount: value });
   return value;
 }

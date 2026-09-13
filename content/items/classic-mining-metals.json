@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "skill=186",
+        "url": "https://www.wowhead.com/classic/skill=186/mining",
+        "verifiedAt": "2026-09-13",
+        "notes": "Classic 矿脉与熔炼金属的材料链；数值字段仅映射到本项目堆叠库存。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "items": [
+    {
+      "id": "profession_tin_ore",
+      "kind": "material",
+      "name": { "zhCN": "锡矿石", "enUS": "Tin Ore" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "锡矿脉产出的矿石。", "enUS": "Ore from tin veins." },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "专业材料库存映射。"
+      }
+    },
+    {
+      "id": "profession_tin_bar",
+      "kind": "material",
+      "name": { "zhCN": "锡锭", "enUS": "Tin Bar" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "由锡矿石熔炼而成。", "enUS": "Smelted from tin ore." },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "专业材料库存映射。"
+      }
+    },
+    {
+      "id": "profession_iron_ore",
+      "kind": "material",
+      "name": { "zhCN": "铁矿石", "enUS": "Iron Ore" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "铁矿床产出的矿石。", "enUS": "Ore from iron deposits." },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "专业材料库存映射。"
+      }
+    },
+    {
+      "id": "profession_iron_bar",
+      "kind": "material",
+      "name": { "zhCN": "铁锭", "enUS": "Iron Bar" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "由铁矿石熔炼而成。", "enUS": "Smelted from iron ore." },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "专业材料库存映射。"
+      }
+    },
+    {
+      "id": "profession_mithril_ore",
+      "kind": "material",
+      "name": { "zhCN": "秘银矿石", "enUS": "Mithril Ore" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "秘银矿床产出的矿石。", "enUS": "Ore from mithril deposits." },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "专业材料库存映射。"
+      }
+    },
+    {
+      "id": "profession_mithril_bar",
+      "kind": "material",
+      "name": { "zhCN": "秘银锭", "enUS": "Mithril Bar" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "由秘银矿石熔炼而成。", "enUS": "Smelted from mithril ore." },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "专业材料库存映射。"
+      }
+    },
+    {
+      "id": "profession_thorium_ore",
+      "kind": "material",
+      "name": { "zhCN": "瑟银矿石", "enUS": "Thorium Ore" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "瑟银矿脉产出的矿石。", "enUS": "Ore from thorium veins." },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "专业材料库存映射。"
+      }
+    },
+    {
+      "id": "profession_thorium_bar",
+      "kind": "material",
+      "name": { "zhCN": "瑟银锭", "enUS": "Thorium Bar" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "由瑟银矿石熔炼而成。", "enUS": "Smelted from thorium ore." },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "专业材料库存映射。"
+      }
+    },
+    {
+      "id": "profession_coal",
+      "kind": "material",
+      "name": { "zhCN": "煤块", "enUS": "Coal" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "熔炼钢锭所需的燃料。", "enUS": "Fuel used for smelting steel." },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "item=3857",
+        "url": "https://www.wowhead.com/classic/item=3857/coal",
+        "verifiedAt": "2026-09-13",
+        "notes": "Classic 煤块材料。"
+      }
+    },
+    {
+      "id": "profession_silver_ore",
+      "kind": "material",
+      "name": { "zhCN": "银矿石", "enUS": "Silver Ore" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "银矿脉产出的矿石。", "enUS": "Ore from silver veins." },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "2775",
+        "url": "https://www.wowhead.com/classic/item=2775/silver-ore",
+        "verifiedAt": "2026-09-13",
+        "notes": "Classic 采矿材料。"
+      }
+    },
+    {
+      "id": "profession_gold_ore",
+      "kind": "material",
+      "name": { "zhCN": "金矿石", "enUS": "Gold Ore" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "金矿脉产出的矿石。", "enUS": "Ore from gold veins." },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "2776",
+        "url": "https://www.wowhead.com/classic/item=2776/gold-ore",
+        "verifiedAt": "2026-09-13",
+        "notes": "Classic 采矿材料。"
+      }
+    },
+    {
+      "id": "profession_truesilver_ore",
+      "kind": "material",
+      "name": { "zhCN": "真银矿石", "enUS": "Truesilver Ore" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "真银矿脉产出的矿石。", "enUS": "Ore from truesilver deposits." },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "7911",
+        "url": "https://www.wowhead.com/classic/item=7911/truesilver-ore",
+        "verifiedAt": "2026-09-13",
+        "notes": "Classic 采矿材料。"
+      }
+    },
+    {
+      "id": "profession_dark_iron_ore",
+      "kind": "material",
+      "name": { "zhCN": "黑铁矿石", "enUS": "Dark Iron Ore" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": {
+        "zhCN": "黑石深渊中的黑铁矿石。",
+        "enUS": "Dark iron ore found in Blackrock Depths."
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "11370",
+        "url": "https://www.wowhead.com/classic/item=11370/dark-iron-ore",
+        "verifiedAt": "2026-09-13",
+        "notes": "Classic 采矿材料。"
+      }
+    }
+  ]
+}

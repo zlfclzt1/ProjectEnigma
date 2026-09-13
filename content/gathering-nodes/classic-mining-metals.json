@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "skill=186",
+        "url": "https://www.wowhead.com/classic/skill=186/mining",
+        "verifiedAt": "2026-09-13",
+        "notes": "按经典采矿技能段映射矿脉采集点；活动时长为本项目放置玩法参数。"
+      }
+    ]
+  },
+  "gatheringSites": [
+    {
+      "id": "tin-vein-zone",
+      "professionId": "mining",
+      "facilityId": "mining-camp",
+      "status": "available",
+      "name": { "zhCN": "锡矿脉", "enUS": "Tin Vein Zone" },
+      "requiredSkill": 65,
+      "requiredTrainingRank": 1,
+      "durationSeconds": 1200,
+      "batchLimit": 10,
+      "outputs": [
+        {
+          "itemId": "profession_tin_ore",
+          "quantity": { "min": 3, "max": 6 },
+          "chance": 1,
+          "guaranteed": true
+        },
+        { "itemId": "profession_rough_stone", "quantity": { "min": 1, "max": 3 }, "chance": 0.6 }
+      ],
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "sources": [{ "type": "profession", "sourceId": "mining", "requiredSkill": 65 }]
+    },
+    {
+      "id": "iron-deposit-zone",
+      "professionId": "mining",
+      "facilityId": "mining-camp",
+      "status": "available",
+      "name": { "zhCN": "铁矿床", "enUS": "Iron Deposit Zone" },
+      "requiredSkill": 125,
+      "requiredTrainingRank": 2,
+      "durationSeconds": 1500,
+      "batchLimit": 10,
+      "outputs": [
+        {
+          "itemId": "profession_iron_ore",
+          "quantity": { "min": 3, "max": 6 },
+          "chance": 1,
+          "guaranteed": true
+        },
+        { "itemId": "profession_rough_stone", "quantity": { "min": 1, "max": 3 }, "chance": 0.65 }
+      ],
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "sources": [{ "type": "profession", "sourceId": "mining", "requiredSkill": 125 }]
+    },
+    {
+      "id": "mithril-deposit-zone",
+      "professionId": "mining",
+      "facilityId": "mining-camp",
+      "status": "available",
+      "name": { "zhCN": "秘银矿床", "enUS": "Mithril Deposit Zone" },
+      "requiredSkill": 175,
+      "requiredTrainingRank": 3,
+      "durationSeconds": 1800,
+      "batchLimit": 10,
+      "outputs": [
+        {
+          "itemId": "profession_mithril_ore",
+          "quantity": { "min": 2, "max": 5 },
+          "chance": 1,
+          "guaranteed": true
+        },
+        { "itemId": "profession_rough_stone", "quantity": { "min": 1, "max": 3 }, "chance": 0.7 }
+      ],
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "sources": [{ "type": "profession", "sourceId": "mining", "requiredSkill": 175 }]
+    },
+    {
+      "id": "thorium-vein-zone",
+      "professionId": "mining",
+      "facilityId": "mining-camp",
+      "status": "available",
+      "name": { "zhCN": "瑟银矿脉", "enUS": "Thorium Vein Zone" },
+      "requiredSkill": 250,
+      "requiredTrainingRank": 4,
+      "durationSeconds": 2100,
+      "batchLimit": 10,
+      "outputs": [
+        {
+          "itemId": "profession_thorium_ore",
+          "quantity": { "min": 2, "max": 5 },
+          "chance": 1,
+          "guaranteed": true
+        },
+        { "itemId": "profession_rough_stone", "quantity": { "min": 1, "max": 3 }, "chance": 0.75 }
+      ],
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "sources": [{ "type": "profession", "sourceId": "mining", "requiredSkill": 250 }]
+    },
+    {
+      "id": "silver-vein-zone",
+      "professionId": "mining",
+      "facilityId": "mining-camp",
+      "status": "available",
+      "name": { "zhCN": "银矿脉", "enUS": "Silver Vein Zone" },
+      "requiredSkill": 75,
+      "requiredTrainingRank": 2,
+      "durationSeconds": 1250,
+      "batchLimit": 10,
+      "outputs": [
+        {
+          "itemId": "profession_silver_ore",
+          "quantity": { "min": 2, "max": 4 },
+          "chance": 1,
+          "guaranteed": true
+        },
+        { "itemId": "profession_rough_stone", "quantity": { "min": 1, "max": 3 }, "chance": 0.6 }
+      ],
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "sources": [{ "type": "profession", "sourceId": "mining", "requiredSkill": 75 }]
+    },
+    {
+      "id": "gold-vein-zone",
+      "professionId": "mining",
+      "facilityId": "mining-camp",
+      "status": "available",
+      "name": { "zhCN": "金矿脉", "enUS": "Gold Vein Zone" },
+      "requiredSkill": 155,
+      "requiredTrainingRank": 3,
+      "durationSeconds": 1650,
+      "batchLimit": 10,
+      "outputs": [
+        {
+          "itemId": "profession_gold_ore",
+          "quantity": { "min": 2, "max": 4 },
+          "chance": 1,
+          "guaranteed": true
+        },
+        { "itemId": "profession_rough_stone", "quantity": { "min": 1, "max": 3 }, "chance": 0.65 }
+      ],
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "sources": [{ "type": "profession", "sourceId": "mining", "requiredSkill": 155 }]
+    },
+    {
+      "id": "truesilver-vein-zone",
+      "professionId": "mining",
+      "facilityId": "mining-camp",
+      "status": "available",
+      "name": { "zhCN": "真银矿脉", "enUS": "Truesilver Vein Zone" },
+      "requiredSkill": 230,
+      "requiredTrainingRank": 4,
+      "durationSeconds": 1950,
+      "batchLimit": 10,
+      "outputs": [
+        {
+          "itemId": "profession_truesilver_ore",
+          "quantity": { "min": 2, "max": 4 },
+          "chance": 1,
+          "guaranteed": true
+        },
+        { "itemId": "profession_rough_stone", "quantity": { "min": 1, "max": 3 }, "chance": 0.7 }
+      ],
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "sources": [{ "type": "profession", "sourceId": "mining", "requiredSkill": 230 }]
+    },
+    {
+      "id": "dark-iron-deposit-zone",
+      "professionId": "mining",
+      "facilityId": "mining-camp",
+      "status": "available",
+      "name": { "zhCN": "黑铁矿床", "enUS": "Dark Iron Deposit Zone" },
+      "requiredSkill": 230,
+      "requiredTrainingRank": 4,
+      "durationSeconds": 2100,
+      "batchLimit": 10,
+      "outputs": [
+        {
+          "itemId": "profession_dark_iron_ore",
+          "quantity": { "min": 2, "max": 4 },
+          "chance": 1,
+          "guaranteed": true
+        },
+        { "itemId": "profession_rough_stone", "quantity": { "min": 1, "max": 3 }, "chance": 0.75 }
+      ],
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "sources": [{ "type": "profession", "sourceId": "mining", "requiredSkill": 230 }]
+    }
+  ]
+}

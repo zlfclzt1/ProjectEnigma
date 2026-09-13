@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "skill=186",
+        "url": "https://www.wowhead.com/classic/skill=186/mining",
+        "verifiedAt": "2026-09-13",
+        "notes": "Classic 2019 Phase 6 全部特殊熔炼配方；活动时长为本项目放置玩法参数。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "recipes": [
+    {
+      "id": "smelt_bronze_bar",
+      "professionId": "mining",
+      "facilityId": "mining-camp",
+      "status": "available",
+      "category": "refining",
+      "name": { "zhCN": "熔炼青铜锭", "enUS": "Smelt Bronze" },
+      "requiredSkill": 65,
+      "requiredTrainingRank": 1,
+      "input": [
+        { "itemId": "profession_copper_bar", "quantityPerBatch": 1 },
+        { "itemId": "profession_tin_bar", "quantityPerBatch": 1 }
+      ],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_bronze_bar",
+          "quantity": { "min": 2, "max": 2 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 150,
+      "batchLimit": 20,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "trainer", "sourceId": "classic-mining-trainer" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "classic-mining-trainer" }]
+    },
+    {
+      "id": "smelt_enchanted_thorium_bar",
+      "professionId": "mining",
+      "facilityId": "mining-camp",
+      "status": "available",
+      "category": "refining",
+      "name": { "zhCN": "熔炼魔化瑟银锭", "enUS": "Smelt Enchanted Thorium" },
+      "requiredSkill": 250,
+      "requiredTrainingRank": 4,
+      "input": [
+        { "itemId": "profession_thorium_bar", "quantityPerBatch": 1 },
+        { "itemId": "profession_strange_dust", "quantityPerBatch": 3 }
+      ],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_enchanted_thorium_bar",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 300,
+      "batchLimit": 20,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "trainer", "sourceId": "classic-mining-trainer" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "classic-mining-trainer" }]
+    },
+    {
+      "id": "smelt_elementium_bar",
+      "professionId": "mining",
+      "facilityId": "mining-camp",
+      "status": "available",
+      "category": "refining",
+      "name": { "zhCN": "熔炼源质锭", "enUS": "Smelt Elementium" },
+      "requiredSkill": 300,
+      "requiredTrainingRank": 4,
+      "input": [
+        { "itemId": "profession_elementium_ore", "quantityPerBatch": 1 },
+        { "itemId": "profession_arcanite_bar", "quantityPerBatch": 10 },
+        { "itemId": "profession_fiery_core", "quantityPerBatch": 1 },
+        { "itemId": "profession_elemental_flux", "quantityPerBatch": 3 }
+      ],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_elementium_bar",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 600,
+      "batchLimit": 5,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "vendor", "sourceId": "blackwing-lair-smelting-source" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "drop", "sourceId": "blackwing-lair" }]
+    }
+  ]
+}

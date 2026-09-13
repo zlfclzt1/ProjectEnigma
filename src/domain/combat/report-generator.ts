@@ -108,6 +108,21 @@ export function generateCombatReport(request: GenerateCombatReportRequest): Comb
     events: combatEvents(memberReports, outcome, stage),
     mechanics: structuredClone(stage.mechanics?.mechanics ?? []),
     rewards,
+    ...(activity.supplySnapshot
+      ? {
+          supply: {
+            ...(activity.supplySnapshot.planId ? { planId: activity.supplySnapshot.planId } : {}),
+            channels: { ...activity.supplySnapshot.channels },
+            entries: activity.supplySnapshot.entries.map((entry) => ({
+              itemId: entry.itemId,
+              quantityPerRun: entry.quantityPerRun,
+              allocatedQuantity: entry.allocatedQuantity,
+              consumedQuantity: entry.consumedQuantity,
+              releasedQuantity: entry.releasedQuantity ?? 0,
+            })),
+          },
+        }
+      : {}),
   };
 }
 

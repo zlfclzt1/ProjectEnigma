@@ -13,6 +13,7 @@ import type { Candidate } from "../../domain/member/member";
 import { LocalIdGenerator } from "../../infrastructure/ids/local-id-generator";
 import { SeededRandomSource } from "../../infrastructure/random/seeded-random-source";
 import { memberFactoryContext } from "./member-factory-context";
+import { recordEconomyEvent } from "../../domain/economy/economy-ledger";
 
 export function generateCandidateCommand(dependencies: {
   readonly content: ContentRegistry;
@@ -33,6 +34,11 @@ export function generateCandidateCommand(dependencies: {
         memberFactoryContext(draft, dependencies.content, dependencies.clock, ids, random),
       );
       draft.guild.funds -= PAID_CANDIDATE_COST;
+      recordEconomyEvent(draft, {
+        kind: "gold-expense",
+        source: "candidate-refresh",
+        amount: PAID_CANDIDATE_COST,
+      });
       draft.candidates[candidate.id] = candidate;
       draft.ids = ids.snapshot();
       draft.random = random.snapshot();

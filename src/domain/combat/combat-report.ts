@@ -5,6 +5,7 @@ import type {
   EncounterId,
   FormulaVersion,
   ItemInstanceId,
+  ItemDefinitionId,
   MemberId,
 } from "../shared/ids";
 import type { CombatEvent } from "./combat-event";
@@ -30,6 +31,22 @@ export interface CombatRewardReport {
   readonly funds: number;
   readonly firstKillBonus: number;
   readonly itemInstanceIds: readonly ItemInstanceId[];
+}
+
+export interface CombatSupplyReport {
+  readonly planId?: string;
+  readonly channels: {
+    readonly stability: number;
+    readonly efficiency: number;
+    readonly exploration: number;
+  };
+  readonly entries: readonly {
+    readonly itemId: ItemDefinitionId;
+    readonly quantityPerRun: number;
+    readonly allocatedQuantity: number;
+    readonly consumedQuantity: number;
+    readonly releasedQuantity: number;
+  }[];
 }
 
 export interface CombatMechanicReport {
@@ -62,4 +79,5 @@ export interface CombatReport {
   readonly events: readonly CombatEvent[];
   readonly mechanics?: readonly CombatMechanicReport[];
   readonly rewards: CombatRewardReport;
+  readonly supply?: CombatSupplyReport;
 }

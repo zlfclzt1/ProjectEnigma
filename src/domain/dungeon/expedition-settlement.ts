@@ -25,6 +25,8 @@ import type { ItemDefinitionId, QuestId } from "../shared/ids";
 import { evaluateUpgrade } from "../equipment/upgrade-evaluation";
 import { equipmentSellValue } from "../equipment/item-value";
 import { asBrandedId } from "../shared/ids";
+import { commitReservedStack, releaseReservedStack } from "../inventory/guild-bank-rules";
+import { recordEconomyEvent } from "../economy/economy-ledger";
 
 export type ExpeditionSettlementResult =
   | {
@@ -63,6 +65,7 @@ export function settleNextExpeditionStage(
   }
 
   const settledAt = activity.nextSettlementAt;
+  consumeRunSupplies(state, activity, settledAt);
   if (stage.successRoll >= stage.probability) {
     stage.status = "defeat";
     stage.settledAt = settledAt;
@@ -81,6 +84,7 @@ export function settleNextExpeditionStage(
       },
     });
     scheduler.finish(state, activity.id, "failed", settledAt);
+    releaseRemainingSupplies(state, activity, settledAt);
     return {
       status: "settled",
       activityId: activity.id,
@@ -107,6 +111,15 @@ export function settleNextExpeditionStage(
   const firstKill = !state.guild.firstKillEncounterIds.includes(encounter.id);
   let firstKillBonus = firstKill ? encounter.firstKillBonus : 0;
   state.guild.funds += encounter.funds + firstKillBonus;
+  if (encounter.funds + firstKillBonus > 0) {
+    recordEconomyEvent(state, {
+      kind: "gold-income",
+      source: "expedition-reward",
+      amount: encounter.funds + firstKillBonus,
+      activityId: activity.id,
+      occurredAt: settledAt,
+    });
+  }
   if (firstKill) state.guild.firstKillEncounterIds.push(encounter.id);
   state.history.encounterVictoryCounts[encounter.id] =
     (state.history.encounterVictoryCounts[encounter.id] ?? 0) + 1;
@@ -407,6 +420,7 @@ function advanceAfterVictory(
   activity.completedRuns += 1;
   const nextRun = activity.runPlans[activity.activeRunIndex + 1];
   if (!nextRun) {
+    releaseRemainingSupplies(state, activity, settledAt);
     scheduler.finish(state, activity.id, "completed", settledAt);
     return;
   }
@@ -428,6 +442,55 @@ function advanceAfterVictory(
   nextRun.maximumExperiencePerMember = DEFAULT_DUNGEON_EXPERIENCE_CONFIG.maximumFractionPerRun;
   nextRun.experienceAwardedByMember = {};
   activity.nextSettlementAt = settledAt + nextRun.stages[0]!.durationSeconds * 1_000;
+}
+
+function consumeRunSupplies(
+  state: GameState,
+  activity: ExpeditionActivity,
+  occurredAt: number,
+): void {
+  const snapshot = activity.supplySnapshot;
+  if (!snapshot || activity.activeEncounterIndex !== 0) return;
+  for (const entry of snapshot.entries) {
+    const remaining = entry.allocatedQuantity - entry.consumedQuantity;
+    const quantity = Math.min(entry.quantityPerRun, Math.max(0, remaining));
+    if (quantity > 0) {
+      state.guildBank = commitReservedStack(state.guildBank, entry.itemId, quantity);
+      entry.consumedQuantity += quantity;
+      recordEconomyEvent(state, {
+        kind: "supply-consumed",
+        source: "expedition-supply",
+        itemId: entry.itemId,
+        quantity,
+        activityId: activity.id,
+        occurredAt,
+      });
+    }
+  }
+}
+
+function releaseRemainingSupplies(
+  state: GameState,
+  activity: ExpeditionActivity,
+  occurredAt: number,
+): void {
+  const snapshot = activity.supplySnapshot;
+  if (!snapshot) return;
+  for (const entry of snapshot.entries) {
+    const remaining = entry.allocatedQuantity - entry.consumedQuantity;
+    if (remaining > 0) {
+      state.guildBank = releaseReservedStack(state.guildBank, entry.itemId, remaining);
+      entry.releasedQuantity = (entry.releasedQuantity ?? 0) + remaining;
+      recordEconomyEvent(state, {
+        kind: "supply-released",
+        source: "expedition-supply",
+        itemId: entry.itemId,
+        quantity: remaining,
+        activityId: activity.id,
+        occurredAt,
+      });
+    }
+  }
 }
 
 function unlockEligibleDungeons(state: GameState, content: ContentRegistry): void {

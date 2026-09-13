@@ -115,7 +115,14 @@ export function auditDungeonContent(registry: ContentRegistry): DungeonContentAu
       .map((table) => String(table.id))
       .sort(),
     unreferencedItemIds: registry.items
-      .filter((item) => !item.isStarter && !referencedItemIds.has(String(item.id)))
+      .filter(
+        (item) =>
+          (item.kind ?? "equipment") === "equipment" &&
+          item.statsSource.provider === "wowhead-classic" &&
+          !String(item.id).startsWith("profession_") &&
+          !item.isStarter &&
+          !referencedItemIds.has(String(item.id)),
+      )
       .map((item) => String(item.id))
       .sort(),
     unreferencedQuestIds: registry.quests

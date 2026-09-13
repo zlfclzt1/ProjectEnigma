@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "首批采矿活动采用铜矿采集点，时间和产出为放置玩法平衡配置。"
+      }
+    ]
+  },
+  "gatheringSites": [
+    {
+      "id": "copper-vein-zone",
+      "professionId": "mining",
+      "facilityId": "mining-camp",
+      "status": "available",
+      "name": { "zhCN": "铜矿脉", "enUS": "Copper Vein Zone" },
+      "requiredSkill": 1,
+      "requiredTrainingRank": 1,
+      "durationSeconds": 900,
+      "batchLimit": 10,
+      "outputs": [
+        {
+          "itemId": "profession_copper_ore",
+          "quantity": { "min": 3, "max": 6 },
+          "chance": 1,
+          "guaranteed": true
+        },
+        { "itemId": "profession_rough_stone", "quantity": { "min": 1, "max": 3 }, "chance": 0.6 }
+      ],
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "sources": [{ "type": "design", "reason": "首批采矿内容" }]
+    }
+  ]
+}

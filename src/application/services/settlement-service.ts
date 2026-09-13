@@ -3,16 +3,25 @@ import type { GameCommand } from "./game-session";
 import type { ContentRegistry } from "../../content/registry";
 import { ActivityRegistry } from "../../domain/activity/activity-registry";
 import { ActivityScheduler } from "../../domain/activity/activity-scheduler";
-import type { ExpeditionActivity } from "../../domain/activity/activity";
+import type {
+  ExpeditionActivity,
+  GatheringActivity,
+  CraftingActivity,
+} from "../../domain/activity/activity";
 import type { GameState } from "../../domain/game-state";
 import {
   settleNextExpeditionStage,
   type ExpeditionSettlementResult,
 } from "../../domain/dungeon/expedition-settlement";
 import { LocalIdGenerator } from "../../infrastructure/ids/local-id-generator";
+import {
+  settleGatheringActivity,
+  settleCraftingActivity,
+} from "../../domain/profession/profession-activity";
 
 export interface SettlementSummary {
   readonly settled: readonly Extract<ExpeditionSettlementResult, { status: "settled" }>[];
+  readonly professionSettled: number;
 }
 
 export class SettlementService {
@@ -23,12 +32,28 @@ export class SettlementService {
   settleDueActivities(state: GameState, now: number): SettlementSummary {
     const ids = new LocalIdGenerator(state.ids);
     const settled: Extract<ExpeditionSettlementResult, { status: "settled" }>[] = [];
+    let professionSettled = 0;
 
     while (true) {
-      const activity = this.scheduler
-        .due(state, now)
-        .find((candidate): candidate is ExpeditionActivity => candidate.type === "expedition");
+      const activity = this.scheduler.due(state, now)[0];
       if (!activity) break;
+      if (activity.type === "gathering") {
+        const live = state.activities[activity.id] as GatheringActivity;
+        if (settleGatheringActivity(state, this.content, live).changed) {
+          this.scheduler.finish(state, live.id, "completed", now);
+          professionSettled += 1;
+        }
+        continue;
+      }
+      if (activity.type === "crafting") {
+        const live = state.activities[activity.id] as CraftingActivity;
+        if (settleCraftingActivity(state, this.content, live, now).changed) {
+          this.scheduler.finish(state, live.id, "completed", now);
+          professionSettled += 1;
+        }
+        continue;
+      }
+      if (activity.type !== "expedition") continue;
       const liveActivity = state.activities[activity.id] as ExpeditionActivity;
       const result = settleNextExpeditionStage(
         state,
@@ -45,7 +70,7 @@ export class SettlementService {
     }
 
     if (settled.length > 0) state.ids = ids.snapshot();
-    return { settled };
+    return { settled, professionSettled };
   }
 }
 

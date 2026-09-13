@@ -52,6 +52,19 @@ export interface ExpeditionActivityView {
   readonly route: readonly ActivityRouteStageView[];
   readonly rareEvents: readonly RareRouteEventView[];
   readonly developmentEvents: readonly DevelopmentEventView[];
+  readonly supply?: {
+    readonly planId?: string;
+    readonly channels: { stability: number; efficiency: number; exploration: number };
+    readonly routeChoiceCredits: number;
+    readonly entries: readonly {
+      readonly itemId: string;
+      readonly quantityPerRun: number;
+      readonly requiredQuantity: number;
+      readonly allocatedQuantity: number;
+      readonly consumedQuantity: number;
+      readonly releasedQuantity: number;
+    }[];
+  };
 }
 
 export interface ActivitiesView {
@@ -158,6 +171,23 @@ function projectActivity(
       text: event.text,
       lootCount: event.itemInstanceIds.length,
     })),
+    ...(activity.supplySnapshot
+      ? {
+          supply: {
+            ...(activity.supplySnapshot.planId ? { planId: activity.supplySnapshot.planId } : {}),
+            channels: { ...activity.supplySnapshot.channels },
+            routeChoiceCredits: activity.supplySnapshot.routeChoiceCredits ?? 0,
+            entries: activity.supplySnapshot.entries.map((entry) => ({
+              itemId: entry.itemId,
+              quantityPerRun: entry.quantityPerRun,
+              requiredQuantity: entry.requiredQuantity,
+              allocatedQuantity: entry.allocatedQuantity,
+              consumedQuantity: entry.consumedQuantity,
+              releasedQuantity: entry.releasedQuantity ?? 0,
+            })),
+          },
+        }
+      : {}),
   };
 }
 

@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-12",
+        "notes": "旧存档迁移和新游戏均提供采矿营地与锻造工坊 Lv1。"
+      }
+    ]
+  },
+  "professionFacilities": [
+    {
+      "id": "mining-camp",
+      "professionId": "mining",
+      "status": "available",
+      "levels": [
+        {
+          "level": 1,
+          "cost": 0,
+          "unlockedSkillCap": 75,
+          "unlockedRecipeTags": [],
+          "unlockedGatheringSiteIds": []
+        },
+        {
+          "level": 2,
+          "cost": 500,
+          "unlockedSkillCap": 150,
+          "unlockedRecipeTags": ["journeyman"],
+          "unlockedGatheringSiteIds": ["tin-vein-zone", "silver-vein-zone"]
+        },
+        {
+          "level": 3,
+          "cost": 1000,
+          "unlockedSkillCap": 225,
+          "unlockedRecipeTags": ["expert"],
+          "unlockedGatheringSiteIds": [
+            "iron-deposit-zone",
+            "mithril-deposit-zone",
+            "gold-vein-zone"
+          ]
+        },
+        {
+          "level": 4,
+          "cost": 2000,
+          "unlockedSkillCap": 300,
+          "unlockedRecipeTags": ["artisan"],
+          "unlockedGatheringSiteIds": [
+            "thorium-vein-zone",
+            "truesilver-vein-zone",
+            "dark-iron-deposit-zone"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "blacksmith-forge",
+      "professionId": "blacksmithing",
+      "status": "available",
+      "levels": [
+        {
+          "level": 1,
+          "cost": 0,
+          "unlockedSkillCap": 75,
+          "unlockedRecipeTags": [],
+          "unlockedGatheringSiteIds": []
+        },
+        {
+          "level": 2,
+          "cost": 500,
+          "unlockedSkillCap": 150,
+          "unlockedRecipeTags": ["journeyman"],
+          "unlockedGatheringSiteIds": []
+        },
+        {
+          "level": 3,
+          "cost": 1000,
+          "unlockedSkillCap": 225,
+          "unlockedRecipeTags": ["expert"],
+          "unlockedGatheringSiteIds": []
+        },
+        {
+          "level": 4,
+          "cost": 2000,
+          "unlockedSkillCap": 300,
+          "unlockedRecipeTags": ["artisan"],
+          "unlockedGatheringSiteIds": []
+        }
+      ]
+    },
+    {
+      "id": "alchemy-lab",
+      "professionId": "alchemy",
+      "status": "preview",
+      "levels": [
+        {
+          "level": 1,
+          "cost": 0,
+          "unlockedSkillCap": 75,
+          "unlockedRecipeTags": [],
+          "unlockedGatheringSiteIds": []
+        }
+      ]
+    },
+    {
+      "id": "herbalism-garden",
+      "professionId": "herbalism",
+      "status": "preview",
+      "levels": [
+        {
+          "level": 1,
+          "cost": 0,
+          "unlockedSkillCap": 75,
+          "unlockedRecipeTags": [],
+          "unlockedGatheringSiteIds": []
+        }
+      ]
+    },
+    {
+      "id": "enchanting-sanctum",
+      "professionId": "enchanting",
+      "status": "preview",
+      "levels": [
+        {
+          "level": 1,
+          "cost": 0,
+          "unlockedSkillCap": 75,
+          "unlockedRecipeTags": [],
+          "unlockedGatheringSiteIds": []
+        }
+      ]
+    },
+    {
+      "id": "engineering-workshop",
+      "professionId": "engineering",
+      "status": "preview",
+      "levels": [
+        {
+          "level": 1,
+          "cost": 0,
+          "unlockedSkillCap": 75,
+          "unlockedRecipeTags": [],
+          "unlockedGatheringSiteIds": []
+        }
+      ]
+    },
+    {
+      "id": "leatherworking-station",
+      "professionId": "leatherworking",
+      "status": "preview",
+      "levels": [
+        {
+          "level": 1,
+          "cost": 0,
+          "unlockedSkillCap": 75,
+          "unlockedRecipeTags": [],
+          "unlockedGatheringSiteIds": []
+        }
+      ]
+    },
+    {
+      "id": "tailoring-loom",
+      "professionId": "tailoring",
+      "status": "preview",
+      "levels": [
+        {
+          "level": 1,
+          "cost": 0,
+          "unlockedSkillCap": 75,
+          "unlockedRecipeTags": [],
+          "unlockedGatheringSiteIds": []
+        }
+      ]
+    },
+    {
+      "id": "cooking-fire",
+      "professionId": "cooking",
+      "status": "preview",
+      "levels": [
+        {
+          "level": 1,
+          "cost": 0,
+          "unlockedSkillCap": 75,
+          "unlockedRecipeTags": [],
+          "unlockedGatheringSiteIds": []
+        }
+      ]
+    },
+    {
+      "id": "first-aid-clinic",
+      "professionId": "first-aid",
+      "status": "preview",
+      "levels": [
+        {
+          "level": 1,
+          "cost": 0,
+          "unlockedSkillCap": 75,
+          "unlockedRecipeTags": [],
+          "unlockedGatheringSiteIds": []
+        }
+      ]
+    },
+    {
+      "id": "fishing-pier",
+      "professionId": "fishing",
+      "status": "preview",
+      "levels": [
+        {
+          "level": 1,
+          "cost": 0,
+          "unlockedSkillCap": 75,
+          "unlockedRecipeTags": [],
+          "unlockedGatheringSiteIds": []
+        }
+      ]
+    },
+    {
+      "id": "skinning-camp",
+      "professionId": "skinning",
+      "status": "preview",
+      "levels": [
+        {
+          "level": 1,
+          "cost": 0,
+          "unlockedSkillCap": 75,
+          "unlockedRecipeTags": [],
+          "unlockedGatheringSiteIds": []
+        }
+      ]
+    }
+  ]
+}

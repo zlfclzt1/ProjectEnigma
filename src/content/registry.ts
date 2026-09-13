@@ -28,6 +28,14 @@ import type { MechanicDefinition } from "./schemas/mechanic";
 import type { SpecCapabilityProgression } from "./schemas/spec-capability";
 import type { DungeonQuestDefinition } from "./schemas/quest";
 import type { DungeonDisplayGroupDefinition } from "./schemas/dungeon-display-group";
+import type {
+  ConsumableEffectDefinition,
+  GatheringSiteDefinition,
+  ProfessionDefinition,
+  ProfessionFacilityDefinition,
+  RecipeDefinition,
+  SupplyPlanDefinition,
+} from "./schemas/profession";
 
 class ReadonlyMapView<Key, Value> implements ReadonlyMap<Key, Value> {
   readonly #source: Map<Key, Value>;
@@ -221,6 +229,12 @@ export class ContentRegistry {
   readonly mechanics: readonly MechanicDefinition[];
   readonly specCapabilities: readonly SpecCapabilityProgression[];
   readonly quests: readonly DungeonQuestDefinition[];
+  readonly professions: readonly ProfessionDefinition[];
+  readonly professionFacilities: readonly ProfessionFacilityDefinition[];
+  readonly gatheringSites: readonly GatheringSiteDefinition[];
+  readonly recipes: readonly RecipeDefinition[];
+  readonly consumableEffects: readonly ConsumableEffectDefinition[];
+  readonly supplyPlans: readonly SupplyPlanDefinition[];
 
   readonly roleById: ReadonlyMap<RoleDefinition["id"], RoleDefinition>;
   readonly capabilityById: ReadonlyMap<CapabilityDefinition["id"], CapabilityDefinition>;
@@ -256,6 +270,18 @@ export class ContentRegistry {
   >;
   readonly namePoolByLocale: ReadonlyMap<NamePoolFile["locale"], NamePoolFile>;
   readonly questById: ReadonlyMap<DungeonQuestDefinition["id"], DungeonQuestDefinition>;
+  readonly professionById: ReadonlyMap<ProfessionDefinition["id"], ProfessionDefinition>;
+  readonly professionFacilityById: ReadonlyMap<
+    ProfessionFacilityDefinition["id"],
+    ProfessionFacilityDefinition
+  >;
+  readonly gatheringSiteById: ReadonlyMap<GatheringSiteDefinition["id"], GatheringSiteDefinition>;
+  readonly recipeById: ReadonlyMap<RecipeDefinition["id"], RecipeDefinition>;
+  readonly consumableEffectById: ReadonlyMap<
+    ConsumableEffectDefinition["id"],
+    ConsumableEffectDefinition
+  >;
+  readonly supplyPlanById: ReadonlyMap<SupplyPlanDefinition["id"], SupplyPlanDefinition>;
 
   constructor(loaded: LoadedContent) {
     const issues: ContentValidationIssue[] = [];
@@ -280,6 +306,12 @@ export class ContentRegistry {
     const mechanicById = buildIndex(loaded.mechanics, issues, "首领机制");
     const specCapabilityById = buildIndex(loaded.specCapabilities, issues, "专精能力成长");
     const questById = buildIndex(loaded.quests, issues, "副本任务");
+    const professionById = buildIndex(loaded.professions, issues, "专业");
+    const professionFacilityById = buildIndex(loaded.professionFacilities, issues, "专业设施");
+    const gatheringSiteById = buildIndex(loaded.gatheringSites, issues, "采集地点");
+    const recipeById = buildIndex(loaded.recipes, issues, "专业配方");
+    const consumableEffectById = buildIndex(loaded.consumableEffects, issues, "消耗品效果");
+    const supplyPlanById = buildIndex(loaded.supplyPlans, issues, "补给方案");
     const namePoolByLocale = new Map<NamePoolFile["locale"], NamePoolFile>();
     for (const entry of loaded.namePools) {
       if (namePoolByLocale.has(entry.value.locale)) {
@@ -332,6 +364,16 @@ export class ContentRegistry {
     this.validateGuildUpgradeReferences(loaded, dungeonById, issues);
     this.validateQuestReferences(loaded, dungeonById, encounterById, itemById, classById, issues);
     this.validateLogReferences(loaded, dungeonById, encounterById, issues);
+    this.validateProfessionReferences(
+      loaded,
+      professionById,
+      professionFacilityById,
+      gatheringSiteById,
+      recipeById,
+      itemById,
+      consumableEffectById,
+      issues,
+    );
     validateUnlockCycles(loaded.dungeons, dungeonById, issues);
     validateDisplayNames(loaded, issues);
     if (issues.length > 0) throw new ContentValidationError(issues);
@@ -360,6 +402,14 @@ export class ContentRegistry {
     this.mechanics = Object.freeze(loaded.mechanics.map(({ value }) => value));
     this.specCapabilities = Object.freeze(loaded.specCapabilities.map(({ value }) => value));
     this.quests = Object.freeze(loaded.quests.map(({ value }) => value));
+    this.professions = Object.freeze(loaded.professions.map(({ value }) => value));
+    this.professionFacilities = Object.freeze(
+      loaded.professionFacilities.map(({ value }) => value),
+    );
+    this.gatheringSites = Object.freeze(loaded.gatheringSites.map(({ value }) => value));
+    this.recipes = Object.freeze(loaded.recipes.map(({ value }) => value));
+    this.consumableEffects = Object.freeze(loaded.consumableEffects.map(({ value }) => value));
+    this.supplyPlans = Object.freeze(loaded.supplyPlans.map(({ value }) => value));
     this.capabilityById = readonlyMap(capabilityById);
     this.roleById = readonlyMap(roleById);
     this.classById = readonlyMap(classById);
@@ -382,7 +432,149 @@ export class ContentRegistry {
     this.specCapabilityById = readonlyMap(specCapabilityById);
     this.namePoolByLocale = readonlyMap(namePoolByLocale);
     this.questById = readonlyMap(questById);
+    this.professionById = readonlyMap(professionById);
+    this.professionFacilityById = readonlyMap(professionFacilityById);
+    this.gatheringSiteById = readonlyMap(gatheringSiteById);
+    this.recipeById = readonlyMap(recipeById);
+    this.consumableEffectById = readonlyMap(consumableEffectById);
+    this.supplyPlanById = readonlyMap(supplyPlanById);
     Object.freeze(this);
+  }
+
+  private validateProfessionReferences(
+    loaded: LoadedContent,
+    professionById: ReadonlyMap<ProfessionDefinition["id"], ProfessionDefinition>,
+    facilityById: ReadonlyMap<ProfessionFacilityDefinition["id"], ProfessionFacilityDefinition>,
+    gatheringSiteById: ReadonlyMap<GatheringSiteDefinition["id"], GatheringSiteDefinition>,
+    recipeById: ReadonlyMap<RecipeDefinition["id"], RecipeDefinition>,
+    itemById: ReadonlyMap<ItemDefinition["id"], ItemDefinition>,
+    consumableEffectById: ReadonlyMap<ConsumableEffectDefinition["id"], ConsumableEffectDefinition>,
+    issues: ContentValidationIssue[],
+  ): void {
+    for (const owner of loaded.professions) {
+      if (owner.value.facilityId) {
+        requireReference(
+          facilityById,
+          owner.value.facilityId,
+          owner,
+          "facilityId",
+          "专业设施",
+          issues,
+        );
+      }
+    }
+    for (const owner of loaded.professionFacilities) {
+      requireReference(
+        professionById,
+        owner.value.professionId,
+        owner,
+        "professionId",
+        "专业",
+        issues,
+      );
+      for (const [index, siteId] of owner.value.levels
+        .flatMap((level) => level.unlockedGatheringSiteIds)
+        .entries()) {
+        requireReference(
+          gatheringSiteById,
+          siteId,
+          owner,
+          `levels[*].unlockedGatheringSiteIds[${index}]`,
+          "采集地点",
+          issues,
+        );
+      }
+    }
+    for (const owner of loaded.gatheringSites) {
+      requireReference(
+        professionById,
+        owner.value.professionId,
+        owner,
+        "professionId",
+        "专业",
+        issues,
+      );
+      requireReference(
+        facilityById,
+        owner.value.facilityId,
+        owner,
+        "facilityId",
+        "专业设施",
+        issues,
+      );
+      owner.value.outputs.forEach((output, index) => {
+        requireReference(
+          itemById,
+          output.itemId,
+          owner,
+          `outputs[${index}].itemId`,
+          "物品",
+          issues,
+        );
+      });
+    }
+    for (const owner of loaded.recipes) {
+      requireReference(
+        professionById,
+        owner.value.professionId,
+        owner,
+        "professionId",
+        "专业",
+        issues,
+      );
+      requireReference(
+        facilityById,
+        owner.value.facilityId,
+        owner,
+        "facilityId",
+        "专业设施",
+        issues,
+      );
+      owner.value.input.forEach((input, index) => {
+        requireReference(itemById, input.itemId, owner, `input[${index}].itemId`, "物品", issues);
+      });
+      owner.value.output.forEach((output, index) => {
+        if (output.type === "material-stack" || output.type === "item-instance") {
+          requireReference(
+            itemById,
+            output.itemId,
+            owner,
+            `output[${index}].itemId`,
+            "物品",
+            issues,
+          );
+        }
+        if (output.type === "enchantment") {
+          // Enchantment content is optional until the corresponding profession is enabled.
+          void output.enchantmentId;
+        }
+      });
+      owner.value.learning.requiredRecipeIds.forEach((recipeId, index) => {
+        requireReference(
+          recipeById,
+          recipeId,
+          owner,
+          `learning.requiredRecipeIds[${index}]`,
+          "专业配方",
+          issues,
+        );
+      });
+    }
+    for (const owner of loaded.supplyPlans) {
+      owner.value.entries.forEach((entry, index) => {
+        requireReference(itemById, entry.itemId, owner, `entries[${index}].itemId`, "物品", issues);
+        if (entry.effectId) {
+          requireReference(
+            consumableEffectById,
+            entry.effectId,
+            owner,
+            `entries[${index}].effectId`,
+            "消耗品效果",
+            issues,
+          );
+        }
+      });
+    }
   }
 
   private validateDungeonDisplayGroups(

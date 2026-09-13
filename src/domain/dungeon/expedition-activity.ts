@@ -5,6 +5,7 @@ import type {
   ExpeditionEquipmentSnapshot,
   ExpeditionMemberSnapshot,
   ExpeditionRunPlan,
+  ExpeditionSupplySnapshot,
 } from "../activity/activity";
 import type { CombatProfile } from "../combat/combat-profile";
 import type { GameState } from "../game-state";
@@ -13,14 +14,17 @@ import {
   type DungeonId,
   type DungeonRouteNodeId,
   type DungeonRouteVariantId,
+  type SupplyPlanId,
 } from "../shared/ids";
 import { SeededRandomSource } from "../../infrastructure/random/seeded-random-source";
-import { evaluateExpeditionParty } from "./party-evaluation";
+import { evaluateExpeditionParty, type EncounterPreview } from "./party-evaluation";
 import { lockRareRouteSpawns, revealRareRouteNodes } from "./rare-route";
 import { getExpeditionRunCapacity } from "../guild/guild-upgrade-rules";
 import { applyMemberExperience, getMemberLevelCap } from "../member/member-level-cap";
 import { getDungeonRouteVariant, routeForVariant } from "./dungeon-route";
 import { buildExpeditionDevelopmentSnapshot } from "./dungeon-development";
+import { availableStackCount } from "../inventory/guild-bank-rules";
+import type { GuildSupplyPlan } from "../guild/supply-plan";
 
 export interface DungeonExperienceConfig {
   readonly baseFraction: number;
@@ -60,10 +64,12 @@ export interface StartExpeditionRequest extends ActivityStartRequest {
   readonly requestedRuns: number;
   readonly selectedOptionalNodeIds?: readonly DungeonRouteNodeId[];
   readonly routeVariantId?: DungeonRouteVariantId;
+  readonly supplyPlanId?: SupplyPlanId;
 }
 
 export function createExpeditionActivityHandler(
   content: ContentRegistry,
+  guildSupplyPlans: Readonly<Record<SupplyPlanId, GuildSupplyPlan>> = {},
 ): ActivityHandler<StartExpeditionRequest, ExpeditionActivity> {
   return {
     type: "expedition",
@@ -128,6 +134,13 @@ export function createExpeditionActivityHandler(
         request.routeVariantId,
       );
       if (!preview.ok) issues.push(...preview.issues);
+      if (
+        request.supplyPlanId &&
+        !guildSupplyPlans[request.supplyPlanId] &&
+        !content.supplyPlanById.has(request.supplyPlanId)
+      ) {
+        issues.push({ code: "supply-plan.not-found", message: "补给方案不存在。" });
+      }
       return issues.length === 0 ? { ok: true } : { ok: false, issues };
     },
     create(context, request) {
@@ -167,13 +180,36 @@ export function createExpeditionActivityHandler(
         request.routeVariantId,
       );
       if (!previewResult.ok) throw new Error("通过校验的副本队伍无法生成预览。");
+      const supplySnapshot = buildSupplySnapshot(
+        context.state,
+        content,
+        request.supplyPlanId,
+        request.requestedRuns,
+        guildSupplyPlans,
+      );
       const activityId = asBrandedId<"ActivityId">(context.ids.next("expedition"));
       const activitySeed = `${context.state.random.seed}:expedition:${activityId}:${context.random.next("expedition-seed")}`;
       const runPlans: ExpeditionRunPlan[] = [];
       for (let runNumber = 1; runNumber <= request.requestedRuns; runNumber += 1) {
         const runSeed = `${activitySeed}:run:${runNumber}:${context.random.next("run-seed")}`;
         const runRandom = new SeededRandomSource(runSeed);
-        const rareNodeSpawns = lockRareRouteSpawns(activeRoute, runRandom);
+        const rareNodeSpawns = { ...lockRareRouteSpawns(activeRoute, runRandom) };
+        if ((supplySnapshot?.channels.exploration ?? 0) > 0) {
+          let routeChoiceCredits = supplySnapshot?.routeChoiceCredits ?? 0;
+          for (const node of activeRoute) {
+            if (node.type !== "rare" || rareNodeSpawns[node.id]) continue;
+            if (routeChoiceCredits > 0) {
+              rareNodeSpawns[node.id] = true;
+              routeChoiceCredits -= 1;
+              continue;
+            }
+            if (
+              runRandom.next(`supply-exploration:${node.id}`) < supplySnapshot!.channels.exploration
+            ) {
+              rareNodeSpawns[node.id] = true;
+            }
+          }
+        }
         const includedRareNodeIds = Object.entries(rareNodeSpawns).flatMap(([nodeId, spawned]) =>
           spawned ? [asBrandedId<"DungeonRouteNodeId">(nodeId)] : [],
         );
@@ -187,6 +223,10 @@ export function createExpeditionActivityHandler(
           request.routeVariantId,
         );
         if (!runPreview.ok) throw new Error("稀有首领路线无法使用当前队伍生成。");
+        const adjustedEncounters = applySupplyModifiers(
+          runPreview.preview.encounters,
+          supplySnapshot,
+        );
         const runPlan: ExpeditionRunPlan = {
           runNumber,
           seed: runSeed,
@@ -203,7 +243,7 @@ export function createExpeditionActivityHandler(
               : {},
           maximumExperiencePerMember: DEFAULT_DUNGEON_EXPERIENCE_CONFIG.maximumFractionPerRun,
           experienceAwardedByMember: {},
-          stages: runPreview.preview.encounters.map((encounter) => ({
+          stages: adjustedEncounters.map((encounter) => ({
             routeNodeId: encounter.routeNodeId,
             routeNodeType: encounter.routeNodeType,
             encounterId: encounter.encounterId,
@@ -264,16 +304,95 @@ export function createExpeditionActivityHandler(
             ),
           ),
           contribution: { ...previewResult.preview.contribution },
-          clearProbability: previewResult.preview.clearProbability,
-          durationSeconds: previewResult.preview.durationSeconds,
+          clearProbability: adjustedClearProbability(
+            previewResult.preview.clearProbability,
+            supplySnapshot,
+          ),
+          durationSeconds: adjustedDuration(previewResult.preview.durationSeconds, supplySnapshot),
           capabilities: previewResult.preview.capabilities,
         },
         runPlans,
         questSnapshots: [],
         developmentSnapshot,
         developmentEvents: [],
+        ...(supplySnapshot ? { supplySnapshot } : {}),
       };
     },
+  };
+}
+
+function applySupplyModifiers(
+  encounters: readonly EncounterPreview[],
+  snapshot: ExpeditionActivity["supplySnapshot"],
+) {
+  const stability = snapshot?.channels.stability ?? 0;
+  const efficiency = Math.min(0.25, snapshot?.channels.efficiency ?? 0);
+  return encounters.map((encounter) => ({
+    ...encounter,
+    probability: Math.min(1, encounter.probability + stability),
+    durationSeconds: Math.max(1, Math.round(encounter.durationSeconds * (1 - efficiency))),
+  }));
+}
+
+function adjustedClearProbability(
+  probability: number,
+  snapshot: ExpeditionActivity["supplySnapshot"],
+): number {
+  return Math.min(1, probability + (snapshot?.channels.stability ?? 0));
+}
+
+function adjustedDuration(
+  duration: number,
+  snapshot: ExpeditionActivity["supplySnapshot"],
+): number {
+  return Math.max(
+    1,
+    Math.round(duration * (1 - Math.min(0.25, snapshot?.channels.efficiency ?? 0))),
+  );
+}
+
+function buildSupplySnapshot(
+  state: GameState,
+  content: ContentRegistry,
+  planId: SupplyPlanId | undefined,
+  requestedRuns: number,
+  guildSupplyPlans: Readonly<Record<SupplyPlanId, GuildSupplyPlan>> = {},
+): ExpeditionSupplySnapshot | undefined {
+  if (!planId) return undefined;
+  const plan = guildSupplyPlans[planId] ?? content.supplyPlanById.get(planId);
+  if (!plan) return undefined;
+  const channels = { stability: 0, efficiency: 0, exploration: 0 };
+  const entries = plan.entries.map((entry) => {
+    const requiredQuantity = entry.quantityPerRun * requestedRuns;
+    const allocatedQuantity = Math.min(
+      requiredQuantity,
+      Math.max(0, availableStackCount(state.guildBank, entry.itemId)),
+    );
+    if (entry.effectId) {
+      const effect = content.consumableEffectById.get(entry.effectId);
+      for (const channel of effect?.channels ?? []) {
+        channels[channel.channel] += Math.min(
+          effect?.maxContribution ?? Number.POSITIVE_INFINITY,
+          channel.value * Math.floor(allocatedQuantity / entry.quantityPerRun),
+        );
+      }
+    }
+    return {
+      itemId: entry.itemId,
+      quantityPerRun: entry.quantityPerRun,
+      requiredQuantity,
+      allocatedQuantity,
+      consumedQuantity: 0,
+      releasedQuantity: 0,
+      ...(entry.effectId ? { effectId: entry.effectId } : {}),
+    };
+  });
+  return {
+    planId,
+    requestedRuns,
+    entries,
+    channels,
+    routeChoiceCredits: Math.floor(channels.exploration / 0.2),
   };
 }
 

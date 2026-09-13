@@ -64,6 +64,12 @@ try {
     `首领机制 ${registry.mechanics.length}`,
     `专精能力成长 ${registry.specCapabilities.length}`,
     `副本任务 ${registry.quests.length}`,
+    `专业 ${registry.professions.length}`,
+    `专业设施 ${registry.professionFacilities.length}`,
+    `采集地点 ${registry.gatheringSites.length}`,
+    `专业配方 ${registry.recipes.length}`,
+    `消耗品效果 ${registry.consumableEffects.length}`,
+    `补给方案 ${registry.supplyPlans.length}`,
   ].join("，");
   console.log(`内容校验通过：发现 ${Object.keys(modules).length} 个文件；${counts}。`);
 } catch (error) {

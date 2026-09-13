@@ -18,6 +18,7 @@ import { resolveItemInstance } from "../../domain/equipment/resolve-item-instanc
 import { LocalIdGenerator } from "../../infrastructure/ids/local-id-generator";
 import { SeededRandomSource } from "../../infrastructure/random/seeded-random-source";
 import { memberFactoryContext } from "./member-factory-context";
+import { recordEconomyEvent } from "../../domain/economy/economy-ledger";
 
 export interface RespecMemberResult {
   readonly changed: boolean;
@@ -90,6 +91,13 @@ export function respecMemberCommand(
         context,
       );
       draft.guild.funds = draft.guild.funds - RESPEC_COST + saleProceeds;
+      recordEconomyEvent(draft, { kind: "gold-expense", source: "respec", amount: RESPEC_COST });
+      if (saleProceeds > 0)
+        recordEconomyEvent(draft, {
+          kind: "gold-income",
+          source: "respec-equipment-sale",
+          amount: saleProceeds,
+        });
       draft.ids = ids.snapshot();
       return {
         changed: true,

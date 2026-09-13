@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "skill=186",
+        "url": "https://www.wowhead.com/classic/skill=186/mining",
+        "verifiedAt": "2026-09-13",
+        "notes": "Classic 熔炼技能段与金属转化链；活动时长为本项目放置玩法参数。"
+      }
+    ]
+  },
+  "recipes": [
+    {
+      "id": "smelt_tin_bar",
+      "professionId": "mining",
+      "facilityId": "mining-camp",
+      "status": "available",
+      "category": "refining",
+      "name": { "zhCN": "熔炼锡锭", "enUS": "Smelt Tin" },
+      "requiredSkill": 65,
+      "requiredTrainingRank": 1,
+      "input": [{ "itemId": "profession_tin_ore", "quantityPerBatch": 1 }],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_tin_bar",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 150,
+      "batchLimit": 20,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "trainer", "sourceId": "classic-mining-trainer" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "classic-mining-trainer" }]
+    },
+    {
+      "id": "smelt_iron_bar",
+      "professionId": "mining",
+      "facilityId": "mining-camp",
+      "status": "available",
+      "category": "refining",
+      "name": { "zhCN": "熔炼铁锭", "enUS": "Smelt Iron" },
+      "requiredSkill": 125,
+      "requiredTrainingRank": 2,
+      "input": [{ "itemId": "profession_iron_ore", "quantityPerBatch": 1 }],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_iron_bar",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 180,
+      "batchLimit": 20,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "trainer", "sourceId": "classic-mining-trainer" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "classic-mining-trainer" }]
+    },
+    {
+      "id": "smelt_mithril_bar",
+      "professionId": "mining",
+      "facilityId": "mining-camp",
+      "status": "available",
+      "category": "refining",
+      "name": { "zhCN": "熔炼秘银锭", "enUS": "Smelt Mithril" },
+      "requiredSkill": 175,
+      "requiredTrainingRank": 3,
+      "input": [{ "itemId": "profession_mithril_ore", "quantityPerBatch": 1 }],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_mithril_bar",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 210,
+      "batchLimit": 20,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "trainer", "sourceId": "classic-mining-trainer" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "classic-mining-trainer" }]
+    },
+    {
+      "id": "smelt_thorium_bar",
+      "professionId": "mining",
+      "facilityId": "mining-camp",
+      "status": "available",
+      "category": "refining",
+      "name": { "zhCN": "熔炼瑟银锭", "enUS": "Smelt Thorium" },
+      "requiredSkill": 250,
+      "requiredTrainingRank": 4,
+      "input": [{ "itemId": "profession_thorium_ore", "quantityPerBatch": 1 }],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_thorium_bar",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 240,
+      "batchLimit": 20,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "trainer", "sourceId": "classic-mining-trainer" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "classic-mining-trainer" }]
+    },
+    {
+      "id": "smelt_silver_bar",
+      "professionId": "mining",
+      "facilityId": "mining-camp",
+      "status": "available",
+      "category": "refining",
+      "name": { "zhCN": "熔炼银锭", "enUS": "Smelt Silver" },
+      "requiredSkill": 75,
+      "requiredTrainingRank": 1,
+      "input": [{ "itemId": "profession_silver_ore", "quantityPerBatch": 1 }],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_silver_bar",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 150,
+      "batchLimit": 20,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "trainer", "sourceId": "classic-mining-trainer" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "classic-mining-trainer" }]
+    },
+    {
+      "id": "smelt_gold_bar",
+      "professionId": "mining",
+      "facilityId": "mining-camp",
+      "status": "available",
+      "category": "refining",
+      "name": { "zhCN": "熔炼金锭", "enUS": "Smelt Gold" },
+      "requiredSkill": 155,
+      "requiredTrainingRank": 3,
+      "input": [{ "itemId": "profession_gold_ore", "quantityPerBatch": 1 }],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_gold_bar",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 180,
+      "batchLimit": 20,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "trainer", "sourceId": "classic-mining-trainer" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "classic-mining-trainer" }]
+    },
+    {
+      "id": "smelt_truesilver_bar",
+      "professionId": "mining",
+      "facilityId": "mining-camp",
+      "status": "available",
+      "category": "refining",
+      "name": { "zhCN": "熔炼真银锭", "enUS": "Smelt Truesilver" },
+      "requiredSkill": 230,
+      "requiredTrainingRank": 4,
+      "input": [{ "itemId": "profession_truesilver_ore", "quantityPerBatch": 1 }],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_truesilver_bar",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 210,
+      "batchLimit": 20,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "trainer", "sourceId": "classic-mining-trainer" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "classic-mining-trainer" }]
+    },
+    {
+      "id": "smelt_dark_iron_bar",
+      "professionId": "mining",
+      "facilityId": "mining-camp",
+      "status": "available",
+      "category": "refining",
+      "name": { "zhCN": "熔炼黑铁锭", "enUS": "Smelt Dark Iron" },
+      "requiredSkill": 230,
+      "requiredTrainingRank": 4,
+      "input": [{ "itemId": "profession_dark_iron_ore", "quantityPerBatch": 8 }],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_dark_iron_bar",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 300,
+      "batchLimit": 10,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "trainer", "sourceId": "dark-iron-smelter" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "dark-iron-smelter" }]
+    }
+  ]
+}

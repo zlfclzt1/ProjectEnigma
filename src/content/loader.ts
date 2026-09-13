@@ -50,6 +50,20 @@ import {
   dungeonDisplayGroupDefinitionFileSchema,
   type DungeonDisplayGroupDefinition,
 } from "./schemas/dungeon-display-group";
+import {
+  consumableEffectFileSchema,
+  gatheringSiteFileSchema,
+  professionDefinitionFileSchema,
+  professionFacilityFileSchema,
+  recipeFileSchema,
+  supplyPlanFileSchema,
+  type ConsumableEffectDefinition,
+  type GatheringSiteDefinition,
+  type ProfessionDefinition,
+  type ProfessionFacilityDefinition,
+  type RecipeDefinition,
+  type SupplyPlanDefinition,
+} from "./schemas/profession";
 
 export type RawContentModules = Readonly<Record<string, unknown>>;
 
@@ -114,6 +128,12 @@ export interface LoadedContent {
   readonly mechanics: readonly LocatedContent<MechanicDefinition>[];
   readonly specCapabilities: readonly LocatedContent<SpecCapabilityProgression>[];
   readonly quests: readonly LocatedContent<DungeonQuestDefinition>[];
+  readonly professions: readonly LocatedContent<ProfessionDefinition>[];
+  readonly professionFacilities: readonly LocatedContent<ProfessionFacilityDefinition>[];
+  readonly gatheringSites: readonly LocatedContent<GatheringSiteDefinition>[];
+  readonly recipes: readonly LocatedContent<RecipeDefinition>[];
+  readonly consumableEffects: readonly LocatedContent<ConsumableEffectDefinition>[];
+  readonly supplyPlans: readonly LocatedContent<SupplyPlanDefinition>[];
 }
 
 type MutableLoadedContent = {
@@ -207,6 +227,32 @@ const DIRECTORY_DESCRIPTORS: Readonly<Record<string, FileDescriptor>> = {
     collection: "quests",
     property: "quests",
   },
+  professions: {
+    schema: professionDefinitionFileSchema,
+    collection: "professions",
+    property: "professions",
+  },
+  "profession-facilities": {
+    schema: professionFacilityFileSchema,
+    collection: "professionFacilities",
+    property: "professionFacilities",
+  },
+  "gathering-nodes": {
+    schema: gatheringSiteFileSchema,
+    collection: "gatheringSites",
+    property: "gatheringSites",
+  },
+  recipes: { schema: recipeFileSchema, collection: "recipes", property: "recipes" },
+  "consumable-effects": {
+    schema: consumableEffectFileSchema,
+    collection: "consumableEffects",
+    property: "consumableEffects",
+  },
+  "supply-plans": {
+    schema: supplyPlanFileSchema,
+    collection: "supplyPlans",
+    property: "supplyPlans",
+  },
 };
 
 function emptyLoadedContent(): MutableLoadedContent {
@@ -233,6 +279,12 @@ function emptyLoadedContent(): MutableLoadedContent {
     mechanics: [],
     specCapabilities: [],
     quests: [],
+    professions: [],
+    professionFacilities: [],
+    gatheringSites: [],
+    recipes: [],
+    consumableEffects: [],
+    supplyPlans: [],
   };
 }
 

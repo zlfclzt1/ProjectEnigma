@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "skill=186",
+        "url": "https://www.wowhead.com/classic/skill=186/mining",
+        "verifiedAt": "2026-09-13",
+        "notes": "Classic 2019 Phase 6 采矿熔炼链的合金及特殊熔炼材料。"
+      }
+    ],
+    "balanceOverrides": []
+  },
+  "items": [
+    {
+      "id": "profession_elementium_bar",
+      "kind": "material",
+      "name": { "zhCN": "源质锭", "enUS": "Elementium Bar" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": {
+        "zhCN": "黑翼之巢相关的特殊锻造金属。",
+        "enUS": "A special metal associated with Blackwing Lair crafting."
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "item=17771",
+        "url": "https://www.wowhead.com/classic/item=17771/elementium-bar",
+        "verifiedAt": "2026-09-13",
+        "notes": "Classic 特殊熔炼产物；输入组件为副本与商人来源。"
+      }
+    },
+    {
+      "id": "profession_elementium_ore",
+      "kind": "material",
+      "name": { "zhCN": "源质矿石", "enUS": "Elementium Ingot" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": {
+        "zhCN": "源质锭配方所需的特殊金属组件。",
+        "enUS": "A special metal component used for Elementium Bars."
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "item=18562",
+        "url": "https://www.wowhead.com/classic/item=18562/elementium-ore",
+        "verifiedAt": "2026-09-13",
+        "notes": "Classic 特殊熔炼输入组件。"
+      }
+    },
+    {
+      "id": "profession_arcanite_bar",
+      "kind": "material",
+      "name": { "zhCN": "奥金锭", "enUS": "Arcanite Bar" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": {
+        "zhCN": "源质锭配方所需的高级金属组件。",
+        "enUS": "An advanced metal component used for Elementium Bars."
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "item=12360",
+        "url": "https://www.wowhead.com/classic/item=12360/arcanite-bar",
+        "verifiedAt": "2026-09-13",
+        "notes": "Classic 高级金属组件。"
+      }
+    },
+    {
+      "id": "profession_fiery_core",
+      "kind": "material",
+      "name": { "zhCN": "熔火之心", "enUS": "Fiery Core" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": {
+        "zhCN": "源质锭配方所需的熔火之心材料。",
+        "enUS": "A Molten Core reagent used for Elementium Bars."
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "item=熔火之心",
+        "url": "https://www.wowhead.com/classic/item=17010",
+        "verifiedAt": "2026-09-13",
+        "notes": "Classic 副本来源组件。"
+      }
+    },
+    {
+      "id": "profession_elemental_flux",
+      "kind": "material",
+      "name": { "zhCN": "元素助熔剂", "enUS": "Elemental Flux" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": {
+        "zhCN": "源质锭配方所需的特殊助熔剂。",
+        "enUS": "A special flux used for Elementium Bars."
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "item=18567",
+        "url": "https://www.wowhead.com/classic/item=18567/elemental-flux",
+        "verifiedAt": "2026-09-13",
+        "notes": "Classic 商人来源组件。"
+      }
+    }
+  ]
+}

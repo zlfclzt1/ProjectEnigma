@@ -47,6 +47,7 @@ export interface CombatReportView {
     readonly itemNames: readonly string[];
     readonly experience: readonly { readonly memberName: string; readonly fraction: number }[];
   };
+  readonly supply?: CombatReport["supply"];
 }
 
 export interface CombatReportsView {
@@ -140,6 +141,7 @@ function projectReport(
         }),
       ),
     },
+    ...(report.supply ? { supply: structuredClone(report.supply) } : {}),
   };
 }
 

@@ -7,6 +7,7 @@ import type { EquipmentSlot } from "../../domain/equipment/equipment-slot";
 import type { GameState } from "../../domain/game-state";
 import { resolveItemInstance } from "../../domain/equipment/resolve-item-instance";
 import type { ActivityId, ItemInstanceId, MemberId, PendingLootId } from "../../domain/shared/ids";
+import { recordEconomyEvent } from "../../domain/economy/economy-ledger";
 
 export interface AssignLootResult {
   readonly memberId: MemberId;
@@ -70,6 +71,12 @@ export function assignLoot(
   state.itemInstances[instance.id] = equipped.equippedInstance;
   delete state.pendingLoot[pendingLootId];
   state.guild.funds += saleProceeds;
+  if (saleProceeds > 0)
+    recordEconomyEvent(state, {
+      kind: "gold-income",
+      source: "loot-replacement-sale",
+      amount: saleProceeds,
+    });
   return {
     memberId,
     equippedItemInstanceId: instance.id,

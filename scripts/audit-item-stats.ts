@@ -87,7 +87,13 @@ function statSummary(item: ItemDefinition): string {
 
 function buildReport(): string {
   const items = loadItems();
-  const realItems = items.filter((item) => !item.isStarter);
+  const realItems = items.filter(
+    (item) =>
+      !item.isStarter &&
+      (item.kind ?? "equipment") === "equipment" &&
+      !item.id.startsWith("profession_") &&
+      item.statsSource.provider === "wowhead-classic",
+  );
   const starterItems = items.filter((item) => item.isStarter);
 
   assert.equal(realItems.length, 1006, "当前真实副本与任务装备数量应为 1006");

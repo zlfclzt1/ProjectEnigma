@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "首批远征准备值通道。"
+      }
+    ]
+  },
+  "consumableEffects": [
+    {
+      "id": "coarse-sharpening-stability",
+      "status": "available",
+      "channels": [
+        { "channel": "stability", "value": 0.03, "diminishingGroup": "blacksmithing-stones" }
+      ],
+      "maxContribution": 0.12
+    },
+    {
+      "id": "expedition-route-chart-exploration",
+      "status": "available",
+      "channels": [{ "channel": "exploration", "value": 0.2, "diminishingGroup": "route-charts" }],
+      "maxContribution": 0.2
+    }
+  ]
+}

@@ -158,6 +158,7 @@ function createMemberFromProfile(
       progression: structuredClone(profile.progression),
       equipment,
       professionIds: [],
+      professionStates: {},
       riding: { skillRank: 0, learnedMountIds: [] },
       quests: createEmptyMemberQuestState(),
       joinedAt: context.clock.now(),

@@ -1,6 +1,7 @@
 import type { ContentRegistry } from "../../../content/registry";
 import type {
   GameState,
+  LegacyGameStateV14,
   LegacyGameStateV12,
   LegacyGameStateV13,
   PersistedGameState,
@@ -17,6 +18,7 @@ import { migrateV10ToV11 } from "./migrate-v10-to-v11";
 import { migrateV11ToV12 } from "./migrate-v11-to-v12";
 import { migrateV12ToV13 } from "./migrate-v12-to-v13";
 import { migrateV13ToV14 } from "./migrate-v13-to-v14";
+import { migrateV14ToV15 } from "./migrate-v14-to-v15";
 import { applyEligibleAutomaticCollectionRewards } from "../../../domain/collection/collection-reward-rules";
 
 export interface SaveMigrationResult {
@@ -28,16 +30,30 @@ export function migrateSave(
   persisted: PersistedGameState,
   content: ContentRegistry,
 ): SaveMigrationResult {
-  const versionMigrated = persisted.saveVersion !== 14;
-  const state = versionMigrated
-    ? migrateV13ToV14(migrateToV13(persisted, content))
-    : structuredClone(persisted);
+  const versionMigrated = persisted.saveVersion !== 15;
+  const state =
+    persisted.saveVersion === 15
+      ? structuredClone(persisted)
+      : migrateV14ToV15(
+          persisted.saveVersion === 14
+            ? persisted
+            : migrateV13ToV14(migrateToV13(persisted, content), content),
+          content,
+        );
+  const hadSupplyPlans = state.guild.supplyPlans !== undefined;
+  state.guild.supplyPlans ??= {};
+  const hadEconomyLedger = state.economyLedger !== undefined;
+  state.economyLedger ??= [];
   const automaticRewards = applyEligibleAutomaticCollectionRewards(state, content);
-  return { state, migrated: versionMigrated || automaticRewards.length > 0 };
+  return {
+    state,
+    migrated:
+      versionMigrated || !hadSupplyPlans || !hadEconomyLedger || automaticRewards.length > 0,
+  };
 }
 
 function migrateToV13(
-  persisted: Exclude<PersistedGameState, GameState>,
+  persisted: Exclude<PersistedGameState, GameState | LegacyGameStateV14>,
   content: ContentRegistry,
 ): LegacyGameStateV13 {
   if (persisted.saveVersion === 13) return persisted;
@@ -45,7 +61,7 @@ function migrateToV13(
 }
 
 function migrateToV12(
-  persisted: Exclude<PersistedGameState, GameState | LegacyGameStateV13>,
+  persisted: Exclude<PersistedGameState, GameState | LegacyGameStateV14 | LegacyGameStateV13>,
   content: ContentRegistry,
 ): LegacyGameStateV12 {
   if (persisted.saveVersion === 12) return persisted;

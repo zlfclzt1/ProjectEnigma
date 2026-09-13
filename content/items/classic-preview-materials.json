@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "profession-materials",
+        "url": "https://www.wowhead.com/classic/items/profession",
+        "verifiedAt": "2026-09-13",
+        "notes": "其他 Classic 专业的材料目录；当前全部保持 preview，不进入可执行流程。"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "profession_peacebloom",
+      "kind": "material",
+      "name": { "zhCN": "和平之花", "enUS": "Peacebloom" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "炼金与草药学材料。", "enUS": "Alchemy and herbalism material." },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "2447",
+        "url": "https://www.wowhead.com/classic/item=2447/peacebloom",
+        "verifiedAt": "2026-09-13"
+      }
+    },
+    {
+      "id": "profession_silverleaf",
+      "kind": "material",
+      "name": { "zhCN": "银叶草", "enUS": "Silverleaf" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "低级炼金材料。", "enUS": "Low-level alchemy material." },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "765",
+        "url": "https://www.wowhead.com/classic/item=765/silverleaf",
+        "verifiedAt": "2026-09-13"
+      }
+    },
+    {
+      "id": "profession_strange_dust",
+      "kind": "material",
+      "name": { "zhCN": "奇异之尘", "enUS": "Strange Dust" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "附魔分解材料。", "enUS": "Enchanting dust material." },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "10940",
+        "url": "https://www.wowhead.com/classic/item=10940/strange-dust",
+        "verifiedAt": "2026-09-13"
+      }
+    },
+    {
+      "id": "profession_copper_bar_preview",
+      "kind": "material",
+      "name": { "zhCN": "铜锭（工程预览）", "enUS": "Copper Bar (Engineering Preview)" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": {
+        "zhCN": "工程学预览引用材料。",
+        "enUS": "Engineering preview reference material."
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "复用 Classic 铜锭语义，避免与可用采矿材料混用。"
+      }
+    },
+    {
+      "id": "profession_light_leather",
+      "kind": "material",
+      "name": { "zhCN": "轻皮", "enUS": "Light Leather" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "制皮材料。", "enUS": "Leatherworking material." },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "2318",
+        "url": "https://www.wowhead.com/classic/item=2318/light-leather",
+        "verifiedAt": "2026-09-13"
+      }
+    },
+    {
+      "id": "profession_linen_cloth",
+      "kind": "material",
+      "name": { "zhCN": "亚麻布", "enUS": "Linen Cloth" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "裁缝与急救材料。", "enUS": "Tailoring and first-aid material." },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "2589",
+        "url": "https://www.wowhead.com/classic/item=2589/linen-cloth",
+        "verifiedAt": "2026-09-13"
+      }
+    },
+    {
+      "id": "profession_boar_meat",
+      "kind": "material",
+      "name": { "zhCN": "野猪肉", "enUS": "Chunk of Boar Meat" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "烹饪材料。", "enUS": "Cooking material." },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "769",
+        "url": "https://www.wowhead.com/classic/item=769/chunk-of-boar-meat",
+        "verifiedAt": "2026-09-13"
+      }
+    },
+    {
+      "id": "profession_raw_fish",
+      "kind": "material",
+      "name": { "zhCN": "生鱼片", "enUS": "Raw Fish" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "钓鱼预览产物。", "enUS": "Fishing preview output." },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "用于钓鱼预览活动的统一产物。"
+      }
+    },
+    {
+      "id": "profession_heavy_leather",
+      "kind": "material",
+      "name": { "zhCN": "重皮", "enUS": "Heavy Leather" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "高阶制皮材料。", "enUS": "Advanced leatherworking material." },
+      "stats": {},
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "皮革链",
+        "url": "https://www.wowhead.com/classic/items/leatherworking",
+        "verifiedAt": "2026-09-13"
+      }
+    }
+  ]
+}

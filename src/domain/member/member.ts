@@ -14,6 +14,7 @@ import type {
   RaceId,
   SpecId,
 } from "../shared/ids";
+import type { MemberProfessionStates } from "../profession/profession-state";
 
 export interface MemberIdentity {
   name: string;
@@ -57,6 +58,7 @@ export interface Member {
   progression: MemberProgression;
   equipment: Partial<Record<EquipmentSlot, ItemInstanceId>>;
   professionIds: MemberProfessionId[];
+  professionStates?: MemberProfessionStates;
   riding: MemberRidingState;
   quests: MemberQuestState;
   activeActivityId?: ActivityId;

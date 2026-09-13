@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "skill=164",
+        "url": "https://www.wowhead.com/classic/skill=164/blacksmithing",
+        "verifiedAt": "2026-09-13",
+        "notes": "Classic 锻造材料与代表性装备；属性映射遵循项目装备模型。"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "profession_steel_bar",
+      "kind": "material",
+      "name": { "zhCN": "钢锭", "enUS": "Steel Bar" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": {
+        "zhCN": "由铁锭和煤块熔炼而成。",
+        "enUS": "Smelted from iron bars and coal."
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "专业材料库存映射。"
+      }
+    },
+    {
+      "id": "profession_solid_stone",
+      "kind": "material",
+      "name": { "zhCN": "坚固的石头", "enUS": "Solid Stone" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": {
+        "zhCN": "用于制作坚固的磨刀石。",
+        "enUS": "Used to make solid grinding stones."
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "专业材料库存映射。"
+      }
+    },
+    {
+      "id": "profession_solid_grinding_stone",
+      "kind": "consumable",
+      "name": { "zhCN": "坚固的磨刀石", "enUS": "Solid Grinding Stone" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": {
+        "zhCN": "锻造制作的打磨材料。",
+        "enUS": "A blacksmithing grinding material."
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "专业材料库存映射。"
+      }
+    },
+    {
+      "id": "profession_dense_stone",
+      "kind": "material",
+      "name": { "zhCN": "厚重的石头", "enUS": "Dense Stone" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": {
+        "zhCN": "用于制作厚重的磨刀石。",
+        "enUS": "Used to make dense sharpening stones."
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "专业材料库存映射。"
+      }
+    },
+    {
+      "id": "profession_dense_sharpening_stone",
+      "kind": "consumable",
+      "name": { "zhCN": "厚重的磨刀石", "enUS": "Dense Sharpening Stone" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": {
+        "zhCN": "高级锻造打磨材料。",
+        "enUS": "An advanced blacksmithing grinding material."
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "专业材料库存映射。"
+      }
+    },
+    {
+      "id": "profession_thorium_bracers",
+      "kind": "equipment",
+      "name": { "zhCN": "瑟银护腕", "enUS": "Thorium Bracers" },
+      "itemLevel": 51,
+      "requiredLevel": 46,
+      "quality": "rare",
+      "slot": "wrist",
+      "armorType": "plate",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": {
+        "zhCN": "经典锻造制造的抗性护腕。",
+        "enUS": "Resilience bracers made through classic blacksmithing."
+      },
+      "stats": {
+        "defense": {
+          "armorPoints": 214
+        },
+        "resistances": {
+          "arcanePoints": 5,
+          "firePoints": 5,
+          "naturePoints": 5,
+          "frostPoints": 5,
+          "shadowPoints": 5
+        }
+      },
+      "statsSource": {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "profession_thorium_bracers",
+        "url": "https://www.wowhead.com/classic/item=12408/thorium-bracers",
+        "verifiedAt": "2026-09-13",
+        "notes": "装备等级、护甲与抗性取经典物品资料。"
+      }
+    },
+    {
+      "id": "profession_silver_bar",
+      "kind": "material",
+      "name": { "zhCN": "银锭", "enUS": "Silver Bar" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "由银矿石熔炼而成。", "enUS": "Smelted from silver ore." },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "专业材料库存映射。"
+      }
+    },
+    {
+      "id": "profession_gold_bar",
+      "kind": "material",
+      "name": { "zhCN": "金锭", "enUS": "Gold Bar" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "由金矿石熔炼而成。", "enUS": "Smelted from gold ore." },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "专业材料库存映射。"
+      }
+    },
+    {
+      "id": "profession_truesilver_bar",
+      "kind": "material",
+      "name": { "zhCN": "真银锭", "enUS": "Truesilver Bar" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "由真银矿石熔炼而成。", "enUS": "Smelted from truesilver ore." },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "专业材料库存映射。"
+      }
+    },
+    {
+      "id": "profession_dark_iron_bar",
+      "kind": "material",
+      "name": { "zhCN": "黑铁锭", "enUS": "Dark Iron Bar" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": {
+        "zhCN": "由黑铁矿石在黑熔炉中熔炼而成。",
+        "enUS": "Smelted from dark iron ore in the Black Forge."
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "专业材料库存映射。"
+      }
+    }
+  ]
+}

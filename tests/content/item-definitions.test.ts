@@ -25,7 +25,13 @@ const migratedItems = itemFiles.flatMap((file) => file.content.items);
 
 describe("item definitions", () => {
   it("loads all current dungeon and quest items with stable IDs and database icons", () => {
-    const dungeonItems = migratedItems.filter((item) => !item.isStarter);
+    const dungeonItems = migratedItems.filter(
+      (item) =>
+        !item.isStarter &&
+        (item.kind ?? "equipment") === "equipment" &&
+        !item.id.startsWith("profession_") &&
+        item.statsSource.provider === "wowhead-classic",
+    );
 
     expect(dungeonItems).toHaveLength(1006);
     expect(dungeonItems.map((item) => item.id)).toEqual(
@@ -74,6 +80,7 @@ describe("item definitions", () => {
     expect(
       migratedItems.every(
         (item) =>
+          (item.kind ?? "equipment") !== "equipment" ||
           Object.keys(item.stats).length > 0 ||
           item.statsSource.notes?.includes("暂不进入常驻属性模型") ||
           (item.randomSuffixIds?.length ?? 0) > 0,
@@ -81,7 +88,13 @@ describe("item definitions", () => {
     ).toBe(true);
     expect(
       migratedItems
-        .filter((item) => !item.isStarter)
+        .filter(
+          (item) =>
+            !item.isStarter &&
+            (item.kind ?? "equipment") === "equipment" &&
+            !item.id.startsWith("profession_") &&
+            item.statsSource.provider === "wowhead-classic",
+        )
         .every(
           (item) =>
             item.statsSource.provider === "wowhead-classic" &&

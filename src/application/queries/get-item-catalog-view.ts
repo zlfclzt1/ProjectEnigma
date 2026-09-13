@@ -585,7 +585,7 @@ function projectItem(
       : {}),
     stats: structuredClone(definition.stats),
     statLines: getItemStatLines(definition.stats),
-    slotName: EQUIPMENT_SLOT_NAMES[definition.slot],
+    slotName: definition.slot === "none" ? "—" : EQUIPMENT_SLOT_NAMES[definition.slot],
     requirements,
     statsSource:
       definition.statsSource.provider === "wowhead-classic"

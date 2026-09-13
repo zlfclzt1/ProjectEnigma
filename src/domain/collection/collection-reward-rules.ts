@@ -10,6 +10,7 @@ import type {
   ItemDefinitionId,
   ManagementFeatureId,
 } from "../shared/ids";
+import { recordEconomyEvent } from "../economy/economy-ledger";
 
 export interface CollectionRewardEligibility {
   readonly reward: CollectionRewardDefinition;
@@ -104,6 +105,11 @@ export function applyCollectionReward(
     if (effect.type === "guild-funds") {
       state.guild.funds += effect.amount;
       awardedFunds += effect.amount;
+      recordEconomyEvent(state, {
+        kind: "gold-income",
+        source: "collection-reward",
+        amount: effect.amount,
+      });
     } else if (effect.type === "management-unlock") {
       unlockedManagementFeatureIds.push(effect.featureId);
     } else {

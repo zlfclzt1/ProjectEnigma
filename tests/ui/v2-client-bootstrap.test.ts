@@ -22,7 +22,7 @@ describe("V2 client bootstrap", () => {
 
     const created = await loadOrCreateV2Client(dependencies);
     expect(created.origin).toBe("created");
-    expect(created.session.snapshot()).toMatchObject({ saveVersion: 14, revision: 0 });
+    expect(created.session.snapshot()).toMatchObject({ saveVersion: 15, revision: 0 });
     expect(Object.values(created.session.snapshot().members)).toHaveLength(5);
     expect(Object.values(created.session.snapshot().candidates)).toHaveLength(3);
 

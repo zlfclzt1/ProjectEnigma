@@ -236,7 +236,7 @@ describe("game store", () => {
     const store = useGameStore();
     await store.initialize(() => loadOrCreateV2Client(deps));
     const persisted = await saves.load(deps.slotId);
-    if (!persisted || persisted.saveVersion !== 14) throw new Error("Expected current save");
+    if (!persisted || persisted.saveVersion !== 15) throw new Error("Expected current save");
     await saves.save(persisted, 0);
 
     const conflict = await store.execute({ type: "stale-command", execute() {} });

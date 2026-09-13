@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "首批锻造装备与远征补给配方。"
+      }
+    ]
+  },
+  "recipes": [
+    {
+      "id": "forge_copper_bracers",
+      "professionId": "blacksmithing",
+      "facilityId": "blacksmith-forge",
+      "status": "available",
+      "category": "crafting",
+      "name": { "zhCN": "锻造铜质护腕", "enUS": "Forge Copper Bracers" },
+      "requiredSkill": 1,
+      "requiredTrainingRank": 1,
+      "input": [{ "itemId": "profession_copper_bar", "quantityPerBatch": 2 }],
+      "output": [
+        {
+          "type": "item-instance",
+          "itemId": "profession_copper_bracers",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 300,
+      "batchLimit": 10,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "trainer", "sourceId": "classic-blacksmithing-trainer" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "classic-blacksmithing-trainer" }]
+    },
+    {
+      "id": "forge_coarse_sharpening_stone",
+      "professionId": "blacksmithing",
+      "facilityId": "blacksmith-forge",
+      "status": "available",
+      "category": "crafting",
+      "name": { "zhCN": "制作粗制磨刀石", "enUS": "Craft Coarse Sharpening Stone" },
+      "requiredSkill": 1,
+      "requiredTrainingRank": 1,
+      "input": [{ "itemId": "profession_rough_stone", "quantityPerBatch": 1 }],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_coarse_sharpening_stone",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 90,
+      "batchLimit": 20,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "trainer", "sourceId": "classic-blacksmithing-trainer" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "classic-blacksmithing-trainer" }]
+    },
+    {
+      "id": "forge_expedition_route_chart",
+      "professionId": "blacksmithing",
+      "facilityId": "blacksmith-forge",
+      "status": "available",
+      "category": "crafting",
+      "name": { "zhCN": "制作远征路线图", "enUS": "Craft Expedition Route Chart" },
+      "requiredSkill": 1,
+      "requiredTrainingRank": 1,
+      "input": [
+        { "itemId": "profession_copper_bar", "quantityPerBatch": 2 },
+        { "itemId": "profession_rough_stone", "quantityPerBatch": 1 }
+      ],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_expedition_route_chart",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 150,
+      "batchLimit": 10,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "trainer", "sourceId": "classic-blacksmithing-trainer" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "classic-blacksmithing-trainer" }]
+    }
+  ]
+}

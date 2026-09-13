@@ -13,6 +13,7 @@ import { RouterLink } from "vue-router";
     <RouterLink to="/catalog">装备图鉴</RouterLink>
     <RouterLink to="/reports">战斗记录</RouterLink>
     <RouterLink to="/quests">开发档案</RouterLink>
+    <RouterLink to="/professions">专业生产</RouterLink>
   </nav>
 </template>
 

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "首批远征补给方案。"
+      }
+    ]
+  },
+  "supplyPlans": [
+    {
+      "id": "standard-blacksmithing-supply",
+      "name": { "zhCN": "标准锻造补给", "enUS": "Standard Blacksmithing Supply" },
+      "editable": true,
+      "entries": [
+        {
+          "itemId": "profession_coarse_sharpening_stone",
+          "quantityPerRun": 1,
+          "effectId": "coarse-sharpening-stability"
+        },
+        {
+          "itemId": "profession_expedition_route_chart",
+          "quantityPerRun": 1,
+          "effectId": "expedition-route-chart-exploration"
+        }
+      ]
+    }
+  ]
+}

@@ -18,6 +18,7 @@ import type {
   SpecId,
   TrainingDefinitionId,
   QuestId,
+  SupplyPlanId,
 } from "../shared/ids";
 import type { EquipmentSlot } from "../equipment/equipment-slot";
 import type { CombatCapabilityValues, CombatUtilityProfile } from "../combat/combat-profile";
@@ -56,6 +57,23 @@ export interface ExpeditionActivity extends ActivityBase<"expedition"> {
   questSnapshots: ExpeditionMemberQuestSnapshot[];
   developmentSnapshot: ExpeditionDevelopmentSnapshot;
   developmentEvents: ExpeditionDevelopmentEvent[];
+  supplySnapshot?: ExpeditionSupplySnapshot;
+}
+
+export interface ExpeditionSupplySnapshot {
+  planId?: SupplyPlanId;
+  requestedRuns: number;
+  entries: Array<{
+    itemId: ItemDefinitionId;
+    quantityPerRun: number;
+    requiredQuantity: number;
+    allocatedQuantity: number;
+    consumedQuantity: number;
+    releasedQuantity?: number;
+    effectId?: string;
+  }>;
+  channels: { stability: number; efficiency: number; exploration: number };
+  routeChoiceCredits?: number;
 }
 
 export interface ExpeditionDevelopmentSnapshot {
@@ -160,12 +178,21 @@ export interface ExpeditionRouteCompletionRewardSnapshot {
 export interface GatheringActivity extends ActivityBase<"gathering"> {
   professionDefinitionId: ProfessionDefinitionId;
   siteId: GatheringSiteId;
+  quantity?: number;
+  skillAtStart?: number;
+  outputStackReservations?: Array<{ itemId: ItemDefinitionId; quantity: number }>;
+  outputSeed?: string;
 }
 
 export interface CraftingActivity extends ActivityBase<"crafting"> {
   professionDefinitionId: ProfessionDefinitionId;
   recipeId: RecipeId;
   quantity: number;
+  skillAtStart?: number;
+  inputReservations?: Array<{ itemId: ItemDefinitionId; quantity: number }>;
+  outputEquipmentReservations?: number;
+  outputStackReservations?: Array<{ itemId: ItemDefinitionId; quantity: number }>;
+  outputSeed?: string;
 }
 
 export interface TrainingActivity extends ActivityBase<"training"> {

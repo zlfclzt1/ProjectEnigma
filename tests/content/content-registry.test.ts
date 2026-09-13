@@ -29,6 +29,11 @@ describe("validated automatic content registry", () => {
     expect(registry.itemSetById.size).toBe(9);
     expect(registry.itemSuffixById.size).toBe(137);
     expect(registry.collectionRewardById.size).toBe(6);
+    expect(registry.professionById.size).toBe(12);
+    expect(registry.professionFacilityById.size).toBe(12);
+    expect(
+      registry.professionById.get(asBrandedId<"ProfessionDefinitionId">("mining"))?.status,
+    ).toBe("available");
     expect(registry.combatProfileById.size).toBe(28);
     expect(registry.dungeonById.size).toBe(registry.dungeons.length);
     expect(registry.encounterById.size).toBe(registry.encounters.length);

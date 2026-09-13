@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "铜矿石熔炼为铜锭的首批转化配方。"
+      }
+    ]
+  },
+  "recipes": [
+    {
+      "id": "smelt_copper_bar",
+      "professionId": "mining",
+      "facilityId": "mining-camp",
+      "status": "available",
+      "category": "refining",
+      "name": { "zhCN": "熔炼铜锭", "enUS": "Smelt Copper" },
+      "requiredSkill": 1,
+      "requiredTrainingRank": 1,
+      "input": [{ "itemId": "profession_copper_ore", "quantityPerBatch": 1 }],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_copper_bar",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 120,
+      "batchLimit": 20,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "profession", "sourceId": "mining", "requiredSkill": 1 }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "classic-mining-trainer" }]
+    }
+  ]
+}

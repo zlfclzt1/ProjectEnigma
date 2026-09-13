@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "source-fact",
+        "provider": "wowhead-classic",
+        "gameVersion": "classic-2019-phase-6",
+        "externalId": "skill=164",
+        "url": "https://www.wowhead.com/classic/skill=164/blacksmithing",
+        "verifiedAt": "2026-09-13",
+        "notes": "Classic 锻造高级材料、磨刀石和瑟银护腕配方。"
+      }
+    ]
+  },
+  "recipes": [
+    {
+      "id": "smelt_steel_bar",
+      "professionId": "mining",
+      "facilityId": "mining-camp",
+      "status": "available",
+      "category": "refining",
+      "name": { "zhCN": "熔炼钢锭", "enUS": "Smelt Steel" },
+      "requiredSkill": 165,
+      "requiredTrainingRank": 3,
+      "input": [
+        { "itemId": "profession_iron_bar", "quantityPerBatch": 1 },
+        { "itemId": "profession_coal", "quantityPerBatch": 1 }
+      ],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_steel_bar",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 240,
+      "batchLimit": 20,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "trainer", "sourceId": "classic-mining-trainer" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "classic-mining-trainer" }]
+    },
+    {
+      "id": "forge_solid_grinding_stone",
+      "professionId": "blacksmithing",
+      "facilityId": "blacksmith-forge",
+      "status": "available",
+      "category": "crafting",
+      "name": { "zhCN": "制作坚固的磨刀石", "enUS": "Craft Solid Grinding Stone" },
+      "requiredSkill": 125,
+      "requiredTrainingRank": 2,
+      "input": [{ "itemId": "profession_solid_stone", "quantityPerBatch": 4 }],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_solid_grinding_stone",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 120,
+      "batchLimit": 20,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "trainer", "sourceId": "classic-blacksmithing-trainer" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "classic-blacksmithing-trainer" }]
+    },
+    {
+      "id": "forge_dense_sharpening_stone",
+      "professionId": "blacksmithing",
+      "facilityId": "blacksmith-forge",
+      "status": "available",
+      "category": "crafting",
+      "name": { "zhCN": "制作厚重的磨刀石", "enUS": "Craft Dense Sharpening Stone" },
+      "requiredSkill": 250,
+      "requiredTrainingRank": 4,
+      "input": [{ "itemId": "profession_dense_stone", "quantityPerBatch": 1 }],
+      "output": [
+        {
+          "type": "material-stack",
+          "itemId": "profession_dense_sharpening_stone",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 180,
+      "batchLimit": 20,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 0,
+        "sources": [{ "type": "trainer", "sourceId": "classic-blacksmithing-trainer" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "trainer", "sourceId": "classic-blacksmithing-trainer" }]
+    },
+    {
+      "id": "forge_thorium_bracers",
+      "professionId": "blacksmithing",
+      "facilityId": "blacksmith-forge",
+      "status": "available",
+      "category": "crafting",
+      "name": { "zhCN": "锻造瑟银护腕", "enUS": "Forge Thorium Bracers" },
+      "requiredSkill": 250,
+      "requiredTrainingRank": 4,
+      "input": [
+        { "itemId": "profession_thorium_bar", "quantityPerBatch": 12 },
+        { "itemId": "profession_dense_stone", "quantityPerBatch": 2 }
+      ],
+      "output": [
+        {
+          "type": "item-instance",
+          "itemId": "profession_thorium_bracers",
+          "quantity": { "min": 1, "max": 1 },
+          "chance": 1
+        }
+      ],
+      "durationSeconds": 900,
+      "batchLimit": 5,
+      "skillGain": {
+        "orange": { "min": 1, "max": 1, "chance": 1 },
+        "yellow": { "min": 1, "max": 1, "chance": 0.75 },
+        "green": { "min": 1, "max": 1, "chance": 0.2 },
+        "gray": { "min": 0, "max": 0, "chance": 0 }
+      },
+      "learning": {
+        "cost": 50,
+        "sources": [{ "type": "vendor", "sourceId": "classic-blacksmithing-recipe-vendor" }],
+        "requiredRecipeIds": []
+      },
+      "sources": [{ "type": "vendor", "sourceId": "classic-blacksmithing-recipe-vendor" }]
+    }
+  ]
+}

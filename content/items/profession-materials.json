@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "attribution": {
+    "sources": [
+      {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "专业系统基础材料与消耗品的最小可玩内容。"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "profession_copper_ore",
+      "kind": "material",
+      "name": { "zhCN": "铜矿石", "enUS": "Copper Ore" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": {
+        "zhCN": "采矿获得的铜矿石。",
+        "enUS": "Copper ore gathered through mining."
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "专业材料。"
+      }
+    },
+    {
+      "id": "profession_rough_stone",
+      "kind": "material",
+      "name": { "zhCN": "粗糙的石头", "enUS": "Rough Stone" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "采矿时发现的伴生材料。", "enUS": "A common byproduct of mining." },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "专业材料。"
+      }
+    },
+    {
+      "id": "profession_copper_bar",
+      "kind": "material",
+      "name": { "zhCN": "铜锭", "enUS": "Copper Bar" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": { "zhCN": "由铜矿石熔炼而成。", "enUS": "Smelted from copper ore." },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "专业材料。"
+      }
+    },
+    {
+      "id": "profession_coarse_sharpening_stone",
+      "kind": "consumable",
+      "name": { "zhCN": "粗制磨刀石", "enUS": "Coarse Sharpening Stone" },
+      "stackLimit": 20,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": {
+        "zhCN": "远征补给：提高队伍稳定性。",
+        "enUS": "Expedition supply that improves stability."
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "专业消耗品。"
+      }
+    },
+    {
+      "id": "profession_expedition_route_chart",
+      "kind": "consumable",
+      "name": { "zhCN": "远征路线图", "enUS": "Expedition Route Chart" },
+      "stackLimit": 10,
+      "itemLevel": 1,
+      "quality": "common",
+      "slot": "none",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": {
+        "zhCN": "远征补给：提高稀有路线的探索权。",
+        "enUS": "Expedition supply that improves rare-route exploration."
+      },
+      "stats": {},
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "首批路线选择权工具。"
+      }
+    },
+    {
+      "id": "profession_copper_bracers",
+      "kind": "equipment",
+      "name": { "zhCN": "铜质护腕", "enUS": "Copper Bracers" },
+      "itemLevel": 5,
+      "quality": "common",
+      "slot": "wrist",
+      "armorType": "mail",
+      "restrictions": { "allowedClassIds": [], "allowedRoles": [] },
+      "icon": { "kind": "generic-slot" },
+      "description": {
+        "zhCN": "锻造制作的基础护腕。",
+        "enUS": "Basic bracers made by blacksmithing."
+      },
+      "stats": { "defense": { "armorPoints": 12 } },
+      "statsSource": {
+        "kind": "design-decision",
+        "provider": "manual",
+        "verifiedAt": "2026-09-13",
+        "notes": "首批专业制造装备。"
+      },
+      "statsBalanceOverride": {
+        "fields": ["stats"],
+        "reason": "首批专业制造测试装备。",
+        "decidedAt": "2026-09-13"
+      }
+    }
+  ]
+}

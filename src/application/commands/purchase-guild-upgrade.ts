@@ -7,6 +7,7 @@ import {
 } from "../../domain/guild/guild-upgrade-rules";
 import type { GuildUpgradeId } from "../../domain/shared/ids";
 import type { GameCommand } from "../services/game-session";
+import { recordEconomyEvent } from "../../domain/economy/economy-ledger";
 
 export interface PurchaseGuildUpgradeResult {
   readonly upgradeId: GuildUpgradeId;
@@ -35,6 +36,11 @@ export function purchaseGuildUpgradeCommand(
       if (!eligibility.fundsAvailable) throw new Error(`公会资金不足，需要 ${upgrade.cost} G。`);
 
       draft.guild.funds -= upgrade.cost;
+      recordEconomyEvent(draft, {
+        kind: "gold-expense",
+        source: "guild-upgrade",
+        amount: upgrade.cost,
+      });
       draft.guild.purchasedUpgradeIds.push(upgrade.id);
       return {
         upgradeId: upgrade.id,
