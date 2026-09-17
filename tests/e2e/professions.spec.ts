@@ -4,8 +4,9 @@ test("browses the profession workspace and organizes the guild bank", async ({ p
   await openGame(page, "/#/professions");
 
   await expect(page.getByRole("heading", { name: "专业与生产" })).toBeVisible();
-  await expect(page.getByText("公会仓库", { exact: true })).toBeVisible();
-  await expect(page.getByText("经济观测", { exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: /经济观测/ })).toBeVisible();
+  await page.getByRole("button", { name: /公会仓库/ }).click();
+  await expect(page.getByRole("heading", { name: "公会仓库" })).toBeVisible();
   await expect(page.getByPlaceholder("搜索材料或消耗品")).toBeVisible();
 
   await page.getByPlaceholder("搜索材料或消耗品").fill("铜");
