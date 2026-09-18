@@ -4,7 +4,7 @@
 
 《艾泽拉斯公会志》是一款正在开发中的单机放置公会经营游戏。招募成员、组织远征、挑战熟悉的副本，并决定每一件战利品的归属。
 
-**[下载 macOS Alpha v0.1.0-alpha.1](https://github.com/zlfclzt1/ProjectEnigma/releases/tag/v0.1.0-alpha.1)**
+**[下载 macOS Alpha v0.1.0-alpha.2](https://github.com/zlfclzt1/ProjectEnigma/releases/tag/v0.1.0-alpha.2)**
 
 适用于 Apple Silicon（M1 或更新芯片）与 macOS 13.3 以上系统。
 

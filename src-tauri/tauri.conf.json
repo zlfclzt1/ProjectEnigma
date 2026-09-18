@@ -1,7 +1,7 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "艾泽拉斯公会志",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "identifier": "io.github.zlfclzt1.azeroth-guild-chronicle",
   "build": {
     "frontendDist": "../dist",
