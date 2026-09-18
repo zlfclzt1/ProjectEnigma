@@ -98,6 +98,7 @@ export const hiddenCharacterDefinitionSchema = z
   .object({
     id: hiddenCharacterIdSchema,
     name: localizedTextSchema,
+    raceId: raceIdSchema.optional(),
     classId: classIdSchema,
     specId: specIdSchema,
     personalityId: personalityIdSchema,

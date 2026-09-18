@@ -44,7 +44,7 @@ export function migrateSave(
   state.guild.supplyPlans ??= {};
   const hadEconomyLedger = state.economyLedger !== undefined;
   state.economyLedger ??= [];
-  const specialCharacterPersonalitiesUpdated = syncSpecialCharacterPersonalities(state, content);
+  const specialCharacterDefinitionsUpdated = syncSpecialCharacterDefinitions(state, content);
   const automaticRewards = applyEligibleAutomaticCollectionRewards(state, content);
   return {
     state,
@@ -52,12 +52,12 @@ export function migrateSave(
       versionMigrated ||
       !hadSupplyPlans ||
       !hadEconomyLedger ||
-      specialCharacterPersonalitiesUpdated ||
+      specialCharacterDefinitionsUpdated ||
       automaticRewards.length > 0,
   };
 }
 
-function syncSpecialCharacterPersonalities(state: GameState, content: ContentRegistry): boolean {
+function syncSpecialCharacterDefinitions(state: GameState, content: ContentRegistry): boolean {
   const specialCharactersById = new Map(
     content.hiddenCharacters.map((character) => [character.id, character]),
   );
@@ -66,9 +66,15 @@ function syncSpecialCharacterPersonalities(state: GameState, content: ContentReg
     const hiddenCharacterId = profile.identity.hiddenCharacterId;
     if (!hiddenCharacterId) continue;
     const definition = specialCharactersById.get(hiddenCharacterId);
-    if (!definition || profile.identity.personalityId === definition.personalityId) continue;
-    profile.identity.personalityId = definition.personalityId;
-    updated = true;
+    if (!definition) continue;
+    if (profile.identity.personalityId !== definition.personalityId) {
+      profile.identity.personalityId = definition.personalityId;
+      updated = true;
+    }
+    if (definition.raceId && profile.identity.raceId !== definition.raceId) {
+      profile.identity.raceId = definition.raceId;
+      updated = true;
+    }
   }
   return updated;
 }

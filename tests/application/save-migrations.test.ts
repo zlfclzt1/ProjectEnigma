@@ -235,6 +235,19 @@ describe("save migrations", () => {
     expect(migrateSave(result.state, content).migrated).toBe(false);
   });
 
+  it("updates an existing special character's race to its content-defined race", () => {
+    const current = migrateSave(createLegacyGameStateV4Fixture(), content).state;
+    const character = Object.values(current.members)[0]!;
+    character.identity.hiddenCharacterId = asBrandedId<"HiddenCharacterId">("anheqiaobei");
+    character.identity.raceId = asBrandedId<"RaceId">("troll");
+
+    const result = migrateSave(current, content);
+
+    expect(result.migrated).toBe(true);
+    expect(result.state.members[character.id]!.identity.raceId).toBe("orc");
+    expect(migrateSave(result.state, content).migrated).toBe(false);
+  });
+
   it("backfills automatic encounter milestones for a current old save", () => {
     const current = migrateSave(createLegacyGameStateV4Fixture(), content).state;
     current.guild.funds = 100;

@@ -21,6 +21,30 @@
         "chance": 0.01,
         "uniquePerSave": true
       }
+    },
+    {
+      "id": "anheqiaobei",
+      "name": { "zhCN": "安和桥北" },
+      "raceId": "orc",
+      "classId": "shaman",
+      "specId": "shaman_elemental",
+      "personalityId": "watchful",
+      "appearance": {
+        "chance": 0.01,
+        "uniquePerSave": true
+      }
+    },
+    {
+      "id": "peanutslol",
+      "name": { "zhCN": "Peanutslol" },
+      "raceId": "troll",
+      "classId": "mage",
+      "specId": "mage_arcane",
+      "personalityId": "watchful",
+      "appearance": {
+        "chance": 0.01,
+        "uniquePerSave": true
+      }
     }
   ]
 }

@@ -84,6 +84,15 @@ describe("validated automatic content registry", () => {
     );
   });
 
+  it("rejects a special character whose race is unavailable to its class", () => {
+    const modules = clonedModules();
+    const file = moduleAt(modules, "/content/hidden-characters/classic.json");
+    const characters = file.hiddenCharacters as Array<{ raceId?: string }>;
+    characters[1]!.raceId = "gnome";
+
+    expect(() => loadContentRegistry(modules)).toThrowError(/隐藏角色种族不属于职业 shaman/);
+  });
+
   it("reports schema failures with the content file and precise field path", () => {
     const modules = clonedModules();
     const file = moduleAt(modules, "/content/loot-tables/ragefire-chasm.json");

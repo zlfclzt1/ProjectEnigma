@@ -98,6 +98,24 @@ describe("member content", () => {
         personalityId: "watchful",
         appearance: { chance: 0.01, uniquePerSave: true },
       },
+      {
+        id: "anheqiaobei",
+        name: { zhCN: "安和桥北" },
+        raceId: "orc",
+        classId: "shaman",
+        specId: "shaman_elemental",
+        personalityId: "watchful",
+        appearance: { chance: 0.01, uniquePerSave: true },
+      },
+      {
+        id: "peanutslol",
+        name: { zhCN: "Peanutslol" },
+        raceId: "troll",
+        classId: "mage",
+        specId: "mage_arcane",
+        personalityId: "watchful",
+        appearance: { chance: 0.01, uniquePerSave: true },
+      },
     ]);
   });
 
@@ -118,6 +136,12 @@ describe("member content", () => {
       expect(classIds.has(hidden.classId)).toBe(true);
       expect(specIds.has(hidden.specId)).toBe(true);
       expect(personalityIds.has(hidden.personalityId)).toBe(true);
+      if (hidden.raceId) {
+        expect(raceIds.has(hidden.raceId)).toBe(true);
+        expect(classFile.classes.find((entry) => entry.id === hidden.classId)?.raceIds).toContain(
+          hidden.raceId,
+        );
+      }
       expect(
         personalityFile.personalities.find((personality) => personality.id === hidden.personalityId)
           ?.specialOnly,

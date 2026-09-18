@@ -46,17 +46,19 @@ function randomEntry<Value>(
 }
 
 function selectHiddenCharacter(context: MemberFactoryContext) {
+  const roll = context.random.next("hidden-character");
+  let threshold = 0;
   for (const character of context.content.hiddenCharacters) {
+    threshold += character.appearance.chance;
+    if (roll >= threshold) continue;
     if (character.appearance.uniquePerSave && context.claimedHiddenCharacterIds.has(character.id)) {
-      continue;
+      return undefined;
     }
-    if (context.usedNames.has(character.name.zhCN)) continue;
-    if (context.random.next("hidden-character") < character.appearance.chance) {
-      if (character.appearance.uniquePerSave) {
-        context.claimedHiddenCharacterIds.add(character.id);
-      }
-      return character;
+    if (context.usedNames.has(character.name.zhCN)) return undefined;
+    if (character.appearance.uniquePerSave) {
+      context.claimedHiddenCharacterIds.add(character.id);
     }
+    return character;
   }
   return undefined;
 }
@@ -95,7 +97,8 @@ function createProfile(
       ).id;
   const name = hidden ? hidden.name.zhCN : createUniqueName(context);
   if (hidden) context.usedNames.add(name);
-  const raceId = randomEntry(context, classDefinition.raceIds, `race-${classDefinition.id}`);
+  const raceId =
+    hidden?.raceId ?? randomEntry(context, classDefinition.raceIds, `race-${classDefinition.id}`);
 
   return {
     identity: {

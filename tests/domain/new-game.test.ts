@@ -101,7 +101,7 @@ describe("V2 new game factory", () => {
     }
   });
 
-  it("uses a strict one-percent hidden-character threshold and claims unique characters once", () => {
+  it("uses one-percent slots for each hidden character and claims unique characters once", () => {
     const context = memberFactoryContext([0.009, 0, 0, 0, 0, 0, 0]);
     const hidden = createCandidate(context);
     const normal = createCandidate(context);
@@ -114,8 +114,31 @@ describe("V2 new game factory", () => {
       new Set([asBrandedId<"HiddenCharacterId">("fairbanks")]),
     );
 
-    const boundary = createCandidate(memberFactoryContext([0.01, 0, 0, 0, 0, 0]));
+    const nextSlot = createCandidate(memberFactoryContext([0.01]));
+    expect(nextSlot.identity.hiddenCharacterId).toBe("anheqiaobei");
+
+    const boundary = createCandidate(memberFactoryContext([0.03, 0, 0, 0, 0]));
     expect(boundary.identity.hiddenCharacterId).toBeUndefined();
+  });
+
+  it("uses the content-defined race for special characters", () => {
+    const context = memberFactoryContext([0.015]);
+    context.claimedHiddenCharacterIds.add(asBrandedId<"HiddenCharacterId">("fairbanks"));
+    const anheqiaobei = createCandidate(context);
+
+    expect(anheqiaobei.identity.hiddenCharacterId).toBe("anheqiaobei");
+    expect(anheqiaobei.identity.raceId).toBe("orc");
+    expect(anheqiaobei.identity.classId).toBe("shaman");
+    expect(anheqiaobei.progression.specId).toBe("shaman_elemental");
+
+    const secondContext = memberFactoryContext([0.025]);
+    secondContext.claimedHiddenCharacterIds.add(asBrandedId<"HiddenCharacterId">("fairbanks"));
+    secondContext.claimedHiddenCharacterIds.add(asBrandedId<"HiddenCharacterId">("anheqiaobei"));
+    const peanutslol = createCandidate(secondContext);
+    expect(peanutslol.identity.hiddenCharacterId).toBe("peanutslol");
+    expect(peanutslol.identity.raceId).toBe("troll");
+    expect(peanutslol.identity.classId).toBe("mage");
+    expect(peanutslol.progression.specId).toBe("mage_arcane");
   });
 
   it("does not generate special-only personalities for ordinary candidates", () => {

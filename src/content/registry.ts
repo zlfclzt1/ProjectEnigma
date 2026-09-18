@@ -736,6 +736,9 @@ export class ContentRegistry {
     }
     for (const owner of loaded.hiddenCharacters) {
       requireReference(classById, owner.value.classId, owner, "classId", "职业", issues);
+      const raceExists = owner.value.raceId
+        ? requireReference(raceById, owner.value.raceId, owner, "raceId", "种族", issues)
+        : false;
       const specExists = requireReference(
         specById,
         owner.value.specId,
@@ -758,6 +761,17 @@ export class ContentRegistry {
           fieldPath: `${owner.fieldPath}.personalityId`,
           message: "特殊角色必须引用 specialOnly 性格",
           invalidReferenceId: owner.value.personalityId,
+        });
+      }
+      if (
+        raceExists &&
+        !classById.get(owner.value.classId)?.raceIds.includes(owner.value.raceId!)
+      ) {
+        issues.push({
+          filePath: owner.filePath,
+          fieldPath: `${owner.fieldPath}.raceId`,
+          message: `隐藏角色种族不属于职业 ${owner.value.classId}`,
+          invalidReferenceId: owner.value.raceId,
         });
       }
       if (specExists && specById.get(owner.value.specId)?.classId !== owner.value.classId) {
