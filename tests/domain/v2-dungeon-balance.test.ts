@@ -6,6 +6,7 @@ import {
   DEFAULT_DUNGEON_EXPERIENCE_CONFIG,
   experienceFractions,
 } from "../../src/domain/dungeon/expedition-activity";
+import { evaluateExpeditionParty } from "../../src/domain/dungeon/party-evaluation";
 import { createNewGame } from "../../src/domain/guild/new-game";
 import { asBrandedId } from "../../src/domain/shared/ids";
 import { LocalIdGenerator } from "../../src/infrastructure/ids/local-id-generator";
@@ -26,6 +27,41 @@ function newState(seed: string) {
 }
 
 describe("V2 dungeon balance", () => {
+  it("applies the special watchful personality's combat and experience bonuses", () => {
+    const dungeonId = asBrandedId<"DungeonId">("ragefire_chasm");
+    const dungeon = content.dungeonById.get(dungeonId)!;
+    const baselineState = newState("watchful-baseline");
+    const memberIds = Object.values(baselineState.members).map((member) => member.id);
+    for (const member of Object.values(baselineState.members)) {
+      member.progression.level = dungeon.recommendedLevel;
+      member.identity.personalityId = asBrandedId<"PersonalityId">("diligent");
+    }
+    const specialState = structuredClone(baselineState);
+    const specialMemberId = memberIds[0]!;
+    specialState.members[specialMemberId]!.identity.personalityId =
+      asBrandedId<"PersonalityId">("watchful");
+
+    const baselinePreview = evaluateExpeditionParty(baselineState, content, dungeonId, memberIds);
+    const specialPreview = evaluateExpeditionParty(specialState, content, dungeonId, memberIds);
+    expect(baselinePreview.ok && specialPreview.ok).toBe(true);
+    if (!baselinePreview.ok || !specialPreview.ok) throw new Error("Expected valid previews");
+    const baselineProfile = baselinePreview.preview.memberProfiles.find(
+      (profile) => profile.memberId === specialMemberId,
+    )!;
+    const specialProfile = specialPreview.preview.memberProfiles.find(
+      (profile) => profile.memberId === specialMemberId,
+    )!;
+    expect(specialProfile.capabilities.damage).toBeCloseTo(
+      baselineProfile.capabilities.damage * 1.04,
+    );
+
+    baselineState.members[specialMemberId]!.identity.personalityId =
+      asBrandedId<"PersonalityId">("steady");
+    const baselineXp = experienceFractions(baselineState, content, dungeonId, [specialMemberId]);
+    const specialXp = experienceFractions(specialState, content, dungeonId, [specialMemberId]);
+    expect(specialXp[specialMemberId]).toBeCloseTo(baselineXp[specialMemberId]! * 1.08);
+  });
+
   it("keeps all four recommended-level standard parties on the agreed clear-rate curve", () => {
     expect(balance.samplesPerScenario).toBeGreaterThanOrEqual(100_000);
     expect(balance.partyVariants).toBeGreaterThanOrEqual(100);

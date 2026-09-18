@@ -108,6 +108,7 @@ describe("V2 new game factory", () => {
 
     expect(hidden.identity.hiddenCharacterId).toBe("fairbanks");
     expect(hidden.identity.name).toBe("费厄泼赖");
+    expect(hidden.identity.personalityId).toBe("watchful");
     expect(normal.identity.hiddenCharacterId).toBeUndefined();
     expect(context.claimedHiddenCharacterIds).toEqual(
       new Set([asBrandedId<"HiddenCharacterId">("fairbanks")]),
@@ -115,6 +116,16 @@ describe("V2 new game factory", () => {
 
     const boundary = createCandidate(memberFactoryContext([0.01, 0, 0, 0, 0, 0]));
     expect(boundary.identity.hiddenCharacterId).toBeUndefined();
+  });
+
+  it("does not generate special-only personalities for ordinary candidates", () => {
+    const rolls = Array.from({ length: 30 }, () => [0.99, 0, 0.99, 0, 0]);
+    const context = memberFactoryContext(rolls.flat());
+    const candidates = Array.from({ length: 30 }, () => createCandidate(context));
+
+    expect(candidates.every((candidate) => candidate.identity.personalityId !== "watchful")).toBe(
+      true,
+    );
   });
 
   it("uses standalone names and selects another entry instead of adding a suffix", () => {

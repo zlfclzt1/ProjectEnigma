@@ -433,6 +433,7 @@ export function experienceFractions(
       );
       if (member.identity.personalityId === "diligent") fraction *= 1.15;
       if (member.identity.personalityId === "clever") fraction *= 0.9;
+      if (member.identity.personalityId === "watchful") fraction *= 1.08;
       fraction *= boostMultiplier;
       fraction *= developmentMultiplier;
       return [memberId, Math.min(config.maximumFractionPerRun, fraction)];

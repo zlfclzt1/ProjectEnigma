@@ -52,6 +52,14 @@
       "benefit": { "zhCN": "降低越级战力惩罚" },
       "drawback": { "zhCN": "个人经验 -10%" },
       "legacyBehaviorId": "clever"
+    },
+    {
+      "id": "watchful",
+      "name": { "zhCN": "守望" },
+      "benefit": { "zhCN": "副本战斗能力 +4%，个人经验获取 +8%" },
+      "drawback": { "zhCN": "无额外负面效果" },
+      "legacyBehaviorId": "watchful",
+      "specialOnly": true
     }
   ]
 }

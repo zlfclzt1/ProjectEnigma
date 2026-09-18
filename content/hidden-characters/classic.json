@@ -16,7 +16,7 @@
       "name": { "zhCN": "费厄泼赖" },
       "classId": "warlock",
       "specId": "warlock_affliction",
-      "personalityId": "clever",
+      "personalityId": "watchful",
       "appearance": {
         "chance": 0.01,
         "uniquePerSave": true

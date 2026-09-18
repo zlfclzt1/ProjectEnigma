@@ -270,6 +270,8 @@ function personalityPowerMultiplier(
       return member.progression.level < dungeon.recommendedLevel
         ? 1 + Math.min(0.1, (dungeon.recommendedLevel - member.progression.level) * 0.015)
         : 1;
+    case "watchful":
+      return 1.04;
     default:
       return 1;
   }

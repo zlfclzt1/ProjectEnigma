@@ -744,7 +744,7 @@ export class ContentRegistry {
         "专精",
         issues,
       );
-      requireReference(
+      const personalityExists = requireReference(
         personalityById,
         owner.value.personalityId,
         owner,
@@ -752,6 +752,14 @@ export class ContentRegistry {
         "性格",
         issues,
       );
+      if (personalityExists && !personalityById.get(owner.value.personalityId)?.specialOnly) {
+        issues.push({
+          filePath: owner.filePath,
+          fieldPath: `${owner.fieldPath}.personalityId`,
+          message: "特殊角色必须引用 specialOnly 性格",
+          invalidReferenceId: owner.value.personalityId,
+        });
+      }
       if (specExists && specById.get(owner.value.specId)?.classId !== owner.value.classId) {
         issues.push({
           filePath: owner.filePath,

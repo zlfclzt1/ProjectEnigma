@@ -78,6 +78,7 @@ export const personalityDefinitionSchema = z
     benefit: localizedTextSchema,
     drawback: localizedTextSchema,
     legacyBehaviorId: brandedContentIdSchema<"PersonalityBehaviorId">(),
+    specialOnly: z.boolean().optional(),
   })
   .strict();
 

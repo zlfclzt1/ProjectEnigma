@@ -44,12 +44,33 @@ export function migrateSave(
   state.guild.supplyPlans ??= {};
   const hadEconomyLedger = state.economyLedger !== undefined;
   state.economyLedger ??= [];
+  const specialCharacterPersonalitiesUpdated = syncSpecialCharacterPersonalities(state, content);
   const automaticRewards = applyEligibleAutomaticCollectionRewards(state, content);
   return {
     state,
     migrated:
-      versionMigrated || !hadSupplyPlans || !hadEconomyLedger || automaticRewards.length > 0,
+      versionMigrated ||
+      !hadSupplyPlans ||
+      !hadEconomyLedger ||
+      specialCharacterPersonalitiesUpdated ||
+      automaticRewards.length > 0,
   };
+}
+
+function syncSpecialCharacterPersonalities(state: GameState, content: ContentRegistry): boolean {
+  const specialCharactersById = new Map(
+    content.hiddenCharacters.map((character) => [character.id, character]),
+  );
+  let updated = false;
+  for (const profile of [...Object.values(state.members), ...Object.values(state.candidates)]) {
+    const hiddenCharacterId = profile.identity.hiddenCharacterId;
+    if (!hiddenCharacterId) continue;
+    const definition = specialCharactersById.get(hiddenCharacterId);
+    if (!definition || profile.identity.personalityId === definition.personalityId) continue;
+    profile.identity.personalityId = definition.personalityId;
+    updated = true;
+  }
+  return updated;
 }
 
 function migrateToV13(

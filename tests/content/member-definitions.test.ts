@@ -57,14 +57,24 @@ describe("member content", () => {
     );
   });
 
-  it("defines six personalities with visible benefits and drawbacks", () => {
-    expect(personalityFile.personalities).toHaveLength(6);
+  it("defines seven personalities with visible benefits and drawbacks", () => {
+    expect(personalityFile.personalities).toHaveLength(7);
     expect(
       personalityFile.personalities.every(
         (personality) =>
           personality.benefit.zhCN.length > 0 && personality.drawback.zhCN.length > 0,
       ),
     ).toBe(true);
+    expect(
+      personalityFile.personalities.find((personality) => personality.id === "watchful"),
+    ).toEqual({
+      id: "watchful",
+      name: { zhCN: "守望" },
+      benefit: { zhCN: "副本战斗能力 +4%，个人经验获取 +8%" },
+      drawback: { zhCN: "无额外负面效果" },
+      legacyBehaviorId: "watchful",
+      specialOnly: true,
+    });
   });
 
   it("provides a unique pool of standalone Chinese character names", () => {
@@ -85,7 +95,7 @@ describe("member content", () => {
         name: { zhCN: "费厄泼赖" },
         classId: "warlock",
         specId: "warlock_affliction",
-        personalityId: "clever",
+        personalityId: "watchful",
         appearance: { chance: 0.01, uniquePerSave: true },
       },
     ]);
@@ -108,6 +118,10 @@ describe("member content", () => {
       expect(classIds.has(hidden.classId)).toBe(true);
       expect(specIds.has(hidden.specId)).toBe(true);
       expect(personalityIds.has(hidden.personalityId)).toBe(true);
+      expect(
+        personalityFile.personalities.find((personality) => personality.id === hidden.personalityId)
+          ?.specialOnly,
+      ).toBe(true);
     }
   });
 });

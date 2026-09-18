@@ -88,7 +88,11 @@ function createProfile(
   if (!classDefinition) throw new Error(`专精 ${spec.id} 缺少职业定义`);
   const personalityId = hidden
     ? hidden.personalityId
-    : randomEntry(context, context.content.personalities, "personality").id;
+    : randomEntry(
+        context,
+        context.content.personalities.filter((personality) => !personality.specialOnly),
+        "personality",
+      ).id;
   const name = hidden ? hidden.name.zhCN : createUniqueName(context);
   if (hidden) context.usedNames.add(name);
   const raceId = randomEntry(context, classDefinition.raceIds, `race-${classDefinition.id}`);

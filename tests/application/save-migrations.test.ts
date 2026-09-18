@@ -222,6 +222,19 @@ describe("save migrations", () => {
     expect(result.state).not.toBe(migrated);
   });
 
+  it("updates existing hidden characters to their content-defined special personality", () => {
+    const current = migrateSave(createLegacyGameStateV4Fixture(), content).state;
+    const fairbanks = Object.values(current.members)[0]!;
+    fairbanks.identity.hiddenCharacterId = asBrandedId<"HiddenCharacterId">("fairbanks");
+    fairbanks.identity.personalityId = asBrandedId<"PersonalityId">("clever");
+
+    const result = migrateSave(current, content);
+
+    expect(result.migrated).toBe(true);
+    expect(result.state.members[fairbanks.id]!.identity.personalityId).toBe("watchful");
+    expect(migrateSave(result.state, content).migrated).toBe(false);
+  });
+
   it("backfills automatic encounter milestones for a current old save", () => {
     const current = migrateSave(createLegacyGameStateV4Fixture(), content).state;
     current.guild.funds = 100;
